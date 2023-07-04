@@ -20,36 +20,37 @@ namespace wz
 
 	Application::~Application()
 	{
+
 	}
 
 	void Application::Initialize(HWND hwnd)
 	{
-		mHwnd = hwnd;						// 멤버 변수에 핸들 저장
+		mHwnd = hwnd;							// 멤버 변수에 핸들 저장
 		mHdc = GetDC(mHwnd);				// DC값을 반환해주는 함수
 
 		mWidth = 1600;
 		mHeight = 900;
 
-		RECT rect = { 0, 0, mWidth, mHeight };
-		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+		RECT rect = { 0, 0, mWidth, mHeight };						
+		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);			// 윈도우의 영역을 조절하는 함수
 
-		SetWindowPos(mHwnd
+		SetWindowPos(mHwnd																// 상단 메뉴바를 제외한 크기 세팅하는 함수
 			, nullptr, 0, 0
-			, rect.right - rect.left
+			, rect.right - rect.left										// *** 이부분 질문
 			, rect.bottom - rect.top
 			, 0);
 		ShowWindow(mHwnd, true);
 
-		// 윈도우 해상도 동일한 비트맵 생성
+		// 윈도우 해상도 동일한 비트맵 생성(도화지 생성)
 		mBackBuffer = CreateCompatibleBitmap(mHdc, mWidth, mHeight);
 
 		// 새로 생성한 비트맵을 가리키는 DC 생성
 		mBackHdc = CreateCompatibleDC(mHdc);
 
-		// 새로 생성한 비트맵과 DC를 서로 연결
-		HBITMAP defaultBitmap
-			= (HBITMAP)SelectObject(mBackHdc, mBackBuffer);
-		DeleteObject(defaultBitmap);
+		// 새로 생성한 비트맵과 DC를 서로 연결				// *** 이부분 질문
+		HBITMAP defaultBitmap															// 24bit RGB만 들어있는 자료형
+			= (HBITMAP)SelectObject(mBackHdc, mBackBuffer);				// DC와 새로운 화면(도화지) 연결
+		DeleteObject(defaultBitmap);													// *** 이부분 질문
 
 
 		Time :: Initialize();
@@ -57,7 +58,7 @@ namespace wz
 	
 	}
 
-	void Application::Run()					// 한바퀴 도는 것 - > 프레임
+	void Application::Run()						// 한바퀴 도는 것 - > 프레임
 	{
 		Update();
 		Render();
@@ -98,7 +99,7 @@ namespace wz
 		Ellipse(mBackHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y
 			, 200 + mPlayerPos.x, 200 + mPlayerPos.y);
 
-		BitBlt(mHdc, 0, 0, mWidth, mHeight
+		BitBlt(mHdc, 0, 0, mWidth, mHeight					// DC간 그림을 복사해주는 함수
 			, mBackHdc, 0, 0, SRCCOPY);
 	}
 
