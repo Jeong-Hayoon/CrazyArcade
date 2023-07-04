@@ -8,14 +8,14 @@
 //				true(1) / false(0)
 namespace wz
 {
-	enum class eKeyCode					// 키보드 키를 enum으로 매칭
+	enum class eKeyCode			// 키보드 키를 enum으로 매칭
 	{
 		Q, W, E, R, T, Y, U, I, O, P,
 		A, S, D, F, G, H, J, K, L,
 		Z, X, C, V, B, N, M,
-		End,
+		End,				// End는 배열의 크기를 다룰때 26을 편하게 사용할 수 있도록
 	};
-	enum class eKeyState					// 키의 상태
+	enum class eKeyState		// 키의 상태
 	{
 		Down,			// 0
 		Up,				// 1
@@ -29,7 +29,7 @@ namespace wz
 		struct Key			// 키보드 키 하나당 이 구조체 정보를 하나씩 다 가지고 있는 것
 		{
 			eKeyCode code;					// 무슨 키인지
-			eKeyState state;					// 현 프레임에서 내 키가 어떤 상태인지
+			eKeyState state;				// 현 프레임에서 내 키가 어떤 상태인지
 			bool bPressed;					// 이전 프레임에서 키가 눌려있었는지
 		};
 
@@ -52,5 +52,7 @@ namespace wz
 	private:
 		static std::vector<Key> mKeys;
 	};
+
+	// vector는 무조건 <자료형>을 써야함
 }
 

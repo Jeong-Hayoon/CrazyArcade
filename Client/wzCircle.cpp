@@ -25,11 +25,11 @@ namespace wz
 	}
 	void Circle::Shift()
 	{
-		if (direction == 0)			// y 감소
+		if (direction == 0)				// y 감소
 		{
 			mLocation.y -= 300.0f * Time::DeltaTime();
 		}
-		else if (direction == 1)		// y 감소	, x 증가
+		else if (direction == 1)		// y 감소, x 증가
 		{
 			mLocation.x += 300.0f * Time::DeltaTime();
 			mLocation.y -= 300.0f * Time::DeltaTime();
@@ -73,7 +73,7 @@ namespace wz
 			direction = rand() % 8;
 		}
 
-		if (mLocation.x >= 1120)		// x가 감소하는거 필요
+		if (mLocation.x >= 1120)	// x가 감소하는거 필요
 		{
 			while (1)
 			{
@@ -97,7 +97,7 @@ namespace wz
 			}
 		}
 
-		if (mLocation.x <= 0)			// x가 증가하는거 필요
+		if (mLocation.x <= 0)		// x가 증가하는거 필요
 		{
 			while (1)
 			{
@@ -109,7 +109,7 @@ namespace wz
 			};
 		}
 
-		if (mLocation.y <= 0)			// y가 증가하는거 필요
+		if (mLocation.y <= 0)		// y가 증가하는거 필요
 		{
 			while (1)
 			{

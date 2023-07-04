@@ -20,13 +20,13 @@ namespace wz
 			Key key = {};
 			key.code = (eKeyCode)i;					// 0~25까지 넣어줌
 			key.state = eKeyState::None;			// 초기화이므로 None 상태
-			key.bPressed = false;						// 초기화이므로 false 상태
+			key.bPressed = false;					// 초기화이므로 false 상태
 
 			mKeys.push_back(key);					// 배열에 키 정보 넣기
 		}
 	}
 
-	void Input::Update()									// 키가 눌린거 확인
+	void Input::Update()							// 키가 눌린거 확인
 	{
 		for (int  i = 0; i < (int)eKeyCode::End; i++)
 		{

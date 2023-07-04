@@ -24,7 +24,7 @@ namespace wz
 	void Application::Initialize(HWND hwnd)
 	{
 		mHwnd = hwnd;						// 멤버 변수에 핸들 저장
-		mHdc = GetDC(mHwnd);			// DC값을 반환해주는 함수
+		mHdc = GetDC(mHwnd);				// DC값을 반환해주는 함수
 
 		Time :: Initialize();
 		Input :: Initialize();
@@ -45,12 +45,12 @@ namespace wz
 		Render();
 	}
 
-	void Application::Update()			// 움직이는 좌표를 증가시킴
+	void Application::Update()				// 움직이는 좌표를 증가시킴
 	{
 		Time::Update();
 		// Input::Update();
 
-	/*	if (Input::GetKey(eKeyCode::W))				// 키를 입력받았을 대
+	/*	if (Input::GetKey(eKeyCode::W))			// 키를 입력받았을 대
 		{
 			mPlayerPos.y -= 300.0f * Time::DeltaTime();
 		}
@@ -86,7 +86,7 @@ namespace wz
 		
 		Counting += Time::DeltaTime();
 	
-		if (Counting > 1.f && num < 256)
+		if (Counting > 1.f && num < 256)				// num이 256을 넘어버리면 배열이 터짐
 		{
 			circle[num].SetVisible(true);
 			circle[num].SetLocation(Vector2(rand() % 645, rand() % 1090));		// 위치 지정 안해주면 다같은 곳이라 겹쳐보임
