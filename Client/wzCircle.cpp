@@ -85,7 +85,7 @@ namespace wz
 			}
 		}
 
-		if (mLocation.y >= 645)		// y가 감소하는거 필요
+		if (mLocation.y >= 680)		// y가 감소하는거 필요
 		{
 			while (1)
 			{

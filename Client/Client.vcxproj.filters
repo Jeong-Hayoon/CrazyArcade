@@ -89,8 +89,6 @@
     <ClCompile Include="wzCircle.cpp">
       <Filter>Engine\Circle</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Windows</Filter>
-    </ClCompile>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
 </Project>
