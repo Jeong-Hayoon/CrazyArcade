@@ -30,7 +30,6 @@ namespace wz
 		mWidth = 1600;
 		mHeight = 900;
 
-
 		RECT rect = { 0, 0, mWidth, mHeight };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
