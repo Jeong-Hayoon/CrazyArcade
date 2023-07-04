@@ -21,7 +21,12 @@ namespace wz			// namespace가 다르면 클래스 이름이 같아도 사용할 수 있음
 	private:
 		HWND mHwnd;
 		HDC mHdc;
+		UINT mWidth;
+		UINT mHeight;
+
+		HDC mBackHdc;
+		HBITMAP mBackBuffer;
+
 		Vector2 mPlayerPos;				// 좌표 저장할 변수
-		Circle circle[256];
 	};
 }

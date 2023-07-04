@@ -1,9 +1,6 @@
 #include "wzApplication.h"
 #include "wzInput.h"
 #include "wzTime.h"
-#include <cstdlib> // rand(), srand()
-#include <ctime> / /time()
-#include "wzCircle.h"
 
 
 // cpp 파일에는 함수의 정의 부분 작성
@@ -13,6 +10,10 @@ namespace wz
 	Application::Application()
 		: mHwnd(NULL)
 		, mHdc(NULL)
+		, mWidth(0)
+		, mHeight(0)
+		, mBackBuffer(NULL)
+		, mBackHdc(NULL)
 	{
 
 	}
@@ -26,17 +27,35 @@ namespace wz
 		mHwnd = hwnd;						// 멤버 변수에 핸들 저장
 		mHdc = GetDC(mHwnd);				// DC값을 반환해주는 함수
 
+		mWidth = 1600;
+		mHeight = 900;
+
+
+		RECT rect = { 0, 0, mWidth, mHeight };
+		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+		SetWindowPos(mHwnd
+			, nullptr, 0, 0
+			, rect.right - rect.left
+			, rect.bottom - rect.top
+			, 0);
+		ShowWindow(mHwnd, true);
+
+		// 윈도우 해상도 동일한 비트맵 생성
+		mBackBuffer = CreateCompatibleBitmap(mHdc, mWidth, mHeight);
+
+		// 새로 생성한 비트맵을 가리키는 DC 생성
+		mBackHdc = CreateCompatibleDC(mHdc);
+
+		// 새로 생성한 비트맵과 DC를 서로 연결
+		HBITMAP defaultBitmap
+			= (HBITMAP)SelectObject(mBackHdc, mBackBuffer);
+		DeleteObject(defaultBitmap);
+
+
 		Time :: Initialize();
 		Input :: Initialize();
-		
-		for(int i = 0; i < 256; i++)
-		{
-			circle[i] = {};
-		}
-
-		circle[0].SetVisible(true);
-
-		srand((unsigned int)time(NULL));
+	
 	}
 
 	void Application::Run()					// 한바퀴 도는 것 - > 프레임
@@ -48,9 +67,10 @@ namespace wz
 	void Application::Update()				// 움직이는 좌표를 증가시킴
 	{
 		Time::Update();
-		// Input::Update();
+		Input::Update();
 
-	/*	if (Input::GetKey(eKeyCode::W))			// 키를 입력받았을 대
+		// 키를 입력받았을 대
+		if (Input::GetKey(eKeyCode::W))
 		{
 			mPlayerPos.y -= 300.0f * Time::DeltaTime();
 		}
@@ -65,43 +85,22 @@ namespace wz
 		if (Input::GetKey(eKeyCode::D))
 		{
 			mPlayerPos.x += 300.0f * Time::DeltaTime();
-		}*/
-		
-		for(int i = 0; i < 256; i++)
-		{
-			circle[i].Update();			// 예외 처리(벽에 부딪혔을 때)
-			circle[i].Shift();
-		}		
+		}
+			
 	}
 
 	void Application::Render()			// 움직인 좌표를 다시 그려줌
 	{
-		//Time::Render(mHdc);
+		Time::Render(mBackHdc);
 
-		////Rectangle(mHdc, 100, 100, 200, 200); 사각형 그리기
-		//Ellipse(mHdc, mPlayerPos[i].x, mPlayerPos[i].y, 100 + mPlayerPos[i].x, 100 + mPlayerPos[i].y);
+		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
 
-		static float Counting = 0.0f;
-		static int num = 1;
-		
-		Counting += Time::DeltaTime();
-	
-		if (Counting > 1.f && num < 256)				// num이 256을 넘어버리면 배열이 터짐
-		{
-			circle[num].SetVisible(true);
-			circle[num].SetLocation(Vector2(rand() % 645, rand() % 1090));		// 위치 지정 안해주면 다같은 곳이라 겹쳐보임
-			num++;
-			Counting = 0.0f;
-		}
+		//Rectangle(mHdc, 100, 100, 200, 200);
+		Ellipse(mBackHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y
+			, 200 + mPlayerPos.x, 200 + mPlayerPos.y);
 
-
-		for(int i = 0; i < 256; i++)
-		{
-			if (circle[i].GetVisible() == true)
-			{
-				circle[i].Render(mHdc);
-			}
-		}
+		BitBlt(mHdc, 0, 0, mWidth, mHeight
+			, mBackHdc, 0, 0, SRCCOPY);
 	}
 
 }
