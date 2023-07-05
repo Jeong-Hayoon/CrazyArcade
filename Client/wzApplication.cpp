@@ -20,7 +20,6 @@ namespace wz
 
 	Application::~Application()
 	{
-
 	}
 
 	void Application::Initialize(HWND hwnd)
