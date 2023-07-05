@@ -2,7 +2,6 @@
 #include "wzInput.h"
 #include "wzTime.h"
 
-
 // cpp 파일에는 함수의 정의 부분 작성
 
 namespace wz
