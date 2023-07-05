@@ -131,20 +131,34 @@
     <ClInclude Include="Client.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="CommonInclude.h" />
     <ClInclude Include="wzApplication.h" />
     <ClInclude Include="wzCircle.h" />
+    <ClInclude Include="wzComponent.h" />
+    <ClInclude Include="wzEntity.h" />
+    <ClInclude Include="wzGameObject.h" />
     <ClInclude Include="wzInput.h" />
+    <ClInclude Include="wzLayer.h" />
     <ClInclude Include="wzMath.h" />
+    <ClInclude Include="wzSpriteRenderer.h" />
     <ClInclude Include="wzTime.h" />
+    <ClInclude Include="wzTransform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="wzApplication.cpp" />
     <ClCompile Include="wzCircle.cpp" />
+    <ClCompile Include="wzComponent.cpp" />
+    <ClCompile Include="wzEntity.cpp" />
+    <ClCompile Include="wzGameObject.cpp" />
     <ClCompile Include="wzInput.cpp" />
+    <ClCompile Include="wzLayer.cpp" />
+    <ClCompile Include="wzSpriteRenderer.cpp" />
     <ClCompile Include="wzTime.cpp" />
+    <ClCompile Include="wzTransform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />

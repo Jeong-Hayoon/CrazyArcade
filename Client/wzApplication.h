@@ -1,10 +1,10 @@
 #pragma once
 #include "CommonInclude.h" 
-#include "wzCircle.h"
+#include "Scene.h"
 
 // 헤더에는 변수, 함수의 선언부만 작성(간단한 경우에는 헤더에서 구현, 많고 복잡한 경우에는 cpp쪽에 구현)
 
-namespace wz					// namespace가 다르면 클래스 이름이 같아도 사용할 수 있음
+namespace wz						// namespace가 다르면 클래스 이름이 같아도 사용할 수 있음
 {
 	using namespace math;
 	class Application				// 메인에서 생성된 핸들을 클래스에 저장해서 보관(윈도우 자체의 정보를 들고 있는 클래스)
@@ -24,10 +24,12 @@ namespace wz					// namespace가 다르면 클래스 이름이 같아도 사용할 수 있음
 		UINT mWidth;
 		UINT mHeight;
 
-		HDC mBackHdc;						// 새로운 DC
+		HDC mBackHdc;					// 새로운 DC
 		HBITMAP mBackBuffer;			// 새로운 화면(도화지)
+		
 
-		Vector2 mPlayerPos;				// 좌표 저장할 변수
+		Scene* mScene;
+		// Vector2 mPlayerPos;				// 좌표 저장할 변수
 	};
 	// 잔상 지우기 : 그리기 전에 rectangle 하얀 사각형으로 덮어씌우면 됨
 	// 더블 버퍼링 알고리즘 : 화면을 두개를 사용하여 눈에 보이지 않는 화면에 그림을 그리고 

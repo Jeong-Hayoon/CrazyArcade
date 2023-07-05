@@ -30,6 +30,24 @@
     <Filter Include="Engine\Circle">
       <UniqueIdentifier>{aa5b0b64-6aca-4e38-9662-7ed44d63206e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Layer">
+      <UniqueIdentifier>{d5630a40-c326-4e04-b395-f238ae905225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\GameObject">
+      <UniqueIdentifier>{87ea9720-f4e1-4c88-890f-756fa88d94ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Entity">
+      <UniqueIdentifier>{b91cb387-7dea-4a1b-a6c3-a621fd69b85d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component">
+      <UniqueIdentifier>{d4208f4d-3c9b-4a18-bb41-ef0a12ab0fb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Transform">
+      <UniqueIdentifier>{fe64657c-32ec-4aa7-8616-c7b6726594bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Scene">
+      <UniqueIdentifier>{1446fd1a-66a8-4ef2-a52b-21ca479d8cb8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -62,6 +80,27 @@
     <ClInclude Include="wzCircle.h">
       <Filter>Engine\Circle</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Engine\Component\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="wzLayer.h">
+      <Filter>Engine\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="wzGameObject.h">
+      <Filter>Engine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="wzEntity.h">
+      <Filter>Engine\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="wzTransform.h">
+      <Filter>Engine\Component\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="wzComponent.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="wzSpriteRenderer.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -90,5 +129,26 @@
       <Filter>Engine\Circle</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Scene.cpp">
+      <Filter>Engine\Component\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="wzLayer.cpp">
+      <Filter>Engine\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="wzGameObject.cpp">
+      <Filter>Engine\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="wzEntity.cpp">
+      <Filter>Engine\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="wzTransform.cpp">
+      <Filter>Engine\Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="wzComponent.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="wzSpriteRenderer.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
