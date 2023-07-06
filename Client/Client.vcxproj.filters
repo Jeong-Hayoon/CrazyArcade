@@ -24,9 +24,6 @@
     <Filter Include="Engine\Input">
       <UniqueIdentifier>{8897bc37-afff-4b79-803b-5e152ce5452c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Time">
-      <UniqueIdentifier>{0bef4d03-36ee-47a1-a058-d5a452207fe2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Layer">
       <UniqueIdentifier>{d5630a40-c326-4e04-b395-f238ae905225}</UniqueIdentifier>
     </Filter>
@@ -44,6 +41,21 @@
     </Filter>
     <Filter Include="Engine\Scene">
       <UniqueIdentifier>{1446fd1a-66a8-4ef2-a52b-21ca479d8cb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{d04c81a5-efaf-401d-8a92-396ba1b18f54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject">
+      <UniqueIdentifier>{0fe7f471-ae9f-4658-b0f3-69d6ea1efed2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene">
+      <UniqueIdentifier>{2921257a-7fb9-4fb0-a431-7dfc7a4816c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Player">
+      <UniqueIdentifier>{a34fb312-3708-4c7a-8680-03b9b7c68634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Time">
+      <UniqueIdentifier>{0bef4d03-36ee-47a1-a058-d5a452207fe2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,9 +84,9 @@
       <Filter>Engine\Input</Filter>
     </ClInclude>
     <ClInclude Include="wzTime.h">
-      <Filter>Engine\Time</Filter>
+      <Filter>Engine\Scene\Time</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
+    <ClInclude Include="wzScene.h">
       <Filter>Engine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="wzLayer.h">
@@ -94,6 +106,18 @@
     </ClInclude>
     <ClInclude Include="wzSpriteRenderer.h">
       <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="wzPlayer.h">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="wzTitleScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="wzObject.h">
+      <Filter>Engine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="wzSceneManager.h">
+      <Filter>Engine\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -117,10 +141,10 @@
       <Filter>Engine\Input</Filter>
     </ClCompile>
     <ClCompile Include="wzTime.cpp">
-      <Filter>Engine\Time</Filter>
+      <Filter>Engine\Scene\Time</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Scene.cpp">
+    <ClCompile Include="wzScene.cpp">
       <Filter>Engine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="wzLayer.cpp">
@@ -140,6 +164,15 @@
     </ClCompile>
     <ClCompile Include="wzSpriteRenderer.cpp">
       <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="wzPlayer.cpp">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="wzTitleScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="wzSceneManager.cpp">
+      <Filter>Engine\Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
