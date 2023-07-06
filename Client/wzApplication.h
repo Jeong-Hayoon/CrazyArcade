@@ -21,11 +21,11 @@ namespace wz						// namespace가 다르면 클래스 이름이 같아도 사용할 수 있음
 	private:
 		HWND mHwnd;
 		HDC mHdc;
-		UINT mWidth;
+		UINT mWidth;						
 		UINT mHeight;
 
-		HDC mBackHdc;					// 새로운 DC
-		HBITMAP mBackBuffer;			// 새로운 화면(도화지)
+		HDC mBackHdc;							// 새로운 DC
+		HBITMAP mBackBuffer;				// 새로운 화면(도화지)
 		
 
 		Scene* mScene;
@@ -33,5 +33,5 @@ namespace wz						// namespace가 다르면 클래스 이름이 같아도 사용할 수 있음
 	};
 	// 잔상 지우기 : 그리기 전에 rectangle 하얀 사각형으로 덮어씌우면 됨
 	// 더블 버퍼링 알고리즘 : 화면을 두개를 사용하여 눈에 보이지 않는 화면에 그림을 그리고 
-	// 화면 포커스를 다른 한쪽을 사용하여 깜빡거림이 사라짐
+	// 화면 포커스를 다른 한쪽을 사용하여 깜빡거림이 사라짐(버퍼라는 것은 메모리 영역을 의미)
 }

@@ -31,7 +31,7 @@ namespace wz
 		}
 
 	private:
-		std::vector<Component*> mComponents;
+		std::vector<Component*> mComponents;		// Component(eComponentType, GameObject)
 	};
 }
 

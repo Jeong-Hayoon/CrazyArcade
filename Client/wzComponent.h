@@ -18,7 +18,7 @@ namespace wz
 		class GameObject* GetOwner() { return mOwner; }
 
 	private:
-		const eComponentType mType;
+		const eComponentType mType;	// ComponentType 자신의 타입을 가지고 이음
 		class GameObject* mOwner;
 	};
 }

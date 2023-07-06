@@ -135,7 +135,6 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="CommonInclude.h" />
     <ClInclude Include="wzApplication.h" />
-    <ClInclude Include="wzCircle.h" />
     <ClInclude Include="wzComponent.h" />
     <ClInclude Include="wzEntity.h" />
     <ClInclude Include="wzGameObject.h" />
@@ -150,7 +149,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="wzApplication.cpp" />
-    <ClCompile Include="wzCircle.cpp" />
     <ClCompile Include="wzComponent.cpp" />
     <ClCompile Include="wzEntity.cpp" />
     <ClCompile Include="wzGameObject.cpp" />
