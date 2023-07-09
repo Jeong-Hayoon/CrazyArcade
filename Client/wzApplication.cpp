@@ -1,6 +1,8 @@
 #include "wzApplication.h"
 #include "wzInput.h"
 #include "wzTime.h"
+#include "wzTitleScene.h"
+#include "wzSceneManager.h"
 
 // cpp 파일에는 함수의 정의 부분 작성
 
@@ -53,9 +55,7 @@ namespace wz
 		Time :: Initialize();
 		Input :: Initialize();
 
-		mScene = new Scene();
-		mScene->Initialize();
-	
+		SceneManager::Initialize();
 	}
 
 	void Application::Run()				// 한바퀴 도는 것 - > 프레임
@@ -69,7 +69,7 @@ namespace wz
 		Time::Update();
 		Input::Update();
 
-	 	mScene->Update();
+		SceneManager::Update();
 
 		//// 키를 입력받았을 대
 		//if (Input::GetKey(eKeyCode::W))
@@ -96,7 +96,7 @@ namespace wz
 		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);		// +1, -1은 윈도우 창에 보이는 선을 지우기 위해 
 		Time::Render(mBackHdc);							// 그림을 mBackHdc에 그리고 
 
-		mScene->Render(mBackHdc);
+		SceneManager::Render(mBackHdc);
 
 		//Rectangle(mHdc, 100, 100, 200, 200);
 	/*	Ellipse(mBackHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y

@@ -54,8 +54,11 @@
     <Filter Include="Contents\GameObject\Player">
       <UniqueIdentifier>{a34fb312-3708-4c7a-8680-03b9b7c68634}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Scene\Time">
+    <Filter Include="Engine\Time">
       <UniqueIdentifier>{0bef4d03-36ee-47a1-a058-d5a452207fe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Common\Time">
+      <UniqueIdentifier>{97ef6ff3-a4de-42a5-bb47-6ee1a727a6e0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -83,17 +86,11 @@
     <ClInclude Include="wzInput.h">
       <Filter>Engine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="wzTime.h">
-      <Filter>Engine\Scene\Time</Filter>
-    </ClInclude>
     <ClInclude Include="wzScene.h">
       <Filter>Engine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="wzLayer.h">
       <Filter>Engine\Layer</Filter>
-    </ClInclude>
-    <ClInclude Include="wzGameObject.h">
-      <Filter>Engine\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="wzEntity.h">
       <Filter>Engine\Entity</Filter>
@@ -119,6 +116,12 @@
     <ClInclude Include="wzSceneManager.h">
       <Filter>Engine\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="wzGameObject.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="wzTime.h">
+      <Filter>Engine\Common\Time</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -140,18 +143,12 @@
     <ClCompile Include="wzInput.cpp">
       <Filter>Engine\Input</Filter>
     </ClCompile>
-    <ClCompile Include="wzTime.cpp">
-      <Filter>Engine\Scene\Time</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="wzScene.cpp">
       <Filter>Engine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="wzLayer.cpp">
       <Filter>Engine\Layer</Filter>
-    </ClCompile>
-    <ClCompile Include="wzGameObject.cpp">
-      <Filter>Engine\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="wzEntity.cpp">
       <Filter>Engine\Entity</Filter>
@@ -173,6 +170,12 @@
     </ClCompile>
     <ClCompile Include="wzSceneManager.cpp">
       <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="wzGameObject.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="wzTime.cpp">
+      <Filter>Engine\Common\Time</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -5,6 +5,7 @@ namespace wz
 {
 	class TitleScene : public Scene
 	{
+	public:
 		TitleScene();
 		virtual ~TitleScene();
 	

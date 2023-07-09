@@ -16,10 +16,9 @@ namespace wz
 		virtual void Render(HDC hdc);
 
 
-		void AddGameObject()
+		void AddGameObject(GameObject* gameObj)
 		{
-			GameObject* obj = new GameObject();
-			mGameObjects.push_back(obj);
+			mGameObjects.push_back(gameObj);
 		}
 
 	private:

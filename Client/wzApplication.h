@@ -1,6 +1,6 @@
 #pragma once
 #include "CommonInclude.h" 
-#include "Scene.h"
+
 
 // 헤더에는 변수, 함수의 선언부만 작성(간단한 경우에는 헤더에서 구현, 많고 복잡한 경우에는 cpp쪽에 구현)
 
@@ -27,8 +27,6 @@ namespace wz						// namespace가 다르면 클래스 이름이 같아도 사용할 수 있음
 		HDC mBackHdc;							// 새로운 DC
 		HBITMAP mBackBuffer;				// 새로운 화면(도화지)
 		
-
-		Scene* mScene;
 		// Vector2 mPlayerPos;				// 좌표 저장할 변수
 	};
 	// 잔상 지우기 : 그리기 전에 rectangle 하얀 사각형으로 덮어씌우면 됨

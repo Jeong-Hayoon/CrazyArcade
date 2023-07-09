@@ -3,13 +3,13 @@
 
 namespace wz
 {
-	std::map<std::wstring, Scene*> SceneManager::mScene = {};
+	std::map<std::wstring, Scene*> SceneManager::mScenes = {};
 	Scene* SceneManager::mActiveScene = nullptr;
 
 
 	void SceneManager::Initialize()
 	{
-		CreatScene<TitleScene>(L"TitleScene");
+		CreateScene<TitleScene>(L"TitleScene");
 		LoadScene(L"TitleScene");
 	}
 
@@ -26,7 +26,7 @@ namespace wz
 	Scene* SceneManager::LoadScene(const std::wstring& name)
 	{
 		std::map<std::wstring, Scene*> ::iterator iter
-			= mScene.find(name);
+			= mScenes.find(name);
 
 		if (iter == mScenes.end())
 			return nullptr;

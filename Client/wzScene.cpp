@@ -1,4 +1,6 @@
-#include "Scene.h"
+#include "wzScene.h"
+#include "wzPlayer.h"
+#include "wzSpriteRenderer.h"
 
 namespace wz
 {
@@ -11,7 +13,7 @@ namespace wz
 	}
 	void Scene::Initialize()
 	{
-		mLayers[(int)eLayerType::Player].AddGameObject();
+		
 	}
 	void Scene::Update()
 	{

@@ -15,12 +15,6 @@ namespace wz::math // 위치를 표시할 구조체
 		{
 
 		}
-		Vector2(int a, int b)
-			: x(a)
-			, y(b)
-		{
-
-		}
 	};
 }
 

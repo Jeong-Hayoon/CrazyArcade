@@ -3,7 +3,7 @@
 
 namespace wz
 {
-	class Player : GameObject
+	class Player : public GameObject
 	{
 	public:
 		Player();
