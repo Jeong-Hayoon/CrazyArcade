@@ -28,7 +28,7 @@ namespace wz
 			}
 
 			return comp;
-		}
+ 		}
 
 		template <typename T>
 		T* AddComponent()

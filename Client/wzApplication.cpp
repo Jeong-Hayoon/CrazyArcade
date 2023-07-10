@@ -52,7 +52,7 @@ namespace wz
 			= (HBITMAP)SelectObject(mBackHdc, mBackBuffer);	// DC와 새로운 화면(도화지) 연결
 		DeleteObject(defaultBitmap);										// (기본 비트맵을 뱉어줌 - 접근이 안되는 데다 우리가 원하는 크기가 아니므로 교체)
 																						// 기본 비트맵은 필요없으므로 제거
-		Time :: Initialize();
+		Time :: Initialize(); 
 		Input :: Initialize();
 
 		SceneManager::Initialize();

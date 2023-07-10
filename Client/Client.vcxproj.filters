@@ -39,9 +39,6 @@
     <Filter Include="Engine\Component\Transform">
       <UniqueIdentifier>{fe64657c-32ec-4aa7-8616-c7b6726594bb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Scene">
-      <UniqueIdentifier>{1446fd1a-66a8-4ef2-a52b-21ca479d8cb8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents">
       <UniqueIdentifier>{d04c81a5-efaf-401d-8a92-396ba1b18f54}</UniqueIdentifier>
     </Filter>
@@ -59,6 +56,24 @@
     </Filter>
     <Filter Include="Engine\Common\Time">
       <UniqueIdentifier>{97ef6ff3-a4de-42a5-bb47-6ee1a727a6e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\wzLobbyScene">
+      <UniqueIdentifier>{3d5fd035-7108-4362-aa37-2c8d926b23f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\wzPlayScene">
+      <UniqueIdentifier>{8b0d025e-b072-4c38-ad38-19788724764c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene">
+      <UniqueIdentifier>{1446fd1a-66a8-4ef2-a52b-21ca479d8cb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\SpriteRenderer">
+      <UniqueIdentifier>{a1fbe136-f545-4d2b-9d69-e5f8dcfd8965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\wzLoginScene">
+      <UniqueIdentifier>{b4b39b53-f373-4525-bd8b-a166f6829d39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\wzTitleScene">
+      <UniqueIdentifier>{f70199ff-3f33-4ae4-a4e7-9800cb3d6e85}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -101,14 +116,8 @@
     <ClInclude Include="wzComponent.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
-    <ClInclude Include="wzSpriteRenderer.h">
-      <Filter>Engine\Component</Filter>
-    </ClInclude>
     <ClInclude Include="wzPlayer.h">
       <Filter>Contents\GameObject\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="wzTitleScene.h">
-      <Filter>Contents\Scene</Filter>
     </ClInclude>
     <ClInclude Include="wzObject.h">
       <Filter>Engine\GameObject</Filter>
@@ -121,6 +130,21 @@
     </ClInclude>
     <ClInclude Include="wzTime.h">
       <Filter>Engine\Common\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="wzTitleScene.h">
+      <Filter>Contents\Scene\wzTitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="wzLobbyScene.h">
+      <Filter>Contents\Scene\wzLobbyScene</Filter>
+    </ClInclude>
+    <ClInclude Include="wzLoginScene.h">
+      <Filter>Contents\Scene\wzLoginScene</Filter>
+    </ClInclude>
+    <ClInclude Include="wzPlayScene.h">
+      <Filter>Contents\Scene\wzPlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="wzSpriteRenderer.h">
+      <Filter>Engine\Component\SpriteRenderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -159,14 +183,8 @@
     <ClCompile Include="wzComponent.cpp">
       <Filter>Engine\Component</Filter>
     </ClCompile>
-    <ClCompile Include="wzSpriteRenderer.cpp">
-      <Filter>Engine\Component</Filter>
-    </ClCompile>
     <ClCompile Include="wzPlayer.cpp">
       <Filter>Contents\GameObject\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="wzTitleScene.cpp">
-      <Filter>Contents\Scene</Filter>
     </ClCompile>
     <ClCompile Include="wzSceneManager.cpp">
       <Filter>Engine\Scene</Filter>
@@ -176,6 +194,21 @@
     </ClCompile>
     <ClCompile Include="wzTime.cpp">
       <Filter>Engine\Common\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="wzTitleScene.cpp">
+      <Filter>Contents\Scene\wzTitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="wzLobbyScene.cpp">
+      <Filter>Contents\Scene\wzLobbyScene</Filter>
+    </ClCompile>
+    <ClCompile Include="wzLoginScene.cpp">
+      <Filter>Contents\Scene\wzLoginScene</Filter>
+    </ClCompile>
+    <ClCompile Include="wzPlayScene.cpp">
+      <Filter>Contents\Scene\wzPlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="wzSpriteRenderer.cpp">
+      <Filter>Engine\Component\SpriteRenderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
