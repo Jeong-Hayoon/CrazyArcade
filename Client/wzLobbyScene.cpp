@@ -25,7 +25,7 @@ namespace wz
 	{
 		Scene::Update();
 
-		if (Input::GetKey(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
+		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
 		{
 			SceneManager::LoadScene(L"PlayScene");
 		}
