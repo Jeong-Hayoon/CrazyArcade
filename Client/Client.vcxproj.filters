@@ -18,9 +18,6 @@
     <Filter Include="Engine\Common">
       <UniqueIdentifier>{51be7b22-d132-4e21-a7a6-a4bf143a13e3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\High Level Interface">
-      <UniqueIdentifier>{6e2b8040-93be-4c51-9a2c-68ec2aa60d2b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Input">
       <UniqueIdentifier>{8897bc37-afff-4b79-803b-5e152ce5452c}</UniqueIdentifier>
     </Filter>
@@ -39,29 +36,11 @@
     <Filter Include="Engine\Component\Transform">
       <UniqueIdentifier>{fe64657c-32ec-4aa7-8616-c7b6726594bb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents">
-      <UniqueIdentifier>{d04c81a5-efaf-401d-8a92-396ba1b18f54}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject">
-      <UniqueIdentifier>{0fe7f471-ae9f-4658-b0f3-69d6ea1efed2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene">
-      <UniqueIdentifier>{2921257a-7fb9-4fb0-a431-7dfc7a4816c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject\Player">
-      <UniqueIdentifier>{a34fb312-3708-4c7a-8680-03b9b7c68634}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Time">
       <UniqueIdentifier>{0bef4d03-36ee-47a1-a058-d5a452207fe2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Common\Time">
       <UniqueIdentifier>{97ef6ff3-a4de-42a5-bb47-6ee1a727a6e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\wzLobbyScene">
-      <UniqueIdentifier>{3d5fd035-7108-4362-aa37-2c8d926b23f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Scene\wzPlayScene">
-      <UniqueIdentifier>{8b0d025e-b072-4c38-ad38-19788724764c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Scene">
       <UniqueIdentifier>{1446fd1a-66a8-4ef2-a52b-21ca479d8cb8}</UniqueIdentifier>
@@ -69,10 +48,34 @@
     <Filter Include="Engine\Component\SpriteRenderer">
       <UniqueIdentifier>{a1fbe136-f545-4d2b-9d69-e5f8dcfd8965}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene\wzLoginScene">
-      <UniqueIdentifier>{b4b39b53-f373-4525-bd8b-a166f6829d39}</UniqueIdentifier>
+    <Filter Include="Engine\Resource">
+      <UniqueIdentifier>{de1860cc-e40d-48e6-bedb-ac580ef19525}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene\wzTitleScene">
+    <Filter Include="Engine\Resource\Image">
+      <UniqueIdentifier>{bcd63fb8-6d98-4d2f-99b0-5ad857fdd3fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\High Level Interface">
+      <UniqueIdentifier>{6e2b8040-93be-4c51-9a2c-68ec2aa60d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{d04c81a5-efaf-401d-8a92-396ba1b18f54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject">
+      <UniqueIdentifier>{0fe7f471-ae9f-4658-b0f3-69d6ea1efed2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Player">
+      <UniqueIdentifier>{a34fb312-3708-4c7a-8680-03b9b7c68634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene">
+      <UniqueIdentifier>{2921257a-7fb9-4fb0-a431-7dfc7a4816c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\hyLobbyScene">
+      <UniqueIdentifier>{3d5fd035-7108-4362-aa37-2c8d926b23f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\hyPlayScene">
+      <UniqueIdentifier>{8b0d025e-b072-4c38-ad38-19788724764c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\hyTitleScene">
       <UniqueIdentifier>{f70199ff-3f33-4ae4-a4e7-9800cb3d6e85}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -92,59 +95,65 @@
     <ClInclude Include="CommonInclude.h">
       <Filter>Engine\Common</Filter>
     </ClInclude>
-    <ClInclude Include="wzMath.h">
+    <ClInclude Include="hyMath.h">
       <Filter>Engine\Common</Filter>
     </ClInclude>
-    <ClInclude Include="wzApplication.h">
+    <ClInclude Include="hyApplication.h">
       <Filter>Engine\High Level Interface</Filter>
     </ClInclude>
-    <ClInclude Include="wzInput.h">
+    <ClInclude Include="hyInput.h">
       <Filter>Engine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="wzScene.h">
+    <ClInclude Include="hyScene.h">
       <Filter>Engine\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="wzLayer.h">
+    <ClInclude Include="hyLayer.h">
       <Filter>Engine\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="wzEntity.h">
+    <ClInclude Include="hyEntity.h">
       <Filter>Engine\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="wzTransform.h">
+    <ClInclude Include="hyTransform.h">
       <Filter>Engine\Component\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="wzComponent.h">
+    <ClInclude Include="hyComponent.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
-    <ClInclude Include="wzPlayer.h">
+    <ClInclude Include="hyPlayer.h">
       <Filter>Contents\GameObject\Player</Filter>
     </ClInclude>
-    <ClInclude Include="wzObject.h">
+    <ClInclude Include="hyObject.h">
       <Filter>Engine\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="wzSceneManager.h">
+    <ClInclude Include="hySceneManager.h">
       <Filter>Engine\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="wzGameObject.h">
+    <ClInclude Include="hyGameObject.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="wzTime.h">
+    <ClInclude Include="hyTime.h">
       <Filter>Engine\Common\Time</Filter>
     </ClInclude>
-    <ClInclude Include="wzTitleScene.h">
-      <Filter>Contents\Scene\wzTitleScene</Filter>
+    <ClInclude Include="hyTitleScene.h">
+      <Filter>Contents\Scene\hyTitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="wzLobbyScene.h">
-      <Filter>Contents\Scene\wzLobbyScene</Filter>
+    <ClInclude Include="hyLobbyScene.h">
+      <Filter>Contents\Scene\hyLobbyScene</Filter>
     </ClInclude>
-    <ClInclude Include="wzLoginScene.h">
-      <Filter>Contents\Scene\wzLoginScene</Filter>
+    <ClInclude Include="hyPlayScene.h">
+      <Filter>Contents\Scene\hyPlayScene</Filter>
     </ClInclude>
-    <ClInclude Include="wzPlayScene.h">
-      <Filter>Contents\Scene\wzPlayScene</Filter>
-    </ClInclude>
-    <ClInclude Include="wzSpriteRenderer.h">
+    <ClInclude Include="hySpriteRenderer.h">
       <Filter>Engine\Component\SpriteRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="hyResource.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="hyResources.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="hyImage.h">
+      <Filter>Engine\Resource\Image</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -161,54 +170,60 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="wzApplication.cpp">
+    <ClCompile Include="hyApplication.cpp">
       <Filter>Engine\High Level Interface</Filter>
     </ClCompile>
-    <ClCompile Include="wzInput.cpp">
+    <ClCompile Include="hynput.cpp">
       <Filter>Engine\Input</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="wzScene.cpp">
+    <ClCompile Include="hyScene.cpp">
       <Filter>Engine\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="wzLayer.cpp">
+    <ClCompile Include="hyLayer.cpp">
       <Filter>Engine\Layer</Filter>
     </ClCompile>
-    <ClCompile Include="wzEntity.cpp">
+    <ClCompile Include="hyEntity.cpp">
       <Filter>Engine\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="wzTransform.cpp">
+    <ClCompile Include="hyTransform.cpp">
       <Filter>Engine\Component\Transform</Filter>
     </ClCompile>
-    <ClCompile Include="wzComponent.cpp">
+    <ClCompile Include="hyComponent.cpp">
       <Filter>Engine\Component</Filter>
     </ClCompile>
-    <ClCompile Include="wzPlayer.cpp">
+    <ClCompile Include="hyPlayer.cpp">
       <Filter>Contents\GameObject\Player</Filter>
     </ClCompile>
-    <ClCompile Include="wzSceneManager.cpp">
+    <ClCompile Include="hySceneManager.cpp">
       <Filter>Engine\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="wzGameObject.cpp">
+    <ClCompile Include="hyGameObject.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="wzTime.cpp">
+    <ClCompile Include="hyTime.cpp">
       <Filter>Engine\Common\Time</Filter>
     </ClCompile>
-    <ClCompile Include="wzTitleScene.cpp">
-      <Filter>Contents\Scene\wzTitleScene</Filter>
+    <ClCompile Include="hyTitleScene.cpp">
+      <Filter>Contents\Scene\hyTitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="wzLobbyScene.cpp">
-      <Filter>Contents\Scene\wzLobbyScene</Filter>
+    <ClCompile Include="hyLobbyScene.cpp">
+      <Filter>Contents\Scene\hyLobbyScene</Filter>
     </ClCompile>
-    <ClCompile Include="wzLoginScene.cpp">
-      <Filter>Contents\Scene\wzLoginScene</Filter>
+    <ClCompile Include="hyPlayScene.cpp">
+      <Filter>Contents\Scene\hyPlayScene</Filter>
     </ClCompile>
-    <ClCompile Include="wzPlayScene.cpp">
-      <Filter>Contents\Scene\wzPlayScene</Filter>
-    </ClCompile>
-    <ClCompile Include="wzSpriteRenderer.cpp">
+    <ClCompile Include="hySpriteRenderer.cpp">
       <Filter>Engine\Component\SpriteRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="hyResource.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="hyResources.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="hyImage.cpp">
+      <Filter>Engine\Resource\Image</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

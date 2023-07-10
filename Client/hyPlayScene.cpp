@@ -1,0 +1,40 @@
+#include "hyPlayScene.h"
+#include "hyTitleScene.h"
+#include "hyPlayer.h"
+#include "hySpriteRenderer.h"
+#include "hyObject.h"
+#include "hySceneManager.h"
+#include "hyApplication.h"
+#include "hyInput.h"
+
+namespace hy
+{
+	PlayScene::PlayScene()
+	{
+	}
+	PlayScene::~PlayScene()
+	{
+	}
+	void PlayScene::Initialize()
+	{
+		/*Player* player = object::Instantiate <Player>(eLayerType::Player);
+		player->AddComponent<SpriteRenderer>();*/
+
+	}
+	void PlayScene::Update()
+	{
+		Scene::Update();
+	}
+	void PlayScene::Render(HDC hdc)
+	{
+		Scene::Render(hdc);
+
+		wchar_t szFloat[50] = {};
+		swprintf_s(szFloat, 50, L"PlayScene");
+		int strLen = wcsnlen_s(szFloat, 50);
+
+		TextOut(hdc, 700, 350, szFloat, strLen);
+
+		Rectangle(hdc, 685, 400, 785, 500);
+	}
+}

@@ -5,11 +5,14 @@
 #include <set>				// 트리 
 #include <functional>		// 함수 포인터
 #include "framework.h"	// 윈도우즈 헤더
-#include "wzMath.h"
+#include "hyMath.h"
 #include <string>
+//#include <gdiplus.h>
+//#pragma comment(lib, "Gdiplus.lib")
+#pragma comment(lib, "Msimg32.lib")
 
 
-namespace wz::enums
+namespace hy::enums
 {
 	enum class eLayerType
 	{
