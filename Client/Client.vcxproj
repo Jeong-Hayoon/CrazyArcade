@@ -130,8 +130,12 @@
   <ItemGroup>
     <ClInclude Include="Client.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="hyBackGround.h" />
+    <ClInclude Include="hyLobbySceneBg.h" />
+    <ClInclude Include="hyPlaySceneBg.h" />
+    <ClInclude Include="hyTitleSceneBg.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="hyImage.h" />
+    <ClInclude Include="hyTexture.h" />
     <ClInclude Include="hyLobbyScene.h" />
     <ClInclude Include="hyPlayScene.h" />
     <ClInclude Include="hyResource.h" />
@@ -155,8 +159,13 @@
     <ClInclude Include="hyTransform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="hyBackGround.cpp" />
+    <ClCompile Include="hyLobbySceneBg.cpp" />
+    <ClCompile Include="hyMath.cpp" />
+    <ClCompile Include="hyPlaySceneBg.cpp" />
+    <ClCompile Include="hyTitleSceneBg.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="hyImage.cpp" />
+    <ClCompile Include="hyTexture.cpp" />
     <ClCompile Include="hyLobbyScene.cpp" />
     <ClCompile Include="hyPlayScene.cpp" />
     <ClCompile Include="hyResource.cpp" />

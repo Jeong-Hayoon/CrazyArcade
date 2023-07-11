@@ -51,9 +51,6 @@
     <Filter Include="Engine\Resource">
       <UniqueIdentifier>{de1860cc-e40d-48e6-bedb-ac580ef19525}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Resource\Image">
-      <UniqueIdentifier>{bcd63fb8-6d98-4d2f-99b0-5ad857fdd3fc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\High Level Interface">
       <UniqueIdentifier>{6e2b8040-93be-4c51-9a2c-68ec2aa60d2b}</UniqueIdentifier>
     </Filter>
@@ -69,14 +66,29 @@
     <Filter Include="Contents\Scene">
       <UniqueIdentifier>{2921257a-7fb9-4fb0-a431-7dfc7a4816c7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene\hyLobbyScene">
+    <Filter Include="Contents\GameObject\BackGround">
+      <UniqueIdentifier>{8577031d-ecf9-485d-95c2-ebbf29e811e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\LobbyScene">
       <UniqueIdentifier>{3d5fd035-7108-4362-aa37-2c8d926b23f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene\hyPlayScene">
+    <Filter Include="Contents\Scene\PlayScene">
       <UniqueIdentifier>{8b0d025e-b072-4c38-ad38-19788724764c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene\hyTitleScene">
+    <Filter Include="Contents\Scene\TitleScene">
       <UniqueIdentifier>{f70199ff-3f33-4ae4-a4e7-9800cb3d6e85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\BackGround\LobbySceneBG">
+      <UniqueIdentifier>{34d8e7f7-a12d-4cdc-abab-44e2354c8346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\BackGround\PlaySceneBG">
+      <UniqueIdentifier>{88be7c98-2b24-44a4-86a6-f9edb88a0bb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\BackGround\TitleSceneBG">
+      <UniqueIdentifier>{13ed8e47-29f4-4adb-b019-07d9548a8faa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource\Texture">
+      <UniqueIdentifier>{bcd63fb8-6d98-4d2f-99b0-5ad857fdd3fc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -135,13 +147,13 @@
       <Filter>Engine\Common\Time</Filter>
     </ClInclude>
     <ClInclude Include="hyTitleScene.h">
-      <Filter>Contents\Scene\hyTitleScene</Filter>
+      <Filter>Contents\Scene\TitleScene</Filter>
     </ClInclude>
     <ClInclude Include="hyLobbyScene.h">
-      <Filter>Contents\Scene\hyLobbyScene</Filter>
+      <Filter>Contents\Scene\LobbyScene</Filter>
     </ClInclude>
     <ClInclude Include="hyPlayScene.h">
-      <Filter>Contents\Scene\hyPlayScene</Filter>
+      <Filter>Contents\Scene\PlayScene</Filter>
     </ClInclude>
     <ClInclude Include="hySpriteRenderer.h">
       <Filter>Engine\Component\SpriteRenderer</Filter>
@@ -152,8 +164,20 @@
     <ClInclude Include="hyResources.h">
       <Filter>Engine\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="hyImage.h">
-      <Filter>Engine\Resource\Image</Filter>
+    <ClInclude Include="hyTexture.h">
+      <Filter>Engine\Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="hyBackGround.h">
+      <Filter>Contents\GameObject\BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="hyLobbySceneBg.h">
+      <Filter>Contents\GameObject\BackGround\LobbySceneBG</Filter>
+    </ClInclude>
+    <ClInclude Include="hyPlaySceneBg.h">
+      <Filter>Contents\GameObject\BackGround\PlaySceneBG</Filter>
+    </ClInclude>
+    <ClInclude Include="hyTitleSceneBg.h">
+      <Filter>Contents\GameObject\BackGround\TitleSceneBG</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -205,13 +229,13 @@
       <Filter>Engine\Common\Time</Filter>
     </ClCompile>
     <ClCompile Include="hyTitleScene.cpp">
-      <Filter>Contents\Scene\hyTitleScene</Filter>
+      <Filter>Contents\Scene\TitleScene</Filter>
     </ClCompile>
     <ClCompile Include="hyLobbyScene.cpp">
-      <Filter>Contents\Scene\hyLobbyScene</Filter>
+      <Filter>Contents\Scene\LobbyScene</Filter>
     </ClCompile>
     <ClCompile Include="hyPlayScene.cpp">
-      <Filter>Contents\Scene\hyPlayScene</Filter>
+      <Filter>Contents\Scene\PlayScene</Filter>
     </ClCompile>
     <ClCompile Include="hySpriteRenderer.cpp">
       <Filter>Engine\Component\SpriteRenderer</Filter>
@@ -222,8 +246,23 @@
     <ClCompile Include="hyResources.cpp">
       <Filter>Engine\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="hyImage.cpp">
-      <Filter>Engine\Resource\Image</Filter>
+    <ClCompile Include="hyTexture.cpp">
+      <Filter>Engine\Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="hyBackGround.cpp">
+      <Filter>Contents\GameObject\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="hyMath.cpp">
+      <Filter>Engine\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="hyLobbySceneBg.cpp">
+      <Filter>Contents\GameObject\BackGround\LobbySceneBG</Filter>
+    </ClCompile>
+    <ClCompile Include="hyPlaySceneBg.cpp">
+      <Filter>Contents\GameObject\BackGround\PlaySceneBG</Filter>
+    </ClCompile>
+    <ClCompile Include="hyTitleSceneBg.cpp">
+      <Filter>Contents\GameObject\BackGround\TitleSceneBG</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

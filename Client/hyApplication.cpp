@@ -28,8 +28,8 @@ namespace hy
 		mHwnd = hwnd;							// 멤버 변수에 핸들 저장
 		mHdc = GetDC(mHwnd);				// DC값을 반환해주는 함수
 
-		mWidth = 1600;
-		mHeight = 900;
+		mWidth = 900;
+		mHeight = 600;
 
 		RECT rect = { 0, 0, mWidth, mHeight };						
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);		// 윈도우의 영역을 조절하는 함수
@@ -51,7 +51,7 @@ namespace hy
 		HBITMAP defaultBitmap												// 24byte RGB만 들어있는 자료형
 			= (HBITMAP)SelectObject(mBackHdc, mBackBuffer);	// DC와 새로운 화면(도화지) 연결
 		DeleteObject(defaultBitmap);										// (기본 비트맵을 뱉어줌 - 접근이 안되는 데다 우리가 원하는 크기가 아니므로 교체)
-																						// 기본 비트맵은 필요없으므로 제거
+																			// 기본 비트맵은 필요없으므로 제거
 		Time :: Initialize(); 
 		Input :: Initialize();
 

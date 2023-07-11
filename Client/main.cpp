@@ -9,7 +9,9 @@
 HINSTANCE hInst;                                            // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];     // 기본 창 클래스 이름입니다.
-hy::Application application;                   
+hy::Application application;     
+ULONG_PTR gdiplusToken;
+Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -76,7 +78,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         
     }
 
-    return (int) msg.wParam;
+    Gdiplus::GdiplusShutdown(gdiplusToken);
+
+    return (int) msg.wParam;        
 }
 
 
@@ -98,10 +102,10 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_CLIENT)); // 아이콘(리소스 뷰)
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);                               // 커서 모양
-    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);                            // 백그라운드 색상
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_CLIENT);                     // 메뉴 이름
-    wcex.lpszClassName  = szWindowClass;                                                   // 등록할 클래스 이름
+    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);                   // 커서 모양
+    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);                         // 백그라운드 색상
+    wcex.lpszMenuName   = nullptr;                                          // 메뉴 이름
+    wcex.lpszClassName  = szWindowClass;                                    // 등록할 클래스 이름
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
@@ -127,7 +131,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    // 핸들에는 만들어진 윈도우 정보에 대한 시작 주소가 반환되어 들어감(핸들은 포인터)
    // 우리는 핸들을 통해 데이터 접근을 하게 됨
 
- application.Initialize(hWnd);
+   // Gdiplus 초기화
+   Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
+
+   application.Initialize(hWnd);
 
    if (!hWnd) // null이라면 실패한 것 -> 프로그램 종료(? 근데 왜!hWnd가 의미하는 것이 hWnd가 null이라면으로 해석이 되는지 )
    {

@@ -6,6 +6,9 @@
 #include "hySceneManager.h"
 #include "hyApplication.h"
 #include "hyInput.h"
+#include "hyTexture.h"
+#include "hyResources.h"
+#include "hyBackGround.h"
 
 namespace hy
 {
@@ -17,8 +20,21 @@ namespace hy
 	}
 	void PlayScene::Initialize()
 	{
-		/*Player* player = object::Instantiate <Player>(eLayerType::Player);
-		player->AddComponent<SpriteRenderer>();*/
+		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImgae"	
+			, L"..\\Resources\\Image\\Bg\\play.bmp");				
+		
+		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
+		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
+		bgsr->SetImage(image);  
+		bgsr->SetScale(Vector2(1.127f, 1.0f));
+
+		/*image = Resources::Load<Texture>(L"Smile"
+			, L"..\\Resources\\Image\\Smile.png");
+
+		Player* player = object::Instantiate<Player>(eLayerType::Player);
+		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
+		sr->SetImage(image);
+		sr->SetScale(Vector2(0.2f, 0.2f));*/
 
 	}
 	void PlayScene::Update()
@@ -29,12 +45,12 @@ namespace hy
 	{
 		Scene::Render(hdc);
 
-		wchar_t szFloat[50] = {};
+		/*wchar_t szFloat[50] = {};
 		swprintf_s(szFloat, 50, L"PlayScene");
 		int strLen = wcsnlen_s(szFloat, 50);
 
 		TextOut(hdc, 700, 350, szFloat, strLen);
 
-		Rectangle(hdc, 685, 400, 785, 500);
+		Rectangle(hdc, 685, 400, 785, 500);*/
 	}
 }

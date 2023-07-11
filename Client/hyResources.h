@@ -16,7 +16,7 @@ namespace hy
 			return dynamic_cast<T*>(iter->second);		// 가져오자마자 자식걸로 형변환을 해주자->dynamic cast(자식껄로 바꿔줌)
 		}
 
-		template <typename T>//(이미지를 로드하는 함수와 사운드를 로드하는 함수가 달라야 하므로 템플릿 사용)
+		template <typename T>	//(이미지를 로드하는 함수와 사운드를 로드하는 함수가 달라야 하므로 템플릿 사용)
 		static T* Load(const std::wstring& name, const std::wstring& path)
 		{
 			T* resource = Resources::Find<T>(name);

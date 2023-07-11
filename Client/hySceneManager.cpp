@@ -37,7 +37,7 @@ namespace hy
 
 		if (iter == mScenes.end())
 			return nullptr;
-
+	
 		mActiveScene = iter->second;
 		return iter->second;
 
