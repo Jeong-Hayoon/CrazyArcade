@@ -24,4 +24,5 @@ namespace hy
 	{
 		GameObject::Render(hdc);
 	}
+	
 }
