@@ -19,9 +19,12 @@ namespace hy
 		/*Player* player = object::Instantiate <Player>(eLayerType::Player);
 		player->AddComponent<SpriteRenderer>();*/
 
-		Image* image = Resources::Load<Image>(L"TitleBackGroundImgae"
-			, L"..\\Resources\\Image\\Idle.bmp");
-
+		Image* image = Resources::Load<Image>(L"TitleBackGroundImgae"			// 이미지 포인터형으로 리소스를 반환해줌, 이미지 로드
+			, L"..\\Resources\\Image\\Idle.bmp");											// Client 밖에 리소스 폴더-이미지-사운드 만들어서 파일을 넣고 경로 입력(상대경로)
+																													// 속성에서 가져오는 것은 절대 경로
+																													// 절대경로를 사용하면 컴퓨터가 바뀌고 파일이 없으면 로드 불가
+																													// 따라서 상대경로를 사용해야 함
+																													// \\ : 위로 한칸, .. : 아래로 한칸
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
 		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
 		sr->SetImage(image);

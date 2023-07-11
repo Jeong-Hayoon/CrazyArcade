@@ -25,7 +25,7 @@ namespace hy
 				return resource;						// 리소스 반환
 
 			resource = new T();
-			if (FAILED(resource->Load(path)))			// 참이 아니면 로드 실패, 참이면 제대로 로드가 된 것
+			if (FAILED(resource->Load(path)))	// 참이 아니면 로드 실패, 참이면 제대로 로드가 된 것
 			{
 				MessageBox(nullptr, L"Resource Load Failed!", L"Error", MB_OK);
 				delete resource;						// 강제로 지움
