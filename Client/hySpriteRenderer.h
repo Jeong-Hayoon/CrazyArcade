@@ -22,6 +22,6 @@ namespace hy
 	private:
 		//Gdiplus::Image* mImage;
 		Texture* mTexture;
-		Vector2 mScale;
+		Vector2 mScale;			// 각 오브젝트마다 크기를 다르게 하기 위함
 	};
 }

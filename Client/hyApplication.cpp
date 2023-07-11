@@ -28,8 +28,8 @@ namespace hy
 		mHwnd = hwnd;							// 멤버 변수에 핸들 저장
 		mHdc = GetDC(mHwnd);				// DC값을 반환해주는 함수
 
-		mWidth = 900;
-		mHeight = 600;
+		mWidth = 1200;
+		mHeight = 800;
 
 		RECT rect = { 0, 0, mWidth, mHeight };						
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);		// 윈도우의 영역을 조절하는 함수

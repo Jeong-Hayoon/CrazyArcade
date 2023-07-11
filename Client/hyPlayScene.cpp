@@ -26,7 +26,7 @@ namespace hy
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);  
-		bgsr->SetScale(Vector2(1.127f, 1.0f));
+		bgsr->SetScale(Vector2(1.5f, 1.338f));
 
 		/*image = Resources::Load<Texture>(L"Smile"
 			, L"..\\Resources\\Image\\Smile.png");

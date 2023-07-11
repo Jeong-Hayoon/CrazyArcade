@@ -26,11 +26,11 @@ namespace hy
 
 	private:			
 		eTextureType mType;
-		Gdiplus::Image* mImage;
+		Gdiplus::Image* mImage;			// png 파일이 저장될 변수
 		
 		HBITMAP mBitmap;						// 비트맵 이미지 파일
 		HDC mHdc;								// 이미지 파일 하나당 DC 필요
-		UINT mWidth;							// 이미지 길이
+		UINT mWidth;								// 이미지 길이
 		UINT mHeight;							// 이미지 높이
 	};
 }

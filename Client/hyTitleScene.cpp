@@ -32,7 +32,7 @@ namespace hy
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
-		bgsr->SetScale(Vector2(0.87f, 0.8f));
+		bgsr->SetScale(Vector2(1.16f, 1.07f));			// 이미지의 사이즈를 조절
 
 		image = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Image\\Smile.png");
 

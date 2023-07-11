@@ -16,4 +16,4 @@
 
 #include <gdiplus.h>
 
-#pragma comment(lib, "Gdiplus.lib")
+#pragma comment(lib, "Gdiplus.lib")			// 메인에서도 사용할 수 있게끔
