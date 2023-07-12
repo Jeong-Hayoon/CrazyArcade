@@ -20,6 +20,8 @@ namespace hy						// namespace가 다르면 클래스 이름이 같아도 사용할 수 있음
 
 		HWND GetHwnd() { return mHwnd; }
 		HDC GetHdc() { return mHdc; }
+		UINT GetWidth() { return mWidth; }
+		UINT GetHeight() { return mHeight; }
 
 	private:
 		HWND mHwnd;

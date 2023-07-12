@@ -6,6 +6,8 @@
 #include "hyTexture.h"
 #include "hyResources.h"
 #include "hyBackGround.h"
+#include "hyTransform.h"
+#include "hyCamera.h"
 
 namespace hy
 {
@@ -32,7 +34,10 @@ namespace hy
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
-		bgsr->SetScale(Vector2(1.16f, 1.07f));			// 이미지의 사이즈를 조절
+		bgsr->SetScale(Vector2(1.16f, 1.07f));			// 이미지 사이즈 조절
+		bgsr->SetAffectCamera(false);
+		//bgsr->SetAlpha(0.2f);
+		bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));
 
 		image = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Image\\Smile.png");
 
@@ -44,6 +49,9 @@ namespace hy
 		//std::wstring name = player->GetName();
 
 		//mLayers[(int)eLayerType::Player].AddGameObject(player);
+
+
+		Camera::SetTarget(player);
 
 	}
 	void TitleScene::Update()

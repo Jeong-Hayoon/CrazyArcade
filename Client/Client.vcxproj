@@ -131,6 +131,7 @@
     <ClInclude Include="Client.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="hyBackGround.h" />
+    <ClInclude Include="hyCamera.h" />
     <ClInclude Include="hyLobbySceneBg.h" />
     <ClInclude Include="hyPlaySceneBg.h" />
     <ClInclude Include="hyTitleSceneBg.h" />
@@ -160,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="hyBackGround.cpp" />
+    <ClCompile Include="hyCamera.cpp" />
     <ClCompile Include="hyLobbySceneBg.cpp" />
     <ClCompile Include="hyMath.cpp" />
     <ClCompile Include="hyPlaySceneBg.cpp" />
