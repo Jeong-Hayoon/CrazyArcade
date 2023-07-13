@@ -6,6 +6,7 @@ namespace hy
 	enum class eTextureType
 	{
 		Bmp,
+		AlphaBmp,
 		Png,
 		None,
 	};

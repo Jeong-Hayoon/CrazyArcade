@@ -90,6 +90,15 @@
     <Filter Include="Engine\Resource\Texture">
       <UniqueIdentifier>{bcd63fb8-6d98-4d2f-99b0-5ad857fdd3fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Camera">
+      <UniqueIdentifier>{ea824e1a-7074-4b32-a2a6-4afaea29a468}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource\Animation">
+      <UniqueIdentifier>{c7971219-f4cd-4b19-ae35-672af9488b11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Animator">
+      <UniqueIdentifier>{399147c9-d1e5-4c14-8a3d-078f3359eb56}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -179,7 +188,24 @@
     <ClInclude Include="hyTitleSceneBg.h">
       <Filter>Contents\GameObject\BackGround\TitleSceneBG</Filter>
     </ClInclude>
-    <ClInclude Include="hyCamera.h" />
+    <ClInclude Include="hyCamera.h">
+      <Filter>Engine\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="hyPirateMap.h">
+      <Filter>Contents\Scene\PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="hyIceMap.h">
+      <Filter>Contents\Scene\PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="hyForestMap.h">
+      <Filter>Contents\Scene\PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="hyAnimation.h">
+      <Filter>Engine\Resource\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="hyAnimator.h">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -265,6 +291,23 @@
     <ClCompile Include="hyTitleSceneBg.cpp">
       <Filter>Contents\GameObject\BackGround\TitleSceneBG</Filter>
     </ClCompile>
-    <ClCompile Include="hyCamera.cpp" />
+    <ClCompile Include="hyCamera.cpp">
+      <Filter>Engine\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="hyPirateMap.cpp">
+      <Filter>Contents\Scene\PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="hyIceMap.cpp">
+      <Filter>Contents\Scene\PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="hyForestMap.cpp">
+      <Filter>Contents\Scene\PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="hyAnimation.cpp">
+      <Filter>Engine\Resource\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="hyAnimator.cpp">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

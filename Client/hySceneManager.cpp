@@ -14,7 +14,9 @@ namespace hy
 	{
 		CreateScene<TitleScene>(L"TitleScene");
 		CreateScene<LobbyScene>(L"LobbyScene");
-		CreateScene<PlayScene>(L"PlayScene");
+		CreateScene<PlayScene>(L"ForestMap");
+		CreateScene<PlayScene>(L"IceMap");
+		CreateScene<PlayScene>(L"PirateMap");
 
 		// LoadScene(L"TitleScene");
 		LoadScene(L"TitleScene");

@@ -28,6 +28,8 @@ namespace hy::enums
 	{
 		Transform,
 		SpriteRenderer,
+		Animation,
+		Animator,
 		End,
 	};
 }

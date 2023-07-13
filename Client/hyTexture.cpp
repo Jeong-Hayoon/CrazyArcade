@@ -7,7 +7,8 @@ extern hy::Application application;
 namespace hy
 {
 	Texture::Texture()
-		: mBitmap(NULL)
+		: mImage(nullptr)
+		, mBitmap(NULL)
 		, mHdc(NULL)
 		, mWidth(0)
 		, mHeight(0)
@@ -40,6 +41,9 @@ namespace hy
 
 			BITMAP info = {};			// 이미지에 대한 정보
 			GetObject(mBitmap, sizeof(BITMAP), &info);	// 이미지에 대한 정보를 info에 넣어주는 함수
+
+			if (info.bmBitsPixel == 32)
+				mType = eTextureType::AlphaBmp;
 
 			mWidth = info.bmWidth;
 			mHeight = info.bmHeight;

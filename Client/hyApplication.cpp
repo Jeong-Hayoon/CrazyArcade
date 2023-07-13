@@ -3,6 +3,7 @@
 #include "hyTime.h"
 #include "hyTitleScene.h"
 #include "hySceneManager.h"
+//#include "yaCamera.h"
 
 // cpp 파일에는 함수의 정의 부분 작성
 
@@ -54,6 +55,7 @@ namespace hy
 																			// 기본 비트맵은 필요없으므로 제거
 		Time :: Initialize(); 
 		Input :: Initialize();
+		// 	Camera::Initalize();
 
 		SceneManager::Initialize();
 	}
@@ -68,6 +70,7 @@ namespace hy
 	{
 		Time::Update();
 		Input::Update();
+		//	Camera::Update();
 
 		SceneManager::Update();
 
@@ -93,13 +96,21 @@ namespace hy
 
 	void Application::Render()		// 움직인 좌표를 다시 그려줌
 	{
-		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);		// +1, -1은 윈도우 창에 보이는 선을 지우기 위해 
-		Time::Render(mBackHdc);							// 그림을 mBackHdc에 그리고 
+		//Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);		// +1, -1은 윈도우 창에 보이는 선을 지우기 위해 
+		//Time::Render(mBackHdc);													// 그림을 mBackHdc에 그리고 
+
+		HBRUSH brush = CreateSolidBrush(RGB(125, 125, 125));
+		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHdc, brush);
+		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
+		SelectObject(mBackHdc, oldBrush);
+		DeleteObject(brush);
+
+		Time::Render(mBackHdc);
 
 		SceneManager::Render(mBackHdc);
 
 		//Rectangle(mHdc, 100, 100, 200, 200);
-	/*	Ellipse(mBackHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y
+		/*	Ellipse(mBackHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y
 			, 200 + mPlayerPos.x, 200 + mPlayerPos.y);*/
 
 		BitBlt(mHdc, 0, 0, mWidth, mHeight				// DC간 그림을 복사해주는 함수

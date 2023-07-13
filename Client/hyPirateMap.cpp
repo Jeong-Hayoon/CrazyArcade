@@ -1,4 +1,5 @@
-#include "hyLobbyScene.h"
+#include "hyPirateMap.h"
+#include "hyPlayScene.h"
 #include "hyTitleScene.h"
 #include "hyPlayer.h"
 #include "hySpriteRenderer.h"
@@ -12,50 +13,37 @@
 
 namespace hy
 {
-	LobbyScene::LobbyScene()
+	PirateMap::PirateMap()
 	{
 	}
-	LobbyScene::~LobbyScene()
+	PirateMap::~PirateMap()
 	{
 	}
-	void LobbyScene::Initialize()
+	void PirateMap::Initialize()
 	{
-		Texture* image = Resources::Load<Texture>(L"LobbyBackGroundImgae"
-			, L"..\\Resources\\Image\\Bg\\Lobby.bmp");
+		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImgae"
+			, L"..\\Resources\\Image\\Bg\\play.bmp");
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
-		bgsr->SetScale(Vector2(1.5f, 1.4f));
+		bgsr->SetScale(Vector2(1.5f, 1.338f));
 
-	/*	image = Resources::Load<Texture>(L"Smile"
+		/*image = Resources::Load<Texture>(L"Smile"
 			, L"..\\Resources\\Image\\Smile.png");
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
 		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
 		sr->SetImage(image);
 		sr->SetScale(Vector2(0.2f, 0.2f));*/
+
 	}
-	void LobbyScene::Update()
+	void PirateMap::Update()
 	{
 		Scene::Update();
-
-		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
-		{
-			SceneManager::LoadScene(L"ForestMap");
-		}
-
 	}
-	void LobbyScene::Render(HDC hdc)
+	void PirateMap::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
-
-		/*wchar_t szFloat[50] = {};
-		swprintf_s(szFloat, 50, L"LobbyScene");
-		int strLen = wcsnlen_s(szFloat, 50);
-
-		TextOut(hdc, 700, 350, szFloat, strLen);
-
-		Ellipse(hdc, 685, 400, 785, 500);*/
 	}
 }

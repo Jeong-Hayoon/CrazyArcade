@@ -130,9 +130,14 @@
   <ItemGroup>
     <ClInclude Include="Client.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="hyAnimation.h" />
+    <ClInclude Include="hyAnimator.h" />
     <ClInclude Include="hyBackGround.h" />
     <ClInclude Include="hyCamera.h" />
+    <ClInclude Include="hyForestMap.h" />
+    <ClInclude Include="hyIceMap.h" />
     <ClInclude Include="hyLobbySceneBg.h" />
+    <ClInclude Include="hyPirateMap.h" />
     <ClInclude Include="hyPlaySceneBg.h" />
     <ClInclude Include="hyTitleSceneBg.h" />
     <ClInclude Include="Resource.h" />
@@ -160,10 +165,15 @@
     <ClInclude Include="hyTransform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="hyAnimation.cpp" />
+    <ClCompile Include="hyAnimator.cpp" />
     <ClCompile Include="hyBackGround.cpp" />
     <ClCompile Include="hyCamera.cpp" />
+    <ClCompile Include="hyForestMap.cpp" />
+    <ClCompile Include="hyIceMap.cpp" />
     <ClCompile Include="hyLobbySceneBg.cpp" />
     <ClCompile Include="hyMath.cpp" />
+    <ClCompile Include="hyPirateMap.cpp" />
     <ClCompile Include="hyPlaySceneBg.cpp" />
     <ClCompile Include="hyTitleSceneBg.cpp" />
     <ClCompile Include="main.cpp" />

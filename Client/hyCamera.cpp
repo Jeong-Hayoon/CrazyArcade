@@ -23,22 +23,22 @@ namespace hy
 
 	void Camera::Update()
 	{
-		//if (Input::GetKey(eKeyCode::W))
-		//{
-		//	mLookPosition.y -= 300.0f * Time::DeltaTime();
-		//}
-		//if (Input::GetKey(eKeyCode::A))
-		//{
-		//	mLookPosition.x -= 300.0f * Time::DeltaTime();
-		//}
-		//if (Input::GetKey(eKeyCode::S))
-		//{
-		//	mLookPosition.y += 300.0f * Time::DeltaTime();
-		//}
-		//if (Input::GetKey(eKeyCode::D))
-		//{
-		//	mLookPosition.x += 300.0f * Time::DeltaTime();
-		//}
+		if (Input::GetKey(eKeyCode::W))
+		{
+			mLookPosition.y -= 300.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(eKeyCode::A))
+		{
+			mLookPosition.x -= 300.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(eKeyCode::S))
+		{
+			mLookPosition.y += 300.0f * Time::DeltaTime();
+		}
+		if (Input::GetKey(eKeyCode::D))
+		{
+			mLookPosition.x += 300.0f * Time::DeltaTime();
+		}
 
 		if (mTarget)	//	존재를 한다면이라는 if문인건지 질문***
 		{
