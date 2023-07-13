@@ -7,7 +7,7 @@
 #include "hyResources.h"
 #include "hyBackGround.h"
 #include "hyTransform.h"
-#include "hyCamera.h"
+// #include "hyCamera.h"
 
 namespace hy
 {
@@ -23,10 +23,12 @@ namespace hy
 		player->AddComponent<SpriteRenderer>();*/
 
 		Texture* image = Resources::Load<Texture>(L"TitleBackGroundImgae"	// 이미지 포인터형으로 리소스를 반환해줌, 이미지 로드
-			, L"..\\Resources\\Image\\Bg\\login_scene_bg.bmp");				// Client 밖에 리소스 폴더-이미지-사운드 만들어서 파일을 넣고 경로 입력(상대경로)
-																			// 속성에서 가져오는 것은 절대 경로
-																			// 절대경로를 사용하면 컴퓨터가 바뀌고 파일이 없으면 로드 불가
-																			// 따라서 상대경로를 사용해야 함																										// \\ : 위로 한칸, .. : 아래로 한칸
+			, L"..\\Resources\\Image\\Bg\\login_scene_bg.bmp");		// Client 밖에 리소스 폴더-이미지-사운드 만들어서 파일을 넣고 경로 입력(상대경로)
+		// 속성에서 가져오는 것은 절대 경로
+		// 절대경로를 사용하면 컴퓨터가 바뀌고 파일이 없으면 로드 불가
+		// 따라서 상대경로를 사용해야 함						
+		// \\ : 위로 한칸, .. : 아래로 한칸
+
 	/*	Player* player = object::Instantiate<Player>(eLayerType::Player);
 		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
 		sr->SetImage(image);*/
@@ -35,9 +37,11 @@ namespace hy
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.16f, 1.07f));		// 이미지 사이즈 조절
-		bgsr->SetAffectCamera(false);					// 배경은 카메라의 영향을 받으면 안되므로
+		
+		// <카메라>
+		//bgsr->SetAffectCamera(false);					// 배경은 카메라의 영향을 받으면 안되므로
 		//bgsr->SetAlpha(0.2f);							// 배경 투명도 세팅
-		bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));	// 배경을 해상도의 절반으로 세팅
+		//bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));	// 배경을 해상도의 절반으로 세팅
 
 		image = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Image\\Smile.png");
 
@@ -50,8 +54,7 @@ namespace hy
 
 		//mLayers[(int)eLayerType::Player].AddGameObject(player);
 
-
-		Camera::SetTarget(player);		// mLookPosition이 player을 가리키게 됨
+		// Camera::SetTarget(player);		// mLookPosition이 player을 가리키게 됨
 
 	}
 	void TitleScene::Update()

@@ -20,11 +20,12 @@ namespace hy
 	{
 		GameObject::Update();
 
-		SpriteRenderer* sr = GetComponent<SpriteRenderer>();
+		// <카메라>
+		//SpriteRenderer* sr = GetComponent<SpriteRenderer>();
 
-		float alpha = sr->GetAlpha();
-		alpha -= 0.2f * Time::DeltaTime();		// 시간에 따라 투명해지도록
-		sr->SetAlpha(alpha);
+		//float alpha = sr->GetAlpha();
+		//alpha -= 0.2f * Time::DeltaTime();		// 시간에 따라 투명해지도록
+		//sr->SetAlpha(alpha);
 	}
 
 	void BackGround::Render(HDC hdc)

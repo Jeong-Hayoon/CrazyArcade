@@ -18,15 +18,17 @@ namespace hy
 
 		void SetImage(Texture* image) { mTexture = image; }
 		void SetScale(Vector2 scale) { mScale = scale; }
-		void SetAffectCamera(bool enable) { mbAffectCamera = enable; }
-		float GetAlpha() { return mAlpha; }
-		void SetAlpha(float alpha) { mAlpha = alpha; }
+		//<카메라>
+		//void SetAffectCamera(bool enable) { mbAffectCamera = enable; }
+		//float GetAlpha() { return mAlpha; }
+		//void SetAlpha(float alpha) { mAlpha = alpha; }
 
 	private:
 		//Gdiplus::Image* mImage;
 		Texture* mTexture;		
 		Vector2 mScale;					// 각 오브젝트마다 크기를 다르게 하기 위함
-		bool mbAffectCamera;			// 카메라의 영향을 빋는지
-		float mAlpha;						// 
+		// <카메라>
+		//bool mbAffectCamera;			// 카메라의 영향을 빋는지
+		//float mAlpha;						
 	};
 }
