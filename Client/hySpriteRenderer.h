@@ -24,9 +24,9 @@ namespace hy
 
 	private:
 		//Gdiplus::Image* mImage;
-		Texture* mTexture;
-		Vector2 mScale;			// 각 오브젝트마다 크기를 다르게 하기 위함
-		bool mbAffectCamera;
-		float mAlpha;
+		Texture* mTexture;		
+		Vector2 mScale;					// 각 오브젝트마다 크기를 다르게 하기 위함
+		bool mbAffectCamera;			// 카메라의 영향을 빋는지
+		float mAlpha;						// 
 	};
 }

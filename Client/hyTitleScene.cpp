@@ -34,10 +34,10 @@ namespace hy
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
-		bgsr->SetScale(Vector2(1.16f, 1.07f));			// 이미지 사이즈 조절
-		bgsr->SetAffectCamera(false);
-		//bgsr->SetAlpha(0.2f);
-		bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));
+		bgsr->SetScale(Vector2(1.16f, 1.07f));		// 이미지 사이즈 조절
+		bgsr->SetAffectCamera(false);					// 배경은 카메라의 영향을 받으면 안되므로
+		//bgsr->SetAlpha(0.2f);							// 배경 투명도 세팅
+		bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));	// 배경을 해상도의 절반으로 세팅
 
 		image = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Image\\Smile.png");
 
@@ -51,7 +51,7 @@ namespace hy
 		//mLayers[(int)eLayerType::Player].AddGameObject(player);
 
 
-		Camera::SetTarget(player);
+		Camera::SetTarget(player);		// mLookPosition이 player을 가리키게 됨
 
 	}
 	void TitleScene::Update()

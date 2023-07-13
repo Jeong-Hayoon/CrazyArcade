@@ -10,7 +10,7 @@ namespace hy
 		, mScale(Vector2::One)
 		, mbAffectCamera(true)
 		, mTexture(nullptr)
-		, mAlpha(1.0f)	
+		, mAlpha(1.0f)			// 물체가 투명하지 않게 초기화(0에 가까워질수록 투명)
 	{
 	}
 	SpriteRenderer::~SpriteRenderer()
@@ -43,19 +43,20 @@ namespace hy
 		Vector2 pos = tr->GetPosition();
 
 		if (mbAffectCamera)
-			pos = Camera::CalculatePosition(pos);
+			pos = Camera::CalculatePosition(pos);		// 카메라가 이동한 거리만큼 빼줘야 함	
 
 		if (mTexture->GetType() == eTextureType::Bmp)				// bmp 파일일 때
 		{
-			if (mAlpha < 1.0f)
+			if (mAlpha < 1.0f)				// 투명도를 넣어서 그려줘야 함
 			{
 				BLENDFUNCTION func = {};
 				func.BlendOp = AC_SRC_OVER;
 				func.BlendFlags = 0;
 				func.AlphaFormat = AC_SRC_ALPHA;
-				// 0.0f ~ 1.0f -> 0 ~ 255
+
+				// 0.0f ~ 1.0f -> 0 ~ 255로 바꿔줘야 함
 				int alpha = (int)(mAlpha * 255.0f);
-				if (alpha <= 0)
+				if (alpha <= 0)			// 예외처리
 					alpha = 0;
 				func.SourceConstantAlpha = alpha; // 0 ~ 255
 
@@ -68,7 +69,7 @@ namespace hy
 					, func);
 			}
 			else
-			{
+			{	//  - (mTexture->GetWidth() * mScale.x / 2.0f) 플레이어의 중심이 아니라 플레이어의 0,0을 가리키고 있기 때문에
 				TransparentBlt(hdc, (int)pos.x - (mTexture->GetWidth() * mScale.x / 2.0f)
 					, (int)pos.y - (mTexture->GetHeight() * mScale.y / 2.0f)
 					, mTexture->GetWidth() * mScale.x
@@ -89,7 +90,7 @@ namespace hy
 			//Gdiplus::ImageAttributes imageAtt = {};
 
 			//// 투명화 시킬 픽셀 색 범위
-			//imageAtt.SetColorKey(Gdiplus::Color(100,100,100)
+			//imageAtt.SetColorKey(Gdiplus::Color(100,100,100)			// 0~255까지 색이 모두 투명하게(원하는 색 투명화)
 			//	, Gdiplus::Color(255,255,255));
 
 			//Gdiplus::Graphics graphics(hdc);
@@ -104,6 +105,7 @@ namespace hy
 			//	, 0, 0, mTexture->GetWidth(), mTexture->GetHeight()
 			//	, Gdiplus::UnitPixel
 			//	, &imageAtt);
+
 			Gdiplus::Graphics graphics(hdc);
 			graphics.DrawImage(mTexture->GetImage()
 				, (int)(pos.x - (mTexture->GetWidth() * mScale.x / 2.0f))

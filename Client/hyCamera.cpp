@@ -18,7 +18,7 @@ namespace hy
 	{
 		mResolution.x = application.GetWidth();		// 해상도만큼 가로 세팅
 		mResolution.y = application.GetHeight();	// 해상도만큼 세로 세팅
-		mLookPosition = mResolution / 2.0f;			// 보는 위치를 창의 중앙으로 맞춤, -는 vector2의 오퍼레이터
+		mLookPosition = mResolution / 2.0f;			// 보는 위치를 창의 중앙으로 맞춤, /는 vector2의 오퍼레이터
 	}
 
 	void Camera::Update()
@@ -40,13 +40,15 @@ namespace hy
 		//	mLookPosition.x += 300.0f * Time::DeltaTime();
 		//}
 
-		if (mTarget)
+		if (mTarget)	//	존재를 한다면이라는 if문인건지 질문***
 		{
 			Transform* tr = mTarget->GetComponent<Transform>();
-			mLookPosition = tr->GetPosition();
+			mLookPosition = tr->GetPosition();		// 바라볼 타겟(플레이어)이 있다면 그 타겟을 
+																	// 카메라(mLookPosition)가 바라보게끔 세팅
 		}
 
 		mDistance = mLookPosition - (mResolution / 2.0f);	// mDistance -> 윈도우 좌표계에서 카메라가 이동한 거리
+		// 가운데를 기준으로 0,0을 사용하겠다는 것
 	}
 }
 
