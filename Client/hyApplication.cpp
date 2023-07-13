@@ -99,11 +99,12 @@ namespace hy
 		//Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);		// +1, -1은 윈도우 창에 보이는 선을 지우기 위해 
 		//Time::Render(mBackHdc);													// 그림을 mBackHdc에 그리고 
 
-		HBRUSH brush = CreateSolidBrush(RGB(125, 125, 125));
-		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHdc, brush);
+		// 배경
+		HBRUSH brush = CreateSolidBrush(RGB(125, 125, 125));				// 브러쉬 생성
+		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHdc, brush);			// 원래 브러쉬로 돌아가야 함
 		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
-		SelectObject(mBackHdc, oldBrush);
-		DeleteObject(brush);
+		SelectObject(mBackHdc, oldBrush);				// 객체 선택
+		DeleteObject(brush);			// 반납
 
 		Time::Render(mBackHdc);
 

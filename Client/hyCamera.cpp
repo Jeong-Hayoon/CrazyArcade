@@ -40,7 +40,7 @@ namespace hy
 			mLookPosition.x += 300.0f * Time::DeltaTime();
 		}
 
-		if (mTarget)	//	존재를 한다면이라는 if문인건지 질문***
+		if (mTarget)	// 타겟이 널이 아니면과 같은 의미
 		{
 			Transform* tr = mTarget->GetComponent<Transform>();
 			mLookPosition = tr->GetPosition();		// 바라볼 타겟(플레이어)이 있다면 그 타겟을 
@@ -49,6 +49,8 @@ namespace hy
 
 		mDistance = mLookPosition - (mResolution / 2.0f);	// mDistance -> 윈도우 좌표계에서 카메라가 이동한 거리
 		// 가운데를 기준으로 0,0을 사용하겠다는 것
+		// 윈도우 좌표계에서의 원점을 포커스로
+		// 맞추는 작업
 	}
 }
 

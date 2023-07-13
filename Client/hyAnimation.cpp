@@ -35,12 +35,12 @@ namespace hy
 		// 애니메이션의 인덱스가 스프라이트 시트의 크기보다 크거나 같으면 
 		// 코드는 애니메이션의 완료 플래그를 true로 설정합니다.
 
-		mTime += Time::DeltaTime();
-		if (mSpriteSheet[mIndex].duration < mTime)
+		mTime += Time::DeltaTime();			// 스톱워치
+		if (mSpriteSheet[mIndex].duration < mTime)			// duration : 각 프레임이 유지되는 시간
 		{
 			mTime = 0.0f;
 
-			if (mIndex < mSpriteSheet.size() - 1)
+			if (mIndex < mSpriteSheet.size() - 1)			// size가 프레임의 총 개수
 				mIndex++;
 			else
 				mbComplete = true;
@@ -60,7 +60,7 @@ namespace hy
 		if (mAnimator->GetAffectedCamera())
 			pos = Camera::CalculatePosition(pos);
 
-		// BLENDFUNCTION구조체 생성
+		// BLENDFUNCTION구조체 생성(알파블렌드 구글링 - 특정색을 제거해서 투명하게 만드는 작업)
 		BLENDFUNCTION func = {};
 		func.BlendOp = AC_SRC_OVER;			// 새 픽셀이 기존 픽셀과 혼합됨
 		func.BlendFlags = 0;

@@ -67,6 +67,6 @@ namespace hy
 
 		mActiveAnimation = animation;
 		mActiveAnimation->Reset();
-		mbLoop = loop;
+		mbLoop = loop;		// Áú¹®***
 	}
 }

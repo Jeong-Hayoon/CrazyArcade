@@ -9,8 +9,8 @@
 #include "hyTexture.h"
 #include "hyResources.h"
 #include "hyBackGround.h"
-//#include "yaCamera.h"
-#include "yaAnimator.h"
+//#include "hyCamera.h"
+#include "hyAnimator.h"
 
 namespace hy
 {
@@ -38,19 +38,19 @@ namespace hy
 		sr->SetImage(image);
 		sr->SetScale(Vector2(0.2f, 0.2f));*/
 
-		Player* player = object::Instantiate<Player>(eLayerType::Player);
-		Transform* tr = player->GetComponent<Transform>();
+		/*Player* player = object::Instantiate<Player>(eLayerType::Player);
+		Transform* tr = player->GetComponent<Transform>();*/
 
-		tr->SetPosition(Vector2(400.0f, 400.0f));
+		// tr->SetPosition(Vector2(400.0f, 400.0f));
 		//SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
 		//sr->SetImage(image);
 
-		Animator* at = player->AddComponent<Animator>();
+		/*Animator* at = player->AddComponent<Animator>();
 		at->CreateAnimation(L"FarmerIdle", image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f)
 			, Vector2(0.0f, 0.0f), 6, 0.1f);
 		at->CreateAnimation(L"FarmerRight", image, Vector2(0.0f, 32.0f), Vector2(16.0f, 32.0f)
 			, Vector2(0.0f, 0.0f), 6, 0.1f);
-		at->PlayAnimation(L"FarmerRight", true);
+		at->PlayAnimation(L"FarmerRight", true);*/
 		//at->SetAffectedCamera(true);
 
 		//Camera::SetTarget(player);
