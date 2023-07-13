@@ -1,8 +1,10 @@
 #include "hySceneManager.h"
 #include "hyTitleScene.h"
 #include "hyLobbyScene.h"
-#include "hyLoginScene.h"
-#include "hyPlayScene.h"
+#include "hyForestMap.h"
+#include "hyIceMap.h"
+#include "hyPirateMap.h"
+
 
 
 namespace hy
@@ -14,9 +16,9 @@ namespace hy
 	{
 		CreateScene<TitleScene>(L"TitleScene");
 		CreateScene<LobbyScene>(L"LobbyScene");
-		CreateScene<PlayScene>(L"ForestMap");
-		CreateScene<PlayScene>(L"IceMap");
-		CreateScene<PlayScene>(L"PirateMap");
+		CreateScene<ForestMap>(L"ForestMap");
+		CreateScene<IceMap>(L"IceMap");
+		CreateScene<PirateMap>(L"PirateMap");
 
 		// LoadScene(L"TitleScene");
 		LoadScene(L"TitleScene");

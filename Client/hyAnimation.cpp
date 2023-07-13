@@ -35,6 +35,14 @@ namespace hy
 		// 애니메이션의 인덱스가 스프라이트 시트의 크기보다 크거나 같으면 
 		// 코드는 애니메이션의 완료 플래그를 true로 설정합니다.
 
+	/*	frame = 8;
+		currentFrame = 0
+		currentFrame++;
+		currentFrame = currentFrame % frame
+		1 / 8 1
+		2 / 8 2
+		8 / 8 0*/
+
 		mTime += Time::DeltaTime();			// 스톱워치
 		if (mSpriteSheet[mIndex].duration < mTime)			// duration : 각 프레임이 유지되는 시간
 		{
