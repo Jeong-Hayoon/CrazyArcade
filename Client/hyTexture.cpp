@@ -1,6 +1,6 @@
 #include "hyTexture.h"
 #include "hyApplication.h"
-
+#include "hyResources.h"
 
 extern hy::Application application;
 
@@ -23,6 +23,32 @@ namespace hy
 		DeleteObject(mBitmap);
 		mBitmap = NULL;
 	}
+
+	Texture* Texture::Create(const std::wstring& name, UINT width, UINT height)
+	{
+		Texture* image = Resources::Find<Texture>(name);
+		if (image != nullptr)
+			return image;
+
+		image = new Texture();
+		image->SetWidth(width);
+		image->SetHeight(height);
+		HDC hdc = application.GetHdc();
+		HBITMAP bitmap = CreateCompatibleBitmap(hdc, width, height);
+		image->SetHBitmap(bitmap);
+
+		HDC bitmapHdc = CreateCompatibleDC(hdc);
+		image->SetHdc(bitmapHdc);
+
+		HBITMAP defaultBitmap = (HBITMAP)SelectObject(bitmapHdc, bitmap);
+		DeleteObject(defaultBitmap);
+
+		image->SetName(name);
+		Resources::Insert<Texture>(name, image);
+
+		return image;
+	}
+
 	HRESULT Texture::Load(const std::wstring& path)			// LoadImageW : 2바이트 글자를 불러들이는 함수
 	{
 		std::wstring ext

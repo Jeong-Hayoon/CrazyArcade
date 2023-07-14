@@ -44,10 +44,11 @@ namespace hy
 		{
 			Transform* tr = mTarget->GetComponent<Transform>();
 			mLookPosition = tr->GetPosition();		// 바라볼 타겟(플레이어)이 있다면 그 타겟을 
-																	// 카메라(mLookPosition)가 바라보게끔 세팅
+													// 카메라(mLookPosition)가 바라보게끔 세팅
 		}
 
-		mDistance = mLookPosition - (mResolution / 2.0f);	// mDistance -> 윈도우 좌표계에서 카메라가 이동한 거리
+		mDistance = mLookPosition - (mResolution / 2.0f);	
+		// mDistance -> 윈도우 좌표계에서 카메라가 이동한 거리
 		// 가운데를 기준으로 0,0을 사용하겠다는 것
 		// 윈도우 좌표계에서의 원점을 포커스로
 		// 맞추는 작업

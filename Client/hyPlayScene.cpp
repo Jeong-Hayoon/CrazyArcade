@@ -11,6 +11,7 @@
 #include "hyBackGround.h"
 //#include "hyCamera.h"
 #include "hyAnimator.h"
+#include "hyTransform.h"
 
 namespace hy
 {
@@ -22,8 +23,8 @@ namespace hy
 	}
 	void PlayScene::Initialize()
 	{
-		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImgae"	
-			, L"..\\Resources\\Image\\Bg\\play.bmp");				
+		/*Texture* image = Resources::Load<Texture>(L"PlayBackGroundImgae"	
+			, L"..\\Resources\\Image\\Bg\\play.bmp");	*/			
 		
 		//BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
 		//SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
@@ -54,6 +55,24 @@ namespace hy
 		//at->SetAffectedCamera(true);
 
 		//Camera::SetTarget(player);
+
+		Texture* image = Resources::Load<Texture>(L"Smile"
+			, L"..\\Resources\\Image\\Characters\\Farmer\\farmer-girl-base.bmp");
+
+		Player* player = object::Instantiate<Player>(eLayerType::Player);
+		Transform* tr = player->GetComponent<Transform>();
+
+		tr->SetPosition(Vector2(400.0f, 400.0f));
+
+		image = Resources::Load<Texture>(L"Smile"
+			, L"..\\Resources\\Image\\Player");
+
+		Animator* at = player->AddComponent<Animator>();
+		at->CreateAnimation(L"FarmerIdle", image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 6);
+		at->CreateAnimation(L"FarmerRight", image, Vector2(0.0f, 32.0f), Vector2(16.0f, 32.0f), 6);
+		at->CreateAnimationFolder(L"Test", L"..\\Resources\\Image\\Player");
+		at->PlayAnimation(L"Test", true);
+		at->SetAffectedCamera(true);
 
 	}
 	void PlayScene::Update()

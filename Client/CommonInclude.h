@@ -5,12 +5,12 @@
 #include <set>				// 트리 
 #include <functional>		// 함수 포인터
 #include "framework.h"	// 윈도우즈 헤더
+#include <filesystem>	
 #include "hyMath.h"
 #include <string>
 //#include <gdiplus.h>
 //#pragma comment(lib, "Gdiplus.lib")
 #pragma comment(lib, "Msimg32.lib")
-
 
 namespace hy::enums
 {
@@ -24,7 +24,7 @@ namespace hy::enums
 		End,
 	};
 
-	enum class eComponentType
+	enum class eComponentType	// 필요에 따라 사용하는 부품같은 역할
 	{
 		Transform,
 		SpriteRenderer,

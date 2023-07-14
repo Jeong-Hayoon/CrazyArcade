@@ -2,6 +2,7 @@
 #include "hyTransform.h"
 #include "hyInput.h"
 #include "hyTime.h"
+#include "hyAnimator.h"
 
 namespace hy
 {
@@ -20,6 +21,7 @@ namespace hy
 
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
+		Animator* anim = GetComponent<Animator>();
 
 		if (Input::GetKey(eKeyCode::W))
 		{
@@ -35,6 +37,7 @@ namespace hy
 		}
 		if (Input::GetKey(eKeyCode::D))
 		{
+			anim->PlayAnimation(L"FarmerRight", true);
 			pos.x += 300.0f * Time::DeltaTime();
 		}
 
