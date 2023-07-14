@@ -37,7 +37,7 @@ namespace hy
 		}
 		if (Input::GetKey(eKeyCode::D))
 		{
-			anim->PlayAnimation(L"FarmerRight", true);
+			anim->PlayAnimation(L"BazziIdle", true);
 			pos.x += 300.0f * Time::DeltaTime();
 		}
 

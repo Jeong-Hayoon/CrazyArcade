@@ -136,10 +136,7 @@
     <ClInclude Include="hyCamera.h" />
     <ClInclude Include="hyForestMap.h" />
     <ClInclude Include="hyIceMap.h" />
-    <ClInclude Include="hyLobbySceneBg.h" />
     <ClInclude Include="hyPirateMap.h" />
-    <ClInclude Include="hyPlaySceneBg.h" />
-    <ClInclude Include="hyTitleSceneBg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="hyTexture.h" />
     <ClInclude Include="hyLobbyScene.h" />
@@ -171,11 +168,8 @@
     <ClCompile Include="hyCamera.cpp" />
     <ClCompile Include="hyForestMap.cpp" />
     <ClCompile Include="hyIceMap.cpp" />
-    <ClCompile Include="hyLobbySceneBg.cpp" />
     <ClCompile Include="hyMath.cpp" />
     <ClCompile Include="hyPirateMap.cpp" />
-    <ClCompile Include="hyPlaySceneBg.cpp" />
-    <ClCompile Include="hyTitleSceneBg.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="hyTexture.cpp" />
     <ClCompile Include="hyLobbyScene.cpp" />

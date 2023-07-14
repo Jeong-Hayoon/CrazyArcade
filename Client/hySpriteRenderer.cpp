@@ -81,7 +81,8 @@ namespace hy
 				, mTexture->GetHdc()
 				, 0, 0, mTexture->GetWidth()
 				, mTexture->GetHeight()
-				, RGB(255, 0, 255));
+				, RGB(255, 0, 255));		//TransparentBlt는 24비트
+											//32비트 알파값이 있으면 알파블래드
 			//}
 		}
 

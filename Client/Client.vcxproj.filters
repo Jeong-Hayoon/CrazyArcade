@@ -78,15 +78,6 @@
     <Filter Include="Contents\Scene\TitleScene">
       <UniqueIdentifier>{f70199ff-3f33-4ae4-a4e7-9800cb3d6e85}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\GameObject\BackGround\LobbySceneBG">
-      <UniqueIdentifier>{34d8e7f7-a12d-4cdc-abab-44e2354c8346}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject\BackGround\PlaySceneBG">
-      <UniqueIdentifier>{88be7c98-2b24-44a4-86a6-f9edb88a0bb1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject\BackGround\TitleSceneBG">
-      <UniqueIdentifier>{13ed8e47-29f4-4adb-b019-07d9548a8faa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Resource\Texture">
       <UniqueIdentifier>{bcd63fb8-6d98-4d2f-99b0-5ad857fdd3fc}</UniqueIdentifier>
     </Filter>
@@ -178,15 +169,6 @@
     </ClInclude>
     <ClInclude Include="hyBackGround.h">
       <Filter>Contents\GameObject\BackGround</Filter>
-    </ClInclude>
-    <ClInclude Include="hyLobbySceneBg.h">
-      <Filter>Contents\GameObject\BackGround\LobbySceneBG</Filter>
-    </ClInclude>
-    <ClInclude Include="hyPlaySceneBg.h">
-      <Filter>Contents\GameObject\BackGround\PlaySceneBG</Filter>
-    </ClInclude>
-    <ClInclude Include="hyTitleSceneBg.h">
-      <Filter>Contents\GameObject\BackGround\TitleSceneBG</Filter>
     </ClInclude>
     <ClInclude Include="hyCamera.h">
       <Filter>Engine\Camera</Filter>
@@ -281,15 +263,6 @@
     </ClCompile>
     <ClCompile Include="hyMath.cpp">
       <Filter>Engine\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="hyLobbySceneBg.cpp">
-      <Filter>Contents\GameObject\BackGround\LobbySceneBG</Filter>
-    </ClCompile>
-    <ClCompile Include="hyPlaySceneBg.cpp">
-      <Filter>Contents\GameObject\BackGround\PlaySceneBG</Filter>
-    </ClCompile>
-    <ClCompile Include="hyTitleSceneBg.cpp">
-      <Filter>Contents\GameObject\BackGround\TitleSceneBG</Filter>
     </ClCompile>
     <ClCompile Include="hyCamera.cpp">
       <Filter>Engine\Camera</Filter>

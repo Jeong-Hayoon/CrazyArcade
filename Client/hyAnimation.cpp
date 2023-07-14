@@ -78,7 +78,7 @@ namespace hy
 			alpha = 0;
 		func.SourceConstantAlpha = alpha; // 0 ~ 255
 
-		AlphaBlend(hdc, (int)pos.x - (mSpriteSheet[mIndex].size.x / 2.0f) + mSpriteSheet[mIndex].offset.x
+		TransparentBlt(hdc, (int)pos.x - (mSpriteSheet[mIndex].size.x / 2.0f) + mSpriteSheet[mIndex].offset.x
 			, (int)pos.y - (mSpriteSheet[mIndex].size.y / 2.0f) + mSpriteSheet[mIndex].offset.y		//	 + mSpriteSheet[mIndex].offset.y..?	
 			, mSpriteSheet[mIndex].size.x
 			, mSpriteSheet[mIndex].size.y
@@ -87,7 +87,7 @@ namespace hy
 			, mSpriteSheet[mIndex].leftTop.y
 			, mSpriteSheet[mIndex].size.x
 			, mSpriteSheet[mIndex].size.y
-			, func);
+			, RGB(255, 0, 255));		// 32비트 알파값이 있는 이미지여야만 함
 	}
 
 	void Animation::Create(const std::wstring& name, Texture* texture

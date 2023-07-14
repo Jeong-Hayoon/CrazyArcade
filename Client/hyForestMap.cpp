@@ -11,6 +11,7 @@
 #include "hyResources.h"
 #include "hyBackGround.h"
 #include "hyTransform.h"
+#include "hyAnimator.h"
 
 namespace hy
 {
@@ -41,16 +42,21 @@ namespace hy
 		forestmapsr->SetScale(Vector2(1.0f, 0.90f));
 
 		// 캐릭터
-		Texture* Bazzi = Resources::Load<Texture>(L"BazziImage"
-			, L"..\\Resources\\Image\\Bazzi\\Idle.bmp");
+		Texture* Bazzi = Resources::Load<Texture>(L"Bazzi"
+			, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
 		player->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
-		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
+		/*SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
 		sr->SetImage(Bazzi);
-		sr->SetScale(Vector2(0.8f, 0.8f));
+		sr->SetScale(Vector2(0.8f, 0.8f));*/
 
-		std::wstring name = player->GetName(); 
+		std::wstring name = player->GetName();
+
+		// 애니메이션
+		Animator* at = player->AddComponent<Animator>();
+		at->CreateAnimation(L"BazziIdle", Bazzi, Vector2(0.0f, 0.0f), Vector2(50.0f, 60.0f), 4 , Vector2(0.0f, 0.0f));
+		at->PlayAnimation(L"BazziIdle", true);
 
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
@@ -62,7 +68,7 @@ namespace hy
 		bzprofilesr->SetImage(BZProfile);
 		bzprofilesr->SetScale(Vector2(0.8f, 0.8f));
 
-
+		
 
 	}
 	void ForestMap::Update()

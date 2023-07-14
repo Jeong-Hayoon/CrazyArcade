@@ -39,10 +39,10 @@ namespace hy
 	void Animator::CreateAnimation(const std::wstring& name
 		, Texture* texture
 		, Vector2 leftTop
-		, Vector2 size
-		, UINT spriteLength
-		, Vector2 offset
-		, float duration)
+		, Vector2 size				// 스프라이트 하나의 크기
+		, UINT spriteLength			// 개수
+		, Vector2 offset			// 실제 위치와 애니메이션 사용되는 위치를 따로 구하기 위해 사용
+		, float duration)			// 애니메이션이 넘어가는 시간(실행되는 시간 제외)
 	{	
 		Animation* animation = nullptr;
 		animation = Resources::Find<Animation>(name);

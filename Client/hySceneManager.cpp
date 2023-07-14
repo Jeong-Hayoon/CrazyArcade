@@ -39,7 +39,8 @@ namespace hy
 		std::map<std::wstring, Scene*> ::iterator iter
 			= mScenes.find(name);
 
-		if (iter == mScenes.end())
+		
+		(iter == mScenes.end())
 			return nullptr;
 	
 		mActiveScene = iter->second;
