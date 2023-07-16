@@ -44,8 +44,8 @@ namespace hy
 		forestmapsr->SetScale(Vector2(1.0f, 0.90f));
 
 		// 배찌 상하좌우 애니메이션
-		Texture* Bazzi = Resources::Load<Texture>(L"Bazzi"
-			, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");
+		/*Texture* Bazzi = Resources::Load<Texture>(L"Bazzi"
+			, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");*/
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
 		player->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
@@ -56,12 +56,12 @@ namespace hy
 	//	std::wstring name = player->GetName();
 
 		Animator* at = player->AddComponent<Animator>();
-		at->CreateAnimation(L"BazziIdle", Bazzi, Vector2(0.0f, 0.0f), Vector2(50.0f, 60.0f), 4 , Vector2(0.0f, 0.0f), 0.4f);
+		/*at->CreateAnimation(L"BazziIdle", Bazzi, Vector2(0.0f, 0.0f), Vector2(50.0f, 60.0f), 4 , Vector2(0.0f, 0.0f), 0.4f);
 		at->CreateAnimation(L"BazziUp", Bazzi, Vector2(0.0f, 60.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
 		at->CreateAnimation(L"BazziDown", Bazzi, Vector2(0.0f, 120.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
 		at->CreateAnimation(L"BazziRight", Bazzi, Vector2(0.0f, 240.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
 		at->CreateAnimation(L"BazziLeft", Bazzi, Vector2(0.0f, 180.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
-		at->CreateAnimation(L"BazziDie", Bazzi, Vector2(0.0f, 300.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f); 
+		at->CreateAnimation(L"BazziDie", Bazzi, Vector2(0.0f, 300.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f); */
 
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"

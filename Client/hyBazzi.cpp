@@ -67,6 +67,12 @@ namespace hy
 			pos.x += 300.0f * Time::DeltaTime();
 		}
 
+		if (Input::GetKey(eKeyCode::K))
+		{
+			anim->PlayAnimation(L"BazziDie", true);
+			pos.x += 300.0f * Time::DeltaTime();
+		}
+
 		tr->SetPosition(pos);
 	}
 	void Bazzi::Render(HDC hdc)
