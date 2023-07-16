@@ -12,6 +12,8 @@
 #include "hyBackGround.h"
 #include "hyTransform.h"
 #include "hyAnimator.h"
+#include "hyBazzi.h"
+
 
 namespace hy
 {
@@ -41,22 +43,24 @@ namespace hy
 		forestmapsr->SetImage(ForestMap);
 		forestmapsr->SetScale(Vector2(1.0f, 0.90f));
 
-		// 캐릭터
-		Texture* Bazzi = Resources::Load<Texture>(L"Bazzi"
-			, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");
+		// 배찌 상하좌우 애니메이션
+	//	Texture* Bazzi = Resources::Load<Texture>(L"Bazzi"
+	//		, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");
 
-		Player* player = object::Instantiate<Player>(eLayerType::Player);
-		player->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
-		/*SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
-		sr->SetImage(Bazzi);
-		sr->SetScale(Vector2(0.8f, 0.8f));*/
+		Bazzi* player = object::Instantiate<Bazzi>(eLayerType::Player);
+	player->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
+	///*	SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
+	//	sr->SetImage(Bazzi);
+	//	sr->SetScale(Vector2(0.8f, 0.8f));*/
 
-		std::wstring name = player->GetName();
+	//	std::wstring name = player->GetName();
 
-		// 애니메이션
-		Animator* at = player->AddComponent<Animator>();
-		at->CreateAnimation(L"BazziIdle", Bazzi, Vector2(0.0f, 0.0f), Vector2(50.0f, 60.0f), 4 , Vector2(0.0f, 0.0f));
-		at->PlayAnimation(L"BazziIdle", true);
+	Animator* at = player->AddComponent<Animator>();
+	//	at->CreateAnimation(L"BazziIdle", Bazzi, Vector2(0.0f, 0.0f), Vector2(50.0f, 60.0f), 4 , Vector2(0.0f, 0.0f), 0.4f);
+	//	at->CreateAnimation(L"BazziUp", Bazzi, Vector2(0.0f, 60.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+	//	at->CreateAnimation(L"BazziDown", Bazzi, Vector2(0.0f, 120.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+	//	at->CreateAnimation(L"BazziRight", Bazzi, Vector2(0.0f, 240.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+	//	at->CreateAnimation(L"BazziLeft", Bazzi, Vector2(0.0f, 180.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
 
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
@@ -64,11 +68,16 @@ namespace hy
 
 		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::Background);
 		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(987.0f,125.0f));
-		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
-		bzprofilesr->SetImage(BZProfile);
-		bzprofilesr->SetScale(Vector2(0.8f, 0.8f));
 
-		
+		// 포레스트 몬스터(상하좌우 애니메이션)
+		Player* ForestMonster= object::Instantiate<Player>(eLayerType::Player);
+		ForestMonster->GetComponent<Transform>()->SetPosition(Vector2(120.0f, 70.0f));
+
+		Animator* mt = ForestMonster->AddComponent<Animator>();
+		mt->CreateAnimationFolder(L"ForestMosterUp", L"..\\Resources\\Image\\Monster\\Forest\\Up");
+		mt->CreateAnimationFolder(L"ForestMosterDown", L"..\\Resources\\Image\\Monster\\Forest\\Down");
+		mt->CreateAnimationFolder(L"ForestMosterRight", L"..\\Resources\\Image\\Monster\\Forest\\Right");
+		mt->CreateAnimationFolder(L"ForestMosterLeft", L"..\\Resources\\Image\\Monster\\Forest\\Left");
 
 	}
 	void ForestMap::Update()

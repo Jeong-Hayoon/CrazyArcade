@@ -40,7 +40,7 @@ namespace hy
 			= mScenes.find(name);
 
 		
-		(iter == mScenes.end())
+		if(iter == mScenes.end())
 			return nullptr;
 	
 		mActiveScene = iter->second;
