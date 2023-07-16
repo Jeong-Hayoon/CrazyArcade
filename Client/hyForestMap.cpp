@@ -70,7 +70,7 @@ namespace hy
 		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::Background);
 		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(987.0f,125.0f));
 
-		// 포레스트 몬스터(상하좌우 애니메이션)
+		// 포레스트 몬스터(상하좌우, 사망 애니메이션)
 		Player* ForestMonster= object::Instantiate<Player>(eLayerType::Player);
 		ForestMonster->GetComponent<Transform>()->SetPosition(Vector2(120.0f, 70.0f));
 
@@ -79,6 +79,7 @@ namespace hy
 		mt->CreateAnimationFolder(L"ForestMosterDown", L"..\\Resources\\Image\\Monster\\Forest\\Down");
 		mt->CreateAnimationFolder(L"ForestMosterRight", L"..\\Resources\\Image\\Monster\\Forest\\Right");
 		mt->CreateAnimationFolder(L"ForestMosterLeft", L"..\\Resources\\Image\\Monster\\Forest\\Left");
+		mt->CreateAnimationFolder(L"ForestMonsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die"); 
 
 	}
 	void ForestMap::Update()

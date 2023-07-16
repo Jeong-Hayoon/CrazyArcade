@@ -11,6 +11,8 @@
 #include "hyResources.h"
 #include "hyBackGround.h"
 #include "hyTransform.h"
+#include "hyAnimator.h"
+
 
 namespace hy
 {
@@ -59,6 +61,17 @@ namespace hy
 		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
 		bzprofilesr->SetImage(BZProfile);
 		bzprofilesr->SetScale(Vector2(0.8f, 0.8f));
+
+		// 피라테 몬스터(상하좌우, 사망 애니메이션)
+		/*Player* PirateMonster = object::Instantiate<Player>(eLayerType::Player);
+		PirateMonster->GetComponent<Transform>()->SetPosition(Vector2(120.0f, 70.0f));
+
+		Animator* mt = PirateMonster->AddComponent<Animator>();
+		mt->CreateAnimationFolder(L"PirateMonsterUp", L"..\\Resources\\Image\\Monster\\\\Up");
+		mt->CreateAnimationFolder(L"PirateMonsterDown", L"..\\Resources\\Image\\Monster\\\\Down");
+		mt->CreateAnimationFolder(L"PirateMonsterRight", L"..\\Resources\\Image\\Monster\\\\Right");
+		mt->CreateAnimationFolder(L"PirateMonsterLeft", L"..\\Resources\\Image\\Monster\\\\Left");
+		mt->CreateAnimationFolder(L"PirateMonsterDie", L"..\\Resources\\Image\\Monster\\\\Die");*/
 
 	}
 	void PirateMap::Update()

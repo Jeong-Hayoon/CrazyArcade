@@ -53,6 +53,7 @@ namespace hy
 		if (Input::GetKey(eKeyCode::K))
 		{
 			anim->PlayAnimation(L"BazziDie", true);
+			Monsteranim->PlayAnimation(L"ForestMonsterDie", true);
 			pos.x += 300.0f * Time::DeltaTime();
 		}
 

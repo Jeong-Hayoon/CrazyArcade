@@ -65,6 +65,18 @@ namespace hy
 		bzprofilesr->SetScale(Vector2(0.8f, 0.8f));
 
 		std::wstring name = player->GetName();
+
+		// 아이스 몬스터(상하좌우, 사망 애니메이션)
+		/*Player* IceMonster = object::Instantiate<Player>(eLayerType::Player);
+		IceMonster->GetComponent<Transform>()->SetPosition(Vector2(120.0f, 70.0f));
+
+		Animator* mt = IceMonster->AddComponent<Animator>();
+		mt->CreateAnimationFolder(L"IceMonsterUp", L"..\\Resources\\Image\\Monster\\\\Up");
+		mt->CreateAnimationFolder(L"IceMonsterDown", L"..\\Resources\\Image\\Monster\\\\Down");
+		mt->CreateAnimationFolder(L"IceMonsterRight", L"..\\Resources\\Image\\Monster\\\\Right");
+		mt->CreateAnimationFolder(L"IceMonsterLeft", L"..\\Resources\\Image\\Monster\\\\Left");
+		mt->CreateAnimationFolder(L"IceMonsterDie", L"..\\Resources\\Image\\Monster\\\\Die");*/
+
 	}
 	void IceMap::Update()
 	{

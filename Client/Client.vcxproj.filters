@@ -99,6 +99,9 @@
     <Filter Include="Contents\GameObject\Player\Bazzi">
       <UniqueIdentifier>{d1a3ac28-3181-44b9-b5cb-d999093fbfd3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Monster\Boss">
+      <UniqueIdentifier>{529ab22c-e29e-420f-88e0-d05b607b675c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
