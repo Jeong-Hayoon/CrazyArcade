@@ -1,4 +1,5 @@
 #pragma once
+#pragma once
 #include "hyGameObject.h"
 
 namespace hy
@@ -17,4 +18,6 @@ namespace hy
 
 	};
 }
+
+
 

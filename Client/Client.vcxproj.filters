@@ -90,6 +90,15 @@
     <Filter Include="Engine\Component\Animator">
       <UniqueIdentifier>{399147c9-d1e5-4c14-8a3d-078f3359eb56}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Player\Dao">
+      <UniqueIdentifier>{30997ebc-a279-4ee0-9575-8f53836d21cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Monster">
+      <UniqueIdentifier>{2d46bbae-44e8-4f58-be86-2072c7169ad4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Player\Bazzi">
+      <UniqueIdentifier>{d1a3ac28-3181-44b9-b5cb-d999093fbfd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -188,6 +197,15 @@
     <ClInclude Include="hyAnimator.h">
       <Filter>Engine\Component\Animator</Filter>
     </ClInclude>
+    <ClInclude Include="hyDao.h">
+      <Filter>Contents\GameObject\Player\Dao</Filter>
+    </ClInclude>
+    <ClInclude Include="hyMonster.h">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="hyBazzi.h">
+      <Filter>Contents\GameObject\Player\Bazzi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -281,6 +299,15 @@
     </ClCompile>
     <ClCompile Include="hyAnimator.cpp">
       <Filter>Engine\Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="hyDao.cpp">
+      <Filter>Contents\GameObject\Player\Dao</Filter>
+    </ClCompile>
+    <ClCompile Include="hyMonster.cpp">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="hyBazzi.cpp">
+      <Filter>Contents\GameObject\Player\Bazzi</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

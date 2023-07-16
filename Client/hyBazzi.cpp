@@ -25,18 +25,18 @@ namespace hy
 	void Bazzi::Initialize()
 	{
 
-		Texture* Bazzi_ = Resources::Load<Texture>(L"Bazzi"
-			, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");
+		//Texture* Bazzi_ = Resources::Load<Texture>(L"Bazzi"
+		//	, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");
 
-		Bazzi* bazzi = object::Instantiate<Bazzi>(eLayerType::Player);
-		bazzi->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
+		//Bazzi* bazzi = object::Instantiate<Bazzi>(eLayerType::Player);
+		//bazzi->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
 
-		Animator* at = bazzi->AddComponent<Animator>();
-		at->CreateAnimation(L"BazziIdle", Bazzi_, Vector2(0.0f, 0.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f),0.15f);
-		at->CreateAnimation(L"BazziUp", Bazzi_, Vector2(0.0f, 60.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
-		at->CreateAnimation(L"BazziDown", Bazzi_, Vector2(0.0f, 120.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f),0.15f);
-		at->CreateAnimation(L"BazziRight", Bazzi_, Vector2(0.0f, 240.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
-		at->CreateAnimation(L"BazziLeft", Bazzi_, Vector2(0.0f, 180.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+		//Animator* at = bazzi->AddComponent<Animator>();
+		//at->CreateAnimation(L"BazziIdle", Bazzi_, Vector2(0.0f, 0.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+		//at->CreateAnimation(L"BazziUp", Bazzi_, Vector2(0.0f, 60.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+		//at->CreateAnimation(L"BazziDown", Bazzi_, Vector2(0.0f, 120.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+		//at->CreateAnimation(L"BazziRight", Bazzi_, Vector2(0.0f, 240.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+		//at->CreateAnimation(L"BazziLeft", Bazzi_, Vector2(0.0f, 180.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
 	}
 	void Bazzi::Update()
 	{
@@ -46,22 +46,22 @@ namespace hy
 		Vector2 pos = tr->GetPosition();
 		Animator* anim = GetComponent<Animator>();
 
-		if (Input::GetKey(eKeyCode::W))
+		if (Input::GetKeyDown(eKeyCode::W))
 		{
 			anim->PlayAnimation(L"BazziUp", true);
 			pos.y -= 300.0f * Time::DeltaTime();
 		}
-		if (Input::GetKey(eKeyCode::A))
+		if (Input::GetKeyDown(eKeyCode::A))
 		{
 			anim->PlayAnimation(L"BazziLeft", true);
 			pos.x -= 300.0f * Time::DeltaTime();
 		}
-		if (Input::GetKey(eKeyCode::S))
+		if (Input::GetKeyDown(eKeyCode::S))
 		{
 			anim->PlayAnimation(L"BazziDown", true);
 			pos.y += 300.0f * Time::DeltaTime();
 		}
-		if (Input::GetKey(eKeyCode::D))
+		if (Input::GetKeyDown(eKeyCode::D))
 		{
 			anim->PlayAnimation(L"BazziRight", true);
 			pos.x += 300.0f * Time::DeltaTime();

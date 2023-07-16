@@ -25,7 +25,7 @@ namespace hy
 		Animator* Monsteranim = GetComponent<Animator>();
 
 
-		/*if (Input::GetKey(eKeyCode::W))
+		if (Input::GetKey(eKeyCode::W))
 		{
 			anim->PlayAnimation(L"BazziUp", true);
 			Monsteranim->PlayAnimation(L"ForestMosterUp", true);
@@ -50,7 +50,7 @@ namespace hy
 			pos.x += 300.0f * Time::DeltaTime();
 		}
 
-		tr->SetPosition(pos);*/
+		tr->SetPosition(pos);
 	}
 	void Player::Render(HDC hdc)
 	{
