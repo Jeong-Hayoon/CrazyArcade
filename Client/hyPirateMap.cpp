@@ -32,12 +32,14 @@ namespace hy
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.5f, 1.338f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2(600.0f, 360.0f));
+
 
 		// 각 맵에 따른 화면
 		Texture* PirateMap = Resources::Load<Texture>(L"PirateMapImage"
 			, L"..\\Resources\\Image\\Bg\\PirateNormalTile.bmp");
 		BackGround* piratemap = object::Instantiate<BackGround>(eLayerType::Background);
-		piratemap->GetComponent<Transform>()->SetPosition(Vector2(30.0f, 52.0f));
+		piratemap->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 362.0f));
 		SpriteRenderer* piratemapsr = piratemap->AddComponent<SpriteRenderer>();
 		piratemapsr->SetImage(PirateMap);
 		piratemapsr->SetScale(Vector2(1.0f, 0.9f));
@@ -57,7 +59,7 @@ namespace hy
 			, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
 
 		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::Background);
-		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(987.0f, 125.0f));
+		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(1000.0f, 120.0f));
 		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
 		bzprofilesr->SetImage(BZProfile);
 		bzprofilesr->SetScale(Vector2(0.8f, 0.8f));

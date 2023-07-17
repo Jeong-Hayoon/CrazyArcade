@@ -117,6 +117,5 @@ namespace hy
 		BitBlt(mHdc, 0, 0, mWidth, mHeight				// DC간 그림을 복사해주는 함수
 			, mBackHdc, 0, 0, SRCCOPY);					// mHdc에 mBackHdc를 복사
 	}
-
 }
 

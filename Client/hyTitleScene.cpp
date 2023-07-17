@@ -8,6 +8,9 @@
 #include "hyBackGround.h"
 #include "hyTransform.h"
 // #include "hyCamera.h"
+#include "hyApplication.h"
+
+extern hy::Application application;
 
 namespace hy
 {
@@ -41,9 +44,9 @@ namespace hy
 		
 		// <카메라>
 		//bgsr->SetAffectCamera(false);				// 배경은 카메라의 영향을 받으면 안되므로
-		//bgsr->SetAlpha(0.2f);							// 배경 투명도 세팅
-		//bg->GetComponent<Transform>()->SetPosition(Vector2(640.0f, 360.0f));	// 배경을 해상도의 절반으로 세팅
-
+		//bgsr->SetAlpha(0.2f);						// 배경 투명도 세팅
+		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));	// 배경을 해상도의 절반으로 세팅
+		
 		image = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Image\\BSmile.png");
 
 		Player* player = object::Instantiate<Player>(eLayerType::Player);
@@ -62,7 +65,7 @@ namespace hy
 		, L"..\\Resources\\Image\\UI\\Signle.png");
 
 		BackGround* oneplayer = object::Instantiate<BackGround>(eLayerType::Background);
-		oneplayer->GetComponent<Transform>()->SetPosition(Vector2(400.0f,120.0f));
+		oneplayer->GetComponent<Transform>()->SetPosition(Vector2(450.0f,120.0f));
 		SpriteRenderer* oneplayersr = oneplayer->AddComponent<SpriteRenderer>();
 		oneplayersr->SetImage(OnePlayer);
 		oneplayersr->SetScale(Vector2(1.0f, 1.0f));
@@ -72,7 +75,7 @@ namespace hy
 			, L"..\\Resources\\Image\\UI\\Duo.png");
 
 		BackGround* twoplayer = object::Instantiate<BackGround>(eLayerType::Background);
-		twoplayer->GetComponent<Transform>()->SetPosition(Vector2(720.0f, 120.0f));
+		twoplayer->GetComponent<Transform>()->SetPosition(Vector2(780.0f, 120.0f));
 		SpriteRenderer* twoplayersr = twoplayer->AddComponent<SpriteRenderer>();
 		twoplayersr->SetImage(TwoPlayer);
 		twoplayersr->SetScale(Vector2(1.0f, 1.0f));

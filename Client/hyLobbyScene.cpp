@@ -31,6 +31,8 @@ namespace hy
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.5f, 1.4f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2(600.0f, 360.0f));
+
 
 		// 캐릭터 세팅
 		Texture* Bazzi = Resources::Load<Texture>(L"BazziImage"

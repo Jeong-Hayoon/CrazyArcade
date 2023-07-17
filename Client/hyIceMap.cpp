@@ -32,12 +32,14 @@ namespace hy
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.5f, 1.338f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2(600.0f, 360.0f));
+
 
 		// 각 맵에 따른 화면
 		Texture* IceMap = Resources::Load<Texture>(L"IceMapImage"
 			, L"..\\Resources\\Image\\Bg\\ICETILE.bmp");
 		BackGround* icemap = object::Instantiate<BackGround>(eLayerType::Background);
-		icemap->GetComponent<Transform>()->SetPosition(Vector2(30.0f, 52.0f));
+		icemap->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 362.0f));
 		SpriteRenderer* icemapsr = icemap->AddComponent<SpriteRenderer>();
 		icemapsr->SetImage(IceMap);
 		icemapsr->SetScale(Vector2(1.0f, 0.90f));
