@@ -63,7 +63,7 @@ namespace hy
 
 		// Transform 구성 요소에서 애니메이션 소유자의 Transform을 ​​가져옴
 		Transform* tr = mAnimator->GetOwner()->GetComponent<Transform>();
-		Vector2 pos = tr->GetPosition() - (sprite.size / 2.0f);
+		Vector2 pos = tr->GetPosition() + sprite.offset;/*- (sprite.size / 2.0f)*/;
 
 		Animator* animator = mAnimator;
 
