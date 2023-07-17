@@ -65,7 +65,7 @@ namespace hy
 		, L"..\\Resources\\Image\\UI\\Signle.png");
 
 		BackGround* oneplayer = object::Instantiate<BackGround>(eLayerType::Background);
-		oneplayer->GetComponent<Transform>()->SetPosition(Vector2(450.0f,120.0f));
+		oneplayer->GetComponent<Transform>()->SetPosition(Vector2(450.0f,150.0f));
 		SpriteRenderer* oneplayersr = oneplayer->AddComponent<SpriteRenderer>();
 		oneplayersr->SetImage(OnePlayer);
 		oneplayersr->SetScale(Vector2(1.0f, 1.0f));
@@ -75,7 +75,7 @@ namespace hy
 			, L"..\\Resources\\Image\\UI\\Duo.png");
 
 		BackGround* twoplayer = object::Instantiate<BackGround>(eLayerType::Background);
-		twoplayer->GetComponent<Transform>()->SetPosition(Vector2(780.0f, 120.0f));
+		twoplayer->GetComponent<Transform>()->SetPosition(Vector2(732.0f, 150.0f));
 		SpriteRenderer* twoplayersr = twoplayer->AddComponent<SpriteRenderer>();
 		twoplayersr->SetImage(TwoPlayer);
 		twoplayersr->SetScale(Vector2(1.0f, 1.0f));

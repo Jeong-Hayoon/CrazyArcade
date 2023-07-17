@@ -11,6 +11,7 @@
 #include "hyBackGround.h"
 #include "hyTransform.h"
 
+extern hy::Application application;
 namespace hy
 {
 	LobbyScene::LobbyScene()
@@ -31,7 +32,7 @@ namespace hy
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.5f, 1.4f));
-		bg->GetComponent<Transform>()->SetPosition(Vector2(600.0f, 360.0f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2 - 20)));	// 배경을 해상도의 절반으로 세팅
 
 
 		// 캐릭터 세팅
@@ -39,7 +40,7 @@ namespace hy
 			, L"..\\Resources\\Image\\Bazzi\\Idle.bmp");
 
 		BackGround* Charactor = object::Instantiate<BackGround>(eLayerType::Background);
-		Charactor->GetComponent<Transform>()->SetPosition(Vector2(70.0f, 145.0f));
+		Charactor->GetComponent<Transform>()->SetPosition(Vector2(115.0f, 160.0f));
 		SpriteRenderer* Charactorsr = Charactor->AddComponent<SpriteRenderer>();
 		Charactorsr->SetImage(Bazzi);
 
@@ -48,7 +49,7 @@ namespace hy
 			, L"..\\Resources\\Image\\UI\\bazzi_image.bmp");
 
 		BackGround* cs = object::Instantiate<BackGround>(eLayerType::Background);
-		cs->GetComponent<Transform>()->SetPosition(Vector2(740.0f, 15.0f));
+		cs->GetComponent<Transform>()->SetPosition(Vector2(945.0f, 35.0f));
 		SpriteRenderer* cssr = cs->AddComponent<SpriteRenderer>();
 		cssr->SetImage(CharSelect);
 		cssr->SetScale(Vector2(1.470f, 1.4f));
@@ -58,7 +59,7 @@ namespace hy
 			, L"..\\Resources\\Image\\UI\\ForestRandom.bmp");
 
 		BackGround* fms = object::Instantiate<BackGround>(eLayerType::Background);
-		fms->GetComponent<Transform>()->SetPosition(Vector2(740.0f, 495.0f));
+		fms->GetComponent<Transform>()->SetPosition(Vector2(840.0f, 540.0f));
 		SpriteRenderer* fmssr = fms->AddComponent<SpriteRenderer>();
 		fmssr->SetImage(ForestMapSelect);
 		fmssr->SetScale(Vector2(1.0f, 1.0f));
