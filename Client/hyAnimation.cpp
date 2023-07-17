@@ -59,35 +59,49 @@ namespace hy
 		if (mTexture == nullptr)					// 이미지가 널값인지 체크
 			return;
 
+		Sprite sprite = mSpriteSheet[mIndex];
+
 		// Transform 구성 요소에서 애니메이션 소유자의 Transform을 ​​가져옴
 		Transform* tr = mAnimator->GetOwner()->GetComponent<Transform>();
-		Vector2 pos = tr->GetPosition();
+		Vector2 pos = tr->GetPosition() - (sprite.size / 2.0f);
 
-		// 애니메이션이 카메라의 영향을 받는 경우
-		if (mAnimator->GetAffectedCamera())
-			pos = Camera::CalculatePosition(pos);
+		Animator* animator = mAnimator;
 
-		// BLENDFUNCTION구조체 생성(알파블렌드 구글링 - 특정색을 제거해서 투명하게 만드는 작업)
-		BLENDFUNCTION func = {};
-		func.BlendOp = AC_SRC_OVER;			// 새 픽셀이 기존 픽셀과 혼합됨
-		func.BlendFlags = 0;
-		func.AlphaFormat = AC_SRC_ALPHA;
-		// 0.0f ~ 1.0f -> 0 ~ 255
-		int alpha = (int)(mAnimator->GetAlpha() * 255.0f);
-		if (alpha <= 0)
-			alpha = 0;
-		func.SourceConstantAlpha = alpha; // 0 ~ 255
+		mTexture->Render(hdc
+			, pos
+			, sprite.size
+			, sprite.leftTop
+			, sprite.size
+			, sprite.offset
+			, animator->GetScale()
+			, animator->GetAlpha());
 
-		TransparentBlt(hdc, (int)pos.x - (mSpriteSheet[mIndex].size.x / 2.0f) + mSpriteSheet[mIndex].offset.x
-			, (int)pos.y - (mSpriteSheet[mIndex].size.y / 2.0f) + mSpriteSheet[mIndex].offset.y		//	 + mSpriteSheet[mIndex].offset.y..?	
-			, mSpriteSheet[mIndex].size.x
-			, mSpriteSheet[mIndex].size.y
-			, mTexture->GetHdc()
-			, mSpriteSheet[mIndex].leftTop.x
-			, mSpriteSheet[mIndex].leftTop.y
-			, mSpriteSheet[mIndex].size.x
-			, mSpriteSheet[mIndex].size.y
-			, RGB(255, 0, 255));		// 32비트 알파값이 있는 이미지여야만 함
+
+		//// 애니메이션이 카메라의 영향을 받는 경우
+		//if (mAnimator->GetAffectedCamera())
+		//	pos = Camera::CalculatePosition(pos);
+
+		//// BLENDFUNCTION구조체 생성(알파블렌드 구글링 - 특정색을 제거해서 투명하게 만드는 작업)
+		//BLENDFUNCTION func = {};
+		//func.BlendOp = AC_SRC_OVER;			// 새 픽셀이 기존 픽셀과 혼합됨
+		//func.BlendFlags = 0;
+		//func.AlphaFormat = AC_SRC_ALPHA;
+		//// 0.0f ~ 1.0f -> 0 ~ 255
+		//int alpha = (int)(mAnimator->GetAlpha() * 255.0f);
+		//if (alpha <= 0)
+		//	alpha = 0;
+		//func.SourceConstantAlpha = alpha; // 0 ~ 255
+
+		//TransparentBlt(hdc, (int)pos.x - (mSpriteSheet[mIndex].size.x / 2.0f) + mSpriteSheet[mIndex].offset.x
+		//	, (int)pos.y - (mSpriteSheet[mIndex].size.y / 2.0f) + mSpriteSheet[mIndex].offset.y		//	 + mSpriteSheet[mIndex].offset.y..?	
+		//	, mSpriteSheet[mIndex].size.x
+		//	, mSpriteSheet[mIndex].size.y
+		//	, mTexture->GetHdc()
+		//	, mSpriteSheet[mIndex].leftTop.x
+		//	, mSpriteSheet[mIndex].leftTop.y
+		//	, mSpriteSheet[mIndex].size.x
+		//	, mSpriteSheet[mIndex].size.y
+		//	, RGB(255, 0, 255));		// 32비트 알파값이 있는 이미지여야만 함
 	}
 
 	void Animation::Create(const std::wstring& name, Texture* texture

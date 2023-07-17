@@ -47,7 +47,7 @@ namespace hy
 		/*Texture* Bazzi = Resources::Load<Texture>(L"Bazzi"
 			, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");*/
 
-		Player* player = object::Instantiate<Player>(eLayerType::Player);
+		Bazzi* player = object::Instantiate<Bazzi>(eLayerType::Player);
 		player->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
 	//*SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
 	//	sr->SetImage(Bazzi);
@@ -71,7 +71,7 @@ namespace hy
 		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(987.0f,125.0f));
 
 		// 포레스트 몬스터(상하좌우, 사망 애니메이션)
-		Player* ForestMonster= object::Instantiate<Player>(eLayerType::Player);
+		Bazzi* ForestMonster= object::Instantiate<Bazzi>(eLayerType::Player);
 		ForestMonster->GetComponent<Transform>()->SetPosition(Vector2(120.0f, 70.0f));
 
 		Animator* mt = ForestMonster->AddComponent<Animator>();
@@ -81,6 +81,7 @@ namespace hy
 		mt->CreateAnimationFolder(L"ForestMosterLeft", L"..\\Resources\\Image\\Monster\\Forest\\Left");
 		mt->CreateAnimationFolder(L"ForestMonsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die"); 
 
+		Scene::Initialize();
 	}
 	void ForestMap::Update()
 	{

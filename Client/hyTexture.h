@@ -3,6 +3,8 @@
 
 namespace hy
 {
+	using namespace math;
+
 	enum class eTextureType
 	{
 		Bmp,
@@ -21,6 +23,15 @@ namespace hy
 
 		virtual HRESULT Load(const std::wstring& path) override;	// Load가 순수가상함수이기 때문에 무조건 오버라이딩 해줘야 함
 
+		void Render(HDC hdc
+			, Vector2 pos
+			, Vector2 size
+			, Vector2 leftTop
+			, Vector2 rightBottom
+			, Vector2 offset = Vector2::Zero
+			, Vector2 scale = Vector2::One
+			, float alpha = 1.0f);
+
 		UINT GetWidth() { return mWidth; }
 		void SetWidth(UINT width) { mWidth = width; }
 		UINT GetHeight() { return mHeight; }
@@ -28,6 +39,7 @@ namespace hy
 
 		HDC GetHdc() { return mHdc; }
 		eTextureType GetType() { return mType; }
+		void SetType(eTextureType type) { mType = type; }
 		Gdiplus::Image* GetImage() { return mImage; }
 		void SetHBitmap(HBITMAP bitmap) { mBitmap = bitmap; }
 		void SetHdc(HDC hdc) { mHdc = hdc; }
@@ -36,9 +48,11 @@ namespace hy
 		eTextureType mType;
 		Gdiplus::Image* mImage;			// png 파일이 저장될 변수
 		
-		HBITMAP mBitmap;						// 비트맵 이미지 파일
-		HDC mHdc;								// 이미지 파일 하나당 DC 필요
-		UINT mWidth;								// 이미지 길이
-		UINT mHeight;							// 이미지 높이
+		HBITMAP mBitmap;				// 비트맵 이미지 파일
+		HDC mHdc;						// 이미지 파일 하나당 DC 필요
+		UINT mWidth;					// 이미지 길이
+		UINT mHeight;					// 이미지 높이
+		// bool mbAffectCamera;
+
 	};
 }

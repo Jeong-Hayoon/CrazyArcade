@@ -14,6 +14,7 @@ namespace hy
 	}
 	void Monster::Initialize()
 	{
+		GameObject::Initialize();
 	}
 	void Monster::Update()
 	{

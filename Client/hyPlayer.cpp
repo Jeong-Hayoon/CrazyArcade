@@ -14,6 +14,7 @@ namespace hy
 	}
 	void Player::Initialize()
 	{
+		GameObject::Initialize();
 	}
 	void Player::Update()
 	{

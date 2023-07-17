@@ -31,6 +31,8 @@ namespace hy
 		void SetAffectedCamera(bool enable) { mbAffectedCamera = enable; }
 		float GetAlpha() { return mAlpha; }
 		void SetAlpha(float alpha) { mAlpha = alpha; }
+		Vector2 GetScale() { return mScale; }
+		void SetScale(Vector2 scale) { mScale = scale; }
 
 	private:
 		std::map<std::wstring, Animation*> mAnimations;
@@ -39,6 +41,8 @@ namespace hy
 		bool mbLoop;
 		bool mbAffectedCamera;
 		float mAlpha;
+		Vector2 mScale;
+
 	};
 }
 

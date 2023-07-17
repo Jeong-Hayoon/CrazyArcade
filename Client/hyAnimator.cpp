@@ -10,6 +10,7 @@ namespace hy
 	Animator::Animator()
 		: Component(eComponentType::Animator)
 		, mAlpha(1.0f)
+		, mScale(Vector2::One)
 	{
 	}
 	Animator::~Animator()
@@ -65,7 +66,7 @@ namespace hy
 		UINT width = 0;
 		UINT height = 0;
 		UINT fileCount = 0;
-
+			
 		std::filesystem::path fs(path);
 		std::vector<Texture*> images = {};
 		for (auto& p : std::filesystem::recursive_directory_iterator(path))

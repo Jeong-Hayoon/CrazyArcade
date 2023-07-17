@@ -21,6 +21,8 @@ namespace hy
 	}
 	void LobbyScene::Initialize()
 	{
+		Scene::Initialize();
+
 		// ·Îºñ
 		Texture* image = Resources::Load<Texture>(L"LobbyBackGroundImage"
 			, L"..\\Resources\\Image\\Bg\\Lobby.bmp");

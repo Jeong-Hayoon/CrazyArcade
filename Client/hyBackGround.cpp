@@ -14,6 +14,7 @@ namespace hy
 	}
 	void BackGround::Initialize()
 	{
+		GameObject::Initialize();
 	}
 
 	void BackGround::Update()
