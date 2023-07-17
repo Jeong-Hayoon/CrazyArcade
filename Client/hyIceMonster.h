@@ -3,18 +3,17 @@
 
 namespace hy
 {
-	class Monster : public GameObject
+	class IceMonster : public GameObject
 	{
 	public:
-		Monster();
-		virtual ~Monster();
+		IceMonster();
+		virtual ~IceMonster();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void Render(HDC hdc)override;
 
 	private:
-
 	};
 }
 

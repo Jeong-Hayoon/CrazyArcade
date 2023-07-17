@@ -138,8 +138,10 @@
     <ClInclude Include="hyDao.h" />
     <ClInclude Include="hyForestMap.h" />
     <ClInclude Include="hyIceMap.h" />
-    <ClInclude Include="hyMonster.h" />
+    <ClInclude Include="hyForestMonster.h" />
+    <ClInclude Include="hyIceMonster.h" />
     <ClInclude Include="hyPirateMap.h" />
+    <ClInclude Include="hyPirateMonster.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="hyTexture.h" />
     <ClInclude Include="hyLobbyScene.h" />
@@ -173,9 +175,11 @@
     <ClCompile Include="hyDao.cpp" />
     <ClCompile Include="hyForestMap.cpp" />
     <ClCompile Include="hyIceMap.cpp" />
+    <ClCompile Include="hyIceMonster.cpp" />
     <ClCompile Include="hyMath.cpp" />
-    <ClCompile Include="hyMonster.cpp" />
+    <ClCompile Include="hyForestMonster.cpp" />
     <ClCompile Include="hyPirateMap.cpp" />
+    <ClCompile Include="hyPirateMonster.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="hyTexture.cpp" />
     <ClCompile Include="hyLobbyScene.cpp" />

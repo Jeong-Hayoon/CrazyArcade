@@ -99,8 +99,23 @@
     <Filter Include="Contents\GameObject\Player\Bazzi">
       <UniqueIdentifier>{d1a3ac28-3181-44b9-b5cb-d999093fbfd3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\GameObject\Monster\Boss">
+    <Filter Include="Contents\GameObject\Monster\ForestMap">
+      <UniqueIdentifier>{aada2a00-e98f-45a2-9b49-225d09872b2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Monster\IceMap">
+      <UniqueIdentifier>{92826606-c928-4c48-a8bd-691a143a0055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Monster\PiateMap">
+      <UniqueIdentifier>{7a366313-d81f-4598-b314-08cbab2cad1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Monster\ForestMap\ForestBoss">
       <UniqueIdentifier>{529ab22c-e29e-420f-88e0-d05b607b675c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Monster\IceMap\IceBoss">
+      <UniqueIdentifier>{7065e99e-5a9c-448f-b9b7-858242169098}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Monster\PiateMap\PirateBoss">
+      <UniqueIdentifier>{34e53a8a-377e-470a-ae25-adc5817bca0e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -203,11 +218,17 @@
     <ClInclude Include="hyDao.h">
       <Filter>Contents\GameObject\Player\Dao</Filter>
     </ClInclude>
-    <ClInclude Include="hyMonster.h">
-      <Filter>Contents\GameObject\Monster</Filter>
-    </ClInclude>
     <ClInclude Include="hyBazzi.h">
       <Filter>Contents\GameObject\Player\Bazzi</Filter>
+    </ClInclude>
+    <ClInclude Include="hyForestMonster.h">
+      <Filter>Contents\GameObject\Monster\ForestMap</Filter>
+    </ClInclude>
+    <ClInclude Include="hyIceMonster.h">
+      <Filter>Contents\GameObject\Monster\IceMap</Filter>
+    </ClInclude>
+    <ClInclude Include="hyPirateMonster.h">
+      <Filter>Contents\GameObject\Monster\PiateMap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -306,11 +327,17 @@
     <ClCompile Include="hyDao.cpp">
       <Filter>Contents\GameObject\Player\Dao</Filter>
     </ClCompile>
-    <ClCompile Include="hyMonster.cpp">
-      <Filter>Contents\GameObject\Monster</Filter>
-    </ClCompile>
     <ClCompile Include="hyBazzi.cpp">
       <Filter>Contents\GameObject\Player\Bazzi</Filter>
+    </ClCompile>
+    <ClCompile Include="hyForestMonster.cpp">
+      <Filter>Contents\GameObject\Monster\ForestMap</Filter>
+    </ClCompile>
+    <ClCompile Include="hyIceMonster.cpp">
+      <Filter>Contents\GameObject\Monster\IceMap</Filter>
+    </ClCompile>
+    <ClCompile Include="hyPirateMonster.cpp">
+      <Filter>Contents\GameObject\Monster\PiateMap</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

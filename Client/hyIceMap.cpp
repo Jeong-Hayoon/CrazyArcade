@@ -12,7 +12,12 @@
 #include "hyBackGround.h"
 #include "hyTransform.h"
 #include "hyAnimator.h"
+#include "hyBazzi.h"
+#include "hyPirateMonster.h"
 
+
+
+extern hy::Application application;
 
 namespace hy
 {
@@ -32,52 +37,40 @@ namespace hy
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.5f, 1.338f));
-		bg->GetComponent<Transform>()->SetPosition(Vector2(600.0f, 360.0f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2 + 10)));
 
 
 		// 각 맵에 따른 화면
 		Texture* IceMap = Resources::Load<Texture>(L"IceMapImage"
 			, L"..\\Resources\\Image\\Bg\\ICETILE.bmp");
 		BackGround* icemap = object::Instantiate<BackGround>(eLayerType::Background);
-		icemap->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 362.0f));
+		icemap->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 410.0f));
 		SpriteRenderer* icemapsr = icemap->AddComponent<SpriteRenderer>();
 		icemapsr->SetImage(IceMap);
 		icemapsr->SetScale(Vector2(1.0f, 0.90f));
 
-		// 캐릭터
-		Texture* Bazzi = Resources::Load<Texture>(L"BazziImage"
-			, L"..\\Resources\\Image\\Bazzi\\Idle.bmp");
+		// 배찌 상하좌우 애니메이션
+		Bazzi* icebazzi = object::Instantiate<Bazzi>(eLayerType::Player);
+		icebazzi->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
 
-		Player* player = object::Instantiate<Player>(eLayerType::Player);
-		player->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
-
-		// 애니메이션
-		Animator* at = player->AddComponent<Animator>();
-		at->CreateAnimation(L"BazziIdle", Bazzi, Vector2(0.0f, 0.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f));
-		at->PlayAnimation(L"BazziIdle", true);
-
+		
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
 			, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
 
 		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::Background);
-		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(987.0f, 125.0f));
+		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(1022.0f, 163.0f));
 		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
 		bzprofilesr->SetImage(BZProfile);
 		bzprofilesr->SetScale(Vector2(0.8f, 0.8f));
 
-		std::wstring name = player->GetName();
+		/*std::wstring name = player->GetName();*/
 
-		// 아이스 몬스터(상하좌우, 사망 애니메이션)
-		/*Player* IceMonster = object::Instantiate<Player>(eLayerType::Player);
-		IceMonster->GetComponent<Transform>()->SetPosition(Vector2(120.0f, 70.0f));
+		// 아이스 몬스터
+		PirateMonster* icemonster = object::Instantiate<PirateMonster>(eLayerType::Player);
+		icemonster->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
 
-		Animator* mt = IceMonster->AddComponent<Animator>();
-		mt->CreateAnimationFolder(L"IceMonsterUp", L"..\\Resources\\Image\\Monster\\\\Up");
-		mt->CreateAnimationFolder(L"IceMonsterDown", L"..\\Resources\\Image\\Monster\\\\Down");
-		mt->CreateAnimationFolder(L"IceMonsterRight", L"..\\Resources\\Image\\Monster\\\\Right");
-		mt->CreateAnimationFolder(L"IceMonsterLeft", L"..\\Resources\\Image\\Monster\\\\Left");
-		mt->CreateAnimationFolder(L"IceMonsterDie", L"..\\Resources\\Image\\Monster\\\\Die");*/
+		Scene::Initialize();
 
 	}
 	void IceMap::Update()

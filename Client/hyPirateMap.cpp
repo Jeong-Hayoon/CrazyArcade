@@ -12,7 +12,11 @@
 #include "hyBackGround.h"
 #include "hyTransform.h"
 #include "hyAnimator.h"
+#include "hyBazzi.h"
+#include "hyPirateMonster.h"
 
+
+extern hy::Application application;
 
 namespace hy
 {
@@ -32,49 +36,37 @@ namespace hy
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.5f, 1.338f));
-		bg->GetComponent<Transform>()->SetPosition(Vector2(600.0f, 360.0f));
-
+		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2 + 10)));
 
 		// 각 맵에 따른 화면
 		Texture* PirateMap = Resources::Load<Texture>(L"PirateMapImage"
 			, L"..\\Resources\\Image\\Bg\\PirateNormalTile.bmp");
 		BackGround* piratemap = object::Instantiate<BackGround>(eLayerType::Background);
-		piratemap->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 362.0f));
+		piratemap->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 410.0f));
+
 		SpriteRenderer* piratemapsr = piratemap->AddComponent<SpriteRenderer>();
 		piratemapsr->SetImage(PirateMap);
 		piratemapsr->SetScale(Vector2(1.0f, 0.9f));
 
-		// 캐릭터
-		Texture* Bazzi = Resources::Load<Texture>(L"BazziImage"
-			, L"..\\Resources\\Image\\Bazzi\\Idle.bmp");
-
-		Player* player = object::Instantiate<Player>(eLayerType::Player);
-		player->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
-		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
-		sr->SetImage(Bazzi);
-		sr->SetScale(Vector2(0.8f, 0.8f));
+		// 배찌 상하좌우 애니메이션
+		Bazzi* piratebazzi = object::Instantiate<Bazzi>(eLayerType::Player);
+		piratebazzi->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
 
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
 			, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
 
 		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::Background);
-		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(1000.0f, 120.0f));
+		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(1022.0f, 163.0f));
 		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
 		bzprofilesr->SetImage(BZProfile);
 		bzprofilesr->SetScale(Vector2(0.8f, 0.8f));
 
-		// 피라테 몬스터(상하좌우, 사망 애니메이션)
-		/*Player* PirateMonster = object::Instantiate<Player>(eLayerType::Player);
-		PirateMonster->GetComponent<Transform>()->SetPosition(Vector2(120.0f, 70.0f));
+		// 아이스 몬스터
+		PirateMonster* piratemonster = object::Instantiate<PirateMonster>(eLayerType::Player);
+		piratemonster->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
 
-		Animator* mt = PirateMonster->AddComponent<Animator>();
-		mt->CreateAnimationFolder(L"PirateMonsterUp", L"..\\Resources\\Image\\Monster\\\\Up");
-		mt->CreateAnimationFolder(L"PirateMonsterDown", L"..\\Resources\\Image\\Monster\\\\Down");
-		mt->CreateAnimationFolder(L"PirateMonsterRight", L"..\\Resources\\Image\\Monster\\\\Right");
-		mt->CreateAnimationFolder(L"PirateMonsterLeft", L"..\\Resources\\Image\\Monster\\\\Left");
-		mt->CreateAnimationFolder(L"PirateMonsterDie", L"..\\Resources\\Image\\Monster\\\\Die");*/
-
+		Scene::Initialize();
 	}
 	void PirateMap::Update()
 	{
