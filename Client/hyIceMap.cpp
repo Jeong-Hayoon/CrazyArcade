@@ -52,7 +52,6 @@ namespace hy
 		// 배찌 상하좌우 애니메이션
 		Bazzi* icebazzi = object::Instantiate<Bazzi>(eLayerType::Player);
 		icebazzi->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
-
 		
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
