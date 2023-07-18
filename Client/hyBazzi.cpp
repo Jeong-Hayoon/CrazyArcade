@@ -61,13 +61,13 @@ namespace hy
 		Animator* anim = GetComponent<Animator>();
 
 		// 위
-		if (Input::GetKeyDown(eKeyCode::W))
-		{
-			anim->PlayAnimation(L"BazziUp", true);
-		}
 		if (Input::GetKey(eKeyCode::W))
 		{
 			pos.y -= 250.0f * Time::DeltaTime();
+		}
+		if (Input::GetKeyDown(eKeyCode::W))
+		{
+			anim->PlayAnimation(L"BazziUp", true);
 		}
 		if (Input::GetKeyUp(eKeyCode::W))
 		{
@@ -76,13 +76,13 @@ namespace hy
 
 
 		// 왼쪽
-		else if (Input::GetKeyDown(eKeyCode::A))
-		{
-			anim->PlayAnimation(L"BazziLeft", true);
-		}
 		if (Input::GetKey(eKeyCode::A))
 		{
 			pos.x -= 250.0f * Time::DeltaTime();
+		}
+		if (Input::GetKeyDown(eKeyCode::A))
+		{
+			anim->PlayAnimation(L"BazziLeft", true);
 		}
 		if (Input::GetKeyUp(eKeyCode::A))
 		{
@@ -90,13 +90,13 @@ namespace hy
 		}
 
 		// 아래
-		if (Input::GetKeyDown(eKeyCode::S))
-		{
-			anim->PlayAnimation(L"BazziDown", true);
-		}
 		if (Input::GetKey(eKeyCode::S))
 		{
 			pos.y += 250.0f * Time::DeltaTime();
+		}
+		if (Input::GetKeyDown(eKeyCode::S))
+		{
+			anim->PlayAnimation(L"BazziDown", true);
 		}
 		if (Input::GetKeyUp(eKeyCode::S))
 		{
@@ -104,13 +104,13 @@ namespace hy
 		}
 
 		// 오른쪽
-		if (Input::GetKeyDown(eKeyCode::D))
-		{
-			anim->PlayAnimation(L"BazziRight", true);
-		}
 		if (Input::GetKey(eKeyCode::D))
 		{
 			pos.x += 250.0f * Time::DeltaTime();
+		}
+		if (Input::GetKeyDown(eKeyCode::D))
+		{
+			anim->PlayAnimation(L"BazziRight", true);
 		}
 		if (Input::GetKeyUp(eKeyCode::D))
 		{

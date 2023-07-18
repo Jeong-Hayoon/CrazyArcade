@@ -3,11 +3,11 @@
 
 namespace hy
 {
-	class ForestMap : public Scene
+	class ForestMap3 : public Scene
 	{
 	public:
-		ForestMap();
-		virtual ~ForestMap();
+		ForestMap3();
+		virtual ~ForestMap3();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

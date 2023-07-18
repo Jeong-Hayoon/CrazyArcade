@@ -1,4 +1,4 @@
-#include "hyIceMap.h"
+#include "hyIceMap3.h"
 #include "hyPlayScene.h"
 #include "hyTitleScene.h"
 #include "hyPlayer.h"
@@ -21,15 +21,15 @@ extern hy::Application application;
 
 namespace hy
 {
-	IceMap::IceMap()
+	IceMap3::IceMap3()
 	{
 	}
-	IceMap::~IceMap()
+	IceMap3::~IceMap3()
 	{
 	}
-	void IceMap::Initialize()
+	void IceMap3::Initialize()
 	{
-		 //게임 틀
+		//게임 틀
 		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImgae"
 			, L"..\\Resources\\Image\\Bg\\play.bmp");
 
@@ -41,18 +41,18 @@ namespace hy
 
 
 		// 각 맵에 따른 화면
-		Texture* IceMap = Resources::Load<Texture>(L"IceMapImage"
+		Texture* IceMap1 = Resources::Load<Texture>(L"IceMapImage"
 			, L"..\\Resources\\Image\\Bg\\ICETILE.bmp");
-		BackGround* icemap = object::Instantiate<BackGround>(eLayerType::Background);
-		icemap->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 410.0f));
-		SpriteRenderer* icemapsr = icemap->AddComponent<SpriteRenderer>();
-		icemapsr->SetImage(IceMap);
+		BackGround* icemap1 = object::Instantiate<BackGround>(eLayerType::Background);
+		icemap1->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 410.0f));
+		SpriteRenderer* icemapsr = icemap1->AddComponent<SpriteRenderer>();
+		icemapsr->SetImage(IceMap1);
 		icemapsr->SetScale(Vector2(1.0f, 0.90f));
 
 		//배찌 상하좌우 애니메이션
 		Bazzi* icebazzi = object::Instantiate<Bazzi>(eLayerType::Player);
 		icebazzi->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
-		
+
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
 			, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
@@ -72,7 +72,7 @@ namespace hy
 		Scene::Initialize();
 
 	}
-	void IceMap::Update()
+	void IceMap3::Update()
 	{
 		Scene::Update();
 
@@ -81,7 +81,7 @@ namespace hy
 			SceneManager::LoadScene(L"PirateMap");
 		}
 	}
-	void IceMap::Render(HDC hdc)
+	void IceMap3::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
 

@@ -117,6 +117,42 @@
     <Filter Include="Contents\GameObject\Monster\PiateMap\PirateBoss">
       <UniqueIdentifier>{34e53a8a-377e-470a-ae25-adc5817bca0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Forest">
+      <UniqueIdentifier>{8d4c0f37-7e83-4665-bdc6-2aa1e3e8e2ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Ice">
+      <UniqueIdentifier>{b8e2bafa-4a1d-4bcf-8284-44060d0f2e37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Pirate">
+      <UniqueIdentifier>{41d447aa-92ac-4e04-a0dd-544aea5e7157}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Forest\Stage1">
+      <UniqueIdentifier>{58f4e5b0-e2a0-4d1d-a1bb-fe01d5b75413}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Forest\Stage2">
+      <UniqueIdentifier>{db29766e-37e0-4506-8d18-98ea24d03ad3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Forest\Stage3">
+      <UniqueIdentifier>{9d376b67-254c-4955-8f4f-93945e268d8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Ice\Stage1">
+      <UniqueIdentifier>{66383e57-8997-4246-b4e8-59a0e9216db5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Ice\Stage2">
+      <UniqueIdentifier>{439a80f9-3027-44a6-bba9-63785d48cada}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Ice\Stage3">
+      <UniqueIdentifier>{01fdc0b9-04f8-4e0a-8292-66b922c35441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Pirate\Stage1">
+      <UniqueIdentifier>{09befc04-fedb-4435-b13c-f4a3943d603a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Pirate\Stage2">
+      <UniqueIdentifier>{4afa0543-244e-4fd0-a771-18ef5649048c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Pirate\Stage3">
+      <UniqueIdentifier>{74fdf236-71e6-4f60-abf4-0867c86911ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -200,15 +236,6 @@
     <ClInclude Include="hyCamera.h">
       <Filter>Engine\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="hyPirateMap.h">
-      <Filter>Contents\Scene\PlayScene</Filter>
-    </ClInclude>
-    <ClInclude Include="hyIceMap.h">
-      <Filter>Contents\Scene\PlayScene</Filter>
-    </ClInclude>
-    <ClInclude Include="hyForestMap.h">
-      <Filter>Contents\Scene\PlayScene</Filter>
-    </ClInclude>
     <ClInclude Include="hyAnimation.h">
       <Filter>Engine\Resource\Animation</Filter>
     </ClInclude>
@@ -235,6 +262,33 @@
     </ClInclude>
     <ClInclude Include="hyPirateBoss.h">
       <Filter>Contents\GameObject\Monster\PiateMap\PirateBoss</Filter>
+    </ClInclude>
+    <ClInclude Include="hyForestMap1.h">
+      <Filter>Contents\Scene\PlayScene\Forest\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="hyIceMap1.h">
+      <Filter>Contents\Scene\PlayScene\Ice\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="hyPirateMap.h">
+      <Filter>Contents\Scene\PlayScene\Pirate\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="hyForestMap2.h">
+      <Filter>Contents\Scene\PlayScene\Forest\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="hyForestMap3.h">
+      <Filter>Contents\Scene\PlayScene\Forest\Stage3</Filter>
+    </ClInclude>
+    <ClInclude Include="hyIceMap2.h">
+      <Filter>Contents\Scene\PlayScene\Ice\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="hyIceMap3.h">
+      <Filter>Contents\Scene\PlayScene\Ice\Stage3</Filter>
+    </ClInclude>
+    <ClInclude Include="hyPirateMap2.h">
+      <Filter>Contents\Scene\PlayScene\Pirate\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="hyPirateMap3.h">
+      <Filter>Contents\Scene\PlayScene\Pirate\Stage3</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -315,15 +369,6 @@
     <ClCompile Include="hyCamera.cpp">
       <Filter>Engine\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="hyPirateMap.cpp">
-      <Filter>Contents\Scene\PlayScene</Filter>
-    </ClCompile>
-    <ClCompile Include="hyIceMap.cpp">
-      <Filter>Contents\Scene\PlayScene</Filter>
-    </ClCompile>
-    <ClCompile Include="hyForestMap.cpp">
-      <Filter>Contents\Scene\PlayScene</Filter>
-    </ClCompile>
     <ClCompile Include="hyAnimation.cpp">
       <Filter>Engine\Resource\Animation</Filter>
     </ClCompile>
@@ -350,6 +395,33 @@
     </ClCompile>
     <ClCompile Include="hyPirateBoss.cpp">
       <Filter>Contents\GameObject\Monster\PiateMap\PirateBoss</Filter>
+    </ClCompile>
+    <ClCompile Include="hyForestMap1.cpp">
+      <Filter>Contents\Scene\PlayScene\Forest\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="hyIceMap1.cpp">
+      <Filter>Contents\Scene\PlayScene\Ice\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="hyPirateMap.cpp">
+      <Filter>Contents\Scene\PlayScene\Pirate\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="hyForestMap2.cpp">
+      <Filter>Contents\Scene\PlayScene\Forest\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="hyForestMap3.cpp">
+      <Filter>Contents\Scene\PlayScene\Forest\Stage3</Filter>
+    </ClCompile>
+    <ClCompile Include="hyIceMap2.cpp">
+      <Filter>Contents\Scene\PlayScene\Ice\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="hyIceMap3.cpp">
+      <Filter>Contents\Scene\PlayScene\Ice\Stage3</Filter>
+    </ClCompile>
+    <ClCompile Include="hyPirateMap2.cpp">
+      <Filter>Contents\Scene\PlayScene\Pirate\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="hyPirateMap3.cpp">
+      <Filter>Contents\Scene\PlayScene\Pirate\Stage3</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
