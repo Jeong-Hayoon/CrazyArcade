@@ -49,6 +49,7 @@ namespace hy
 		DeleteObject(defaultBitmap);
 
 		image->SetName(name);
+		image->SetType(eTextureType::AlphaBmp);	
 		Resources::Insert<Texture>(name, image);
 
 		return image;
@@ -108,7 +109,9 @@ namespace hy
 		, Vector2 rightBottom
 		, Vector2 offset
 		, Vector2 scale
-		, float alpha)
+		, float alpha
+		, float rotate)
+		
 	{
 		if (mBitmap == nullptr && mImage == nullptr)
 			return;
@@ -158,6 +161,11 @@ namespace hy
 				, Gdiplus::Color(255, 255, 255));
 
 			Gdiplus::Graphics graphics(hdc);
+			// 회전시키는 코드
+			graphics.TranslateTransform((float)pos.x, (float)pos.y);
+			graphics.RotateTransform(rotate);
+			graphics.TranslateTransform(-(float)pos.x, -(float)pos.y);
+
 			graphics.DrawImage(mImage
 				, Gdiplus::Rect
 				(
@@ -171,6 +179,10 @@ namespace hy
 				, Gdiplus::UnitPixel
 				, nullptr);
 		}
+
+		/*Rectangle(hdc
+			, pos.x, pos.y
+			, pos.x + 10, pos.y + 10);*/
 	}
 }
 

@@ -20,8 +20,8 @@ namespace hy
 		void SetScale(Vector2 scale) { mScale = scale; }
 		//<카메라>
 		//void SetAffectCamera(bool enable) { mbAffectCamera = enable; }
-		//float GetAlpha() { return mAlpha; }
-		//void SetAlpha(float alpha) { mAlpha = alpha; }
+		float GetAlpha() { return mAlpha; }
+		void SetAlpha(float alpha) { mAlpha = alpha; }
 
 	private:
 		//Gdiplus::Image* mImage;
@@ -29,6 +29,6 @@ namespace hy
 		Vector2 mScale;					// 각 오브젝트마다 크기를 다르게 하기 위함
 		// <카메라>
 		//bool mbAffectCamera;			// 카메라의 영향을 빋는지
-		//float mAlpha;						
+		float mAlpha;						
 	};
 }

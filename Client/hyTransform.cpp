@@ -6,6 +6,8 @@ namespace hy
 {
 	Transform::Transform()
 		: Component(eComponentType::Transform)
+		, mRotation(0.0f)
+
 	{
 	}
 	Transform::~Transform()

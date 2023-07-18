@@ -70,7 +70,7 @@ namespace hy
 		Animator* at = player->AddComponent<Animator>();
 		at->CreateAnimation(L"FarmerIdle", image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 6);
 		at->CreateAnimation(L"FarmerRight", image, Vector2(0.0f, 32.0f), Vector2(16.0f, 32.0f), 6);
-		at->CreateAnimationFolder(L"Test", L"..\\Resources\\Image\\Player");
+		at->CreateAnimationFolder(L"Test", L"..\\Resources\\Image\\Player", Vector2(0.0f, 0.0f), 0.3f);
 		at->PlayAnimation(L"Test", true);
 		//at->SetScale(Vector2(2.0f, 2.0f));
 		//at->SetAffectedCamera(true);

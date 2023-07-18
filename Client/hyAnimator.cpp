@@ -37,7 +37,7 @@ namespace hy
 			mActiveAnimation->Render(hdc);
 	}
 
-	void Animator::CreateAnimation(const std::wstring& name
+	Animation* Animator::CreateAnimation(const std::wstring& name
 		, Texture* texture
 		, Vector2 leftTop
 		, Vector2 size				// 스프라이트 하나의 크기
@@ -48,7 +48,10 @@ namespace hy
 		Animation* animation = nullptr;
 		animation = Resources::Find<Animation>(name);
 		if (animation != nullptr)
-			return;
+		{
+			mAnimations.insert(std::make_pair(name, animation));
+			return animation;
+		}
 
 		animation = new Animation();
 		animation->Create(name, texture
@@ -86,14 +89,19 @@ namespace hy
 			fileCount++;
 		}
 
-		Texture* spriteSheet = Texture::Create(name, width * fileCount, height);
+		std::wstring spriteSheetName = name + L"SpriteSheet";
+
+		Texture* spriteSheet = Texture::Create(spriteSheetName, width * fileCount, height);
+		spriteSheet->SetType(eTextureType::Bmp);
 
 		spriteSheet->SetType(eTextureType::Bmp);
 
 		int idx = 0;
 		for (Texture* image : images)
 		{
-			BitBlt(spriteSheet->GetHdc(), width * idx, 0
+			BitBlt(spriteSheet->GetHdc()
+				, (width * idx) + ((width - image->GetWidth()) / 2.0f)
+				, 0
 				, image->GetWidth(), image->GetHeight()
 				, image->GetHdc(), 0, 0, SRCCOPY);
 
@@ -120,7 +128,10 @@ namespace hy
 		Animation* animation = FindAnimation(name);
 		if (animation == nullptr)
 			return;
-
+		/*if(animation!=mActiveAnimation)
+		{
+			mActiveAnimation->Reset();
+		}*/
 		mActiveAnimation = animation;
 		mActiveAnimation->Reset();
 		mbLoop = loop;		

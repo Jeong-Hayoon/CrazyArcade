@@ -10,12 +10,11 @@ namespace hy
 		, mScale(Vector2::One)
 		//, mbAffectCamera(true)
 		, mTexture(nullptr)
-		//,mAlpha(1.0f)
+		,mAlpha(1.0f)			// 물체가 투명하지 않게 초기화(0에 가까워질수록 투명)
 
 		//<카메라>
 		//, mbAffectCamera(true)
 		//, mTexture(nullptr)
-		//, mAlpha(1.0f)			// 물체가 투명하지 않게 초기화(0에 가까워질수록 투명)
 	{
 	}
 	SpriteRenderer::~SpriteRenderer()
@@ -132,7 +131,8 @@ namespace hy
 			, Vector2(mTexture->GetWidth(), mTexture->GetHeight())
 			, Vector2::Zero
 			, mScale
-			//, mAlpha
+			, mAlpha
+			// , tr->GetRotation()); -> 회전
 		);
 	}
 }

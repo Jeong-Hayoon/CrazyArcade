@@ -43,34 +43,32 @@ namespace hy
 		Animator* anim = GetComponent<Animator>();
 
 		tr->SetPosition(pos);
-		float MonsterTime = Time::DeltaTime();
+		static float MonsterTime = 0.f;
+		MonsterTime += Time::DeltaTime();
 
-		if (MonsterTime > 3)
+		if (MonsterTime < 3)
 		{
 			anim->PlayAnimation(L"PirateMonsterRight", true);
-			pos.x += 250.0f * Time::DeltaTime();
+			pos.x += 150.0f * Time::DeltaTime();
 		}
 
-		if (MonsterTime > 6)
+		if (MonsterTime < 6 && MonsterTime > 3)
 		{
 			anim->PlayAnimation(L"PirateMonsterDown", true);
-			pos.y += 250.0f * Time::DeltaTime();
+			pos.y += 150.0f * Time::DeltaTime();
 		}
 
-		if (MonsterTime > 9)
+		if (MonsterTime < 9 && MonsterTime > 6)
 		{
 			anim->PlayAnimation(L"PirateMonsterLeft", true);
-			pos.x -= 250.0f * Time::DeltaTime();
+			pos.x -= 150.0f * Time::DeltaTime();
 		}
 
-		if (MonsterTime > 12)
+		if (MonsterTime < 12 && MonsterTime > 9)
 		{
 			anim->PlayAnimation(L"PirateMonsterUp", true);
-			pos.y -= 250.0f * Time::DeltaTime();
+			pos.y -= 150.0f * Time::DeltaTime();
 		}
-
-		tr->SetPosition(pos);
-		MonsterTime = 0.f;
 	}
 	void PirateMonster::Render(HDC hdc)
 	{

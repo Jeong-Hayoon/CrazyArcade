@@ -42,6 +42,8 @@ namespace hy
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.16f, 1.07f));		// 이미지 사이즈 조절
 		
+		// 회전
+		bg->GetComponent<Transform>()->SetRotation(45);
 		// <카메라>
 		//bgsr->SetAffectCamera(false);				// 배경은 카메라의 영향을 받으면 안되므로
 		//bgsr->SetAlpha(0.2f);						// 배경 투명도 세팅

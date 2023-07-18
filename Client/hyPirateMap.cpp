@@ -62,7 +62,7 @@ namespace hy
 		bzprofilesr->SetImage(BZProfile);
 		bzprofilesr->SetScale(Vector2(0.8f, 0.8f));
 
-		// 아이스 몬스터
+		// 피라테 몬스터
 		PirateMonster* piratemonster = object::Instantiate<PirateMonster>(eLayerType::Player);
 		piratemonster->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
 
