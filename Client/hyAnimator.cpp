@@ -94,8 +94,6 @@ namespace hy
 		Texture* spriteSheet = Texture::Create(spriteSheetName, width * fileCount, height);
 		spriteSheet->SetType(eTextureType::Bmp);
 
-		spriteSheet->SetType(eTextureType::Bmp);
-
 		int idx = 0;
 		for (Texture* image : images)
 		{

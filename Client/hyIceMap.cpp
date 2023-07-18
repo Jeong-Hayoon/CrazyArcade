@@ -49,9 +49,9 @@ namespace hy
 		icemapsr->SetImage(IceMap);
 		icemapsr->SetScale(Vector2(1.0f, 0.90f));
 
-		 //배찌 상하좌우 애니메이션
+		//배찌 상하좌우 애니메이션
 		Bazzi* icebazzi = object::Instantiate<Bazzi>(eLayerType::Player);
-		icebazzi->GetComponent<Transform>()->SetPosition(Vector2(160.0f, 70.0f));
+		icebazzi->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
 		
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"

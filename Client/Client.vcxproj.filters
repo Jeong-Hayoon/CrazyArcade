@@ -224,11 +224,17 @@
     <ClInclude Include="hyForestMonster.h">
       <Filter>Contents\GameObject\Monster\ForestMap</Filter>
     </ClInclude>
-    <ClInclude Include="hyIceMonster.h">
-      <Filter>Contents\GameObject\Monster\IceMap</Filter>
-    </ClInclude>
     <ClInclude Include="hyPirateMonster.h">
       <Filter>Contents\GameObject\Monster\PiateMap</Filter>
+    </ClInclude>
+    <ClInclude Include="hyForestBoss.h">
+      <Filter>Contents\GameObject\Monster\ForestMap\ForestBoss</Filter>
+    </ClInclude>
+    <ClInclude Include="hyIceBoss.h">
+      <Filter>Contents\GameObject\Monster\IceMap\IceBoss</Filter>
+    </ClInclude>
+    <ClInclude Include="hyPirateBoss.h">
+      <Filter>Contents\GameObject\Monster\PiateMap\PirateBoss</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -333,11 +339,17 @@
     <ClCompile Include="hyForestMonster.cpp">
       <Filter>Contents\GameObject\Monster\ForestMap</Filter>
     </ClCompile>
-    <ClCompile Include="hyIceMonster.cpp">
-      <Filter>Contents\GameObject\Monster\IceMap</Filter>
-    </ClCompile>
     <ClCompile Include="hyPirateMonster.cpp">
       <Filter>Contents\GameObject\Monster\PiateMap</Filter>
+    </ClCompile>
+    <ClCompile Include="hyForestBoss.cpp">
+      <Filter>Contents\GameObject\Monster\ForestMap\ForestBoss</Filter>
+    </ClCompile>
+    <ClCompile Include="hyIceBoss.cpp">
+      <Filter>Contents\GameObject\Monster\IceMap\IceBoss</Filter>
+    </ClCompile>
+    <ClCompile Include="hyPirateBoss.cpp">
+      <Filter>Contents\GameObject\Monster\PiateMap\PirateBoss</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

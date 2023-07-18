@@ -1,4 +1,4 @@
-#include "hyForestMonster.h"
+#include "hyForestBoss.h"
 #include "hyTransform.h"
 #include "hyInput.h"
 #include "hyTime.h"
@@ -16,25 +16,25 @@
 
 namespace hy
 {
-	ForestMonster::ForestMonster()
+	ForestBoss::ForestBoss()
 	{
 	}
-	ForestMonster::~ForestMonster()
+	ForestBoss::~ForestBoss()
 	{
 	}
-	void ForestMonster::Initialize()
+	void ForestBoss::Initialize()
 	{
 		Animator* mt = AddComponent<Animator>();
 		mt->CreateAnimationFolder(L"ForestMosterUp", L"..\\Resources\\Image\\Monster\\Forest\\Up");
 		mt->CreateAnimationFolder(L"ForestMosterDown", L"..\\Resources\\Image\\Monster\\Forest\\Down");
 		mt->CreateAnimationFolder(L"ForestMosterRight", L"..\\Resources\\Image\\Monster\\Forest\\Right");
 		mt->CreateAnimationFolder(L"ForestMosterLeft", L"..\\Resources\\Image\\Monster\\Forest\\Left");
-		mt->CreateAnimationFolder(L"ForestMonsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die"); 
+		mt->CreateAnimationFolder(L"ForestMonsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die");
 		mt->PlayAnimation(L"ForestMosterRight", true);
 
 		GameObject::Initialize();
 	}
-	void ForestMonster::Update()
+	void ForestBoss::Update()
 	{
 		GameObject::Update();
 
@@ -72,10 +72,9 @@ namespace hy
 
 		tr->SetPosition(pos);
 	}
-	void ForestMonster::Render(HDC hdc)
+	void ForestBoss::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
 	}
-
 }
 

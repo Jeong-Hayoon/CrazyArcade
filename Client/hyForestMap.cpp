@@ -36,7 +36,6 @@ namespace hy
 		bgsr->SetScale(Vector2(1.5f, 1.338f));
 		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2 + 10)));	
 
-
 		// 각 맵에 따른 화면
 		Texture* ForestMap = Resources::Load<Texture>(L"ForestMapImage"
 			, L"..\\Resources\\Image\\Bg\\ForestTile.bmp");
