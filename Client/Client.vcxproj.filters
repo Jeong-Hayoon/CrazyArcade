@@ -153,6 +153,12 @@
     <Filter Include="Contents\Scene\PlayScene\Pirate\Stage3">
       <UniqueIdentifier>{74fdf236-71e6-4f60-abf4-0867c86911ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Collision">
+      <UniqueIdentifier>{25a006c3-a8b1-4bed-a390-6deaf03572e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resource\Collider">
+      <UniqueIdentifier>{de6576a6-99f5-4d2e-8458-1fd9f08181b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -290,6 +296,12 @@
     <ClInclude Include="hyPirateMap3.h">
       <Filter>Contents\Scene\PlayScene\Pirate\Stage3</Filter>
     </ClInclude>
+    <ClInclude Include="hyCollisionManager.h">
+      <Filter>Engine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="hyCollider.h">
+      <Filter>Engine\Resource\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -422,6 +434,12 @@
     </ClCompile>
     <ClCompile Include="hyPirateMap3.cpp">
       <Filter>Contents\Scene\PlayScene\Pirate\Stage3</Filter>
+    </ClCompile>
+    <ClCompile Include="hyCollisionManager.cpp">
+      <Filter>Engine\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="hyCollider.cpp">
+      <Filter>Engine\Resource\Collider</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -43,18 +43,19 @@ namespace hy
 		bgsr->SetScale(Vector2(1.16f, 1.07f));		// 이미지 사이즈 조절
 		
 		// 회전
-		bg->GetComponent<Transform>()->SetRotation(45);
+		//bg->GetComponent<Transform>()->SetRotation(45);
+		
 		// <카메라>
 		//bgsr->SetAffectCamera(false);				// 배경은 카메라의 영향을 받으면 안되므로
 		//bgsr->SetAlpha(0.2f);						// 배경 투명도 세팅
 		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));	// 배경을 해상도의 절반으로 세팅
 		
-		image = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Image\\BSmile.png");
+		//Image = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Image\\BSmile.png");
 
-		Player* player = object::Instantiate<Player>(eLayerType::Player);
+	/*	Player* player = object::Instantiate<Player>(eLayerType::Player);
 		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
 		sr->SetImage(image);
-		sr->SetScale(Vector2(0.2f, 0.2f));
+		sr->SetScale(Vector2(0.2f, 0.2f));*/
 
 		//std::wstring name = player->GetName();
 

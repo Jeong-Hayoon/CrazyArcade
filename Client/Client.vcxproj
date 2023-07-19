@@ -136,6 +136,8 @@
     <ClInclude Include="hyBackGround.h" />
     <ClInclude Include="hyBazzi.h" />
     <ClInclude Include="hyCamera.h" />
+    <ClInclude Include="hyCollider.h" />
+    <ClInclude Include="hyCollisionManager.h" />
     <ClInclude Include="hyDao.h" />
     <ClInclude Include="hyForestBoss.h" />
     <ClInclude Include="hyForestMap1.h" />
@@ -181,6 +183,8 @@
     <ClCompile Include="hyBackGround.cpp" />
     <ClCompile Include="hyBazzi.cpp" />
     <ClCompile Include="hyCamera.cpp" />
+    <ClCompile Include="hyCollider.cpp" />
+    <ClCompile Include="hyCollisionManager.cpp" />
     <ClCompile Include="hyDao.cpp" />
     <ClCompile Include="hyForestBoss.cpp" />
     <ClCompile Include="hyForestMap1.cpp" />

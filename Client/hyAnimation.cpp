@@ -74,7 +74,8 @@ namespace hy
 			, sprite.size
 			, sprite.offset
 			, animator->GetScale()
-			, animator->GetAlpha());
+			, animator->GetAlpha()
+			, tr->GetRotation());
 
 
 		//// 애니메이션이 카메라의 영향을 받는 경우
@@ -116,6 +117,11 @@ namespace hy
 
 			sprite.leftTop.x = leftTop.x + (size.x * i);
 			sprite.leftTop.y = leftTop.y;
+			if (sprite.leftTop.x >= texture->GetWidth())
+			{
+				sprite.leftTop.x = sprite.leftTop.x - texture->GetWidth();
+				sprite.leftTop.y = leftTop.y + size.y;
+			}
 			sprite.size = size;
 			sprite.offset = offset;
 			sprite.duration = duration;

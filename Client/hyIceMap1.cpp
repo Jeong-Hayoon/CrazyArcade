@@ -1,4 +1,4 @@
-#include "hyIceMap.h"
+#include "hyIceMap1.h"
 #include "hyPlayScene.h"
 #include "hyTitleScene.h"
 #include "hyPlayer.h"

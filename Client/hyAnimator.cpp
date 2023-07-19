@@ -46,10 +46,9 @@ namespace hy
 		, float duration)			// 애니메이션이 넘어가는 시간(실행되는 시간 제외)
 	{	
 		Animation* animation = nullptr;
-		animation = Resources::Find<Animation>(name);
-		if (animation != nullptr)
+		animation = FindAnimation(name);
+		if (animation != nullptr)		
 		{
-			mAnimations.insert(std::make_pair(name, animation));
 			return animation;
 		}
 
@@ -60,7 +59,6 @@ namespace hy
 		animation->SetAnimator(this);
 
 		mAnimations.insert(std::make_pair(name, animation));
-		Resources::Insert<Animation>(name, animation);
 	}
 
 	void Animator::CreateAnimationFolder(const std::wstring& name
@@ -92,7 +90,8 @@ namespace hy
 		std::wstring spriteSheetName = name + L"SpriteSheet";
 
 		Texture* spriteSheet = Texture::Create(spriteSheetName, width * fileCount, height);
-		spriteSheet->SetType(eTextureType::Bmp);
+
+		spriteSheet->SetType(eTextureType::AlphaBmp);
 
 		int idx = 0;
 		for (Texture* image : images)

@@ -27,6 +27,7 @@ namespace hy
 		Animation* FindAnimation(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop = false);
 
+		bool IsActiveAnimationComplete() { return mActiveAnimation->IsComplete(); }
 		bool GetAffectedCamera() { return mbAffectedCamera; }
 		void SetAffectedCamera(bool enable) { mbAffectedCamera = enable; }
 		float GetAlpha() { return mAlpha; }

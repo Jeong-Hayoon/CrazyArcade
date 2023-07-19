@@ -4,7 +4,6 @@
 #include "hyTime.h"
 #include "hyAnimator.h"
 #include "hyResources.h"
-#include "hyForestMap.h"
 #include "hySpriteRenderer.h"
 #include "hyObject.h"
 #include "hySceneManager.h"

@@ -30,6 +30,7 @@ namespace hy::enums
 		SpriteRenderer,
 		Animation,
 		Animator,
+		Collider,
 		End,
 	};
 }

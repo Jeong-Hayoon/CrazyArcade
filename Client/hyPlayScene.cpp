@@ -12,6 +12,8 @@
 //#include "hyCamera.h"
 #include "hyAnimator.h"
 #include "hyTransform.h"
+#include "hyCollider.h"
+
 
 namespace hy
 {
@@ -56,24 +58,31 @@ namespace hy
 
 		//Camera::SetTarget(player);
 
-		Texture* image = Resources::Load<Texture>(L"Smile"
-			, L"..\\Resources\\Image\\Characters\\Farmer\\farmer-girl-base.bmp");
+		//Texture* image = Resources::Load<Texture>(L"Smile"
+		//	, L"..\\Resources\\Image\\Characters\\Farmer\\farmer-girl-base.bmp");
 
-		Player* player = object::Instantiate<Player>(eLayerType::Player);
-		Transform* tr = player->GetComponent<Transform>();
+		//Player* player = object::Instantiate<Player>(eLayerType::Player);
+		//Transform* tr = player->GetComponent<Transform>();
 
-		tr->SetPosition(Vector2(400.0f, 400.0f));
+		//tr->SetPosition(Vector2(400.0f, 400.0f));
 
-		image = Resources::Load<Texture>(L"Smile"
-			, L"..\\Resources\\Image\\Player");
+		//image = Resources::Load<Texture>(L"Smile"
+		//	, L"..\\Resources\\Image\\Player");
 
-		Animator* at = player->AddComponent<Animator>();
-		at->CreateAnimation(L"FarmerIdle", image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 6);
-		at->CreateAnimation(L"FarmerRight", image, Vector2(0.0f, 32.0f), Vector2(16.0f, 32.0f), 6);
-		at->CreateAnimationFolder(L"Test", L"..\\Resources\\Image\\Player", Vector2(0.0f, 0.0f), 0.3f);
-		at->PlayAnimation(L"Test", true);
+		//Animator* at = player->AddComponent<Animator>();
+		//at->CreateAnimation(L"FarmerIdle", image, Vector2(0.0f, 0.0f), Vector2(16.0f, 32.0f), 6);
+		//at->CreateAnimation(L"FarmerRight", image, Vector2(0.0f, 32.0f), Vector2(16.0f, 32.0f), 6);
+		//at->CreateAnimationFolder(L"Test", L"..\\Resources\\Image\\Player", Vector2(0.0f, 0.0f), 0.3f);
+		//at->PlayAnimation(L"Test", true);
 		//at->SetScale(Vector2(2.0f, 2.0f));
 		//at->SetAffectedCamera(true);
+
+
+		// Ãæµ¹
+		/*Collider* col = player->AddComponent<Collider>();
+		col->SetSize(Vector2(100.0f, 100.0f));
+		col->SetOffset(Vector2(10.0f, 10.0f));*/
+
 
 		
 
