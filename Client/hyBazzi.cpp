@@ -46,6 +46,7 @@ namespace hy
 	{
 		GameObject::Update();
 
+		// tab + enter 하면 스위치 생성
 		switch (mState)
 		{
 		case hy::Bazzi::eState::Idle:
@@ -78,24 +79,99 @@ namespace hy
 
 		if (Input::GetKey(eKeyCode::Up))
 		{
-			animator->PlayAnimation(L"BazziUp", true);
-			mState = eState::Move;
+			if (Input::GetKey(eKeyCode::Left))
+			{
+				animator->PlayAnimation(L"BazziLeft", true);
+				mState = eState::Move;
+			}
+			else if (Input::GetKey(eKeyCode::Right))
+			{
+				animator->PlayAnimation(L"BazziRight", true);
+				mState = eState::Move;
+			}
+			else if (Input::GetKey(eKeyCode::Down))
+			{
+				animator->PlayAnimation(L"BazziDown", true);
+				mState = eState::Move;
+			}
+			else
+			{
+				animator->PlayAnimation(L"BazziUp", true);
+				mState = eState::Move;
+			}
 		}
 		else if (Input::GetKey(eKeyCode::Left))
 		{
-			animator->PlayAnimation(L"BazziLeft", true);
-			mState = eState::Move;
+
+			if (Input::GetKey(eKeyCode::Up))
+			{
+				animator->PlayAnimation(L"BazziUp", true);
+				mState = eState::Move;
+			}
+			else if (Input::GetKey(eKeyCode::Right))
+			{
+				animator->PlayAnimation(L"BazziRight", true);
+				mState = eState::Move;
+			}
+			else if (Input::GetKey(eKeyCode::Down))
+			{
+				animator->PlayAnimation(L"BazziDown", true);
+				mState = eState::Move;
+			}
+			else
+			{
+				animator->PlayAnimation(L"BazziLeft", true);
+				mState = eState::Move;
+			}
 		}
 		else if (Input::GetKey(eKeyCode::Down))
 		{
-			animator->PlayAnimation(L"BazziDown", true);
-			mState = eState::Move;
+
+			if (Input::GetKey(eKeyCode::Left))
+			{
+				animator->PlayAnimation(L"BazziLeft", true);
+				mState = eState::Move;
+			}
+			else if (Input::GetKey(eKeyCode::Right))
+			{
+				animator->PlayAnimation(L"BazziRight", true);
+				mState = eState::Move;
+			}
+			else if (Input::GetKey(eKeyCode::Up))
+			{
+				animator->PlayAnimation(L"BazziUp", true);
+				mState = eState::Move;
+			}
+			else
+			{
+				animator->PlayAnimation(L"BazziDown", true);
+				mState = eState::Move;
+			}
 		}
 		else if (Input::GetKey(eKeyCode::Right))
 		{
-			animator->PlayAnimation(L"BazziRight", true);
-			mState = eState::Move;
+			if (Input::GetKey(eKeyCode::Left))
+			{
+				animator->PlayAnimation(L"BazziLeft", true);
+				mState = eState::Move;
+			}
+			else if (Input::GetKey(eKeyCode::Up))
+			{
+				animator->PlayAnimation(L"BazziUp", true);
+				mState = eState::Move;
+			}
+			else if (Input::GetKey(eKeyCode::Down))
+			{
+				animator->PlayAnimation(L"BazziDown", true);
+				mState = eState::Move;
+			}
+			else
+			{
+				animator->PlayAnimation(L"BazziRight", true);
+				mState = eState::Move;
+			}
 		}
+
 
 		/*if (Input::GetKey(eKeyCode::MouseLeft))
 		{

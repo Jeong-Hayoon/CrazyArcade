@@ -2,6 +2,7 @@
 #include "hyTransform.h"
 #include "hyGameObject.h"
 
+//충돌을 하기 위한 하나의 도형
 namespace hy
 {
 	Collider::Collider()

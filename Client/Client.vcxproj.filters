@@ -156,7 +156,7 @@
     <Filter Include="Engine\Collision">
       <UniqueIdentifier>{25a006c3-a8b1-4bed-a390-6deaf03572e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Resource\Collider">
+    <Filter Include="Engine\Component\Collider">
       <UniqueIdentifier>{de6576a6-99f5-4d2e-8458-1fd9f08181b8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -300,7 +300,7 @@
       <Filter>Engine\Collision</Filter>
     </ClInclude>
     <ClInclude Include="hyCollider.h">
-      <Filter>Engine\Resource\Collider</Filter>
+      <Filter>Engine\Component\Collider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -439,7 +439,7 @@
       <Filter>Engine\Collision</Filter>
     </ClCompile>
     <ClCompile Include="hyCollider.cpp">
-      <Filter>Engine\Resource\Collider</Filter>
+      <Filter>Engine\Component\Collider</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
