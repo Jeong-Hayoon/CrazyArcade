@@ -45,6 +45,18 @@
 //	void Player::Render(HDC hdc)
 //	{
 //		GameObject::Render(hdc);
+// 
+// ---------------------------------------------------------- //
+// void Player::OnCollisionEnter(Collider* other)
+//{
+//}
+//void Player::OnCollisionStay(Collider* other)
+//{
+//}
+//void Player::OnCollisionExit(Collider* other)
+//{
+//}
+
 //	}
 //
 //	void Player::Idle()

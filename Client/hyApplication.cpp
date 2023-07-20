@@ -4,6 +4,8 @@
 #include "hyTitleScene.h"
 #include "hySceneManager.h"
 //#include "yaCamera.h"
+#include "hyCollisionManager.h"
+
 
 // cpp 파일에는 함수의 정의 부분 작성
 
@@ -57,6 +59,7 @@ namespace hy
 		Input :: Initialize();
 		// 	Camera::Initalize();
 
+		CollisionManager::Initialize();
 		SceneManager::Initialize();
 	}
 
@@ -72,6 +75,7 @@ namespace hy
 		Input::Update();
 		//	Camera::Update();
 
+		CollisionManager::Update();
 		SceneManager::Update();
 
 		//// 키를 입력받았을 대
@@ -108,6 +112,7 @@ namespace hy
 
 		Time::Render(mBackHdc);
 
+		CollisionManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 
 		//Rectangle(mHdc, 100, 100, 200, 200);

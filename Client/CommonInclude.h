@@ -8,6 +8,8 @@
 #include <filesystem>	
 #include "hyMath.h"
 #include <string>
+#include <bitset>
+
 //#include <gdiplus.h>
 //#pragma comment(lib, "Gdiplus.lib")
 #pragma comment(lib, "Msimg32.lib")

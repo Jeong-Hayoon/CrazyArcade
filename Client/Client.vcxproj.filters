@@ -302,6 +302,9 @@
     <ClInclude Include="hyCollider.h">
       <Filter>Engine\Component\Collider</Filter>
     </ClInclude>
+    <ClInclude Include="hyMonster.h">
+      <Filter>Contents\GameObject\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -440,6 +443,9 @@
     </ClCompile>
     <ClCompile Include="hyCollider.cpp">
       <Filter>Engine\Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="hyMonster.cpp">
+      <Filter>Contents\GameObject\Monster</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
