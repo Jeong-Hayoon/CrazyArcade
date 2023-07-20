@@ -18,7 +18,7 @@ namespace hy
 		{
 			for (size_t col = 0; col < LAYER_MAX; col++)
 			{
-				if (mLayerMasks[row][col] == true)			// 충돌되었을 때	
+				if (mLayerMasks[row][col] == true)					// 충돌되었을 때	
 				{
 					LayerCollision(activeScene, (eLayerType)row, (eLayerType)col);
 				}
@@ -150,7 +150,7 @@ namespace hy
 		}
 	}
 
-	bool CollisionManager::Intersect(Collider* left, Collider* right)
+	bool CollisionManager::Intersect(Collider* left, Collider* right)	// 충돌 상태 여부
 	{
 		Vector2 leftPos = left->GetPosition();
 		Vector2 rightPos = right->GetPosition();
@@ -159,7 +159,7 @@ namespace hy
 		Vector2 rightSize = right->GetSize();
 
 		// fabs 절대값
-		// x 충돌 && y 충돌
+		// x 충돌 && y 충돌(2로 나누는 건 원에서처럼 반지름을 구하려고)
 		if (fabs(leftPos.x - rightPos.x) < fabs(leftSize.x / 2.0f + rightSize.x / 2.0f)
 			&& fabs(leftPos.y - rightPos.y) < fabs(leftSize.y / 2.0f + rightSize.y / 2.0f))
 		{

@@ -73,6 +73,17 @@ namespace hy
 		GameObject::Render(hdc);
 	}
 
+	void Bazzi::OnCollisionEnter(Collider* other)
+	{
+	}
+	void Bazzi::OnCollisionStay(Collider* other)
+	{
+	}
+	void Bazzi::OnCollisionExit(Collider* other)
+	{
+	}
+
+	// 동시 키 입력 시 예외처리 필요
 	void Bazzi::Idle()
 	{
 		Animator* animator = GetComponent<Animator>();

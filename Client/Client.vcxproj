@@ -148,7 +148,6 @@
     <ClInclude Include="hyForestMonster.h" />
     <ClInclude Include="hyIceMap2.h" />
     <ClInclude Include="hyIceMap3.h" />
-    <ClInclude Include="hyMonster.h" />
     <ClInclude Include="hyPirateBoss.h" />
     <ClInclude Include="hyPirateMap.h" />
     <ClInclude Include="hyPirateMap2.h" />
@@ -171,7 +170,6 @@
     <ClInclude Include="hyLayer.h" />
     <ClInclude Include="hyMath.h" />
     <ClInclude Include="hyObject.h" />
-    <ClInclude Include="hyPlayer.h" />
     <ClInclude Include="hySceneManager.h" />
     <ClInclude Include="hySpriteRenderer.h" />
     <ClInclude Include="hyTime.h" />
@@ -197,7 +195,6 @@
     <ClCompile Include="hyIceMap3.cpp" />
     <ClCompile Include="hyMath.cpp" />
     <ClCompile Include="hyForestMonster.cpp" />
-    <ClCompile Include="hyMonster.cpp" />
     <ClCompile Include="hyPirateBoss.cpp" />
     <ClCompile Include="hyPirateMap.cpp" />
     <ClCompile Include="hyPirateMap2.cpp" />
@@ -216,7 +213,6 @@
     <ClCompile Include="hyGameObject.cpp" />
     <ClCompile Include="hynput.cpp" />
     <ClCompile Include="hyLayer.cpp" />
-    <ClCompile Include="hyPlayer.cpp" />
     <ClCompile Include="hySceneManager.cpp" />
     <ClCompile Include="hySpriteRenderer.cpp" />
     <ClCompile Include="hyTime.cpp" />

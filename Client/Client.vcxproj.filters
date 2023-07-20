@@ -200,9 +200,6 @@
     <ClInclude Include="hyComponent.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
-    <ClInclude Include="hyPlayer.h">
-      <Filter>Contents\GameObject\Player</Filter>
-    </ClInclude>
     <ClInclude Include="hyObject.h">
       <Filter>Engine\GameObject</Filter>
     </ClInclude>
@@ -302,9 +299,6 @@
     <ClInclude Include="hyCollider.h">
       <Filter>Engine\Component\Collider</Filter>
     </ClInclude>
-    <ClInclude Include="hyMonster.h">
-      <Filter>Contents\GameObject\Monster</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -341,9 +335,6 @@
     </ClCompile>
     <ClCompile Include="hyComponent.cpp">
       <Filter>Engine\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="hyPlayer.cpp">
-      <Filter>Contents\GameObject\Player</Filter>
     </ClCompile>
     <ClCompile Include="hySceneManager.cpp">
       <Filter>Engine\Scene</Filter>
@@ -443,9 +434,6 @@
     </ClCompile>
     <ClCompile Include="hyCollider.cpp">
       <Filter>Engine\Component\Collider</Filter>
-    </ClCompile>
-    <ClCompile Include="hyMonster.cpp">
-      <Filter>Contents\GameObject\Monster</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

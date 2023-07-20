@@ -27,13 +27,13 @@ namespace hy
 
 	private:
 
-		static UINT mCollisionCount;
+		static UINT mCollisionCount;			// .. 이부분 질문***
 
 		Vector2 mSize;
 		Vector2 mOffset;
 		Vector2 mPosition;
 
-		UINT mCollisionNumber;
-		bool mbIsCollision;
+		UINT mCollisionNumber;					// 충돌체가 각각의 고유 번호를 가짐	
+		bool mbIsCollision;						// 충돌하는게 눈에 보이게 하고 싶었을 때 변수
 	};
 }

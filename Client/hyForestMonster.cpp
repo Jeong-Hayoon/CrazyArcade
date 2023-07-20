@@ -76,5 +76,17 @@ namespace hy
 		GameObject::Render(hdc);
 	}
 
+	// 충돌했을 때 처리 코드 여기에 작성
+	void ForestMonster::OnCollisionEnter(Collider* other)
+	{
+	}
+
+	void ForestMonster::OnCollisionStay(Collider* other)
+	{
+	}
+
+	void ForestMonster::OnCollisionExit(Collider* other)
+	{
+
 }
 

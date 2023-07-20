@@ -14,6 +14,8 @@
 #include "hyAnimator.h"
 #include "hyBazzi.h"
 #include "hyForestMonster.h"
+#include "hyCollisionManager.h"
+
 
 extern hy::Application application;
 namespace hy
@@ -47,7 +49,8 @@ namespace hy
 
 		// 배찌 상하좌우 애니메이션
 		Bazzi* forestbazzi1 = object::Instantiate<Bazzi>(eLayerType::Player);
-		forestbazzi1->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
+		Transform* forestbazzitr = forestbazzi1->GetComponent<Transform>();
+		forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
 
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
@@ -60,8 +63,24 @@ namespace hy
 		bzprofilesr->SetScale(Vector2(0.8f, 0.8f));
 
 		// 포레스트 몬스터
-		ForestMonster* forestmonster = object::Instantiate<ForestMonster>(eLayerType::Player);
+		ForestMonster* forestmonster = object::Instantiate<ForestMonster>(eLayerType::Monster);
 		forestmonster->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
+
+		// 충돌 구현
+		Collider* col = forestbazzi1->AddComponent<Collider>();
+		col->SetSize(Vector2(100.0f, 100.0f));
+		//col->SetOffset(Vector2(10.0f, 10.0f));
+
+
+		col = forestmonster->AddComponent<Collider>();
+		col->SetSize(Vector2(100.0f, 100.0f));
+		//col->SetOffset(Vector2(10.0f, 10.0f));
+		forestbazzitr = forestmonster->GetComponent<Transform>();
+
+		forestbazzitr->SetPosition(Vector2(940.0f, 360.0f));
+
+		// 플레이어와 몬스터가 충돌
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
 		Scene::Initialize();
 	}

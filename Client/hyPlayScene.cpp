@@ -83,9 +83,6 @@ namespace hy
 		col->SetSize(Vector2(100.0f, 100.0f));
 		col->SetOffset(Vector2(10.0f, 10.0f));*/
 
-
-		
-
 	}
 	void PlayScene::Update()
 	{
