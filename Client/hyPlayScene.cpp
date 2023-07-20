@@ -1,6 +1,5 @@
 #include "hyPlayScene.h"
 #include "hyTitleScene.h"
-#include "hyPlayer.h"
 #include "hySpriteRenderer.h"
 #include "hyObject.h"
 #include "hySceneManager.h"

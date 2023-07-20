@@ -87,6 +87,6 @@ namespace hy
 
 	void ForestMonster::OnCollisionExit(Collider* other)
 	{
-
+	}
 }
 

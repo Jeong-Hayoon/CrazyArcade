@@ -5,6 +5,9 @@
 //충돌을 하기 위한 하나의 도형
 namespace hy
 {
+
+	UINT Collider::mCollisionCount = 0;
+
 	Collider::Collider()
 		:Component(eComponentType::Collider)
 		, mSize(Vector2::Zero)

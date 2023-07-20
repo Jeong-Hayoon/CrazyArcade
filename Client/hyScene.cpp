@@ -1,5 +1,4 @@
 #include "hyScene.h"
-#include "hyPlayer.h"
 #include "hySpriteRenderer.h"
 
 namespace hy
