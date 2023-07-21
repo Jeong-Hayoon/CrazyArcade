@@ -247,11 +247,11 @@ namespace hy
 
 		if (animator->IsActiveAnimationComplete())
 		{
-			animator->PlayAnimation(L"BazziIdle", true);
+			animator->PlayAnimation(L"bazziidle", true);
 			mState = eState::Idle;
 		}
 	}
-
+	 
 	void Bazzi::Dead()
 	{
 	}

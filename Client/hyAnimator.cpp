@@ -70,12 +70,18 @@ namespace hy
 			
 		std::filesystem::path fs(path);
 		std::vector<Texture*> images = {};
+
+		eTextureType texturetype = eTextureType::None;
+
 		for (auto& p : std::filesystem::recursive_directory_iterator(path))
 		{
 			std::wstring fileName = p.path().filename();
 			std::wstring fullName = p.path();
 
 			Texture* image = Resources::Load<Texture>(fileName, fullName);
+
+			texturetype = image->GetType();
+
 			images.push_back(image);
 
 			if (width < image->GetWidth())
@@ -91,13 +97,7 @@ namespace hy
 
 		Texture* spriteSheet = Texture::Create(spriteSheetName, width * fileCount, height);
 
-		spriteSheet->SetType(eTextureType::Bmp);
-
-		BITMAP info = {};			// 이미지에 대한 정보
-		GetObject(spriteSheet->GetHBitmap(), sizeof(BITMAP), &info);	// 이미지에 대한 정보를 info에 넣어주는 함수
-
-		if (info.bmBitsPixel == 32)
-			spriteSheet->SetType(eTextureType::AlphaBmp);
+		spriteSheet->SetType(texturetype);
 
 		int idx = 0;
 		for (Texture* image : images)
