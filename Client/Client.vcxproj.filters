@@ -159,6 +159,18 @@
     <Filter Include="Engine\Component\Collider">
       <UniqueIdentifier>{de6576a6-99f5-4d2e-8458-1fd9f08181b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Component\Rigidbody">
+      <UniqueIdentifier>{9f0a219b-b735-4652-8dcb-afab0bb9a6fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Effect">
+      <UniqueIdentifier>{ee8b8a0a-68c6-4ea6-b146-266fe7a50be0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\UI">
+      <UniqueIdentifier>{6f6f4f04-f5b3-4762-ab36-247e78a998ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Effect\Bomb">
+      <UniqueIdentifier>{9525be81-90b4-4c8f-821e-d86f6ee436ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -299,6 +311,12 @@
     <ClInclude Include="hyCollider.h">
       <Filter>Engine\Component\Collider</Filter>
     </ClInclude>
+    <ClInclude Include="hyRigidbody.h">
+      <Filter>Engine\Component\Rigidbody</Filter>
+    </ClInclude>
+    <ClInclude Include="hyBomb.h">
+      <Filter>Contents\GameObject\Effect\Bomb</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -434,6 +452,12 @@
     </ClCompile>
     <ClCompile Include="hyCollider.cpp">
       <Filter>Engine\Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="hyRigidbody.cpp">
+      <Filter>Engine\Component\Rigidbody</Filter>
+    </ClCompile>
+    <ClCompile Include="hyBomb.cpp">
+      <Filter>Contents\GameObject\Effect\Bomb</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

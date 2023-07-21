@@ -33,6 +33,7 @@ namespace hy::enums
 		Animation,
 		Animator,
 		Collider,
+		Rigidbody,
 		End,
 	};
 }

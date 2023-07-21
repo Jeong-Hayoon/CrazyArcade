@@ -12,6 +12,7 @@
 #include "hyAnimator.h"
 #include "hyTransform.h"
 #include "hyCollider.h"
+//#include "hyRigidbody.h"
 
 
 namespace hy
@@ -81,6 +82,10 @@ namespace hy
 		/*Collider* col = player->AddComponent<Collider>();
 		col->SetSize(Vector2(100.0f, 100.0f));
 		col->SetOffset(Vector2(10.0f, 10.0f));*/
+
+		// Rigidbody 
+		// player->AddComponent<Rigidbody>();
+
 
 	}
 	void PlayScene::Update()

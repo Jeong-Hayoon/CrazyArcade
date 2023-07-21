@@ -49,7 +49,7 @@ namespace hy
 		DeleteObject(defaultBitmap);
 
 		image->SetName(name);
-		image->SetType(eTextureType::AlphaBmp);	
+		//image->SetType(eTextureType::AlphaBmp);	
 		Resources::Insert<Texture>(name, image);
 
 		return image;

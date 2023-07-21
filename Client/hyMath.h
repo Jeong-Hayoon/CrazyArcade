@@ -1,4 +1,5 @@
 #pragma once
+#include <cmath>
 
 // hy::Math -> 이거 사용하려면 속성 들어가서 c++언어 표준을 20으로 변경해줘야 함
 
@@ -7,7 +8,7 @@ namespace hy::math // 위치를 표시할 구조체
 	struct Vector2 // 크기, 방향을 가지고 있는 수학적 표시 방법(방향과 길이가 같으면 동일한 벡터) - 점으로 표현할 수도 있음
 	{
 		static Vector2 Zero;
-		static Vector2 One;
+		static Vector2 One;		
 		static Vector2 Right;
 		static Vector2 Up;
 
@@ -36,6 +37,12 @@ namespace hy::math // 위치를 표시할 구조체
 			return temp;
 		}
 
+		Vector2 operator -()
+		{
+			return Vector2(-x, -y);
+		}
+
+
 		Vector2 operator-(const Vector2 other)
 		{
 			Vector2 temp;
@@ -44,13 +51,76 @@ namespace hy::math // 위치를 표시할 구조체
 			return temp;
 		}
 
-		Vector2 operator/(const float value)
+		Vector2 operator*(const Vector2& other)
 		{
 			Vector2 temp;
-			temp.x = x / value;
-			temp.y = y / value;
+			temp.x = x * other.x;
+			temp.y = y * other.y;
+
 			return temp;
 		}
+
+		Vector2 operator*(const float& value)
+		{
+			Vector2 temp;
+			temp.x = x * value;
+			temp.y = y * value;
+
+			return temp;
+		}
+
+		Vector2 operator/(const float& value)
+		{
+			Vector2 temp;
+
+			temp.x = x / value;
+			temp.y = y / value;
+
+			return temp;
+		}
+
+		Vector2& operator +=(const Vector2& other)
+		{
+			x += other.x;
+			y += other.y;
+
+			return *this;
+		}
+
+		Vector2& operator -=(const Vector2& other)
+		{
+			x -= other.x;
+			y -= other.y;
+
+			return *this;
+		}
+
+		bool operator ==(const Vector2& other)
+		{
+			return (x == other.x && y == other.y);
+		}
+
+
+		void clear()
+		{
+			x = 0.0f;
+			y = 0.0f;
+		}
+
+		float length()
+		{
+			return sqrtf(x * x + y * y);
+		}
+
+		Vector2 normalize()
+		{
+			float len = length();
+			x /= len;
+			y /= len;
+
+			return *this;
+		}
+
 	};
 }
 

@@ -37,6 +37,7 @@ namespace hy
 	void CollisionManager::Clear()
 	{
 		// 씬이 넘어갔을 때 기존 충돌 정보 초기화
+		// mLayerMasks->reset() for문 돌려야함
 		mLayerMasks->reset();
 		mCollisionMap.clear();
 	}
@@ -59,8 +60,6 @@ namespace hy
 			col = (UINT)left;
 			row = (UINT)right;
 		}
-
-		//레이어 마스크의 역할 - ?
 		mLayerMasks[row][col] = enable;
 	}
 

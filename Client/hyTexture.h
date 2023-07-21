@@ -45,6 +45,7 @@ namespace hy
 		Gdiplus::Image* GetImage() { return mImage; }
 		void SetHBitmap(HBITMAP bitmap) { mBitmap = bitmap; }
 		void SetHdc(HDC hdc) { mHdc = hdc; }
+		HBITMAP GetHBitmap() { return mBitmap; }
 
 	private:			
 		eTextureType mType;

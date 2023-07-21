@@ -15,7 +15,7 @@ namespace hy
 		, mCollisionNumber(-1)
 		, mbIsCollision(false)
 	{
-		mCollisionNumber = mCollisionCount;		// 이부분 질문***
+		mCollisionNumber = mCollisionCount;	
 		mCollisionCount++;
 	}
 
@@ -85,7 +85,7 @@ namespace hy
 	{
 		GetOwner()->OnCollisionStay(other);
 	}
-	void Collider::OnCollisionExit(Collider* other)			// 이부분 질문 ***
+	void Collider::OnCollisionExit(Collider* other)		// 막 빠져나갔을 때(충돌 X)
 	{
 		mbIsCollision = false;
 		GetOwner()->OnCollisionExit(other);

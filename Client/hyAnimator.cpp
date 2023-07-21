@@ -91,7 +91,13 @@ namespace hy
 
 		Texture* spriteSheet = Texture::Create(spriteSheetName, width * fileCount, height);
 
-		spriteSheet->SetType(eTextureType::AlphaBmp);
+		spriteSheet->SetType(eTextureType::Bmp);
+
+		BITMAP info = {};			// 이미지에 대한 정보
+		GetObject(spriteSheet->GetHBitmap(), sizeof(BITMAP), &info);	// 이미지에 대한 정보를 info에 넣어주는 함수
+
+		if (info.bmBitsPixel == 32)
+			spriteSheet->SetType(eTextureType::AlphaBmp);
 
 		int idx = 0;
 		for (Texture* image : images)

@@ -4,7 +4,7 @@
 #include "hyTime.h"
 #include "hyAnimator.h"
 #include "hyResources.h"
-// #include "hyForestMap1.h"
+//#include "hyForestMap1.h"
 #include "hySpriteRenderer.h"
 #include "hyObject.h"
 #include "hySceneManager.h"
@@ -12,10 +12,15 @@
 #include "hyInput.h"
 #include "hyTexture.h"
 #include "hyResources.h"
+//#include "hyRigidbody.h"
+#include "hyBomb.h"
+
+
 
 namespace hy
 {
 	Bazzi::Bazzi()
+		: mState(eState::Idle)
 	{
 	}
 	Bazzi::~Bazzi()
@@ -67,6 +72,13 @@ namespace hy
 			break;
 		}
 
+		if (Input::GetKeyDown(eKeyCode::Space))
+		{
+			Bomb* Bomb_ = object::Instantiate<Bomb>(eLayerType::Effect);
+			Transform* Bazzitr = GetComponent<Transform>();
+			Bomb_->GetComponent<Transform>()->SetPosition(Bazzitr->GetPosition());
+		}
+
 	}
 	void Bazzi::Render(HDC hdc)
 	{
@@ -86,7 +98,7 @@ namespace hy
 	// 동시 키 입력 시 예외처리 필요
 	void Bazzi::Idle()
 	{
-		Animator* animator = GetComponent<Animator>();
+		Animator* animator = GetComponent<Animator>();	
 
 		if (Input::GetKey(eKeyCode::Up))
 		{
@@ -190,6 +202,7 @@ namespace hy
 			mState = eState::DropWater;
 		}*/
 	}
+
 	void Bazzi::Move()
 	{
 		Transform* tr = GetComponent<Transform>();
@@ -197,6 +210,8 @@ namespace hy
 
 		if (Input::GetKey(eKeyCode::Up))
 		{
+			// Rigidbody 사용 시 pos를 주석 처리
+			// GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, -200.0f));
 			pos.y -= 250.0f * Time::DeltaTime();
 		}
 		else if (Input::GetKey(eKeyCode::Left))
@@ -212,6 +227,7 @@ namespace hy
 			pos.x += 250.0f * Time::DeltaTime();
 		}
 
+		// Rigidbody 사용지 주석처리 필요
 		tr->SetPosition(pos);
 
 		if (Input::GetKeyUp(eKeyCode::Up)

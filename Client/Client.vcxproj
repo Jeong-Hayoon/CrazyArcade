@@ -135,6 +135,7 @@
     <ClInclude Include="hyAnimator.h" />
     <ClInclude Include="hyBackGround.h" />
     <ClInclude Include="hyBazzi.h" />
+    <ClInclude Include="hyBomb.h" />
     <ClInclude Include="hyCamera.h" />
     <ClInclude Include="hyCollider.h" />
     <ClInclude Include="hyCollisionManager.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="hyPirateMap2.h" />
     <ClInclude Include="hyPirateMap3.h" />
     <ClInclude Include="hyPirateMonster.h" />
+    <ClInclude Include="hyRigidbody.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="hyTexture.h" />
     <ClInclude Include="hyLobbyScene.h" />
@@ -181,6 +183,7 @@
     <ClCompile Include="hyAnimator.cpp" />
     <ClCompile Include="hyBackGround.cpp" />
     <ClCompile Include="hyBazzi.cpp" />
+    <ClCompile Include="hyBomb.cpp" />
     <ClCompile Include="hyCamera.cpp" />
     <ClCompile Include="hyCollider.cpp" />
     <ClCompile Include="hyCollisionManager.cpp" />
@@ -200,6 +203,7 @@
     <ClCompile Include="hyPirateMap2.cpp" />
     <ClCompile Include="hyPirateMap3.cpp" />
     <ClCompile Include="hyPirateMonster.cpp" />
+    <ClCompile Include="hyRigidbody.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="hyTexture.cpp" />
     <ClCompile Include="hyLobbyScene.cpp" />

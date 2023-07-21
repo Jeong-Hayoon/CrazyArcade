@@ -27,7 +27,7 @@ namespace hy
 
 	private:
 
-		static UINT mCollisionCount;			// .. 이부분 질문***
+		static UINT mCollisionCount;			// 고유번호 축적을 위한 변수
 
 		Vector2 mSize;
 		Vector2 mOffset;
