@@ -68,7 +68,6 @@ namespace hy
 	{
 	}
 
-	// 동시 키 입력 시 예외처리 필요
 	void Bomb::Idle()
 	{
 		Animator* bt = GetComponent<Animator>();
