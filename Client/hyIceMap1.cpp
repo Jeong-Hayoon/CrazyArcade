@@ -12,7 +12,7 @@
 #include "hyTransform.h"
 #include "hyAnimator.h"
 #include "hyBazzi.h"
-#include "hyPirateMonster.h"
+#include "hyIceMonster.h"
 
 
 
@@ -65,8 +65,8 @@ namespace hy
 		/*std::wstring name = player->GetName();*/
 
 		// 아이스 몬스터
-		PirateMonster* icemonster = object::Instantiate<PirateMonster>(eLayerType::Player);
-		icemonster->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
+		IceMonster* icemonster = object::Instantiate<IceMonster>(eLayerType::Monster);
+		icemonster->GetComponent<Transform>()->SetPosition(Vector2(80.0f, 70.0f));
 
 		Scene::Initialize();
 

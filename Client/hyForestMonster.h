@@ -6,6 +6,13 @@ namespace hy
 	class ForestMonster : public GameObject
 	{
 	public:
+		enum class eState
+		{
+			Move,
+			Dead,
+			End,
+		};
+
 		ForestMonster();
 		virtual ~ForestMonster();
 
@@ -17,7 +24,12 @@ namespace hy
 		virtual void OnCollisionStay(class Collider* other);
 		virtual void OnCollisionExit(class Collider* other);
 
+		void Move();
+		void Dead();
+
 	private:
+		eState mState;
+
 	};
 }
 

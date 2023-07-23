@@ -32,14 +32,21 @@ namespace hy
 		Texture* Bazzi_ = Resources::Load<Texture>(L"Bazzi"
 			, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");
 
-		/*bazzi->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));*/
-
 		Animator* at = AddComponent<Animator>();
 		at->CreateAnimation(L"BazziIdle", Bazzi_, Vector2(0.0f, 0.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.6f);
+
 		at->CreateAnimation(L"BazziUp", Bazzi_, Vector2(0.0f, 60.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+		at->CreateAnimation(L"BazziUpStop", Bazzi_, Vector2(0.0f, 60.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
+
 		at->CreateAnimation(L"BazziDown", Bazzi_, Vector2(0.0f, 120.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+		at->CreateAnimation(L"BazziDownStop", Bazzi_, Vector2(0.0f, 120.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
+
 		at->CreateAnimation(L"BazziRight", Bazzi_, Vector2(0.0f, 240.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+		at->CreateAnimation(L"BazziRightStop", Bazzi_, Vector2(0.0f, 240.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
+
 		at->CreateAnimation(L"BazziLeft", Bazzi_, Vector2(0.0f, 180.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+		at->CreateAnimation(L"BazziLeftStop", Bazzi_, Vector2(0.0f, 180.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.05f);
+
 		at->CreateAnimation(L"BazziDie", Bazzi_, Vector2(0.0f, 300.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
 
 		at->PlayAnimation(L"BazziIdle", true);
@@ -47,7 +54,7 @@ namespace hy
 
 		GameObject::Initialize();
 	}
-	void Bazzi::Update()
+	void Bazzi::Update()	// 상태 변화만 업데이트에서 
 	{
 		GameObject::Update();
 
@@ -195,7 +202,6 @@ namespace hy
 			}
 		}
 
-
 		/*if (Input::GetKey(eKeyCode::MouseLeft))
 		{
 			animator->PlayAnimation(L"PlayerDropWater", false);
@@ -227,18 +233,53 @@ namespace hy
 			pos.x += 250.0f * Time::DeltaTime();
 		}
 
-		// Rigidbody 사용지 주석처리 필요
+		// Rigidbody 사용시 주석처리 필요
 		tr->SetPosition(pos);
 
-		if (Input::GetKeyUp(eKeyCode::Up)
-			|| Input::GetKeyUp(eKeyCode::Left)
-			|| Input::GetKeyUp(eKeyCode::Down)
-			|| Input::GetKeyUp(eKeyCode::Right))
+		static float BazziTime= 0.f;
+		BazziTime += Time::DeltaTime();
+		Animator* animator = GetComponent<Animator>();
+
+		if(Input::GetKeyUp(eKeyCode::Up) && BazziTime < 5)
 		{
-			Animator* animator = GetComponent<Animator>();
+			animator->PlayAnimation(L"BazziUpStop", true);
+		}
+		else if(Input::GetKeyUp(eKeyCode::Up) && BazziTime > 5)
+		{
 			animator->PlayAnimation(L"BazziIdle", true);
 			mState = eState::Idle;
 		}
+
+		if (Input::GetKeyUp(eKeyCode::Left) && BazziTime < 5)
+		{
+			animator->PlayAnimation(L"BazziLeftStop", true);
+		}
+		else if (Input::GetKeyUp(eKeyCode::Left) && BazziTime > 5)
+		{
+			animator->PlayAnimation(L"BazziIdle", true);
+			mState = eState::Idle;
+		}
+
+		if (Input::GetKeyUp(eKeyCode::Down) && BazziTime < 5)
+		{
+			animator->PlayAnimation(L"BazziDownStop", true);
+		}
+		else if (Input::GetKeyUp(eKeyCode::Down) && BazziTime > 5)
+		{
+			animator->PlayAnimation(L"BazziIdle", true);
+			mState = eState::Idle;
+		}
+
+		if (Input::GetKeyUp(eKeyCode::Right) && BazziTime < 5)
+		{
+			animator->PlayAnimation(L"BazziRightStop", true);
+		}
+		else if (Input::GetKeyUp(eKeyCode::Right) && BazziTime > 5)
+		{
+			animator->PlayAnimation(L"BazziIdle", true);
+			mState = eState::Idle;
+		}
+
 	}
 	void Bazzi::DropWater()
 	{

@@ -63,23 +63,22 @@ namespace hy
 
 		// 포레스트 몬스터
 		ForestMonster* forestmonster = object::Instantiate<ForestMonster>(eLayerType::Monster);
-		forestmonster->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
+		forestmonster->GetComponent<Transform>()->SetPosition(Vector2(80.0f, 70.0f));
 
-		// 충돌 구현
-		Collider* col = forestbazzi1->AddComponent<Collider>();
-		col->SetSize(Vector2(100.0f, 100.0f));
-		//col->SetOffset(Vector2(10.0f, 10.0f));
+		//// 충돌 구현
+		//Collider* col = forestbazzi1->AddComponent<Collider>();
+		//col->SetSize(Vector2(100.0f, 100.0f));
+		////col->SetOffset(Vector2(10.0f, 10.0f));
 
+		//col = forestmonster->AddComponent<Collider>();
+		//col->SetSize(Vector2(100.0f, 100.0f));
+		////col->SetOffset(Vector2(10.0f, 10.0f));
+		//forestbazzitr = forestmonster->GetComponent<Transform>();
 
-		col = forestmonster->AddComponent<Collider>();
-		col->SetSize(Vector2(100.0f, 100.0f));
-		//col->SetOffset(Vector2(10.0f, 10.0f));
-		forestbazzitr = forestmonster->GetComponent<Transform>();
+		//forestbazzitr->SetPosition(Vector2(940.0f, 360.0f));
 
-		forestbazzitr->SetPosition(Vector2(940.0f, 360.0f));
-
-		// 플레이어와 몬스터가 충돌
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
+		//// 플레이어와 몬스터가 충돌
+		//CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
 		Scene::Initialize();
 	}

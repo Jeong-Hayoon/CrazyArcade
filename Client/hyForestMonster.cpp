@@ -24,11 +24,11 @@ namespace hy
 	void ForestMonster::Initialize()
 	{
 		Animator* mt = AddComponent<Animator>();
-		mt->CreateAnimationFolder(L"ForestMosterUp", L"..\\Resources\\Image\\Monster\\Forest\\Up");
-		mt->CreateAnimationFolder(L"ForestMosterDown", L"..\\Resources\\Image\\Monster\\Forest\\Down");
-		mt->CreateAnimationFolder(L"ForestMosterRight", L"..\\Resources\\Image\\Monster\\Forest\\Right");
-		mt->CreateAnimationFolder(L"ForestMosterLeft", L"..\\Resources\\Image\\Monster\\Forest\\Left");
-		mt->CreateAnimationFolder(L"ForestMonsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die"); 
+		mt->CreateAnimationFolder(L"ForestMosterUp", L"..\\Resources\\Image\\Monster\\Forest\\Up", Vector2::Zero, 0.4f);
+		mt->CreateAnimationFolder(L"ForestMosterDown", L"..\\Resources\\Image\\Monster\\Forest\\Down",Vector2::Zero, 0.4f);
+		mt->CreateAnimationFolder(L"ForestMosterRight", L"..\\Resources\\Image\\Monster\\Forest\\Right", Vector2::Zero, 0.4f);
+		mt->CreateAnimationFolder(L"ForestMosterLeft", L"..\\Resources\\Image\\Monster\\Forest\\Left", Vector2::Zero, 0.4f);
+		mt->CreateAnimationFolder(L"ForestMonsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die", Vector2::Zero, 0.4f);
 		mt->PlayAnimation(L"ForestMosterRight", true);
 
 		GameObject::Initialize();
@@ -37,6 +37,30 @@ namespace hy
 	{
 		GameObject::Update();
 
+		switch (mState)
+		{
+		case hy::ForestMonster::eState::Move:
+			Move();
+			break;
+
+		case hy::ForestMonster::eState::Dead:
+			Dead();
+			break;
+
+		case hy::ForestMonster::eState::End:
+			break;
+
+		default:
+			break;
+		}
+	}
+	void ForestMonster::Render(HDC hdc)
+	{
+		GameObject::Render(hdc);
+	}
+
+	void ForestMonster::Move()
+	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		Animator* anim = GetComponent<Animator>();
@@ -70,10 +94,7 @@ namespace hy
 		}
 
 		tr->SetPosition(pos);
-	}
-	void ForestMonster::Render(HDC hdc)
-	{
-		GameObject::Render(hdc);
+		
 	}
 
 	// 충돌했을 때 처리 코드 여기에 작성
@@ -86,6 +107,10 @@ namespace hy
 	}
 
 	void ForestMonster::OnCollisionExit(Collider* other)
+	{
+	}
+
+	void ForestMonster::Dead()
 	{
 	}
 }

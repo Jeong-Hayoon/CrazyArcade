@@ -9,6 +9,8 @@
 #include "hyResources.h"
 #include "hyBackGround.h"
 #include "hyTransform.h"
+#include "hyBazzi.h"
+
 
 extern hy::Application application;
 namespace hy
@@ -42,6 +44,10 @@ namespace hy
 		Charactor->GetComponent<Transform>()->SetPosition(Vector2(115.0f, 160.0f));
 		SpriteRenderer* Charactorsr = Charactor->AddComponent<SpriteRenderer>();
 		Charactorsr->SetImage(Bazzi);
+
+		//Bazzi* Lobbytbazzi = object::Instantiate<Bazzi>(eLayerType::Player);
+		//Transform* forestbazzitr = Lobbytbazzi->GetComponent<Transform>();
+		//forestbazzitr->SetPosition(Vector2(115.0f, 160.0f));
 
 		// 캐릭터 선택 창
 		Texture* CharSelect = Resources::Load<Texture>(L"CharSelectImage"

@@ -317,6 +317,9 @@
     <ClInclude Include="hyBomb.h">
       <Filter>Contents\GameObject\Effect\Bomb</Filter>
     </ClInclude>
+    <ClInclude Include="hyIceMonster.h">
+      <Filter>Contents\GameObject\Monster\IceMap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -458,6 +461,9 @@
     </ClCompile>
     <ClCompile Include="hyBomb.cpp">
       <Filter>Contents\GameObject\Effect\Bomb</Filter>
+    </ClCompile>
+    <ClCompile Include="hyIceMonster.cpp">
+      <Filter>Contents\GameObject\Monster\IceMap</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

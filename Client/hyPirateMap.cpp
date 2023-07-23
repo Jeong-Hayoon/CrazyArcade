@@ -62,8 +62,8 @@ namespace hy
 		bzprofilesr->SetScale(Vector2(0.8f, 0.8f));
 
 		// 피라테 몬스터
-		PirateMonster* piratemonster = object::Instantiate<PirateMonster>(eLayerType::Player);
-		piratemonster->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
+		PirateMonster* piratemonster = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		piratemonster->GetComponent<Transform>()->SetPosition(Vector2(80.0f, 70.0f));
 
 		Scene::Initialize();
 	}

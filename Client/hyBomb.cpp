@@ -21,7 +21,7 @@ namespace hy
 		: mState(eState::Idle)
 	{
 		Animator* bt = AddComponent<Animator>();
-		bt->CreateAnimationFolder(L"Bombidle", L"..\\Resources\\Image\\Bomb\\Idle");
+		bt->CreateAnimationFolder(L"Bombidle", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f,70.f), 0.4f);
 
 		bt->PlayAnimation(L"Bombidle", true);
 
@@ -70,8 +70,7 @@ namespace hy
 
 	void Bomb::Idle()
 	{
-		Animator* bt = GetComponent<Animator>();
-		bt->PlayAnimation(L"Bombidle", true);
+
 
 	}
 	void Bomb::Pop()
