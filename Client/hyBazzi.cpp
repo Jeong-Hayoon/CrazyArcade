@@ -21,6 +21,7 @@ namespace hy
 {
 	Bazzi::Bazzi()
 		: mState(eState::Idle)
+		,mDirection(eDirection::Down)
 	{
 	}
 	Bazzi::~Bazzi()
@@ -36,16 +37,16 @@ namespace hy
 		at->CreateAnimation(L"BazziIdle", Bazzi_, Vector2(0.0f, 0.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.6f);
 
 		at->CreateAnimation(L"BazziUp", Bazzi_, Vector2(0.0f, 60.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
-		at->CreateAnimation(L"BazziUpStop", Bazzi_, Vector2(0.0f, 60.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
+		at->CreateAnimation(L"BazziUpStop", Bazzi_, Vector2(50.0f, 60.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
 
 		at->CreateAnimation(L"BazziDown", Bazzi_, Vector2(0.0f, 120.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
-		at->CreateAnimation(L"BazziDownStop", Bazzi_, Vector2(0.0f, 120.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
+		at->CreateAnimation(L"BazziDownStop", Bazzi_, Vector2(50.0f, 120.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
 
 		at->CreateAnimation(L"BazziRight", Bazzi_, Vector2(0.0f, 240.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
-		at->CreateAnimation(L"BazziRightStop", Bazzi_, Vector2(0.0f, 240.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
+		at->CreateAnimation(L"BazziRightStop", Bazzi_, Vector2(50.0f, 240.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
 
 		at->CreateAnimation(L"BazziLeft", Bazzi_, Vector2(0.0f, 180.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
-		at->CreateAnimation(L"BazziLeftStop", Bazzi_, Vector2(0.0f, 180.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.05f);
+		at->CreateAnimation(L"BazziLeftStop", Bazzi_, Vector2(50.0f, 180.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
 
 		at->CreateAnimation(L"BazziDie", Bazzi_, Vector2(0.0f, 300.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
 
@@ -67,6 +68,9 @@ namespace hy
 		case hy::Bazzi::eState::Move:
 			Move();
 			break;
+		case hy::Bazzi::eState::MoveStop:
+			MoveStop();
+			break;
 		case hy::Bazzi::eState::DropWater:
 			DropWater();
 			break;
@@ -79,11 +83,27 @@ namespace hy
 			break;
 		}
 
+
 		if (Input::GetKeyDown(eKeyCode::Space))
 		{
 			Bomb* Bomb_ = object::Instantiate<Bomb>(eLayerType::Effect);
 			Transform* Bazzitr = GetComponent<Transform>();
-			Bomb_->GetComponent<Transform>()->SetPosition(Bazzitr->GetPosition());
+			if (mDirection == eDirection::Up)
+			{
+				Bomb_->GetComponent<Transform>()->SetPosition(Bazzitr->GetPosition());
+			}
+			else if (mDirection == eDirection::Down)
+			{
+				Bomb_->GetComponent<Transform>()->SetPosition(Bazzitr->GetPosition());
+			}
+			else if (mDirection == eDirection::Left)
+			{
+				Bomb_->GetComponent<Transform>()->SetPosition(Bazzitr->GetPosition());
+			}
+			else if (mDirection == eDirection::Right)
+			{
+				Bomb_->GetComponent<Transform>()->SetPosition(Bazzitr->GetPosition());
+			}
 		}
 
 	}
@@ -101,106 +121,37 @@ namespace hy
 	void Bazzi::OnCollisionExit(Collider* other)
 	{
 	}
-
-	// 동시 키 입력 시 예외처리 필요
+ 
 	void Bazzi::Idle()
 	{
 		Animator* animator = GetComponent<Animator>();	
 
-		if (Input::GetKey(eKeyCode::Up))
-		{
-			if (Input::GetKey(eKeyCode::Left))
-			{
-				animator->PlayAnimation(L"BazziLeft", true);
-				mState = eState::Move;
-			}
-			else if (Input::GetKey(eKeyCode::Right))
-			{
-				animator->PlayAnimation(L"BazziRight", true);
-				mState = eState::Move;
-			}
-			else if (Input::GetKey(eKeyCode::Down))
-			{
-				animator->PlayAnimation(L"BazziDown", true);
-				mState = eState::Move;
-			}
-			else
-			{
-				animator->PlayAnimation(L"BazziUp", true);
-				mState = eState::Move;
-			}
-		}
-		else if (Input::GetKey(eKeyCode::Left))
-		{
 
-			if (Input::GetKey(eKeyCode::Up))
-			{
-				animator->PlayAnimation(L"BazziUp", true);
-				mState = eState::Move;
-			}
-			else if (Input::GetKey(eKeyCode::Right))
-			{
-				animator->PlayAnimation(L"BazziRight", true);
-				mState = eState::Move;
-			}
-			else if (Input::GetKey(eKeyCode::Down))
-			{
-				animator->PlayAnimation(L"BazziDown", true);
-				mState = eState::Move;
-			}
-			else
-			{
-				animator->PlayAnimation(L"BazziLeft", true);
-				mState = eState::Move;
-			}
-		}
-		else if (Input::GetKey(eKeyCode::Down))
+		if (Input::GetKeyDown(eKeyCode::Left))		// 왼쪽 키를 누르면 왼쪽 애니메이션 실행
 		{
+			animator->PlayAnimation(L"BazziLeft", true);
+			mState = eState::Move;
+			mDirection = eDirection::Left;
+		}
+		if (Input::GetKeyDown(eKeyCode::Right))		// 오른쪽 키를 누르면 오른쪽 애니메이션 실행
+		{
+			animator->PlayAnimation(L"BazziRight", true);
+			mState = eState::Move;
+			mDirection = eDirection::Right;
+		}
+		if (Input::GetKeyDown(eKeyCode::Up))		// 위쪽 키를 누르면 위쪽 애니메이션 실행
+		{
+			animator->PlayAnimation(L"BazziUp", true);
+			mState = eState::Move;
+			mDirection = eDirection::Up;
+		}
+		if (Input::GetKeyDown(eKeyCode::Down))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행
+		{
+			animator->PlayAnimation(L"BazziDown", true);
+			mState = eState::Move;
+			mDirection = eDirection::Down;
+		}
 
-			if (Input::GetKey(eKeyCode::Left))
-			{
-				animator->PlayAnimation(L"BazziLeft", true);
-				mState = eState::Move;
-			}
-			else if (Input::GetKey(eKeyCode::Right))
-			{
-				animator->PlayAnimation(L"BazziRight", true);
-				mState = eState::Move;
-			}
-			else if (Input::GetKey(eKeyCode::Up))
-			{
-				animator->PlayAnimation(L"BazziUp", true);
-				mState = eState::Move;
-			}
-			else
-			{
-				animator->PlayAnimation(L"BazziDown", true);
-				mState = eState::Move;
-			}
-		}
-		else if (Input::GetKey(eKeyCode::Right))
-		{
-			if (Input::GetKey(eKeyCode::Left))
-			{
-				animator->PlayAnimation(L"BazziLeft", true);
-				mState = eState::Move;
-			}
-			else if (Input::GetKey(eKeyCode::Up))
-			{
-				animator->PlayAnimation(L"BazziUp", true);
-				mState = eState::Move;
-			}
-			else if (Input::GetKey(eKeyCode::Down))
-			{
-				animator->PlayAnimation(L"BazziDown", true);
-				mState = eState::Move;
-			}
-			else
-			{
-				animator->PlayAnimation(L"BazziRight", true);
-				mState = eState::Move;
-			}
-		}
 
 		/*if (Input::GetKey(eKeyCode::MouseLeft))
 		{
@@ -213,84 +164,88 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-
-		if (Input::GetKey(eKeyCode::Up))
-		{
-			// Rigidbody 사용 시 pos를 주석 처리
-			// GetComponent<Rigidbody>()->AddForce(Vector2(0.0f, -200.0f));
-			pos.y -= 250.0f * Time::DeltaTime();
-		}
-		else if (Input::GetKey(eKeyCode::Left))
-		{
-			pos.x -= 250.0f * Time::DeltaTime();
-		}
-		else if (Input::GetKey(eKeyCode::Down))
-		{
-			pos.y += 250.0f * Time::DeltaTime();
-		}
-		else if (Input::GetKey(eKeyCode::Right))
-		{
-			pos.x += 250.0f * Time::DeltaTime();
-		}
-
-		// Rigidbody 사용시 주석처리 필요
-		tr->SetPosition(pos);
-
-		static float BazziTime= 0.f;
-		BazziTime += Time::DeltaTime();
 		Animator* animator = GetComponent<Animator>();
 
-		if(Input::GetKeyUp(eKeyCode::Up) && BazziTime < 5)
+ 		if (mDirection == eDirection::Up)			// 방향이 위쪽이면 위쪽으로 이동
+			pos.y -= 150.f * Time::DeltaTime();
+		else if (mDirection == eDirection::Left)	// 방향이 왼쪽이면 왼쪽으로 이동
+			pos.x -= 150.f * Time::DeltaTime();
+		else if (mDirection == eDirection::Right)	// 방향이 오른쪽이면 오른쪽으로 이동
+			pos.x += 150.f * Time::DeltaTime();
+		else if (mDirection == eDirection::Down)	// 방향이 아래쪽이면 아래쪽으로 이동
+			pos.y += 150.f * Time::DeltaTime();
+
+		tr->SetPosition(pos);
+
+		if (Input::GetKeyDown(eKeyCode::Left))		// 어떤 키를 누르고 이따가 왼쪽 키를 눌렀을 때
 		{
-			animator->PlayAnimation(L"BazziUpStop", true);
+			animator->PlayAnimation(L"BazziLeft", true);
+			mDirection = eDirection::Left;
 		}
-		else if(Input::GetKeyUp(eKeyCode::Up) && BazziTime > 5)
+		if (Input::GetKeyDown(eKeyCode::Right))
 		{
-			animator->PlayAnimation(L"BazziIdle", true);
-			mState = eState::Idle;
+			animator->PlayAnimation(L"BazziRight", true);
+			mDirection = eDirection::Right;
+		}
+		if (Input::GetKeyDown(eKeyCode::Up))
+		{
+			animator->PlayAnimation(L"BazziUp", true);
+			mDirection = eDirection::Up;
+		}
+		if (Input::GetKeyDown(eKeyCode::Down))
+		{
+			animator->PlayAnimation(L"BazziDown", true);
+			mDirection = eDirection::Down;
 		}
 
-		if (Input::GetKeyUp(eKeyCode::Left) && BazziTime < 5)
+		if (!Input::GetKey(eKeyCode::Up) && !Input::GetKey(eKeyCode::Down)
+			&& !Input::GetKey(eKeyCode::Left) && !Input::GetKey(eKeyCode::Right))
 		{
-			animator->PlayAnimation(L"BazziLeftStop", true);
-		}
-		else if (Input::GetKeyUp(eKeyCode::Left) && BazziTime > 5)
-		{
-			animator->PlayAnimation(L"BazziIdle", true);
-			mState = eState::Idle;
-		}
-
-		if (Input::GetKeyUp(eKeyCode::Down) && BazziTime < 5)
-		{
-			animator->PlayAnimation(L"BazziDownStop", true);
-		}
-		else if (Input::GetKeyUp(eKeyCode::Down) && BazziTime > 5)
-		{
-			animator->PlayAnimation(L"BazziIdle", true);
-			mState = eState::Idle;
-		}
-
-		if (Input::GetKeyUp(eKeyCode::Right) && BazziTime < 5)
-		{
-			animator->PlayAnimation(L"BazziRightStop", true);
-		}
-		else if (Input::GetKeyUp(eKeyCode::Right) && BazziTime > 5)
-		{
-			animator->PlayAnimation(L"BazziIdle", true);
-			mState = eState::Idle;
+			mState = eState::MoveStop;
 		}
 
 	}
+
+	void Bazzi::MoveStop()
+	{
+		static float time = 0.f;
+		time += Time::DeltaTime();
+		Animator* animator = GetComponent<Animator>();
+
+		if (mDirection == eDirection::Up)
+		{
+			animator->PlayAnimation(L"BazziUpStop", true);
+		}
+		if (mDirection == eDirection::Down)
+		{
+			animator->PlayAnimation(L"BazziDownStop", true);
+		}
+		if (mDirection == eDirection::Left)
+		{
+			animator->PlayAnimation(L"BazziLeftStop", true);
+		}
+		if (mDirection == eDirection::Right)
+		{
+			animator->PlayAnimation(L"BazziRightStop", true); 
+		}
+		if (time > 3.f)
+		{
+			animator->PlayAnimation(L"BazziIdle", true);
+			mState = eState::Idle;
+			time = 0.f;
+		}
+	}
+
 	void Bazzi::DropWater()
 	{
 		// 농작물에 물을 주는 로직이 추가가된다.
-		Animator* animator = GetComponent<Animator>();
+		/*Animator* animator = GetComponent<Animator>();
 
 		if (animator->IsActiveAnimationComplete())
 		{
 			animator->PlayAnimation(L"bazziidle", true);
 			mState = eState::Idle;
-		}
+		}*/
 	}
 	 
 	void Bazzi::Dead()

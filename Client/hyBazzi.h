@@ -6,10 +6,20 @@ namespace hy
 	class Bazzi : public GameObject
 	{
 	public:
+		enum class eDirection
+		{
+			Up,
+			Down,
+			Left,
+			Right
+		};
+
+
 		enum class eState
 		{
 			Idle,
 			Move,
+			MoveStop,
 			DropWater,
 			Death,
 			End,
@@ -25,14 +35,17 @@ namespace hy
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
 
+		eDirection GetDirection() { return mDirection; }
+
 		void Idle();
 		void Move();
+		void MoveStop();
 		void DropWater();
 		void Dead();
 
 	private:
 		eState mState;
-
+		eDirection mDirection;
 	};
 }
 

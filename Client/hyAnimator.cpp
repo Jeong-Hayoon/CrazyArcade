@@ -45,6 +45,7 @@ namespace hy
 		, Vector2 offset			// 실제 위치와 애니메이션 사용되는 위치를 따로 구하기 위해 사용
 		, float duration)			// 애니메이션이 넘어가는 시간(실행되는 시간 제외)
 	{	
+		SetName(name);
 		Animation* animation = nullptr;
 		animation = FindAnimation(name);
 		if (animation != nullptr)		
