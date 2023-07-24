@@ -77,7 +77,6 @@ namespace hy
 		//at->SetScale(Vector2(2.0f, 2.0f));
 		//at->SetAffectedCamera(true);
 
-
 		// 충돌
 		/*Collider* col = player->AddComponent<Collider>();
 		col->SetSize(Vector2(100.0f, 100.0f));
@@ -86,6 +85,17 @@ namespace hy
 		// Rigidbody 
 		// player->AddComponent<Rigidbody>();
 
+		// 중력
+		// Floor* floor = object::Instantiate<Floor>(eLayerType::Floor);
+		//col = floor->AddComponent<Collider>();
+		//col->SetSize(Vector2(1500.0f, 100.0f));
+		//col->SetOffset(Vector2(10.0f, 10.0f));
+		//tr = floor->GetComponent<Transform>();
+
+		//tr->SetPosition(Vector2(600.0f, 600.0f));
+
+		//CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
+		//CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
 
 	}
 	void PlayScene::Update()

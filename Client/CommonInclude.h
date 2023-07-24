@@ -19,6 +19,7 @@ namespace hy::enums
 	enum class eLayerType
 	{
 		Background,
+		Floor,
 		Player,
 		Monster,
 		Effect,

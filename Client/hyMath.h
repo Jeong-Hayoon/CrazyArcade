@@ -5,6 +5,9 @@
 
 namespace hy::math // 위치를 표시할 구조체
 {
+	#define PI 3.141592f
+
+
 	struct Vector2 // 크기, 방향을 가지고 있는 수학적 표시 방법(방향과 길이가 같으면 동일한 벡터) - 점으로 표현할 수도 있음
 	{
 		static Vector2 Zero;
@@ -95,6 +98,14 @@ namespace hy::math // 위치를 표시할 구조체
 			return *this;
 		}
 
+		Vector2& operator *=(const float& value)
+		{
+			x *= value;
+			y *= value;
+
+			return *this;
+		}	
+
 		bool operator ==(const Vector2& other)
 		{
 			return (x == other.x && y == other.y);
@@ -120,9 +131,27 @@ namespace hy::math // 위치를 표시할 구조체
 
 			return *this;
 		}
-
 	};
+
+	inline Vector2 Rotate(Vector2 vector, float degree)
+	{
+		float radian = (degree / 180.f) * PI;
+		vector.normalize();
+		float x = cosf(radian) * vector.x - sinf(radian) * vector.y;
+		float y = sinf(radian) * vector.x + cosf(radian) * vector.y;
+
+		return Vector2(x, y);
+	}
+
+	inline float Dot(Vector2& v1, Vector2& v2)
+	{
+		return v1.x * v2.x + v1.y * v2.y;
+	}
+
+	inline float Cross(Vector2 v1, Vector2 v2)
+	{
+		return v1.x * v2.y - v1.y * v2.x;
+	}
 }
 
 // 기저 벡터 : (1,0)과 (0,1)를 통해 다양한 벡터를 표시할 수 있음
-// ? 초기화를 해줘야 하는 경우와 안해줘도 되는 경우 질문

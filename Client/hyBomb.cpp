@@ -23,9 +23,6 @@ namespace hy
 	{
 		Animator* bt = AddComponent<Animator>();
 		bt->CreateAnimationFolder(L"BombidleBottom", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
-	/*	bt->CreateAnimationFolder(L"BombidleTop", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
-		bt->CreateAnimationFolder(L"BombidleLeft", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
-		bt->CreateAnimationFolder(L"BombidleRight", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);*/
 
 		bt->PlayAnimation(L"BombidleBottom", true);
 
@@ -74,22 +71,7 @@ namespace hy
 
 	void Bomb::Idle()
 	{
-		/*if (Bazzi::GetDirection() == Up)
-		{
-			animator->PlayAnimation(L"BazziUpStop", true);
-		}
-		if (mDirection == eDirection::Down)
-		{
-			animator->PlayAnimation(L"BazziDownStop", true);
-		}
-		if (mDirection == eDirection::Left)
-		{
-			animator->PlayAnimation(L"BazziLeftStop", true);
-		}
-		if (mDirection == eDirection::Right)
-		{
-			animator->PlayAnimation(L"BazziRightStop", true);
-		}*/
+		
 		
 	}
 	void Bomb::Pop()

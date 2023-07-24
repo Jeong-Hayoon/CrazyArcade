@@ -1,4 +1,4 @@
-#include "hyRigidbody.h"
+ï»¿#include "hyRigidbody.h"
 #include "hyTime.h"
 #include "hyGameObject.h"
 #include "hyTransform.h"
@@ -9,7 +9,12 @@ namespace hy
 		: Component(eComponentType::Rigidbody)
 		, mMass(1.0f)
 		, mFriction(10.0f)
+		, mbGround(false)
+
 	{
+		mLimitedVelocty.x = 200.0f;
+		mLimitedVelocty.y = 1000.0f;
+		mGravity = Vector2(0.0f, 800.0f);
 	}
 
 	Rigidbody::~Rigidbody()
@@ -22,33 +27,90 @@ namespace hy
 
 	void Rigidbody::Update()
 	{
-
-		//f(Èû) = m(Áú·®)a °¡¼Óµµ
-		//
+		// ì´ë™
+		// F = M x A
+		// A = F / M
+		//f(í˜) = m(ì§ˆëŸ‰)a ê°€ì†ë„
 		mAccelation = mForce / mMass;
 
-		// ¼Óµµ¿¡ °¡¼Óµµ¸¦ ´õÇØÁà¾ß ÃÑ ¼Óµµ°¡ ³ª¿Â´Ù
+		// ì†ë„ì— ê°€ì†ë„ë¥¼ ë”í•´ì¤˜ì•¼ ì´ ì†ë„ê°€ ë‚˜ì˜¨ë‹¤
 		mVelocity += mAccelation * Time::DeltaTime();
 
+		if (mbGround)
+		{
+			// ë•…ìœ„ì— ìˆì„ë•Œ
+			Vector2 gravity = mGravity;
+			gravity.normalize();
+			float dot = hy::math::Dot(mVelocity, gravity);
+			mVelocity -= gravity * dot;
+		}
+		else
+		{
+			// ê³µì¤‘ì— ìˆì„ ë•Œ
+			mVelocity += mGravity * Time::DeltaTime();
+		}
+
+
+		// ìµœëŒ€ ì†ë„ ì œí•œ
+		Vector2 gravity = mGravity;
+		gravity.normalize();
+		float dot = hy::math::Dot(mVelocity, gravity);
+		gravity = gravity * dot;
+
+		Vector2 sideVelocity = mVelocity - gravity;
+		if (mLimitedVelocty.y < gravity.length())
+		{
+			gravity.normalize();
+			gravity *= mLimitedVelocty.y;
+		}
+
+		if (mLimitedVelocty.x < sideVelocity.length())
+		{
+			sideVelocity.normalize(); 
+			sideVelocity *= mLimitedVelocty.x;
+		}
+		mVelocity = gravity + sideVelocity;
+
+		//ë§ˆì°°ë ¥ ì¡°ê±´ ( ì ìš©ëœ í˜ì´ ì—†ê³ , ì†ë„ê°€ 0 ì´ ì•„ë‹ Â‹Âš)
 		if (!(mVelocity == Vector2::Zero))
 		{
-
-			// ¼Óµµ¿¡ ¹İ´ë ¹æÇâÀ¸·Î ¸¶Âû·Â Àû¿ë
+			// ì†ë„ì— ë°˜ëŒ€ ë°©í–¥ìœ¼ë¡œ ë§ˆì°°ë ¥ì„ ì ìš©
 			Vector2 friction = -mVelocity;
 			friction = friction.normalize() * mFriction * mMass * Time::DeltaTime();
 
-			// ¸¶Âû·ÂÀ¸·Î ÀÇÇÑ ¼Óµµ °¨¼Ò·®ÀÌ ÇöÀç ¼Óµµº¸´Ù Å« °æ¿ì
-
+			// ë§ˆì°°ë ¥ìœ¼ë¡œ ì¸í•œ ì†ë„ ê°ì†ŒëŸ‰ì´ í˜„ì¬ ì†ë„ë³´ë‹¤ ë” í° ê²½ìš°
 			if (mVelocity.length() < friction.length())
 			{
-				// ¸ØÃç
-				mVelocity = Vector2::Zero;
+				// ì†ë„ë¥¼ 0 ë¡œ ë§Œë“ ë‹¤.
+				mVelocity = Vector2(0.f, 0.f);
 			}
 			else
 			{
+				// ì†ë„ì—ì„œ ë§ˆì°°ë ¥ìœ¼ë¡œ ì¸í•œ ë°˜ëŒ€ë°©í–¥ìœ¼ë¡œ ì†ë„ë¥¼ ì°¨ê°í•œë‹¤.
 				mVelocity += friction;
 			}
 		}
+
+
+		//if (!(mVelocity == Vector2::Zero))
+		//{
+
+		//	// ì†ë„ì— ë°˜ëŒ€ ë°©í–¥ìœ¼ë¡œ ë§ˆì°°ë ¥ ì ìš©
+		//	Vector2 friction = -mVelocity;
+		//	friction = friction.normalize() * mFriction * mMass * Time::DeltaTime();
+
+		//	// ë§ˆì°°ë ¥ìœ¼ë¡œ ì˜í•œ ì†ë„ ê°ì†ŒëŸ‰ì´ í˜„ì¬ ì†ë„ë³´ë‹¤ í° ê²½ìš°
+
+		//	if (mVelocity.length() < friction.length())
+		//	{
+		//		// ë©ˆì¶°
+		//		mVelocity = Vector2::Zero;
+		//	}
+		//	else
+		//	{
+		//		mVelocity += friction;
+		//	}
+		//}
 
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();

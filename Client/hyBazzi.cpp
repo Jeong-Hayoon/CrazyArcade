@@ -92,22 +92,24 @@ namespace hy
 
 			if (mDirection == eDirection::Up)
 			{
-				Bazzipos.y -= 60.f;
+				Bazzipos.y -= 40.f;
 				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
 			}
 			else if (mDirection == eDirection::Down)
 			{
-				Bazzipos.y += 60.f;
+				Bazzipos.y += 70.f;
 				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
 			}
 			else if (mDirection == eDirection::Left)
 			{
 				Bazzipos.x -= 60.f;
+				Bazzipos.y += 25.f;
 				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
 			}
 			else if (mDirection == eDirection::Right)
 			{
 				Bazzipos.x += 60.f;
+				Bazzipos.y += 17.f;
 				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
 			}
 		}
@@ -163,6 +165,16 @@ namespace hy
 		{
 			animator->PlayAnimation(L"PlayerDropWater", false);
 			mState = eState::DropWater;
+		}*/
+
+		// ม฿ทย
+	/*	if (Input::GetKeyDown(eKeyCode::W))
+		{
+			Rigidbody* rb = GetComponent<Rigidbody>();
+			Vector2 velocity = rb->GetVelocity();
+			velocity.y = -500.0f;
+			rb->SetVelocity(velocity);
+			rb->SetGround(false);
 		}*/
 	}
 

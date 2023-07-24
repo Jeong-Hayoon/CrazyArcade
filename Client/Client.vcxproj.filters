@@ -171,6 +171,9 @@
     <Filter Include="Contents\GameObject\Effect\Bomb">
       <UniqueIdentifier>{9525be81-90b4-4c8f-821e-d86f6ee436ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Floor">
+      <UniqueIdentifier>{f26d2e73-92ba-456e-8767-4d16a45e6760}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -320,6 +323,9 @@
     <ClInclude Include="hyIceMonster.h">
       <Filter>Contents\GameObject\Monster\IceMap</Filter>
     </ClInclude>
+    <ClInclude Include="hyFloor.h">
+      <Filter>Contents\GameObject\Floor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -464,6 +470,9 @@
     </ClCompile>
     <ClCompile Include="hyIceMonster.cpp">
       <Filter>Contents\GameObject\Monster\IceMap</Filter>
+    </ClCompile>
+    <ClCompile Include="hyFloor.cpp">
+      <Filter>Contents\GameObject\Floor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -140,6 +140,7 @@
     <ClInclude Include="hyCollider.h" />
     <ClInclude Include="hyCollisionManager.h" />
     <ClInclude Include="hyDao.h" />
+    <ClInclude Include="hyFloor.h" />
     <ClInclude Include="hyForestBoss.h" />
     <ClInclude Include="hyForestMap1.h" />
     <ClInclude Include="hyForestMap2.h" />
@@ -189,6 +190,7 @@
     <ClCompile Include="hyCollider.cpp" />
     <ClCompile Include="hyCollisionManager.cpp" />
     <ClCompile Include="hyDao.cpp" />
+    <ClCompile Include="hyFloor.cpp" />
     <ClCompile Include="hyForestBoss.cpp" />
     <ClCompile Include="hyForestMap1.cpp" />
     <ClCompile Include="hyForestMap2.cpp" />
