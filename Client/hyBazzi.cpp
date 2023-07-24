@@ -84,25 +84,31 @@ namespace hy
 		}
 
 
-		if (Input::GetKeyDown(eKeyCode::Space))
+		if (Input::GetKeyDown(eKeyCode::Space))		// 물풍선 객체 생성 및 위치 조정
 		{
 			Bomb* Bomb_ = object::Instantiate<Bomb>(eLayerType::Effect);
 			Transform* Bazzitr = GetComponent<Transform>();
+			Vector2 Bazzipos = Bazzitr->GetPosition();
+
 			if (mDirection == eDirection::Up)
 			{
-				Bomb_->GetComponent<Transform>()->SetPosition(Bazzitr->GetPosition());
+				Bazzipos.y -= 60.f;
+				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
 			}
 			else if (mDirection == eDirection::Down)
 			{
-				Bomb_->GetComponent<Transform>()->SetPosition(Bazzitr->GetPosition());
+				Bazzipos.y += 60.f;
+				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
 			}
 			else if (mDirection == eDirection::Left)
 			{
-				Bomb_->GetComponent<Transform>()->SetPosition(Bazzitr->GetPosition());
+				Bazzipos.x -= 60.f;
+				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
 			}
 			else if (mDirection == eDirection::Right)
 			{
-				Bomb_->GetComponent<Transform>()->SetPosition(Bazzitr->GetPosition());
+				Bazzipos.x += 60.f;
+				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
 			}
 		}
 
@@ -127,25 +133,25 @@ namespace hy
 		Animator* animator = GetComponent<Animator>();	
 
 
-		if (Input::GetKeyDown(eKeyCode::Left))		// 왼쪽 키를 누르면 왼쪽 애니메이션 실행
+		if (Input::GetKeyDown(eKeyCode::Left) || Input::GetKey(eKeyCode::Left))		// 왼쪽 키를 누르면 왼쪽 애니메이션 실행
 		{
 			animator->PlayAnimation(L"BazziLeft", true);
 			mState = eState::Move;
 			mDirection = eDirection::Left;
 		}
-		if (Input::GetKeyDown(eKeyCode::Right))		// 오른쪽 키를 누르면 오른쪽 애니메이션 실행
+		if (Input::GetKeyDown(eKeyCode::Right) || Input::GetKey(eKeyCode::Right))		// 오른쪽 키를 누르면 오른쪽 애니메이션 실행
 		{
 			animator->PlayAnimation(L"BazziRight", true);
 			mState = eState::Move;
 			mDirection = eDirection::Right;
 		}
-		if (Input::GetKeyDown(eKeyCode::Up))		// 위쪽 키를 누르면 위쪽 애니메이션 실행
+		if (Input::GetKeyDown(eKeyCode::Up) || Input::GetKey(eKeyCode::Up))		// 위쪽 키를 누르면 위쪽 애니메이션 실행
 		{
 			animator->PlayAnimation(L"BazziUp", true);
 			mState = eState::Move;
 			mDirection = eDirection::Up;
 		}
-		if (Input::GetKeyDown(eKeyCode::Down))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행
+		if (Input::GetKeyDown(eKeyCode::Down) || Input::GetKey(eKeyCode::Down))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행
 		{
 			animator->PlayAnimation(L"BazziDown", true);
 			mState = eState::Move;
@@ -177,7 +183,7 @@ namespace hy
 
 		tr->SetPosition(pos);
 
-		if (Input::GetKeyDown(eKeyCode::Left))		// 어떤 키를 누르고 이따가 왼쪽 키를 눌렀을 때
+		if (Input::GetKeyDown(eKeyCode::Left))		// 어떤 키를 누르고 이따가 왼쪽 키를 눌렀을 때(방향 전환)
 		{
 			animator->PlayAnimation(L"BazziLeft", true);
 			mDirection = eDirection::Left;
@@ -198,9 +204,26 @@ namespace hy
 			mDirection = eDirection::Down;
 		}
 
+
 		if (!Input::GetKey(eKeyCode::Up) && !Input::GetKey(eKeyCode::Down)
 			&& !Input::GetKey(eKeyCode::Left) && !Input::GetKey(eKeyCode::Right))
 		{
+			if (mDirection == eDirection::Up)
+			{
+				animator->PlayAnimation(L"BazziUpStop", true);
+			}
+			if (mDirection == eDirection::Down)
+			{
+				animator->PlayAnimation(L"BazziDownStop", true);
+			}
+			if (mDirection == eDirection::Left)
+			{
+				animator->PlayAnimation(L"BazziLeftStop", true);
+			}
+			if (mDirection == eDirection::Right)
+			{
+				animator->PlayAnimation(L"BazziRightStop", true);
+			}
 			mState = eState::MoveStop;
 		}
 
@@ -212,22 +235,35 @@ namespace hy
 		time += Time::DeltaTime();
 		Animator* animator = GetComponent<Animator>();
 
-		if (mDirection == eDirection::Up)
+		if (Input::GetKeyDown(eKeyCode::Left) || Input::GetKey(eKeyCode::Left))		// 왼쪽 키를 누르면 왼쪽 애니메이션 실행
 		{
-			animator->PlayAnimation(L"BazziUpStop", true);
+			animator->PlayAnimation(L"BazziLeft", true);
+			mState = eState::Move;
+			time = 0.f;
+			mDirection = eDirection::Left;
 		}
-		if (mDirection == eDirection::Down)
+		if (Input::GetKeyDown(eKeyCode::Right) || Input::GetKey(eKeyCode::Right))		// 오른쪽 키를 누르면 오른쪽 애니메이션 실행
 		{
-			animator->PlayAnimation(L"BazziDownStop", true);
+			animator->PlayAnimation(L"BazziRight", true);
+			mState = eState::Move;
+			time = 0.f;
+			mDirection = eDirection::Right;
 		}
-		if (mDirection == eDirection::Left)
+		if (Input::GetKeyDown(eKeyCode::Up) || Input::GetKey(eKeyCode::Up))		// 위쪽 키를 누르면 위쪽 애니메이션 실행
 		{
-			animator->PlayAnimation(L"BazziLeftStop", true);
+			animator->PlayAnimation(L"BazziUp", true);
+			mState = eState::Move;
+			time = 0.f;
+			mDirection = eDirection::Up;
 		}
-		if (mDirection == eDirection::Right)
+		if (Input::GetKeyDown(eKeyCode::Down) || Input::GetKey(eKeyCode::Down))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행
 		{
-			animator->PlayAnimation(L"BazziRightStop", true); 
+			animator->PlayAnimation(L"BazziDown", true);
+			mState = eState::Move;
+			time = 0.f;
+			mDirection = eDirection::Down;
 		}
+
 		if (time > 3.f)
 		{
 			animator->PlayAnimation(L"BazziIdle", true);

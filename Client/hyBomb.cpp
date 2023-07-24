@@ -22,10 +22,10 @@ namespace hy
 		: mState(eState::Idle)
 	{
 		Animator* bt = AddComponent<Animator>();
-		bt->CreateAnimationFolder(L"BombidleBottom", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f,70.f), 0.4f);
-		bt->CreateAnimationFolder(L"BombidleTop", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, -70.f), 0.4f);
-		bt->CreateAnimationFolder(L"BombidleLeft", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(-70.f, 0.f), 0.4f);
-		bt->CreateAnimationFolder(L"BombidleRight", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(+70.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombidleBottom", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+	/*	bt->CreateAnimationFolder(L"BombidleTop", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombidleLeft", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombidleRight", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);*/
 
 		bt->PlayAnimation(L"BombidleBottom", true);
 
