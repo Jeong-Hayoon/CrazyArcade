@@ -18,6 +18,7 @@
 
 namespace hy
 {
+	// 3초 지나면 물줄기 팡
 	Bomb::Bomb()
 		: mState(eState::Idle)
 	{
@@ -71,7 +72,17 @@ namespace hy
 
 	void Bomb::Idle()
 	{
-		
+		// 2초 지나면 Pop 애니메이션을 호출하고, 상태 전환
+
+		static float time = 0.f;
+		time += Time::DeltaTime();
+		Animator* animator = GetComponent<Animator>();
+		if (time > 3.f)
+		{
+			animator->PlayAnimation(L"BombPop", false);
+			mState = eState::Pop;
+			time = 0.f;
+		}
 		
 	}
 	void Bomb::Pop()

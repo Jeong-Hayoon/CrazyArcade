@@ -15,8 +15,6 @@
 //#include "hyRigidbody.h"
 #include "hyBomb.h"
 
-
-
 namespace hy
 {
 	Bazzi::Bazzi()
@@ -62,7 +60,9 @@ namespace hy
 
 		GameObject::Initialize();
 	}
-	void Bazzi::Update()	// 상태 변화만 업데이트에서 
+
+	// 상태 변화만 업데이트에서 
+	void Bazzi::Update()	
 	{
 		GameObject::Update();
 
@@ -72,7 +72,6 @@ namespace hy
 		case hy::Bazzi::eState::Make:
 			Make();
 			break;
-
 		case hy::Bazzi::eState::Idle:
 			Idle();
 			break;
@@ -321,6 +320,7 @@ namespace hy
 			animator->PlayAnimation(L"BazziIdle", true);
 			mState = eState::Idle;
 			time = 0.f;
+
 		}
 	}
 
