@@ -14,14 +14,17 @@ namespace hy
 			Right
 		};
 
-
 		enum class eState
 		{
+			Make,
 			Idle,
 			Move,
 			MoveStop,
-			DropWater,
-			Death,
+			Ready,
+			Trap,
+			Live,
+			Dead,
+			Victory,
 			End,
 		};
 		Bazzi();
@@ -37,11 +40,16 @@ namespace hy
 
 		eDirection GetDirection() { return mDirection; }
 
+		void Make();
 		void Idle();
 		void Move();
 		void MoveStop();
-		void DropWater();
+		void DropWater();	
+		void Ready();
+		void Trap();
+		void Live();
 		void Dead();
+		void Victory();
 
 	private:
 		eState mState;

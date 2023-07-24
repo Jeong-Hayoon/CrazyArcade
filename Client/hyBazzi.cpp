@@ -20,7 +20,7 @@
 namespace hy
 {
 	Bazzi::Bazzi()
-		: mState(eState::Idle)
+		: mState(eState::Make)
 		,mDirection(eDirection::Down)
 	{
 	}
@@ -33,7 +33,15 @@ namespace hy
 		Texture* Bazzi_ = Resources::Load<Texture>(L"Bazzi"
 			, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");
 
+		Texture* BazziDie_ = Resources::Load<Texture>(L"BazziDie"
+			, L"..\\Resources\\Image\\Bazzi\\die.bmp");
+
 		Animator* at = AddComponent<Animator>();
+
+		Texture* StartBazzi_ = Resources::Load<Texture>(L"StartBazzi"
+			, L"..\\Resources\\Image\\Bazzi\\ready.bmp");
+
+		at->CreateAnimation(L"StartBazzi", StartBazzi_, Vector2(0.0f, 0.0f), Vector2(64.0f, 86.0f), 18, Vector2(0.0f, 0.0f), 0.1f);
 		at->CreateAnimation(L"BazziIdle", Bazzi_, Vector2(0.0f, 0.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.6f);
 
 		at->CreateAnimation(L"BazziUp", Bazzi_, Vector2(0.0f, 60.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
@@ -48,10 +56,9 @@ namespace hy
 		at->CreateAnimation(L"BazziLeft", Bazzi_, Vector2(0.0f, 180.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
 		at->CreateAnimation(L"BazziLeftStop", Bazzi_, Vector2(50.0f, 180.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
 
-		at->CreateAnimation(L"BazziDie", Bazzi_, Vector2(0.0f, 300.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
+		at->CreateAnimation(L"BazziDie", BazziDie_, Vector2(0.0f, 0.0f), Vector2(114.0f, 144.0f), 10, Vector2(0.0f, 0.0f), 3.0f);
 
-		at->PlayAnimation(L"BazziIdle", true);
-		at->SetScale(Vector2(1.3f, 1.3f));
+		at->PlayAnimation(L"StartBazzi", false);
 
 		GameObject::Initialize();
 	}
@@ -62,6 +69,10 @@ namespace hy
 		// tab + enter 하면 스위치 생성
 		switch (mState)
 		{
+		case hy::Bazzi::eState::Make:
+			Make();
+			break;
+
 		case hy::Bazzi::eState::Idle:
 			Idle();
 			break;
@@ -71,12 +82,23 @@ namespace hy
 		case hy::Bazzi::eState::MoveStop:
 			MoveStop();
 			break;
-		case hy::Bazzi::eState::DropWater:
-			DropWater();
+		case hy::Bazzi::eState::Ready:
+			Ready();
 			break;
-		case hy::Bazzi::eState::Death:
-			DropWater();
+		case hy::Bazzi::eState::Trap:
+			Trap();
 			break;
+		case hy::Bazzi::eState::Live:
+			Live();
+			break;
+		case hy::Bazzi::eState::Dead:
+			Dead();
+			break;
+
+		case hy::Bazzi::eState::Victory:
+			Victory();
+			break;
+
 		case hy::Bazzi::eState::End:
 			break;
 		default:
@@ -130,10 +152,20 @@ namespace hy
 	{
 	}
  
+	void Bazzi::Make()
+	{
+		Animator* animator = GetComponent<Animator>();
+		if(animator->IsActiveAnimationComplete())
+		{
+			animator->PlayAnimation(L"BazziIdle", true);
+			mState = eState::Idle;
+		}
+	}
+
 	void Bazzi::Idle()
 	{
 		Animator* animator = GetComponent<Animator>();	
-
+		animator->SetScale(Vector2(1.3f, 1.3f));
 
 		if (Input::GetKeyDown(eKeyCode::Left) || Input::GetKey(eKeyCode::Left))		// 왼쪽 키를 누르면 왼쪽 애니메이션 실행
 		{
@@ -159,6 +191,14 @@ namespace hy
 			mState = eState::Move;
 			mDirection = eDirection::Down;
 		}
+
+		if (Input::GetKeyDown(eKeyCode::K))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행
+		{
+			animator->PlayAnimation(L"BazziDie", false);
+			mState = eState::Move;
+			mDirection = eDirection::Down;
+		}
+		
 
 
 		/*if (Input::GetKey(eKeyCode::MouseLeft))
@@ -217,7 +257,7 @@ namespace hy
 		}
 
 
-		if (!Input::GetKey(eKeyCode::Up) && !Input::GetKey(eKeyCode::Down)
+		if (!Input::GetKey(eKeyCode::Up) && !Input::GetKey(eKeyCode::Down)			// 아무 키도 안눌린 상태일 때
 			&& !Input::GetKey(eKeyCode::Left) && !Input::GetKey(eKeyCode::Right))
 		{
 			if (mDirection == eDirection::Up)
@@ -295,8 +335,23 @@ namespace hy
 			mState = eState::Idle;
 		}*/
 	}
+
+	void Bazzi::Ready()
+	{
+	}
+
+	void Bazzi::Trap()
+	{
+	}
+
+	void Bazzi::Live()
+	{
+	}
 	 
 	void Bazzi::Dead()
+	{
+	}
+	void Bazzi::Victory()
 	{
 	}
 }
