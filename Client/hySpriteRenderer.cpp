@@ -11,6 +11,8 @@ namespace hy
 		//, mbAffectCamera(true)
 		, mTexture(nullptr)
 		,mAlpha(1.0f)			// 물체가 투명하지 않게 초기화(0에 가까워질수록 투명)
+		, mbTile(false)
+
 
 		//<카메라>
 		//, mbAffectCamera(true)
@@ -122,17 +124,39 @@ namespace hy
 		//				, (int)(mTexture->GetHeight() * mScale.y));
 		//}
 
-		GameObject* gameObj = GetOwner();
-		Transform* tr = gameObj->GetComponent<Transform>();
-		mTexture->Render(hdc
-			, tr->GetPosition()
-			, Vector2(mTexture->GetWidth(), mTexture->GetHeight())
-			, Vector2(0.0f, 0.0f)
-			, Vector2(mTexture->GetWidth(), mTexture->GetHeight())
-			, Vector2::Zero
-			, mScale
-			, mAlpha
-			// , tr->GetRotation()); -> 회전
-		);
+		// 자를 타일의 가로 세로 사이즈
+		if (mbTile)
+		{
+			GameObject* gameObj = GetOwner();
+			Transform* tr = gameObj->GetComponent<Transform>();
+			mTexture->Render(hdc
+				, tr->GetPosition()
+				, Vector2(TILE_WIDTH, TILE_HEIGHT)
+
+				// cut area
+				, Vector2(mTileIndexX * TILE_WIDTH
+					, mTileIndexY * TILE_HEIGHT)
+				, Vector2(mTileIndexX * TILE_WIDTH + TILE_WIDTH
+					, mTileIndexY * TILE_HEIGHT + TILE_HEIGHT)
+				, Vector2::Zero
+				, mScale
+				, mAlpha
+				, tr->GetRotation());
+		}
+		else
+		{
+			GameObject* gameObj = GetOwner();
+			Transform* tr = gameObj->GetComponent<Transform>();
+			mTexture->Render(hdc
+				, tr->GetPosition()
+				, Vector2(mTexture->GetWidth(), mTexture->GetHeight())
+				, Vector2(0.0f, 0.0f)
+				, Vector2(mTexture->GetWidth(), mTexture->GetHeight())
+				, Vector2::Zero
+				, mScale
+				, mAlpha
+				// , tr->GetRotation()); -> 회전
+			);
+		}
 	}
 }

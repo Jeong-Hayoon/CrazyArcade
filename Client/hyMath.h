@@ -123,6 +123,11 @@ namespace hy::math // 위치를 표시할 구조체
 			return sqrtf(x * x + y * y);
 		}
 
+		// 벡터를 구해서 방향을 잡을 때 길이는 프레임마다 증가가 되므로 굳이 필요가 없음
+		// 따라서 필요한건 방향 뿐
+		// 단위가 되는 벡터를 통해
+		// 방향을 정해서 이동을 프레임 단위로 하면 되기 때문에
+		// normalize가 필요
 		Vector2 normalize()
 		{
 			float len = length();

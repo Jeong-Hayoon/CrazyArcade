@@ -106,6 +106,7 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -157,6 +158,8 @@
     <ClInclude Include="hyPirateMap3.h" />
     <ClInclude Include="hyPirateMonster.h" />
     <ClInclude Include="hyRigidbody.h" />
+    <ClInclude Include="hyTile.h" />
+    <ClInclude Include="hyToolScene.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="hyTexture.h" />
     <ClInclude Include="hyLobbyScene.h" />
@@ -208,6 +211,8 @@
     <ClCompile Include="hyPirateMap3.cpp" />
     <ClCompile Include="hyPirateMonster.cpp" />
     <ClCompile Include="hyRigidbody.cpp" />
+    <ClCompile Include="hyTile.cpp" />
+    <ClCompile Include="hyToolScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="hyTexture.cpp" />
     <ClCompile Include="hyLobbyScene.cpp" />

@@ -19,6 +19,7 @@ namespace hy::enums
 	enum class eLayerType
 	{
 		Background,
+		Tile,		// 나무같은 타일은 바닥보다 뒤에 레이어를 놔야 함
 		Floor,
 		Player,
 		Monster,

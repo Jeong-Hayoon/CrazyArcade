@@ -3,21 +3,25 @@
 #include "Client.h"
 #include "hyApplication.h"
 
+#include "hyTexture.h"
+#include "hyResources.h"
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
-HINSTANCE hInst;                                            // 현재 인스턴스입니다.
-WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
+HINSTANCE hInst;                         // 현재 인스턴스입니다.
+WCHAR szTitle[MAX_LOADSTRING];           // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];     // 기본 창 클래스 이름입니다.
 extern hy::Application application = {};
 
 ULONG_PTR gdiplusToken;
-    Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
-ATOM                MyRegisterClass(HINSTANCE hInstance);
+ATOM                MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK    WndToolProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam); 
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -33,7 +37,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_CLIENT, szWindowClass, MAX_LOADSTRING);
-    MyRegisterClass(hInstance); // 윈도우 정보 등록
+
+    // 윈도우 정보 등록
+    MyRegisterClass(hInstance, szWindowClass, WndProc);
+    MyRegisterClass(hInstance, L"Tool", WndToolProc);
 
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow)) // 윈도우가 만들어져서 화면에 그려짐
@@ -86,20 +93,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 }
 
 
-
 //
 //  함수: MyRegisterClass()
 //
 //  용도: 창 클래스를 등록합니다.
 //
-ATOM MyRegisterClass(HINSTANCE hInstance)
+ATOM MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc)
 {
-    WNDCLASSEXW wcex;
+    WNDCLASSEXW wcex = {};  
 
-    wcex.cbSize = sizeof(WNDCLASSEX);
-
+    wcex.cbSize         = sizeof(WNDCLASSEX);
     wcex.style          = CS_HREDRAW | CS_VREDRAW;      // 윈도우 스타일
-    wcex.lpfnWndProc /*(callback 함수 포인터 : 운영체제에서 호출하는 함수)*/ = WndProc;     // 실행시킬 함수
+    wcex.lpfnWndProc /*(callback 함수 포인터 : 운영체제에서 호출하는 함수)*/ = proc;     // 실행시킬 함수
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
@@ -107,7 +112,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);                   // 커서 모양
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);                         // 백그라운드 색상
     wcex.lpszMenuName   = nullptr;                                          // 메뉴 이름
-    wcex.lpszClassName  = szWindowClass;                                    // 등록할 클래스 이름
+    wcex.lpszClassName  = name;                                    // 등록할 클래스 이름
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
@@ -129,6 +134,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW, //WS_OVERLAPPEDWINDOW : 윈도우 창 스타일,
       0, 0, 1200, 800, nullptr, nullptr, hInstance, nullptr); // 윈도우 생성 시 WndProc 함수 호출
+
+   HWND hWndTool = CreateWindowW(L"Tool", szTitle, WS_OVERLAPPEDWINDOW,
+       0, 0, 384, 400, nullptr, nullptr, hInstance, nullptr);
    
    // 핸들에는 만들어진 윈도우 정보에 대한 시작 주소가 반환되어 들어감(핸들은 포인터)
    // 우리는 핸들을 통해 데이터 접근을 하게 됨
@@ -143,8 +151,20 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       return FALSE;
    }
 
+   // main
    ShowWindow(hWnd, nCmdShow);      // 윈도우를 보여주는 함수
-   UpdateWindow(hWnd);                     // 윈도우가 돌아가게끔 실행시켜 주는 함수
+   UpdateWindow(hWnd);              // 윈도우가 돌아가게끔 실행시켜 주는 함수
+
+   /// tool
+   RECT rect = { 0, 0, 900, 780 };
+   AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+   SetWindowPos(hWndTool
+       , nullptr, 600, 0
+       , rect.right - rect.left
+       , rect.bottom - rect.top
+       , 0);
+   ShowWindow(hWndTool, nCmdShow);
+   UpdateWindow(hWndTool);
 
    return TRUE;
 }
@@ -183,11 +203,64 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps); //DC는 윈도우에서 그림과 관련된 작업을 해주는 영역으로 그 영역의 시작주소를 넣어주는 과정(HDC도 포인터)
+            HDC hdc = BeginPaint(hWnd, &ps); //DC는 윈도우에서 그림과 관련된 작업을 해주는 영역
+            // 그 영역의 시작주소를 넣어주는 과정(HDC도 포인터)
+            
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
         }
         break;
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        break;
+    default:
+        return DefWindowProc(hWnd, message, wParam, lParam);
+    }
+    return 0;
+}
+
+LRESULT CALLBACK WndToolProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    switch (message)
+    {
+    case WM_COMMAND:
+    {
+        int wmId = LOWORD(wParam);
+        // 메뉴 선택을 구문 분석합니다:
+        switch (wmId)
+        {
+        case IDM_ABOUT:
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+            break;
+        case IDM_EXIT:
+            DestroyWindow(hWnd);
+            break;
+        default:
+            return DefWindowProc(hWnd, message, wParam, lParam);
+        }
+    }
+    break;
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+
+        //Rectangle(hdc, 0, 0, 100, 100);
+        //여기서 이미지 를 그려준다.
+
+        hy::Texture* forestFloor
+            = hy::Resources::Find<hy::Texture>(L"ForestFloorTile");
+
+        TransparentBlt(hdc  
+            , 0, 0, forestFloor->GetWidth(), forestFloor->GetHeight()
+            , forestFloor->GetHdc()
+            , 0, 0, forestFloor->GetWidth(), forestFloor->GetHeight()
+            , RGB(255, 0, 255));
+
+        // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+        EndPaint(hWnd, &ps);
+    }
+    break;
     case WM_DESTROY:
         PostQuitMessage(0);
         break;

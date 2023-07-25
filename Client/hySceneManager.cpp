@@ -4,8 +4,7 @@
 #include "hyForestMap1.h"
 #include "hyIceMap1.h"
 #include "hyPirateMap.h"
-
-
+#include "hyToolScene.h"
 
 namespace hy
 {
@@ -19,8 +18,9 @@ namespace hy
 		CreateScene<ForestMap1>(L"ForestMap");
 		CreateScene<IceMap1>(L"IceMap");
 		CreateScene<PirateMap>(L"PirateMap");
+		CreateScene<ToolScene>(L"ToolScene");
 
-		// LoadScene(L"TitleScene");
+
 		LoadScene(L"TitleScene");
 	}
 
