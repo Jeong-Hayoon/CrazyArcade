@@ -63,7 +63,7 @@ namespace hy
 
 		// 포레스트 몬스터
 		ForestMonster* forestmonster = object::Instantiate<ForestMonster>(eLayerType::Monster);
-		forestmonster->GetComponent<Transform>()->SetPosition(Vector2(80.0f, 70.0f));
+		forestmonster->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
 
 		// 충돌 구현
 		Collider* col = forestbazzi1->AddComponent<Collider>();
@@ -86,10 +86,10 @@ namespace hy
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
-		{
-			SceneManager::LoadScene(L"IceMap");
-		}
+		//if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
+		//{
+		//	SceneManager::LoadScene(L"IceMap");
+		//}
 	}
 	void ForestMap1::Render(HDC hdc)
 	{

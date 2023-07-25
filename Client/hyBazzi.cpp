@@ -54,7 +54,7 @@ namespace hy
 		at->CreateAnimation(L"BazziLeft", Bazzi_, Vector2(0.0f, 180.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
 		at->CreateAnimation(L"BazziLeftStop", Bazzi_, Vector2(50.0f, 180.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
 
-		at->CreateAnimation(L"BazziDie", BazziDie_, Vector2(0.0f, 0.0f), Vector2(114.0f, 144.0f), 10, Vector2(0.0f, 0.0f), 3.0f);
+		at->CreateAnimation(L"BazziDie", BazziDie_, Vector2(0.0f, 0.0f), Vector2(70.0f, 144.0f), 8, Vector2(0.0f, 0.0f), 0.5f);
 
 		at->PlayAnimation(L"StartBazzi", false);
 
@@ -89,9 +89,6 @@ namespace hy
 			break;
 		case hy::Bazzi::eState::Live:
 			Live();
-			break;
-		case hy::Bazzi::eState::Dead:
-			Dead();
 			break;
 
 		case hy::Bazzi::eState::Victory:
@@ -143,6 +140,13 @@ namespace hy
 
 	void Bazzi::OnCollisionEnter(Collider* other)
 	{
+		Animator* at = GetComponent<Animator>();
+		at->PlayAnimation(L"BazziDie", false);
+
+		if (at->IsActiveAnimationComplete())
+		{
+			SceneManager::LoadScene(L"IceMap");
+		}
 	}
 	void Bazzi::OnCollisionStay(Collider* other)
 	{
@@ -191,12 +195,12 @@ namespace hy
 			mDirection = eDirection::Down;
 		}
 
-		if (Input::GetKeyDown(eKeyCode::K))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행
-		{
-			animator->PlayAnimation(L"BazziDie", false);
-			mState = eState::Move;
-			mDirection = eDirection::Down;
-		}
+		//if (Input::GetKeyDown(eKeyCode::K))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행
+		//{
+		//	animator->PlayAnimation(L"BazziDie", false);
+		//	mState = eState::Move;
+		//	mDirection = eDirection::Down;
+		//}
 		
 
 
@@ -348,9 +352,6 @@ namespace hy
 	{
 	}
 	 
-	void Bazzi::Dead()
-	{
-	}
 	void Bazzi::Victory()
 	{
 	}

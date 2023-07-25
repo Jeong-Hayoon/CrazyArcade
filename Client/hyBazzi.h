@@ -48,7 +48,6 @@ namespace hy
 		void Ready();
 		void Trap();
 		void Live();
-		void Dead();
 		void Victory();
 
 	private:

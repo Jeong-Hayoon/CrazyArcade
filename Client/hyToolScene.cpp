@@ -31,9 +31,6 @@ namespace hy
 	void ToolScene::Update()
 	{
 		Scene::Update();
-
-
-
 	}
 	void ToolScene::Render(HDC hdc)
 	{
