@@ -219,6 +219,26 @@ namespace hy
 			rb->SetVelocity(velocity);
 			rb->SetGround(false);
 		}*/
+	
+		// space를 누르면 객체가 생성되는 코드 -> 물풍선 교체
+		/*if (Input::GetKeyDown(eKeyCode::Space))
+		{
+			Transform* tr = GetComponent<Transform>();
+
+			Texture* image = Resources::Load<Texture>(L"Chiken"
+				, L"..\\Resources\\Image\\Animals\\Chiken.bmp");
+
+			Monster* monster = object::Instantiate<Monster>(eLayerType::Monster, tr->GetPosition());
+			Animator* at = monster->AddComponent<Animator>();
+			at->CreateAnimation(L"ChickenIdle", image, Vector2(0.0f, 0.0f), Vector2(16.0f, 16.0f), 4);
+			at->SetScale(Vector2(3.0f, 3.0f));
+			at->PlayAnimation(L"ChickenIdle", true);
+			Collider* col = monster->AddComponent<Collider>();
+			col->SetSize(Vector2(100.0f, 100.0f));
+
+			object::Instantiate<Monster>(eLayerType::Monster, tr->GetPosition());
+		}*/
+
 	}
 
 	void Bazzi::Move()

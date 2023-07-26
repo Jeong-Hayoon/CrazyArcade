@@ -43,7 +43,7 @@ namespace hy
 			; iter != mGameObjects.end()
 			; )
 		{
-			if ((*iter)->GetState() == GameObject::eState::Dead)
+			if ((*iter)->GetState() == GameObject::eState::Dead)	// 객체가 죽으면 이터레이터로 순회하면서 삭제
 			{
 				iter = mGameObjects.erase(iter);
 			}

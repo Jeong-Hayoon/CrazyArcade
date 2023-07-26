@@ -16,6 +16,7 @@
 namespace hy
 {
 	ForestMonster::ForestMonster()
+		: mDeathTime(1.0f)
 	{
 	}
 	ForestMonster::~ForestMonster()
@@ -36,6 +37,19 @@ namespace hy
 	void ForestMonster::Update()
 	{
 		GameObject::Update();
+
+		//// 시간이 지남에 따라 객체를 삭제 -> 물풍선 교체
+		//Transform* tr = GetComponent<Transform>();
+		//Vector2 pos = tr->GetPosition();
+		//pos.x += 300.0f * Time::DeltaTime();
+		//tr->SetPosition(pos);
+
+		//mDeathTime -= Time::DeltaTime();
+		//if (mDeathTime < 0.0f)
+		//{
+		//	Destroy(this);
+		//}
+
 
 		switch (mState)
 		{

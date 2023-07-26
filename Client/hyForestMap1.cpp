@@ -82,6 +82,7 @@ namespace hy
 
 		Scene::Initialize();
 	}
+
 	void ForestMap1::Update()
 	{
 		Scene::Update();

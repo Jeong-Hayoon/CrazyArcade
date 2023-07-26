@@ -65,7 +65,7 @@ namespace hy
 		std::vector<Component*> mComponents;		// Component(eComponentType, GameObject)
 		eState mState;
 
-
+	// 죽은 게임 오브젝트를 메모리 제거해주는 함수
 	static __forceinline void Destroy(GameObject* gameObject)
 	{
 		gameObject->death();

@@ -244,10 +244,14 @@ LRESULT CALLBACK WndToolProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
     }
     break;
 
+
+    // 마우스 왼쪽 버튼을 누르면 커서의 정보를 가져와서 좌표를 저장
     case WM_LBUTTONDOWN:
     {
         POINT mousePos = {};
+        // 마우스 커서 위치 정보를 가져오는 함수
         GetCursorPos(&mousePos);
+        // 위의 메뉴바를 빼고 좌표를 구할 수 있도록 해주는 함수
         ScreenToClient(hWnd, &mousePos);
 
         int idxX = mousePos.x / (TILE_WIDTH);

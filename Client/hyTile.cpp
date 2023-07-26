@@ -28,7 +28,7 @@ namespace hy
 			= hy::Resources::Find<hy::Texture>(L"ForestFloorTile");
 
 		mSpriteRenderer->SetImage(forestFloor);
-		mSpriteRenderer->SetScale(Vector2(3.0f, 3.0f));
+		mSpriteRenderer->SetScale(Vector2(1.0f, 1.0f));
 	}
 
 	void Tile::Update()
