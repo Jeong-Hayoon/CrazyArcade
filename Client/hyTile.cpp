@@ -6,7 +6,12 @@
 
 namespace hy
 {
+	UINT Tile::mSelectedX = 0;
+	UINT Tile::mSelectedY = 0;
+
 	Tile::Tile()
+		: mSpriteRenderer(nullptr)
+
 	{
 	}
 
@@ -16,15 +21,14 @@ namespace hy
 
 	void Tile::Initialize()
 	{
-		SpriteRenderer* sr = AddComponent<SpriteRenderer>();
+		mSpriteRenderer = AddComponent<SpriteRenderer>();
 		//AddComponent<Collider>();
 
 		hy::Texture* forestFloor
 			= hy::Resources::Find<hy::Texture>(L"ForestFloorTile");
 
-		sr->SetImage(forestFloor);
-		sr->SetTile(1, 0);
-		sr->SetScale(Vector2(3.0f, 3.0f));
+		mSpriteRenderer->SetImage(forestFloor);
+		mSpriteRenderer->SetScale(Vector2(3.0f, 3.0f));
 	}
 
 	void Tile::Update()
@@ -35,6 +39,11 @@ namespace hy
 	void Tile::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
+	}
+
+	void Tile::SetTile(int x, int y)
+	{
+		mSpriteRenderer->SetTile(x, y);
 	}
 
 }

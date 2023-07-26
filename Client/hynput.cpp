@@ -1,10 +1,16 @@
 #include "hyInput.h"
+#include "hyApplication.h"
+
 
 // UINT : unsigned int(양수)
+extern hy::Application application;
+
 
 namespace hy
 {
 	std::vector<Input::Key> Input::mKeys = {};					// static 변수는 외부에서 초기화를 반드시 해줘야 함
+	math::Vector2 Input::mMousePosition = math::Vector2::Zero;
+
 
 	int ASCII[(int)eKeyCode::End] =								// 아스키코드를 배열안에 넣어 놓음(enum이랑 아스키코드 매칭)
 	{																			// (int)eKeyCode::End -> End가 26인데 eKeyCode::End가 클래스라 int로 강제 캐스팅
@@ -55,5 +61,11 @@ namespace hy
 				mKeys[i].bPressed = false;			// 이전에 안눌렀다
 			}
 		}
+
+		POINT mousePos = {};
+		GetCursorPos(&mousePos);
+		ScreenToClient(application.GetHwnd(), &mousePos);
+		mMousePosition.x = (float)mousePos.x;
+		mMousePosition.y = (float)mousePos.y;
 	}
 }

@@ -5,10 +5,6 @@
 
 namespace hy
 {
-	// 타일 사이즈 가로, 세로
-	#define TILE_WIDTH 60
-	#define TILE_HEIGHT 60
-
 	using namespace math;
 	class SpriteRenderer : public Component
 	{

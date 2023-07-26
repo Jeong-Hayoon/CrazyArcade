@@ -136,8 +136,7 @@ namespace hy
 				// cut area
 				, Vector2(mTileIndexX * TILE_WIDTH
 					, mTileIndexY * TILE_HEIGHT)
-				, Vector2(mTileIndexX * TILE_WIDTH + TILE_WIDTH
-					, mTileIndexY * TILE_HEIGHT + TILE_HEIGHT)
+				, Vector2(TILE_WIDTH, TILE_HEIGHT)
 				, Vector2::Zero
 				, mScale
 				, mAlpha

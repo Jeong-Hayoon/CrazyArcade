@@ -51,9 +51,16 @@ namespace hy
 		{
 			return mKeys[(int)code].state == eKeyState::Pressed;				// 같으면 true 반환, 다르면 false 반환
 		}
+		__forceinline static math::Vector2 GetMousePosition()
+		{
+			return mMousePosition;
+		}
+
 		 
 	private:
 		static std::vector<Key> mKeys;
+		static math::Vector2 mMousePosition;
+
 	};
 
 	// vector는 무조건 <자료형>을 써야함

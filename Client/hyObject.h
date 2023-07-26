@@ -4,7 +4,6 @@
 #include "hySceneManager.h"
 #include "hyTransform.h"
 
-
 namespace hy::object
 {
 	template <typename T>

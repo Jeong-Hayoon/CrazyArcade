@@ -6,6 +6,9 @@ namespace hy
 	class Tile : public GameObject
 	{
 	public:
+		static UINT mSelectedX;
+		static UINT mSelectedY;
+
 		Tile();
 		~Tile();
 
@@ -13,7 +16,11 @@ namespace hy
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
+		void SetTile(int x, int y);
+
 	private:
+		class SpriteRenderer* mSpriteRenderer;
+
 
 	};
 }

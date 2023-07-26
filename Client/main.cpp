@@ -5,6 +5,8 @@
 
 #include "hyTexture.h"
 #include "hyResources.h"
+#include "hyInput.h"
+#include "hyTile.h"
 
 #define MAX_LOADSTRING 100
 
@@ -31,6 +33,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
+    //Gdiplus::GdiplusStartup
 
     // TODO: 여기에 코드를 입력합니다.
 
@@ -240,6 +243,21 @@ LRESULT CALLBACK WndToolProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
         }
     }
     break;
+
+    case WM_LBUTTONDOWN:
+    {
+        POINT mousePos = {};
+        GetCursorPos(&mousePos);
+        ScreenToClient(hWnd, &mousePos);
+
+        int idxX = mousePos.x / (TILE_WIDTH);
+        int idxY = mousePos.y / (TILE_HEIGHT);
+
+        hy::Tile::mSelectedX = idxX;
+        hy::Tile::mSelectedY = idxY;
+    }
+    break;
+
     case WM_PAINT:
     {
         PAINTSTRUCT ps;

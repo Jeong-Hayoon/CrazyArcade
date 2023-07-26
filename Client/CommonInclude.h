@@ -9,13 +9,17 @@
 #include "hyMath.h"
 #include <string>
 #include <bitset>
-
+	
 //#include <gdiplus.h>
 //#pragma comment(lib, "Gdiplus.lib")
 #pragma comment(lib, "Msimg32.lib")
 
 namespace hy::enums
 {
+	// 타일 사이즈 가로, 세로
+	#define TILE_WIDTH 60
+	#define TILE_HEIGHT 60
+
 	enum class eLayerType
 	{
 		Background,
