@@ -35,13 +35,13 @@ namespace hy
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.5f, 1.338f));
-		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2 + 10)));
+		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));
 
 		// 각 맵에 따른 화면
 		Texture* PirateMap = Resources::Load<Texture>(L"PirateMapImage"
 			, L"..\\Resources\\Image\\Bg\\PirateNormalTile.bmp");
 		BackGround* piratemap = object::Instantiate<BackGround>(eLayerType::Background);
-		piratemap->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 410.0f));
+		piratemap->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 402.0f));
 
 		SpriteRenderer* piratemapsr = piratemap->AddComponent<SpriteRenderer>();
 		piratemapsr->SetImage(PirateMap);

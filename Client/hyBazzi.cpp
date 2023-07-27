@@ -110,7 +110,6 @@ namespace hy
 		case hy::Bazzi::eState::Live:
 			Live();
 			break;
-
 		case hy::Bazzi::eState::Victory:
 			Victory();
 			break;
@@ -121,8 +120,8 @@ namespace hy
 			break;
 		}
 
-
-		if (Input::GetKeyDown(eKeyCode::Space))		// 물풍선 객체 생성 및 위치 조정
+		// 물풍선 객체 생성 및 위치 조정
+		if (Input::GetKeyDown(eKeyCode::Space))	
 		{
 			Bomb* Bomb_ = object::Instantiate<Bomb>(eLayerType::Effect);
 			Transform* Bazzitr = GetComponent<Transform>();
@@ -222,8 +221,6 @@ namespace hy
 		//	mDirection = eDirection::Down;
 		//}
 		
-
-
 		/*if (Input::GetKey(eKeyCode::MouseLeft))
 		{
 			animator->PlayAnimation(L"PlayerDropWater", false);

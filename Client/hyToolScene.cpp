@@ -27,8 +27,8 @@ namespace hy
 			= Resources::Load<Texture>(L"ForestFloorTile", L"..\\resources\\image\\Bg\\ForestTile.bmp");
 
 		// 타일 위치..?
-		Tile* tile
-			= object::Instantiate<Tile>(eLayerType::Tile, Vector2(600.0f, 400.0f));
+		/*Tile* tile
+			= object::Instantiate<Tile>(eLayerType::Tile, Vector2(600.0f, 400.0f));*/
 	}
 
 	void ToolScene::Update()
@@ -86,7 +86,7 @@ namespace hy
 			LineTo(hdc, TILE_WIDTH * x , 800);			 //      라인(선) 끝
 		}
 	}
-
+	// 파일 입출력
 	void ToolScene::Save()
 	{
 		// open a file name
