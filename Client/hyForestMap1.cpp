@@ -27,6 +27,7 @@ namespace hy
 	{
 	}
 
+	// 씬매니저에서 구현
 	void ForestMap1::Load()
 	{
 		Texture* forestFloor
@@ -76,10 +77,10 @@ namespace hy
 			if (fread(&myY, sizeof(int), 1, pFile) == NULL)
 				break;
 
-			Vector2 offset = Vector2((TILE_WIDTH * 3) / 2.0f, (TILE_HEIGHT * 3) / 2.0f);
+			Vector2 offset = Vector2((TILE_WIDTH) / 2.0f, (TILE_HEIGHT) / 2.0f);
 			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile
-				, Vector2(myX * (TILE_WIDTH * 3) + offset.x
-					, myY * (TILE_HEIGHT * 3) + offset.y));
+				, Vector2(myX * (TILE_WIDTH ) + offset.x
+					, myY * (TILE_HEIGHT) + offset.y));
 
 			tile->SetTile(sourceX, sourceY);
 			tile->SetSourceTileIdx(sourceX, sourceY);
@@ -108,7 +109,7 @@ namespace hy
 		forestmapsr->SetImage(ForestMap1);
 		forestmapsr->SetScale(Vector2(1.0f, 0.90f));*/
 
-		Load();
+		//Load();
 
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
