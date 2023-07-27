@@ -33,6 +33,7 @@ namespace hy
 			, float alpha = 1.0f
 			, float rotate = 0.0f);
 
+		COLORREF GetTexturePixel(int x, int y);	
 
 		UINT GetWidth() { return mWidth; }
 		void SetWidth(UINT width) { mWidth = width; }

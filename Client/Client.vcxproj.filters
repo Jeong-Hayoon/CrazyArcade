@@ -51,9 +51,6 @@
     <Filter Include="Engine\Resource">
       <UniqueIdentifier>{de1860cc-e40d-48e6-bedb-ac580ef19525}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\High Level Interface">
-      <UniqueIdentifier>{6e2b8040-93be-4c51-9a2c-68ec2aa60d2b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents">
       <UniqueIdentifier>{d04c81a5-efaf-401d-8a92-396ba1b18f54}</UniqueIdentifier>
     </Filter>
@@ -176,6 +173,12 @@
     </Filter>
     <Filter Include="Tool">
       <UniqueIdentifier>{400acc3e-2f22-491f-829d-1423a2ea0313}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\High Level Interface">
+      <UniqueIdentifier>{6e2b8040-93be-4c51-9a2c-68ec2aa60d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Sound">
+      <UniqueIdentifier>{c998c78d-e645-4062-8d39-2f23f71144eb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -335,6 +338,12 @@
     <ClInclude Include="hyToolScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="hySoundManager.h">
+      <Filter>Engine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="hySound.h">
+      <Filter>Engine\Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -488,6 +497,12 @@
     </ClCompile>
     <ClCompile Include="hyToolScene.cpp">
       <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="hySoundManager.cpp">
+      <Filter>Engine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="hySound.cpp">
+      <Filter>Engine\Sound</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

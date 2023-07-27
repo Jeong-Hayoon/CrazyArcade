@@ -1,5 +1,7 @@
 #pragma once
 #include "hyScene.h"
+#include "hyTile.h"
+
 
 namespace hy
 {
@@ -13,7 +15,11 @@ namespace hy
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
+		void Save();
+		void Load();
+
 	private:
+		std::vector<Tile*> mTiles;
 
 	};
 }

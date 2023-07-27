@@ -5,6 +5,7 @@
 #include "hySceneManager.h"
 //#include "yaCamera.h"
 #include "hyCollisionManager.h"
+#include "hySoundManager.h"	
 
 
 // cpp 파일에는 함수의 정의 부분 작성
@@ -57,6 +58,8 @@ namespace hy
 																			// 기본 비트맵은 필요없으므로 제거
 		Time :: Initialize(); 
 		Input :: Initialize();
+		SoundManager::Initialize();
+
 		// 	Camera::Initalize();
 
 		CollisionManager::Initialize();

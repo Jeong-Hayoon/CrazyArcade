@@ -11,6 +11,10 @@ namespace hy
 
 	Tile::Tile()
 		: mSpriteRenderer(nullptr)
+		, mSourceIndexX(0)
+		, mSourceIndexY(0)
+		, mIndexX(0)
+		, mIndexY(0)
 
 	{
 	}

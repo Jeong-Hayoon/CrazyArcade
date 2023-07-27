@@ -50,6 +50,8 @@ namespace hy
 		void Live();
 		void Victory();
 
+		class Texture* mFloorTexture;
+
 	private:
 		eState mState;
 		eDirection mDirection;

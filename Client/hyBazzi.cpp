@@ -66,6 +66,26 @@ namespace hy
 	{
 		GameObject::Update();
 
+		//pixel 충돌
+		/*Transform* tr = GetComponent<Transform>();
+		COLORREF rgb = mFloorTexture->GetTexturePixel(tr->GetPosition().x, tr->GetPosition().y + 48);
+
+		Rigidbody* rb = GetComponent<Rigidbody>();
+		if (rgb == RGB(0, 0, 255))
+		{
+			Transform* tr = GetComponent<Transform>();
+
+			Vector2 pos = tr->GetPosition();
+			pos.y -= 1;
+			tr->SetPosition(pos);
+
+			rb->SetGround(true);
+		}
+		else
+		{
+			rb->SetGround(false);
+		}*/
+
 		// tab + enter 하면 스위치 생성
 		switch (mState)
 		{

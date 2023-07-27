@@ -9,7 +9,16 @@
 #include "hyMath.h"
 #include <string>
 #include <bitset>
-	
+#include <assert.h>
+
+// 사운드 관련
+#include <mmsystem.h>
+#include <dsound.h>
+#include <dinput.h>
+
+#pragma comment(lib, "winmm.lib")
+#pragma comment(lib, "dsound.lib")
+
 //#include <gdiplus.h>
 //#pragma comment(lib, "Gdiplus.lib")
 #pragma comment(lib, "Msimg32.lib")

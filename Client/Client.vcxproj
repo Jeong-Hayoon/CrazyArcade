@@ -158,6 +158,8 @@
     <ClInclude Include="hyPirateMap3.h" />
     <ClInclude Include="hyPirateMonster.h" />
     <ClInclude Include="hyRigidbody.h" />
+    <ClInclude Include="hySound.h" />
+    <ClInclude Include="hySoundManager.h" />
     <ClInclude Include="hyTile.h" />
     <ClInclude Include="hyToolScene.h" />
     <ClInclude Include="Resource.h" />
@@ -211,6 +213,8 @@
     <ClCompile Include="hyPirateMap3.cpp" />
     <ClCompile Include="hyPirateMonster.cpp" />
     <ClCompile Include="hyRigidbody.cpp" />
+    <ClCompile Include="hySound.cpp" />
+    <ClCompile Include="hySoundManager.cpp" />
     <ClCompile Include="hyTile.cpp" />
     <ClCompile Include="hyToolScene.cpp" />
     <ClCompile Include="main.cpp" />
