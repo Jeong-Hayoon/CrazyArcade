@@ -1,6 +1,9 @@
 #include "hySound.h"
 #include "hySoundManager.h"
 
+// Load함수를 통해 데이터를 로드
+// 로드 후 Play 
+
 namespace hy
 {
 	HRESULT Sound::Load(const std::wstring& path)

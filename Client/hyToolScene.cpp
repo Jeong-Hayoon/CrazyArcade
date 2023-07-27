@@ -10,6 +10,9 @@
 #include "hyCamera.h"
 #include "hyTile.h"
 
+// ToolScene에서 하던 작업을 각 씬에서 불러와주면 됨
+// 절대경로 사용
+
 namespace hy
 {
 	ToolScene::ToolScene()
@@ -52,6 +55,8 @@ namespace hy
 			mTiles.push_back(tile);
 		}
 
+		// 타일을 깔고 어딘가에 저장을 해야 함 
+		// 파일 입출력(램에 있는 데이터를 SSD에 옮기는 작업)
 		if (Input::GetKeyDown(eKeyCode::S))
 		{
 			Save();
@@ -87,6 +92,7 @@ namespace hy
 		// open a file name
 		OPENFILENAME ofn = {};
 
+		//szFilePath - 경로
 		wchar_t szFilePath[256] = {};
 
 		ZeroMemory(&ofn, sizeof(ofn));
@@ -107,6 +113,9 @@ namespace hy
 
 		FILE* pFile = nullptr;
 
+		// 파일을 여는 함수
+		// wb : 파일을 이진수로 저장할 것인지
+		// wt : 텍스트로 저장할 것인지
 		_wfopen_s(&pFile, szFilePath, L"wb");
 		if (pFile == nullptr)
 			return;
@@ -122,12 +131,16 @@ namespace hy
 			int	myX = idx.x;
 			int myY = idx.y;
 
+			// 열어놓은 파일에 원하는 크기만큼 파일에 기록
+			// sourceX, sourceY - 
+			// myX, myY - 
 			fwrite(&sourceX, sizeof(int), 1, pFile);
 			fwrite(&sourceY, sizeof(int), 1, pFile);
 			fwrite(&myX, sizeof(int), 1, pFile);
 			fwrite(&myY, sizeof(int), 1, pFile);
 		}
 
+		// 메모리 할당된 것을 삭제해주는 함수
 		fclose(pFile);
 	}
 
@@ -153,17 +166,12 @@ namespace hy
 		if (false == GetOpenFileName(&ofn))
 			return;
 
+		// rb : 이진수로 파일을 읽음
 		FILE* pFile = nullptr;
 		_wfopen_s(&pFile, szFilePath, L"rb");
 
 		if (pFile == nullptr)
 			return;
-
-		//for (Tile* tile : mTiles)
-		//{
-		//	Destroy(tile);
-		//}
-		//mTiles.clear();
 
 		while (true)
 		{

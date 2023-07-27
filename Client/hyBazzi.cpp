@@ -66,7 +66,7 @@ namespace hy
 	{
 		GameObject::Update();
 
-		//pixel 충돌
+		//pixel 충돌(게임 완성을 하고 나면 레이어를 배경 뒤로 배치해서 게임 실행 시 안 보이게 배치)
 		/*Transform* tr = GetComponent<Transform>();
 		COLORREF rgb = mFloorTexture->GetTexturePixel(tr->GetPosition().x, tr->GetPosition().y + 48);
 
