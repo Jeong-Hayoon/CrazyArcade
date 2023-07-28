@@ -56,7 +56,7 @@ namespace hy
 		HDC mHdc;						// 이미지 파일 하나당 DC 필요
 		UINT mWidth;					// 이미지 길이
 		UINT mHeight;					// 이미지 높이
-		// bool mbAffectCamera;
+		//bool mbAffectCamera;
 		//float mRotate;
 
 

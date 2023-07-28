@@ -27,17 +27,25 @@ namespace hy
 	}
 	void Bazzi::Initialize()
 	{
-
+		Animator* at = AddComponent<Animator>();
 		Texture* Bazzi_ = Resources::Load<Texture>(L"Bazzi"
 			, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");
 
 		Texture* BazziDie_ = Resources::Load<Texture>(L"BazziDie"
 			, L"..\\Resources\\Image\\Bazzi\\BazziDie.bmp");
 
-		Animator* at = AddComponent<Animator>();
-
 		Texture* StartBazzi_ = Resources::Load<Texture>(L"StartBazzi"
 			, L"..\\Resources\\Image\\Bazzi\\ready.bmp");
+
+		Texture* BazziTrap_ = Resources::Load<Texture>(L"BazziTrap"
+			, L"..\\Resources\\Image\\Bazzi\\trap.bmp");
+
+		Texture* BazziLive_ = Resources::Load<Texture>(L"BazziLive"
+			, L"..\\Resources\\Image\\Bazzi\\live.bmp");
+
+		Texture* BazziVictory_ = Resources::Load<Texture>(L"BazziVictory"
+			, L"..\\Resources\\Image\\Bazzi\\jump.bmp");
+		
 
 		at->CreateAnimation(L"StartBazzi", StartBazzi_, Vector2(0.0f, 0.0f), Vector2(64.0f, 86.0f), 18, Vector2(0.0f, 0.0f), 0.1f);
 		at->CreateAnimation(L"BazziIdle", Bazzi_, Vector2(0.0f, 0.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.6f);
@@ -54,7 +62,11 @@ namespace hy
 		at->CreateAnimation(L"BazziLeft", Bazzi_, Vector2(0.0f, 180.0f), Vector2(50.0f, 60.0f), 4, Vector2(0.0f, 0.0f), 0.15f);
 		at->CreateAnimation(L"BazziLeftStop", Bazzi_, Vector2(50.0f, 180.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
 
+		// 상태 애니메이션
 		at->CreateAnimation(L"BazziDie", BazziDie_, Vector2(0.0f, 0.0f), Vector2(91.0f, 144.0f), 10, Vector2(0.0f, 0.0f), 0.1f);
+		at->CreateAnimation(L"BazziTrap", BazziTrap_, Vector2(0.0f, 0.0f), Vector2(88.0f, 144.0f), 13, Vector2(0.0f, 0.0f), 0.3f);
+		at->CreateAnimation(L"BazziLive", BazziLive_, Vector2(0.0f, 0.0f), Vector2(88.0f, 144.0f), 5, Vector2(0.0f, 0.0f), 0.1f);
+		at->CreateAnimation(L"BazziVictory", BazziVictory_, Vector2(0.0f, 0.0f), Vector2(64.0f, 80.0f), 8, Vector2(0.0f, 0.0f), 0.1f);
 
 		at->PlayAnimation(L"StartBazzi", false);
 

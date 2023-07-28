@@ -23,12 +23,13 @@ namespace hy
 	}
 	void ToolScene::Initialize()
 	{
-		Texture* forestFloor
-			= Resources::Load<Texture>(L"ForestFloorTile", L"..\\resources\\image\\Bg\\ForestTile.bmp");
+		Texture* Forestfloor
+			= Resources::Load<Texture>(L"ForestFloorTile", L"..\\Resources\\Image\\Bg\\ForestTile.bmp");
 
 		// 타일 위치..?
 		/*Tile* tile
 			= object::Instantiate<Tile>(eLayerType::Tile, Vector2(600.0f, 400.0f));*/
+	
 	}
 
 	void ToolScene::Update()
