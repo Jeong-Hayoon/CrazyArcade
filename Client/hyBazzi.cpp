@@ -28,6 +28,7 @@ namespace hy
 	void Bazzi::Initialize()
 	{
 		Animator* at = AddComponent<Animator>();
+
 		Texture* Bazzi_ = Resources::Load<Texture>(L"Bazzi"
 			, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");
 

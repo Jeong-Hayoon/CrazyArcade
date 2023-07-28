@@ -109,6 +109,7 @@ namespace hy
 		, Vector2 leftTop, Vector2 size, Vector2 offset
 		, UINT spriteLength, float duration)
 	{
+		SetName(name);
 		mTexture = texture;
 
 		for (size_t i = 0; i < spriteLength; i++)

@@ -24,6 +24,22 @@ namespace hy
 	{
 		Animator* bt = AddComponent<Animator>();
 		bt->CreateAnimationFolder(L"BombidleBottom", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+		
+		// 상하좌우 물줄기
+		bt->CreateAnimationFolder(L"BombUp", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombUp", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+
+		bt->CreateAnimationFolder(L"BombDown", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombDown", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+
+		bt->CreateAnimationFolder(L"BombRight", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombRight", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+
+		bt->CreateAnimationFolder(L"BombLeft", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombLeft", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+
+		bt->CreateAnimationFolder(L"BombCenter", L"..\\Resources\\Image\\Bomb\\Centerflow", Vector2(0.f, 0.f), 0.4f);
+
 
 		bt->PlayAnimation(L"BombidleBottom", true);
 

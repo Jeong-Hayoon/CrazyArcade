@@ -81,7 +81,7 @@ namespace hy
 			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile
 				, Vector2(myX * (TILE_WIDTH ) + offset.x
 					, myY * (TILE_HEIGHT) + offset.y));
-
+			
 			tile->SetTile(sourceX, sourceY);
 			tile->SetSourceTileIdx(sourceX, sourceY);
 			tile->SetTileIdx(myX, myY);
@@ -132,17 +132,19 @@ namespace hy
 
 		// 충돌 구현
 		Collider* col = forestbazzi1->AddComponent<Collider>();
+		// 배찌의 충돌 사각형 사이즈 수정
 		col->SetSize(Vector2(100.0f, 100.0f));
 		//col->SetOffset(Vector2(10.0f, 10.0f));
 
 		col = forestmonster->AddComponent<Collider>();
+		// 포레스트 몬스터의 충돌 사각형 사이즈 수정
 		col->SetSize(Vector2(50.0f, 50.0f));
 		//col->SetOffset(Vector2(10.0f, 10.0f));
 		forestbazzitr = forestmonster->GetComponent<Transform>();
 
 		forestbazzitr->SetPosition(Vector2(100.0f, 100.0f));
 
-		// 플레이어와 몬스터가 충돌
+		// 플레이어와 몬스터가 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
 		Scene::Initialize();

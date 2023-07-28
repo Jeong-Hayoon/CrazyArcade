@@ -12,7 +12,7 @@ namespace hy::object
 		T* gameObject = new T();
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(type, gameObject);
-		gameObject->Initialize();
+		//gameObject->Initialize();
  
 		return gameObject;
 	}
@@ -24,7 +24,7 @@ namespace hy::object
 		T* gameObject = new T();
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(type, gameObject);
-		gameObject->Initialize();
+		//gameObject->Initialize();
 		gameObject->GetComponent<Transform>()->SetPosition(position);
 
 		return gameObject;
