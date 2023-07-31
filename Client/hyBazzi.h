@@ -20,10 +20,10 @@ namespace hy
 			Idle,
 			Move,
 			MoveStop,
-			Ready,
 			Trap,
 			Live,
 			Dead,
+			BalloonDead,
 			Victory,
 			End,
 		};
@@ -44,10 +44,10 @@ namespace hy
 		void Idle();
 		void Move();
 		void MoveStop();
-		void DropWater();	
-		void Ready();
 		void Trap();
 		void Live();
+		void Dead ();
+		void BalloonDead ();
 		void Victory();
 
 		class Texture* mFloorTexture;

@@ -32,7 +32,10 @@ namespace hy
 		Texture* Bazzi_ = Resources::Load<Texture>(L"Bazzi"
 			, L"..\\Resources\\Image\\Bazzi\\Bazzi.bmp");
 
-		Texture* BazziDie_ = Resources::Load<Texture>(L"BazziDie"
+		Texture* BazziDead_ = Resources::Load<Texture>(L"BazziDead"
+			, L"..\\Resources\\Image\\Bazzi\\BazziDead.bmp");
+
+		Texture* BazziBalloonDead_ = Resources::Load<Texture>(L"BazziBalloonDead"
 			, L"..\\Resources\\Image\\Bazzi\\BazziDie.bmp");
 
 		Texture* StartBazzi_ = Resources::Load<Texture>(L"StartBazzi"
@@ -64,10 +67,14 @@ namespace hy
 		at->CreateAnimation(L"BazziLeftStop", Bazzi_, Vector2(50.0f, 180.0f), Vector2(50.0f, 60.0f), 1, Vector2(0.0f, 0.0f), 1.0f);
 
 		// 상태 애니메이션
-		at->CreateAnimation(L"BazziDie", BazziDie_, Vector2(0.0f, 0.0f), Vector2(91.0f, 144.0f), 10, Vector2(0.0f, 0.0f), 0.1f);
-		at->CreateAnimation(L"BazziTrap", BazziTrap_, Vector2(0.0f, 0.0f), Vector2(88.0f, 144.0f), 13, Vector2(0.0f, 0.0f), 0.3f);
-		at->CreateAnimation(L"BazziLive", BazziLive_, Vector2(0.0f, 0.0f), Vector2(88.0f, 144.0f), 5, Vector2(0.0f, 0.0f), 0.1f);
-		at->CreateAnimation(L"BazziVictory", BazziVictory_, Vector2(0.0f, 0.0f), Vector2(64.0f, 80.0f), 8, Vector2(0.0f, 0.0f), 0.1f);
+		// Dead 상태가 두가지
+		// 물풍선에 일정 시간 갇히는 경우
+		// 몬스터와 충돌하는 경우
+		at->CreateAnimation(L"BazziDead", BazziDead_, Vector2(0.0f, 0.0f), Vector2(81.0f, 144.0f), 6, Vector2(0.0f, -15.0f), 0.15f);
+		at->CreateAnimation(L"BazziTrap", BazziTrap_, Vector2(0.0f, 0.0f), Vector2(88.0f, 144.0f), 13, Vector2(0.0f, 0.0f), 0.15f);
+		at->CreateAnimation(L"BazziLive", BazziLive_, Vector2(0.0f, 0.0f), Vector2(88.0f, 144.0f), 5, Vector2(0.0f, 0.0f), 0.15f);
+		at->CreateAnimation(L"BazziVictory", BazziVictory_, Vector2(0.0f, 0.0f), Vector2(64.0f, 80.0f), 8, Vector2(0.0f, 0.0f), 0.15f);
+		at->CreateAnimation(L"BazziBalloonDead", BazziBalloonDead_, Vector2(0.0f, 0.0f), Vector2(91.0f, 144.0f), 10, Vector2(0.0f, 0.0f), 0.15f);
 
 		at->PlayAnimation(L"StartBazzi", false);
 
@@ -114,14 +121,17 @@ namespace hy
 		case hy::Bazzi::eState::MoveStop:
 			MoveStop();
 			break;
-		case hy::Bazzi::eState::Ready:
-			Ready();
-			break;
 		case hy::Bazzi::eState::Trap:
 			Trap();
 			break;
 		case hy::Bazzi::eState::Live:
 			Live();
+			break;
+		case hy::Bazzi::eState::Dead:
+			Dead();
+			break;
+		case hy::Bazzi::eState::BalloonDead:
+			BalloonDead();
 			break;
 		case hy::Bazzi::eState::Victory:
 			Victory();
@@ -140,14 +150,17 @@ namespace hy
 			Transform* Bazzitr = GetComponent<Transform>();
 			Vector2 Bazzipos = Bazzitr->GetPosition();
 
-			if (mDirection == eDirection::Up)
+			Bazzipos.y += 20.f;
+			Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
+
+
+			/*if (mDirection == eDirection::Up)
 			{
 				Bazzipos.y -= 40.f;
 				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
 			}
 			else if (mDirection == eDirection::Down)
 			{
-				Bazzipos.y += 70.f;
 				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
 			}
 			else if (mDirection == eDirection::Left)
@@ -161,7 +174,7 @@ namespace hy
 				Bazzipos.x += 60.f;
 				Bazzipos.y += 17.f;
 				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
-			}
+			}*/
 		}
 
 	}
@@ -172,13 +185,10 @@ namespace hy
 
 	void Bazzi::OnCollisionEnter(Collider* other)
 	{
-		/*Animator* at = GetComponent<Animator>();
-		at->PlayAnimation(L"BazziDie", false);
-
-		if (at->IsActiveAnimationComplete())
-		{
-			SceneManager::LoadScene(L"IceMap");
-		}*/
+		Animator* at = GetComponent<Animator>();
+		at->SetScale(Vector2(1.0f, 1.0f));
+		at->PlayAnimation(L"BazziDead", false);
+		mState = eState::Dead;
 	}
 	void Bazzi::OnCollisionStay(Collider* other)
 	{
@@ -225,6 +235,37 @@ namespace hy
 			animator->PlayAnimation(L"BazziDown", true);
 			mState = eState::Move;
 			mDirection = eDirection::Down;
+		}
+
+		if (Input::GetKeyDown(eKeyCode::T) )	// Trap
+		{
+			animator->SetScale(Vector2(1.0f, 1.0f));
+			animator->PlayAnimation(L"BazziTrap", false);
+			mState = eState::Trap;
+		}
+		if (Input::GetKeyDown(eKeyCode::L))		// Live
+		{
+			animator->SetScale(Vector2(1.0f, 1.0f));
+			animator->PlayAnimation(L"BazziLive", false);
+			mState = eState::Live;
+		}
+		if (Input::GetKeyDown(eKeyCode::B))		// BalloonDead
+		{
+			animator->SetScale(Vector2(1.0f, 1.0f));
+			animator->PlayAnimation(L"BazziBalloonDead", false);
+			mState = eState::BalloonDead;
+		}
+		if (Input::GetKeyDown(eKeyCode::D))		// Dead
+		{
+			animator->SetScale(Vector2(1.0f, 1.0f));
+			animator->PlayAnimation(L"BazziDead", false);
+			mState = eState::Dead;
+		}
+		if (Input::GetKeyDown(eKeyCode::V))		// Victory
+		{
+			animator->SetScale(Vector2(1.0f, 1.0f));
+			animator->PlayAnimation(L"BazziVictory", true);
+			mState = eState::Victory;
 		}
 
 		//if (Input::GetKeyDown(eKeyCode::K))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행
@@ -378,32 +419,55 @@ namespace hy
 		}
 	}
 
-	void Bazzi::DropWater()
-	{
-		// 농작물에 물을 주는 로직이 추가가된다.
-		/*Animator* animator = GetComponent<Animator>();
-
-		if (animator->IsActiveAnimationComplete())
-		{
-			animator->PlayAnimation(L"bazziidle", true);
-			mState = eState::Idle;
-		}*/
-	}
-
-	void Bazzi::Ready()
-	{
-	}
-
 	void Bazzi::Trap()
 	{
+		Animator* animator = GetComponent<Animator>();
+		if (animator->IsActiveAnimationComplete())
+		{
+			animator->PlayAnimation(L"BazziIdle", true);
+			mState = eState::Idle;
+		}
 	}
 
 	void Bazzi::Live()
 	{
+		Animator* animator = GetComponent<Animator>();
+		if (animator->IsActiveAnimationComplete())
+		{
+			animator->PlayAnimation(L"BazziIdle", true);
+			mState = eState::Idle;
+		}
+	}
+
+	void Bazzi::Dead()
+	{
+		Animator* animator = GetComponent<Animator>();
+		if (animator->IsActiveAnimationComplete())
+		{
+			animator->PlayAnimation(L"BazziIdle", true);
+			mState = eState::Idle;
+		}
+	}
+
+	void Bazzi::BalloonDead()
+	{
+		Animator* animator = GetComponent<Animator>();
+		if (animator->IsActiveAnimationComplete())
+		{
+			animator->PlayAnimation(L"BazziIdle", true);
+			mState = eState::Idle;
+		}
 	}
 	 
 	void Bazzi::Victory()
 	{
+
+		Animator* animator = GetComponent<Animator>();
+		if (animator->IsActiveAnimationComplete())
+		{
+			animator->PlayAnimation(L"BazziIdle", true);
+			mState = eState::Idle;
+		}
 	}
 }
 

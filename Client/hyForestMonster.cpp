@@ -25,11 +25,11 @@ namespace hy
 	void ForestMonster::Initialize()
 	{
 		Animator* mt = AddComponent<Animator>();
-		mt->CreateAnimationFolder(L"ForestMosterUp", L"..\\Resources\\Image\\Monster\\Forest\\Up", Vector2::Zero, 0.4f);
-		mt->CreateAnimationFolder(L"ForestMosterDown", L"..\\Resources\\Image\\Monster\\Forest\\Down",Vector2::Zero, 0.4f);
-		mt->CreateAnimationFolder(L"ForestMosterRight", L"..\\Resources\\Image\\Monster\\Forest\\Right", Vector2::Zero, 0.4f);
-		mt->CreateAnimationFolder(L"ForestMosterLeft", L"..\\Resources\\Image\\Monster\\Forest\\Left", Vector2::Zero, 0.4f);
-		mt->CreateAnimationFolder(L"ForestMonsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die", Vector2::Zero, 0.4f);
+		mt->CreateAnimationFolder(L"ForestMosterUp", L"..\\Resources\\Image\\Monster\\Forest\\Up", Vector2::Zero, 0.1f);
+		mt->CreateAnimationFolder(L"ForestMosterDown", L"..\\Resources\\Image\\Monster\\Forest\\Down",Vector2::Zero, 0.1f);
+		mt->CreateAnimationFolder(L"ForestMosterRight", L"..\\Resources\\Image\\Monster\\Forest\\Right", Vector2::Zero, 0.1f);
+		mt->CreateAnimationFolder(L"ForestMosterLeft", L"..\\Resources\\Image\\Monster\\Forest\\Left", Vector2::Zero, 0.1f);
+		mt->CreateAnimationFolder(L"ForestMonsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die", Vector2::Zero, 0.1f);
 		mt->PlayAnimation(L"ForestMosterRight", true);
 
 		GameObject::Initialize();
@@ -86,25 +86,25 @@ namespace hy
 		if (MonsterTime < 3)
 		{
 			anim->PlayAnimation(L"ForestMosterRight", true);
-			pos.x += 150.0f * Time::DeltaTime();
+			pos.x += 100.0f * Time::DeltaTime();
 		}
 
 		if (MonsterTime < 6 && MonsterTime > 3)
 		{
 			anim->PlayAnimation(L"ForestMosterDown", true);
-			pos.y += 150.0f * Time::DeltaTime();
+			pos.y += 100.0f * Time::DeltaTime();
 		}
 
 		if (MonsterTime < 9 && MonsterTime > 6)
 		{
 			anim->PlayAnimation(L"ForestMosterLeft", true);
-			pos.x -= 150.0f * Time::DeltaTime();
+			pos.x -= 100.0f * Time::DeltaTime();
 		}
 
 		if (MonsterTime < 12 && MonsterTime > 9)
 		{
 			anim->PlayAnimation(L"ForestMosterUp", true);
-			pos.y -= 150.0f * Time::DeltaTime();
+			pos.y -= 100.0f * Time::DeltaTime();
 		}
 
 		tr->SetPosition(pos);

@@ -17,6 +17,8 @@
 #include "hyToolScene.h"
 
 
+// 타일 위치 20, 40에 넣기
+
 extern hy::Application application;
 namespace hy
 {
@@ -109,7 +111,7 @@ namespace hy
 		forestmapsr->SetImage(ForestMap1);
 		forestmapsr->SetScale(Vector2(1.0f, 0.90f));*/
 
-		//Load();
+		// Load();
 
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
@@ -133,12 +135,12 @@ namespace hy
 		// 충돌 구현
 		Collider* col = forestbazzi1->AddComponent<Collider>();
 		// 배찌의 충돌 사각형 사이즈 수정
-		col->SetSize(Vector2(100.0f, 100.0f));
+		col->SetSize(Vector2(70.0f, 80.0f));
 		//col->SetOffset(Vector2(10.0f, 10.0f));
 
 		col = forestmonster->AddComponent<Collider>();
 		// 포레스트 몬스터의 충돌 사각형 사이즈 수정
-		col->SetSize(Vector2(50.0f, 50.0f));
+		col->SetSize(Vector2(40.0f, 40.0f));
 		//col->SetOffset(Vector2(10.0f, 10.0f));
 		forestbazzitr = forestmonster->GetComponent<Transform>();
 
