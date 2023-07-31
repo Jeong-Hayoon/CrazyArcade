@@ -131,7 +131,8 @@ namespace hy
 		}
 	}
 
-	void Animation::Reset()			// 애니메이션을 재설정, .애니메이션의 시간, 인덱스,  mbComplete 플래그를 초기 값으로 설정
+	// 애니메이션을 재설정, .애니메이션의 시간, 인덱스,  mbComplete 플래그를 초기 값으로 설정
+	void Animation::Reset()			
 	{
 		mTime = 0.0f;
 		mIndex = 0;

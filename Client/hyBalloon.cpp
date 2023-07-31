@@ -1,33 +1,52 @@
 #include "hyBalloon.h"
+#include "hyAnimator.h"
+#include "hyResources.h"
+#include "hyTexture.h"
 
-hy::Balloon::Balloon()
-{
-}
 
-hy::Balloon::~Balloon()
+namespace hy
 {
-}
+	Balloon::Balloon()
+		: mState(eState::Idle)
+	{
+		Animator* bt = AddComponent<Animator>();
 
-void hy::Balloon::Initialize()
-{
-}
+		Texture* Balloon_ = Resources::Load<Texture>(L"Balloon"
+			, L"..\\Resources\\Image\\Items\\balloon.bmp");
 
-void hy::Balloon::Update()
-{
-}
+		bt->CreateAnimation(L"Balloon", Balloon_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
+		bt->SetScale(Vector2(1.f, 1.f));
+		bt->PlayAnimation(L"Balloon", true);
+	}
 
-void hy::Balloon::Render(HDC hdc)
-{
-}
+	Balloon::~Balloon()
+	{
+	}
 
-void hy::Balloon::OnCollisionEnter(Collider* other)
-{
-}
+	void Balloon::Initialize()
+	{
+		GameObject::Initialize();
+	}
 
-void hy::Balloon::OnCollisionStay(Collider* other)
-{
-}
+	void Balloon::Update()
+	{
+		GameObject::Update();
+	}
 
-void hy::Balloon::OnCollisionExit(Collider* other)
-{
+	void Balloon::Render(HDC hdc)
+	{
+		GameObject::Render(hdc);
+	}
+
+	void Balloon::OnCollisionEnter(Collider* other)
+	{
+	}
+
+	void Balloon::OnCollisionStay(Collider* other)
+	{
+	}
+
+	void Balloon::OnCollisionExit(Collider* other)
+	{
+	}
 }

@@ -8,7 +8,10 @@ namespace hy
 	public:
 		enum class eState
 		{
-			Move,
+			Up,
+			Down,
+			Left,
+			Right,
 			Dead,
 			End,
 		};
@@ -24,14 +27,17 @@ namespace hy
 		virtual void OnCollisionStay(class Collider* other);
 		virtual void OnCollisionExit(class Collider* other);
 
-		void Move();
+		void Up();
+		void Down();
+		void Left();
+		void Right();
+
 		void Dead();
 
 	private:
 		eState mState;
 		float mDeathTime;
-
-
+		static float MonsterTime;
 	};
 }
 

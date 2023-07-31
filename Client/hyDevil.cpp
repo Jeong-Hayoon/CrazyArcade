@@ -1,33 +1,36 @@
 #include "hyDevil.h"
 
-hy::Devil::Devil()
+namespace hy
 {
-}
+	Devil::Devil()
+	{
+	}
 
-hy::Devil::~Devil()
-{
-}
+	Devil::~Devil()
+	{
+	}
 
-void hy::Devil::Initialize()
-{
-}
+	void Devil::Initialize()
+	{
+	}
 
-void hy::Devil::Update()
-{
-}
+	void Devil::Update()
+	{
+	}
 
-void hy::Devil::Render(HDC hdc)
-{
-}
+	void Devil::Render(HDC hdc)
+	{
+	}
 
-void hy::Devil::OnCollisionEnter(Collider* other)
-{
-}
+	void Devil::OnCollisionEnter(Collider* other)
+	{
+	}
 
-void hy::Devil::OnCollisionStay(Collider* other)
-{
-}
+	void Devil::OnCollisionStay(Collider* other)
+	{
+	}
 
-void hy::Devil::OnCollisionExit(Collider* other)
-{
+	void Devil::OnCollisionExit(Collider* other)
+	{
+	}
 }

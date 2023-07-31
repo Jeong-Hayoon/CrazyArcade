@@ -15,7 +15,7 @@
 #include "hyForestMonster.h"
 #include "hyCollisionManager.h"
 #include "hyToolScene.h"
-
+#include "hyBalloon.h"
 
 // 타일 위치 20, 40에 넣기
 
@@ -148,6 +148,25 @@ namespace hy
 
 		// 플레이어와 몬스터가 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
+
+		// 물풍선 아이템 setting
+		Balloon* Balloon_1 = object::Instantiate<Balloon>(eLayerType::Item);
+		Transform* Balloontr = Balloon_1->GetComponent<Transform>();
+		Vector2 Balloonpos = Balloontr->GetPosition();
+
+		Balloonpos.y = 300.f;
+		Balloonpos.x = 300.f;
+
+		Balloon_1->GetComponent<Transform>()->SetPosition(Balloonpos);
+
+		// 물풍선 아이템 충돌 구현
+		Collider* Ballooncol = Balloon_1->AddComponent<Collider>();
+		// 물풍선 아이템 충돌 사각형 사이즈 수정
+		Ballooncol->SetSize(Vector2(50.0f, 50.0f));
+
+
+		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
 
 		Scene::Initialize();
 	}

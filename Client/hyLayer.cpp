@@ -20,6 +20,8 @@ namespace hy
 
 	void Layer::Update()
 	{
+		// GameObject를 돌면서 obj가 멈춤 상태면 다음 인덱스로 넘어가고
+		// 그게 아니라면 업데이트 함수 호출
 		for (GameObject* obj : mGameObjects)
 		{
 			if (obj->GetState() == GameObject::eState::Pause)
@@ -31,6 +33,8 @@ namespace hy
 
 	void Layer::Render(HDC hdc)
 	{
+		// GameObject를 돌면서 obj가 멈춤 상태면 다음 인덱스로 넘어가고
+		// 그게 아니라면 렌더 함수 호출
 		for (GameObject* obj : mGameObjects)
 		{
 			if (obj->GetState() == GameObject::eState::Pause)
@@ -43,7 +47,8 @@ namespace hy
 			; iter != mGameObjects.end()
 			; )
 		{
-			if ((*iter)->GetState() == GameObject::eState::Dead)	// 객체가 죽으면 이터레이터로 순회하면서 삭제
+			// 객체가 죽으면 이터레이터로 순회하면서 삭제
+			if ((*iter)->GetState() == GameObject::eState::Dead)
 			{
 				iter = mGameObjects.erase(iter);
 			}

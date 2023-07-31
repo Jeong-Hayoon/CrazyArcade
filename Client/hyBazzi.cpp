@@ -388,14 +388,14 @@ namespace hy
 			time = 0.f;
 			mDirection = eDirection::Left;
 		}
-		if (Input::GetKeyDown(eKeyCode::Right) || Input::GetKey(eKeyCode::Right))		// 오른쪽 키를 누르면 오른쪽 애니메이션 실행
+		if (Input::GetKeyDown(eKeyCode::Right) || Input::GetKey(eKeyCode::Right))	// 오른쪽 키를 누르면 오른쪽 애니메이션 실행
 		{
 			animator->PlayAnimation(L"BazziRight", true);
 			mState = eState::Move;
 			time = 0.f;
 			mDirection = eDirection::Right;
 		}
-		if (Input::GetKeyDown(eKeyCode::Up) || Input::GetKey(eKeyCode::Up))		// 위쪽 키를 누르면 위쪽 애니메이션 실행
+		if (Input::GetKeyDown(eKeyCode::Up) || Input::GetKey(eKeyCode::Up))			// 위쪽 키를 누르면 위쪽 애니메이션 실행
 		{
 			animator->PlayAnimation(L"BazziUp", true);
 			mState = eState::Move;

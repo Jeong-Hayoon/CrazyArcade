@@ -127,6 +127,9 @@ namespace hy
 		return iter->second;
 	}
 
+	// 인자로 들어온 name을 통해 애니메이션을 찾고 만들어져 있는 애니메이션이
+	// 존재한다면 mActiveAnimation에 애니메이션을 넣어주는 함수
+	// 만들어진 애니메이션이 없다면 return
 	void Animator::PlayAnimation(const std::wstring& name, bool loop)
 	{
 		Animation* animation = FindAnimation(name);
