@@ -8,6 +8,7 @@
 #include "hyTransform.h"
 // #include "hyCamera.h"
 #include "hyApplication.h"
+#include "hySound.h"
 
 extern hy::Application application;
 
@@ -23,6 +24,10 @@ namespace hy
 	{
 		/*Player* player = object::Instantiate <Player>(eLayerType::Player);
 		player->AddComponent<SpriteRenderer>();*/
+
+		// 사운드 적용
+		Sound* sound = Resources::Load<Sound>(L"bgSound", L"..\\Resources\\Sound\\Sound\\lobby_scene.wav");
+		sound->Play(true);
 
 		// 게임시작 화면
 		Texture* image = Resources::Load<Texture>(L"TitleBackGroundImgae"	// 이미지 포인터형으로 리소스를 반환해줌, 이미지 로드

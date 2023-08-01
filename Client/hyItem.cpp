@@ -1,33 +1,51 @@
 #include "hyItem.h"
 
-hy::Item::Item()
+namespace hy
 {
-}
+	Item::Item()
+	{
+	}
 
-hy::Item::~Item()
-{
-}
+	Item::~Item()
+	{
+	}
 
-void hy::Item::Initialize()
-{
-}
+	void Item::Idle()
+	{
+	}
 
-void hy::Item::Update()
-{
-}
+	void Item::Use()
+	{
+	}
 
-void hy::Item::Render(HDC hdc)
-{
-}
+	void Item::Extinct()
+	{
+	}
 
-void hy::Item::OnCollisionEnter(Collider* other)
-{
-}
+	void Item::Initialize()
+	{
+		GameObject::Initialize();
+	}
 
-void hy::Item::OnCollisionStay(Collider* other)
-{
-}
+	void Item::Update()
+	{
+		GameObject::Update();
+	}
 
-void hy::Item::OnCollisionExit(Collider* other)
-{
+	void Item::Render(HDC hdc)
+	{
+		GameObject::Render(hdc);
+	}
+
+	void Item::OnCollisionEnter(Collider* other)
+	{
+	}
+
+	void Item::OnCollisionStay(Collider* other)
+	{
+	}
+
+	void Item::OnCollisionExit(Collider* other)
+	{
+	}
 }

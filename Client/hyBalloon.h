@@ -1,18 +1,18 @@
 #pragma once
-#include "hyGameObject.h"
-
+#include "hyItem.h"
 
 // ¹°Ç³¼±
 
 namespace hy
 {
-	class Balloon : public GameObject
+	class Balloon : public Item
 	{
 	public:
 		enum class eState
 		{
 			Idle,
 			Use,
+			Extinct,
 			End,
 		};
 
@@ -27,10 +27,10 @@ namespace hy
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
 
-		void Idle();
-		void Use();
-
-
+		virtual void Idle() override;
+		virtual void Use() override;
+		virtual void Extinct() override;
+		
 	private:
 		eState mState;
 	};

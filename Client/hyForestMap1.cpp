@@ -29,7 +29,6 @@ namespace hy
 	{
 	}
 
-	// 씬매니저에서 구현
 	void ForestMap1::Load()
 	{
 		Texture* forestFloor
@@ -135,12 +134,12 @@ namespace hy
 		// 충돌 구현
 		Collider* col = forestbazzi1->AddComponent<Collider>();
 		// 배찌의 충돌 사각형 사이즈 수정
-		col->SetSize(Vector2(70.0f, 80.0f));
-		//col->SetOffset(Vector2(10.0f, 10.0f));
+		col->SetSize(Vector2(50.0f, 30.0f));
+		col->SetOffset(Vector2(0.0f, 25.0f));
 
 		col = forestmonster->AddComponent<Collider>();
 		// 포레스트 몬스터의 충돌 사각형 사이즈 수정
-		col->SetSize(Vector2(40.0f, 40.0f));
+		col->SetSize(Vector2(30.0f, 40.0f));
 		//col->SetOffset(Vector2(10.0f, 10.0f));
 		forestbazzitr = forestmonster->GetComponent<Transform>();
 

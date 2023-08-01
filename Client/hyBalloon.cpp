@@ -2,6 +2,9 @@
 #include "hyAnimator.h"
 #include "hyResources.h"
 #include "hyTexture.h"
+#include "hyCollider.h"
+#include "hyBazzi.h"
+
 
 
 namespace hy
@@ -25,21 +28,34 @@ namespace hy
 
 	void Balloon::Initialize()
 	{
-		GameObject::Initialize();
+		Item::Initialize();
 	}
 
 	void Balloon::Update()
 	{
-		GameObject::Update();
+		Item::Update();
 	}
 
 	void Balloon::Render(HDC hdc)
 	{
-		GameObject::Render(hdc);
+		Item::Render(hdc);
 	}
 
+	void Balloon::Idle()
+	{
+	}
+
+	void Balloon::Use()
+	{
+	}
+	void Balloon::Extinct()
+	{
+	}
+	
 	void Balloon::OnCollisionEnter(Collider* other)
 	{
+		Bazzi* bz = (Bazzi*)(other->GetOwner());
+		bz->BombLimitUp();
 	}
 
 	void Balloon::OnCollisionStay(Collider* other)
@@ -49,4 +65,5 @@ namespace hy
 	void Balloon::OnCollisionExit(Collider* other)
 	{
 	}
+
 }

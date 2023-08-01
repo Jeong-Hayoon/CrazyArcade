@@ -371,6 +371,9 @@
     <ClInclude Include="hyItem.h">
       <Filter>Contents\GameObject\Item</Filter>
     </ClInclude>
+    <ClInclude Include="hyLogoScene.h">
+      <Filter>Contents\Scene\TitleScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -554,6 +557,9 @@
     </ClCompile>
     <ClCompile Include="hyItem.cpp">
       <Filter>Contents\GameObject\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="hyLogoScene.cpp">
+      <Filter>Contents\Scene\TitleScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -5,6 +5,9 @@
 #include "hyIceMap1.h"
 #include "hyPirateMap.h"
 #include "hyToolScene.h"
+#include "hyLogoScene.h"
+
+
 
 namespace hy
 {
@@ -13,6 +16,7 @@ namespace hy
 
 	void SceneManager::Initialize()
 	{
+		CreateScene<LogoScene>(L"LogoScene");
 		CreateScene<TitleScene>(L"TitleScene");
 		CreateScene<LobbyScene>(L"LobbyScene");
 		CreateScene<ForestMap1>(L"ForestMap");
@@ -20,7 +24,7 @@ namespace hy
 		CreateScene<PirateMap>(L"PirateMap");
 		CreateScene<ToolScene>(L"ToolScene");
 
-		LoadScene(L"TitleScene");
+		LoadScene(L"LogoScene");
 	}
 
 	void SceneManager::Update()

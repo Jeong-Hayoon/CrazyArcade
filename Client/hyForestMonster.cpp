@@ -29,12 +29,12 @@ namespace hy
 	void ForestMonster::Initialize()
 	{
 		Animator* mt = AddComponent<Animator>();
-		mt->CreateAnimationFolder(L"ForestMosterUp", L"..\\Resources\\Image\\Monster\\Forest\\Up", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestMosterDown", L"..\\Resources\\Image\\Monster\\Forest\\Down",Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestMosterRight", L"..\\Resources\\Image\\Monster\\Forest\\Right", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestMosterLeft", L"..\\Resources\\Image\\Monster\\Forest\\Left", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestMonsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die", Vector2::Zero, 0.2f);
-		mt->PlayAnimation(L"ForestMosterRight", true);
+		mt->CreateAnimationFolder(L"ForestMonsterUp", L"..\\Resources\\Image\\Monster\\Forest\\Up", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"ForestMonsterDown", L"..\\Resources\\Image\\Monster\\Forest\\Down",Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"ForestMonsterRight", L"..\\Resources\\Image\\Monster\\Forest\\Right", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"ForestMonsterLeft", L"..\\Resources\\Image\\Monster\\Forest\\Left", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"ForestMonnsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die", Vector2::Zero, 0.15f);
+		mt->PlayAnimation(L"ForestMonsterRight", true);
 
 		GameObject::Initialize();
 	}
@@ -108,13 +108,13 @@ namespace hy
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		Animator* animator = GetComponent<Animator>();		//
-		pos.y -= 150.f * Time::DeltaTime();
+		pos.y -= 100.f * Time::DeltaTime();
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();
 
 		if (MonsterTime > 3)
 		{
-			animator->PlayAnimation(L"ForestMosterRight", true);
+			animator->PlayAnimation(L"ForestMonsterRight", true);
 			mState = eState::Right;
 			MonsterTime = 0.f;
 		}
@@ -125,13 +125,13 @@ namespace hy
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		Animator* animator = GetComponent<Animator>();		//
-		pos.y += 150.f * Time::DeltaTime();
+		pos.y += 100.f * Time::DeltaTime();
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();
 
 		if (MonsterTime > 3)
 		{
-			animator->PlayAnimation(L"ForestMosterLeft", true);
+			animator->PlayAnimation(L"ForestMonsterLeft", true);
 			mState = eState::Left;
 			MonsterTime = 0.f;
 		}
@@ -142,13 +142,13 @@ namespace hy
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		Animator* animator = GetComponent<Animator>();		//
-		pos.x -= 150.f * Time::DeltaTime();
+		pos.x -= 100.f * Time::DeltaTime();
 
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();
 		if (MonsterTime > 3)
 		{
-			animator->PlayAnimation(L"ForestMosterUp", true);
+			animator->PlayAnimation(L"ForestMonsterUp", true);
 			mState = eState::Up;
 			MonsterTime = 0.f;
 		}
@@ -158,14 +158,14 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();		//
-		pos.x += 150.f * Time::DeltaTime();
+		Animator* animator = GetComponent<Animator>();			//
+		pos.x += 100.f * Time::DeltaTime();
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();
 
 		if (MonsterTime > 3)
 		{
-			animator->PlayAnimation(L"ForestMosterDown", true);
+			animator->PlayAnimation(L"ForestMonsterDown", true);
 			mState = eState::Down;
 			MonsterTime = 0.f;
 		}

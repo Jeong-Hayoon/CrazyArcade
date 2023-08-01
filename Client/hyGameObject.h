@@ -37,7 +37,6 @@ namespace hy
 				if (comp != nullptr)
 					return comp;
 			}
-
 			return comp;
  		}
 
@@ -58,12 +57,17 @@ namespace hy
 		eState GetState() { return mState; }
 		void Pause() { mState = eState::Pause; }
 
+		void SetLayerType(eLayerType LayerType) { mLayerType = LayerType; }
+		eLayerType GetLayerType() { return mLayerType; }
+
+
 	private:
 		void death() { mState = eState::Dead; }
 
 	private:
 		std::vector<Component*> mComponents;		// Component(eComponentType, GameObject)
 		eState mState;
+		eLayerType mLayerType;
 
 	// 죽은 게임 오브젝트를 메모리 제거해주는 함수
 	static __forceinline void Destroy(GameObject* gameObject)
@@ -72,6 +76,7 @@ namespace hy
 	}
 
 	};
+
 }
 
 

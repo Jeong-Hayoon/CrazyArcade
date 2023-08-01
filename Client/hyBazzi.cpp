@@ -14,12 +14,15 @@
 #include "hyResources.h"
 //#include "hyRigidbody.h"
 #include "hyBomb.h"
+#include "hyCollider.h"
 
 namespace hy
 {
 	Bazzi::Bazzi()
 		: mState(eState::Make)
-		,mDirection(eDirection::Down)
+		, mDirection(eDirection::Down)
+		, BombLimit(3)
+		, MoveSpeed(150.f)
 	{
 	}
 	Bazzi::~Bazzi()
@@ -146,12 +149,16 @@ namespace hy
 		// 물풍선 객체 생성 및 위치 조정
 		if (Input::GetKeyDown(eKeyCode::Space))	
 		{
-			Bomb* Bomb_ = object::Instantiate<Bomb>(eLayerType::Effect);
-			Transform* Bazzitr = GetComponent<Transform>();
-			Vector2 Bazzipos = Bazzitr->GetPosition();
+			if(BombLimit != 0)
+			{
+				Bomb* Bomb_ = object::Instantiate<Bomb>(eLayerType::Effect);
+				Transform* Bazzitr = GetComponent<Transform>();
+				Vector2 Bazzipos = Bazzitr->GetPosition();
 
-			Bazzipos.y += 20.f;
-			Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
+				Bazzipos.y += 20.f;
+				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
+				BombLimit--;
+			}
 
 
 			/*if (mDirection == eDirection::Up)
@@ -185,13 +192,37 @@ namespace hy
 
 	void Bazzi::OnCollisionEnter(Collider* other)
 	{
-		Animator* at = GetComponent<Animator>();
-		at->SetScale(Vector2(1.0f, 1.0f));
-		at->PlayAnimation(L"BazziDead", false);
-		mState = eState::Dead;
+		if (other->GetOwner()->GetLayerType() == eLayerType::Monster)
+		{
+			Animator* at = GetComponent<Animator>();
+			at->SetScale(Vector2(1.0f, 1.0f));
+			at->PlayAnimation(L"BazziDead", false);
+			mState = eState::Dead;
+		}
+
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Item)
+		{
+			/*Animator* at = GetComponent<Animator>();
+			at->SetScale(Vector2(1.0f, 1.0f));
+			at->PlayAnimation(L"BazziDead", false);
+			mState = eState::Dead;*/
+
+			
+		}
+
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Effect)
+		{
+			Animator* at = GetComponent<Animator>();
+			at->SetScale(Vector2(1.0f, 1.0f));
+			at->PlayAnimation(L"BazziBalloonDead", false);
+			mState = eState::BalloonDead;
+		}
+
+		
 	}
 	void Bazzi::OnCollisionStay(Collider* other)
 	{
+
 	}
 	void Bazzi::OnCollisionExit(Collider* other)
 	{
@@ -319,13 +350,13 @@ namespace hy
 		Animator* animator = GetComponent<Animator>();
 
  		if (mDirection == eDirection::Up)			// 방향이 위쪽이면 위쪽으로 이동
-			pos.y -= 150.f * Time::DeltaTime();
+			pos.y -= MoveSpeed * Time::DeltaTime();
 		else if (mDirection == eDirection::Left)	// 방향이 왼쪽이면 왼쪽으로 이동
-			pos.x -= 150.f * Time::DeltaTime();
+			pos.x -= MoveSpeed * Time::DeltaTime();
 		else if (mDirection == eDirection::Right)	// 방향이 오른쪽이면 오른쪽으로 이동
-			pos.x += 150.f * Time::DeltaTime();
+			pos.x += MoveSpeed * Time::DeltaTime();
 		else if (mDirection == eDirection::Down)	// 방향이 아래쪽이면 아래쪽으로 이동
-			pos.y += 150.f * Time::DeltaTime();
+			pos.y += MoveSpeed * Time::DeltaTime();
 
 		tr->SetPosition(pos);
 

@@ -1,11 +1,21 @@
 #pragma once
-#include "hyGameObject.h"
+#include "hyItem.h"
 
 //속도 최대 아이템
+
 namespace hy
 {
-	class Devil : public GameObject
+	class Devil : public Item
 	{
+	public:
+		enum class eState
+		{
+			Idle,
+			Use,
+			Extinct,
+			End,
+		};
+
 		Devil();
 		virtual ~Devil();
 
@@ -16,6 +26,15 @@ namespace hy
 		virtual void OnCollisionEnter(class Collider* other) override;
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
+
+		virtual void Idle() override;
+		virtual void Use() override;
+		virtual void Extinct() override;
+
+	private:
+		eState mState;
 	};
 }
+
+
 

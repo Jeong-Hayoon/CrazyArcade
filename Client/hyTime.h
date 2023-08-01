@@ -16,9 +16,9 @@ namespace hy
 
 		__forceinline static float DeltaTime() { return mDeltaTime; }		// 델타 타임을 가져오는 함수 
 
-	private:			// LARGE_INTEGER - 구조체(16byte 정수)로 LowPart와 HIghPart로 나눠져 있음, 둘을 합치면 QuadPart
+	private:	// LARGE_INTEGER - 구조체(16byte 정수)로 LowPart와 HIghPart로 나눠져 있음, 둘을 합치면 QuadPart
 		static LARGE_INTEGER mCpuFrequency;			// CPU 고유 진동수
-		static LARGE_INTEGER mPrevFrequency;			// 이전 진동수
+		static LARGE_INTEGER mPrevFrequency;		// 이전 진동수
 		static LARGE_INTEGER mCurFrequency;			// 현재 진동수				=> 현재 진동수 - 이전 진동수 = 1프레임 진동수
 		static float mDeltaTime;
 

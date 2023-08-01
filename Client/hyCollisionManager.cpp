@@ -63,6 +63,7 @@ namespace hy
 		mLayerMasks[row][col] = enable;
 	}
 
+	// 충돌 체크하는 함수
 	void CollisionManager::LayerCollision(Scene* scene, eLayerType left, eLayerType right)
 	{
 		// finds left layer objects

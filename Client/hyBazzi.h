@@ -3,6 +3,7 @@
 
 namespace hy
 {
+	// MoveSpeedUp 함수
 	class Bazzi : public GameObject
 	{
 	public:
@@ -50,11 +51,18 @@ namespace hy
 		void BalloonDead ();
 		void Victory();
 
+		// 물풍선 최대 개수 증가
+		void BombLimitUp() { BombLimit++;}
+		// 이동 속도 증가
+		void MoveSpeedUp() { MoveSpeed += 100; }
+
 		class Texture* mFloorTexture;
 
 	private:
 		eState mState;
 		eDirection mDirection;
+		UINT BombLimit;		// 물풍선 최대 사용 개수
+		float MoveSpeed;	// 기본 속도
 	};
 }
 

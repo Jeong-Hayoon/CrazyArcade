@@ -37,7 +37,7 @@ namespace hy
 		//	, 200 + pos.x, 200 + pos.y);*/
 
 		//// 로드해온 이미지 그리기
-		//TransparentBlt(hdc, (int)pos.x, (int)pos.y					// 그림을 그리는 위치
+		//TransparentBlt(hdc, (int)pos.x, (int)pos.y		// 그림을 그리는 위치
 		//	, mImage->GetWidth(), mImage->GetHeight()		// *2 하면 사이즈 2배
 		//	, mImage->GetHdc(), 0, 0, mImage->GetWidth(), mImage->GetHeight(), RGB(255, 0, 255));
 		//// RGB(255, 0, 255) 색으로 칠해진 부분을 지우고 
@@ -45,7 +45,7 @@ namespace hy
 		if (mTexture == nullptr)									// mTexturer가 nullptr이면 프로그램이 고장남
 			return;													// 그래서 만약 nullptr이면 리턴해서 함수 자체를 나가버림
 
-		//Transform* tr = GetOwner()->GetComponent<Transform>();
+		///Transform* tr = GetOwner()->GetComponent<Transform>();
 		//Vector2 pos = tr->GetPosition();
 
 		// <카메라>
@@ -54,30 +54,30 @@ namespace hy
 
 		//if (mTexture->GetType() == eTextureType::Bmp)				// bmp 파일일 때
 		//{
-		//	// 투명도 작업
-		//	//if (mAlpha < 1.0f)				// 투명도를 넣어서 그려줘야 함
-		//	//{
-		//	//	BLENDFUNCTION func = {};
-		//	//	func.BlendOp = AC_SRC_OVER;
-		//	//	func.BlendFlags = 0;
-		//	//	func.AlphaFormat = AC_SRC_ALPHA;
+		// 투명도 작업
+		//if (mAlpha < 1.0f)				// 투명도를 넣어서 그려줘야 함
+		//	{
+		//		BLENDFUNCTION func = {};
+		//		func.BlendOp = AC_SRC_OVER;
+		//		func.BlendFlags = 0;
+		//		func.AlphaFormat = AC_SRC_ALPHA;
 
-		//	//	// 0.0f ~ 1.0f -> 0 ~ 255로 바꿔줘야 함
-		//	//	int alpha = (int)(mAlpha * 255.0f);
-		//	//	if (alpha <= 0)			
-		//	//		alpha = 0;
-		//	//	func.SourceConstantAlpha = alpha; // 0 ~ 255
+		//		// 0.0f ~ 1.0f -> 0 ~ 255로 바꿔줘야 함
+		//		int alpha = (int)(mAlpha * 255.0f);
+		//		if (alpha <= 0)			
+		//			alpha = 0;
+		//		func.SourceConstantAlpha = alpha; // 0 ~ 255
 
-		//	//	AlphaBlend(hdc, (int)pos.x - (mTexture->GetWidth() * mScale.x / 2.0f)
-		//	//		, (int)pos.y - (mTexture->GetHeight() * mScale.y / 2.0f)
-		//	//		, mTexture->GetWidth() * mScale.x
-		//	//		, mTexture->GetHeight() * mScale.y
-		//	//		, mTexture->GetHdc()
-		//	//		, 0, 0, mTexture->GetWidth(), mTexture->GetHeight()
-		//	//		, func);
-		//	//}
-		//	//else
-		//	//{	//  - (mTexture->GetWidth() * mScale.x / 2.0f) 플레이어의 중심이 아니라 플레이어의 0,0을 가리키고 있기 때문에
+		//		AlphaBlend(hdc, (int)pos.x - (mTexture->GetWidth() * mScale.x / 2.0f)
+		//			, (int)pos.y - (mTexture->GetHeight() * mScale.y / 2.0f)
+		//			, mTexture->GetWidth() * mScale.x
+		//			, mTexture->GetHeight() * mScale.y
+		//			, mTexture->GetHdc()
+		//			, 0, 0, mTexture->GetWidth(), mTexture->GetHeight()
+		//			, func);
+		//	}
+		//	else
+		//	{	//  - (mTexture->GetWidth() * mScale.x / 2.0f) 플레이어의 중심이 아니라 플레이어의 0,0을 가리키고 있기 때문에
 		//	TransparentBlt(hdc, (int)pos.x //<카메라>// - (mTexture->GetWidth() * mScale.x / 2.0f)
 		//		, (int)pos.y //<카메라>// - (mTexture->GetHeight() * mScale.y / 2.0f)
 		//		, mTexture->GetWidth() * mScale.x
@@ -86,8 +86,8 @@ namespace hy
 		//		, 0, 0, mTexture->GetWidth()
 		//		, mTexture->GetHeight()
 		//		, RGB(255, 0, 255));		//TransparentBlt는 24비트
-		//									//32비트 알파값이 있으면 알파블래드
-		//	//}
+		//									//32비트 알파값이 있으면 알파블랜드
+		//	}
 		//}
 
 		//// TransparentBlt : 투명한 비트맵을 출력하는 데 사용
