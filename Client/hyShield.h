@@ -1,12 +1,21 @@
 #pragma once
-#include "hyGameObject.h"
+#include "hyItem.h"
 
+//실드
 
-// 실드 
 namespace hy
 {
-	class Shield : public GameObject
+	class Shield : public Item
 	{
+	public:
+		enum class eState
+		{
+			Idle,
+			Use,
+			Extinct,
+			End,
+		};
+
 		Shield();
 		virtual ~Shield();
 
@@ -17,6 +26,15 @@ namespace hy
 		virtual void OnCollisionEnter(class Collider* other) override;
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
+
+		virtual void Idle() override;
+		virtual void Use() override;
+		virtual void Extinct() override;
+
+	private:
+		eState mState;
 	};
 }
+
+
 

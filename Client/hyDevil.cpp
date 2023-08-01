@@ -3,7 +3,7 @@
 #include "hyResources.h"
 #include "hyTexture.h"
 
-
+//속도 최대 아이템
 namespace hy
 {
 	Devil::Devil()

@@ -3,6 +3,7 @@
 namespace hy
 {
 	Item::Item()
+		: mstate(eState ::Idle)
 	{
 	}
 

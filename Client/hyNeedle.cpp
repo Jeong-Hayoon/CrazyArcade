@@ -1,5 +1,7 @@
 #include "hyNeedle.h"
 
+// ¹Ù´Ã
+
 hy::Needle::Needle()
 {
 }
@@ -29,5 +31,17 @@ void hy::Needle::OnCollisionStay(Collider* other)
 }
 
 void hy::Needle::OnCollisionExit(Collider* other)
+{
+}
+
+void hy::Needle::Idle()
+{
+}
+
+void hy::Needle::Use()
+{
+}
+
+void hy::Needle::Extinct()
 {
 }

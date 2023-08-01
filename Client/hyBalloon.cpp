@@ -6,7 +6,7 @@
 #include "hyBazzi.h"
 
 
-
+// ¹°Ç³¼±
 namespace hy
 {
 	Balloon::Balloon()
@@ -56,6 +56,7 @@ namespace hy
 	{
 		Bazzi* bz = (Bazzi*)(other->GetOwner());
 		bz->BombLimitUp();
+		
 	}
 
 	void Balloon::OnCollisionStay(Collider* other)

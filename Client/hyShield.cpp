@@ -31,3 +31,15 @@ void hy::Shield::OnCollisionStay(Collider* other)
 void hy::Shield::OnCollisionExit(Collider* other)
 {
 }
+
+void hy::Shield::Idle()
+{
+}
+
+void hy::Shield::Use()
+{
+}
+
+void hy::Shield::Extinct()
+{
+}

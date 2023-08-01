@@ -1,13 +1,21 @@
 #pragma once
-#include "hyGameObject.h"
-
+#include "hyItem.h"
 
 // 물줄기 증가 아이템
 
 namespace hy
 {
-	class Potion : public GameObject
+	class Potion : public Item
 	{
+	public:
+		enum class eState
+		{
+			Idle,
+			Use,
+			Extinct,
+			End,
+		};
+
 		Potion();
 		virtual ~Potion();
 
@@ -18,6 +26,15 @@ namespace hy
 		virtual void OnCollisionEnter(class Collider* other) override;
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
+
+		virtual void Idle() override;
+		virtual void Use() override;
+		virtual void Extinct() override;
+
+	private:
+		eState mState;
 	};
 }
+
+
 

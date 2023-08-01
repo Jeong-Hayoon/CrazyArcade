@@ -31,3 +31,15 @@ void hy::Potion::OnCollisionStay(Collider* other)
 void hy::Potion::OnCollisionExit(Collider* other)
 {
 }
+
+void hy::Potion::Idle()
+{
+}
+
+void hy::Potion::Use()
+{
+}
+
+void hy::Potion::Extinct()
+{
+}

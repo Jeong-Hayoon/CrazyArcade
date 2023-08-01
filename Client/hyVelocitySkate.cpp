@@ -31,3 +31,15 @@ void hy::VelocitySkate::OnCollisionStay(Collider* other)
 void hy::VelocitySkate::OnCollisionExit(Collider* other)
 {
 }
+
+void hy::VelocitySkate::Idle()
+{
+}
+
+void hy::VelocitySkate::Use()
+{
+}
+
+void hy::VelocitySkate::Extinct()
+{
+}

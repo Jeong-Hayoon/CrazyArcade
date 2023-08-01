@@ -183,6 +183,9 @@
     <Filter Include="Contents\GameObject\Item">
       <UniqueIdentifier>{dc1fcdc9-6412-45e1-9edf-af16c3b6d2e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Item\Kind of Item">
+      <UniqueIdentifier>{42cfe067-cb22-4bb2-8085-851123d2df62}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -347,32 +350,32 @@
     <ClInclude Include="hySound.h">
       <Filter>Engine\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="hyVelocitySkate.h">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="hyShield.h">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="hyPotionMax.h">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="hyPotion.h">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="hyNeedle.h">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="hyBalloon.h">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="hyDevil.h">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClInclude>
     <ClInclude Include="hyItem.h">
       <Filter>Contents\GameObject\Item</Filter>
     </ClInclude>
     <ClInclude Include="hyLogoScene.h">
       <Filter>Contents\Scene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="hyVelocitySkate.h">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClInclude>
+    <ClInclude Include="hyShield.h">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClInclude>
+    <ClInclude Include="hyPotionMax.h">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClInclude>
+    <ClInclude Include="hyPotion.h">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClInclude>
+    <ClInclude Include="hyNeedle.h">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClInclude>
+    <ClInclude Include="hyDevil.h">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClInclude>
+    <ClInclude Include="hyBalloon.h">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -534,32 +537,32 @@
     <ClCompile Include="hySound.cpp">
       <Filter>Engine\Sound</Filter>
     </ClCompile>
-    <ClCompile Include="hyVelocitySkate.cpp">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="hyShield.cpp">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="hyPotionMax.cpp">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="hyPotion.cpp">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="hyNeedle.cpp">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="hyDevil.cpp">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="hyBalloon.cpp">
-      <Filter>Contents\GameObject\Item</Filter>
-    </ClCompile>
     <ClCompile Include="hyItem.cpp">
       <Filter>Contents\GameObject\Item</Filter>
     </ClCompile>
     <ClCompile Include="hyLogoScene.cpp">
       <Filter>Contents\Scene\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="hyVelocitySkate.cpp">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClCompile>
+    <ClCompile Include="hyShield.cpp">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClCompile>
+    <ClCompile Include="hyPotionMax.cpp">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClCompile>
+    <ClCompile Include="hyPotion.cpp">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClCompile>
+    <ClCompile Include="hyNeedle.cpp">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClCompile>
+    <ClCompile Include="hyDevil.cpp">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClCompile>
+    <ClCompile Include="hyBalloon.cpp">
+      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
