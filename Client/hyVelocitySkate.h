@@ -2,7 +2,6 @@
 #include "hyItem.h"
 
 //속도 증가 아이템
-
 namespace hy
 {
 	class VelocitySkate : public Item

@@ -25,17 +25,17 @@ namespace hy
 
 	void Devil::Initialize()
 	{
-		GameObject::Initialize();
+		Item::Initialize();
 	}
 
 	void Devil::Update()
 	{
-		GameObject::Update();
+		Item::Update();
 	}
 
 	void Devil::Render(HDC hdc)
 	{
-		GameObject::Render(hdc);
+		Item::Render(hdc);
 	}
 
 	void Devil::Idle()

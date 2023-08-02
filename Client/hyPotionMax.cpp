@@ -1,45 +1,52 @@
 #include "hyPotionMax.h"
+#include "hyAnimator.h"
+#include "hyTexture.h"
+#include "hyResources.h"
 
-hy::PotionMax::PotionMax()
+namespace hy
 {
-}
+	PotionMax::PotionMax()
+	{
+		Animator* pmt = AddComponent<Animator>();
 
-hy::PotionMax::~PotionMax()
-{
-}
+		Texture* PotionMax_ = Resources::Load<Texture>(L"PotionMax"
+			, L"..\\Resources\\Image\\Items\\potionmax.bmp");
 
-void hy::PotionMax::Initialize()
-{
-}
-
-void hy::PotionMax::Update()
-{
-}
-
-void hy::PotionMax::Render(HDC hdc)
-{
-}
-
-void hy::PotionMax::OnCollisionEnter(Collider* other)
-{
-}
-
-void hy::PotionMax::OnCollisionStay(Collider* other)
-{
-}
-
-void hy::PotionMax::OnCollisionExit(Collider* other)
-{
-}
-
-void hy::PotionMax::Idle()
-{
-}
-
-void hy::PotionMax::Use()
-{
-}
-
-void hy::PotionMax::Extinct()
-{
+		pmt->CreateAnimation(L"PotionMax", PotionMax_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
+		pmt->SetScale(Vector2(1.f, 1.f));
+		pmt->PlayAnimation(L"PotionMax", true);
+	}
+	PotionMax::~PotionMax()
+	{
+	}
+	void PotionMax::Initialize()
+	{
+		Item::Initialize();
+	}
+	void PotionMax::Update()
+	{
+		Item::Update();
+	}
+	void PotionMax::Render(HDC hdc)
+	{
+		Item::Render(hdc);
+	}
+	void PotionMax::OnCollisionEnter(Collider* other)
+	{
+	}
+	void PotionMax::OnCollisionStay(Collider* other)
+	{
+	}
+	void PotionMax::OnCollisionExit(Collider* other)
+	{
+	}
+	void PotionMax::Idle()
+	{
+	}
+	void PotionMax::Use()
+	{
+	}
+	void PotionMax::Extinct()
+	{
+	}
 }

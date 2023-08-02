@@ -24,7 +24,7 @@ namespace hy
 		CreateScene<PirateMap>(L"PirateMap");
 		CreateScene<ToolScene>(L"ToolScene");
 
-		LoadScene(L"LogoScene");
+		LoadScene(L"TitleScene");
 	}
 
 	void SceneManager::Update()

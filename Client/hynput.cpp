@@ -19,7 +19,7 @@ namespace hy
 		'Z', 'X', 'C', 'V', 'B', 'N', 'M',
 		VK_UP, VK_DOWN, VK_LEFT, VK_RIGHT,						// 상하좌우
 		VK_LBUTTON, VK_RBUTTON, VK_MBUTTON,						// 마우스 버튼, 휠
-		VK_SPACE
+		VK_SPACE, VK_CONTROL
 	};
 
 	void Input::Initialize()

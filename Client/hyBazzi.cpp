@@ -23,6 +23,7 @@ namespace hy
 		, mDirection(eDirection::Down)
 		, BombLimit(3)
 		, MoveSpeed(150.f)
+		, Life(1)
 	{
 	}
 	Bazzi::~Bazzi()

@@ -51,10 +51,17 @@ namespace hy
 		void BalloonDead ();
 		void Victory();
 
-		// 물풍선 최대 개수 증가
+		// 물풍선 최대 개수 증가(Balloon)
 		void BombLimitUp() { BombLimit++;}
-		// 이동 속도 증가
+		// 이동 속도 증가(VelocitySkate)
 		void MoveSpeedUp() { MoveSpeed += 100; }
+		// 이동 속도 최대로 증가(Devil)
+		void MoveSpeedMax() { MoveSpeed = 800; }
+		// 물풍선에 갇혀있을 때 소생(Needle)
+		void Revive() { Life = 1; }
+		// (Shield)
+		// (Potion)
+		// (PotionMax)
 
 		class Texture* mFloorTexture;
 
@@ -63,8 +70,12 @@ namespace hy
 		eDirection mDirection;
 		UINT BombLimit;		// 물풍선 최대 사용 개수
 		float MoveSpeed;	// 기본 속도
+		bool Life;			// 0이면 물풍선에 갇혀있는 상태, 1이면 물풍선에 갇혀있지 않은 상태
 	};
 }
+
+// ctrl 사용해야만 사용할 수 있는 아이템 : Shield, Needle
+// 습득만 해도 사용되는 아이템 : Potion, PotionMax, Balloon, VelocitySkate, Devil
 
 
 

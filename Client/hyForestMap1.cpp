@@ -101,7 +101,7 @@ namespace hy
 		bgsr->SetScale(Vector2(1.5f, 1.338f));
 		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));	
 
-		// 각 맵에 따른 화면
+		// 각 맵에 따른 맵 화면
 		/*Texture* ForestMap1 = Resources::Load<Texture>(L"ForestMapImage"
 			, L"..\\Resources\\Image\\Bg\\ForestTile.bmp");
 		BackGround* forestmap1 = object::Instantiate<BackGround>(eLayerType::Background);
@@ -166,6 +166,9 @@ namespace hy
 
 		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
+
+
+
 
 		Scene::Initialize();
 	}

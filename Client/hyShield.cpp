@@ -1,45 +1,53 @@
 #include "hyShield.h"
+#include "hyAnimator.h"
+#include "hyTexture.h"
+#include "hyResources.h"
 
-hy::Shield::Shield()
-{
-}
 
-hy::Shield::~Shield()
+namespace hy
 {
-}
+	Shield::Shield()
+	{
+		Animator* st = AddComponent<Animator>();
 
-void hy::Shield::Initialize()
-{
-}
+		Texture* Shield_ = Resources::Load<Texture>(L"Shield"
+			, L"..\\Resources\\Image\\Items\\shield.bmp");
 
-void hy::Shield::Update()
-{
-}
-
-void hy::Shield::Render(HDC hdc)
-{
-}
-
-void hy::Shield::OnCollisionEnter(Collider* other)
-{
-}
-
-void hy::Shield::OnCollisionStay(Collider* other)
-{
-}
-
-void hy::Shield::OnCollisionExit(Collider* other)
-{
-}
-
-void hy::Shield::Idle()
-{
-}
-
-void hy::Shield::Use()
-{
-}
-
-void hy::Shield::Extinct()
-{
+		st->CreateAnimation(L"Shield", Shield_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
+		st->SetScale(Vector2(1.f, 1.f));
+		st->PlayAnimation(L"Shield", true);
+	}
+	Shield::~Shield()
+	{
+	}
+	void Shield::Initialize()
+	{
+		Item::Initialize();
+	}
+	void Shield::Update()
+	{
+		Item::Update();
+	}
+	void Shield::Render(HDC hdc)
+	{
+		Item::Render(hdc);
+	}
+	void Shield::OnCollisionEnter(Collider* other)
+	{
+	}
+	void Shield::OnCollisionStay(Collider* other)
+	{
+	}
+	void Shield::OnCollisionExit(Collider* other)
+	{
+	}
+	void Shield::Idle()
+	{
+	}
+	void Shield::Use()
+	{
+	}
+	void Shield::Extinct()
+	{
+	}
 }
