@@ -32,8 +32,8 @@ namespace hy
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
-		bgsr->SetScale(Vector2(1.5f, 1.27f));
-		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2 - 20)));	// 배경을 해상도의 절반으로 세팅
+		bgsr->SetScale(Vector2(1.5f, 1.35f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));	// 배경을 해상도의 절반으로 세팅
 
 
 		// 캐릭터 세팅
@@ -41,7 +41,7 @@ namespace hy
 			, L"..\\Resources\\Image\\Bazzi\\Idle.bmp");
 
 		BackGround* Charactor = object::Instantiate<BackGround>(eLayerType::Background);
-		Charactor->GetComponent<Transform>()->SetPosition(Vector2(115.0f, 180.0f));
+		Charactor->GetComponent<Transform>()->SetPosition(Vector2(115.0f, 190.0f));
 		SpriteRenderer* Charactorsr = Charactor->AddComponent<SpriteRenderer>();
 		Charactorsr->SetScale(Vector2(0.9f, 0.9f));
 		Charactorsr->SetImage(Bazzi);
@@ -55,17 +55,17 @@ namespace hy
 			, L"..\\Resources\\Image\\UI\\bazzi_image.bmp");
 
 		BackGround* cs = object::Instantiate<BackGround>(eLayerType::Background);
-		cs->GetComponent<Transform>()->SetPosition(Vector2(945.0f, 65.0f));
+		cs->GetComponent<Transform>()->SetPosition(Vector2(947.0f, 68.0f));
 		SpriteRenderer* cssr = cs->AddComponent<SpriteRenderer>();
 		cssr->SetImage(CharSelect);
-		cssr->SetScale(Vector2(1.470f, 1.25f));
+		cssr->SetScale(Vector2(1.470f, 1.35f));
 
 		// 맵 선택(포레스트 맵)
 		Texture* ForestMapSelect = Resources::Load<Texture>(L"ForestMapSelectImage"
 			, L"..\\Resources\\Image\\UI\\ForestRandom.bmp");
 
 		BackGround* fms = object::Instantiate<BackGround>(eLayerType::Background);
-		fms->GetComponent<Transform>()->SetPosition(Vector2(840.0f, 530.0f));
+		fms->GetComponent<Transform>()->SetPosition(Vector2(840.0f, 555.0f));
 		SpriteRenderer* fmssr = fms->AddComponent<SpriteRenderer>();
 		fmssr->SetImage(ForestMapSelect);
 		fmssr->SetScale(Vector2(1.0f, 0.9f));

@@ -286,12 +286,12 @@ namespace hy
 			animator->PlayAnimation(L"BazziBalloonDead", false);
 			mState = eState::BalloonDead;
 		}
-		if (Input::GetKeyDown(eKeyCode::D))		// Dead
-		{
-			animator->SetScale(Vector2(1.0f, 1.0f));
-			animator->PlayAnimation(L"BazziDead", false);
-			mState = eState::Dead;
-		}
+		//if (Input::GetKeyDown(eKeyCode::D))		// Dead
+		//{
+		//	animator->SetScale(Vector2(1.0f, 1.0f));
+		//	animator->PlayAnimation(L"BazziDead", false);
+		//	mState = eState::Dead;
+		//}
 		if (Input::GetKeyDown(eKeyCode::V))		// Victory
 		{
 			animator->SetScale(Vector2(1.0f, 1.0f));
