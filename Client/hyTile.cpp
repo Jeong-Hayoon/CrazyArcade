@@ -28,10 +28,10 @@ namespace hy
 		mSpriteRenderer = AddComponent<SpriteRenderer>();
 		//AddComponent<Collider>();
 
-		hy::Texture* forestFloor
-			= hy::Resources::Find<hy::Texture>(L"ForestFloorTile");
+		hy::Texture* Tile_
+			= hy::Resources::Find<hy::Texture>(L"Tile");
 
-		mSpriteRenderer->SetImage(forestFloor);
+		mSpriteRenderer->SetImage(Tile_);
 		mSpriteRenderer->SetScale(Vector2(1.0f, 1.0f));
 	}
 

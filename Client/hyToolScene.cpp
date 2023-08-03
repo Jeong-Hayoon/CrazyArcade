@@ -23,8 +23,8 @@ namespace hy
 	}
 	void ToolScene::Initialize()
 	{
-		Texture* Forestfloor
-			= Resources::Load<Texture>(L"ForestFloorTile", L"..\\Resources\\Image\\Bg\\ForestTile.bmp");
+		Texture* Tile_
+			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Bg\\merged_image.bmp");
 
 		// 타일 위치..?
 		/*Tile* tile

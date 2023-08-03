@@ -4,6 +4,8 @@
 #include "hyTexture.h"
 #include "hyCollider.h"
 #include "hyBazzi.h"
+#include "hyGameObject.h"
+
 
 
 // ¹°Ç³¼±
@@ -56,7 +58,8 @@ namespace hy
 	{
 		Bazzi* bz = (Bazzi*)(other->GetOwner());
 		bz->BombLimitUp();
-		Destroy(dynamic_cast<GameObject*>(this));
+		
+		Destroy(this);
 		
 	}
 
