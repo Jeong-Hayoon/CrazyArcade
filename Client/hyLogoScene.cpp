@@ -13,6 +13,8 @@ extern hy::Application application;
 
 namespace hy
 {
+	Sound* sound = Resources::Load<Sound>(L"logoSound", L"..\\Resources\\Sound\\Sound\\logo.wav");
+
 	LogoScene::LogoScene()
 	{
 	}
@@ -22,7 +24,6 @@ namespace hy
 	void LogoScene::Initialize()
 	{
 		// 사운드 적용
-		Sound* sound = Resources::Load<Sound>(L"bgSound", L"..\\Resources\\Sound\\Sound\\lobby_scene.wav");
 		sound->Play(true);
 
 		// 넥슨 화면
@@ -45,6 +46,7 @@ namespace hy
 		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
 		{
 			SceneManager::LoadScene(L"TitleScene");
+			sound->Stop(0);
 		}
 
 

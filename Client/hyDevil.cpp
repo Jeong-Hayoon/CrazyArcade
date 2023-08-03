@@ -2,6 +2,9 @@
 #include "hyAnimator.h"
 #include "hyResources.h"
 #include "hyTexture.h"
+#include "hyBazzi.h"
+#include "hyCollider.h"
+
 
 //속도 최대 아이템
 namespace hy
@@ -51,6 +54,8 @@ namespace hy
 
 	void Devil::OnCollisionEnter(Collider* other)
 	{
+		Bazzi* bz = (Bazzi*)(other->GetOwner());
+		bz->MoveSpeedMax();
 	}
 
 	void Devil::OnCollisionStay(Collider* other)

@@ -16,6 +16,8 @@
 #include "hyCollisionManager.h"
 #include "hyToolScene.h"
 #include "hyBalloon.h"
+#include "hyDevil.h"
+
 
 // 타일 위치 20, 40에 넣기
 
@@ -148,7 +150,7 @@ namespace hy
 		// 플레이어와 몬스터가 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
-		// 물풍선 아이템 setting
+		// Balloon 아이템 setting
 		Balloon* Balloon_1 = object::Instantiate<Balloon>(eLayerType::Item);
 		Transform* Balloontr = Balloon_1->GetComponent<Transform>();
 		Vector2 Balloonpos = Balloontr->GetPosition();
@@ -167,8 +169,20 @@ namespace hy
 		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
 
+		// Devil 아이템 setting
+		Devil* Devil_1 = object::Instantiate<Devil>(eLayerType::Item);
+		Transform* Deviltr = Devil_1->GetComponent<Transform>();
+		Vector2 Devilpos = Deviltr->GetPosition();
 
+		Devilpos.y = 400.f;
+		Devilpos.x = 400.f;
 
+		Devil_1->GetComponent<Transform>()->SetPosition(Devilpos);
+
+		// Devil 아이템 충돌 구현
+		Collider* Devilcol = Devil_1->AddComponent<Collider>();
+		// Devil 아이템 충돌 사각형 사이즈 수정
+		Devilcol->SetSize(Vector2(50.0f, 50.0f));
 
 		Scene::Initialize();
 	}
