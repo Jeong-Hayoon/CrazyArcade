@@ -54,9 +54,9 @@ namespace hy
 		// 물풍선 최대 개수 증가(Balloon)
 		void BombLimitUp() { BombLimit++;}
 		// 이동 속도 증가(VelocitySkate)
-		void MoveSpeedUp() { MoveSpeed += 100; }
+		void MoveSpeedUp() { MoveSpeed += 50; }
 		// 이동 속도 최대로 증가(Devil)
-		void MoveSpeedMax() { MoveSpeed = 800; }
+		void MoveSpeedMax() { MoveSpeed = 300; }
 		// 물풍선에 갇혀있을 때 소생(Needle)
 		void Revive() { Life = 1; }
 		// (Shield)

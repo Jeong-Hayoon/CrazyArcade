@@ -70,6 +70,19 @@ namespace hy
 		fmssr->SetImage(ForestMapSelect);
 		fmssr->SetScale(Vector2(1.0f, 0.9f));
 
+		//Sound* sound = Resources::Load<Sound>(L"bgSound", L"..\\Resources\\Sounds\\smw_bonus_game_end.wav");
+
+		//if (Input::GetKeyDown(eKeyCode::Q))
+		//{
+		//	mbStart = true;
+		//}
+
+		//if (mbStart == false)
+		//{
+		//	sound->Play(true);
+		//	mbStart = false;
+		//}
+
 	}
 	void LobbyScene::Update()
 	{

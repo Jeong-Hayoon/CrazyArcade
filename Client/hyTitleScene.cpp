@@ -14,6 +14,8 @@ extern hy::Application application;
 
 namespace hy
 {
+	Sound* TitleScene::sound = nullptr;
+
 	TitleScene::TitleScene()
 	{
 	}
@@ -26,7 +28,7 @@ namespace hy
 		player->AddComponent<SpriteRenderer>();*/
 
 		// 사운드 적용
-		Sound* sound = Resources::Load<Sound>(L"bgSound", L"..\\Resources\\Sound\\Sound\\lobby_scene.wav");
+		sound = Resources::Load<Sound>(L"bgSound", L"..\\Resources\\Sound\\Sound\\lobby_scene.wav");
 		sound->Play(true);
 
 		// 게임시작 화면

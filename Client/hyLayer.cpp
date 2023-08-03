@@ -8,6 +8,11 @@ namespace hy
 
 	Layer::~Layer()
 	{
+		for (GameObject* obj : mGameObjects)
+		{
+			delete obj;
+			obj = nullptr;
+		}
 	}
 
 	void Layer::Initialize()
@@ -50,6 +55,9 @@ namespace hy
 			// 객체가 죽으면 이터레이터로 순회하면서 삭제
 			if ((*iter)->GetState() == GameObject::eState::Dead)
 			{
+				GameObject* deadObj = *iter;
+				delete deadObj;
+				deadObj = nullptr;
 				iter = mGameObjects.erase(iter);
 			}
 			else

@@ -2,7 +2,8 @@
 #include "framework.h"
 #include "Client.h"
 #include "hyApplication.h"
-
+#include "hySceneManager.h"
+    
 #include "hyTexture.h"
 #include "hyResources.h"
 #include "hyInput.h"
@@ -33,6 +34,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
+
+    // 메모리 릭 해제
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    //_CrtSetBreakAlloc(465);
+    
     //Gdiplus::GdiplusStartup
 
     // TODO: 여기에 코드를 입력합니다.
@@ -90,6 +96,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     // 메모리 해제
+    application.Release();
+    hy::SceneManager::Release();
+    hy::Resources::Release();
     Gdiplus::GdiplusShutdown(gdiplusToken);
 
     return (int) msg.wParam;        

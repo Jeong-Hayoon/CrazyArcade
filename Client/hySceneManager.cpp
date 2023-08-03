@@ -37,6 +37,16 @@ namespace hy
 		mActiveScene->Render(hdc);
 	}
 
+
+	void SceneManager::Release()
+	{
+		for (auto iter : mScenes)
+		{
+			delete iter.second;
+			iter.second = nullptr;
+		}
+	}
+
 	Scene* SceneManager::LoadScene(const std::wstring& name)
 	{
 		std::map<std::wstring, Scene*> ::iterator iter

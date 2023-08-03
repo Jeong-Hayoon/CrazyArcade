@@ -56,6 +56,7 @@ namespace hy
 	{
 		Bazzi* bz = (Bazzi*)(other->GetOwner());
 		bz->BombLimitUp();
+		Destroy(dynamic_cast<GameObject*>(this));
 		
 	}
 

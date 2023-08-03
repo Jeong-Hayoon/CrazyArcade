@@ -17,7 +17,6 @@ namespace hy
 
 		friend static __forceinline void Destroy(GameObject* gameObject);
 
-
 		GameObject();
 		virtual ~GameObject();
 

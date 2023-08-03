@@ -46,6 +46,15 @@ namespace hy
 			mResources.insert(std::make_pair(name, resource));
 		}
 
+		static void Release()
+		{
+			for (auto iter : mResources)
+			{
+				delete iter.second;
+				iter.second = nullptr;
+			}
+		}
+
 	private:
 		static std::map<std::wstring, Resource*> mResources;
 		//Player Object, Monster Object에서도 접근 가능해야하므로 static

@@ -17,6 +17,7 @@ namespace hy						// namespace가 다르면 클래스 이름이 같아도 사용할 수 있음
 		void Run();
 		void Update();
 		void Render();
+		void Release();
 
 		HWND GetHwnd() { return mHwnd; }
 		HDC GetHdc() { return mHdc; }

@@ -1,5 +1,6 @@
 #pragma once
 #include "hyScene.h"
+#include "hySound.h"
 
 namespace hy
 {
@@ -14,7 +15,8 @@ namespace hy
 		virtual void Render(HDC hdc) override;
 
 	private:
-			
+		static Sound* sound;
+
 	};
 }
 
