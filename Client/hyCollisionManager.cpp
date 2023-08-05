@@ -13,7 +13,9 @@ namespace hy
 
 	void CollisionManager::Update()
 	{
-		Scene* activeScene = SceneManager::GetActiveScene();		// ¾ÀÀ» °¡Á®¿È
+		Scene* 
+			
+			Scene = SceneManager::GetActiveScene();		// ¾ÀÀ» °¡Á®¿È
 		for (size_t row = 0; row < LAYER_MAX; row++)
 		{
 			for (size_t col = 0; col < LAYER_MAX; col++)

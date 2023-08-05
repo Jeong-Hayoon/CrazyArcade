@@ -11,6 +11,8 @@
 #include "hyInput.h"
 #include "hyTexture.h"
 #include "hyResources.h"
+#include "hyCollider.h"
+
 
 
 namespace hy
@@ -42,7 +44,7 @@ namespace hy
 	{
 		GameObject::Update();
 
-		//// 시간이 지남에 따라 객체를 삭제 -> 물풍선 교체
+		//// 시간이 지남에 따라 객체 삭제 -> 물풍선 교체
 		//Transform* tr = GetComponent<Transform>();
 		//Vector2 pos = tr->GetPosition();
 		//pos.x += 300.0f * Time::DeltaTime();
@@ -91,8 +93,17 @@ namespace hy
 
 
 	// 충돌했을 때 처리 코드 여기에 작성
+	// 물풍선과 충돌했을 때 Dead
 	void ForestMonster::OnCollisionEnter(Collider* other)
 	{
+		if (other->GetOwner()->GetLayerType() == eLayerType::Effect)
+		{
+			Animator* at = GetComponent<Animator>();
+			at->SetScale(Vector2(1.0f, 1.0f));
+			at->PlayAnimation(L"ForestMonnsterDie", false);
+			mState = eState::Dead;
+		}
+
 	}
 
 	void ForestMonster::OnCollisionStay(Collider* other)

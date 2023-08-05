@@ -24,6 +24,7 @@ namespace hy
 		, BombLimit(3)
 		, MoveSpeed(150.f)
 		, Life(1)
+		, ActiveItem(eItem::None)
 	{
 	}
 	Bazzi::~Bazzi()
@@ -160,30 +161,29 @@ namespace hy
 				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
 				BombLimit--;
 			}
-
-
-			/*if (mDirection == eDirection::Up)
-			{
-				Bazzipos.y -= 40.f;
-				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
-			}
-			else if (mDirection == eDirection::Down)
-			{
-				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
-			}
-			else if (mDirection == eDirection::Left)
-			{
-				Bazzipos.x -= 60.f;
-				Bazzipos.y += 25.f;
-				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
-			}
-			else if (mDirection == eDirection::Right)
-			{
-				Bazzipos.x += 60.f;
-				Bazzipos.y += 17.f;
-				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
-			}*/
 		}
+
+		// 아이템 사용
+		if (Input::GetKeyDown(eKeyCode::Ctrl))
+		{
+			// 실드 아이템 사용
+			if (GetActiveItem() == eItem::Shield)
+			{
+
+
+				eItem::None;
+			}
+			// 바늘 아이템 사용
+			else if (GetActiveItem() == eItem::Needle)
+			{
+
+
+				eItem::None;
+			}
+
+		}
+
+
 
 	}
 	void Bazzi::Render(HDC hdc)
@@ -207,8 +207,7 @@ namespace hy
 			at->SetScale(Vector2(1.0f, 1.0f));
 			at->PlayAnimation(L"BazziDead", false);
 			mState = eState::Dead;*/
-
-			
+	
 		}
 
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Effect)

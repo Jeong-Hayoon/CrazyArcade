@@ -29,7 +29,8 @@ namespace hy
 
 	void SceneManager::Update()
 	{
-		mActiveScene->Update();
+		m
+			Scene->Update();
 	}
 
 	void SceneManager::Render(HDC hdc)

@@ -19,7 +19,7 @@ namespace hy
 		template <typename T>	//(이미지를 로드하는 함수와 사운드를 로드하는 함수가 달라야 하므로 템플릿 사용)
 		static T* Load(const std::wstring& name, const std::wstring& path)
 		{
-			T* resource = Resources::Find<T>(name);
+			T* resource = Resources::Find<T>(name);		// 일단 이미 있는지 확인
 
 			if (resource != nullptr)					// resource가 nullptr이 아니라면 메모리를 새로 할당할 필요가 없음
 				return resource;						// 리소스 반환

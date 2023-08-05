@@ -23,12 +23,14 @@ namespace hy
 	}
 	void ToolScene::Initialize()
 	{
-		Texture* Tile_
-			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Bg\\merged_image.bmp");
 
-		// 타일 위치..?
-		/*Tile* tile
-			= object::Instantiate<Tile>(eLayerType::Tile, Vector2(600.0f, 400.0f));*/
+		// 타일 주석
+		//Texture* Tile_
+		//	= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Bg\\Tile.bmp");
+
+		//// 타일 위치..?
+		//Tile* tile_
+		//	= object::Instantiate<Tile>(eLayerType::Tile, Vector2(600.0f, 400.0f));
 	
 	}
 

@@ -28,6 +28,14 @@ namespace hy
 			Victory,
 			End,
 		};
+
+		enum class eItem
+		{
+			Shield,
+			Needle,
+			None
+		};
+
 		Bazzi();
 		virtual ~Bazzi();
 
@@ -63,6 +71,9 @@ namespace hy
 		// (Potion)
 		// (PotionMax)
 
+		eItem GetActiveItem() { return ActiveItem; }
+		void SetActiveItem(eItem eatitem) { ActiveItem = eatitem; }
+
 		class Texture* mFloorTexture;
 
 	private:
@@ -71,6 +82,7 @@ namespace hy
 		UINT BombLimit;		// 물풍선 최대 사용 개수
 		float MoveSpeed;	// 기본 속도
 		bool Life;			// 0이면 물풍선에 갇혀있는 상태, 1이면 물풍선에 갇혀있지 않은 상태
+		eItem ActiveItem;	// 장착되어 있는 아이템(0이면 실드, 1이면 바늘로 지정)
 	};
 }
 

@@ -49,7 +49,7 @@ namespace hy
 		DeleteObject(defaultBitmap);
 
 		image->SetName(name);
-		//image->SetType(eTextureType::AlphaBmp);	
+		// image->SetType(eTextureType::AlphaBmp);	
 		Resources::Insert<Texture>(name, image);
 
 		return image;
@@ -58,7 +58,7 @@ namespace hy
 	HRESULT Texture::Load(const std::wstring& path)			// LoadImageW : 2바이트 글자를 불러들이는 함수
 	{
 		std::wstring ext
-			= path.substr(path.find_last_of(L".") + 1);				// 맨뒤 글자를 가져와주는 함수
+			= path.substr(path.find_last_of(L".") + 1);		// 맨뒤 글자를 가져와주는 함수
 
 		if (ext == L"bmp")		// 맨뒤에서 세글자가 bmp이면
 		{
@@ -154,9 +154,9 @@ namespace hy
 		}
 		else if (mType == eTextureType::Png)
 		{
-			//// 내가 원하는 픽셀을 투명화 시킬떄
+			// 내가 원하는 픽셀을 투명화 시킬떄
 			Gdiplus::ImageAttributes imageAtt = {};
-			//// 투명화 시킬 픽셀 색 범위
+			// 투명화 시킬 픽셀 색 범위
 			imageAtt.SetColorKey(Gdiplus::Color(100, 100, 100)
 				, Gdiplus::Color(255, 255, 255));
 

@@ -36,59 +36,59 @@ namespace hy
 		Texture* forestFloor
 			= Resources::Load<Texture>(L"ForestFloorTile", L"..\\resources\\image\\Bg\\ForestTile.bmp");
 
-		OPENFILENAME ofn = {};
+		//OPENFILENAME ofn = {};
 
-		wchar_t szFilePath[256] = {};
+		//wchar_t szFilePath[256] = {};
 
-		ZeroMemory(&ofn, sizeof(ofn));
-		ofn.lStructSize = sizeof(ofn);
-		ofn.hwndOwner = NULL;
-		ofn.lpstrFile = szFilePath;
-		ofn.lpstrFile[0] = '\0';
-		ofn.nMaxFile = 256;
-		ofn.lpstrFilter = L"All\0*.*\0Text\0*.TXT\0";
-		ofn.nFilterIndex = 1;
-		ofn.lpstrFileTitle = NULL;
-		ofn.nMaxFileTitle = 0;
-		ofn.lpstrInitialDir = NULL;
-		ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+		//ZeroMemory(&ofn, sizeof(ofn));
+		//ofn.lStructSize = sizeof(ofn);
+		//ofn.hwndOwner = NULL;
+		//ofn.lpstrFile = szFilePath;
+		//ofn.lpstrFile[0] = '\0';
+		//ofn.nMaxFile = 256;
+		//ofn.lpstrFilter = L"All\0*.*\0Text\0*.TXT\0";
+		//ofn.nFilterIndex = 1;
+		//ofn.lpstrFileTitle = NULL;
+		//ofn.nMaxFileTitle = 0;
+		//ofn.lpstrInitialDir = NULL;
+		//ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
 
-		if (false == GetOpenFileName(&ofn))
-			return;
+		//if (false == GetOpenFileName(&ofn))
+		//	return;
 
-		// rb : 이진수로 파일을 읽음
-		FILE* pFile = nullptr;
-		_wfopen_s(&pFile, szFilePath, L"rb");
+		//// rb : 이진수로 파일을 읽음
+		//FILE* pFile = nullptr;
+		//_wfopen_s(&pFile, szFilePath, L"rb");
 
-		if (pFile == nullptr)
-			return;
+		//if (pFile == nullptr)
+		//	return;
 
-		while (true)
-		{
-			int sourceX = -1;
-			int sourceY = -1;
+		//while (true)
+		//{
+		//	int sourceX = -1;
+		//	int sourceY = -1;
 
-			int	myX = -1;
-			int myY = -1;
+		//	int	myX = -1;
+		//	int myY = -1;
 
-			if (fread(&sourceX, sizeof(int), 1, pFile) == NULL)
-				break;
-			if (fread(&sourceY, sizeof(int), 1, pFile) == NULL)
-				break;
-			if (fread(&myX, sizeof(int), 1, pFile) == NULL)
-				break;
-			if (fread(&myY, sizeof(int), 1, pFile) == NULL)
-				break;
+		//	if (fread(&sourceX, sizeof(int), 1, pFile) == NULL)
+		//		break;
+		//	if (fread(&sourceY, sizeof(int), 1, pFile) == NULL)
+		//		break;
+		//	if (fread(&myX, sizeof(int), 1, pFile) == NULL)
+		//		break;
+		//	if (fread(&myY, sizeof(int), 1, pFile) == NULL)
+		//		break;
 
-			Vector2 offset = Vector2((TILE_WIDTH) / 2.0f, (TILE_HEIGHT) / 2.0f);
-			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile
-				, Vector2(myX * (TILE_WIDTH ) + offset.x
-					, myY * (TILE_HEIGHT) + offset.y));
-			
-			tile->SetTile(sourceX, sourceY);
-			tile->SetSourceTileIdx(sourceX, sourceY);
-			tile->SetTileIdx(myX, myY);
-		}
+		//	Vector2 offset = Vector2((TILE_WIDTH) / 2.0f, (TILE_HEIGHT) / 2.0f);
+		//	Tile* tile = object::Instantiate<Tile>(eLayerType::Tile
+		//		, Vector2(myX * (TILE_WIDTH ) + offset.x
+		//			, myY * (TILE_HEIGHT) + offset.y));
+		//	
+		//	tile->SetTile(sourceX, sourceY);
+		//	tile->SetSourceTileIdx(sourceX, sourceY);
+		//	tile->SetTileIdx(myX, myY);
+		//}
 	}
 
 	void ForestMap1::Initialize()

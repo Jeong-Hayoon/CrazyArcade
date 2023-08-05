@@ -279,14 +279,15 @@ LRESULT CALLBACK WndToolProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
         //Rectangle(hdc, 0, 0, 100, 100);
         //여기서 이미지 를 그려준다.
 
-        hy::Texture* forestFloor
-            = hy::Resources::Find<hy::Texture>(L"ForestFloorTile");
+        // 타일 주석
+        //hy::Texture* Tile_
+        //    = hy::Resources::Find<hy::Texture>(L"Tile");
 
-        TransparentBlt(hdc  
-            , 0, 0, forestFloor->GetWidth(), forestFloor->GetHeight()
-            , forestFloor->GetHdc()
-            , 0, 0, forestFloor->GetWidth(), forestFloor->GetHeight()
-            , RGB(255, 0, 255));
+        //TransparentBlt(hdc  
+        //    , 0, 0, Tile_->GetWidth(), Tile_->GetHeight()
+        //    , Tile_->GetHdc()
+        //    , 0, 0, Tile_->GetWidth(), Tile_->GetHeight()
+        //    , RGB(255, 0, 255));
 
         // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
         EndPaint(hWnd, &ps);
