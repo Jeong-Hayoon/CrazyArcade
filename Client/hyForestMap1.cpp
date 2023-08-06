@@ -19,7 +19,7 @@
 #include "hyDevil.h"
 
 
-// 타일 위치 20, 40에 넣기
+// 타일 위치 30,55에 넣기
 
 extern hy::Application application;
 namespace hy
@@ -100,7 +100,7 @@ namespace hy
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
-		bgsr->SetScale(Vector2(1.5f, 1.338f));
+		bgsr->SetScale(Vector2(1.f, 1.f));
 		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));	
 
 		// 각 맵에 따른 맵 화면
@@ -119,10 +119,10 @@ namespace hy
 			, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
 
 		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::Background);
-		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(1022.0f, 163.0f));
+		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
 		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
 		bzprofilesr->SetImage(BZProfile);
-		bzprofilesr->SetScale(Vector2(0.8f, 0.8f));
+		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
 
 		// 배찌 상하좌우 애니메이션
 		Bazzi* forestbazzi1 = object::Instantiate<Bazzi>(eLayerType::Player);
@@ -136,7 +136,7 @@ namespace hy
 		// 충돌 구현
 		Collider* col = forestbazzi1->AddComponent<Collider>();
 		// 배찌의 충돌 사각형 사이즈 수정
-		col->SetSize(Vector2(50.0f, 25.0f));
+		col->SetSize(Vector2(30.0f, 20.0f));
 		col->SetOffset(Vector2(0.0f, 25.0f));
 
 		col = forestmonster->AddComponent<Collider>();
@@ -155,8 +155,8 @@ namespace hy
 		Transform* Balloontr = Balloon_1->GetComponent<Transform>();
 		Vector2 Balloonpos = Balloontr->GetPosition();
 
-		Balloonpos.y = 300.f;
-		Balloonpos.x = 300.f;
+		Balloonpos.y = 150.f;
+		Balloonpos.x = 150.f;
 
 		Balloon_1->GetComponent<Transform>()->SetPosition(Balloonpos);
 

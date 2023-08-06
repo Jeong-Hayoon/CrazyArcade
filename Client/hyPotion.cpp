@@ -14,7 +14,7 @@ namespace hy
 			, L"..\\Resources\\Image\\Items\\potion.bmp");
 
 		pt->CreateAnimation(L"Potion", Potion_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
-		pt->SetScale(Vector2(1.f, 1.f));
+		pt->SetScale(Vector2(0.9f, 0.9f));
 		pt->PlayAnimation(L"Potion", true);
 	}
 	Potion::~Potion()

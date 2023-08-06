@@ -20,7 +20,7 @@ namespace hy
 			, L"..\\Resources\\Image\\Items\\balloon.bmp");
 
 		bt->CreateAnimation(L"Balloon", Balloon_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
-		bt->SetScale(Vector2(1.f, 1.f));
+		bt->SetScale(Vector2(0.9f, 0.9f));
 		bt->PlayAnimation(L"Balloon", true);
 	}
 
@@ -56,15 +56,13 @@ namespace hy
 	
 	void Balloon::OnCollisionEnter(Collider* other)
 	{
-		Bazzi* bz = (Bazzi*)(other->GetOwner());
-		bz->BombLimitUp();
-		
-		Destroy(this);
-		
 	}
 
 	void Balloon::OnCollisionStay(Collider* other)
 	{
+		Bazzi* bz = (Bazzi*)(other->GetOwner());
+		bz->BombLimitUp();
+		Destroy(this);
 	}
 
 	void Balloon::OnCollisionExit(Collider* other)

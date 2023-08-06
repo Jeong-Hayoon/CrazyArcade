@@ -26,7 +26,7 @@ namespace hy
 
 		// 타일 주석
 		//Texture* Tile_
-		//	= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Bg\\Tile.bmp");
+			//= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
 
 		//// 타일 위치..?
 		//Tile* tile_
@@ -74,19 +74,21 @@ namespace hy
 	{
 		Scene::Render(hdc);
 
+		// 30,55
+		// 930,750
 		// 격자 만들기
-		int maxRow = 800 / (TILE_HEIGHT) + 1;
+		int maxRow = 750 / (TILE_HEIGHT) + 1;
 		for (size_t y = 0; y < maxRow; y++)
 		{	//시작 위치 0,0 부터 200, 200 까지 선을 그리겠다
-			MoveToEx(hdc, 0, TILE_HEIGHT * y, NULL);	 //      라인(선) 시작
-			LineTo(hdc, 1200, TILE_HEIGHT * y);			 //      라인(선) 끝
+			MoveToEx(hdc, 30, TILE_HEIGHT * y, NULL);	 //      라인(선) 시작
+			LineTo(hdc, 930, TILE_HEIGHT * y);			 //      라인(선) 끝
 		}
 
-		int maxColumn = 1200 / (TILE_WIDTH) + 1;
+		int maxColumn = 930 / (TILE_WIDTH) + 1;
 		for (size_t x = 0; x < maxColumn; x++)
 		{
-			MoveToEx(hdc, TILE_WIDTH * x , 0, NULL);		 //      라인(선) 시작
-			LineTo(hdc, TILE_WIDTH * x , 800);			 //      라인(선) 끝
+			MoveToEx(hdc, TILE_WIDTH * x , 55, NULL);	 //      라인(선) 시작
+			LineTo(hdc, TILE_WIDTH * x , 750);			 //      라인(선) 끝
 		}
 	}
 	// 파일 입출력

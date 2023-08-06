@@ -40,7 +40,7 @@ namespace hy
 
 		bt->CreateAnimationFolder(L"BombCenter", L"..\\Resources\\Image\\Bomb\\Centerflow", Vector2(0.f, 0.f), 0.4f);
 
-		bt->SetScale(Vector2(1.5f, 1.2f));
+		bt->SetScale(Vector2(1.f, 1.f));
 		bt->PlayAnimation(L"BombidleBottom", true);
 
 	}

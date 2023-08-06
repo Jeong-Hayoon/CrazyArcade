@@ -21,7 +21,7 @@ namespace hy
 	Bazzi::Bazzi()
 		: mState(eState::Make)
 		, mDirection(eDirection::Down)
-		, BombLimit(3)
+		, BombLimit(1)
 		, MoveSpeed(150.f)
 		, Life(1)
 		, ActiveItem(eItem::None)
@@ -191,12 +191,12 @@ namespace hy
 		GameObject::Render(hdc);
 	}
 
-	void Bazzi::OnCollisionEnter(Collider* other)
+	void Bazzi::OnCollisionEnter(Collider* other)	// 충돌 처리
 	{
 		if (other->GetOwner()->GetLayerType() == eLayerType::Monster)
 		{
 			Animator* at = GetComponent<Animator>();
-			at->SetScale(Vector2(1.0f, 1.0f));
+			at->SetScale(Vector2(0.9f, 0.9f));
 			at->PlayAnimation(L"BazziDead", false);
 			mState = eState::Dead;
 		}
@@ -207,6 +207,8 @@ namespace hy
 			at->SetScale(Vector2(1.0f, 1.0f));
 			at->PlayAnimation(L"BazziDead", false);
 			mState = eState::Dead;*/
+
+
 	
 		}
 
@@ -241,7 +243,7 @@ namespace hy
 	void Bazzi::Idle()
 	{
 		Animator* animator = GetComponent<Animator>();	
-		animator->SetScale(Vector2(1.3f, 1.3f));
+		animator->SetScale(Vector2(1.f, 1.f));
 
 		if (Input::GetKeyDown(eKeyCode::Left) || Input::GetKey(eKeyCode::Left))		// 왼쪽 키를 누르면 왼쪽 애니메이션 실행
 		{

@@ -13,7 +13,7 @@ namespace hy
 			, L"..\\Resources\\Image\\Items\\potionmax.bmp");
 
 		pmt->CreateAnimation(L"PotionMax", PotionMax_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
-		pmt->SetScale(Vector2(1.f, 1.f));
+		pmt->SetScale(Vector2(0.9f, 0.9f));
 		pmt->PlayAnimation(L"PotionMax", true);
 	}
 	PotionMax::~PotionMax()

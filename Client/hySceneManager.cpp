@@ -24,13 +24,12 @@ namespace hy
 		CreateScene<PirateMap>(L"PirateMap");
 		CreateScene<ToolScene>(L"ToolScene");
 
-		LoadScene(L"TitleScene");
+		LoadScene(L"LogoScene");
 	}
 
 	void SceneManager::Update()
 	{
-		m
-			Scene->Update();
+		mActiveScene->Update();
 	}
 
 	void SceneManager::Render(HDC hdc)

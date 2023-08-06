@@ -15,7 +15,7 @@ namespace hy
 			, L"..\\Resources\\Image\\Items\\needle.bmp");
 
 		nt->CreateAnimation(L"Needle", Needle_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
-		nt->SetScale(Vector2(1.f, 1.f));
+		nt->SetScale(Vector2(0.9f, 0.9f));
 		nt->PlayAnimation(L"Needle", true);
 	}
 	Needle::~Needle()

@@ -36,7 +36,7 @@ namespace hy
 		SpriteRenderer* Logobgsr = Logobg->AddComponent<SpriteRenderer>();
 		Logobgsr->SetImage(Logo_);
 		Logobgsr->SetAlpha(0.5f);						// 배경 투명도 세팅
-		Logobgsr->SetScale(Vector2(1.45f, 1.45f));		// 이미지 사이즈 조절
+		Logobgsr->SetScale(Vector2(1.f, 1.f));		// 이미지 사이즈 조절
 		Logobg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));	// 배경을 해상도의 절반으로 세팅
 
 		

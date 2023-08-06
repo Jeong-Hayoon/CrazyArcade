@@ -18,7 +18,7 @@ namespace hy
 			, L"..\\Resources\\Image\\Items\\Devil.bmp");
 
 		dt->CreateAnimation(L"Devil", Devil_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
-		dt->SetScale(Vector2(1.f, 1.f));
+		dt->SetScale(Vector2(0.9f, 0.9f));
 		dt->PlayAnimation(L"Devil", true);
 	}
 
@@ -54,12 +54,14 @@ namespace hy
 
 	void Devil::OnCollisionEnter(Collider* other)
 	{
-		Bazzi* bz = (Bazzi*)(other->GetOwner());
-		bz->MoveSpeedMax();
+		
 	}
 
 	void Devil::OnCollisionStay(Collider* other)
 	{
+		Bazzi* bz = (Bazzi*)(other->GetOwner());
+		bz->MoveSpeedMax();
+		Destroy(this);
 	}
 
 	void Devil::OnCollisionExit(Collider* other)

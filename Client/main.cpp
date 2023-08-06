@@ -145,10 +145,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW, //WS_OVERLAPPEDWINDOW : 윈도우 창 스타일,
-      0, 0, 1200, 800, nullptr, nullptr, hInstance, nullptr); // 윈도우 생성 시 WndProc 함수 호출
+      0, 0, 800, 600, nullptr, nullptr, hInstance, nullptr); // 윈도우 생성 시 WndProc 함수 호출
 
    HWND hWndTool = CreateWindowW(L"Tool", szTitle, WS_OVERLAPPEDWINDOW,
-       0, 0, 384, 400, nullptr, nullptr, hInstance, nullptr);
+       0, 0, 482, 297, nullptr, nullptr, hInstance, nullptr);
    
    // 핸들에는 만들어진 윈도우 정보에 대한 시작 주소가 반환되어 들어감(핸들은 포인터)
    // 우리는 핸들을 통해 데이터 접근을 하게 됨
@@ -168,7 +168,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);              // 윈도우가 돌아가게끔 실행시켜 주는 함수
 
    /// tool
-   RECT rect = { 0, 0, 900, 780 };
+   RECT rect = { 0, 0, 482, 297 };
    AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
    SetWindowPos(hWndTool
        , nullptr, 600, 0

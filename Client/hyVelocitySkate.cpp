@@ -14,7 +14,7 @@ namespace hy
 			, L"..\\Resources\\Image\\Items\\skate.bmp");
 
 		vst->CreateAnimation(L"VelocitySkate", VelocitySkate_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
-		vst->SetScale(Vector2(1.f, 1.f));
+		vst->SetScale(Vector2(0.9f, 0.9f));
 		vst->PlayAnimation(L"VelocitySkate", true);
 	}
 	VelocitySkate::~VelocitySkate()

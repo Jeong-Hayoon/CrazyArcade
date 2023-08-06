@@ -46,7 +46,7 @@ namespace hy
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
-		bgsr->SetScale(Vector2(1.16f, 1.07f));		// 이미지 사이즈 조절
+		bgsr->SetScale(Vector2(0.77f, 0.79f));		// 이미지 사이즈 조절
 		
 		// 회전
 		//bg->GetComponent<Transform>()->SetRotation(45);
@@ -74,7 +74,7 @@ namespace hy
 		, L"..\\Resources\\Image\\UI\\Signle.png");
 
 		BackGround* oneplayer = object::Instantiate<BackGround>(eLayerType::Background);
-		oneplayer->GetComponent<Transform>()->SetPosition(Vector2(450.0f,150.0f));
+		oneplayer->GetComponent<Transform>()->SetPosition(Vector2(290.0f,120.0f));
 		SpriteRenderer* oneplayersr = oneplayer->AddComponent<SpriteRenderer>();
 		oneplayersr->SetImage(OnePlayer);
 		oneplayersr->SetScale(Vector2(1.0f, 1.0f));
@@ -84,7 +84,7 @@ namespace hy
 			, L"..\\Resources\\Image\\UI\\Duo.png");
 
 		BackGround* twoplayer = object::Instantiate<BackGround>(eLayerType::Background);
-		twoplayer->GetComponent<Transform>()->SetPosition(Vector2(732.0f, 150.0f));
+		twoplayer->GetComponent<Transform>()->SetPosition(Vector2(497.0f, 120.0f));
 		SpriteRenderer* twoplayersr = twoplayer->AddComponent<SpriteRenderer>();
 		twoplayersr->SetImage(TwoPlayer);
 		twoplayersr->SetScale(Vector2(1.0f, 1.0f));
