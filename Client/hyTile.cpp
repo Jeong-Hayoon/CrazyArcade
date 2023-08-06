@@ -28,11 +28,11 @@ namespace hy
 		//AddComponent<Collider>();
 
 		// 타일 주석
-		/*hy::Texture* Tile_
+		hy::Texture* Tile_
 			= hy::Resources::Find<hy::Texture>(L"Tile");
 
 		mSpriteRenderer->SetImage(Tile_);
-		mSpriteRenderer->SetScale(Vector2(1.0f, 1.0f));*/
+		mSpriteRenderer->SetScale(Vector2(1.0f, 1.0f));
 	}
 
 	void Tile::Update()

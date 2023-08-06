@@ -25,6 +25,7 @@ namespace hy
 		, MoveSpeed(150.f)
 		, Life(1)
 		, ActiveItem(eItem::None)
+		, BombFlow(0)
 	{
 	}
 	Bazzi::~Bazzi()
@@ -233,6 +234,8 @@ namespace hy
 	void Bazzi::Make()
 	{
 		Animator* animator = GetComponent<Animator>();
+		animator->SetScale(Vector2(0.8f, 0.8f));
+
 		if(animator->IsActiveAnimationComplete())
 		{
 			animator->PlayAnimation(L"BazziIdle", true);

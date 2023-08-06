@@ -142,6 +142,7 @@ namespace hy
 			return;
 		/*if(animation!=mActiveAnimation)
 		{
+			mActiveAnimation = animation;
 			mActiveAnimation->Reset();
 		}*/
 		mActiveAnimation = animation;

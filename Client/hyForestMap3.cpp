@@ -62,7 +62,7 @@ namespace hy
 		ForestMonster* forestmonster = object::Instantiate<ForestMonster>(eLayerType::Player);
 		forestmonster->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
 
-		Scene::Initialize();
+		//Scene::Initialize();
 	}
 	void ForestMap3::Update()
 	{

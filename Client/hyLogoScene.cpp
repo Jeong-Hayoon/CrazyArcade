@@ -26,7 +26,7 @@ namespace hy
 		// 사운드 적용
 		sound = Resources::Load<Sound>(L"LogoSound", L"..\\Resources\\Sound\\Sound\\logo.wav");
 
-		sound->Play(true);
+		sound->Play(false);
 
 		// 넥슨 화면
 		Texture* Logo_ = Resources::Load<Texture>(L"Logo"	
@@ -48,7 +48,6 @@ namespace hy
 		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
 		{
 			SceneManager::LoadScene(L"TitleScene");
-			sound->Stop(1);
 		}
 
 

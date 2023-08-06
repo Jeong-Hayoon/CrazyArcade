@@ -26,17 +26,17 @@ namespace hy
 		bt->CreateAnimationFolder(L"BombidleBottom", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
 		
 		// 상하좌우 물줄기
-		bt->CreateAnimationFolder(L"BombUp", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
-		bt->CreateAnimationFolder(L"BombUp", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombUpIdle", L"..\\Resources\\Image\\Bomb\\UpIdleflow", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombUp", L"..\\Resources\\Image\\Bomb\\Upflow", Vector2(0.f, 0.f), 0.4f);
 
-		bt->CreateAnimationFolder(L"BombDown", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
-		bt->CreateAnimationFolder(L"BombDown", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombDownIdle", L"..\\Resources\\Image\\Bomb\\DownIdleflow", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombDown", L"..\\Resources\\Image\\Bomb\\Downflow", Vector2(0.f, 0.f), 0.4f);
 
-		bt->CreateAnimationFolder(L"BombRight", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
-		bt->CreateAnimationFolder(L"BombRight", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombRightIdle", L"..\\Resources\\Image\\Bomb\\RightIdleflow", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombRight", L"..\\Resources\\Image\\Bomb\\Rightflow", Vector2(0.f, 0.f), 0.4f);
 
-		bt->CreateAnimationFolder(L"BombLeft", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
-		bt->CreateAnimationFolder(L"BombLeft", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombLeftIdle", L"..\\Resources\\Image\\Bomb\\LeftIdleflow", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"BombLeft", L"..\\Resources\\Image\\Bomb\\Leftflow", Vector2(0.f, 0.f), 0.4f);
 
 		bt->CreateAnimationFolder(L"BombCenter", L"..\\Resources\\Image\\Bomb\\Centerflow", Vector2(0.f, 0.f), 0.4f);
 
@@ -86,6 +86,21 @@ namespace hy
 	{
 	}
 
+	void Bomb::FlowIdle(UINT num)
+	{
+		Animator* animator = GetComponent<Animator>();
+
+		for (int i = 0; i < num; i++)
+		{
+			// 애니메이션의 위치는 Bomb의 상하좌우로 배치해야 함
+			animator->PlayAnimation(L"BombUpIdle", false);
+			animator->PlayAnimation(L"BombDownIdle", false);
+			animator->PlayAnimation(L"BombRightIdle", false);
+			animator->PlayAnimation(L"BombLeftIdle", false);
+		}
+
+	}
+
 	void Bomb::Idle()
 	{
 		// 2초 지나면 Pop 애니메이션을 호출하고, 상태 전환
@@ -95,7 +110,16 @@ namespace hy
 		Animator* animator = GetComponent<Animator>();
 		if (time > 3.f)
 		{
-			animator->PlayAnimation(L"BombPop", false);
+			animator->PlayAnimation(L"BombCenter", false);
+			Bazzi* flow = Bazzi::GetBombFlow;
+			if (flow == 0)
+			{
+					animator->PlayAnimation(L"BombUp", false);
+					animator->PlayAnimation(L"BombDown", false);
+					animator->PlayAnimation(L"BombRight", false);
+					animator->PlayAnimation(L"BombLeft", false);
+			}
+
 			mState = eState::Pop;
 			time = 0.f;
 		}
@@ -103,7 +127,7 @@ namespace hy
 	}
 	void Bomb::Pop()
 	{
-		
+		Destroy(this);
 	}
 
 

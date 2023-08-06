@@ -25,12 +25,14 @@ namespace hy
 	{
 
 		// 타일 주석
-		//Texture* Tile_
-			//= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
+		Texture* Tile_
+			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
 
-		//// 타일 위치..?
-		//Tile* tile_
-		//	= object::Instantiate<Tile>(eLayerType::Tile, Vector2(600.0f, 400.0f));
+	
+
+		// 타일 위치..?
+		/*Tile* tile_
+			= object::Instantiate<Tile>(eLayerType::Tile, Vector2(600.0f, 400.0f));*/
 	
 	}
 
@@ -43,13 +45,16 @@ namespace hy
 		{
 			Vector2 mousePos = Input::GetMousePosition();
 
+			// 마우스 커서의 위치를 타일의 인덱스로 바꿔주는 작업
 			int idxX = mousePos.x / (TILE_WIDTH);
 			int idxY = mousePos.y / (TILE_HEIGHT);
 
+			// 타일의 중앙을 중심으로 오프셋 설정
 			Vector2 offset = Vector2((TILE_WIDTH) / 2.0f, (TILE_HEIGHT) / 2.0f);
+
 			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile
 				, Vector2(idxX * (TILE_WIDTH) + offset.x
-					, idxY * (TILE_HEIGHT) + offset.y));
+				, idxY * (TILE_HEIGHT) + offset.y));
 
 			tile->SetTile(Tile::mSelectedX, Tile::mSelectedY);
 			tile->SetSourceTileIdx(Tile::mSelectedX, Tile::mSelectedY);
@@ -74,21 +79,21 @@ namespace hy
 	{
 		Scene::Render(hdc);
 
-		// 30,55
-		// 930,750
+		// 20, 40
+		// 620,560
 		// 격자 만들기
-		int maxRow = 750 / (TILE_HEIGHT) + 1;
+		int maxRow = 560 / (TILE_HEIGHT) + 1;
 		for (size_t y = 0; y < maxRow; y++)
-		{	//시작 위치 0,0 부터 200, 200 까지 선을 그리겠다
-			MoveToEx(hdc, 30, TILE_HEIGHT * y, NULL);	 //      라인(선) 시작
-			LineTo(hdc, 930, TILE_HEIGHT * y);			 //      라인(선) 끝
+		{
+			MoveToEx(hdc, 20, TILE_HEIGHT * y, NULL);	 //      라인(선) 시작부터
+			LineTo(hdc, 620, TILE_HEIGHT * y);			 //      라인(선) 끝까지 선을 그림
 		}
 
-		int maxColumn = 930 / (TILE_WIDTH) + 1;
+		int maxColumn = 620 / (TILE_WIDTH) + 1;
 		for (size_t x = 0; x < maxColumn; x++)
 		{
-			MoveToEx(hdc, TILE_WIDTH * x , 55, NULL);	 //      라인(선) 시작
-			LineTo(hdc, TILE_WIDTH * x , 750);			 //      라인(선) 끝
+			MoveToEx(hdc, TILE_WIDTH * x , 40, NULL);	 //      라인(선) 시작
+			LineTo(hdc, TILE_WIDTH * x , 560);			 //      라인(선) 끝
 		}
 	}
 	// 파일 입출력

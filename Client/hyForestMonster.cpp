@@ -19,6 +19,7 @@ namespace hy
 {
 	// static 변수는 전역에서 초기화해주기
 	float ForestMonster:: MonsterTime = 0.f;
+	UINT ForestMonster :: MonsterQuantity(3);
 
 	ForestMonster::ForestMonster()
 		: mDeathTime(1.0f)
@@ -101,6 +102,7 @@ namespace hy
 			Animator* at = GetComponent<Animator>();
 			at->SetScale(Vector2(1.0f, 1.0f));
 			at->PlayAnimation(L"ForestMonnsterDie", false);
+			MonsterQuantity--;
 			mState = eState::Dead;
 		}
 

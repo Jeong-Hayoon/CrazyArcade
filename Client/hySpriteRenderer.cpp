@@ -10,7 +10,7 @@ namespace hy
 		, mScale(Vector2::One)
 		//, mbAffectCamera(true)
 		, mTexture(nullptr)
-		,mAlpha(1.0f)			// 물체가 투명하지 않게 초기화(0에 가까워질수록 투명)
+		, mAlpha(1.0f)			// 물체가 투명하지 않게 초기화(0에 가까워질수록 투명)
 		, mbTile(false)
 
 
@@ -140,7 +140,7 @@ namespace hy
 				, Vector2::Zero
 				, mScale
 				, mAlpha
-				, tr->GetRotation());
+				/*, tr->GetRotation()*/);
 		}
 		else
 		{

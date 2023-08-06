@@ -33,11 +33,12 @@ namespace hy
 		void Right();
 
 		void Dead();
-
+		 
 	private:
 		eState mState;
 		float mDeathTime;
 		static float MonsterTime;
+		static UINT MonsterQuantity;
 	};
 }
 

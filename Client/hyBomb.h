@@ -25,6 +25,8 @@ namespace hy
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
 
+		void FlowIdle(UINT num);
+
 		void Idle();
 		void Pop();
 

@@ -2,6 +2,9 @@
 #include "hyAnimator.h"
 #include "hyTexture.h"
 #include "hyResources.h"
+#include "hyBazzi.h"
+#include "hyCollider.h"
+
 
 
 namespace hy
@@ -37,6 +40,9 @@ namespace hy
 	}
 	void Potion::OnCollisionStay(Collider* other)
 	{
+		Bazzi* bz = (Bazzi*)(other->GetOwner());
+		bz->AddBombFlow();
+		Destroy(this);
 	}
 	void Potion::OnCollisionExit(Collider* other)
 	{

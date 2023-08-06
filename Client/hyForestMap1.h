@@ -1,5 +1,6 @@
 #pragma once
 #include "hyScene.h"
+#include "hyTile.h"
 
 namespace hy
 {
@@ -15,6 +16,8 @@ namespace hy
 		void Load();
 
 	private:
+		std::vector<Tile*> mTiles;
+
 
 	};
 }
