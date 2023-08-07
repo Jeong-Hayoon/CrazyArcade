@@ -26,8 +26,8 @@
 namespace hy::enums
 {
 	// 타일 사이즈 가로, 세로
-	#define TILE_WIDTH 60
-	#define TILE_HEIGHT 60
+	#define TILE_WIDTH 40
+	#define TILE_HEIGHT 40
 
 	enum class eLayerType
 	{

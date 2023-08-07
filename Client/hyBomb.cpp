@@ -110,7 +110,7 @@ namespace hy
 		Animator* animator = GetComponent<Animator>();
 		if (time > 3.f)
 		{
-			animator->PlayAnimation(L"BombCenter", false);
+			/*animator->PlayAnimation(L"BombCenter", false);
 			Bazzi* flow = Bazzi::GetBombFlow;
 			if (flow == 0)
 			{
@@ -121,7 +121,7 @@ namespace hy
 			}
 
 			mState = eState::Pop;
-			time = 0.f;
+			time = 0.f;*/
 		}
 		
 	}

@@ -28,7 +28,6 @@ namespace hy
 		Texture* Tile_
 			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
 
-	
 
 		// 타일 위치..?
 		/*Tile* tile_
@@ -40,17 +39,22 @@ namespace hy
 	{
 		Scene::Update();
 
+
 		// GetFocus : 윈도우가 활성될 때만 할 수 있게 해주는 함수
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && GetFocus())
 		{
 			Vector2 mousePos = Input::GetMousePosition();
 
 			// 마우스 커서의 위치를 타일의 인덱스로 바꿔주는 작업
-			int idxX = mousePos.x / (TILE_WIDTH);
-			int idxY = mousePos.y / (TILE_HEIGHT);
+			int idxX = (mousePos.x - 20.f) / (TILE_WIDTH);
+			int idxY = (mousePos.y - 40.f) / (TILE_HEIGHT);
 
 			// 타일의 중앙을 중심으로 오프셋 설정
 			Vector2 offset = Vector2((TILE_WIDTH) / 2.0f, (TILE_HEIGHT) / 2.0f);
+
+			offset.x += 20.f;
+			offset.y += 40.f;
+
 
 			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile
 				, Vector2(idxX * (TILE_WIDTH) + offset.x
@@ -82,18 +86,18 @@ namespace hy
 		// 20, 40
 		// 620,560
 		// 격자 만들기
-		int maxRow = 560 / (TILE_HEIGHT) + 1;
+		int maxRow = 560 / (TILE_HEIGHT) ;
 		for (size_t y = 0; y < maxRow; y++)
 		{
-			MoveToEx(hdc, 20, TILE_HEIGHT * y, NULL);	 //      라인(선) 시작부터
-			LineTo(hdc, 620, TILE_HEIGHT * y);			 //      라인(선) 끝까지 선을 그림
+			MoveToEx(hdc, 20, (TILE_HEIGHT * y) + 40.f, NULL);	 //      라인(선) 시작부터
+			LineTo(hdc, 580, (TILE_HEIGHT * y) + 40.f);			 //      라인(선) 끝까지 선을 그림
 		}
 
-		int maxColumn = 620 / (TILE_WIDTH) + 1;
+		int maxColumn = 620 / (TILE_WIDTH);
 		for (size_t x = 0; x < maxColumn; x++)
 		{
-			MoveToEx(hdc, TILE_WIDTH * x , 40, NULL);	 //      라인(선) 시작
-			LineTo(hdc, TILE_WIDTH * x , 560);			 //      라인(선) 끝
+			MoveToEx(hdc, (TILE_WIDTH * x)+20.f ,40, NULL);		 //      라인(선) 시작
+			LineTo(hdc, (TILE_WIDTH * x)+20.f , 560);			 //      라인(선) 끝
 		}
 	}
 	// 파일 입출력

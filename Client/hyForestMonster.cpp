@@ -48,7 +48,8 @@ namespace hy
 		//// 시간이 지남에 따라 객체 삭제 -> 물풍선 교체
 		//Transform* tr = GetComponent<Transform>();
 		//Vector2 pos = tr->GetPosition();
-		//pos.x += 300.0f * Time::DeltaTime();
+		//pos.x += 
+		// .0f * Time::DeltaTime();
 		//tr->SetPosition(pos);
 
 		//mDeathTime -= Time::DeltaTime();

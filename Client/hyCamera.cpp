@@ -25,7 +25,8 @@
 //	{
 //		if (Input::GetKey(eKeyCode::W))
 //		{
-//			mLookPosition.y -= 300.0f * Time::DeltaTime();
+//			mLookPosition.y -= 
+// .0f * Time::DeltaTime();
 //		}
 //		if (Input::GetKey(eKeyCode::A))
 //		{
