@@ -5,6 +5,13 @@
 
 namespace hy
 {
+	#define LEFT_TOP_Y 40.f
+	#define LEFT_TOP_X 20.f
+
+	#define RIGHT_BOTTOM_Y 560.f
+	#define RIGHT_BOTTOM_X 620.f
+
+
 	class ToolScene : public Scene
 	{
 	public:

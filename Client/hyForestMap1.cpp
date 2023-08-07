@@ -95,6 +95,7 @@ namespace hy
 
 			mTiles.push_back(tile);
 		}
+		fclose(pFile);
 	}
 
 	void ForestMap1::Initialize()
@@ -118,10 +119,9 @@ namespace hy
 		forestmapsr->SetImage(ForestMap1);
 		forestmapsr->SetScale(Vector2(1.0f, 0.90f));*/
 
-		//// 鸥老 林籍
-		//Texture* Tile_
-		//	= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
-
+		// 鸥老 林籍
+		/*Texture* Tile_
+			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");*/
 
 		//ForestMap1::Load();
 
@@ -248,6 +248,9 @@ namespace hy
 		Needlecol->SetSize(Vector2(10.0f, 10.0f));
 		Needlecol->SetOffset(Vector2(0.0f, 0.0f));
 
+		Texture* Tile_
+			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
+		ForestMap1::Load();
 		//Scene::Initialize();
 	}
 

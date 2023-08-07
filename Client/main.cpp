@@ -9,7 +9,8 @@
 #include "hyInput.h"
 #include "hyTile.h"
 
-#define MAX_LOADSTRING 100
+#
+MAX_LOADSTRING 100
 
 // 전역 변수:
 HINSTANCE hInst;                         // 현재 인스턴스입니다.

@@ -17,8 +17,6 @@ namespace hy
 
 	private:
 		std::vector<Tile*> mTiles;
-
-
 	};
 }
 
