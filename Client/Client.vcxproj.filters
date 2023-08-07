@@ -377,6 +377,9 @@
     <ClInclude Include="hyBalloon.h">
       <Filter>Contents\GameObject\Item\Kind of Item</Filter>
     </ClInclude>
+    <ClInclude Include="hyUserItem.h">
+      <Filter>Contents\GameObject\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -563,6 +566,9 @@
     </ClCompile>
     <ClCompile Include="hyBalloon.cpp">
       <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClCompile>
+    <ClCompile Include="hyUserItem.cpp">
+      <Filter>Contents\GameObject\Item</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

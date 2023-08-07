@@ -2,9 +2,11 @@
 #include "hyAnimator.h"
 #include "hyTexture.h"
 #include "hyResources.h"
+#include "hyCollider.h"
+#include "hyBazzi.h"
+#include "hyObject.h"
 
 // ¹Ù´Ã
-
 namespace hy
 {
 	Needle::Needle()
@@ -38,6 +40,12 @@ namespace hy
 	}
 	void Needle::OnCollisionStay(Collider* other)
 	{
+		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
+		{
+			Bazzi* bz = object::Instantiate<Bazzi>(eLayerType::Player);
+			bz->SetActiveItem(Bazzi::eItem::Needle);
+			Destroy(this);
+		}
 	}
 	void Needle::OnCollisionExit(Collider* other)
 	{

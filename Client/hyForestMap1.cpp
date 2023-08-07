@@ -18,6 +18,8 @@
 #include "hyBalloon.h"
 #include "hyDevil.h"
 #include "hyPotion.h"
+#include "hyNeedle.h"
+#include "hyShield.h"
 
 
 
@@ -35,8 +37,8 @@ namespace hy
 
 	void ForestMap1::Load()
 	{
-		Texture* forestFloor
-			= Resources::Load<Texture>(L"ForestFloorTile", L"..\\resources\\image\\Bg\\ForestTile.bmp");
+	/*	Texture* forestFloor
+			= Resources::Load<Texture>(L"ForestFloorTile", L"..\\resources\\image\\Bg\\ForestTile.bmp");*/
 
 		OPENFILENAME ofn = {};
 
@@ -101,7 +103,7 @@ namespace hy
 		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImage"
 			, L"..\\Resources\\Image\\Bg\\play.bmp");
 
-		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
+		BackGround* bg = object::Instantiate<BackGround>(eLayerType::UI);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.f, 1.f));
@@ -116,13 +118,18 @@ namespace hy
 		forestmapsr->SetImage(ForestMap1);
 		forestmapsr->SetScale(Vector2(1.0f, 0.90f));*/
 
-		// ForestMap1::Load();
+		//// 타일 주석
+		//Texture* Tile_
+		//	= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
+
+
+		//ForestMap1::Load();
 
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
 			, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
 
-		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::Background);
+		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::UI);
 		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
 		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
 		bzprofilesr->SetImage(BZProfile);
@@ -160,26 +167,29 @@ namespace hy
 		Transform* Balloontr = Balloon_1->GetComponent<Transform>();
 		Vector2 Balloonpos = Balloontr->GetPosition();
 
-		Balloonpos.y = 150.f;
+		Balloonpos.y = 250.f;
 		Balloonpos.x = 150.f;
 
 		Balloon_1->GetComponent<Transform>()->SetPosition(Balloonpos);
 
-		// 물풍선 아이템 충돌 구현
+		// Balloon 아이템 충돌 구현
 		Collider* Ballooncol = Balloon_1->AddComponent<Collider>();
-		// 물풍선 아이템 충돌 사각형 사이즈 수정
+		// Balloon 아이템 충돌 사각형 사이즈 수정
 		Ballooncol->SetSize(Vector2(10.0f, 10.0f));
 
 		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
+
+		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::UseItem, true);
 
 		// Devil 아이템 setting
 		Devil* Devil_1 = object::Instantiate<Devil>(eLayerType::Item);
 		Transform* Deviltr = Devil_1->GetComponent<Transform>();
 		Vector2 Devilpos = Deviltr->GetPosition();
 
-		Devilpos.y = 400.f;
-		Devilpos.x = 400.f;
+		Devilpos.y = 250.f;
+		Devilpos.x = 250.f;
 
 		Devil_1->GetComponent<Transform>()->SetPosition(Devilpos);
 
@@ -194,8 +204,8 @@ namespace hy
 		Transform* Potiontr = Potion_1->GetComponent<Transform>();
 		Vector2 Potionpos = Potiontr->GetPosition();
 
-		Potionpos.y = 500.f;
-		Potionpos.x = 500.f;
+		Potionpos.y = 250.f;
+		Potionpos.x = 350.f;
 
 		Potion_1->GetComponent<Transform>()->SetPosition(Potionpos);
 
@@ -204,6 +214,39 @@ namespace hy
 		// Potion 아이템 충돌 사각형 사이즈 수정
 		Potioncol->SetSize(Vector2(10.0f, 10.0f));
 		Potioncol->SetOffset(Vector2(0.0f, 0.0f));
+
+		// Shield 아이템 setting
+		Shield* Shield_1 = object::Instantiate<Shield>(eLayerType::UseItem);
+		Transform* Shieldtr = Shield_1->GetComponent<Transform>();
+		Vector2 Shieldnpos = Shieldtr->GetPosition();
+
+		Shieldnpos.y = 250.f;
+		Shieldnpos.x = 450.f;
+
+		Shield_1->GetComponent<Transform>()->SetPosition(Shieldnpos);
+
+		// Shield 아이템 충돌 구현
+		Collider* Shieldcol = Shield_1->AddComponent<Collider>();
+		// Shield 아이템 충돌 사각형 사이즈 수정
+		Shieldcol->SetSize(Vector2(10.0f, 10.0f));
+		Shieldcol->SetOffset(Vector2(0.0f, 0.0f));
+
+
+		// Needle 아이템 setting
+		Needle* Needle_1 = object::Instantiate<Needle>(eLayerType::UseItem);
+		Transform* Needletr = Needle_1->GetComponent<Transform>();
+		Vector2 Needlepos = Needletr->GetPosition();
+
+		Needlepos.y = 250.f;
+		Needlepos.x = 550.f;
+
+		Needle_1->GetComponent<Transform>()->SetPosition(Needlepos);
+
+		// Needle 아이템 충돌 구현
+		Collider* Needlecol = Needle_1->AddComponent<Collider>();
+		// Needle 아이템 충돌 사각형 사이즈 수정
+		Needlecol->SetSize(Vector2(10.0f, 10.0f));
+		Needlecol->SetOffset(Vector2(0.0f, 0.0f));
 
 		//Scene::Initialize();
 	}

@@ -170,6 +170,7 @@
     <ClInclude Include="hySoundManager.h" />
     <ClInclude Include="hyTile.h" />
     <ClInclude Include="hyToolScene.h" />
+    <ClInclude Include="hyUserItem.h" />
     <ClInclude Include="hyVelocitySkate.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="hyTexture.h" />
@@ -234,6 +235,7 @@
     <ClCompile Include="hySoundManager.cpp" />
     <ClCompile Include="hyTile.cpp" />
     <ClCompile Include="hyToolScene.cpp" />
+    <ClCompile Include="hyUserItem.cpp" />
     <ClCompile Include="hyVelocitySkate.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="hyTexture.cpp" />

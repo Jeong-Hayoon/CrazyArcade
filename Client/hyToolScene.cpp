@@ -55,7 +55,6 @@ namespace hy
 			offset.x += 20.f;
 			offset.y += 40.f;
 
-
 			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile
 				, Vector2(idxX * (TILE_WIDTH) + offset.x
 				, idxY * (TILE_HEIGHT) + offset.y));
@@ -206,9 +205,9 @@ namespace hy
 
 			Vector2 offset = Vector2((TILE_WIDTH) / 2.0f, (TILE_HEIGHT) / 2.0f);
 			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile
-				, Vector2(myX * (TILE_WIDTH ) + offset.x
-					, myY * (TILE_HEIGHT) + offset.y));
-
+				, Vector2(myX * (TILE_WIDTH) + offset.x + 20.f
+					, myY * (TILE_HEIGHT) + offset.y + 40.f));
+				
 			tile->SetTile(sourceX, sourceY);
 			tile->SetSourceTileIdx(sourceX, sourceY);
 			tile->SetTileIdx(myX, myY);

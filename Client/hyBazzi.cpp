@@ -18,13 +18,14 @@
 
 namespace hy
 {
+	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::None;
+	
 	Bazzi::Bazzi()
 		: mState(eState::Make)
 		, mDirection(eDirection::Down)
-		, BombLimit(1)
+		, BombLimit(5)
 		, MoveSpeed(150.f)
 		, Life(1)
-		, ActiveItem(eItem::None)
 		, BombFlow(0)
 	{
 	}
@@ -157,9 +158,13 @@ namespace hy
 				Bomb* Bomb_ = object::Instantiate<Bomb>(eLayerType::Effect);
 				Transform* Bazzitr = GetComponent<Transform>();
 				Vector2 Bazzipos = Bazzitr->GetPosition();
+				Vector2 Bombpos;
 
-				Bazzipos.y += 20.f;
-				Bomb_->GetComponent<Transform>()->SetPosition(Bazzipos);
+				Bombpos.x = (Bazzipos.x) / (TILE_WIDTH);
+				Bombpos.y = (Bazzipos.y ) / (TILE_HEIGHT);
+
+				Bombpos.y += 20.f;
+ 				Bomb_->GetComponent<Transform>()->SetPosition(Bombpos);
 				BombLimit--;
 			}
 		}
@@ -177,8 +182,9 @@ namespace hy
 			// 바늘 아이템 사용
 			else if (GetActiveItem() == eItem::Needle)
 			{
-
-
+				Animator* at = GetComponent<Animator>();
+				at->PlayAnimation(L"BazziLive", false);
+				mState = eState::Live;
 				eItem::None;
 			}
 
@@ -219,6 +225,11 @@ namespace hy
 			at->SetScale(Vector2(1.0f, 1.0f));
 			at->PlayAnimation(L"BazziBalloonDead", false);
 			mState = eState::BalloonDead;
+		}
+
+		// 사용아이템 충돌시 
+		else if (other->GetOwner()->GetLayerType() == eLayerType::UseItem)
+		{
 		}
 
 		

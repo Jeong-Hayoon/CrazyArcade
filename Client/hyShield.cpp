@@ -2,7 +2,9 @@
 #include "hyAnimator.h"
 #include "hyTexture.h"
 #include "hyResources.h"
-
+#include "hyCollider.h"
+#include "hyBazzi.h"
+#include "hyObject.h"
 
 namespace hy
 {
@@ -34,9 +36,16 @@ namespace hy
 	}
 	void Shield::OnCollisionEnter(Collider* other)
 	{
+	
 	}
 	void Shield::OnCollisionStay(Collider* other)
 	{
+		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
+		{
+			Bazzi* bz = object::Instantiate<Bazzi>(eLayerType::Player);
+			bz->SetActiveItem(Bazzi::eItem::Shield);
+			Destroy(this);
+		}
 	}
 	void Shield::OnCollisionExit(Collider* other)
 	{
