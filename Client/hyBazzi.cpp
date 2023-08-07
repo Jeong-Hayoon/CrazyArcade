@@ -153,15 +153,17 @@ namespace hy
 		// 물풍선 객체 생성 및 위치 조정
 		if (Input::GetKeyDown(eKeyCode::Space))	
 		{
+			// 이부분 수정 필요
 			if(BombLimit != 0)
 			{
 				Bomb* Bomb_ = object::Instantiate<Bomb>(eLayerType::Effect);
-				Transform* Bazzitr = GetComponent<Transform>();
-				Vector2 Bazzipos = Bazzitr->GetPosition();
+				Bazzi* BazziLocation = object::Instantiate<Bazzi>(eLayerType::Player);
+				Transform* Bazzitr = BazziLocation->GetComponent<Transform>();
+				Vector2 BazziLocationtr = Bazzitr->GetPosition();
 				Vector2 Bombpos;
 
-				Bombpos.x = (Bazzipos.x) / (TILE_WIDTH);
-				Bombpos.y = (Bazzipos.y ) / (TILE_HEIGHT);
+				Bombpos.x = (BazziLocationtr.x) / (TILE_WIDTH);
+				Bombpos.y = (BazziLocationtr.y ) / (TILE_HEIGHT);
 
 				Bombpos.y += 20.f;
  				Bomb_->GetComponent<Transform>()->SetPosition(Bombpos);

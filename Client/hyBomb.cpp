@@ -86,17 +86,22 @@ namespace hy
 	{
 	}
 
+	// 재귀함수
 	void Bomb::FlowIdle(UINT num)
 	{
 		Animator* animator = GetComponent<Animator>();
 
 		for (int i = 0; i < num; i++)
 		{
+			// 이부분 수정
 			// 애니메이션의 위치는 Bomb의 상하좌우로 배치해야 함
 			animator->PlayAnimation(L"BombUpIdle", false);
 			animator->PlayAnimation(L"BombDownIdle", false);
 			animator->PlayAnimation(L"BombRightIdle", false);
 			animator->PlayAnimation(L"BombLeftIdle", false);
+
+			/*Bazzi* flow = object::Instantiate<Bazzi>(eLayerType::Player);
+			FlowIdle(flow->GetBombFlow());*/
 		}
 
 	}
@@ -110,9 +115,10 @@ namespace hy
 		Animator* animator = GetComponent<Animator>();
 		if (time > 3.f)
 		{
-			/*animator->PlayAnimation(L"BombCenter", false);
-			Bazzi* flow = Bazzi::GetBombFlow;
-			if (flow == 0)
+			animator->PlayAnimation(L"BombCenter", false);
+			Bazzi* flow = object::Instantiate<Bazzi>(eLayerType::Player);
+
+			if (flow->GetBombFlow() == 0)
 			{
 					animator->PlayAnimation(L"BombUp", false);
 					animator->PlayAnimation(L"BombDown", false);
@@ -120,8 +126,13 @@ namespace hy
 					animator->PlayAnimation(L"BombLeft", false);
 			}
 
+			else
+			{
+				FlowIdle(flow->GetBombFlow());
+			}
+
 			mState = eState::Pop;
-			time = 0.f;*/
+			time = 0.f;
 		}
 		
 	}
