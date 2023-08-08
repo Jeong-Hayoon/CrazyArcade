@@ -37,21 +37,19 @@ namespace hy
 	}
 	void Needle::OnCollisionEnter(Collider* other)
 	{
-		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
+		//
+		GameObject* obj = other->GetOwner();
+		Bazzi* player = dynamic_cast<Bazzi*>(obj);	// ¾ÈµÇ¸é nullptr
+		if (player != nullptr)
 		{
-			Bazzi* bz = object::Instantiate<Bazzi>(eLayerType::Player);
-			bz->SetActiveItem(Bazzi::eItem::Needle);
+			player->SetActiveItem(Bazzi::eItem::Needle);
 			Destroy(this);
 		}
+
+
 	}
 	void Needle::OnCollisionStay(Collider* other)
 	{
-	/*	if (other->GetOwner()->GetLayerType() == eLayerType::Player)
-		{
-			Bazzi* bz = object::Instantiate<Bazzi>(eLayerType::Player);
-			bz->SetActiveItem(Bazzi::eItem::Needle);
-			Destroy(this);
-		}*/
 	}
 	void Needle::OnCollisionExit(Collider* other)
 	{

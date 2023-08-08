@@ -115,7 +115,7 @@ namespace hy
 		Animator* animator = GetComponent<Animator>();
 		if (time > 3.f)
 		{
-			animator->PlayAnimation(L"BombCenter", false);
+ 			animator->PlayAnimation(L"BombCenter", false);
 
 			if (Bazzi::GetBombFlow() == 0)
 			{

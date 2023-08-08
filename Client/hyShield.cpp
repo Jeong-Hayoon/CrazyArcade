@@ -15,7 +15,13 @@ namespace hy
 		Texture* Shield_ = Resources::Load<Texture>(L"Shield"
 			, L"..\\Resources\\Image\\Items\\shield.bmp");
 
+		Texture* ShieldEffect_ = Resources::Load<Texture>(L"ShieldEffect"
+			, L"..\\Resources\\Image\\Items\\shieldeffect.bmp");
+
+
 		st->CreateAnimation(L"Shield", Shield_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
+		st->CreateAnimation(L"BazziShield", ShieldEffect_, Vector2(0.0f, 0.0f), Vector2(88.0f, 101.0f), 4, Vector2(0.0f, 0.0f), 0.05f);
+
 		st->SetScale(Vector2(0.9f, 0.9f));
 		st->PlayAnimation(L"Shield", true);
 	}
@@ -29,29 +35,27 @@ namespace hy
 	void Shield::Update()
 	{
 		Item::Update();
-	}
+	} 
 	void Shield::Render(HDC hdc)
 	{
 		Item::Render(hdc);
 	}
 	void Shield::OnCollisionEnter(Collider* other)
 	{
-		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
+		// 충돌체의 owner를 가져와서
+		GameObject* obj = other->GetOwner();
+		// Bazzi과 같으면 Bazzi의 주소를 반환하고 안되면 nullptr
+		Bazzi* player = dynamic_cast<Bazzi*>(obj);	
+		if (player != nullptr)
 		{
-			Bazzi* bz = object::Instantiate<Bazzi>(eLayerType::Player);
-			bz->SetActiveItem(Bazzi::eItem::Shield);
+			player->SetActiveItem(Bazzi::eItem::Shield);
 			Destroy(this);
 		}
+
 	
 	}
 	void Shield::OnCollisionStay(Collider* other)
 	{
-		/*if (other->GetOwner()->GetLayerType() == eLayerType::Player)
-		{
-			Bazzi* bz = object::Instantiate<Bazzi>(eLayerType::Player);
-			bz->SetActiveItem(Bazzi::eItem::Shield);
-			Destroy(this);
-		}*/
 	}
 	void Shield::OnCollisionExit(Collider* other)
 	{
@@ -61,6 +65,26 @@ namespace hy
 	}
 	void Shield::Use()
 	{
+		//if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Shield)
+		//{
+		//	static float Shieldtime = 0.f;
+		//	Shieldtime += Time::DeltaTime();
+
+		//	if (Shieldtime < 3.0f)
+		//	{
+		//		animator->SetScale(Vector2(0.9f, 0.9f));
+		//		animator->PlayAnimation(L"BazziShield", true);
+		//		// 모든 충돌체 충돌 끄는 코드 삽입
+		//	}
+
+		//	else if (Shieldtime > 3.0f)
+		//	{
+		//		animator->SetScale(Vector2(1.0f, 1.0f));
+		//		animator->PlayAnimation(L"BazziIdle", true);
+		//		mState = eState::Idle;
+		//	}
+		//}
+
 	}
 	void Shield::Extinct()
 	{

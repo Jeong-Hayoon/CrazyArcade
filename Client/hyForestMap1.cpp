@@ -167,8 +167,8 @@ namespace hy
 		// 충돌 구현
 		Collider* col = forestbazzi1->AddComponent<Collider>();
 		// 배찌의 충돌 사각형 사이즈 수정
-		col->SetSize(Vector2(30.0f, 20.0f));
-		col->SetOffset(Vector2(0.0f, 25.0f));
+		col->SetSize(Vector2(30.0f, 25.0f));
+		col->SetOffset(Vector2(0.0f, 10.0f));
 
 		col = forestmonster->AddComponent<Collider>();
 		// 포레스트 몬스터의 충돌 사각형 사이즈 수정
@@ -195,7 +195,7 @@ namespace hy
 		// Balloon 아이템 충돌 구현
 		Collider* Ballooncol = Balloon_1->AddComponent<Collider>();
 		// Balloon 아이템 충돌 사각형 사이즈 수정
-		Ballooncol->SetSize(Vector2(10.0f, 10.0f));
+		Ballooncol->SetSize(Vector2(10.0f, 30.0f));
 
 		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
@@ -216,7 +216,7 @@ namespace hy
 		// Devil 아이템 충돌 구현
 		Collider* Devilcol = Devil_1->AddComponent<Collider>();
 		// Devil 아이템 충돌 사각형 사이즈 수정
-		Devilcol->SetSize(Vector2(10.0f, 10.0f));
+		Devilcol->SetSize(Vector2(10.0f, 30.0f));
 		Devilcol->SetOffset(Vector2(0.0f, 0.0f));
 
 		// Potion 아이템 setting
@@ -232,7 +232,7 @@ namespace hy
 		// Potion 아이템 충돌 구현
 		Collider* Potioncol = Potion_1->AddComponent<Collider>();
 		// Potion 아이템 충돌 사각형 사이즈 수정
-		Potioncol->SetSize(Vector2(10.0f, 10.0f));
+		Potioncol->SetSize(Vector2(10.0f, 30.0f));
 		Potioncol->SetOffset(Vector2(0.0f, 0.0f));
 
 		// Shield 아이템 setting
@@ -248,7 +248,7 @@ namespace hy
 		// Shield 아이템 충돌 구현
 		Collider* Shieldcol = Shield_1->AddComponent<Collider>();
 		// Shield 아이템 충돌 사각형 사이즈 수정
-		Shieldcol->SetSize(Vector2(10.0f, 10.0f));
+		Shieldcol->SetSize(Vector2(10.0f, 30.0f));
 		Shieldcol->SetOffset(Vector2(0.0f, 0.0f));
 
 
@@ -265,7 +265,7 @@ namespace hy
 		// Needle 아이템 충돌 구현
 		Collider* Needlecol = Needle_1->AddComponent<Collider>();
 		// Needle 아이템 충돌 사각형 사이즈 수정
-		Needlecol->SetSize(Vector2(10.0f, 10.0f));
+		Needlecol->SetSize(Vector2(10.0f, 30.0f));
 		Needlecol->SetOffset(Vector2(0.0f, 0.0f));
 
 		/*Texture* Tile_

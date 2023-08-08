@@ -20,7 +20,7 @@ namespace hy
 {
 	UINT Bazzi ::BombFlow = 0;
 
-	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::None;
+	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::Needle;
 	
 	Bazzi::Bazzi()
 		: mState(eState::Make)
@@ -57,6 +57,9 @@ namespace hy
 
 		Texture* BazziVictory_ = Resources::Load<Texture>(L"BazziVictory"
 			, L"..\\Resources\\Image\\Bazzi\\jump.bmp");
+
+		Texture* BazziShield_ = Resources::Load<Texture>(L"Bazzi_Shield"
+			, L"..\\Resources\\Image\\Items\\shieldeffect.bmp");
 		
 
 		at->CreateAnimation(L"StartBazzi", StartBazzi_, Vector2(0.0f, 0.0f), Vector2(64.0f, 86.0f), 18, Vector2(0.0f, 0.0f), 0.07f);
@@ -178,27 +181,7 @@ namespace hy
 			}
 		}
 
-		// 아이템 사용
-		if (Input::GetKeyDown(eKeyCode::Ctrl))
-		{
-			// 실드 아이템 사용
-			if (GetActiveItem() == eItem::Shield)
-			{
-
-
-				eItem::None;
-			}
-			// 바늘 아이템 사용
-			else if (GetActiveItem() == eItem::Needle)
-			{
-				Animator* at = GetComponent<Animator>();
-				at->PlayAnimation(L"BazziLive", false);
-				mState = eState::Live;
-				eItem::None;
-			}
-
-		}
-
+	
 
 
 	}
@@ -299,9 +282,9 @@ namespace hy
 			animator->PlayAnimation(L"BazziTrap", false);
 			mState = eState::Trap;
 		}
-		if (Input::GetKeyDown(eKeyCode::L))		// Live
+		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle)	// Live
 		{
-			animator->SetScale(Vector2(1.0f, 1.0f));
+			animator->SetScale(Vector2(0.8f, 0.8f));
 			animator->PlayAnimation(L"BazziLive", false);
 			mState = eState::Live;
 		}
@@ -311,17 +294,32 @@ namespace hy
 			animator->PlayAnimation(L"BazziBalloonDead", false);
 			mState = eState::BalloonDead;
 		}
-		//if (Input::GetKeyDown(eKeyCode::D))		// Dead
-		//{
-		//	animator->SetScale(Vector2(1.0f, 1.0f));
-		//	animator->PlayAnimation(L"BazziDead", false);
-		//	mState = eState::Dead;
-		//}
+	
 		if (Input::GetKeyDown(eKeyCode::V))		// Victory
 		{
 			animator->SetScale(Vector2(1.0f, 1.0f));
 			animator->PlayAnimation(L"BazziVictory", true);
 			mState = eState::Victory;
+		}
+
+		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem ::Shield)
+		{
+			static float Shieldtime = 0.f;
+			Shieldtime += Time::DeltaTime();
+			
+			if (Shieldtime < 3.0f)
+			{
+				animator->SetScale(Vector2(0.9f, 0.9f));
+				animator->PlayAnimation(L"BazziShield", true);
+				// 모든 충돌체 충돌 끄는 코드 삽입
+			}
+
+			else if(Shieldtime > 3.0f)
+			{
+				animator->SetScale(Vector2(1.0f, 1.0f));
+				animator->PlayAnimation(L"BazziIdle", true);
+				mState = eState::Idle;
+			}
 		}
 
 		//if (Input::GetKeyDown(eKeyCode::K))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행
@@ -478,10 +476,13 @@ namespace hy
 	void Bazzi::Trap()
 	{
 		Animator* animator = GetComponent<Animator>();
-		if (animator->IsActiveAnimationComplete())
+
+		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle)	// Live
 		{
-			animator->PlayAnimation(L"BazziIdle", true);
-			mState = eState::Idle;
+			animator->SetScale(Vector2(0.8f, 0.8f));
+			animator->PlayAnimation(L"BazziLive", false);
+			mState = eState::Live;
+			eItem::None;
 		}
 	}
 
