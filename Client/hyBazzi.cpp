@@ -25,7 +25,7 @@ namespace hy
 	Bazzi::Bazzi()
 		: mState(eState::Make)
 		, mDirection(eDirection::Down)
-		, BombLimit(5)
+		, BombLimit(10)
 		, MoveSpeed(150.f)
 		, Life(1)
 	{
@@ -169,12 +169,12 @@ namespace hy
 				int Y_ = 0;
 
 				// 해당 타일 인덱스를 구함
-				X_ = (BazziLocationtr.x) / (TILE_WIDTH);
-				Y_ = (BazziLocationtr.y ) / (TILE_HEIGHT);
+				X_ = (BazziLocationtr.x - 20.f) / (TILE_WIDTH);
+				Y_ = (BazziLocationtr.y - 40.f) / (TILE_HEIGHT);
 
 				// 해당 타일 인덱스에 타일 사이즈를 곱하여 해당 타일의 LeftTop으로 이동
-				Bombpos.x = (X_ *  TILE_WIDTH) + (TILE_WIDTH / 2);
-				Bombpos.y = (Y_ * TILE_HEIGHT) + (TILE_HEIGHT / 2);
+				Bombpos.x = (X_ *  TILE_WIDTH) + (TILE_WIDTH / 2) + 20.f;
+				Bombpos.y = (Y_ * TILE_HEIGHT) + (TILE_HEIGHT / 2) + 40.f; 
 
  				Bomb_->GetComponent<Transform>()->SetPosition(Bombpos);
 				BombLimit--;
