@@ -37,16 +37,15 @@ namespace hy
 	}
 	void Needle::OnCollisionEnter(Collider* other)
 	{
-		//
+		// 충돌체의 owner를 가져와서
 		GameObject* obj = other->GetOwner();
-		Bazzi* player = dynamic_cast<Bazzi*>(obj);	// 안되면 nullptr
+		// Bazzi과 같으면 Bazzi의 주소를 반환하고 안되면 nullptr
+		Bazzi* player = dynamic_cast<Bazzi*>(obj);
 		if (player != nullptr)
 		{
 			player->SetActiveItem(Bazzi::eItem::Needle);
 			Destroy(this);
 		}
-
-
 	}
 	void Needle::OnCollisionStay(Collider* other)
 	{
@@ -54,13 +53,10 @@ namespace hy
 	void Needle::OnCollisionExit(Collider* other)
 	{
 	}
-	void Needle::Idle()
-	{
-	}
+
 	void Needle::Use()
 	{
+
 	}
-	void Needle::Extinct()
-	{
-	}
+
 }

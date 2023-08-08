@@ -15,6 +15,10 @@
 //#include "hyRigidbody.h"
 #include "hyBomb.h"
 #include "hyCollider.h"
+#include "hyShield.h"
+#include "hyUseShield.h"
+
+
 
 namespace hy
 {
@@ -309,9 +313,12 @@ namespace hy
 			
 			if (Shieldtime < 3.0f)
 			{
-				animator->SetScale(Vector2(0.9f, 0.9f));
-				animator->PlayAnimation(L"BazziShield", true);
-				// 모든 충돌체 충돌 끄는 코드 삽입
+				UseShield* ShieldEffect_ = object::Instantiate<UseShield>(eLayerType::Effect);
+				Transform* Bazzitr = this->GetComponent<Transform>();
+				Vector2  Shieldpos = Bazzitr->GetPosition();
+				
+				ShieldEffect_->GetComponent<Transform>()->SetPosition(Shieldpos);
+				ShieldEffect_->Use();
 			}
 
 			else if(Shieldtime > 3.0f)
@@ -320,6 +327,8 @@ namespace hy
 				animator->PlayAnimation(L"BazziIdle", true);
 				mState = eState::Idle;
 			}
+
+
 		}
 
 		//if (Input::GetKeyDown(eKeyCode::K))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행

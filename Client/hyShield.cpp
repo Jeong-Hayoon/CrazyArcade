@@ -5,6 +5,7 @@
 #include "hyCollider.h"
 #include "hyBazzi.h"
 #include "hyObject.h"
+#include "hyTime.h"
 
 namespace hy
 {
@@ -51,8 +52,6 @@ namespace hy
 			player->SetActiveItem(Bazzi::eItem::Shield);
 			Destroy(this);
 		}
-
-	
 	}
 	void Shield::OnCollisionStay(Collider* other)
 	{
@@ -65,28 +64,7 @@ namespace hy
 	}
 	void Shield::Use()
 	{
-		//if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Shield)
-		//{
-		//	static float Shieldtime = 0.f;
-		//	Shieldtime += Time::DeltaTime();
-
-		//	if (Shieldtime < 3.0f)
-		//	{
-		//		animator->SetScale(Vector2(0.9f, 0.9f));
-		//		animator->PlayAnimation(L"BazziShield", true);
-		//		// 모든 충돌체 충돌 끄는 코드 삽입
-		//	}
-
-		//	else if (Shieldtime > 3.0f)
-		//	{
-		//		animator->SetScale(Vector2(1.0f, 1.0f));
-		//		animator->PlayAnimation(L"BazziIdle", true);
-		//		mState = eState::Idle;
-		//	}
-		//}
-
+	
 	}
-	void Shield::Extinct()
-	{
-	}
+
 }

@@ -1,23 +1,16 @@
 #pragma once
 #include "hyItem.h"
 
-//실드
+//실드 사용
 
 namespace hy
 {
-	class Shield : public Item
+	class UseShield : public Item
 	{
 	public:
-		enum class eState
-		{
-			Idle,
-			Use,
-			Extinct,
-			End,
-		};
 
-		Shield();
-		virtual ~Shield();
+		UseShield();
+		virtual ~UseShield();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
