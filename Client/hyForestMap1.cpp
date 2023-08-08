@@ -42,23 +42,23 @@ namespace hy
 
 		OPENFILENAME ofn = {};
 
-		wchar_t szFilePath[256] = {};
+		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\ForestTile_1.tm";
 
-		ZeroMemory(&ofn, sizeof(ofn));
-		ofn.lStructSize = sizeof(ofn);
-		ofn.hwndOwner = NULL;
-		ofn.lpstrFile = szFilePath;
-		ofn.lpstrFile[0] = '\0';
-		ofn.nMaxFile = 256;
-		ofn.lpstrFilter = L"All\0*.*\0Text\0*.TXT\0";
-		ofn.nFilterIndex = 1;
-		ofn.lpstrFileTitle = NULL;
-		ofn.nMaxFileTitle = 0;
-		ofn.lpstrInitialDir = NULL;
-		ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+		//ZeroMemory(&ofn, sizeof(ofn));
+		//ofn.lStructSize = sizeof(ofn);
+		//ofn.hwndOwner = NULL;
+		//ofn.lpstrFile = szFilePath;
+		//ofn.lpstrFile[0] = '\0';
+		//ofn.nMaxFile = 256;
+		//ofn.lpstrFilter = L"All\0*.*\0Text\0*.TXT\0";
+		//ofn.nFilterIndex = 1;
+		//ofn.lpstrFileTitle = NULL;
+		//ofn.nMaxFileTitle = 0;
+		//ofn.lpstrInitialDir = NULL;
+		//ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
 
-		if (false == GetOpenFileName(&ofn))
-			return;
+		//if (false == GetOpenFileName(&ofn))
+		//	return;
 
 		// rb : 이진수로 파일을 읽음
 		FILE* pFile = nullptr;
@@ -86,8 +86,8 @@ namespace hy
 
 			Vector2 offset = Vector2((TILE_WIDTH) / 2.0f, (TILE_HEIGHT) / 2.0f);
 			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile
-				, Vector2(myX * (TILE_WIDTH)+offset.x
-					, myY * (TILE_HEIGHT)+offset.y));
+				, Vector2(myX * (TILE_WIDTH)+offset.x + LEFT_TOP_X
+					, myY * (TILE_HEIGHT)+offset.y + LEFT_TOP_Y));
 
 			tile->SetTile(sourceX, sourceY);
 			tile->SetSourceTileIdx(sourceX, sourceY);
@@ -110,6 +110,23 @@ namespace hy
 		bgsr->SetScale(Vector2(1.f, 1.f));
 		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));	
 
+		Texture* GameFrameColObject = Resources::Load<Texture>(L"PlayBackGroundImage"
+			, L"..\\Resources\\Image\\Bg\\GameFrameObject.bmp");
+
+		BackGround* gfco = object::Instantiate<BackGround>(eLayerType::Collider);
+		SpriteRenderer* gfcosr = gfco->AddComponent<SpriteRenderer>();
+		gfcosr->SetImage(image);
+		gfcosr->SetScale(Vector2(1.f, 1.f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));
+
+		// GameFrameColObject 충돌 구현
+		Collider* gfcocol = gfco->AddComponent<Collider>();
+		// GameFrameColObject 충돌 사각형 사이즈 수정
+		gfcocol->SetSize(Vector2(10.0f, 10.0f));
+
+		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Collider, true);
+
 		// 각 맵에 따른 맵 화면
 		/*Texture* ForestMap1 = Resources::Load<Texture>(L"ForestMapImage"
 			, L"..\\Resources\\Image\\Bg\\ForestTile.bmp");
@@ -123,7 +140,10 @@ namespace hy
 		/*Texture* Tile_
 			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");*/
 
-		//ForestMap1::Load();
+		Texture* Tile_
+			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
+
+		ForestMap1::Load();
 
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
@@ -248,9 +268,9 @@ namespace hy
 		Needlecol->SetSize(Vector2(10.0f, 10.0f));
 		Needlecol->SetOffset(Vector2(0.0f, 0.0f));
 
-		Texture* Tile_
-			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
-		ForestMap1::Load();
+		/*Texture* Tile_
+			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");*/
+		//ForestMap1::Load();
 		//Scene::Initialize();
 	}
 

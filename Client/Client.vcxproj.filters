@@ -323,9 +323,6 @@
     <ClInclude Include="hyCollisionManager.h">
       <Filter>Engine\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="hyCollider.h">
-      <Filter>Engine\Component\Collider</Filter>
-    </ClInclude>
     <ClInclude Include="hyRigidbody.h">
       <Filter>Engine\Component\Rigidbody</Filter>
     </ClInclude>
@@ -379,6 +376,9 @@
     </ClInclude>
     <ClInclude Include="hyUserItem.h">
       <Filter>Contents\GameObject\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="hyCollider.h">
+      <Filter>Engine\Component\Collider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

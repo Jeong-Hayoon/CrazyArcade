@@ -85,14 +85,14 @@ namespace hy
 		// 20, 40
 		// 620,560
 		// 격자 만들기
-		int maxRow = RIGHT_BOTTOM_Y / (TILE_HEIGHT) ;
+		int maxRow = RIGHT_BOTTOM_Y / (TILE_HEIGHT);
 		for (size_t y = 0; y < maxRow; y++)
 		{
 			MoveToEx(hdc, LEFT_TOP_X, (TILE_HEIGHT * y) + LEFT_TOP_Y, NULL);					//      라인(선) 시작부터
-			LineTo(hdc, RIGHT_BOTTOM_Y + LEFT_TOP_X, (TILE_HEIGHT * y) + LEFT_TOP_Y);			//      라인(선) 끝까지 선을 그림
+			LineTo(hdc, RIGHT_BOTTOM_Y + (LEFT_TOP_X * 3), (TILE_HEIGHT * y) + LEFT_TOP_Y);			//      라인(선) 끝까지 선을 그림
 		}
 
-		int maxColumn = RIGHT_BOTTOM_X / (TILE_WIDTH);
+		int maxColumn = RIGHT_BOTTOM_X / (TILE_WIDTH) + 1;
 		for (size_t x = 0; x < maxColumn; x++)
 		{
 			MoveToEx(hdc, (TILE_WIDTH * x)+ LEFT_TOP_X, LEFT_TOP_Y, NULL);		 //      라인(선) 시작

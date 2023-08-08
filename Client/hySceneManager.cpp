@@ -19,10 +19,12 @@ namespace hy
 		CreateScene<LogoScene>(L"LogoScene");
 		CreateScene<TitleScene>(L"TitleScene");
 		CreateScene<LobbyScene>(L"LobbyScene");
-		CreateScene<ForestMap1>(L"ForestMap");
+		//CreateScene<ForestMap1>(L"ForestMap");
 		CreateScene<IceMap1>(L"IceMap");
 		CreateScene<PirateMap>(L"PirateMap");
+		CreateScene<ForestMap1>(L"ForestMap");
 		CreateScene<ToolScene>(L"ToolScene");
+
 
 		LoadScene(L"LogoScene");
 	}

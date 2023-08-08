@@ -116,19 +116,18 @@ namespace hy
 		if (time > 3.f)
 		{
 			animator->PlayAnimation(L"BombCenter", false);
-			Bazzi* flow = object::Instantiate<Bazzi>(eLayerType::Player);
 
-			if (flow->GetBombFlow() == 0)
+			if (Bazzi::GetBombFlow() == 0)
 			{
-					animator->PlayAnimation(L"BombUp", false);
-					animator->PlayAnimation(L"BombDown", false);
-					animator->PlayAnimation(L"BombRight", false);
-					animator->PlayAnimation(L"BombLeft", false);
+				animator->PlayAnimation(L"BombUp", false);
+				animator->PlayAnimation(L"BombDown", false);
+				animator->PlayAnimation(L"BombRight", false);
+				animator->PlayAnimation(L"BombLeft", false);
 			}
 
 			else
 			{
-				FlowIdle(flow->GetBombFlow());
+				FlowIdle(Bazzi::GetBombFlow());
 			}
 
 			mState = eState::Pop;

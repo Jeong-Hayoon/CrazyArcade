@@ -37,12 +37,15 @@ namespace hy
 	}
 	void Potion::OnCollisionEnter(Collider* other)
 	{
-	}
-	void Potion::OnCollisionStay(Collider* other)
-	{
 		Bazzi* bz = (Bazzi*)(other->GetOwner());
 		bz->AddBombFlow();
 		Destroy(this);
+	}
+	void Potion::OnCollisionStay(Collider* other)
+	{
+		/*Bazzi* bz = (Bazzi*)(other->GetOwner());
+		bz->AddBombFlow();
+		Destroy(this);*/
 	}
 	void Potion::OnCollisionExit(Collider* other)
 	{

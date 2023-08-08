@@ -18,6 +18,8 @@
 
 namespace hy
 {
+	UINT Bazzi ::BombFlow = 0;
+
 	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::None;
 	
 	Bazzi::Bazzi()
@@ -26,7 +28,6 @@ namespace hy
 		, BombLimit(5)
 		, MoveSpeed(150.f)
 		, Life(1)
-		, BombFlow(0)
 	{
 	}
 	Bazzi::~Bazzi()
@@ -98,6 +99,7 @@ namespace hy
 		COLORREF rgb = mFloorTexture->GetTexturePixel(tr->GetPosition().x, tr->GetPosition().y + 48);
 
 		Rigidbody* rb = GetComponent<Rigidbody>();
+
 		if (rgb == RGB(0, 0, 255))
 		{
 			Transform* tr = GetComponent<Transform>();
@@ -153,19 +155,24 @@ namespace hy
 		// 물풍선 객체 생성 및 위치 조정
 		if (Input::GetKeyDown(eKeyCode::Space))	
 		{
-			// 이부분 수정 필요
 			if(BombLimit != 0)
 			{
 				Bomb* Bomb_ = object::Instantiate<Bomb>(eLayerType::Effect);
-				Bazzi* BazziLocation = object::Instantiate<Bazzi>(eLayerType::Player);
-				Transform* Bazzitr = BazziLocation->GetComponent<Transform>();
+				Transform* Bazzitr = this->GetComponent<Transform>();
 				Vector2 BazziLocationtr = Bazzitr->GetPosition();
 				Vector2 Bombpos;
 
-				Bombpos.x = (BazziLocationtr.x) / (TILE_WIDTH);
-				Bombpos.y = (BazziLocationtr.y ) / (TILE_HEIGHT);
+				int X_ = 0;
+				int Y_ = 0;
 
-				Bombpos.y += 20.f;
+				// 해당 타일 인덱스를 구함
+				X_ = (BazziLocationtr.x) / (TILE_WIDTH);
+				Y_ = (BazziLocationtr.y ) / (TILE_HEIGHT);
+
+				// 해당 타일 인덱스에 타일 사이즈를 곱하여 해당 타일의 LeftTop으로 이동
+				Bombpos.x = (X_ *  TILE_WIDTH) + (TILE_WIDTH / 2);
+				Bombpos.y = (Y_ * TILE_HEIGHT) + (TILE_HEIGHT / 2);
+
  				Bomb_->GetComponent<Transform>()->SetPosition(Bombpos);
 				BombLimit--;
 			}

@@ -54,14 +54,16 @@ namespace hy
 
 	void Devil::OnCollisionEnter(Collider* other)
 	{
-		
+		Bazzi* bz = (Bazzi*)(other->GetOwner());
+		bz->MoveSpeedMax();
+		Destroy(this);
 	}
 
 	void Devil::OnCollisionStay(Collider* other)
 	{
-		Bazzi* bz = (Bazzi*)(other->GetOwner());
+	/*	Bazzi* bz = (Bazzi*)(other->GetOwner());
 		bz->MoveSpeedMax();
-		Destroy(this);
+		Destroy(this);*/
 	}
 
 	void Devil::OnCollisionExit(Collider* other)

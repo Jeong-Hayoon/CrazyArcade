@@ -9,8 +9,7 @@
 #include "hyInput.h"
 #include "hyTile.h"
 
-#
-MAX_LOADSTRING 100
+#define MAX_LOADSTRING 100
 
 // 전역 변수:
 HINSTANCE hInst;                         // 현재 인스턴스입니다.
@@ -171,7 +170,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    RECT rect = { 0, 0, 200, 200 };
    AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
    SetWindowPos(hWndTool
-       , nullptr, 800, 0
+       , nullptr, 1000, 0
        , rect.right - rect.left
        , rect.bottom - rect.top
        , 0);

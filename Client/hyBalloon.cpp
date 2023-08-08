@@ -56,13 +56,16 @@ namespace hy
 	
 	void Balloon::OnCollisionEnter(Collider* other)
 	{
+		Bazzi* bz = (Bazzi*)(other->GetOwner());
+		bz->BombLimitUp();
+		Destroy(this);
 	}
 
 	void Balloon::OnCollisionStay(Collider* other)
 	{
-		Bazzi* bz = (Bazzi*)(other->GetOwner());
+		/*Bazzi* bz = (Bazzi*)(other->GetOwner());
 		bz->BombLimitUp();
-		Destroy(this);
+		Destroy(this);*/
 	}
 
 	void Balloon::OnCollisionExit(Collider* other)

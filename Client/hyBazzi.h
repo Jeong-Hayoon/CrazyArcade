@@ -74,7 +74,7 @@ namespace hy
 		eItem GetActiveItem() { return ActiveItem; }
 		void SetActiveItem(eItem eatitem) { ActiveItem = eatitem; }
 
-		UINT GetBombFlow() { return BombFlow; }
+		static UINT GetBombFlow() { return BombFlow; }
 		void AddBombFlow() { BombFlow++; }
 		class Texture* mFloorTexture;
 
@@ -85,7 +85,7 @@ namespace hy
 		float MoveSpeed;					// 기본 속도
 		bool Life;							// 0이면 물풍선에 갇혀있는 상태, 1이면 물풍선에 갇혀있지 않은 상태
 		static eItem ActiveItem;			// 장착되어 있는 아이템(0이면 실드, 1이면 바늘로 지정)
-		UINT BombFlow;						// 물줄기
+		static UINT BombFlow;				// 물줄기
 	};
 }
 

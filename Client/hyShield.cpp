@@ -36,16 +36,22 @@ namespace hy
 	}
 	void Shield::OnCollisionEnter(Collider* other)
 	{
-	
-	}
-	void Shield::OnCollisionStay(Collider* other)
-	{
 		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
 		{
 			Bazzi* bz = object::Instantiate<Bazzi>(eLayerType::Player);
 			bz->SetActiveItem(Bazzi::eItem::Shield);
 			Destroy(this);
 		}
+	
+	}
+	void Shield::OnCollisionStay(Collider* other)
+	{
+		/*if (other->GetOwner()->GetLayerType() == eLayerType::Player)
+		{
+			Bazzi* bz = object::Instantiate<Bazzi>(eLayerType::Player);
+			bz->SetActiveItem(Bazzi::eItem::Shield);
+			Destroy(this);
+		}*/
 	}
 	void Shield::OnCollisionExit(Collider* other)
 	{
