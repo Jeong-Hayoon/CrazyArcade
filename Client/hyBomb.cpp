@@ -159,35 +159,38 @@ namespace hy
 
 			BombFlow_0->GetComponent<Transform>()->SetPosition(bombflowpos);
 
-			for (int i = 0; i < 4; i++)
+			for (int j = 1; j < 10; j++)
 			{
-				bombflowpos.y = BombLocationtr.y + (offset[i][0] * TILE_HEIGHT);
-				bombflowpos.x = BombLocationtr.x + (offset[i][1] * TILE_WIDTH);
-
-				if(i == 0)
+				for (int i = 0; i < 4; i++)
 				{
-					BombFlow_1->Right();
-					BombFlow_1->GetComponent<Transform>()->SetPosition(bombflowpos);
-				}
+					bombflowpos.y = BombLocationtr.y + ((offset[i][0]*j) * TILE_HEIGHT) ;
+					bombflowpos.x = BombLocationtr.x + ((offset[i][1]*j) * TILE_WIDTH) ;
 
-				else if (i == 1)
-				{
-					BombFlow_2->Left();
-					BombFlow_2->GetComponent<Transform>()->SetPosition(bombflowpos);
-				}
+					if (i == 0)
+					{
+						BombFlow_1->Right();
+						BombFlow_1->GetComponent<Transform>()->SetPosition(bombflowpos);
+					}
 
-				else if (i == 2)
-				{
-					BombFlow_3->Up();
-					BombFlow_3->GetComponent<Transform>()->SetPosition(bombflowpos);
-				}
+					else if (i == 1)
+					{
+						BombFlow_2->Left();
+						BombFlow_2->GetComponent<Transform>()->SetPosition(bombflowpos);
+					}
 
-				else if (i == 3)
-				{
-					BombFlow_4->Down();
-					BombFlow_4->GetComponent<Transform>()->SetPosition(bombflowpos);
-				}
+					else if (i == 2)
+					{
+						BombFlow_3->Up();
+						BombFlow_3->GetComponent<Transform>()->SetPosition(bombflowpos);
+					}
 
+					else if (i == 3)
+					{
+						BombFlow_4->Down();
+						BombFlow_4->GetComponent<Transform>()->SetPosition(bombflowpos);
+					}
+
+				}
 			}
 
 		/*	if (Bazzi::GetBombFlowCount() == 0)
