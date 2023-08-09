@@ -14,6 +14,8 @@ namespace hy::math // 위치를 표시할 구조체
 		static Vector2 One;		
 		static Vector2 Right;
 		static Vector2 Up;
+		static Vector2 Left;
+		static Vector2 Down;
 
 		float x;
 		float y;

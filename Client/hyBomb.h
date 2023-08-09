@@ -25,7 +25,7 @@ namespace hy
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
 
-		void BombRec(int level, int x, int y);
+		void BombRec(Vector2 dir, int x, int y);
 		//void FlowIdle(UINT num);
 		void Flow();
 		void Pop();

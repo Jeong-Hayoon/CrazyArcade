@@ -119,30 +119,28 @@ namespace hy
 
 	//}
 
-	void Bomb::BombRec(int level, int x, int y)
+	void Bomb::BombRec(Vector2 dir, int x, int y)
 	{
-		if (x >= 15)
-		{
+		if (y < 0 || y >= 13 
+			|| x < 0 || x >= 15)
 			return;
-		}
-		if (x <= 0)
-		{
-			return;
-		}
-		if (y >= 13)
-		{
-			return;
-		}
-		if (y <= 0)
-		{
-			return;
-		}
 
-		BombRec(level + 1, x + 1, y);		// 오른쪽
-		BombRec(level + 1, x - 1, y);		// 왼쪽
-		BombRec(level + 1, x, y + 1);		// 아래
-		BombRec(level + 1, x, y - 1);		// 위
+		//if (power > MaxPower(3))
+		//	return;
 
+		//if (mapData[y][x] == 충돌가능)
+		//	return;
+	
+
+		Vector2 bombflowpos;
+		BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+		bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+		bombflowpos.x = x * TILE_WIDTH + 40.0f;
+
+		bombFlow->Right();
+		bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+
+		BombRec(dir, int(x + dir.x), int(y + dir.y));		// 오른쪽
 	}
 
 	void Bomb::Flow()
@@ -154,81 +152,27 @@ namespace hy
 		Animator* animator = GetComponent<Animator>();
 		if (Bombtime > 3.f)
 		{
-			BombFlow* BombFlow_0 = object::Instantiate<BombFlow>(eLayerType::Effect);
-			BombFlow* BombFlow_1 = object::Instantiate<BombFlow>(eLayerType::Effect);
-			BombFlow* BombFlow_2 = object::Instantiate<BombFlow>(eLayerType::Effect);
-			BombFlow* BombFlow_3 = object::Instantiate<BombFlow>(eLayerType::Effect);
-			BombFlow* BombFlow_4 = object::Instantiate<BombFlow>(eLayerType::Effect);
-
-			Transform* Bombtr = this->GetComponent<Transform>();
-			Vector2 BombLocationtr = Bombtr->GetPosition();
-			Vector2 bombflowpos;
-
-			int offset[4][2] =
-			{
-				0,+1, // 오른쪽
-				0,-1, // 왼쪽
-				-1,0, // 위쪽
-				+1,0  // 아랫쪽
-			};
-
 			int X_ = 0;
 			int Y_ = 0;
-
+	
+			Transform* Bombtr = this->GetComponent<Transform>();
+			Vector2 BombLocationtr = Bombtr->GetPosition();
 			// 해당 타일 인덱스를 구함
 			X_ = (BombLocationtr.x - 20.f) / (TILE_WIDTH);
 			Y_ = (BombLocationtr.y - 40.f) / (TILE_HEIGHT);
 
-			// 해당 타일 인덱스에 타일 사이즈를 곱하여 해당 타일의 LeftTop으로 이동
-			bombflowpos.x = (X_ * TILE_WIDTH) + (TILE_WIDTH / 2) + 20.f;
-			bombflowpos.y = (Y_ * TILE_HEIGHT) + (TILE_HEIGHT / 2) + 40.f;
+			Vector2 bombflowpos;
+			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+			bombflowpos.x = X_ * TILE_HEIGHT + 40.0f;
+			bombflowpos.y = Y_ * TILE_WIDTH + 60.0f;
 
-			BombFlow_0->GetComponent<Transform>()->SetPosition(bombflowpos);
+			bombFlow->Right();
+			bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
 
-			for (int j = 1; j < 5; j++)
-			{
-				for (int i = 0; i < 4; i++)
-				{
-					bombflowpos.y = BombLocationtr.y + (((offset[i][0]) * j) * TILE_HEIGHT);
-					bombflowpos.x = BombLocationtr.x + (((offset[i][1]) * j)* TILE_WIDTH);
-
-					if (i == 0)
-					{
-						BombFlow_1->Right();
-						BombFlow_1->GetComponent<Transform>()->SetPosition(bombflowpos);
-					}
-
-					else if (i == 1)
-					{
-						BombFlow_2->Left();
-						BombFlow_2->GetComponent<Transform>()->SetPosition(bombflowpos);
-					}
-
-					else if (i == 2)
-					{
-						BombFlow_3->Up();
-						BombFlow_3->GetComponent<Transform>()->SetPosition(bombflowpos);
-					}
-
-					else if (i == 3)
-					{
-						BombFlow_4->Down();
-						BombFlow_4->GetComponent<Transform>()->SetPosition(bombflowpos);
-					}
-
-				}
-			}
-
-		/*	if (Bazzi::GetBombFlowCount() == 0)
-			{
-				
-			}
-
-			else
-			{
-
-
-			}*/
+			BombRec(Vector2::Right,  X_ + 1, Y_);
+			BombRec(Vector2::Up, X_, Y_ - 1);
+			BombRec(Vector2::Left, X_ - 1, Y_);
+			BombRec(Vector2::Down, X_, Y_ + 1);
 
 			mState = eState::Pop;
 			Bombtime = 0.f;
