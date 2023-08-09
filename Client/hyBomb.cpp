@@ -25,7 +25,7 @@ namespace hy
 		: mState(eState::Flow)
 	{
 		Animator* bt = AddComponent<Animator>();
-		bt->CreateAnimationFolder(L"BombidleBottom", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
+		bt->CreateAnimationFolder(L"Bombidle", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
 		
 		// 상하좌우 물줄기
 		bt->CreateAnimationFolder(L"BombUpIdle", L"..\\Resources\\Image\\Bomb\\UpIdleflow", Vector2(0.f, 0.f), 0.4f);
@@ -43,7 +43,7 @@ namespace hy
 		bt->CreateAnimationFolder(L"BombCenter", L"..\\Resources\\Image\\Bomb\\Centerflow", Vector2(0.f, 0.f), 0.4f);
 
 		bt->SetScale(Vector2(1.f, 1.f));
-		bt->PlayAnimation(L"BombidleBottom", true);
+		bt->PlayAnimation(L"Bombidle", true);
 
 	}
 	Bomb::~Bomb()
@@ -123,10 +123,10 @@ namespace hy
 	{
 		// 2초 지나면 Pop 애니메이션을 호출하고, 상태 전환
 
-		static float time = 0.f;
-		time += Time::DeltaTime();
+		static float Bombtime = 0.f;
+		Bombtime += Time::DeltaTime();
 		Animator* animator = GetComponent<Animator>();
-		if (time > 3.f)
+		if (Bombtime > 3.f)
 		{
 			BombFlow* BombFlow_0 = object::Instantiate<BombFlow>(eLayerType::Effect);
 			BombFlow* BombFlow_1 = object::Instantiate<BombFlow>(eLayerType::Effect);
@@ -163,23 +163,28 @@ namespace hy
 			{
 				bombflowpos.y = BombLocationtr.y + (offset[i][0] * TILE_HEIGHT);
 				bombflowpos.x = BombLocationtr.x + (offset[i][1] * TILE_WIDTH);
+
 				if(i == 0)
 				{
+					BombFlow_1->Right();
 					BombFlow_1->GetComponent<Transform>()->SetPosition(bombflowpos);
 				}
 
 				else if (i == 1)
 				{
+					BombFlow_2->Left();
 					BombFlow_2->GetComponent<Transform>()->SetPosition(bombflowpos);
 				}
 
 				else if (i == 2)
 				{
+					BombFlow_3->Up();
 					BombFlow_3->GetComponent<Transform>()->SetPosition(bombflowpos);
 				}
 
 				else if (i == 3)
 				{
+					BombFlow_4->Down();
 					BombFlow_4->GetComponent<Transform>()->SetPosition(bombflowpos);
 				}
 
@@ -197,7 +202,7 @@ namespace hy
 			}*/
 
 			mState = eState::Pop;
-			time = 0.f;
+			Bombtime = 0.f;
 		}
 		
 	}

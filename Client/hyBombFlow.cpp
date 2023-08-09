@@ -23,22 +23,21 @@ namespace hy
 		: mState(eState::Idle)
 	{
 		Animator* bft = AddComponent<Animator>();
-		bft->CreateAnimationFolder(L"BombidleBottom", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
 
 		// 상하좌우 물줄기
-		bft->CreateAnimationFolder(L"BombUpIdle", L"..\\Resources\\Image\\Bomb\\UpIdleflow", Vector2(0.f, 0.f), 0.4f);
-		bft->CreateAnimationFolder(L"BombUp", L"..\\Resources\\Image\\Bomb\\Upflow", Vector2(0.f, 0.f), 0.4f);
+		bft->CreateAnimationFolder(L"BombUpIdle", L"..\\Resources\\Image\\Bomb\\UpIdleflow", Vector2(0.f, 0.f), 0.3f);
+		bft->CreateAnimationFolder(L"BombUp", L"..\\Resources\\Image\\Bomb\\Upflow", Vector2(0.f, 0.f), 0.15f);
 
-		bft->CreateAnimationFolder(L"BombDownIdle", L"..\\Resources\\Image\\Bomb\\DownIdleflow", Vector2(0.f, 0.f), 0.4f);
-		bft->CreateAnimationFolder(L"BombDown", L"..\\Resources\\Image\\Bomb\\Downflow", Vector2(0.f, 0.f), 0.4f);
+		bft->CreateAnimationFolder(L"BombDownIdle", L"..\\Resources\\Image\\Bomb\\DownIdleflow", Vector2(0.f, 0.f), 0.3f);
+		bft->CreateAnimationFolder(L"BombDown", L"..\\Resources\\Image\\Bomb\\Downflow", Vector2(0.f, 0.f), 0.15f);
 
-		bft->CreateAnimationFolder(L"BombRightIdle", L"..\\Resources\\Image\\Bomb\\RightIdleflow", Vector2(0.f, 0.f), 0.4f);
-		bft->CreateAnimationFolder(L"BombRight", L"..\\Resources\\Image\\Bomb\\Rightflow", Vector2(0.f, 0.f), 0.4f);
+		bft->CreateAnimationFolder(L"BombRightIdle", L"..\\Resources\\Image\\Bomb\\RightIdleflow", Vector2(0.f, 0.f), 0.3f);
+		bft->CreateAnimationFolder(L"BombRight", L"..\\Resources\\Image\\Bomb\\Rightflow", Vector2(0.f, 0.f), 0.15f);
 
-		bft->CreateAnimationFolder(L"BombLeftIdle", L"..\\Resources\\Image\\Bomb\\LeftIdleflow", Vector2(0.f, 0.f), 0.4f);
-		bft->CreateAnimationFolder(L"BombLeft", L"..\\Resources\\Image\\Bomb\\Leftflow", Vector2(0.f, 0.f), 0.4f);
+		bft->CreateAnimationFolder(L"BombLeftIdle", L"..\\Resources\\Image\\Bomb\\LeftIdleflow", Vector2(0.f, 0.f), 0.3f);
+		bft->CreateAnimationFolder(L"BombLeft", L"..\\Resources\\Image\\Bomb\\Leftflow", Vector2(0.f, 0.f), 0.15f);
 
-		bft->CreateAnimationFolder(L"BombCenter", L"..\\Resources\\Image\\Bomb\\Centerflow", Vector2(0.f, 0.f), 1000.f);
+		bft->CreateAnimationFolder(L"BombCenter", L"..\\Resources\\Image\\Bomb\\Centerflow", Vector2(0.f, 0.f), 0.18f);
 
 		bft->SetScale(Vector2(1.f, 1.f));
 		bft->PlayAnimation(L"BombCenter", false);
@@ -55,6 +54,22 @@ namespace hy
 	void BombFlow::Update()
 	{
 		GameObject::Update();
+
+		switch (mState)
+		{
+		case hy::BombFlow::eState::Idle:
+			Idle();
+			break;
+	
+		case hy::BombFlow::eState::Extinct:
+			Extinct();
+			break;
+
+		case hy::BombFlow::eState::End:
+			break;
+		default:
+			break;
+		}
 
 	}
 	void BombFlow::Render(HDC hdc)
@@ -74,9 +89,90 @@ namespace hy
 
 	void BombFlow::Idle()
 	{
-		Animator* animator = AddComponent<Animator>();
+		Animator* animator = GetComponent<Animator>();
 
 		if(animator->IsActiveAnimationComplete())
+		{
+			mState = eState::Extinct;
+		}
+	}
+
+	void BombFlow::Left()
+	{
+		Animator* animator = GetComponent<Animator>();
+		animator->PlayAnimation(L"BombLeft", false);
+		if (animator->IsActiveAnimationComplete())
+		{
+			mState = eState::Extinct;
+		}
+
+	}
+
+	void BombFlow::Right()
+	{
+		Animator* animator = GetComponent<Animator>();
+		animator->PlayAnimation(L"BombRight", false);
+		if (animator->IsActiveAnimationComplete())
+		{
+			mState = eState::Extinct;
+		}
+	}
+
+	void BombFlow::Up()
+	{
+		Animator* animator = GetComponent<Animator>();
+		animator->PlayAnimation(L"BombUp", false);
+		if (animator->IsActiveAnimationComplete())
+		{
+			mState = eState::Extinct;
+		}
+	}
+
+	void BombFlow::Down()
+	{
+		Animator* animator = GetComponent<Animator>();
+		animator->PlayAnimation(L"BombDown", false);
+		if (animator->IsActiveAnimationComplete())
+		{
+			mState = eState::Extinct;
+		}
+	}
+
+	void BombFlow::LeftIdle()
+	{
+		Animator* animator = GetComponent<Animator>();
+		animator->PlayAnimation(L"BombLeftIdle", false);
+		if (animator->IsActiveAnimationComplete())
+		{
+			mState = eState::Extinct;
+		}
+	}
+
+	void BombFlow::RightIdle()
+	{
+		Animator* animator = GetComponent<Animator>();
+		animator->PlayAnimation(L"BombRightIdle", false);
+		if (animator->IsActiveAnimationComplete())
+		{
+			mState = eState::Extinct;
+		}
+	}
+
+	void BombFlow::UpIdle()
+	{
+		Animator* animator = GetComponent<Animator>();
+		animator->PlayAnimation(L"BombUpIdle", false);
+		if (animator->IsActiveAnimationComplete())
+		{
+			mState = eState::Extinct;
+		}
+	}
+
+	void BombFlow::DownIdle()
+	{
+		Animator* animator = GetComponent<Animator>();
+		animator->PlayAnimation(L"BombDownIdle", false);
+		if (animator->IsActiveAnimationComplete())
 		{
 			mState = eState::Extinct;
 		}

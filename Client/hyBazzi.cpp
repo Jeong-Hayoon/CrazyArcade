@@ -210,9 +210,6 @@ namespace hy
 			at->SetScale(Vector2(1.0f, 1.0f));
 			at->PlayAnimation(L"BazziDead", false);
 			mState = eState::Dead;*/
-
-
-	
 		}
 
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Effect)

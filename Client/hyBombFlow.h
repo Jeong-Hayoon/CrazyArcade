@@ -28,12 +28,20 @@ namespace hy
 		virtual void OnCollisionExit(class Collider* other) override;
 
 		void Idle();
+		void Left();
+		void Right();
+		void Up();
+		void Down();
+
+		void LeftIdle();
+		void RightIdle();
+		void UpIdle();
+		void DownIdle();
+
 		void Extinct();
 
 	private:
 		eState mState;
-
-
 	};
 }
 

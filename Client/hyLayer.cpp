@@ -27,12 +27,13 @@ namespace hy
 	{
 		// GameObject를 돌면서 obj가 멈춤 상태면 다음 인덱스로 넘어가고
 		// 그게 아니라면 업데이트 함수 호출
-		for (GameObject* obj : mGameObjects)
+	
+		for (int i = 0; i < mGameObjects.size(); i++)
 		{
-			if (obj->GetState() == GameObject::eState::Pause)
+			if (mGameObjects[i]->GetState() == GameObject::eState::Pause)
 				continue;
 
-			obj->Update();
+			mGameObjects[i]->Update();
 		}
 	}
 
