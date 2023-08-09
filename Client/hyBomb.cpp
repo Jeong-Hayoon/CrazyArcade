@@ -119,6 +119,32 @@ namespace hy
 
 	//}
 
+	void Bomb::BombRec(int level, int x, int y)
+	{
+		if (x >= 15)
+		{
+			return;
+		}
+		if (x <= 0)
+		{
+			return;
+		}
+		if (y >= 13)
+		{
+			return;
+		}
+		if (y <= 0)
+		{
+			return;
+		}
+
+		BombRec(level + 1, x + 1, y);		// 오른쪽
+		BombRec(level + 1, x - 1, y);		// 왼쪽
+		BombRec(level + 1, x, y + 1);		// 아래
+		BombRec(level + 1, x, y - 1);		// 위
+
+	}
+
 	void Bomb::Flow()
 	{
 		// 2초 지나면 Pop 애니메이션을 호출하고, 상태 전환
@@ -159,12 +185,12 @@ namespace hy
 
 			BombFlow_0->GetComponent<Transform>()->SetPosition(bombflowpos);
 
-			for (int j = 1; j < 10; j++)
+			for (int j = 1; j < 5; j++)
 			{
 				for (int i = 0; i < 4; i++)
 				{
-					bombflowpos.y = BombLocationtr.y + ((offset[i][0]*j) * TILE_HEIGHT) ;
-					bombflowpos.x = BombLocationtr.x + ((offset[i][1]*j) * TILE_WIDTH) ;
+					bombflowpos.y = BombLocationtr.y + (((offset[i][0]) * j) * TILE_HEIGHT);
+					bombflowpos.x = BombLocationtr.x + (((offset[i][1]) * j)* TILE_WIDTH);
 
 					if (i == 0)
 					{

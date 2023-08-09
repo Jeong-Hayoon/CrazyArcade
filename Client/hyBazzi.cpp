@@ -164,7 +164,7 @@ namespace hy
 		{
 			if(BombLimit != 0)
 			{
-				Bomb* Bomb_ = object::Instantiate<Bomb>(eLayerType::Effect);
+				Bomb* Bomb_ = object::Instantiate<Bomb>(eLayerType::Bomb);
 				Transform* Bazzitr = this->GetComponent<Transform>();
 				Vector2 BazziLocationtr = Bazzitr->GetPosition();
 				Vector2 Bombpos;
