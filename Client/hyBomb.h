@@ -10,7 +10,7 @@ namespace hy
 	public:
 		enum class eState
 		{
-			Idle,
+			Flow,
 			Pop,
 			End,
 		};
@@ -25,9 +25,8 @@ namespace hy
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
 
-		void FlowIdle(UINT num);
-
-		void Idle();
+		//void FlowIdle(UINT num);
+		void Flow();
 		void Pop();
 
 	private:

@@ -110,6 +110,7 @@ namespace hy
 		bgsr->SetScale(Vector2(1.f, 1.f));
 		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));	
 
+		// 게임 틀 Collider 생성
 		Texture* GameFrameColObject = Resources::Load<Texture>(L"PlayBackGroundImage"
 			, L"..\\Resources\\Image\\Bg\\GameFrameObject.bmp");
 

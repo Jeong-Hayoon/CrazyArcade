@@ -23,6 +23,8 @@ namespace hy
 		Vector2 GetOffset() { return mOffset; }
 		void SetOffset(Vector2 offset) { mOffset = offset; }
 		Vector2 GetPosition() { return mPosition; }
+		void  SetPosition(Vector2 position) { mPosition = position; }
+
 		UINT GetCollisionNumber() { return mCollisionNumber; }
 
 	private:

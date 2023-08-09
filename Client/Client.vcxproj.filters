@@ -383,6 +383,9 @@
     <ClInclude Include="hyUseShield.h">
       <Filter>Contents\GameObject\Item\Kind of Item</Filter>
     </ClInclude>
+    <ClInclude Include="hyBombFlow.h">
+      <Filter>Contents\GameObject\Effect\Bomb</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -575,6 +578,9 @@
     </ClCompile>
     <ClCompile Include="hyUseShield.cpp">
       <Filter>Contents\GameObject\Item\Kind of Item</Filter>
+    </ClCompile>
+    <ClCompile Include="hyBombFlow.cpp">
+      <Filter>Contents\GameObject\Effect\Bomb</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

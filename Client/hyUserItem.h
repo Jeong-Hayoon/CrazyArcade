@@ -19,9 +19,9 @@ namespace hy
 		UserItem();
 		virtual ~UserItem();
 
-		virtual void Idle() = 0;
-		virtual void Use() = 0;
-		virtual void Extinct() = 0;
+		virtual void Idle();
+		virtual void Use();
+		virtual void Extinct();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

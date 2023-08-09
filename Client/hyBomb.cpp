@@ -14,13 +14,15 @@
 #include "hyResources.h"
 #include "hyRigidbody.h"
 #include "hyBazzi.h"
+#include "hyBombFlow.h"
+
 
 
 namespace hy
 {
 	// 3초 지나면 물줄기 팡
 	Bomb::Bomb()
-		: mState(eState::Idle)
+		: mState(eState::Flow)
 	{
 		Animator* bt = AddComponent<Animator>();
 		bt->CreateAnimationFolder(L"BombidleBottom", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
@@ -58,8 +60,12 @@ namespace hy
 		// tab + enter 하면 스위치 생성
 		switch (mState)
 		{
-		case hy::Bomb::eState::Idle:
-			Idle();
+		/*case hy::Bomb::eState::FlowIdle:
+			FlowIdle(1);
+			break;*/
+
+		case hy::Bomb::eState::Flow:
+			Flow();
 			break;
 		case hy::Bomb::eState::Pop:
 			Pop();
@@ -86,27 +92,34 @@ namespace hy
 	{
 	}
 
-	// 재귀함수
-	void Bomb::FlowIdle(UINT num)
-	{
-		Animator* animator = GetComponent<Animator>();
+	// 선생님은 재귀함수 추천..
+	// but 재귀함수 너무 어려워..
+	//void Bomb::FlowIdle(UINT num)
+	//{
+	//	Animator* animator = GetComponent<Animator>();
 
-		for (int i = 0; i < num; i++)
-		{
-			// 이부분 수정
-			// 애니메이션의 위치는 Bomb의 상하좌우로 배치해야 함
-			animator->PlayAnimation(L"BombUpIdle", false);
-			animator->PlayAnimation(L"BombDownIdle", false);
-			animator->PlayAnimation(L"BombRightIdle", false);
-			animator->PlayAnimation(L"BombLeftIdle", false);
+	//	for (int i = 0; i < num; i++)
+	//	{
+	//		// 이부분 수정
+	//		// 애니메이션의 위치는 Bomb의 상하좌우로 배치
+	//		//
+	//		animator->PlayAnimation(L"BombUpIdle", false);
+	//		animator->PlayAnimation(L"BombDownIdle", false);
+	//		animator->PlayAnimation(L"BombRightIdle", false);
+	//		animator->PlayAnimation(L"BombLeftIdle", false);
 
-			/*Bazzi* flow = object::Instantiate<Bazzi>(eLayerType::Player);
-			FlowIdle(flow->GetBombFlow());*/
-		}
+	//		animator->PlayAnimation(L"BombUp", false);
+	//		animator->PlayAnimation(L"BombDown", false);
+	//		animator->PlayAnimation(L"BombRight", false);
+	//		animator->PlayAnimation(L"BombLeft", false);
 
-	}
+	//		/*Bazzi* flow = object::Instantiate<Bazzi>(eLayerType::Player);
+	//		FlowIdle(flow->GetBombFlow());*/
+	//	}
 
-	void Bomb::Idle()
+	//}
+
+	void Bomb::Flow()
 	{
 		// 2초 지나면 Pop 애니메이션을 호출하고, 상태 전환
 
@@ -115,20 +128,73 @@ namespace hy
 		Animator* animator = GetComponent<Animator>();
 		if (time > 3.f)
 		{
- 			animator->PlayAnimation(L"BombCenter", false);
+			BombFlow* BombFlow_0 = object::Instantiate<BombFlow>(eLayerType::Effect);
+			BombFlow* BombFlow_1 = object::Instantiate<BombFlow>(eLayerType::Effect);
+			BombFlow* BombFlow_2 = object::Instantiate<BombFlow>(eLayerType::Effect);
+			BombFlow* BombFlow_3 = object::Instantiate<BombFlow>(eLayerType::Effect);
+			BombFlow* BombFlow_4 = object::Instantiate<BombFlow>(eLayerType::Effect);
 
-			if (Bazzi::GetBombFlow() == 0)
+			Transform* Bombtr = this->GetComponent<Transform>();
+			Vector2 BombLocationtr = Bombtr->GetPosition();
+			Vector2 bombflowpos;
+
+			int offset[4][2] =
 			{
-				animator->PlayAnimation(L"BombUp", false);
-				animator->PlayAnimation(L"BombDown", false);
-				animator->PlayAnimation(L"BombRight", false);
-				animator->PlayAnimation(L"BombLeft", false);
+				0,+1, // 오른쪽
+				0,-1, // 왼쪽
+				-1,0, // 위쪽
+				+1,0  // 아랫쪽
+			};
+
+			int X_ = 0;
+			int Y_ = 0;
+
+			// 해당 타일 인덱스를 구함
+			X_ = (BombLocationtr.x - 20.f) / (TILE_WIDTH);
+			Y_ = (BombLocationtr.y - 40.f) / (TILE_HEIGHT);
+
+			// 해당 타일 인덱스에 타일 사이즈를 곱하여 해당 타일의 LeftTop으로 이동
+			bombflowpos.x = (X_ * TILE_WIDTH) + (TILE_WIDTH / 2) + 20.f;
+			bombflowpos.y = (Y_ * TILE_HEIGHT) + (TILE_HEIGHT / 2) + 40.f;
+
+			BombFlow_0->GetComponent<Transform>()->SetPosition(bombflowpos);
+
+			for (int i = 0; i < 4; i++)
+			{
+				bombflowpos.y = BombLocationtr.y + (offset[i][0] * TILE_HEIGHT);
+				bombflowpos.x = BombLocationtr.x + (offset[i][1] * TILE_WIDTH);
+				if(i == 0)
+				{
+					BombFlow_1->GetComponent<Transform>()->SetPosition(bombflowpos);
+				}
+
+				else if (i == 1)
+				{
+					BombFlow_2->GetComponent<Transform>()->SetPosition(bombflowpos);
+				}
+
+				else if (i == 2)
+				{
+					BombFlow_3->GetComponent<Transform>()->SetPosition(bombflowpos);
+				}
+
+				else if (i == 3)
+				{
+					BombFlow_4->GetComponent<Transform>()->SetPosition(bombflowpos);
+				}
+
+			}
+
+		/*	if (Bazzi::GetBombFlowCount() == 0)
+			{
+				
 			}
 
 			else
 			{
-				FlowIdle(Bazzi::GetBombFlow());
-			}
+
+
+			}*/
 
 			mState = eState::Pop;
 			time = 0.f;

@@ -38,7 +38,7 @@ namespace hy
 	void Potion::OnCollisionEnter(Collider* other)
 	{
 		Bazzi* bz = (Bazzi*)(other->GetOwner());
-		bz->AddBombFlow();
+		bz->SetBombFlowCount();
 		Destroy(this);
 	}
 	void Potion::OnCollisionStay(Collider* other)

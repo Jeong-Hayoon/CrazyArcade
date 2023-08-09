@@ -22,7 +22,7 @@
 
 namespace hy
 {
-	UINT Bazzi ::BombFlow = 0;
+	UINT Bazzi ::BombFlowCount = 0;
 
 	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::Needle;
 	
