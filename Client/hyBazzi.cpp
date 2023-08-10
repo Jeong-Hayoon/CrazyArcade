@@ -24,7 +24,7 @@ namespace hy
 {
 	UINT Bazzi ::BombFlowCount = 0;
 
-	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::Needle;
+	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::Shield;
 	
 	Bazzi::Bazzi()
 		: mState(eState::Make)
@@ -303,6 +303,7 @@ namespace hy
 			mState = eState::Victory;
 		}
 
+		// 위치 업데이트가 안됨(배찌를 따라서 갈수있도록 수정)
 		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem ::Shield)
 		{
 			static float Shieldtime = 0.f;
@@ -314,16 +315,16 @@ namespace hy
 				Transform* Bazzitr = this->GetComponent<Transform>();
 				Vector2  Shieldpos = Bazzitr->GetPosition();
 				
-				ShieldEffect_->GetComponent<Transform>()->SetPosition(Shieldpos);
 				ShieldEffect_->Use();
+				ShieldEffect_->GetComponent<Transform>()->SetPosition(Shieldpos);
 			}
 
-			else if(Shieldtime > 3.0f)
+			/*else if(Shieldtime > 3.0f)
 			{
 				animator->SetScale(Vector2(1.0f, 1.0f));
 				animator->PlayAnimation(L"BazziIdle", true);
 				mState = eState::Idle;
-			}
+			}*/
 
 
 		}

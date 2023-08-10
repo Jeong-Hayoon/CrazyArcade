@@ -52,7 +52,7 @@ namespace hy
 	}
 	void UseShield::Use()
 	{
-		Animator* st = AddComponent<Animator>();
+		Animator* st = GetComponent<Animator>();
 
 		static float Shieldtime = 0.f;
 		Shieldtime += Time::DeltaTime();
