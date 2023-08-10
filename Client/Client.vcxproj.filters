@@ -186,6 +186,9 @@
     <Filter Include="Contents\GameObject\Player\PiateMap\PirateBoss">
       <UniqueIdentifier>{34e53a8a-377e-470a-ae25-adc5817bca0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\ObjectCollider">
+      <UniqueIdentifier>{d91bf59e-3ea9-4441-8a49-81c124fe428c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -386,6 +389,12 @@
     <ClInclude Include="hyBombFlow.h">
       <Filter>Contents\GameObject\Effect\Bomb</Filter>
     </ClInclude>
+    <ClInclude Include="hyObjectCollider.h">
+      <Filter>Contents\GameObject\ObjectCollider</Filter>
+    </ClInclude>
+    <ClInclude Include="hyMapData.h">
+      <Filter>Tool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -581,6 +590,12 @@
     </ClCompile>
     <ClCompile Include="hyBombFlow.cpp">
       <Filter>Contents\GameObject\Effect\Bomb</Filter>
+    </ClCompile>
+    <ClCompile Include="hyObjectCollider.cpp">
+      <Filter>Contents\GameObject\ObjectCollider</Filter>
+    </ClCompile>
+    <ClCompile Include="hyMapData.cpp">
+      <Filter>Tool</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

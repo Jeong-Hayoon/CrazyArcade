@@ -121,6 +121,8 @@ namespace hy
 
 	void Bomb::BombRec(Vector2 dir, int x, int y)
 	{
+		// 예외처리에서 배찌의 BombFlow 변수만큼 가져오기
+		// BombFlow-1일때는 FlowIdle말고 Flow 애니메이션 재생되도록
 		if (y < 0 || y >= 13 
 			|| x < 0 || x >= 15)
 			return;
@@ -128,19 +130,61 @@ namespace hy
 		//if (power > MaxPower(3))
 		//	return;
 
-		//if (mapData[y][x] == 충돌가능)
+		//if (mapData[y][x] == 충돌가능)		// 타일맵으로 배열 만들기
 		//	return;
 	
+		if (dir == Vector2::Right)
+		{
+			Vector2 bombflowpos;
+			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+			bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+			bombflowpos.x = x * TILE_WIDTH + 40.0f;
 
-		Vector2 bombflowpos;
-		BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
-		bombflowpos.y = y * TILE_HEIGHT + 60.0f;
-		bombflowpos.x = x * TILE_WIDTH + 40.0f;
+			bombFlow->Right();
+			bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
 
-		bombFlow->Right();
-		bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+			BombRec(dir, int(x + dir.x), int(y + dir.y));
+		}
+	
+		if (dir == Vector2::Up)
+		{
+			Vector2 bombflowpos;
+			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+			bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+			bombflowpos.x = x * TILE_WIDTH + 40.0f;
 
-		BombRec(dir, int(x + dir.x), int(y + dir.y));		// 오른쪽
+			bombFlow->Up();
+			bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+
+			BombRec(dir, int(x + dir.x), int(y + dir.y));
+		}
+
+		if (dir == Vector2::Left)
+		{
+			Vector2 bombflowpos;
+			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+			bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+			bombflowpos.x = x * TILE_WIDTH + 40.0f;
+
+			bombFlow->Left();
+			bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+
+			BombRec(dir, int(x + dir.x), int(y + dir.y));
+		}
+
+		if (dir == Vector2::Down)
+		{
+			Vector2 bombflowpos;
+			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+			bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+			bombflowpos.x = x * TILE_WIDTH + 40.0f;
+
+			bombFlow->Down();
+			bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+
+			BombRec(dir, int(x + dir.x), int(y + dir.y));
+		}
+
 	}
 
 	void Bomb::Flow()
@@ -166,7 +210,7 @@ namespace hy
 			bombflowpos.x = X_ * TILE_HEIGHT + 40.0f;
 			bombflowpos.y = Y_ * TILE_WIDTH + 60.0f;
 
-			bombFlow->Right();
+			//bombFlow->Right();
 			bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
 
 			BombRec(Vector2::Right,  X_ + 1, Y_);

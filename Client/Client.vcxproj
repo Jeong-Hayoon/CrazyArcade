@@ -157,7 +157,9 @@
     <ClInclude Include="hyIceMonster.h" />
     <ClInclude Include="hyItem.h" />
     <ClInclude Include="hyLogoScene.h" />
+    <ClInclude Include="hyMapData.h" />
     <ClInclude Include="hyNeedle.h" />
+    <ClInclude Include="hyObjectCollider.h" />
     <ClInclude Include="hyPirateBoss.h" />
     <ClInclude Include="hyPirateMap.h" />
     <ClInclude Include="hyPirateMap2.h" />
@@ -222,9 +224,11 @@
     <ClCompile Include="hyIceMonster.cpp" />
     <ClCompile Include="hyItem.cpp" />
     <ClCompile Include="hyLogoScene.cpp" />
+    <ClCompile Include="hyMapData.cpp" />
     <ClCompile Include="hyMath.cpp" />
     <ClCompile Include="hyForestMonster.cpp" />
     <ClCompile Include="hyNeedle.cpp" />
+    <ClCompile Include="hyObjectCollider.cpp" />
     <ClCompile Include="hyPirateBoss.cpp" />
     <ClCompile Include="hyPirateMap.cpp" />
     <ClCompile Include="hyPirateMap2.cpp" />

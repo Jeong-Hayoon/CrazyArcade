@@ -298,7 +298,7 @@ namespace hy
 	
 		if (Input::GetKeyDown(eKeyCode::V))		// Victory
 		{
-			animator->SetScale(Vector2(1.0f, 1.0f));
+			animator->SetScale(Vector2(0.8f, 0.8f));
 			animator->PlayAnimation(L"BazziVictory", true);
 			mState = eState::Victory;
 		}
