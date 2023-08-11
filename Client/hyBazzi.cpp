@@ -24,7 +24,8 @@ namespace hy
 {
 	UINT Bazzi ::BombFlowCount = 0;
 
-	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::Shield;
+	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::None;
+	bool Bazzi::UseItemNum = 0;
 	
 	Bazzi::Bazzi()
 		: mState(eState::Make)
@@ -185,8 +186,22 @@ namespace hy
 			}
 		}
 
-	
+		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Shield && UseItemNum == 1)
+		{
+			static float Shieldtime = 0.f;
+			Shieldtime += Time::DeltaTime();
 
+			if (Shieldtime < 3.0f)
+			{
+				UseShield* ShieldEffect_ = object::Instantiate<UseShield>(eLayerType::Effect);
+				Transform* Bazzitr = this->GetComponent<Transform>();
+				Vector2  Shieldpos = Bazzitr->GetPosition();
+				
+				ShieldEffect_->Use();
+				ShieldEffect_->GetComponent<Transform>()->SetPosition(Shieldpos);
+				UseItemNum = 0;
+			}
+		}
 
 	}
 	void Bazzi::Render(HDC hdc)
@@ -283,7 +298,7 @@ namespace hy
 			animator->PlayAnimation(L"BazziTrap", false);
 			mState = eState::Trap;
 		}
-		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle)	// Live
+		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle && UseItemNum == 1)	// Live
 		{
 			animator->SetScale(Vector2(0.8f, 0.8f));
 			animator->PlayAnimation(L"BazziLive", false);
@@ -304,30 +319,28 @@ namespace hy
 		}
 
 		// 위치 업데이트가 안됨(배찌를 따라서 갈수있도록 수정)
-		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem ::Shield)
-		{
-			static float Shieldtime = 0.f;
-			Shieldtime += Time::DeltaTime();
-			
-			if (Shieldtime < 3.0f)
-			{
-				UseShield* ShieldEffect_ = object::Instantiate<UseShield>(eLayerType::Effect);
-				Transform* Bazzitr = this->GetComponent<Transform>();
-				Vector2  Shieldpos = Bazzitr->GetPosition();
-				
-				ShieldEffect_->Use();
-				ShieldEffect_->GetComponent<Transform>()->SetPosition(Shieldpos);
-			}
+		//if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem ::Shield)
+		//{
+		//	static float Shieldtime = 0.f;
+		//	Shieldtime += Time::DeltaTime();
+		//	
+		//	if (Shieldtime < 3.0f)
+		//	{
+		//		UseShield* ShieldEffect_ = object::Instantiate<UseShield>(eLayerType::Effect);
+		//		Transform* Bazzitr = this->GetComponent<Transform>();
+		//		Vector2  Shieldpos = Bazzitr->GetPosition();
+		//		
+		//		ShieldEffect_->Use();
+		//		ShieldEffect_->GetComponent<Transform>()->SetPosition(Shieldpos);
+		//	}
 
-			/*else if(Shieldtime > 3.0f)
-			{
-				animator->SetScale(Vector2(1.0f, 1.0f));
-				animator->PlayAnimation(L"BazziIdle", true);
-				mState = eState::Idle;
-			}*/
-
-
-		}
+		//	/*else if(Shieldtime > 3.0f)
+		//	{
+		//		animator->SetScale(Vector2(1.0f, 1.0f));
+		//		animator->PlayAnimation(L"BazziIdle", true);
+		//		mState = eState::Idle;
+		//	}*/
+		//}
 
 		//if (Input::GetKeyDown(eKeyCode::K))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행
 		//{
@@ -499,6 +512,7 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			animator->PlayAnimation(L"BazziIdle", true);
+			UseItemNum = 0;
 			mState = eState::Idle;
 		}
 	}

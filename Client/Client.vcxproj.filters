@@ -180,14 +180,14 @@
     <Filter Include="Contents\GameObject\Monster\IceMap\IceBoss">
       <UniqueIdentifier>{7065e99e-5a9c-448f-b9b7-858242169098}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\GameObject\Player\PiateMap">
-      <UniqueIdentifier>{7a366313-d81f-4598-b314-08cbab2cad1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\GameObject\Player\PiateMap\PirateBoss">
-      <UniqueIdentifier>{34e53a8a-377e-470a-ae25-adc5817bca0e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\GameObject\ObjectCollider">
       <UniqueIdentifier>{d91bf59e-3ea9-4441-8a49-81c124fe428c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Monster\PiateMap">
+      <UniqueIdentifier>{7a366313-d81f-4598-b314-08cbab2cad1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Monster\PiateMap\PirateBoss">
+      <UniqueIdentifier>{34e53a8a-377e-470a-ae25-adc5817bca0e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -285,7 +285,7 @@
       <Filter>Contents\GameObject\Monster\ForestMap</Filter>
     </ClInclude>
     <ClInclude Include="hyPirateMonster.h">
-      <Filter>Contents\GameObject\Player\PiateMap</Filter>
+      <Filter>Contents\GameObject\Monster\PiateMap</Filter>
     </ClInclude>
     <ClInclude Include="hyForestBoss.h">
       <Filter>Contents\GameObject\Monster\ForestMap\ForestBoss</Filter>
@@ -294,7 +294,7 @@
       <Filter>Contents\GameObject\Monster\IceMap\IceBoss</Filter>
     </ClInclude>
     <ClInclude Include="hyPirateBoss.h">
-      <Filter>Contents\GameObject\Player\PiateMap\PirateBoss</Filter>
+      <Filter>Contents\GameObject\Monster\PiateMap\PirateBoss</Filter>
     </ClInclude>
     <ClInclude Include="hyForestMap1.h">
       <Filter>Contents\Scene\PlayScene\Forest\Stage1</Filter>
@@ -487,7 +487,7 @@
       <Filter>Contents\GameObject\Monster\ForestMap</Filter>
     </ClCompile>
     <ClCompile Include="hyPirateMonster.cpp">
-      <Filter>Contents\GameObject\Player\PiateMap</Filter>
+      <Filter>Contents\GameObject\Monster\PiateMap</Filter>
     </ClCompile>
     <ClCompile Include="hyForestBoss.cpp">
       <Filter>Contents\GameObject\Monster\ForestMap\ForestBoss</Filter>
@@ -496,7 +496,7 @@
       <Filter>Contents\GameObject\Monster\IceMap\IceBoss</Filter>
     </ClCompile>
     <ClCompile Include="hyPirateBoss.cpp">
-      <Filter>Contents\GameObject\Player\PiateMap\PirateBoss</Filter>
+      <Filter>Contents\GameObject\Monster\PiateMap\PirateBoss</Filter>
     </ClCompile>
     <ClCompile Include="hyForestMap1.cpp">
       <Filter>Contents\Scene\PlayScene\Forest\Stage1</Filter>

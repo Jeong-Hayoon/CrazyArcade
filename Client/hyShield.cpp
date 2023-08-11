@@ -50,6 +50,7 @@ namespace hy
 		if (player != nullptr)
 		{
 			player->SetActiveItem(Bazzi::eItem::Shield);
+			Bazzi::SetUseItemNum(1);
 			Destroy(this);
 		}
 	}

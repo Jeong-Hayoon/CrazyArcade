@@ -88,6 +88,8 @@ namespace hy
 		static UINT GetBombFlowCount() { return BombFlowCount; }
 		void SetBombFlowCount() { BombFlowCount++; }
 
+		static bool GetUseItemNum() { return UseItemNum; }
+		static void SetUseItemNum(bool n) { UseItemNum = n; }
 
 	private:
 		eState mState;
@@ -101,6 +103,8 @@ namespace hy
 
 		//std::vector<Vector2> mBombPutPositions; // 물풍선을 생성하는 좌표를 담을 벡터
 		// 큐가 나으려나..
+
+		static bool UseItemNum;
 	};
 }
 

@@ -44,6 +44,7 @@ namespace hy
 		if (player != nullptr)
 		{
 			player->SetActiveItem(Bazzi::eItem::Needle);
+			Bazzi::SetUseItemNum(1);
 			Destroy(this);
 		}
 	}
