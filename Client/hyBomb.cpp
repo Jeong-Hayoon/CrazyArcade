@@ -16,8 +16,6 @@
 #include "hyBazzi.h"
 #include "hyBombFlow.h"
 
-
-
 namespace hy
 {
 	// 3초 지나면 물줄기 팡
@@ -119,10 +117,16 @@ namespace hy
 
 	//}
 
-	void Bomb::BombRec(Vector2 dir, int x, int y)
+	void Bomb::BombRec(int level, Vector2 dir, int x, int y)
 	{
 		// 예외처리에서 배찌의 BombFlow 변수만큼 가져오기
 		// BombFlow-1일때는 FlowIdle말고 Flow 애니메이션 재생되도록
+		
+		if (Bazzi::GetBombFlowCount() < level)
+		{
+			return;
+		}
+		
 		if (y < 0 || y >= 13 
 			|| x < 0 || x >= 15)
 			return;
@@ -143,7 +147,7 @@ namespace hy
 			bombFlow->Right();
 			bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
 
-			BombRec(dir, int(x + dir.x), int(y + dir.y));
+			BombRec(level + 1, dir, int(x + dir.x), int(y + dir.y));
 		}
 	
 		if (dir == Vector2::Up)
@@ -156,7 +160,7 @@ namespace hy
 			bombFlow->Up();
 			bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
 
-			BombRec(dir, int(x + dir.x), int(y + dir.y));
+			BombRec(level + 1, dir, int(x + dir.x), int(y + dir.y));
 		}
 
 		if (dir == Vector2::Left)
@@ -169,7 +173,7 @@ namespace hy
 			bombFlow->Left();
 			bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
 
-			BombRec(dir, int(x + dir.x), int(y + dir.y));
+			BombRec(level + 1, dir, int(x + dir.x), int(y + dir.y));
 		}
 
 		if (dir == Vector2::Down)
@@ -182,7 +186,7 @@ namespace hy
 			bombFlow->Down();
 			bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
 
-			BombRec(dir, int(x + dir.x), int(y + dir.y));
+			BombRec(level + 1, dir, int(x + dir.x), int(y + dir.y));
 		}
 
 	}
@@ -213,10 +217,11 @@ namespace hy
 			//bombFlow->Right();
 			bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
 
-			BombRec(Vector2::Right,  X_ + 1, Y_);
-			BombRec(Vector2::Up, X_, Y_ - 1);
-			BombRec(Vector2::Left, X_ - 1, Y_);
-			BombRec(Vector2::Down, X_, Y_ + 1);
+			int level = 0;
+			BombRec(level,Vector2::Right,  X_ + 1, Y_);
+			BombRec(level, Vector2::Up, X_, Y_ - 1);
+			BombRec(level, Vector2::Left, X_ - 1, Y_);
+			BombRec(level, Vector2::Down, X_, Y_ + 1);
 
 			mState = eState::Pop;
 			Bombtime = 0.f;
