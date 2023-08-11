@@ -6,6 +6,8 @@
 #include "hyPirateMap.h"
 #include "hyToolScene.h"
 #include "hyLogoScene.h"
+#include "hyTexture.h"
+#include "hyResources.h"
 
 
 

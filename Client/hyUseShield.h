@@ -12,7 +12,14 @@ namespace hy
 	{
 	public:
 
-		UseShield(class Bazzi* owner);
+		enum class eState
+		{
+			Idle,
+			Use,
+			End
+		};
+
+		UseShield(/*class Bazzi* owner*/);
 		virtual ~UseShield();
 
 		virtual void Initialize() override;

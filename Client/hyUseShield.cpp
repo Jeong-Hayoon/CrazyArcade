@@ -7,15 +7,17 @@
 #include "hyObject.h"
 #include "hyTime.h"
 
+
 namespace hy
 {
-	UseShield::UseShield()
+	UseShield::UseShield()/*(Bazzi * owner)*/
+		: mState(eState::Idle)
+
 	{
-		Animator* st = AddComponent<Animator>();
+		Animator* st = GetComponent<Animator>();
 
 		Texture* ShieldEffect_ = Resources::Load<Texture>(L"ShieldEffect"
 			, L"..\\Resources\\Image\\Items\\shieldeffect.bmp");
-
 
 		st->CreateAnimation(L"BazziShield", ShieldEffect_, Vector2(0.0f, 0.0f), Vector2(88.0f, 101.0f), 4, Vector2(0.0f, 0.0f), 0.05f);
 

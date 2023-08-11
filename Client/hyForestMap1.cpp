@@ -20,6 +20,7 @@
 #include "hyPotion.h"
 #include "hyNeedle.h"
 #include "hyShield.h"
+#include "hyTimer.h"
 
 
 
@@ -100,6 +101,11 @@ namespace hy
 
 	void ForestMap1::Initialize()
 	{
+		// 타이머
+		Timer* ForestTimer = object::Instantiate<Timer>(eLayerType::UI);
+		ForestTimer->Seconds();
+		ForestTimer->GetComponent<Transform>()->SetPosition(Vector2(500.f,500.f));
+
 		// 게임 틀
 		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImage"
 			, L"..\\Resources\\Image\\Bg\\play.bmp");
