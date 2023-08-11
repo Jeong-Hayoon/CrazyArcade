@@ -283,6 +283,8 @@ namespace hy
 		{
 			SceneManager::LoadScene(L"IceMap");
 		}
+
+
 	}
 	void ForestMap1::Render(HDC hdc)
 	{

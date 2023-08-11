@@ -172,7 +172,9 @@
     <ClInclude Include="hySound.h" />
     <ClInclude Include="hySoundManager.h" />
     <ClInclude Include="hyTile.h" />
+    <ClInclude Include="hyTimer.h" />
     <ClInclude Include="hyToolScene.h" />
+    <ClInclude Include="hyUI.h" />
     <ClInclude Include="hyUserItem.h" />
     <ClInclude Include="hyUseShield.h" />
     <ClInclude Include="hyVelocitySkate.h" />
@@ -241,7 +243,9 @@
     <ClCompile Include="hySound.cpp" />
     <ClCompile Include="hySoundManager.cpp" />
     <ClCompile Include="hyTile.cpp" />
+    <ClCompile Include="hyTimer.cpp" />
     <ClCompile Include="hyToolScene.cpp" />
+    <ClCompile Include="hyUI.cpp" />
     <ClCompile Include="hyUserItem.cpp" />
     <ClCompile Include="hyUseShield.cpp" />
     <ClCompile Include="hyVelocitySkate.cpp" />
@@ -268,8 +272,14 @@
     <ResourceCompile Include="Client.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Resources\Image\Mouse\mouse.bmp" />
     <Image Include="Client.ico" />
     <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\resources\image\mouse\cursor3.cur" />
+    <None Include="cursor1.cur" />
+    <None Include="cursor2.cur" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

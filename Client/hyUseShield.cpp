@@ -7,8 +7,6 @@
 #include "hyObject.h"
 #include "hyTime.h"
 
-
-
 namespace hy
 {
 	UseShield::UseShield()
@@ -32,6 +30,9 @@ namespace hy
 	}
 	void UseShield::Update()
 	{
+
+
+
 		Item::Update();
 	}
 	void UseShield::Render(HDC hdc)
@@ -62,6 +63,10 @@ namespace hy
 			st->SetScale(Vector2(0.9f, 0.9f));
 			st->PlayAnimation(L"BazziShield", true);
 			// 모든 충돌체 충돌 끄는 코드 삽입
+		}
+		else
+		{
+			Destroy(this);
 		}
 	}
 

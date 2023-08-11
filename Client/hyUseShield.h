@@ -1,5 +1,8 @@
 #pragma once
 #include "hyItem.h"
+#include "hyBazzi.h"
+#include "hyDao.h"
+
 
 //실드 사용
 
@@ -9,7 +12,7 @@ namespace hy
 	{
 	public:
 
-		UseShield();
+		UseShield(class Bazzi* owner);
 		virtual ~UseShield();
 
 		virtual void Initialize() override;
@@ -25,6 +28,9 @@ namespace hy
 
 	private:
 		eState mState;
+		Bazzi* mBazziOwner;
+		Dao* mDaoOwner;
+
 	};
 }
 

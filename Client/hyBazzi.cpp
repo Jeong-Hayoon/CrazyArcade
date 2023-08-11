@@ -23,7 +23,7 @@
 namespace hy
 {
 	UINT Bazzi ::BombFlowCount = 0;
-
+	bool Bazzi::Trigger = false;
 	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::None;
 	bool Bazzi::UseItemNum = 0;
 	
@@ -188,18 +188,31 @@ namespace hy
 
 		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Shield && UseItemNum == 1)
 		{
+			Trigger = true;
+
+			UseShield* ShieldEffect_ = object::Instantiate<UseShield>(eLayerType::Effect);
+			Transform* Bazzitr = this->GetComponent<Transform>();
+			Vector2  Shieldpos = Bazzitr->GetPosition();
+
+			ShieldEffect_->Use();
+			ShieldEffect_->GetComponent<Transform>()->SetPosition(Shieldpos);
+		}
+
+		if (Trigger == true)
+		{
 			static float Shieldtime = 0.f;
 			Shieldtime += Time::DeltaTime();
 
 			if (Shieldtime < 3.0f)
 			{
-				UseShield* ShieldEffect_ = object::Instantiate<UseShield>(eLayerType::Effect);
-				Transform* Bazzitr = this->GetComponent<Transform>();
-				Vector2  Shieldpos = Bazzitr->GetPosition();
-				
-				ShieldEffect_->Use();
-				ShieldEffect_->GetComponent<Transform>()->SetPosition(Shieldpos);
+
+			}
+			else
+			{
+				eItem::None;
 				UseItemNum = 0;
+				Shieldtime = 0.f;
+				Trigger = false;
 			}
 		}
 
@@ -512,6 +525,7 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			animator->PlayAnimation(L"BazziIdle", true);
+			eItem::None;
 			UseItemNum = 0;
 			mState = eState::Idle;
 		}

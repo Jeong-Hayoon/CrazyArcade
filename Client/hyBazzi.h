@@ -105,6 +105,7 @@ namespace hy
 		// 큐가 나으려나..
 
 		static bool UseItemNum;
+		static bool Trigger;
 	};
 }
 

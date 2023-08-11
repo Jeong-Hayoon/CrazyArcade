@@ -22,7 +22,7 @@ namespace hy
 		void Load();
 
 	private:
-		std::vector<Tile*> mTiles;
+		std::vector<Tile*> mTiles;;
 	};
 }
 
