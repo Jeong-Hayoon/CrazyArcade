@@ -15,13 +15,16 @@
 #include "hyRigidbody.h"
 #include "hyBazzi.h"
 #include "hyBombFlow.h"
-
+#include "hyCollider.h"
 namespace hy
 {
 	// 3초 지나면 물줄기 팡
 	Bomb::Bomb()
 		: mState(eState::Flow)
 	{
+		Collider* Col = AddComponent<Collider>();
+		Col->SetSize(Vector2(40.0f, 40.0f));
+
 		Animator* bt = AddComponent<Animator>();
 		bt->CreateAnimationFolder(L"Bombidle", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
 		
@@ -127,7 +130,7 @@ namespace hy
 			if (dir == Vector2::Right)
 			{
 				Vector2 bombflowpos;
-				BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+				BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 				bombflowpos.y = y * TILE_HEIGHT + 60.0f;
 				bombflowpos.x = x * TILE_WIDTH + 40.0f;
 
@@ -137,7 +140,7 @@ namespace hy
 			if (dir == Vector2::Up)
 			{
 				Vector2 bombflowpos;
-				BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+				BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 				bombflowpos.y = y * TILE_HEIGHT + 60.0f;
 				bombflowpos.x = x * TILE_WIDTH + 40.0f;
 
@@ -149,7 +152,7 @@ namespace hy
 			if (dir == Vector2::Left)
 			{
 				Vector2 bombflowpos;
-				BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+				BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 				bombflowpos.y = y * TILE_HEIGHT + 60.0f;
 				bombflowpos.x = x * TILE_WIDTH + 40.0f;
 
@@ -162,7 +165,7 @@ namespace hy
 			if (dir == Vector2::Down)
 			{
 				Vector2 bombflowpos;
-				BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+				BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 				bombflowpos.y = y * TILE_HEIGHT + 60.0f;
 				bombflowpos.x = x * TILE_WIDTH + 40.0f;
 
@@ -184,7 +187,7 @@ namespace hy
 		if (dir == Vector2::Right)
 		{
 			Vector2 bombflowpos;
-			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 			bombflowpos.y = y * TILE_HEIGHT + 60.0f;
 			bombflowpos.x = x * TILE_WIDTH + 40.0f;
 
@@ -204,7 +207,7 @@ namespace hy
 		if (dir == Vector2::Up)
 		{
 			Vector2 bombflowpos;
-			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 			bombflowpos.y = y * TILE_HEIGHT + 60.0f;
 			bombflowpos.x = x * TILE_WIDTH + 40.0f;
 
@@ -224,7 +227,7 @@ namespace hy
 		if (dir == Vector2::Left)
 		{
 			Vector2 bombflowpos;
-			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 			bombflowpos.y = y * TILE_HEIGHT + 60.0f;
 			bombflowpos.x = x * TILE_WIDTH + 40.0f;
 
@@ -244,7 +247,7 @@ namespace hy
 		if (dir == Vector2::Down)
 		{
 			Vector2 bombflowpos;
-			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 			bombflowpos.y = y * TILE_HEIGHT + 60.0f;
 			bombflowpos.x = x * TILE_WIDTH + 40.0f;
 
@@ -282,7 +285,7 @@ namespace hy
 			Y_ = (BombLocationtr.y - 40.f) / (TILE_HEIGHT);
 
 			Vector2 bombflowpos;
-			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Effect);
+			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 			bombflowpos.x = X_ * TILE_HEIGHT + 40.0f;
 			bombflowpos.y = Y_ * TILE_WIDTH + 60.0f;
 

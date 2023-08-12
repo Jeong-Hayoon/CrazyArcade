@@ -41,6 +41,7 @@ namespace hy::enums
 		Item,
 		Monster,
 		Effect,
+		Bombflow,
 		UI,
 		End,
 	};

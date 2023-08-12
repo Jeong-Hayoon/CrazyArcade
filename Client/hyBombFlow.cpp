@@ -14,6 +14,7 @@
 #include "hyResources.h"
 #include "hyRigidbody.h"
 #include "hyBazzi.h"
+#include "hyCollider.h"
 
 
 namespace hy
@@ -22,6 +23,9 @@ namespace hy
 	BombFlow::BombFlow()
 		: mState(eState::Idle)
 	{
+		Collider* Col = AddComponent<Collider>();
+		Col->SetSize(Vector2(40.0f, 40.0f));
+
 		Animator* bft = AddComponent<Animator>();
 
 		// 상하좌우 물줄기

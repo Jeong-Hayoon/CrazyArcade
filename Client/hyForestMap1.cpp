@@ -171,22 +171,19 @@ namespace hy
 		ForestMonster* forestmonster = object::Instantiate<ForestMonster>(eLayerType::Monster);
 		forestmonster->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
 
-		// 충돌 구현
+		// 배찌 충돌 구현
 		Collider* col = forestbazzi1->AddComponent<Collider>();
 		// 배찌의 충돌 사각형 사이즈 수정
 		col->SetSize(Vector2(30.0f, 25.0f));
 		col->SetOffset(Vector2(0.0f, 10.0f));
-
-		col = forestmonster->AddComponent<Collider>();
-		// 포레스트 몬스터의 충돌 사각형 사이즈 수정
-		col->SetSize(Vector2(30.0f, 40.0f));
-
-		//col->SetOffset(Vector2(10.0f, 10.0f));
-		forestbazzitr = forestmonster->GetComponent<Transform>();
-
 		forestbazzitr->SetPosition(Vector2(100.0f, 100.0f));
 
-		// 플레이어와 몬스터가 충돌(충돌 관계)
+
+		// 포레스트 몬스터의 충돌 사각형 사이즈 수정
+		col = forestmonster->AddComponent<Collider>();
+		col->SetSize(Vector2(30.0f, 40.0f));
+
+		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
 		// Balloon 아이템 setting

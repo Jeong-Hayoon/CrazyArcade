@@ -98,7 +98,7 @@ namespace hy
 	// 물풍선과 충돌했을 때 Dead
 	void ForestMonster::OnCollisionEnter(Collider* other)
 	{
-		if (other->GetOwner()->GetLayerType() == eLayerType::Effect)
+		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
 			Animator* at = GetComponent<Animator>();
 			at->SetScale(Vector2(1.0f, 1.0f));

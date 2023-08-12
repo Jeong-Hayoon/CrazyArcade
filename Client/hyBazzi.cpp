@@ -240,7 +240,7 @@ namespace hy
 			mState = eState::Dead;*/
 		}
 
-		else if (other->GetOwner()->GetLayerType() == eLayerType::Effect)
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
 			Animator* at = GetComponent<Animator>();
 			at->SetScale(Vector2(1.0f, 1.0f));
