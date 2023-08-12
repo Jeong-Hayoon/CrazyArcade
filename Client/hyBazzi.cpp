@@ -244,8 +244,11 @@ namespace hy
 		{
 			Animator* at = GetComponent<Animator>();
 			at->SetScale(Vector2(1.0f, 1.0f));
-			at->PlayAnimation(L"BazziBalloonDead", false);
-			mState = eState::BalloonDead;
+			at->PlayAnimation(L"BazziTrap", false);
+			mState = eState::Trap;
+
+			/*at->PlayAnimation(L"BazziBalloonDead", false);
+			mState = eState::BalloonDead;*/
 		}
 
 		// 사용아이템 충돌시 
@@ -305,12 +308,12 @@ namespace hy
 			mDirection = eDirection::Down;
 		}
 
-		if (Input::GetKeyDown(eKeyCode::T) )	// Trap
-		{
-			animator->SetScale(Vector2(1.0f, 1.0f));
-			animator->PlayAnimation(L"BazziTrap", false);
-			mState = eState::Trap;
-		}
+		//if (Input::GetKeyDown(eKeyCode::T) )	// Trap
+		//{
+		//	animator->SetScale(Vector2(1.0f, 1.0f));
+		//	animator->PlayAnimation(L"BazziTrap", false);
+		//	mState = eState::Trap;
+		//}
 		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle && UseItemNum == 1)	// Live
 		{
 			animator->SetScale(Vector2(0.8f, 0.8f));
@@ -508,6 +511,9 @@ namespace hy
 
 	void Bazzi::Trap()
 	{
+		static float Traptime = 0.f;
+		Traptime += Time::DeltaTime();
+
 		Animator* animator = GetComponent<Animator>();
 
 		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle)	// Live
@@ -516,6 +522,13 @@ namespace hy
 			animator->PlayAnimation(L"BazziLive", false);
 			mState = eState::Live;
 			eItem::None;
+		}
+		else if(Traptime > 4.f)
+		{
+			animator->SetScale(Vector2(0.8f, 0.8f));
+			animator->PlayAnimation(L"BazziBalloonDead", false);
+			mState = eState::BalloonDead;
+			Traptime = 0.f;
 		}
 	}
 
@@ -536,8 +549,7 @@ namespace hy
 		Animator* animator = GetComponent<Animator>();
 		if (animator->IsActiveAnimationComplete())
 		{
-			animator->PlayAnimation(L"BazziIdle", true);
-			mState = eState::Idle;
+			Destroy(this);
 		}
 	}
 
@@ -546,8 +558,8 @@ namespace hy
 		Animator* animator = GetComponent<Animator>();
 		if (animator->IsActiveAnimationComplete())
 		{
-			animator->PlayAnimation(L"BazziIdle", true);
-			mState = eState::Idle;
+			Destroy(this);
+			// Lose 
 		}
 	}
 	 

@@ -15,6 +15,8 @@
 #include "hyRigidbody.h"
 #include "hyBazzi.h"
 #include "hyCollider.h"
+#include "hyCollisionManager.h"
+
 
 
 namespace hy
@@ -28,6 +30,9 @@ namespace hy
 
 		Animator* bft = AddComponent<Animator>();
 
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Bombflow, true);
+
+		 
 		// 상하좌우 물줄기
 		bft->CreateAnimationFolder(L"BombUpIdle", L"..\\Resources\\Image\\Bomb\\UpIdleflow", Vector2(0.f, 0.f), 0.3f);
 		bft->CreateAnimationFolder(L"BombUp", L"..\\Resources\\Image\\Bomb\\Upflow", Vector2(0.f, 0.f), 0.15f);

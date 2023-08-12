@@ -16,6 +16,9 @@
 #include "hyBazzi.h"
 #include "hyBombFlow.h"
 #include "hyCollider.h"
+#include "hyCollisionManager.h"
+
+
 namespace hy
 {
 	// 3초 지나면 물줄기 팡
@@ -24,6 +27,8 @@ namespace hy
 	{
 		Collider* Col = AddComponent<Collider>();
 		Col->SetSize(Vector2(40.0f, 40.0f));
+
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Bomb, true);
 
 		Animator* bt = AddComponent<Animator>();
 		bt->CreateAnimationFolder(L"Bombidle", L"..\\Resources\\Image\\Bomb\\Idle", Vector2(0.f, 0.f), 0.4f);
@@ -52,6 +57,8 @@ namespace hy
 	}
 	void Bomb::Initialize()
 	{
+
+
 		GameObject::Initialize();
 	}
 	void Bomb::Update()
