@@ -31,6 +31,7 @@ namespace hy
 		Animator* bft = AddComponent<Animator>();
 
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Bombflow, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::Monster, eLayerType::Bombflow, true);
 
 		 
 		// 상하좌우 물줄기

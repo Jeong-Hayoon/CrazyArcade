@@ -36,7 +36,7 @@ namespace hy
 		mt->CreateAnimationFolder(L"ForestMonsterDown", L"..\\Resources\\Image\\Monster\\Forest\\Down",Vector2::Zero, 0.15f);
 		mt->CreateAnimationFolder(L"ForestMonsterRight", L"..\\Resources\\Image\\Monster\\Forest\\Right", Vector2::Zero, 0.15f);
 		mt->CreateAnimationFolder(L"ForestMonsterLeft", L"..\\Resources\\Image\\Monster\\Forest\\Left", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestMonnsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"ForestMonnsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die", Vector2::Zero, 0.2f);
 		mt->PlayAnimation(L"ForestMonsterRight", true);
 
 		GameObject::Initialize();
@@ -101,7 +101,6 @@ namespace hy
 		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
 			Animator* at = GetComponent<Animator>();
-			at->SetScale(Vector2(1.0f, 1.0f));
 			at->PlayAnimation(L"ForestMonnsterDie", false);
 			MonsterQuantity--;
 			mState = eState::Dead;
@@ -188,6 +187,12 @@ namespace hy
 
 	void ForestMonster::Dead()
 	{
+		Animator* animator = GetComponent<Animator>();
+
+		if (animator->IsActiveAnimationComplete())
+		{
+			Destroy(this);
+		}
 	}
 }
 
