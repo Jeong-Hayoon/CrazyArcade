@@ -1,4 +1,4 @@
-#include "hyForestMonster.h"
+#include "hyForestMonster_1.h"
 #include "hyTransform.h"
 #include "hyInput.h"
 #include "hyTime.h"
@@ -12,36 +12,36 @@
 #include "hyTexture.h"
 #include "hyResources.h"
 #include "hyCollider.h"
+#include "hyForestMap1.h"
 
 
 
 namespace hy
 {
 	// static 변수는 전역에서 초기화해주기
-	float ForestMonster:: MonsterTime = 0.f;
-	UINT ForestMonster :: MonsterQuantity(3);
+	float ForestMonster_1:: MonsterTime = 0.f;
 
-	ForestMonster::ForestMonster()
+	ForestMonster_1::ForestMonster_1()
 		: mDeathTime(1.0f)
 		, mState(eState::Right)
 	{
 	}
-	ForestMonster::~ForestMonster()
+	ForestMonster_1::~ForestMonster_1()
 	{
 	}
-	void ForestMonster::Initialize()
+	void ForestMonster_1::Initialize()
 	{
 		Animator* mt = AddComponent<Animator>();
-		mt->CreateAnimationFolder(L"ForestMonsterUp", L"..\\Resources\\Image\\Monster\\Forest\\Up", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestMonsterDown", L"..\\Resources\\Image\\Monster\\Forest\\Down",Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestMonsterRight", L"..\\Resources\\Image\\Monster\\Forest\\Right", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestMonsterLeft", L"..\\Resources\\Image\\Monster\\Forest\\Left", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"ForestMonster_1Up", L"..\\Resources\\Image\\Monster\\Forest\\Up", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"ForestMonster_1Down", L"..\\Resources\\Image\\Monster\\Forest\\Down",Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"ForestMonster_1Right", L"..\\Resources\\Image\\Monster\\Forest\\Right", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"ForestMonster_1Left", L"..\\Resources\\Image\\Monster\\Forest\\Left", Vector2::Zero, 0.15f);
 		mt->CreateAnimationFolder(L"ForestMonnsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die", Vector2::Zero, 0.2f);
-		mt->PlayAnimation(L"ForestMonsterRight", true);
+		mt->PlayAnimation(L"ForestMonster_1Right", true);
 
 		GameObject::Initialize();
 	}
-	void ForestMonster::Update()
+	void ForestMonster_1::Update()
 	{
 		GameObject::Update();
 
@@ -61,34 +61,34 @@ namespace hy
 
 		switch (mState)
 		{
-		case hy::ForestMonster::eState::Up:
+		case hy::ForestMonster_1::eState::Up:
 			Up();
 			break;
 
-		case hy::ForestMonster::eState::Down:
+		case hy::ForestMonster_1::eState::Down:
 			Down();
 			break;
 
-		case hy::ForestMonster::eState::Left:
+		case hy::ForestMonster_1::eState::Left:
 			Left();
 			break;
 
-		case hy::ForestMonster::eState::Right:
+		case hy::ForestMonster_1::eState::Right:
 			Right();
 			break;
 
-		case hy::ForestMonster::eState::Dead:
+		case hy::ForestMonster_1::eState::Dead:
 			Dead();
 			break;
 
-		case hy::ForestMonster::eState::End:
+		case hy::ForestMonster_1::eState::End:
 			break;
 
 		default:
 			break;
 		}
 	}
-	void ForestMonster::Render(HDC hdc)
+	void ForestMonster_1::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
 	}
@@ -96,27 +96,27 @@ namespace hy
 
 	// 충돌했을 때 처리 코드 여기에 작성
 	// 물풍선과 충돌했을 때 Dead
-	void ForestMonster::OnCollisionEnter(Collider* other)
+	void ForestMonster_1::OnCollisionEnter(Collider* other)
 	{
 		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
 			Animator* at = GetComponent<Animator>();
 			at->PlayAnimation(L"ForestMonnsterDie", false);
-			MonsterQuantity--;
+			ForestMap1::SetMonsterQuantity;
 			mState = eState::Dead;
 		}
 
 	}
 
-	void ForestMonster::OnCollisionStay(Collider* other)
+	void ForestMonster_1::OnCollisionStay(Collider* other)
 	{
 	}
 
-	void ForestMonster::OnCollisionExit(Collider* other)
+	void ForestMonster_1::OnCollisionExit(Collider* other)
 	{
 	}
 
-	void ForestMonster::Up()
+	void ForestMonster_1::Up()
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
@@ -127,13 +127,13 @@ namespace hy
 
 		if (MonsterTime > 3)
 		{
-			animator->PlayAnimation(L"ForestMonsterRight", true);
+			animator->PlayAnimation(L"ForestMonster_1Right", true);
 			mState = eState::Right;
 			MonsterTime = 0.f;
 		}
 	}
 
-	void ForestMonster::Down()
+	void ForestMonster_1::Down()
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
@@ -144,13 +144,13 @@ namespace hy
 
 		if (MonsterTime > 3)
 		{
-			animator->PlayAnimation(L"ForestMonsterLeft", true);
+			animator->PlayAnimation(L"ForestMonster_1Left", true);
 			mState = eState::Left;
 			MonsterTime = 0.f;
 		}
 	}
 
-	void ForestMonster::Left()
+	void ForestMonster_1::Left()
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
@@ -161,13 +161,13 @@ namespace hy
 		MonsterTime += Time::DeltaTime();
 		if (MonsterTime > 3)
 		{
-			animator->PlayAnimation(L"ForestMonsterUp", true);
+			animator->PlayAnimation(L"ForestMonster_1Up", true);
 			mState = eState::Up;
 			MonsterTime = 0.f;
 		}
 	}
 
-	void ForestMonster::Right()
+	void ForestMonster_1::Right()
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
@@ -178,14 +178,14 @@ namespace hy
 
 		if (MonsterTime > 3)
 		{
-			animator->PlayAnimation(L"ForestMonsterDown", true);
+			animator->PlayAnimation(L"ForestMonster_1Down", true);
 			mState = eState::Down;
 			MonsterTime = 0.f;
 		}
 
 	}
 
-	void ForestMonster::Dead()
+	void ForestMonster_1::Dead()
 	{
 		Animator* animator = GetComponent<Animator>();
 

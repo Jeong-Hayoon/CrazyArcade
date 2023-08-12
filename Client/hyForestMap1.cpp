@@ -12,7 +12,7 @@
 #include "hyTransform.h"
 #include "hyAnimator.h"
 #include "hyBazzi.h"
-#include "hyForestMonster.h"
+#include "hyForestMonster_1.h"
 #include "hyCollisionManager.h"
 #include "hyToolScene.h"
 #include "hyBalloon.h"
@@ -27,8 +27,11 @@
 // 타일 위치 30,55에 넣기
 
 extern hy::Application application;
+
 namespace hy
 {
+	UINT ForestMap1::MonsterQuantity = 1;
+
 	ForestMap1::ForestMap1()
 	{
 	}
@@ -168,8 +171,8 @@ namespace hy
 		forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
 
 		// 포레스트 몬스터
-		ForestMonster* forestmonster = object::Instantiate<ForestMonster>(eLayerType::Monster);
-		forestmonster->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
+		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
 
 		// 배찌 충돌 구현
 		Collider* col = forestbazzi1->AddComponent<Collider>();
@@ -180,7 +183,7 @@ namespace hy
 
 
 		// 포레스트 몬스터의 충돌 사각형 사이즈 수정
-		col = forestmonster->AddComponent<Collider>();
+		col = ForestMonster1->AddComponent<Collider>();
 		col->SetSize(Vector2(30.0f, 40.0f));
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)

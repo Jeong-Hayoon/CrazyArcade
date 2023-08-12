@@ -3,7 +3,7 @@
 
 namespace hy
 {
-	class ForestMonster : public GameObject
+	class ForestMonster_1 : public GameObject
 	{
 	public:
 		enum class eState
@@ -16,8 +16,8 @@ namespace hy
 			End,
 		};
 
-		ForestMonster();
-		virtual ~ForestMonster();
+		ForestMonster_1();
+		virtual ~ForestMonster_1();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -33,12 +33,11 @@ namespace hy
 		void Right();
 
 		void Dead();
-		 
+		
 	private:
 		eState mState;
 		float mDeathTime;
 		static float MonsterTime;
-		static UINT MonsterQuantity;
 	};
 }
 

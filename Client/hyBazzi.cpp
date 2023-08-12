@@ -4,7 +4,7 @@
 #include "hyTime.h"
 #include "hyAnimator.h"
 #include "hyResources.h"
-//#include "hyForestMap1.h"
+#include "hyForestMap1.h"
 #include "hySpriteRenderer.h"
 #include "hyObject.h"
 #include "hySceneManager.h"
@@ -525,10 +525,17 @@ namespace hy
 		}
 		else if(Traptime > 4.f)
 		{
-			animator->SetScale(Vector2(0.8f, 0.8f));
-			animator->PlayAnimation(L"BazziBalloonDead", false);
-			mState = eState::BalloonDead;
-			Traptime = 0.f;
+			if(ForestMap1::GetMonsterQuantity != 0)
+			{
+				animator->SetScale(Vector2(0.8f, 0.8f));
+				animator->PlayAnimation(L"BazziBalloonDead", false);
+				mState = eState::BalloonDead;
+				Traptime = 0.f;
+			}
+			else
+			{
+				// Win
+			}
 		}
 	}
 
