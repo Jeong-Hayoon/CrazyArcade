@@ -28,8 +28,8 @@ namespace hy
 		player->AddComponent<SpriteRenderer>();*/
 
 		// 사운드 적용
-		sound = Resources::Load<Sound>(L"bgSound", L"..\\Resources\\Sound\\Sound\\lobby_scene.wav");
-		sound->Play(true);
+		Resources::Load<Sound>(L"LoginSound", L"..\\Resources\\Sound\\Sound\\login_scene.wav");
+		Resources::Find<Sound>(L"LoginSound")->Play(true);
 
 		// 게임시작 화면
 		Texture* image = Resources::Load<Texture>(L"TitleBackGroundImgae"	// 이미지 포인터형으로 리소스를 반환해줌, 이미지 로드
@@ -95,6 +95,7 @@ namespace hy
 
 		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
 		{
+			Resources::Find<Sound>(L"LoginSound")->Stop(1);
 			SceneManager::LoadScene(L"LobbyScene");
 		}
 

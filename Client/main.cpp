@@ -57,6 +57,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
+    // 커서 설정하는 부분
+    LPCWSTR CrazyArcadeCursor = L"..\\Resources\\Image\\Mouse\\mouse.cur";
+
+    // 커서 핸들 생성
+    HCURSOR hCursor = LoadCursorFromFile(CrazyArcadeCursor);
+
+    SetCursor(hCursor);
+
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
 
     MSG msg;
@@ -86,6 +94,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else // 메세지가 없으면 게임 실행
         {
+            SetCursor(hCursor);
+
             application.Run();
         }
     }
@@ -100,6 +110,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     hy::SceneManager::Release();
     hy::Resources::Release();
     Gdiplus::GdiplusShutdown(gdiplusToken);
+    DestroyCursor(hCursor);
 
     return (int) msg.wParam;        
 }
@@ -120,7 +131,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc)
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_CLIENT)); // 아이콘(리소스 뷰)
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);                   // 커서 모양
+    wcex.hCursor        = NULL;                   // 커서 모양
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);                         // 백그라운드 색상
     wcex.lpszMenuName   = nullptr;                                          // 메뉴 이름
     wcex.lpszClassName  = name;                                    // 등록할 클래스 이름

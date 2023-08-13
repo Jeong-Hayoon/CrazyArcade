@@ -23,7 +23,9 @@ namespace hy
 	}
 	void LobbyScene::Initialize()
 	{
-		Scene::Initialize();
+		// 사운드 적용
+		Resources::Load<Sound>(L"LobbySound", L"..\\Resources\\Sound\\Sound\\lobby_scene.wav");
+		Resources::Find<Sound>(L"LobbySound")->Play(true);
 
 		// 로비
 		Texture* image = Resources::Load<Texture>(L"LobbyBackGroundImage"
@@ -90,6 +92,7 @@ namespace hy
 
 		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
 		{
+			Resources::Find<Sound>(L"LobbySound")->Stop(1);
 			SceneManager::LoadScene(L"ForestMap");
 		}
 

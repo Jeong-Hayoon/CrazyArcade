@@ -24,9 +24,8 @@ namespace hy
 	void LogoScene::Initialize()
 	{
 		// 사운드 적용
-		sound = Resources::Load<Sound>(L"LogoSound", L"..\\Resources\\Sound\\Sound\\logo.wav");
-
-		sound->Play(false);
+		Resources::Load<Sound>(L"LogoSound", L"..\\Resources\\Sound\\Sound\\logo.wav");
+		Resources::Find<Sound>(L"LogoSound")->Play(false);
 
 		// 넥슨 화면
 		Texture* Logo_ = Resources::Load<Texture>(L"Logo"	
@@ -39,7 +38,6 @@ namespace hy
 		Logobgsr->SetScale(Vector2(1.f, 1.f));		// 이미지 사이즈 조절
 		Logobg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));	// 배경을 해상도의 절반으로 세팅
 
-		
 	}
 	void LogoScene::Update()
 	{
@@ -47,6 +45,7 @@ namespace hy
 
 		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
 		{
+			Resources::Find<Sound>(L"LogoSound")->Stop(1);
 			SceneManager::LoadScene(L"TitleScene");
 		}
 
