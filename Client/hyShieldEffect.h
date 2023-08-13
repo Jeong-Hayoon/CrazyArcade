@@ -8,7 +8,7 @@
 
 namespace hy
 {
-	class UseShield : public Item
+	class ShieldEffect : public Item
 	{
 	public:
 
@@ -19,8 +19,8 @@ namespace hy
 			End
 		};
 
-		UseShield(/*class Bazzi* owner*/);
-		virtual ~UseShield();
+		ShieldEffect(/*class Bazzi* owner*/);
+		virtual ~ShieldEffect();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

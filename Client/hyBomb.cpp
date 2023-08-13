@@ -100,33 +100,6 @@ namespace hy
 	{
 	}
 
-	// 선생님은 재귀함수 추천..
-	// but 재귀함수 너무 어려워..
-	//void Bomb::FlowIdle(UINT num)
-	//{
-	//	Animator* animator = GetComponent<Animator>();
-
-	//	for (int i = 0; i < num; i++)
-	//	{
-	//		// 이부분 수정
-	//		// 애니메이션의 위치는 Bomb의 상하좌우로 배치
-	//		//
-	//		animator->PlayAnimation(L"BombUpIdle", false);
-	//		animator->PlayAnimation(L"BombDownIdle", false);
-	//		animator->PlayAnimation(L"BombRightIdle", false);
-	//		animator->PlayAnimation(L"BombLeftIdle", false);
-
-	//		animator->PlayAnimation(L"BombUp", false);
-	//		animator->PlayAnimation(L"BombDown", false);
-	//		animator->PlayAnimation(L"BombRight", false);
-	//		animator->PlayAnimation(L"BombLeft", false);
-
-	//		/*Bazzi* flow = object::Instantiate<Bazzi>(eLayerType::Player);
-	//		FlowIdle(flow->GetBombFlow());*/
-	//	}
-
-	//}
-
 	void Bomb::BombRec(int level, Vector2 dir, int x, int y)
 	{
 		// 예외처리에서 배찌의 BombFlow 변수만큼 가져오기

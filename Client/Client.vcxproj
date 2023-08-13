@@ -176,7 +176,7 @@
     <ClInclude Include="hyToolScene.h" />
     <ClInclude Include="hyUI.h" />
     <ClInclude Include="hyUserItem.h" />
-    <ClInclude Include="hyUseShield.h" />
+    <ClInclude Include="hyShieldEffect.h" />
     <ClInclude Include="hyVelocitySkate.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="hyTexture.h" />
@@ -247,7 +247,7 @@
     <ClCompile Include="hyToolScene.cpp" />
     <ClCompile Include="hyUI.cpp" />
     <ClCompile Include="hyUserItem.cpp" />
-    <ClCompile Include="hyUseShield.cpp" />
+    <ClCompile Include="hyShieldEffect.cpp" />
     <ClCompile Include="hyVelocitySkate.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="hyTexture.cpp" />

@@ -383,7 +383,7 @@
     <ClInclude Include="hyUserItem.h">
       <Filter>Contents\GameObject\Item</Filter>
     </ClInclude>
-    <ClInclude Include="hyUseShield.h">
+    <ClInclude Include="hyShieldEffect.h">
       <Filter>Contents\GameObject\Item\Kind of Item</Filter>
     </ClInclude>
     <ClInclude Include="hyBombFlow.h">
@@ -594,7 +594,7 @@
     <ClCompile Include="hyUserItem.cpp">
       <Filter>Contents\GameObject\Item</Filter>
     </ClCompile>
-    <ClCompile Include="hyUseShield.cpp">
+    <ClCompile Include="hyShieldEffect.cpp">
       <Filter>Contents\GameObject\Item\Kind of Item</Filter>
     </ClCompile>
     <ClCompile Include="hyBombFlow.cpp">

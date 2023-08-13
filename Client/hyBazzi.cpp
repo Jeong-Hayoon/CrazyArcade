@@ -16,7 +16,7 @@
 #include "hyBomb.h"
 #include "hyCollider.h"
 #include "hyShield.h"
-#include "hyUseShield.h"
+#include "hyShieldEffect.h"
 
 
 
@@ -190,7 +190,7 @@ namespace hy
 		{
 			Trigger = true;
 
-			UseShield* ShieldEffect_ = object::Instantiate<UseShield>(eLayerType::Effect);
+			ShieldEffect* ShieldEffect_ = object::Instantiate<ShieldEffect>(eLayerType::Effect);
 			Transform* Bazzitr = this->GetComponent<Transform>();
 			Vector2  Shieldpos = Bazzitr->GetPosition();
 
@@ -342,7 +342,7 @@ namespace hy
 		//	
 		//	if (Shieldtime < 3.0f)
 		//	{
-		//		UseShield* ShieldEffect_ = object::Instantiate<UseShield>(eLayerType::Effect);
+		//		ShieldEffect* ShieldEffect_ = object::Instantiate<ShieldEffect>(eLayerType::Effect);
 		//		Transform* Bazzitr = this->GetComponent<Transform>();
 		//		Vector2  Shieldpos = Bazzitr->GetPosition();
 		//		

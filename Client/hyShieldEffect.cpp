@@ -1,4 +1,4 @@
-#include "hyUseShield.h"
+#include "hyShieldEffect.h"
 #include "hyAnimator.h"
 #include "hyTexture.h"
 #include "hyResources.h"
@@ -10,7 +10,7 @@
 
 namespace hy
 {
-	UseShield::UseShield()/*(Bazzi * owner)*/
+	ShieldEffect::ShieldEffect()/*(Bazzi * owner)*/
 		: mState(eState::Idle)
 
 	{
@@ -19,41 +19,38 @@ namespace hy
 		Texture* ShieldEffect_ = Resources::Load<Texture>(L"ShieldEffect"
 			, L"..\\Resources\\Image\\Items\\shieldeffect.bmp");
 
-		st->CreateAnimation(L"BazziShield", ShieldEffect_, Vector2(0.0f, 0.0f), Vector2(88.0f, 101.0f), 4, Vector2(0.0f, 0.0f), 0.05f);
+		st->CreateAnimation(L"UseShieldEffect", ShieldEffect_, Vector2(0.0f, 0.0f), Vector2(88.0f, 101.0f), 4, Vector2(0.0f, 0.0f), 0.05f);
 
 		st->SetScale(Vector2(0.9f, 0.9f));
 	}
-	UseShield::~UseShield()
+	ShieldEffect::~ShieldEffect()
 	{
 	}
-	void UseShield::Initialize()
+	void ShieldEffect::Initialize()
 	{
 		Item::Initialize();
 	}
-	void UseShield::Update()
+	void ShieldEffect::Update()
 	{
-
-
-
 		Item::Update();
 	}
-	void UseShield::Render(HDC hdc)
+	void ShieldEffect::Render(HDC hdc)
 	{
 		Item::Render(hdc);
 	}
-	void UseShield::OnCollisionEnter(Collider* other)
+	void ShieldEffect::OnCollisionEnter(Collider* other)
 	{
 	}
-	void UseShield::OnCollisionStay(Collider* other)
+	void ShieldEffect::OnCollisionStay(Collider* other)
 	{
 	}
-	void UseShield::OnCollisionExit(Collider* other)
+	void ShieldEffect::OnCollisionExit(Collider* other)
 	{
 	}
-	void UseShield::Idle()
+	void ShieldEffect::Idle()
 	{
 	}
-	void UseShield::Use()
+	void ShieldEffect::Use()
 	{
 		Animator* st = GetComponent<Animator>();
 
@@ -63,7 +60,7 @@ namespace hy
 		if (Shieldtime < 3.0f)
 		{
 			st->SetScale(Vector2(0.9f, 0.9f));
-			st->PlayAnimation(L"BazziShield", true);
+			st->PlayAnimation(L"UseShieldEffect", true);
 			// 모든 충돌체 충돌 끄는 코드 삽입
 		}
 		else
