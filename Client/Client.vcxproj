@@ -171,6 +171,7 @@
     <ClInclude Include="hyShield.h" />
     <ClInclude Include="hySound.h" />
     <ClInclude Include="hySoundManager.h" />
+    <ClInclude Include="hySteam.h" />
     <ClInclude Include="hyTile.h" />
     <ClInclude Include="hyTimer.h" />
     <ClInclude Include="hyToolScene.h" />
@@ -242,6 +243,7 @@
     <ClCompile Include="hyShield.cpp" />
     <ClCompile Include="hySound.cpp" />
     <ClCompile Include="hySoundManager.cpp" />
+    <ClCompile Include="hySteam.cpp" />
     <ClCompile Include="hyTile.cpp" />
     <ClCompile Include="hyTimer.cpp" />
     <ClCompile Include="hyToolScene.cpp" />

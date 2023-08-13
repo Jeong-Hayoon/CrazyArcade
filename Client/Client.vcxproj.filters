@@ -189,6 +189,12 @@
     <Filter Include="Contents\GameObject\Monster\PiateMap\PirateBoss">
       <UniqueIdentifier>{34e53a8a-377e-470a-ae25-adc5817bca0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Effect\Steam">
+      <UniqueIdentifier>{c0188692-4d26-4f72-8a5f-ce4e12b9d9fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Effect\Shield">
+      <UniqueIdentifier>{3a0c2d28-e0c2-4f68-a241-a37f446a6001}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -383,9 +389,6 @@
     <ClInclude Include="hyUserItem.h">
       <Filter>Contents\GameObject\Item</Filter>
     </ClInclude>
-    <ClInclude Include="hyShieldEffect.h">
-      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
-    </ClInclude>
     <ClInclude Include="hyBombFlow.h">
       <Filter>Contents\GameObject\Effect\Bomb</Filter>
     </ClInclude>
@@ -400,6 +403,12 @@
     </ClInclude>
     <ClInclude Include="hyUI.h">
       <Filter>Contents\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="hyShieldEffect.h">
+      <Filter>Contents\GameObject\Effect\Shield</Filter>
+    </ClInclude>
+    <ClInclude Include="hySteam.h">
+      <Filter>Contents\GameObject\Effect\Steam</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -594,9 +603,6 @@
     <ClCompile Include="hyUserItem.cpp">
       <Filter>Contents\GameObject\Item</Filter>
     </ClCompile>
-    <ClCompile Include="hyShieldEffect.cpp">
-      <Filter>Contents\GameObject\Item\Kind of Item</Filter>
-    </ClCompile>
     <ClCompile Include="hyBombFlow.cpp">
       <Filter>Contents\GameObject\Effect\Bomb</Filter>
     </ClCompile>
@@ -611,6 +617,12 @@
     </ClCompile>
     <ClCompile Include="hyUI.cpp">
       <Filter>Contents\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="hyShieldEffect.cpp">
+      <Filter>Contents\GameObject\Effect\Shield</Filter>
+    </ClCompile>
+    <ClCompile Include="hySteam.cpp">
+      <Filter>Contents\GameObject\Effect\Steam</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

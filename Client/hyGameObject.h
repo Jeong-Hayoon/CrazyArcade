@@ -7,6 +7,7 @@ namespace hy
 	class GameObject : public Entity
 	{
 	public:
+		//GameObject의 상태
 		enum class eState
 		{
 			Active,
@@ -60,13 +61,13 @@ namespace hy
 		eLayerType GetLayerType() { return mLayerType; }
 
 
-	private:
-		void death() { mState = eState::Dead; }
 
 	private:
 		std::vector<Component*> mComponents;		// Component(eComponentType, GameObject)
 		eState mState;
 		eLayerType mLayerType;
+		void death() { mState = eState::Dead; }
+
 
 	};
 	// 죽은 게임 오브젝트를 메모리 제거해주는 함수
