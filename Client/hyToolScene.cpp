@@ -16,6 +16,7 @@
 namespace hy
 {
 	ToolScene::ToolScene()
+		:mType(eType::None)
 	{
 	}
 	ToolScene::~ToolScene()
@@ -146,7 +147,7 @@ namespace hy
 
 			// 열어놓은 파일에 원하는 크기만큼 파일에 기록
 			// sourceX, sourceY - 우측의 타일의 소스 인덱스
-			// myX, myY - 좌측의 타일 소스 인덱스
+			// myX, myY - 좌측의 타일 인덱스
 			fwrite(&sourceX, sizeof(int), 1, pFile);
 			fwrite(&sourceY, sizeof(int), 1, pFile);
 			fwrite(&myX, sizeof(int), 1, pFile);
