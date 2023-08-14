@@ -105,8 +105,21 @@ namespace hy
 		fclose(pFile);
 	}
 
+	void ForestMap1::Enter()
+	{
+		Resources::Find<Sound>(L"LoginSound")->Play(false);
+
+	}
+
+	void ForestMap1::Exit()
+	{
+	}
+
 	void ForestMap1::Initialize()
 	{
+		// 사운드 적용
+		Resources::Load<Sound>(L"LoginSound", L"..\\Resources\\Sound\\Sound\\login_scene.wav");
+
 		// 타이머
 		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
 		Transform* TimerDottr = TimerDot->GetComponent<Transform>();
@@ -302,7 +315,9 @@ namespace hy
 
 		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
 		{
-			SceneManager::LoadScene(L"IceMap");
+			Resources::Find<Sound>(L"LoginSound")->Stop(1);
+
+			SceneManager::LoadScene(L"ForestMap2");
 		}
 
 

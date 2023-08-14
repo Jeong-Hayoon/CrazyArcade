@@ -23,6 +23,8 @@ namespace hy
 
 		Layer& GetLayer(eLayerType type) { return mLayers[(UINT)type]; }
 
+		virtual void Enter();
+		virtual void Exit();
 
 	private:
 		std::vector<Layer> mLayers;

@@ -1,4 +1,4 @@
-#include "hyForestMap2.h"
+#include "hyPirateMap1.h"
 #include "hyPlayScene.h"
 #include "hyTitleScene.h"
 #include "hySpriteRenderer.h"
@@ -33,16 +33,16 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT ForestMap2::MonsterQuantity = 1;
+	UINT PirateMap1::MonsterQuantity = 1;
 
-	ForestMap2::ForestMap2()
+	PirateMap1::PirateMap1()
 	{
 	}
-	ForestMap2::~ForestMap2()
+	PirateMap1::~PirateMap1()
 	{
 	}
 
-	void ForestMap2::Load()
+	void PirateMap1::Load()
 	{
 		/*	Texture* forestFloor
 				= Resources::Load<Texture>(L"ForestFloorTile", L"..\\resources\\image\\Bg\\ForestTile.bmp");*/
@@ -105,17 +105,17 @@ namespace hy
 		fclose(pFile);
 	}
 
-	void ForestMap2::Enter()
+	void PirateMap1::Enter()
 	{
 		Resources::Find<Sound>(L"LoginSound")->Play(false);
 
 	}
 
-	void ForestMap2::Exit()
+	void PirateMap1::Exit()
 	{
 	}
 
-	void ForestMap2::Initialize()
+	void PirateMap1::Initialize()
 	{
 		// 사운드 적용
 		Resources::Load<Sound>(L"LoginSound", L"..\\Resources\\Sound\\Sound\\login_scene.wav");
@@ -181,7 +181,7 @@ namespace hy
 		Texture* Tile_
 			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
 
-		ForestMap2::Load();
+		PirateMap1::Load();
 
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
@@ -309,7 +309,7 @@ namespace hy
 			//Scene::Initialize();
 	}
 
-	void ForestMap2::Update()
+	void PirateMap1::Update()
 	{
 		Scene::Update();
 
@@ -317,12 +317,12 @@ namespace hy
 		{
 			Resources::Find<Sound>(L"LoginSound")->Stop(1);
 
-			SceneManager::LoadScene(L"ForestMap3");
+			SceneManager::LoadScene(L"PirateMap2");
 		}
 
 
 	}
-	void ForestMap2::Render(HDC hdc)
+	void PirateMap1::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
 

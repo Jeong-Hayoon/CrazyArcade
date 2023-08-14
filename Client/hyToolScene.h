@@ -26,6 +26,9 @@ namespace hy
 		void Save();
 		void Load();
 
+		virtual void Enter();
+		virtual void Exit();
+
 	private:
 		std::vector<Tile*> mTiles;
 

@@ -218,4 +218,10 @@ namespace hy
 		// 메모리 할당된 것을 삭제해주는 함수
 		fclose(pFile);
 	}
+	void ToolScene::Enter()
+	{
+	}
+	void ToolScene::Exit()
+	{
+	}
 }

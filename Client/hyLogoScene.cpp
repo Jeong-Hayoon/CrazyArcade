@@ -25,7 +25,6 @@ namespace hy
 	{
 		// »ç¿îµå Àû¿ë
 		Resources::Load<Sound>(L"LogoSound", L"..\\Resources\\Sound\\Sound\\logo.wav");
-		Resources::Find<Sound>(L"LogoSound")->Play(false);
 
 		// ³Ø½¼ È­¸é
 		Texture* Logo_ = Resources::Load<Texture>(L"Logo"	
@@ -54,5 +53,13 @@ namespace hy
 	void LogoScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
+	}
+	void LogoScene::Enter()
+	{
+		Resources::Find<Sound>(L"LogoSound")->Play(false);
+
+	}
+	void LogoScene::Exit()
+	{
 	}
 }

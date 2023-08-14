@@ -29,7 +29,6 @@ namespace hy
 
 		// 사운드 적용
 		Resources::Load<Sound>(L"LoginSound", L"..\\Resources\\Sound\\Sound\\login_scene.wav");
-		Resources::Find<Sound>(L"LoginSound")->Play(true);
 
 		// 게임시작 화면
 		Texture* image = Resources::Load<Texture>(L"TitleBackGroundImgae"	// 이미지 포인터형으로 리소스를 반환해줌, 이미지 로드
@@ -110,5 +109,14 @@ namespace hy
 		//int strLen = wcsnlen_s(szFloat, 50);
 
 		//TextOut(hdc, 700, 350, szFloat, strLen);
+	}
+	void TitleScene::Enter()
+	{
+		Resources::Find<Sound>(L"LoginSound")->Play(true);
+
+
+	}
+	void TitleScene::Exit()
+	{
 	}
 }

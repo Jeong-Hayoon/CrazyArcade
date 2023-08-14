@@ -163,7 +163,7 @@
     <ClInclude Include="hyNeedle.h" />
     <ClInclude Include="hyObjectCollider.h" />
     <ClInclude Include="hyPirateBoss.h" />
-    <ClInclude Include="hyPirateMap.h" />
+    <ClInclude Include="hyPirateMap1.h" />
     <ClInclude Include="hyPirateMap2.h" />
     <ClInclude Include="hyPirateMap3.h" />
     <ClInclude Include="hyPirateMonster.h" />
@@ -238,7 +238,7 @@
     <ClCompile Include="hyNeedle.cpp" />
     <ClCompile Include="hyObjectCollider.cpp" />
     <ClCompile Include="hyPirateBoss.cpp" />
-    <ClCompile Include="hyPirateMap.cpp" />
+    <ClCompile Include="hyPirateMap1.cpp" />
     <ClCompile Include="hyPirateMap2.cpp" />
     <ClCompile Include="hyPirateMap3.cpp" />
     <ClCompile Include="hyPirateMonster.cpp" />

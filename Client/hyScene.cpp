@@ -36,5 +36,11 @@ namespace hy
 			layer.Render(hdc);
 		}
 	}
+	void Scene::Enter()
+	{
+	}
+	void Scene::Exit()
+	{
+	}
 }
 

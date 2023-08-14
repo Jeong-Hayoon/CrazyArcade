@@ -13,6 +13,9 @@ namespace hy
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
+		virtual void Enter();
+		virtual void Exit();
+
 	private:
 	// bool mbStart;
 	};

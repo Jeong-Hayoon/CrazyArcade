@@ -308,7 +308,7 @@
     <ClInclude Include="hyIceMap1.h">
       <Filter>Contents\Scene\PlayScene\Ice\Stage1</Filter>
     </ClInclude>
-    <ClInclude Include="hyPirateMap.h">
+    <ClInclude Include="hyPirateMap1.h">
       <Filter>Contents\Scene\PlayScene\Pirate\Stage1</Filter>
     </ClInclude>
     <ClInclude Include="hyForestMap2.h">
@@ -531,7 +531,7 @@
     <ClCompile Include="hyIceMap1.cpp">
       <Filter>Contents\Scene\PlayScene\Ice\Stage1</Filter>
     </ClCompile>
-    <ClCompile Include="hyPirateMap.cpp">
+    <ClCompile Include="hyPirateMap1.cpp">
       <Filter>Contents\Scene\PlayScene\Pirate\Stage1</Filter>
     </ClCompile>
     <ClCompile Include="hyForestMap2.cpp">

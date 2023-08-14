@@ -12,78 +12,319 @@
 #include "hyTransform.h"
 #include "hyAnimator.h"
 #include "hyBazzi.h"
-#include "hyPirateMonster.h"
+#include "hyForestMonster_1.h"
+#include "hyCollisionManager.h"
+#include "hyToolScene.h"
+#include "hyBalloon.h"
+#include "hyDevil.h"
+#include "hyPotion.h"
+#include "hyNeedle.h"
+#include "hyShield.h"
+#include "hySecond.h"
+#include "hyTen_Second.h"
+#include "hyMinutes.h"
+#include "hyDot.h"
 
 
+
+// 타일 위치 30,55에 넣기
 
 extern hy::Application application;
 
 namespace hy
 {
+	UINT IceMap2::MonsterQuantity = 1;
+
 	IceMap2::IceMap2()
 	{
 	}
 	IceMap2::~IceMap2()
 	{
 	}
+
+	void IceMap2::Load()
+	{
+		/*	Texture* forestFloor
+				= Resources::Load<Texture>(L"ForestFloorTile", L"..\\resources\\image\\Bg\\ForestTile.bmp");*/
+
+		OPENFILENAME ofn = {};
+
+		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\ForestTile_1.tm";
+
+		//ZeroMemory(&ofn, sizeof(ofn));
+		//ofn.lStructSize = sizeof(ofn);
+		//ofn.hwndOwner = NULL;
+		//ofn.lpstrFile = szFilePath;
+		//ofn.lpstrFile[0] = '\0';
+		//ofn.nMaxFile = 256;
+		//ofn.lpstrFilter = L"All\0*.*\0Text\0*.TXT\0";
+		//ofn.nFilterIndex = 1;
+		//ofn.lpstrFileTitle = NULL;
+		//ofn.nMaxFileTitle = 0;
+		//ofn.lpstrInitialDir = NULL;
+		//ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+		//if (false == GetOpenFileName(&ofn))
+		//	return;
+
+		// rb : 이진수로 파일을 읽음
+		FILE* pFile = nullptr;
+		_wfopen_s(&pFile, szFilePath, L"rb");
+
+		if (pFile == nullptr)
+			return;
+
+		while (true)
+		{
+			int sourceX = -1;
+			int sourceY = -1;
+
+			int	myX = -1;
+			int myY = -1;
+
+			if (fread(&sourceX, sizeof(int), 1, pFile) == NULL)
+				break;
+			if (fread(&sourceY, sizeof(int), 1, pFile) == NULL)
+				break;
+			if (fread(&myX, sizeof(int), 1, pFile) == NULL)
+				break;
+			if (fread(&myY, sizeof(int), 1, pFile) == NULL)
+				break;
+
+			Vector2 offset = Vector2((TILE_WIDTH) / 2.0f, (TILE_HEIGHT) / 2.0f);
+			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile
+				, Vector2(myX * (TILE_WIDTH)+offset.x + LEFT_TOP_X
+					, myY * (TILE_HEIGHT)+offset.y + LEFT_TOP_Y));
+
+			tile->SetTile(sourceX, sourceY);
+			tile->SetSourceTileIdx(sourceX, sourceY);
+			tile->SetTileIdx(myX, myY);
+
+			mTiles.push_back(tile);
+		}
+		fclose(pFile);
+	}
+
+	void IceMap2::Enter()
+	{
+		Resources::Find<Sound>(L"LoginSound")->Play(false);
+
+	}
+
+	void IceMap2::Exit()
+	{
+	}
+
 	void IceMap2::Initialize()
 	{
-		//게임 틀
-		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImgae"
+		// 사운드 적용
+		Resources::Load<Sound>(L"LoginSound", L"..\\Resources\\Sound\\Sound\\login_scene.wav");
+
+		// 타이머
+		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
+		Transform* TimerDottr = TimerDot->GetComponent<Transform>();
+		TimerDottr->SetPosition(Vector2(735.f, 81.f));
+
+		Second* ForestSecondTimer = object::Instantiate<Second>(eLayerType::UI);
+		Transform* ForestSecondTimertr = ForestSecondTimer->GetComponent<Transform>();
+		ForestSecondTimertr->SetPosition(Vector2(765.f, 81.f));
+
+		Ten_Second* ForestTen_SecondTimer = object::Instantiate<Ten_Second>(eLayerType::UI);
+		Transform* ForestTen_SecondTimertr = ForestTen_SecondTimer->GetComponent<Transform>();
+		ForestTen_SecondTimertr->SetPosition(Vector2(750.f, 81.f));
+
+		Minutes* ForestMinutesTimer = object::Instantiate<Minutes>(eLayerType::UI);
+		Transform* ForestMinutesTimertr = ForestMinutesTimer->GetComponent<Transform>();
+		ForestMinutesTimertr->SetPosition(Vector2(720.f, 81.f));
+
+		// 게임 틀
+		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImage"
 			, L"..\\Resources\\Image\\Bg\\play.bmp");
 
 		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
-		bgsr->SetScale(Vector2(1.5f, 1.338f));
-		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2 + 10)));
+		bgsr->SetScale(Vector2(1.f, 1.f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));
 
+		// 게임 틀 Collider 생성
+		Texture* GameFrameColObject = Resources::Load<Texture>(L"PlayBackGroundImage"
+			, L"..\\Resources\\Image\\Bg\\GameFrameObject.bmp");
 
-		// 각 맵에 따른 화면
-		Texture* IceMap1 = Resources::Load<Texture>(L"IceMapImage"
-			, L"..\\Resources\\Image\\Bg\\ICETILE.bmp");
-		BackGround* icemap1 = object::Instantiate<BackGround>(eLayerType::Background);
-		icemap1->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 410.0f));
-		SpriteRenderer* icemapsr = icemap1->AddComponent<SpriteRenderer>();
-		icemapsr->SetImage(IceMap1);
-		icemapsr->SetScale(Vector2(1.0f, 0.90f));
+		BackGround* gfco = object::Instantiate<BackGround>(eLayerType::Collider);
+		SpriteRenderer* gfcosr = gfco->AddComponent<SpriteRenderer>();
+		gfcosr->SetImage(image);
+		gfcosr->SetScale(Vector2(1.f, 1.f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));
 
-		//배찌 상하좌우 애니메이션
-		Bazzi* icebazzi = object::Instantiate<Bazzi>(eLayerType::Player);
-		icebazzi->GetComponent<Transform>()->SetPosition(Vector2(60.0f, 70.0f));
+		// GameFrameColObject 충돌 구현
+		Collider* gfcocol = gfco->AddComponent<Collider>();
+		// GameFrameColObject 충돌 사각형 사이즈 수정
+		gfcocol->SetSize(Vector2(10.0f, 10.0f));
+
+		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Collider, true);
+
+		// 각 맵에 따른 맵 화면
+		/*Texture* ForestMap1 = Resources::Load<Texture>(L"ForestMapImage"
+			, L"..\\Resources\\Image\\Bg\\ForestTile.bmp");
+		BackGround* forestmap1 = object::Instantiate<BackGround>(eLayerType::Background);
+		forestmap1->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 402.0f));
+		SpriteRenderer* forestmapsr= forestmap1->AddComponent<SpriteRenderer>();
+		forestmapsr->SetImage(ForestMap1);
+		forestmapsr->SetScale(Vector2(1.0f, 0.90f));*/
+
+		// 타일 주석
+		/*Texture* Tile_
+			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");*/
+
+		Texture* Tile_
+			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
+
+		IceMap2::Load();
 
 		// 배찌 프로필
 		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
 			, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
 
-		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::Background);
-		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(1022.0f, 163.0f));
+		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::UI);
+		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
 		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
 		bzprofilesr->SetImage(BZProfile);
-		bzprofilesr->SetScale(Vector2(0.8f, 0.8f));
+		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
 
-		/*std::wstring name = player->GetName();*/
+		// 배찌 상하좌우 애니메이션
+		Bazzi* forestbazzi1 = object::Instantiate<Bazzi>(eLayerType::Player);
+		Transform* forestbazzitr = forestbazzi1->GetComponent<Transform>();
+		forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
 
-		// 아이스 몬스터
-		PirateMonster* icemonster = object::Instantiate<PirateMonster>(eLayerType::Player);
-		icemonster->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
+		// 포레스트 몬스터
+		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
 
-		Scene::Initialize();
+		// 배찌 충돌 구현
+		Collider* col = forestbazzi1->AddComponent<Collider>();
+		// 배찌의 충돌 사각형 사이즈 수정
+		col->SetSize(Vector2(30.0f, 25.0f));
+		col->SetOffset(Vector2(0.0f, 10.0f));
+		forestbazzitr->SetPosition(Vector2(100.0f, 100.0f));
 
+
+		// 포레스트 몬스터의 충돌 사각형 사이즈 수정
+		col = ForestMonster1->AddComponent<Collider>();
+		col->SetSize(Vector2(30.0f, 40.0f));
+
+		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
+
+		// Balloon 아이템 setting
+		Balloon* Balloon_1 = object::Instantiate<Balloon>(eLayerType::Item);
+		Transform* Balloontr = Balloon_1->GetComponent<Transform>();
+		Vector2 Balloonpos = Balloontr->GetPosition();
+
+		Balloonpos.y = 250.f;
+		Balloonpos.x = 150.f;
+
+		Balloon_1->GetComponent<Transform>()->SetPosition(Balloonpos);
+
+		// Balloon 아이템 충돌 구현
+		Collider* Ballooncol = Balloon_1->AddComponent<Collider>();
+		// Balloon 아이템 충돌 사각형 사이즈 수정
+		Ballooncol->SetSize(Vector2(10.0f, 30.0f));
+
+		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
+
+		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::UseItem, true);
+
+		// Devil 아이템 setting
+		Devil* Devil_1 = object::Instantiate<Devil>(eLayerType::Item);
+		Transform* Deviltr = Devil_1->GetComponent<Transform>();
+		Vector2 Devilpos = Deviltr->GetPosition();
+
+		Devilpos.y = 250.f;
+		Devilpos.x = 250.f;
+
+		Devil_1->GetComponent<Transform>()->SetPosition(Devilpos);
+
+		// Devil 아이템 충돌 구현
+		Collider* Devilcol = Devil_1->AddComponent<Collider>();
+		// Devil 아이템 충돌 사각형 사이즈 수정
+		Devilcol->SetSize(Vector2(10.0f, 30.0f));
+		Devilcol->SetOffset(Vector2(0.0f, 0.0f));
+
+		// Potion 아이템 setting
+		Potion* Potion_1 = object::Instantiate<Potion>(eLayerType::Item);
+		Transform* Potiontr = Potion_1->GetComponent<Transform>();
+		Vector2 Potionpos = Potiontr->GetPosition();
+
+		Potionpos.y = 250.f;
+		Potionpos.x = 350.f;
+
+		Potion_1->GetComponent<Transform>()->SetPosition(Potionpos);
+
+		// Potion 아이템 충돌 구현
+		Collider* Potioncol = Potion_1->AddComponent<Collider>();
+		// Potion 아이템 충돌 사각형 사이즈 수정
+		Potioncol->SetSize(Vector2(10.0f, 30.0f));
+		Potioncol->SetOffset(Vector2(0.0f, 0.0f));
+
+		// Shield 아이템 setting
+		Shield* Shield_1 = object::Instantiate<Shield>(eLayerType::UseItem);
+		Transform* Shieldtr = Shield_1->GetComponent<Transform>();
+		Vector2 Shieldnpos = Shieldtr->GetPosition();
+
+		Shieldnpos.y = 250.f;
+		Shieldnpos.x = 450.f;
+
+		Shield_1->GetComponent<Transform>()->SetPosition(Shieldnpos);
+
+		// Shield 아이템 충돌 구현
+		Collider* Shieldcol = Shield_1->AddComponent<Collider>();
+		// Shield 아이템 충돌 사각형 사이즈 수정
+		Shieldcol->SetSize(Vector2(10.0f, 30.0f));
+		Shieldcol->SetOffset(Vector2(0.0f, 0.0f));
+
+
+		// Needle 아이템 setting
+		Needle* Needle_1 = object::Instantiate<Needle>(eLayerType::UseItem);
+		Transform* Needletr = Needle_1->GetComponent<Transform>();
+		Vector2 Needlepos = Needletr->GetPosition();
+
+		Needlepos.y = 250.f;
+		Needlepos.x = 550.f;
+
+		Needle_1->GetComponent<Transform>()->SetPosition(Needlepos);
+
+		// Needle 아이템 충돌 구현
+		Collider* Needlecol = Needle_1->AddComponent<Collider>();
+		// Needle 아이템 충돌 사각형 사이즈 수정
+		Needlecol->SetSize(Vector2(10.0f, 30.0f));
+		Needlecol->SetOffset(Vector2(0.0f, 0.0f));
+
+		/*Texture* Tile_
+			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");*/
+			//ForestMap1::Load();
+			//Scene::Initialize();
 	}
+
 	void IceMap2::Update()
 	{
 		Scene::Update();
 
 		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
 		{
-			SceneManager::LoadScene(L"PirateMap");
+			Resources::Find<Sound>(L"LoginSound")->Stop(1);
+
+			SceneManager::LoadScene(L"IceMap3");
 		}
+
+
 	}
 	void IceMap2::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
-
 
 	}
 }
