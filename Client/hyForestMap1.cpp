@@ -20,7 +20,10 @@
 #include "hyPotion.h"
 #include "hyNeedle.h"
 #include "hyShield.h"
-#include "hyTimer.h"
+#include "hySecond.h"
+#include "hyTen_Second.h"
+#include "hyMinutes.h"
+#include "hyDot.h"
 
 
 
@@ -105,15 +108,27 @@ namespace hy
 	void ForestMap1::Initialize()
 	{
 		// 타이머
-		Timer* ForestTimer = object::Instantiate<Timer>(eLayerType::UI);
-		ForestTimer->Seconds();
-		ForestTimer->GetComponent<Transform>()->SetPosition(Vector2(500.f,500.f));
+		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
+		Transform* TimerDottr = TimerDot->GetComponent<Transform>();
+		TimerDottr->SetPosition(Vector2(735.f, 81.f));
+
+		Second* ForestSecondTimer = object::Instantiate<Second>(eLayerType::UI);
+		Transform* ForestSecondTimertr = ForestSecondTimer->GetComponent<Transform>();
+		ForestSecondTimertr->SetPosition(Vector2(765.f, 81.f));
+
+		Ten_Second* ForestTen_SecondTimer = object::Instantiate<Ten_Second>(eLayerType::UI);
+		Transform* ForestTen_SecondTimertr = ForestTen_SecondTimer->GetComponent<Transform>();
+		ForestTen_SecondTimertr->SetPosition(Vector2(750.f, 81.f));
+
+		Minutes* ForestMinutesTimer = object::Instantiate<Minutes>(eLayerType::UI);
+		Transform* ForestMinutesTimertr = ForestMinutesTimer->GetComponent<Transform>();
+		ForestMinutesTimertr->SetPosition(Vector2(720.f, 81.f));
 
 		// 게임 틀
 		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImage"
 			, L"..\\Resources\\Image\\Bg\\play.bmp");
 
-		BackGround* bg = object::Instantiate<BackGround>(eLayerType::UI);
+		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.f, 1.f));

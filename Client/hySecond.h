@@ -4,11 +4,11 @@
 
 namespace hy
 {
-	class Timer : public GameObject
+	class Second : public GameObject
 	{
 	public:
 
-		enum class eState
+		/*enum class eState
 		{
 			Zero,
 			One,
@@ -21,32 +21,32 @@ namespace hy
 			Eight,
 			Nine,
 			End,
-		};
+		};*/
 
-		Timer();
-		virtual ~Timer();
+		Second();
+		virtual ~Second();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void Render(HDC hdc)override;
 
-		void Zero();
-		void One();
-		void Two();
-		void Three();
-		void Four();
-		void Five();
-		void Six();
-		void Seven();
-		void Eight();
-		void Nine();
+		//void Zero();
+		//void One();
+		//void Two();
+		//void Three();
+		//void Four();
+		//void Five();
+		//void Six();
+		//void Seven();
+		//void Eight();
+		//void Nine();
 
-		void Ten_Seconds();
+		/*void Ten_Seconds();
 		void Seconds();
-		void Minutes();
+		void Minutes();*/
 
 	private:
-		eState mState;
+		//eState mState;
 
 	};
 }

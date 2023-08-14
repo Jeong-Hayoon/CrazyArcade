@@ -144,6 +144,7 @@
     <ClInclude Include="hyCollisionManager.h" />
     <ClInclude Include="hyDao.h" />
     <ClInclude Include="hyDevil.h" />
+    <ClInclude Include="hyDot.h" />
     <ClInclude Include="hyFloor.h" />
     <ClInclude Include="hyForestBoss.h" />
     <ClInclude Include="hyForestMap1.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="hyItem.h" />
     <ClInclude Include="hyLogoScene.h" />
     <ClInclude Include="hyMapData.h" />
+    <ClInclude Include="hyMinutes.h" />
     <ClInclude Include="hyNeedle.h" />
     <ClInclude Include="hyObjectCollider.h" />
     <ClInclude Include="hyPirateBoss.h" />
@@ -172,8 +174,9 @@
     <ClInclude Include="hySound.h" />
     <ClInclude Include="hySoundManager.h" />
     <ClInclude Include="hySteam.h" />
+    <ClInclude Include="hyTen_Second.h" />
     <ClInclude Include="hyTile.h" />
-    <ClInclude Include="hyTimer.h" />
+    <ClInclude Include="hySecond.h" />
     <ClInclude Include="hyToolScene.h" />
     <ClInclude Include="hyUI.h" />
     <ClInclude Include="hyUserItem.h" />
@@ -215,6 +218,7 @@
     <ClCompile Include="hyCollisionManager.cpp" />
     <ClCompile Include="hyDao.cpp" />
     <ClCompile Include="hyDevil.cpp" />
+    <ClCompile Include="hyDot.cpp" />
     <ClCompile Include="hyFloor.cpp" />
     <ClCompile Include="hyForestBoss.cpp" />
     <ClCompile Include="hyForestMap1.cpp" />
@@ -230,6 +234,7 @@
     <ClCompile Include="hyMapData.cpp" />
     <ClCompile Include="hyMath.cpp" />
     <ClCompile Include="hyForestMonster_1.cpp" />
+    <ClCompile Include="hyMinutes.cpp" />
     <ClCompile Include="hyNeedle.cpp" />
     <ClCompile Include="hyObjectCollider.cpp" />
     <ClCompile Include="hyPirateBoss.cpp" />
@@ -244,8 +249,9 @@
     <ClCompile Include="hySound.cpp" />
     <ClCompile Include="hySoundManager.cpp" />
     <ClCompile Include="hySteam.cpp" />
+    <ClCompile Include="hyTen_Second.cpp" />
     <ClCompile Include="hyTile.cpp" />
-    <ClCompile Include="hyTimer.cpp" />
+    <ClCompile Include="hySecond.cpp" />
     <ClCompile Include="hyToolScene.cpp" />
     <ClCompile Include="hyUI.cpp" />
     <ClCompile Include="hyUserItem.cpp" />

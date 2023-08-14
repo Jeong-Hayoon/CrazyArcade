@@ -398,7 +398,7 @@
     <ClInclude Include="hyMapData.h">
       <Filter>Tool</Filter>
     </ClInclude>
-    <ClInclude Include="hyTimer.h">
+    <ClInclude Include="hySecond.h">
       <Filter>Contents\GameObject\UI</Filter>
     </ClInclude>
     <ClInclude Include="hyUI.h">
@@ -409,6 +409,15 @@
     </ClInclude>
     <ClInclude Include="hySteam.h">
       <Filter>Contents\GameObject\Effect\Steam</Filter>
+    </ClInclude>
+    <ClInclude Include="hyTen_Second.h">
+      <Filter>Contents\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="hyMinutes.h">
+      <Filter>Contents\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="hyDot.h">
+      <Filter>Contents\GameObject\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -612,7 +621,7 @@
     <ClCompile Include="hyMapData.cpp">
       <Filter>Tool</Filter>
     </ClCompile>
-    <ClCompile Include="hyTimer.cpp">
+    <ClCompile Include="hySecond.cpp">
       <Filter>Contents\GameObject\UI</Filter>
     </ClCompile>
     <ClCompile Include="hyUI.cpp">
@@ -623,6 +632,15 @@
     </ClCompile>
     <ClCompile Include="hySteam.cpp">
       <Filter>Contents\GameObject\Effect\Steam</Filter>
+    </ClCompile>
+    <ClCompile Include="hyTen_Second.cpp">
+      <Filter>Contents\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="hyMinutes.cpp">
+      <Filter>Contents\GameObject\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="hyDot.cpp">
+      <Filter>Contents\GameObject\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
