@@ -16,7 +16,6 @@
 namespace hy
 {
 	ToolScene::ToolScene()
-		:mType(eType::None)
 	{
 	}
 	ToolScene::~ToolScene()

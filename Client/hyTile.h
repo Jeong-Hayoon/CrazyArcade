@@ -8,6 +8,23 @@ namespace hy
 	class Tile : public GameObject
 	{
 	public:
+
+		enum class eType
+		{
+			/*Move,
+			Fixed,*/
+
+			// floor 같이 충돌체가 없는 타일
+			None,		
+			// 부서지며 충돌체가 있는 타일
+			Crack,
+			// 부서지지는 않지만 충돌체는 있는 타입
+			Uncrushable,
+
+			End,
+		};
+
+
 		static UINT mSelectedX;
 		static UINT mSelectedY;
 
@@ -23,6 +40,9 @@ namespace hy
 		Vector2 GetSourceTileIdx() { return Vector2(mSourceIndexX, mSourceIndexY); }
 		Vector2 GetTileIdx() { return Vector2(mIndexX, mIndexY); }
 		void SetTile(int x, int y);
+		
+		eType GetType() { return mType; }
+		void SetType(eType type) { mType = type; }
 
 	private:
 		class SpriteRenderer* mSpriteRenderer;
@@ -31,6 +51,7 @@ namespace hy
 
 		UINT mIndexX;
 		UINT mIndexY;
+		eType mType;
 
 	};
 }

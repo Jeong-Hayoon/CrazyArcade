@@ -92,7 +92,7 @@ namespace hy
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
+		if (Input::GetKeyDown(eKeyCode::MouseLeft)) // N을 누르면 다음 씬으로 넘어가기
 		{
 			Resources::Find<Sound>(L"LoginSound")->Stop(1);
 			SceneManager::LoadScene(L"LobbyScene");

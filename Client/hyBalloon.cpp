@@ -5,7 +5,7 @@
 #include "hyCollider.h"
 #include "hyBazzi.h"
 #include "hyGameObject.h"
-
+#include "hySound.h"
 
 
 // ¹°Ç³¼±
@@ -31,6 +31,10 @@ namespace hy
 	void Balloon::Initialize()
 	{
 		Item::Initialize();
+
+		Resources::Load<Sound>(L"EatItem", L"..\\Resources\\Sound\\Sound\\eat_item.wav");
+
+
 	}
 
 	void Balloon::Update()
@@ -58,6 +62,8 @@ namespace hy
 	{
 		Bazzi* bz = (Bazzi*)(other->GetOwner());
 		bz->BombLimitUp();
+		Resources::Find<Sound>(L"EatItem")->Play(false);
+
 		Destroy(this);
 	}
 

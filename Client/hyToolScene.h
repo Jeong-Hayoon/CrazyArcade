@@ -15,16 +15,7 @@ namespace hy
 	class ToolScene : public Scene
 	{
 	public:
-		enum class eType
-		{
-			/*Move,
-			Fixed,*/
-			None,
-			Crack,
-			Uncrushable,
-			End,
-		};
-
+		
 		ToolScene();
 		virtual ~ToolScene();
 
@@ -41,7 +32,6 @@ namespace hy
 
 	private:
 		std::vector<Tile*> mTiles;
-		eType mType;
 
 	};
 }

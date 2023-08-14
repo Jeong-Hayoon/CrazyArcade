@@ -2,6 +2,8 @@
 #include "hyAnimator.h"
 #include "hyTexture.h"
 #include "hyResources.h"
+#include "hySound.h"
+
 
 namespace hy
 {
@@ -22,6 +24,8 @@ namespace hy
 	void PotionMax::Initialize()
 	{
 		Item::Initialize();
+		Resources::Load<Sound>(L"EatItem", L"..\\Resources\\Sound\\Sound\\eat_item.wav");
+
 	}
 	void PotionMax::Update()
 	{
@@ -33,6 +37,9 @@ namespace hy
 	}
 	void PotionMax::OnCollisionEnter(Collider* other)
 	{
+
+		Resources::Find<Sound>(L"EatItem")->Play(false);
+
 	}
 	void PotionMax::OnCollisionStay(Collider* other)
 	{

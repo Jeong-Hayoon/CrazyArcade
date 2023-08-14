@@ -4,6 +4,8 @@
 #include "hyTexture.h"
 #include "hyBazzi.h"
 #include "hyCollider.h"
+#include "hySound.h"
+
 
 
 //속도 최대 아이템
@@ -29,6 +31,8 @@ namespace hy
 	void Devil::Initialize()
 	{
 		Item::Initialize();
+		Resources::Load<Sound>(L"EatItem", L"..\\Resources\\Sound\\Sound\\eat_item.wav");
+
 	}
 
 	void Devil::Update()
@@ -56,6 +60,8 @@ namespace hy
 	{
 		Bazzi* bz = (Bazzi*)(other->GetOwner());
 		bz->MoveSpeedMax();
+		Resources::Find<Sound>(L"EatItem")->Play(false);
+
 		Destroy(this);
 	}
 

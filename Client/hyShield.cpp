@@ -6,6 +6,8 @@
 #include "hyBazzi.h"
 #include "hyObject.h"
 #include "hyTime.h"
+#include "hySound.h"
+
 
 namespace hy
 {
@@ -32,6 +34,8 @@ namespace hy
 	void Shield::Initialize()
 	{
 		Item::Initialize();
+		Resources::Load<Sound>(L"EatItem", L"..\\Resources\\Sound\\Sound\\eat_item.wav");
+
 	}
 	void Shield::Update()
 	{
@@ -51,6 +55,8 @@ namespace hy
 		{
 			player->SetActiveItem(Bazzi::eItem::Shield);
 			Bazzi::SetUseItemNum(1);
+			Resources::Find<Sound>(L"EatItem")->Play(false);
+
 			Destroy(this);
 		}
 	}

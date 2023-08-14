@@ -4,6 +4,8 @@
 #include "hyResources.h"
 #include "hyBazzi.h"
 #include "hyCollider.h"
+#include "hySound.h"
+
 
 
 
@@ -26,6 +28,8 @@ namespace hy
 	void Potion::Initialize()
 	{
 		Item::Initialize();
+		Resources::Load<Sound>(L"EatItem", L"..\\Resources\\Sound\\Sound\\eat_item.wav");
+
 	}
 	void Potion::Update()
 	{
@@ -39,6 +43,8 @@ namespace hy
 	{
 		Bazzi* bz = (Bazzi*)(other->GetOwner());
 		bz->SetBombFlowCount();
+		Resources::Find<Sound>(L"EatItem")->Play(false);
+
 		Destroy(this);
 	}
 	void Potion::OnCollisionStay(Collider* other)

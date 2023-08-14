@@ -2,6 +2,8 @@
 #include "hyAnimator.h"
 #include "hyTexture.h"
 #include "hyResources.h"
+#include "hySound.h"
+
 
 
 namespace hy
@@ -23,6 +25,8 @@ namespace hy
 	void VelocitySkate::Initialize()
 	{
 		Item::Initialize();
+		Resources::Load<Sound>(L"EatItem", L"..\\Resources\\Sound\\Sound\\eat_item.wav");
+
 	}
 	void VelocitySkate::Update()
 	{
@@ -34,6 +38,8 @@ namespace hy
 	}
 	void VelocitySkate::OnCollisionEnter(Collider* other)
 	{
+		Resources::Find<Sound>(L"EatItem")->Play(false);
+
 	}
 	void VelocitySkate::OnCollisionStay(Collider* other)
 	{

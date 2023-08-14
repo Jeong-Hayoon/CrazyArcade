@@ -42,72 +42,11 @@ namespace hy
 	{
 	}
 
-	void ForestMap1::Load()
-	{
-	/*	Texture* forestFloor
-			= Resources::Load<Texture>(L"ForestFloorTile", L"..\\resources\\image\\Bg\\ForestTile.bmp");*/
-
-		OPENFILENAME ofn = {};
-
-		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\ForestTile_1.tm";
-
-		//ZeroMemory(&ofn, sizeof(ofn));
-		//ofn.lStructSize = sizeof(ofn);
-		//ofn.hwndOwner = NULL;
-		//ofn.lpstrFile = szFilePath;
-		//ofn.lpstrFile[0] = '\0';
-		//ofn.nMaxFile = 256;
-		//ofn.lpstrFilter = L"All\0*.*\0Text\0*.TXT\0";
-		//ofn.nFilterIndex = 1;
-		//ofn.lpstrFileTitle = NULL;
-		//ofn.nMaxFileTitle = 0;
-		//ofn.lpstrInitialDir = NULL;
-		//ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
-
-		//if (false == GetOpenFileName(&ofn))
-		//	return;
-
-		// rb : 이진수로 파일을 읽음
-		FILE* pFile = nullptr;
-		_wfopen_s(&pFile, szFilePath, L"rb");
-
-		if (pFile == nullptr)
-			return;
-
-		while (true)
-		{
-			int sourceX = -1;
-			int sourceY = -1;
-
-			int	myX = -1;
-			int myY = -1;
-
-			if (fread(&sourceX, sizeof(int), 1, pFile) == NULL)
-				break;
-			if (fread(&sourceY, sizeof(int), 1, pFile) == NULL)
-				break;
-			if (fread(&myX, sizeof(int), 1, pFile) == NULL)
-				break;
-			if (fread(&myY, sizeof(int), 1, pFile) == NULL)
-				break;
-
-			Vector2 offset = Vector2((TILE_WIDTH) / 2.0f, (TILE_HEIGHT) / 2.0f);
-			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile
-				, Vector2(myX * (TILE_WIDTH)+offset.x + LEFT_TOP_X
-					, myY * (TILE_HEIGHT)+offset.y + LEFT_TOP_Y));
-
-			tile->SetTile(sourceX, sourceY);
-			tile->SetSourceTileIdx(sourceX, sourceY);
-			tile->SetTileIdx(myX, myY);
-
-			mTiles.push_back(tile);
-		}
-		fclose(pFile);
-	}
+	
 
 	void ForestMap1::Enter()
 	{
-		Resources::Find<Sound>(L"LoginSound")->Play(false);
+		Resources::Find<Sound>(L"Play")->Play(true);
 
 	}
 
@@ -118,7 +57,8 @@ namespace hy
 	void ForestMap1::Initialize()
 	{
 		// 사운드 적용
-		Resources::Load<Sound>(L"LoginSound", L"..\\Resources\\Sound\\Sound\\login_scene.wav");
+		Resources::Load<Sound>(L"Play", L"..\\Resources\\Sound\\Sound\\Map\\bg_0.wav");
+
 
 		// 타이머
 		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
@@ -165,19 +105,6 @@ namespace hy
 		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Collider, true);
 
-		// 각 맵에 따른 맵 화면
-		/*Texture* ForestMap1 = Resources::Load<Texture>(L"ForestMapImage"
-			, L"..\\Resources\\Image\\Bg\\ForestTile.bmp");
-		BackGround* forestmap1 = object::Instantiate<BackGround>(eLayerType::Background);
-		forestmap1->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 402.0f));
-		SpriteRenderer* forestmapsr= forestmap1->AddComponent<SpriteRenderer>();
-		forestmapsr->SetImage(ForestMap1);
-		forestmapsr->SetScale(Vector2(1.0f, 0.90f));*/
-
-		// 타일 주석
-		/*Texture* Tile_
-			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");*/
-
 		Texture* Tile_
 			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
 
@@ -208,7 +135,6 @@ namespace hy
 		col->SetSize(Vector2(30.0f, 25.0f));
 		col->SetOffset(Vector2(0.0f, 10.0f));
 		forestbazzitr->SetPosition(Vector2(100.0f, 100.0f));
-
 
 		// 포레스트 몬스터의 충돌 사각형 사이즈 수정
 		col = ForestMonster1->AddComponent<Collider>();
@@ -303,9 +229,6 @@ namespace hy
 		Needlecol->SetSize(Vector2(10.0f, 30.0f));
 		Needlecol->SetOffset(Vector2(0.0f, 0.0f));
 
-		/*Texture* Tile_
-			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");*/
-		//ForestMap1::Load();
 		//Scene::Initialize();
 	}
 
@@ -315,7 +238,7 @@ namespace hy
 
 		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
 		{
-			Resources::Find<Sound>(L"LoginSound")->Stop(1);
+			Resources::Find<Sound>(L"Play")->Stop(1);
 
 			SceneManager::LoadScene(L"ForestMap2");
 		}
@@ -326,5 +249,68 @@ namespace hy
 	{
 		Scene::Render(hdc);
 
+	}
+
+	void ForestMap1::Load()
+	{
+		/*	Texture* forestFloor
+				= Resources::Load<Texture>(L"ForestFloorTile", L"..\\resources\\image\\Bg\\ForestTile.bmp");*/
+
+		OPENFILENAME ofn = {};
+
+		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\ForestTile_1.tm";
+
+		//ZeroMemory(&ofn, sizeof(ofn));
+		//ofn.lStructSize = sizeof(ofn);
+		//ofn.hwndOwner = NULL;
+		//ofn.lpstrFile = szFilePath;
+		//ofn.lpstrFile[0] = '\0';
+		//ofn.nMaxFile = 256;
+		//ofn.lpstrFilter = L"All\0*.*\0Text\0*.TXT\0";
+		//ofn.nFilterIndex = 1;
+		//ofn.lpstrFileTitle = NULL;
+		//ofn.nMaxFileTitle = 0;
+		//ofn.lpstrInitialDir = NULL;
+		//ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+		//if (false == GetOpenFileName(&ofn))
+		//	return;
+
+		// rb : 이진수로 파일을 읽음
+		FILE* pFile = nullptr;
+		_wfopen_s(&pFile, szFilePath, L"rb");
+
+		if (pFile == nullptr)
+			return;
+
+		while (true)
+		{
+			int sourceX = -1;
+			int sourceY = -1;
+
+			int	myX = -1;
+			int myY = -1;
+
+			if (fread(&sourceX, sizeof(int), 1, pFile) == NULL)
+				break;
+			if (fread(&sourceY, sizeof(int), 1, pFile) == NULL)
+				break;
+			if (fread(&myX, sizeof(int), 1, pFile) == NULL)
+				break;
+			if (fread(&myY, sizeof(int), 1, pFile) == NULL)
+				break;
+
+			Vector2 offset = Vector2((TILE_WIDTH) / 2.0f, (TILE_HEIGHT) / 2.0f);
+			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile
+				, Vector2(myX * (TILE_WIDTH)+offset.x + LEFT_TOP_X
+					, myY * (TILE_HEIGHT)+offset.y + LEFT_TOP_Y));
+
+			tile->SetTile(sourceX, sourceY);
+			tile->SetSourceTileIdx(sourceX, sourceY);
+			tile->SetTileIdx(myX, myY);
+
+			mTiles.push_back(tile);
+		}
+		fclose(pFile);
 	}
 }

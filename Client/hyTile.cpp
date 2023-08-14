@@ -15,6 +15,8 @@ namespace hy
 		, mSourceIndexY(0)
 		, mIndexX(0)
 		, mIndexY(0)
+		, mType(eType::None)
+
 	{
 	}
 
