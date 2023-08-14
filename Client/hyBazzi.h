@@ -60,7 +60,7 @@ namespace hy
 		void Victory();
 
 		// 물풍선 최대 개수 증가(Balloon)
-		void BombLimitUp() { BombLimit++;}
+		static void BombLimitUp() { BombLimit++;}
 		// 이동 속도 증가(VelocitySkate)
 		void MoveSpeedUp() { MoveSpeed += 50; }
 		// 이동 속도 최대로 증가(Devil)
@@ -94,12 +94,12 @@ namespace hy
 	private:
 		eState mState;
 		eDirection mDirection;
-		UINT BombLimit;							// 물풍선 최대 사용 개수
+		static UINT BombLimit;					// 물풍선 최대 사용 개수
 		float MoveSpeed;						// 기본 속도
 		bool Life;								// 0이면 물풍선에 갇혀있는 상태, 1이면 물풍선에 갇혀있지 않은 상태
 		static eItem ActiveItem;				// 장착되어 있는 아이템(0이면 실드, 1이면 바늘로 지정)
-		static UINT BombFlowCount;					// 물줄기, 물풍선 생성 시 증가
-		//static UINT BombPutCount;						// 물풍선 생성 시 증가
+		static UINT BombFlowCount;				// 물줄기, 물풍선 생성 시 증가
+		//static UINT BombPutCount;				// 물풍선 생성 시 증가
 
 		//std::vector<Vector2> mBombPutPositions; // 물풍선을 생성하는 좌표를 담을 벡터
 		// 큐가 나으려나..

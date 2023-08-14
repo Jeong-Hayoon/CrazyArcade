@@ -192,6 +192,8 @@ namespace hy
 	void BombFlow::Extinct()
 	{
 		Destroy(this);
+		// 물풍선이 사라지고 나면 물풍선 개수 1개 추가
+		Bazzi::BombLimitUp();
 	}
 }
 

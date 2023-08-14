@@ -26,11 +26,12 @@ namespace hy
 	bool Bazzi::Trigger = false;
 	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::None;
 	bool Bazzi::UseItemNum = 0;
+	UINT Bazzi::BombLimit = 1;
+
 	
 	Bazzi::Bazzi()
 		: mState(eState::Make)
 		, mDirection(eDirection::Down)
-		, BombLimit(10)
 		, MoveSpeed(150.f)
 		, Life(1)
 	{
