@@ -44,6 +44,10 @@ namespace hy
 		eType GetType() { return mType; }
 		void SetType(eType type) { mType = type; }
 
+		virtual void OnCollisionEnter(class Collider* other) override;
+		virtual void OnCollisionStay(class Collider* other) override;
+		virtual void OnCollisionExit(class Collider* other) override;
+
 	private:
 		class SpriteRenderer* mSpriteRenderer;
 		UINT mSourceIndexX;

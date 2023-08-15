@@ -3,6 +3,8 @@
 #include "hyCollider.h"
 #include "hyTexture.h"
 #include "hyResources.h"
+#include "hyCollisionManager.h"
+
 
 namespace hy
 {
@@ -18,6 +20,7 @@ namespace hy
 		, mType(eType::None)
 
 	{
+	
 	}
 
 	Tile::~Tile()
@@ -51,5 +54,17 @@ namespace hy
 	{
 		mSpriteRenderer->SetTile(x, y);
 	}
+
+	void Tile::OnCollisionEnter(Collider* other)
+	{
+	}
+	void Tile::OnCollisionStay(Collider* other)
+	{
+
+	}
+	void Tile::OnCollisionExit(Collider* other)
+	{
+	}
+
 
 }

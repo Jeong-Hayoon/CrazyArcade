@@ -202,7 +202,7 @@ namespace hy
 		Vector2 Shieldnpos = Shieldtr->GetPosition();
 
 		Shieldnpos.y = 250.f;
-		Shieldnpos.x = 450.f;
+		Shieldnpos.x = 500.f;
 
 		Shield_1->GetComponent<Transform>()->SetPosition(Shieldnpos);
 
@@ -219,7 +219,7 @@ namespace hy
 		Vector2 Needlepos = Needletr->GetPosition();
 
 		Needlepos.y = 250.f;
-		Needlepos.x = 550.f;
+		Needlepos.x = 575.f;
 
 		Needle_1->GetComponent<Transform>()->SetPosition(Needlepos);
 
@@ -258,7 +258,7 @@ namespace hy
 
 		OPENFILENAME ofn = {};
 
-		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\ForestTile_1.tm";
+		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\ForestMap_1.tm";
 
 		//ZeroMemory(&ofn, sizeof(ofn));
 		//ofn.lStructSize = sizeof(ofn);
@@ -306,11 +306,40 @@ namespace hy
 					, myY * (TILE_HEIGHT)+offset.y + LEFT_TOP_Y));
 
 			tile->SetTile(sourceX, sourceY);
+			// Crack(부서지며 충돌체가 있는 타일)
+			if ((sourceX == 0 && sourceY == 0) ||
+				(sourceX == 1 && sourceY == 0) ||
+				(sourceX == 2 && sourceY == 0))
+			{
+				tile->SetType(Tile::eType::Crack);
+			}
+			// Uncrushable(부서지지는 않지만 충돌체는 있는 타입)
+			if ((sourceX == 0 && sourceY == 3) ||
+				(sourceX == 1 && sourceY == 3))
+			{
+				tile->SetType(Tile::eType::Uncrushable);
+			}
+			// None(충돌체가 없는 바닥같은 타일)
+			if ((sourceX == 0 && sourceY == 1))
+			{
+				tile->SetType(Tile::eType::None);
+			}
+
+			if (tile->GetType() == Tile::eType::Crack || tile->GetType() == Tile::eType::Uncrushable)
+			{
+				Collider* Col = tile->AddComponent<Collider>();;
+				Col->SetSize(Vector2(40.0f, 40.0f));
+
+				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Bomb, true);
+				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Player, true);
+				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Monster, true);
+			}
+
 			tile->SetSourceTileIdx(sourceX, sourceY);
 			tile->SetTileIdx(myX, myY);
 
 			mTiles.push_back(tile);
 		}
-		fclose(pFile);
+		fclose(pFile);	
 	}
 }

@@ -9,6 +9,9 @@
 #include "hyBackGround.h"
 #include "hyCamera.h"
 #include "hyTile.h"
+#include "hyCollisionManager.h"
+#include "hyCollider.h"
+
 
 // ToolScene에서 하던 작업을 각 씬에서 불러와주면 됨
 // 절대경로 사용
