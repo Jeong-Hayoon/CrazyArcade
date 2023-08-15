@@ -286,6 +286,7 @@ namespace hy
 	void Bomb::Pop()
 	{
 		Destroy(this);
+		Bazzi::BombLimitUp();
 	}
 
 
