@@ -185,6 +185,9 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
+			ForestMap1::SetMonsterQuantity();
+			ForestMap1::SetFunCheck(1);
+
 		}
 	}
 }

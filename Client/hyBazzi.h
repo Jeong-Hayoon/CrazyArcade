@@ -103,10 +103,6 @@ namespace hy
 		bool Life;								// 0이면 물풍선에 갇혀있는 상태, 1이면 물풍선에 갇혀있지 않은 상태
 		static eItem ActiveItem;				// 장착되어 있는 아이템(0이면 실드, 1이면 바늘로 지정)
 		static UINT BombFlowCount;				// 물줄기, 물풍선 생성 시 증가
-		//static UINT BombPutCount;				// 물풍선 생성 시 증가
-
-		//std::vector<Vector2> mBombPutPositions; // 물풍선을 생성하는 좌표를 담을 벡터
-		// 큐가 나으려나..
 
 		static bool UseItemNum;
 		static bool Trigger;

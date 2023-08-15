@@ -19,6 +19,8 @@ namespace hy
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
+		void Win();
+		void Lose();
 		void Load();
 
 		static UINT GetMonsterQuantity() { return MonsterQuantity; }
@@ -27,9 +29,12 @@ namespace hy
 		virtual void Enter();
 		virtual void Exit();
 
+		static void SetFunCheck(bool check) { FunCheck = check; }
+
 	private:
 		std::vector<Tile*> mTiles;;
 		static UINT MonsterQuantity;
+		static bool FunCheck;
 
 	};
 }

@@ -24,7 +24,7 @@
 #include "hyTen_Second.h"
 #include "hyMinutes.h"
 #include "hyDot.h"
-
+#include "hyUI.h"
 
 
 // 타일 위치 30,55에 넣기
@@ -34,6 +34,7 @@ extern hy::Application application;
 namespace hy
 {
 	UINT ForestMap1::MonsterQuantity = 1;
+	bool ForestMap1::FunCheck = 0;
 
 	ForestMap1::ForestMap1()
 	{
@@ -41,8 +42,6 @@ namespace hy
 	ForestMap1::~ForestMap1()
 	{
 	}
-
-	
 
 	void ForestMap1::Enter()
 	{
@@ -58,7 +57,8 @@ namespace hy
 	{
 		// 사운드 적용
 		Resources::Load<Sound>(L"Play", L"..\\Resources\\Sound\\Sound\\Map\\bg_0.wav");
-
+		Resources::Load<Sound>(L"Win", L"..\\Resources\\Sound\\Sound\\win.wav");
+		Resources::Load<Sound>(L"Lose", L"..\\Resources\\Sound\\Sound\\lose.wav");
 
 		// 타이머
 		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
@@ -243,11 +243,58 @@ namespace hy
 			SceneManager::LoadScene(L"ForestMap2");
 		}
 
+		if (MonsterQuantity == 0 && FunCheck == 1)
+		{
+			Win();
+			FunCheck = 0;
+		}
+
+		if (MonsterQuantity != 0 // && 배찌 상태가 Dead or BalloonDead 라면 && FunCheck == 1)
+		{
+			Lose();
+			FunCheck = 0;
+		}
+
 
 	}
 	void ForestMap1::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
+
+	}
+
+	void ForestMap1::Win()
+	{
+		Resources::Find<Sound>(L"Win")->Play(false);
+
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Texture* Win = Resources::Load<Texture>(L"WinImage"
+			, L"..\\Resources\\Image\\UI\\Win\\Win.bmp");
+
+		UI* WinUI = object::Instantiate<UI>(eLayerType::UI);
+		SpriteRenderer* winuisr = WinUI->AddComponent<SpriteRenderer>();
+		winuisr->SetImage(Win);
+		winuisr->SetScale(Vector2(1.f, 1.f));
+		WinUI->GetComponent<Transform>()->SetPosition(Vector2(335.f, 245.f));
+
+		// 배찌 Victory 상태 호출
+	}
+
+	void ForestMap1::Lose()
+	{
+		Resources::Find<Sound>(L"Lose")->Play(false);
+
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Texture* Lose = Resources::Load<Texture>(L"LoseImage"
+			, L"..\\Resources\\Image\\UI\\Lose\\Lose.bmp");
+
+		UI* LoseUI = object::Instantiate<UI>(eLayerType::UI);
+		SpriteRenderer* loseuisr = LoseUI->AddComponent<SpriteRenderer>();
+		loseuisr->SetImage(Lose);
+		loseuisr->SetScale(Vector2(1.f, 1.f));
+		LoseUI->GetComponent<Transform>()->SetPosition(Vector2(335.f, 245.f));
 
 	}
 

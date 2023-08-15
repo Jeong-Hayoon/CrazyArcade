@@ -14,7 +14,6 @@ namespace hy
 	}
 	void UI::Initialize()
 	{
-		GameObject::Initialize();
 	}
 
 	void UI::Update()
