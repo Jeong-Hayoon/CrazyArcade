@@ -16,6 +16,14 @@ namespace hy
 			End,
 		};
 
+		enum class eDirection
+		{
+			Up,
+			Down,
+			Left,
+			Right
+		};
+
 		ForestMonster_1();
 		virtual ~ForestMonster_1();
 
@@ -38,6 +46,9 @@ namespace hy
 		eState mState;
 		float mDeathTime;
 		static float MonsterTime;
+		eDirection mDirection;
+
+
 	};
 }
 

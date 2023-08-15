@@ -23,6 +23,7 @@ namespace hy
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 	
+		void PushTile(Tile* tile) { mTiles.push_back(tile); }
 
 		void Save();
 		void Load();

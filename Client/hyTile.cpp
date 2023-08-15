@@ -6,6 +6,7 @@
 #include "hyCollisionManager.h"
 #include "hySteam.h"
 #include "hyObject.h"
+#include "hyToolScene.h"
 
 
 
@@ -65,11 +66,14 @@ namespace hy
 		{
 			if (this->GetType() == eType::Crack)
 			{
-				// 랜덤 아이템 생성 코드 추가
-				this->SetSourceTileIdx(0, 1);
+				// 랜덤 아이템 생성 코드 추가(스팀 생성 -> 스팀 소멸 -> 아이템 객체 랜덤 생성)
 				Steam* steam_ = object::Instantiate<Steam>(eLayerType::Effect);
 				Transform* tiletr = this->GetComponent<Transform>();
 				Vector2  Steampos = tiletr->GetPosition();
+				//this->SetSourceTileIdx(0, 1);
+				//this->SetTileIdx(this->GetComponent<Tile>()->mIndexX, this->GetComponent<Tile>()->mIndexY);
+
+				//ToolScene->PushTile(<Tile*>(this));
 
 				steam_->GetComponent<Transform>()->SetPosition(Steampos);
 			}

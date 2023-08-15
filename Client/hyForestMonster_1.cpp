@@ -45,20 +45,6 @@ namespace hy
 	{
 		GameObject::Update();
 
-		//// 시간이 지남에 따라 객체 삭제 -> 물풍선 교체
-		//Transform* tr = GetComponent<Transform>();
-		//Vector2 pos = tr->GetPosition();
-		//pos.x += 
-		// .0f * Time::DeltaTime();
-		//tr->SetPosition(pos);
-
-		//mDeathTime -= Time::DeltaTime();
-		//if (mDeathTime < 0.0f)
-		//{
-		//	Destroy(this);
-		//}
-
-
 		switch (mState)
 		{
 		case hy::ForestMonster_1::eState::Up:
@@ -112,10 +98,7 @@ namespace hy
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && other->GetOwner()->GetComponent<Tile>()->Tile::GetType() == Tile::eType::Uncrushable)
 		{
 			// 몬스터 이동 방향 반대로
-
 		}
-
-
 	}
 
 	void ForestMonster_1::OnCollisionStay(Collider* other)

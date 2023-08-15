@@ -72,6 +72,7 @@ namespace hy
 		// (Potion)
 		// (PotionMax)
 
+		float GetMoveSpeed() { return MoveSpeed; }
 		void SetMoveSpeed(float speed) { MoveSpeed = speed; }
 
 		eItem GetActiveItem() { return ActiveItem; }

@@ -443,9 +443,9 @@ namespace hy
 		}
 		else if (mDirection == eDirection::Right)	// 방향이 오른쪽이면 오른쪽으로 이동
 		{
-			if (pos.x >= 620)
+			if (pos.x >= 610)
 			{
-				pos.x = 620;
+				pos.x = 610;
 			}
 			else
 			{
@@ -454,9 +454,9 @@ namespace hy
 		}
 		else if (mDirection == eDirection::Down)	// 방향이 아래쪽이면 아래쪽으로 이동
 		{
-			if (pos.y >= 540)
+			if (pos.y >= 530)
 			{
-				pos.y = 540;
+				pos.y = 530;
 			}
 			else
 			{
