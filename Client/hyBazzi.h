@@ -59,6 +59,7 @@ namespace hy
 		void BalloonDead ();
 		void Victory();
 
+		// ---- 아이템 관련 함수 ----
 		// 물풍선 최대 개수 증가(Balloon)
 		static void BombLimitUp() { BombLimit++;}
 		// 이동 속도 증가(VelocitySkate)
@@ -70,6 +71,8 @@ namespace hy
 		// (Shield)
 		// (Potion)
 		// (PotionMax)
+
+		void SetMoveSpeed(float speed) { MoveSpeed = speed; }
 
 		eItem GetActiveItem() { return ActiveItem; }
 		void SetActiveItem(eItem eatitem) { ActiveItem = eatitem; }

@@ -24,9 +24,6 @@
     <Filter Include="Engine\Layer">
       <UniqueIdentifier>{d5630a40-c326-4e04-b395-f238ae905225}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\GameObject">
-      <UniqueIdentifier>{87ea9720-f4e1-4c88-890f-756fa88d94ec}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Entity">
       <UniqueIdentifier>{b91cb387-7dea-4a1b-a6c3-a621fd69b85d}</UniqueIdentifier>
     </Filter>
@@ -195,6 +192,9 @@
     <Filter Include="Contents\GameObject\Effect\Shield">
       <UniqueIdentifier>{3a0c2d28-e0c2-4f68-a241-a37f446a6001}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{87ea9720-f4e1-4c88-890f-756fa88d94ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -237,7 +237,7 @@
       <Filter>Engine\Component</Filter>
     </ClInclude>
     <ClInclude Include="hyObject.h">
-      <Filter>Engine\GameObject</Filter>
+      <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="hySceneManager.h">
       <Filter>Engine\Scene</Filter>
@@ -283,9 +283,6 @@
     </ClInclude>
     <ClInclude Include="hyDao.h">
       <Filter>Contents\GameObject\Player\Dao</Filter>
-    </ClInclude>
-    <ClInclude Include="hyBazzi.h">
-      <Filter>Contents\GameObject\Player\Bazzi</Filter>
     </ClInclude>
     <ClInclude Include="hyForestMonster_1.h">
       <Filter>Contents\GameObject\Monster\ForestMap</Filter>
@@ -418,6 +415,9 @@
     </ClInclude>
     <ClInclude Include="hyDot.h">
       <Filter>Contents\GameObject\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="hyBazzi.h">
+      <Filter>Contents\GameObject\Player\Bazzi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

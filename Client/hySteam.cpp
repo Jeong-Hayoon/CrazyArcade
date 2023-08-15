@@ -19,9 +19,8 @@ namespace hy
 		: mState(eState::Make)
 	{
 		Animator* st = AddComponent<Animator>();
-		st->CreateAnimationFolder(L"Steam", L"..\\Resources\\Image\\Effect\\Crashed", Vector2(0.f, 0.f), 0.4f);
+		st->CreateAnimationFolder(L"Steam", L"..\\Resources\\Image\\Effect\\Crashed", Vector2(0.f, 0.f), 0.1f);
 		st->SetScale(Vector2(1.f, 1.f));
-		st->PlayAnimation(L"Steam", false);
 
 	}
 	Steam::~Steam()
@@ -57,6 +56,14 @@ namespace hy
 
 	void Steam::Make()
 	{
+		Animator* st = GetComponent<Animator>();
+
+		st->PlayAnimation(L"Steam", false);
+
+		if (st->IsActiveAnimationComplete())
+		{
+			mState = eState::Extinct;
+		}
 
 	}
 
@@ -64,7 +71,6 @@ namespace hy
 	{
 		Destroy(this);
 	}
-
 
 }
 

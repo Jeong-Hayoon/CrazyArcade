@@ -252,9 +252,17 @@ namespace hy
 			mState = eState::BalloonDead;*/
 		}
 
-		// 사용아이템 충돌시 
-		else if (other->GetOwner()->GetLayerType() == eLayerType::UseItem)
+		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && other->GetOwner()->GetComponent<Tile>()->Tile::GetType() == Tile::eType::Crack)
 		{
+			// 이동은 없고, 애니메이션만
+			SetMoveSpeed(0.f);
+			mState = eState::Move;
+		}
+		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && other->GetOwner()->GetComponent<Tile>()->Tile::GetType() == Tile::eType::Uncrushable)
+		{
+			// 이동은 없고, 애니메이션만
+			SetMoveSpeed(0.f);
+			mState = eState::Move;
 		}
 
 		
@@ -410,13 +418,51 @@ namespace hy
 		Animator* animator = GetComponent<Animator>();
 
  		if (mDirection == eDirection::Up)			// 방향이 위쪽이면 위쪽으로 이동
-			pos.y -= MoveSpeed * Time::DeltaTime();
+		{
+			if(pos.y <= 40)
+			{
+				pos.y = 40;
+			}
+			else
+			{
+				pos.y -= MoveSpeed * Time::DeltaTime();
+
+			}
+		}
 		else if (mDirection == eDirection::Left)	// 방향이 왼쪽이면 왼쪽으로 이동
-			pos.x -= MoveSpeed * Time::DeltaTime();
+		{
+			if (pos.x <= 30)
+			{
+				pos.x = 30;
+			}
+			else
+			{
+				pos.x -= MoveSpeed * Time::DeltaTime();
+
+			}
+		}
 		else if (mDirection == eDirection::Right)	// 방향이 오른쪽이면 오른쪽으로 이동
-			pos.x += MoveSpeed * Time::DeltaTime();
+		{
+			if (pos.x >= 620)
+			{
+				pos.x = 620;
+			}
+			else
+			{
+				pos.x += MoveSpeed * Time::DeltaTime();
+			}
+		}
 		else if (mDirection == eDirection::Down)	// 방향이 아래쪽이면 아래쪽으로 이동
-			pos.y += MoveSpeed * Time::DeltaTime();
+		{
+			if (pos.y >= 540)
+			{
+				pos.y = 540;
+			}
+			else
+			{
+				pos.y += MoveSpeed * Time::DeltaTime();
+			}
+		}
 
 		tr->SetPosition(pos);
 

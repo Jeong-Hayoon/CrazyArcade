@@ -105,6 +105,16 @@ namespace hy
 			ForestMap1::SetMonsterQuantity;
 			mState = eState::Dead;
 		}
+		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && other->GetOwner()->GetComponent<Tile>()->Tile::GetType() == Tile::eType::Crack)
+		{
+			// 몬스터 이동 방향 반대로
+		}
+		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && other->GetOwner()->GetComponent<Tile>()->Tile::GetType() == Tile::eType::Uncrushable)
+		{
+			// 몬스터 이동 방향 반대로
+
+		}
+
 
 	}
 

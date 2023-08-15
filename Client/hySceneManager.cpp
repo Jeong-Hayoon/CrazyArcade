@@ -49,7 +49,7 @@ namespace hy
 		CreateScene<ToolScene>(L"ToolScene");
 
 
-		LoadScene(L"ForestMap1");
+		LoadScene(L"LogoScene");
 	}
 
 	void SceneManager::Update()

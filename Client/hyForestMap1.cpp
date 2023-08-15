@@ -123,11 +123,11 @@ namespace hy
 		// 배찌 상하좌우 애니메이션
 		Bazzi* forestbazzi1 = object::Instantiate<Bazzi>(eLayerType::Player);
 		Transform* forestbazzitr = forestbazzi1->GetComponent<Transform>();
-		forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
+		forestbazzitr->SetPosition(Vector2(50.0f, 70.0f));
 
 		// 포레스트 몬스터
 		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
+		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(150.0f, 70.0f));
 
 		// 배찌 충돌 구현
 		Collider* col = forestbazzi1->AddComponent<Collider>();
@@ -333,6 +333,8 @@ namespace hy
 				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Bomb, true);
 				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Player, true);
 				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Monster, true);
+				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Bombflow, true);
+
 			}
 
 			tile->SetSourceTileIdx(sourceX, sourceY);
