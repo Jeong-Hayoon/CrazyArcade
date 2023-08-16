@@ -44,29 +44,11 @@ namespace hy
 
 	void ForestMap3::Load()
 	{
-		/*	Texture* forestFloor
-				= Resources::Load<Texture>(L"ForestFloorTile", L"..\\resources\\image\\Bg\\ForestTile.bmp");*/
-
 		OPENFILENAME ofn = {};
 
 		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\ForestTile_1.tm";
 
-		//ZeroMemory(&ofn, sizeof(ofn));
-		//ofn.lStructSize = sizeof(ofn);
-		//ofn.hwndOwner = NULL;
-		//ofn.lpstrFile = szFilePath;
-		//ofn.lpstrFile[0] = '\0';
-		//ofn.nMaxFile = 256;
-		//ofn.lpstrFilter = L"All\0*.*\0Text\0*.TXT\0";
-		//ofn.nFilterIndex = 1;
-		//ofn.lpstrFileTitle = NULL;
-		//ofn.nMaxFileTitle = 0;
-		//ofn.lpstrInitialDir = NULL;
-		//ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
-
-		//if (false == GetOpenFileName(&ofn))
-		//	return;
-
+	
 		// rb : 이진수로 파일을 읽음
 		FILE* pFile = nullptr;
 		_wfopen_s(&pFile, szFilePath, L"rb");
@@ -97,6 +79,38 @@ namespace hy
 					, myY * (TILE_HEIGHT)+offset.y + LEFT_TOP_Y));
 
 			tile->SetTile(sourceX, sourceY);
+
+			tile->SetTile(sourceX, sourceY);
+			// Crack(부서지며 충돌체가 있는 타일)
+			if ((sourceX == 0 && sourceY == 0) ||
+				(sourceX == 1 && sourceY == 0) ||
+				(sourceX == 2 && sourceY == 0))
+			{
+				tile->SetType(Tile::eType::Crack);
+			}
+			// Uncrushable(부서지지는 않지만 충돌체는 있는 타입)
+			if ((sourceX == 0 && sourceY == 3) ||
+				(sourceX == 1 && sourceY == 3))
+			{
+				tile->SetType(Tile::eType::Uncrushable);
+			}
+			// None(충돌체가 없는 바닥같은 타일)
+			if ((sourceX == 0 && sourceY == 1))
+			{
+				tile->SetType(Tile::eType::None);
+			}
+
+			if (tile->GetType() == Tile::eType::Crack || tile->GetType() == Tile::eType::Uncrushable)
+			{
+				Collider* Col = tile->AddComponent<Collider>();;
+				Col->SetSize(Vector2(30.0f, 30.0f));
+
+				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Bomb, true);
+				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Player, true);
+				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Monster, true);
+				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Bombflow, true);
+
+			}
 			tile->SetSourceTileIdx(sourceX, sourceY);
 			tile->SetTileIdx(myX, myY);
 
@@ -119,7 +133,8 @@ namespace hy
 	{
 		Scene::Initialize();
 		// 사운드 적용
-		Resources::Load<Sound>(L"LoginSound", L"..\\Resources\\Sound\\Sound\\login_scene.wav");
+
+		Resources::Load<Sound>(L"Play", L"..\\Resources\\Sound\\Sound\\Map\\bg_0.wav");
 
 		// 타이머
 		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
