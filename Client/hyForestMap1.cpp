@@ -37,6 +37,7 @@ namespace hy
 {
 	UINT ForestMap1::MonsterQuantity = 1;
 	bool ForestMap1::FunCheck = 0;
+	bool ForestMap1::LoseLife = 0;
 
 	ForestMap1::ForestMap1()
 	{
@@ -253,6 +254,11 @@ namespace hy
 
 		//}
 
+		if (MonsterQuantity == 0)
+		{
+			FunCheck = 1;
+		}
+
 		if (MonsterQuantity == 0 && FunCheck == 1)
 		{
 			Resources::Find<Sound>(L"Play")->Stop(1);
@@ -270,11 +276,22 @@ namespace hy
 			FunCheck = 0;
 		}
 
-		//if (MonsterQuantity != 0 // && 배찌 상태가 Dead or BalloonDead 라면 && FunCheck == 1)
-		//{
-		//	Lose();
-		//	FunCheck = 0;
-		//}
+		if (MonsterQuantity != 0 && LoseLife == 1)
+		{
+			Resources::Find<Sound>(L"Play")->Stop(1);
+
+			Win_Lose* lose = object::Instantiate< Win_Lose>(eLayerType::UI);
+			lose->Lose();
+			Transform* losetr = lose->GetComponent<Transform>();
+			losetr->SetPosition(Vector2(350.0f, 254.0f));
+
+			if (Win_Lose::GetWin_Lose_flag() == true)
+			{
+				SceneManager::LoadScene(L"ForestMap2");
+				Win_Lose::SetWin_Lose_flag(false);
+			}
+			FunCheck = 0;
+		}
 
 
 	}

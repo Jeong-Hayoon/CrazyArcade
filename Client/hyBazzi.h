@@ -112,6 +112,7 @@ namespace hy
 		bool East;
 		bool West;
 
+
 	};
 }
 

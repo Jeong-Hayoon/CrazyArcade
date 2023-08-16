@@ -656,6 +656,7 @@ namespace hy
 	void Bazzi::Dead()
 	{
 		Animator* animator = GetComponent<Animator>();
+		ForestMap1::SetLoseLife(true);
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
@@ -665,6 +666,8 @@ namespace hy
 	void Bazzi::BalloonDead()
 	{
 		Animator* animator = GetComponent<Animator>();
+		ForestMap1::SetLoseLife(true);
+
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);

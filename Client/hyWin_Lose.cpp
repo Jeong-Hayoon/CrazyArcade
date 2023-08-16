@@ -46,6 +46,7 @@ namespace hy
 		if (mTime >= 3.0f)
 		{
 			Win_Lose_flag = true;
+			mTime = 0.f;
 		}
 
 	}
@@ -62,6 +63,11 @@ namespace hy
 		Animator* at = GetComponent<Animator>();
 
 		at->PlayAnimation(L"WinAnimation", false);
+
+		if (at->IsActiveAnimationComplete())
+		{
+			Win_Lose_flag = true;
+		}
 		// 배찌 Victory 상태 호출
 	}
 

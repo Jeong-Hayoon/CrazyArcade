@@ -191,7 +191,7 @@ namespace hy
 		{
 			Destroy(this);
 			ForestMap1::SetMonsterQuantity();
-			ForestMap1::SetFunCheck(1);
+			//ForestMap1::SetFunCheck(1);
 
 		}
 	}
