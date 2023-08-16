@@ -258,13 +258,13 @@ namespace hy
 
 			Win_Lose* win = object::Instantiate< Win_Lose>(eLayerType::UI);
 			win->Win();
-			Animator* animator = win->GetComponent<Animator>();
 			Transform* wintr = win->GetComponent<Transform>();
 			wintr->SetPosition(Vector2(350.0f, 254.0f));
 
 			if (Win_Lose::GetWin_Lose_flag() == true)
 			{
 				SceneManager::LoadScene(L"ForestMap2");
+				Win_Lose::SetWin_Lose_flag(false);
 			}
 			FunCheck = 0;
 		}

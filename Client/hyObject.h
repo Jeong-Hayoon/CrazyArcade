@@ -26,6 +26,7 @@ namespace hy::object
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(type, gameObject);
 		gameObject->Initialize();
+		gameObject->SetLayerType(type);
 		gameObject->GetComponent<Transform>()->SetPosition(position);
 
 		return gameObject;

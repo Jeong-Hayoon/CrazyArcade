@@ -84,6 +84,11 @@ namespace hy
 	// 물풍선과 충돌했을 때 Dead
 	void ForestMonster_1::OnCollisionEnter(Collider* other)
 	{
+		// 충돌체의 owner를 가져와서
+		GameObject* obj = other->GetOwner();
+		// Bazzi과 같으면 Bazzi의 주소를 반환하고 안되면 nullptr
+		Tile* tile = dynamic_cast<Tile*>(obj);
+
 		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
 			Animator* at = GetComponent<Animator>();
@@ -91,11 +96,11 @@ namespace hy
 			ForestMap1::SetMonsterQuantity;
 			mState = eState::Dead;
 		}
-		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && other->GetOwner()->GetComponent<Tile>()->Tile::GetType() == Tile::eType::Crack)
+		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Crack)
 		{
 			// 몬스터 이동 방향 반대로
 		}
-		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && other->GetOwner()->GetComponent<Tile>()->Tile::GetType() == Tile::eType::Uncrushable)
+		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Uncrushable)
 		{
 			// 몬스터 이동 방향 반대로
 		}
@@ -113,7 +118,7 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();		//
+		Animator* animator = GetComponent<Animator>();		
 		pos.y -= 100.f * Time::DeltaTime();
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();

@@ -225,6 +225,11 @@ namespace hy
 
 	void Bazzi::OnCollisionEnter(Collider* other)	// 충돌 처리
 	{
+		// 충돌체의 owner를 가져와서
+		GameObject* obj = other->GetOwner();
+		// Bazzi과 같으면 Bazzi의 주소를 반환하고 안되면 nullptr
+		Tile* tile = dynamic_cast<Tile*>(obj);
+
 		if (other->GetOwner()->GetLayerType() == eLayerType::Monster)
 		{
 			Animator* at = GetComponent<Animator>();
@@ -252,13 +257,13 @@ namespace hy
 			mState = eState::BalloonDead;*/
 		}
 
-		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && other->GetOwner()->GetComponent<Tile>()->Tile::GetType() == Tile::eType::Crack)
+		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Crack)
 		{
 			// 이동은 없고, 애니메이션만
 			SetMoveSpeed(0.f);
 			mState = eState::Move;
 		}
-		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && other->GetOwner()->GetComponent<Tile>()->Tile::GetType() == Tile::eType::Uncrushable)
+		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Uncrushable)
 		{
 			// 이동은 없고, 애니메이션만
 			SetMoveSpeed(0.f);
@@ -273,6 +278,8 @@ namespace hy
 	}
 	void Bazzi::OnCollisionExit(Collider* other)
 	{
+		SetMoveSpeed(50.f);
+		mState = eState::Move;
 	}
  
 	void Bazzi::Make()

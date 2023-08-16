@@ -39,6 +39,15 @@ namespace hy
 	void Win_Lose::Update()
 	{
 		GameObject::Update();
+
+		static float mTime = 0.0f;
+		mTime += Time::DeltaTime();
+
+		if (mTime >= 3.0f)
+		{
+			Win_Lose_flag = true;
+		}
+
 	}
 
 	void Win_Lose::Render(HDC hdc)
@@ -53,13 +62,6 @@ namespace hy
 		Animator* at = GetComponent<Animator>();
 
 		at->PlayAnimation(L"WinAnimation", false);
-
-		if (at->IsActiveAnimationComplete())
-		{
-			Win_Lose_flag = true;
-		}
-
-
 		// 배찌 Victory 상태 호출
 	}
 
@@ -70,6 +72,11 @@ namespace hy
 		Animator* at = GetComponent<Animator>();
 
 		at->PlayAnimation(L"LoseAnimation", false);
+
+		if (at->IsActiveAnimationComplete())
+		{
+			Win_Lose_flag = true;
+		}
 
 	}
 }

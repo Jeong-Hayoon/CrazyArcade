@@ -23,6 +23,7 @@ namespace hy
 		void Lose();
 
 		static bool GetWin_Lose_flag() { return Win_Lose_flag; }
+		static void SetWin_Lose_flag(bool result) { Win_Lose_flag = result; }
 
 	private:
 		static bool Win_Lose_flag;
