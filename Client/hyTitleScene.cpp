@@ -24,6 +24,7 @@ namespace hy
 	}
 	void TitleScene::Initialize()
 	{
+		Scene::Initialize();
 		/*Player* player = object::Instantiate <Player>(eLayerType::Player);
 		player->AddComponent<SpriteRenderer>();*/
 

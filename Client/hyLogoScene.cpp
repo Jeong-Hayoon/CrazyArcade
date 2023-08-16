@@ -23,6 +23,8 @@ namespace hy
 	}
 	void LogoScene::Initialize()
 	{
+		Scene::Initialize();
+
 		// 사운드 적용
 		Resources::Load<Sound>(L"LogoSound", L"..\\Resources\\Sound\\Sound\\logo.wav");
 

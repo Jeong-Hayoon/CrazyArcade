@@ -117,6 +117,7 @@ namespace hy
 
 	void PirateMap3::Initialize()
 	{
+		Scene::Initialize();
 		// 사운드 적용
 		Resources::Load<Sound>(L"LoginSound", L"..\\Resources\\Sound\\Sound\\login_scene.wav");
 

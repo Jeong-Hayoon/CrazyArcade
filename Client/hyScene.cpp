@@ -12,9 +12,9 @@ namespace hy
 	}
 	void Scene::Initialize()
 	{
-		for (Layer& layer : mLayers)
+		for (int i = 0; i < mLayers.size(); i++)
 		{
-			layer.Initialize();
+			mLayers[i].Initialize();
 		}
 	}
 	void Scene::Update()

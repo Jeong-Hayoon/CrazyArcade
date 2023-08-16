@@ -27,6 +27,7 @@ namespace hy
 	void ToolScene::Initialize()
 	{
 
+		Scene::Initialize();
 		// 타일 주석
 		Texture* Tile_
 			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");

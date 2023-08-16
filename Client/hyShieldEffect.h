@@ -19,7 +19,7 @@ namespace hy
 			End
 		};
 
-		ShieldEffect(/*class Bazzi* owner*/);
+		ShieldEffect();
 		virtual ~ShieldEffect();
 
 		virtual void Initialize() override;
@@ -32,6 +32,8 @@ namespace hy
 
 		virtual void Idle() override;
 		virtual void Use() override;
+
+		void SetBazzi(Bazzi* player) { mBazziOwner = player; }
 
 	private:
 		eState mState;

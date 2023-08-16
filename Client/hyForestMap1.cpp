@@ -57,6 +57,7 @@ namespace hy
 
 	void ForestMap1::Initialize()
 	{
+		Scene::Initialize();
 		// 사운드 적용
 		Resources::Load<Sound>(L"Play", L"..\\Resources\\Sound\\Sound\\Map\\bg_0.wav");
 
@@ -360,7 +361,7 @@ namespace hy
 			if (tile->GetType() == Tile::eType::Crack || tile->GetType() == Tile::eType::Uncrushable)
 			{
 				Collider* Col = tile->AddComponent<Collider>();;
-				Col->SetSize(Vector2(40.0f, 40.0f));
+				Col->SetSize(Vector2(30.0f, 30.0f));
 
 				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Bomb, true);
 				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Player, true);

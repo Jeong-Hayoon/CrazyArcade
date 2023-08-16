@@ -27,17 +27,21 @@ namespace hy
 	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::None;
 	bool Bazzi::UseItemNum = 0;
 	UINT Bazzi::BombLimit = 1;
-
 	
 	Bazzi::Bazzi()
 		: mState(eState::Make)
 		, mDirection(eDirection::Down)
 		, MoveSpeed(150.f)
 		, Life(1)
+		, North(1)
+		, South(1)
+		, East(1)
+		, West(1)
 	{
 	}
 	Bazzi::~Bazzi()
 	{
+		int a = 0;
 	}
 	void Bazzi::Initialize()
 	{
@@ -193,10 +197,14 @@ namespace hy
 
 			ShieldEffect* ShieldEffect_ = object::Instantiate<ShieldEffect>(eLayerType::Effect);
 			Transform* Bazzitr = this->GetComponent<Transform>();
-			Vector2  Shieldpos = Bazzitr->GetPosition();
+			Vector2 BazziLocation = Bazzitr->GetPosition();
+			Vector2 Shieldpos = BazziLocation;
+
 
 			ShieldEffect_->Use();
+			//ShieldEffect_->SetPlayer(this);
 			ShieldEffect_->GetComponent<Transform>()->SetPosition(Shieldpos);
+
 		}
 
 		if (Trigger == true)
@@ -259,15 +267,53 @@ namespace hy
 
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Crack)
 		{
+			//float GetSpeed = GetMoveSpeed();
 			// 이동은 없고, 애니메이션만
-			SetMoveSpeed(0.f);
-			mState = eState::Move;
+			// 오른쪽으로 이동했을때 
+			// 이동을 할때 방향이 곱해져서 이동을 함
+			if (mDirection == eDirection::Right)
+			{
+				East = 0;
+				mState = eState::Move;
+			}
+			else if (mDirection == eDirection::Left)
+			{
+				West = 0;
+				mState = eState::Move;
+			}
+			else if (mDirection == eDirection::Down)
+			{
+				South = 0;
+				mState = eState::Move;
+			}
+			else if (mDirection == eDirection::Up)
+			{
+				North = 0;
+				mState = eState::Move;
+			}
 		}
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Uncrushable)
 		{
-			// 이동은 없고, 애니메이션만
-			SetMoveSpeed(0.f);
-			mState = eState::Move;
+			if (mDirection == eDirection::Right)
+			{
+				East = 0;
+				mState = eState::Move;
+			}
+			else if (mDirection == eDirection::Left)
+			{
+				West = 0;
+				mState = eState::Move;
+			}
+			else if (mDirection == eDirection::Down)
+			{
+				South = 0;
+				mState = eState::Move;
+			}
+			else if (mDirection == eDirection::Up)
+			{
+				North = 0;
+				mState = eState::Move;
+			}
 		}
 
 		
@@ -278,8 +324,10 @@ namespace hy
 	}
 	void Bazzi::OnCollisionExit(Collider* other)
 	{
-		SetMoveSpeed(50.f);
-		mState = eState::Move;
+		North = 1;
+		South = 1;
+		East = 1;
+		West = 1;
 	}
  
 	void Bazzi::Make()
@@ -432,7 +480,7 @@ namespace hy
 			}
 			else
 			{
-				pos.y -= MoveSpeed * Time::DeltaTime();
+				pos.y -=  North * MoveSpeed * Time::DeltaTime();
 
 			}
 		}
@@ -444,7 +492,7 @@ namespace hy
 			}
 			else
 			{
-				pos.x -= MoveSpeed * Time::DeltaTime();
+				pos.x -= West * MoveSpeed * Time::DeltaTime();
 
 			}
 		}
@@ -456,7 +504,7 @@ namespace hy
 			}
 			else
 			{
-				pos.x += MoveSpeed * Time::DeltaTime();
+				pos.x += East * MoveSpeed * Time::DeltaTime();
 			}
 		}
 		else if (mDirection == eDirection::Down)	// 방향이 아래쪽이면 아래쪽으로 이동
@@ -467,7 +515,7 @@ namespace hy
 			}
 			else
 			{
-				pos.y += MoveSpeed * Time::DeltaTime();
+				pos.y += South* MoveSpeed * Time::DeltaTime();
 			}
 		}
 

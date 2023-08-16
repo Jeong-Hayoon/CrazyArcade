@@ -25,6 +25,7 @@ namespace hy
 	}
 	void PlayScene::Initialize()
 	{
+		Scene::Initialize();
 		/*Texture* image = Resources::Load<Texture>(L"PlayBackGroundImgae"	
 			, L"..\\Resources\\Image\\Bg\\play.bmp");	*/			
 		

@@ -8,10 +8,10 @@ namespace hy
 
 	Layer::~Layer()
 	{
-		for (GameObject* obj : mGameObjects)
+		for (int i = 0; i < mGameObjects.size(); i++)
 		{
-			delete obj;
-			obj = nullptr;
+			delete mGameObjects[i];
+			mGameObjects[i] = nullptr;
 		}
 	}
 

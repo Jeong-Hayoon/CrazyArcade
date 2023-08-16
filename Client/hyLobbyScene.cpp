@@ -23,6 +23,7 @@ namespace hy
 	}
 	void LobbyScene::Initialize()
 	{
+		Scene::Initialize();
 		// 사운드 적용
 		Resources::Load<Sound>(L"LobbySound", L"..\\Resources\\Sound\\Sound\\lobby_scene.wav");
 

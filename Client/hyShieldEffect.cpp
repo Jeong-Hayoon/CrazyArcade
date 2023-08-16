@@ -14,13 +14,12 @@ namespace hy
 		: mState(eState::Idle)
 
 	{
-		Animator* st = GetComponent<Animator>();
+		Animator* st = AddComponent<Animator>();
 
 		Texture* ShieldEffect_ = Resources::Load<Texture>(L"ShieldEffect"
 			, L"..\\Resources\\Image\\Items\\shieldeffect.bmp");
 
 		st->CreateAnimation(L"UseShieldEffect", ShieldEffect_, Vector2(0.0f, 0.0f), Vector2(88.0f, 101.0f), 4, Vector2(0.0f, 0.0f), 0.05f);
-
 		st->SetScale(Vector2(0.9f, 0.9f));
 	}
 	ShieldEffect::~ShieldEffect()
@@ -33,6 +32,32 @@ namespace hy
 	void ShieldEffect::Update()
 	{
 		Item::Update();
+
+		//Animator* st = GetComponent<Animator>();
+
+		//static float Shieldtime = 0.f;
+		//Shieldtime += Time::DeltaTime();
+
+		//if (Shieldtime < 3.0f)
+		//{
+		//	st->SetScale(Vector2(0.9f, 0.9f));
+		//	st->PlayAnimation(L"UseShieldEffect", true);
+
+		//	Transform* Bazzitr = mBazziOwner->GetComponent<Transform>();
+		//	Vector2 BazziLocationtr = Bazzitr->GetPosition();
+		//	Vector2 Shieldpos = BazziLocationtr->GetComponent<Transform>()->GetPosition();
+
+		//	this->GetComponent<Transform>()->SetPosition(Shieldpos);
+
+
+
+		//	// 모든 충돌체 충돌 끄는 코드 삽입
+		//}
+		//else
+		//{
+		//	Destroy(this);
+		//}
+
 	}
 	void ShieldEffect::Render(HDC hdc)
 	{
@@ -54,19 +79,28 @@ namespace hy
 	{
 		Animator* st = GetComponent<Animator>();
 
-		static float Shieldtime = 0.f;
-		Shieldtime += Time::DeltaTime();
+		//static float Shieldtime = 0.f;
+		//Shieldtime += Time::DeltaTime();
 
-		if (Shieldtime < 3.0f)
-		{
-			st->SetScale(Vector2(0.9f, 0.9f));
-			st->PlayAnimation(L"UseShieldEffect", true);
-			// 모든 충돌체 충돌 끄는 코드 삽입
-		}
-		else
-		{
-			Destroy(this);
-		}
+		//if (Shieldtime < 3.0f)
+		//{
+		st->SetScale(Vector2(0.9f, 0.9f));
+		st->PlayAnimation(L"UseShieldEffect", true);
+
+		//	Transform* Bazzitr = mBazziOwner->GetComponent<Transform>();
+		//	Vector2 BazziLocationtr = Bazzitr->GetPosition();
+		//	Vector2 Shieldpos = BazziLocationtr->GetComponent<Transform>()->GetPosition();
+
+		//	Bomb_->GetComponent<Transform>()->SetPosition(Bombpos);
+
+
+
+		//	// 모든 충돌체 충돌 끄는 코드 삽입
+		//}
+		//else
+		//{
+		//	Destroy(this);
+		//}
 	}
 
 }
