@@ -131,7 +131,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc)
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_CLIENT)); // 아이콘(리소스 뷰)
-    wcex.hCursor        = NULL;                   // 커서 모양
+    wcex.hCursor        = NULL;                                              // 커서 모양
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);                         // 백그라운드 색상
     wcex.lpszMenuName   = nullptr;                                          // 메뉴 이름
     wcex.lpszClassName  = name;                                    // 등록할 클래스 이름

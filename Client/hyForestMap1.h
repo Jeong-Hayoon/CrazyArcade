@@ -19,8 +19,6 @@ namespace hy
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
-		void Win();
-		void Lose();
 		void Load();
 
 		static UINT GetMonsterQuantity() { return MonsterQuantity; }

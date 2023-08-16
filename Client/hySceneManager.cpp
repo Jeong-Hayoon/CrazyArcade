@@ -1,12 +1,11 @@
 #include "hySceneManager.h"
 #include "hyTitleScene.h"
 #include "hyLobbyScene.h"
-#include "hyForestMap1.h"
-#include "hyIceMap1.h"
 #include "hyToolScene.h"
 #include "hyLogoScene.h"
 #include "hyTexture.h"
 #include "hyResources.h"
+#include "hyForestMap1.h"
 #include "hyForestMap2.h"
 #include "hyForestMap3.h"
 

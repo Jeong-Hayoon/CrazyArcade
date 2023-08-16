@@ -25,6 +25,8 @@
 #include "hyMinutes.h"
 #include "hyDot.h"
 #include "hyUI.h"
+#include "hyTime.h"
+#include "hyWin_Lose.h"
 
 
 // 타일 위치 30,55에 넣기
@@ -57,8 +59,6 @@ namespace hy
 	{
 		// 사운드 적용
 		Resources::Load<Sound>(L"Play", L"..\\Resources\\Sound\\Sound\\Map\\bg_0.wav");
-		Resources::Load<Sound>(L"Win", L"..\\Resources\\Sound\\Sound\\win.wav");
-		Resources::Load<Sound>(L"Lose", L"..\\Resources\\Sound\\Sound\\lose.wav");
 
 		// 타이머
 		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
@@ -232,69 +232,54 @@ namespace hy
 		//Scene::Initialize();
 	}
 
+	//void ForestMap1::Win()
+	//{
+	//	Resources::Find<Sound>(L"Win")->Play(false);
+
+	//	Resources::Find<Sound>(L"Play")->Stop(1);
+
+
+	//	// 배찌 Victory 상태 호출
+	//}
+
 	void ForestMap1::Update()
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
-		{
-			Resources::Find<Sound>(L"Play")->Stop(1);
+		//if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
+		//{
+		//	Resources::Find<Sound>(L"Play")->Stop(1);
 
-			SceneManager::LoadScene(L"ForestMap2");
-		}
+		//}
 
 		if (MonsterQuantity == 0 && FunCheck == 1)
 		{
-			Win();
+			Resources::Find<Sound>(L"Play")->Stop(1);
+
+			Win_Lose* win = object::Instantiate< Win_Lose>(eLayerType::UI);
+			win->Win();
+			Animator* animator = win->GetComponent<Animator>();
+			Transform* wintr = win->GetComponent<Transform>();
+			wintr->SetPosition(Vector2(350.0f, 254.0f));
+
+			if (Win_Lose::GetWin_Lose_flag() == true)
+			{
+				SceneManager::LoadScene(L"ForestMap2");
+			}
 			FunCheck = 0;
 		}
 
-		if (MonsterQuantity != 0 // && 배찌 상태가 Dead or BalloonDead 라면 && FunCheck == 1)
-		{
-			Lose();
-			FunCheck = 0;
-		}
+		//if (MonsterQuantity != 0 // && 배찌 상태가 Dead or BalloonDead 라면 && FunCheck == 1)
+		//{
+		//	Lose();
+		//	FunCheck = 0;
+		//}
 
 
 	}
 	void ForestMap1::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
-
-	}
-
-	void ForestMap1::Win()
-	{
-		Resources::Find<Sound>(L"Win")->Play(false);
-
-		Resources::Find<Sound>(L"Play")->Stop(1);
-
-		Texture* Win = Resources::Load<Texture>(L"WinImage"
-			, L"..\\Resources\\Image\\UI\\Win\\Win.bmp");
-
-		UI* WinUI = object::Instantiate<UI>(eLayerType::UI);
-		SpriteRenderer* winuisr = WinUI->AddComponent<SpriteRenderer>();
-		winuisr->SetImage(Win);
-		winuisr->SetScale(Vector2(1.f, 1.f));
-		WinUI->GetComponent<Transform>()->SetPosition(Vector2(335.f, 245.f));
-
-		// 배찌 Victory 상태 호출
-	}
-
-	void ForestMap1::Lose()
-	{
-		Resources::Find<Sound>(L"Lose")->Play(false);
-
-		Resources::Find<Sound>(L"Play")->Stop(1);
-
-		Texture* Lose = Resources::Load<Texture>(L"LoseImage"
-			, L"..\\Resources\\Image\\UI\\Lose\\Lose.bmp");
-
-		UI* LoseUI = object::Instantiate<UI>(eLayerType::UI);
-		SpriteRenderer* loseuisr = LoseUI->AddComponent<SpriteRenderer>();
-		loseuisr->SetImage(Lose);
-		loseuisr->SetScale(Vector2(1.f, 1.f));
-		LoseUI->GetComponent<Transform>()->SetPosition(Vector2(335.f, 245.f));
 
 	}
 

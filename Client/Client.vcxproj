@@ -158,7 +158,6 @@
     <ClInclude Include="hyIceMonster.h" />
     <ClInclude Include="hyItem.h" />
     <ClInclude Include="hyLogoScene.h" />
-    <ClInclude Include="hyMapData.h" />
     <ClInclude Include="hyMinutes.h" />
     <ClInclude Include="hyNeedle.h" />
     <ClInclude Include="hyObjectCollider.h" />
@@ -182,6 +181,7 @@
     <ClInclude Include="hyUserItem.h" />
     <ClInclude Include="hyShieldEffect.h" />
     <ClInclude Include="hyVelocitySkate.h" />
+    <ClInclude Include="hyWin_Lose.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="hyTexture.h" />
     <ClInclude Include="hyLobbyScene.h" />
@@ -231,7 +231,6 @@
     <ClCompile Include="hyIceMonster.cpp" />
     <ClCompile Include="hyItem.cpp" />
     <ClCompile Include="hyLogoScene.cpp" />
-    <ClCompile Include="hyMapData.cpp" />
     <ClCompile Include="hyMath.cpp" />
     <ClCompile Include="hyForestMonster_1.cpp" />
     <ClCompile Include="hyMinutes.cpp" />
@@ -257,6 +256,7 @@
     <ClCompile Include="hyUserItem.cpp" />
     <ClCompile Include="hyShieldEffect.cpp" />
     <ClCompile Include="hyVelocitySkate.cpp" />
+    <ClCompile Include="hyWin_Lose.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="hyTexture.cpp" />
     <ClCompile Include="hyLobbyScene.cpp" />
