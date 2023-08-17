@@ -121,7 +121,8 @@ namespace hy
 
 	void ForestMap2::Enter()
 	{
-		Resources::Find<Sound>(L"LoginSound")->Play(false);
+		Resources::Find<Sound>(L"Play")->Play(true);
+
 
 	}
 

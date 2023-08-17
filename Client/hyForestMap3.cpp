@@ -121,7 +121,8 @@ namespace hy
 
 	void ForestMap3::Enter()
 	{
-		Resources::Find<Sound>(L"LoginSound")->Play(false);
+		Resources::Find<Sound>(L"Play")->Play(true);
+
 
 	}
 
@@ -133,7 +134,6 @@ namespace hy
 	{
 		Scene::Initialize();
 		// 사운드 적용
-
 		Resources::Load<Sound>(L"Play", L"..\\Resources\\Sound\\Sound\\Map\\bg_0.wav");
 
 		// 타이머
