@@ -61,14 +61,23 @@ namespace hy
 				if (comp != nullptr)
 					return comp;
 
-				GameObject* Obj = *iter;
-				delete Obj;
-				Obj = nullptr;
-				iter = mGameObjects.erase(iter);
-
 			}
 
-			
+			for (std::vector<Component*>::iterator iter = mComponents.begin(); 
+				iter != mComponents.end(); )
+			{
+				if (iter == comp)
+				{
+					Component* Obj = iter;
+					delete Obj;
+					Obj = nullptr;
+					iter = mComponents.erase(iter);
+				}
+				else
+				{
+					iter++;
+				}
+			}	
 		}
 
 		virtual void OnCollisionEnter(class Collider* other);
