@@ -1,6 +1,7 @@
 #include "hyCollider.h"
 #include "hyTransform.h"
 #include "hyGameObject.h"
+#include "hyScene.h"
 
 //충돌을 하기 위한 하나의 도형
 namespace hy
@@ -17,6 +18,11 @@ namespace hy
 		mCollisionNumber = mCollisionCount;	
 		mCollisionCount++;
 	}
+
+	/*Collider::Collider(Scene* Scene)
+	{
+		BelongToScene = Scene;
+	}*/
 
 	Collider::~Collider()
 	{

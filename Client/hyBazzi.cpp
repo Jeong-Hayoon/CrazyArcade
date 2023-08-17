@@ -199,9 +199,7 @@ namespace hy
 			Transform* Bazzitr = this->GetComponent<Transform>();
 			Vector2 BazziLocation = Bazzitr->GetPosition();
 			Vector2 Shieldpos = BazziLocation;
-
-
-			ShieldEffect_->Use();
+			//ShieldEffect_->Use();
 			//ShieldEffect_->SetPlayer(this);
 			ShieldEffect_->GetComponent<Transform>()->SetPosition(Shieldpos);
 

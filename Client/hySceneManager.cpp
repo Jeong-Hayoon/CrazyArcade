@@ -17,6 +17,7 @@
 #include "hyPirateMap2.h"
 #include "hyPirateMap3.h"
 
+#include "hyBazzi.h"
 
 
 
@@ -26,6 +27,7 @@ namespace hy
 {
 	std::map<std::wstring, Scene*> SceneManager::mScenes = {};
 	Scene* SceneManager::mActiveScene = nullptr;
+	Bazzi* SceneManager::mBazzi;
 
 	void SceneManager::Initialize()
 	{

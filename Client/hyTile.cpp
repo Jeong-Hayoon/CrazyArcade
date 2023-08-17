@@ -70,10 +70,27 @@ namespace hy
 				Steam* steam_ = object::Instantiate<Steam>(eLayerType::Effect);
 				Transform* tiletr = this->GetComponent<Transform>();
 				Vector2  Steampos = tiletr->GetPosition();
-				this->SetSourceTileIdx(0, 1);
-				//this->SetTileIdx(this->GetComponent<Tile>()->mIndexX, this->GetComponent<Tile>()->mIndexY);
+				if(this->GetSourceTileIdx() == Vector2(0,0)||
+				this->GetSourceTileIdx() == Vector2(1, 0)||
+				this->GetSourceTileIdx() == Vector2(2, 0))
+				{
+					this->SetSourceTileIdx(0, 1);
+					mSpriteRenderer->SetTile(0, 1);
+				}
 
-				//ToolScene->PushTile<Tile*>(this));
+				else if (this->GetSourceTileIdx() == Vector2(3, 2)||
+					this->GetSourceTileIdx() == Vector2(4, 2))
+				{
+					this->SetSourceTileIdx(1, 1);
+					mSpriteRenderer->SetTile(1, 1);
+				}
+
+				else if (this->GetSourceTileIdx() == Vector2(3, 0)||
+					this->GetSourceTileIdx() == Vector2(4, 0))
+				{
+					this->SetSourceTileIdx(3, 4);
+					mSpriteRenderer->SetTile(3, 4);
+				}
 
 				steam_->GetComponent<Transform>()->SetPosition(Steampos);
 			}

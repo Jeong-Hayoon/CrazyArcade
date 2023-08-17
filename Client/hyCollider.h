@@ -8,6 +8,7 @@ namespace hy
 	{
 	public:
 		Collider();
+		//Collider(Scene* Scene);
 		~Collider();
 
 		virtual void Initialize() override;
@@ -37,5 +38,7 @@ namespace hy
 
 		UINT mCollisionNumber;					// 충돌체가 각각의 고유 번호를 가짐	
 		bool mbIsCollision;						// 충돌하는게 눈에 보이게 하고 싶었을 때 변수
+
+		//Scene* BelongToScene;					// 어느씬에 속해있는 Collider인지
 	};
 }

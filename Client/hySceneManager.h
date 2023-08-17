@@ -3,9 +3,12 @@
 
 namespace hy
 {
+	class Bazzi;
+
 	class SceneManager
 	{
 	public:
+
 		static void Initialize();
 		static void Update();
 		static void Render(HDC hdc);
@@ -27,6 +30,9 @@ namespace hy
 		static Scene* LoadScene(const std::wstring& name);
 		static Scene* GetActiveScene() { return mActiveScene; }
 
+		static Bazzi* GetBazzi() { return mBazzi; }
+
+
 	private:
 		static std::map <std::wstring, Scene*> mScenes;
 		static Scene* mActiveScene;
@@ -34,6 +40,9 @@ namespace hy
 		// key value 구조로 이루어져 있따.
 		// key는 데이터를 검색하는 용도
 		// value 실제 우리가 써야할 데이터	
+
+		static Bazzi* mBazzi;
+
 	};
 }
 

@@ -8,7 +8,6 @@ namespace hy
 	class Steam : public GameObject
 	{
 	public:
-	
 		enum class eState
 		{
 			Make,
@@ -29,6 +28,7 @@ namespace hy
 
 	private:
 		eState mState;
+
 	};
 }
 

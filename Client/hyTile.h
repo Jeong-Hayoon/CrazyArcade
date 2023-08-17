@@ -24,7 +24,6 @@ namespace hy
 			End,
 		};
 
-
 		static UINT mSelectedX;
 		static UINT mSelectedY;
 

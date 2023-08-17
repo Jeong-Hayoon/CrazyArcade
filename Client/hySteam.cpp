@@ -9,6 +9,18 @@
 #include "hyTexture.h"
 #include "hyResources.h"
 #include "hyBazzi.h"
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+#include "hyCollider.h"
+
+#include "hyBalloon.h"
+#include "hyDevil.h"
+#include "hyNeedle.h"
+#include "hyPotionMax.h"
+#include "hyPotion.h"
+#include "hyVelocitySkate.h"
+
 
 // 박스가 소멸될때 효과
 // 랜덤 확률로 소멸된 후에는 아이템이 그 위치에 생성됨(객체 생성)
@@ -68,8 +80,76 @@ namespace hy
 
 	void Steam::Extinct()
 	{
+		srand(time(NULL));
+
+		Transform* tr = GetComponent<Transform>();
+
+
+		int ItemSelect = rand() % 5;
+
+		if (ItemSelect == 0)
+		{
+			// Balloon 아이템 setting
+			Balloon* Balloon_1 = object::Instantiate<Balloon>(eLayerType::Item, tr->GetPosition() + Vector2(0.0f, -2.0f));
+
+			// Balloon 아이템 충돌 구현
+			Collider* Ballooncol = Balloon_1->AddComponent<Collider>();
+			// Balloon 아이템 충돌 사각형 사이즈 수정
+			Ballooncol->SetSize(Vector2(10.0f, 30.0f));
+		}
+		else if (ItemSelect == 1)
+		{
+			// Devil 아이템 setting
+			Devil* Devil_1 = object::Instantiate<Devil>(eLayerType::Item, tr->GetPosition() + Vector2(0.0f, -2.0f));
+	
+			// Devil 아이템 충돌 구현
+			Collider* Devilcol = Devil_1->AddComponent<Collider>();
+			// Devil 아이템 충돌 사각형 사이즈 수정
+			Devilcol->SetSize(Vector2(10.0f, 30.0f));
+			Devilcol->SetOffset(Vector2(0.0f, 0.0f));
+
+		}
+		else if (ItemSelect == 2)
+		{
+			// Potion 아이템 setting
+			Potion* Potion_1 = object::Instantiate<Potion>(eLayerType::Item, tr->GetPosition() + Vector2(0.0f, -2.0f));
+
+			// Potion 아이템 충돌 구현
+			Collider* Potioncol = Potion_1->AddComponent<Collider>();
+			// Potion 아이템 충돌 사각형 사이즈 수정
+			Potioncol->SetSize(Vector2(10.0f, 30.0f));
+			Potioncol->SetOffset(Vector2(0.0f, 0.0f));
+
+		}
+		else if (ItemSelect == 3)
+		{
+			// Needle 아이템 setting
+			Needle* Needle_1 = object::Instantiate<Needle>(eLayerType::UseItem, tr->GetPosition() + Vector2(0.0f, -2.0f));
+
+			// Needle 아이템 충돌 구현
+			Collider* Needlecol = Needle_1->AddComponent<Collider>();
+			// Needle 아이템 충돌 사각형 사이즈 수정
+			Needlecol->SetSize(Vector2(10.0f, 30.0f));
+			Needlecol->SetOffset(Vector2(0.0f, 0.0f));
+
+		}
+		else if (ItemSelect == 4)
+		{
+
+		}
+		else if (ItemSelect == 5)
+		{
+
+		}
+
 		Destroy(this);
 	}
 
 }
 
+//Balloon,
+//Devil,
+//Needle,
+//Potion,
+//PotionMax,
+//VelocitySkate,

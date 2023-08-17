@@ -97,6 +97,24 @@ namespace hy
 					, myY * (TILE_HEIGHT)+offset.y + LEFT_TOP_Y));
 
 			tile->SetTile(sourceX, sourceY);
+			// Crack(부서지며 충돌체가 있는 타일)
+			if ((sourceX == 3 && sourceY == 2) ||
+				(sourceX == 4 && sourceY == 2))
+			{
+				tile->SetType(Tile::eType::Crack);
+			}
+			// Uncrushable(부서지지는 않지만 충돌체는 있는 타입)
+			if ((sourceX == 2 && sourceY == 1) ||
+				(sourceX == 1 && sourceY == 2) ||
+				(sourceX == 2 && sourceY == 2))
+			{
+				tile->SetType(Tile::eType::Uncrushable);
+			}
+			// None(충돌체가 없는 바닥같은 타일)
+			if ((sourceX == 1 && sourceY == 1))
+			{
+				tile->SetType(Tile::eType::None);
+			}
 			tile->SetSourceTileIdx(sourceX, sourceY);
 			tile->SetTileIdx(myX, myY);
 
@@ -148,37 +166,6 @@ namespace hy
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.f, 1.f));
 		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));
-
-		// 게임 틀 Collider 생성
-		Texture* GameFrameColObject = Resources::Load<Texture>(L"PlayBackGroundImage"
-			, L"..\\Resources\\Image\\Bg\\GameFrameObject.bmp");
-
-		BackGround* gfco = object::Instantiate<BackGround>(eLayerType::Collider);
-		SpriteRenderer* gfcosr = gfco->AddComponent<SpriteRenderer>();
-		gfcosr->SetImage(image);
-		gfcosr->SetScale(Vector2(1.f, 1.f));
-		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));
-
-		// GameFrameColObject 충돌 구현
-		Collider* gfcocol = gfco->AddComponent<Collider>();
-		// GameFrameColObject 충돌 사각형 사이즈 수정
-		gfcocol->SetSize(Vector2(10.0f, 10.0f));
-
-		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Collider, true);
-
-		// 각 맵에 따른 맵 화면
-		/*Texture* ForestMap1 = Resources::Load<Texture>(L"ForestMapImage"
-			, L"..\\Resources\\Image\\Bg\\ForestTile.bmp");
-		BackGround* forestmap1 = object::Instantiate<BackGround>(eLayerType::Background);
-		forestmap1->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 402.0f));
-		SpriteRenderer* forestmapsr= forestmap1->AddComponent<SpriteRenderer>();
-		forestmapsr->SetImage(ForestMap1);
-		forestmapsr->SetScale(Vector2(1.0f, 0.90f));*/
-
-		// 타일 주석
-		/*Texture* Tile_
-			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");*/
 
 		Texture* Tile_
 			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");

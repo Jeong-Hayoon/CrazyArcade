@@ -8,7 +8,7 @@
 
 namespace hy
 {
-	class ShieldEffect : public Item
+	class ShieldEffect : public GameObject
 	{
 	public:
 
@@ -30,8 +30,8 @@ namespace hy
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
 
-		virtual void Idle() override;
-		virtual void Use() override;
+		void Idle();
+		void Use();
 
 		void SetBazzi(Bazzi* player) { mBazziOwner = player; }
 

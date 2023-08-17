@@ -6,6 +6,8 @@
 #include "hyBazzi.h"
 #include "hyObject.h"
 #include "hyTime.h"
+#include "hyTransform.h"
+
 
 
 namespace hy
@@ -21,17 +23,36 @@ namespace hy
 
 		st->CreateAnimation(L"UseShieldEffect", ShieldEffect_, Vector2(0.0f, 0.0f), Vector2(88.0f, 101.0f), 4, Vector2(0.0f, 0.0f), 0.05f);
 		st->SetScale(Vector2(0.9f, 0.9f));
+		st->PlayAnimation(L"mShiledEffect", true);
+
 	}
 	ShieldEffect::~ShieldEffect()
 	{
 	}
 	void ShieldEffect::Initialize()
 	{
-		Item::Initialize();
+		GameObject::Initialize();
+
+
 	}
 	void ShieldEffect::Update()
 	{
-		Item::Update();
+		GameObject::Update();
+
+		/*Transform* tr = GetComponent<Transform>();
+		tr->SetScale(Vector2(1.1f, 1.1f));
+
+		if (SceneManager::GetBazzi() != NULL)
+		{
+			Vector2 BazziPos = SceneManager::GetBazzi()->GetComponent<Transform>()->GetPosition();
+			BazziPos -= Vector2(5.0f, 0.0f);
+			tr->SetPosition(BazziPos);
+
+			if (SceneManager::GetBazzi()->GetTrigger() == false)
+			{
+				Destroy(this);
+			}
+		}*/
 
 		//Animator* st = GetComponent<Animator>();
 
@@ -61,7 +82,7 @@ namespace hy
 	}
 	void ShieldEffect::Render(HDC hdc)
 	{
-		Item::Render(hdc);
+		GameObject::Render(hdc);
 	}
 	void ShieldEffect::OnCollisionEnter(Collider* other)
 	{
@@ -84,8 +105,8 @@ namespace hy
 
 		//if (Shieldtime < 3.0f)
 		//{
-		st->SetScale(Vector2(0.9f, 0.9f));
-		st->PlayAnimation(L"UseShieldEffect", true);
+		//st->SetScale(Vector2(0.9f, 0.9f));
+		//st->PlayAnimation(L"UseShieldEffect", true);
 
 		//	Transform* Bazzitr = mBazziOwner->GetComponent<Transform>();
 		//	Vector2 BazziLocationtr = Bazzitr->GetPosition();

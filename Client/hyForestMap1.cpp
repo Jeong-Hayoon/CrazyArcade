@@ -89,24 +89,6 @@ namespace hy
 		bgsr->SetScale(Vector2(1.f, 1.f));
 		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));	
 
-		// 게임 틀 Collider 생성
-		Texture* GameFrameColObject = Resources::Load<Texture>(L"PlayBackGroundImage"
-			, L"..\\Resources\\Image\\Bg\\GameFrameObject.bmp");
-
-		BackGround* gfco = object::Instantiate<BackGround>(eLayerType::Collider);
-		SpriteRenderer* gfcosr = gfco->AddComponent<SpriteRenderer>();
-		gfcosr->SetImage(image);
-		gfcosr->SetScale(Vector2(1.f, 1.f));
-		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));
-
-		// GameFrameColObject 충돌 구현
-		Collider* gfcocol = gfco->AddComponent<Collider>();
-		// GameFrameColObject 충돌 사각형 사이즈 수정
-		gfcocol->SetSize(Vector2(10.0f, 10.0f));
-
-		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Collider, true);
-
 		Texture* Tile_
 			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
 
@@ -128,8 +110,8 @@ namespace hy
 		forestbazzitr->SetPosition(Vector2(50.0f, 70.0f));
 
 		// 포레스트 몬스터
-		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(150.0f, 70.0f));
+		/*ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(150.0f, 70.0f));*/
 
 		// 배찌 충돌 구현
 		Collider* col = forestbazzi1->AddComponent<Collider>();
@@ -139,8 +121,8 @@ namespace hy
 		forestbazzitr->SetPosition(Vector2(100.0f, 100.0f));
 
 		// 포레스트 몬스터의 충돌 사각형 사이즈 수정
-		col = ForestMonster1->AddComponent<Collider>();
-		col->SetSize(Vector2(30.0f, 40.0f));
+		/*col = ForestMonster1->AddComponent<Collider>();
+		col->SetSize(Vector2(30.0f, 40.0f));*/
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
@@ -231,7 +213,7 @@ namespace hy
 		Needlecol->SetSize(Vector2(10.0f, 30.0f));
 		Needlecol->SetOffset(Vector2(0.0f, 0.0f));
 
-		//Scene::Initialize();
+
 	}
 
 	//void ForestMap1::Win()

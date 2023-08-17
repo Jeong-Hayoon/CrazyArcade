@@ -68,9 +68,6 @@ namespace hy
 		void MoveSpeedMax() { MoveSpeed = 300; }
 		// 물풍선에 갇혀있을 때 소생(Needle)
 		void Revive() { Life = 1; }
-		// (Shield)
-		// (Potion)
-		// (PotionMax)
 
 		float GetMoveSpeed() { return MoveSpeed; }
 		void SetMoveSpeed(float speed) { MoveSpeed = speed; }
@@ -94,6 +91,8 @@ namespace hy
 
 		static bool GetUseItemNum() { return UseItemNum; }
 		static void SetUseItemNum(bool n) { UseItemNum = n; }
+
+		bool GetTrigger() { return Trigger; }
 
 	private:
 		eState mState;
