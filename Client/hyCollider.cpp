@@ -19,11 +19,6 @@ namespace hy
 		mCollisionCount++;
 	}
 
-	/*Collider::Collider(Scene* Scene)
-	{
-		BelongToScene = Scene;
-	}*/
-
 	Collider::~Collider()
 	{
 	}
@@ -94,5 +89,10 @@ namespace hy
 	{
 		mbIsCollision = false;
 		GetOwner()->OnCollisionExit(other);
+	}
+
+	void Collider::ColliderOff()
+	{
+
 	}
 }

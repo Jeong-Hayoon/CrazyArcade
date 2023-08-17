@@ -61,16 +61,16 @@ namespace hy
 
 	void Tile::OnCollisionEnter(Collider* other)
 	{
-	
 		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
 			if (this->GetType() == eType::Crack)
 			{
+
 				// 랜덤 아이템 생성 코드 추가(스팀 생성 -> 스팀 소멸 -> 아이템 객체 랜덤 생성)
 				Steam* steam_ = object::Instantiate<Steam>(eLayerType::Effect);
 				Transform* tiletr = this->GetComponent<Transform>();
 				Vector2  Steampos = tiletr->GetPosition();
-				if(this->GetSourceTileIdx() == Vector2(0,0)||
+				if(this->GetSourceTileIdx() == Vector2(0, 0)||
 				this->GetSourceTileIdx() == Vector2(1, 0)||
 				this->GetSourceTileIdx() == Vector2(2, 0))
 				{
@@ -106,6 +106,7 @@ namespace hy
 	}
 	void Tile::OnCollisionExit(Collider* other)
 	{
+
 	}
 
 

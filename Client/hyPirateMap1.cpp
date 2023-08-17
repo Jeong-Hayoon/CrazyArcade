@@ -44,28 +44,10 @@ namespace hy
 
 	void PirateMap1::Load()
 	{
-		/*	Texture* forestFloor
-				= Resources::Load<Texture>(L"ForestFloorTile", L"..\\resources\\image\\Bg\\ForestTile.bmp");*/
 
 		OPENFILENAME ofn = {};
 
 		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\PirateMap_1.tm";
-
-		//ZeroMemory(&ofn, sizeof(ofn));
-		//ofn.lStructSize = sizeof(ofn);
-		//ofn.hwndOwner = NULL;
-		//ofn.lpstrFile = szFilePath;
-		//ofn.lpstrFile[0] = '\0';
-		//ofn.nMaxFile = 256;
-		//ofn.lpstrFilter = L"All\0*.*\0Text\0*.TXT\0";
-		//ofn.nFilterIndex = 1;
-		//ofn.lpstrFileTitle = NULL;
-		//ofn.nMaxFileTitle = 0;
-		//ofn.lpstrInitialDir = NULL;
-		//ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
-
-		//if (false == GetOpenFileName(&ofn))
-		//	return;
 
 		// rb : 이진수로 파일을 읽음
 		FILE* pFile = nullptr;

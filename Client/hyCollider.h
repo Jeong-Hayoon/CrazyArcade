@@ -19,6 +19,8 @@ namespace hy
 		void OnCollisionStay(Collider* other);		// 충돌 중
 		void OnCollisionExit(Collider* other);		// 충돌 빠져나감
 
+		void ColliderOff();
+
 		Vector2 GetSize() { return mSize; }
 		void SetSize(Vector2 size) { mSize = size; }
 		Vector2 GetOffset() { return mOffset; }

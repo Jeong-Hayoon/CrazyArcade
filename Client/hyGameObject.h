@@ -50,6 +50,27 @@ namespace hy
 			return comp;
 		}
 
+		template <typename T>
+		T* DeleteComponent()
+		{
+			T* comp = nullptr;
+			for (Component* c : mComponents)
+			{
+				comp = dynamic_cast<T*>(c);
+
+				if (comp != nullptr)
+					return comp;
+
+				GameObject* Obj = *iter;
+				delete Obj;
+				Obj = nullptr;
+				iter = mGameObjects.erase(iter);
+
+			}
+
+			
+		}
+
 		virtual void OnCollisionEnter(class Collider* other);
 		virtual void OnCollisionStay(class Collider* other);
 		virtual void OnCollisionExit(class Collider* other);
