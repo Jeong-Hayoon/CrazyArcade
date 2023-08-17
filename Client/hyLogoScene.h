@@ -1,6 +1,9 @@
 #pragma once
 #include "hyScene.h"
 #include "hySound.h"
+#include "hyAlphaBlending.h"
+#include "hyLogo.h"
+
 
 
 namespace hy
@@ -20,6 +23,13 @@ namespace hy
 
 	private:
 		static Sound* sound;
+		float mSceneTime;
+		Logo* mLogo;
+
+
+
+
+
 	};
 }
 

@@ -68,7 +68,7 @@ namespace hy
 			{
 				if (iter == comp)
 				{
-					Component* Obj = iter;
+					Component* Obj = *iter;
 					delete Obj;
 					Obj = nullptr;
 					iter = mComponents.erase(iter);
