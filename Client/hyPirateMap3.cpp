@@ -119,7 +119,7 @@ namespace hy
 	{
 		Scene::Initialize();
 		// 사운드 적용
-		Resources::Load<Sound>(L"LoginSound", L"..\\Resources\\Sound\\Sound\\login_scene.wav");
+		Resources::Load<Sound>(L"LoginSound", L"..\\Resources\\Sound\\Sound\\PirateMap_3.wav");
 
 		// 타이머
 		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);

@@ -49,7 +49,7 @@ namespace hy
 
 		OPENFILENAME ofn = {};
 
-		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\ForestTile_1.tm";
+		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\IceMap_1.tm";
 
 		//ZeroMemory(&ofn, sizeof(ofn));
 		//ofn.lStructSize = sizeof(ofn);
