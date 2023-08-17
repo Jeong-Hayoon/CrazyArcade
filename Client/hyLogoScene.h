@@ -1,10 +1,7 @@
 #pragma once
 #include "hyScene.h"
 #include "hySound.h"
-#include "hyAlphaBlending.h"
 #include "hyLogo.h"
-
-
 
 namespace hy
 {

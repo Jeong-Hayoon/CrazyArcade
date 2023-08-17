@@ -51,7 +51,7 @@ namespace hy
 
 		mSceneTime += Time::DeltaTime();
 
-		if (mSceneTime >= 5.0f)
+		if (mSceneTime >= 6.0f)
 		{
 			Resources::Find<Sound>(L"LogoSound")->Stop(1);
 			SceneManager::LoadScene(L"TitleScene");

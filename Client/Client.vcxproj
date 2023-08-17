@@ -132,7 +132,6 @@
   <ItemGroup>
     <ClInclude Include="Client.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="hyAlphaBlending.h" />
     <ClInclude Include="hyAnimation.h" />
     <ClInclude Include="hyAnimator.h" />
     <ClInclude Include="hyBackGround.h" />
@@ -208,7 +207,6 @@
     <ClInclude Include="hyTransform.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hyAlphaBlending.cpp" />
     <ClCompile Include="hyAnimation.cpp" />
     <ClCompile Include="hyAnimator.cpp" />
     <ClCompile Include="hyBackGround.cpp" />

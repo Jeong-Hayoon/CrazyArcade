@@ -195,9 +195,6 @@
     <Filter Include="GameObject">
       <UniqueIdentifier>{87ea9720-f4e1-4c88-890f-756fa88d94ec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\AlphaBlend">
-      <UniqueIdentifier>{40d06a5b-d7e2-4f02-ae4c-f0d8e6ab76c6}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -421,9 +418,6 @@
     </ClInclude>
     <ClInclude Include="hyWin_Lose.h">
       <Filter>Contents\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="hyAlphaBlending.h">
-      <Filter>Contents\AlphaBlend</Filter>
     </ClInclude>
     <ClInclude Include="hyLogo.h">
       <Filter>Contents\GameObject\BackGround</Filter>
@@ -650,9 +644,6 @@
     </ClCompile>
     <ClCompile Include="hyWin_Lose.cpp">
       <Filter>Contents\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="hyAlphaBlending.cpp">
-      <Filter>Contents\AlphaBlend</Filter>
     </ClCompile>
     <ClCompile Include="hyLogo.cpp">
       <Filter>Contents\GameObject\BackGround</Filter>
