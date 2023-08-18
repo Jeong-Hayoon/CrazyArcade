@@ -17,6 +17,7 @@
 #include "hyCollider.h"
 #include "hyShield.h"
 #include "hyShieldEffect.h"
+#include "hySound.h"
 
 
 
@@ -45,6 +46,9 @@ namespace hy
 	}
 	void Bazzi::Initialize()
 	{
+		Resources::Load<Sound>(L"BombSet", L"..\\Resources\\Sound\\Sound\\bomb_set.wav");
+
+
 		// 배찌 충돌 구현
 		Collider* col = AddComponent<Collider>();
 
@@ -177,6 +181,8 @@ namespace hy
 		{
 			if(BombLimit != 0)
 			{
+				Resources::Find<Sound>(L"BombSet")->Play(false);
+
 				Bomb* Bomb_ = object::Instantiate<Bomb>(eLayerType::Bomb);
 				Transform* Bazzitr = this->GetComponent<Transform>();
 				Vector2 BazziLocationtr = Bazzitr->GetPosition();

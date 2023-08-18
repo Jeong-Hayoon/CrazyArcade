@@ -13,6 +13,7 @@
 #include "hyResources.h"
 #include "hyCollider.h"
 #include "hyForestMap1.h"
+#include "hySound.h"
 
 
 
@@ -126,7 +127,7 @@ namespace hy
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();
 
-		if (MonsterTime > 3)
+		if (MonsterTime > 2.5f)
 		{
 			animator->PlayAnimation(L"ForestMonster_1Right", true);
 			mState = eState::Right;
@@ -143,7 +144,7 @@ namespace hy
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();
 
-		if (MonsterTime > 3)
+		if (MonsterTime > 2.5f)
 		{
 			animator->PlayAnimation(L"ForestMonster_1Left", true);
 			mState = eState::Left;
@@ -160,7 +161,7 @@ namespace hy
 
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();
-		if (MonsterTime > 3)
+		if (MonsterTime > 2.5f)
 		{
 			animator->PlayAnimation(L"ForestMonster_1Up", true);
 			mState = eState::Up;
@@ -177,7 +178,7 @@ namespace hy
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();
 
-		if (MonsterTime > 3)
+		if (MonsterTime > 2.5f)
 		{
 			animator->PlayAnimation(L"ForestMonster_1Down", true);
 			mState = eState::Down;

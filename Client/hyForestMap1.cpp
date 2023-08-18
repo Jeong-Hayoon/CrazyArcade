@@ -35,7 +35,7 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT ForestMap1::MonsterQuantity = 4;
+	UINT ForestMap1::MonsterQuantity = 1;
 	bool ForestMap1::FunCheck = 0;
 	bool ForestMap1::LoseLife = 0;
 
@@ -107,19 +107,22 @@ namespace hy
 		// 배찌 상하좌우 애니메이션
 		Bazzi* forestbazzi1 = object::Instantiate<Bazzi>(eLayerType::Player);
 		Transform* forestbazzitr = forestbazzi1->GetComponent<Transform>();
-		forestbazzitr->SetPosition(Vector2(50.0f, 70.0f));
+		forestbazzitr->SetPosition(Vector2(430.0f, 250.0f));
 
 		// 포레스트 몬스터
 		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(150.0f, 70.0f));
+		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 50.0f));
+		/*ForestMonster_1* ForestMonster2 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(400.0f, 50.0f));*/
+		/*ForestMonster_1* ForestMonster3 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster3->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 450.0f));
+		ForestMonster_1* ForestMonster4 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster4->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 60.0f));*/
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
-
-
 		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
-
 		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::UseItem, true);
 
