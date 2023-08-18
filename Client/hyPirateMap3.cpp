@@ -46,7 +46,7 @@ namespace hy
 	{
 		OPENFILENAME ofn = {};
 
-		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\ForestTile_1.tm";
+		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\PirateMap_3.tm";
 
 		// rb : 이진수로 파일을 읽음
 		FILE* pFile = nullptr;
