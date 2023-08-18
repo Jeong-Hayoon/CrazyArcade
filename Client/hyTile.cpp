@@ -75,7 +75,7 @@ namespace hy
 				this->GetSourceTileIdx() == Vector2(2, 0))
 				{
 					this->SetSourceTileIdx(0, 1);
-					//Destroy((GameObject*)(this->GetComponent<Collider>()));
+					this->DeleteComponent<Collider>();
 					mSpriteRenderer->SetTile(0, 1);
 				}
 

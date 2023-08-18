@@ -51,33 +51,23 @@ namespace hy
 		}
 
 		template <typename T>
-		T* DeleteComponent()
+		void DeleteComponent()
 		{
 			T* comp = nullptr;
-			for (Component* c : mComponents)
+
+			for (std::vector<Component*>::iterator iter = mComponents.begin();
+				iter != mComponents.end(); iter++)
 			{
-				comp = dynamic_cast<T*>(c);
+				comp = dynamic_cast<T*>(*iter);
 
 				if (comp != nullptr)
-					return comp;
-
-			}
-
-			for (std::vector<Component*>::iterator iter = mComponents.begin(); 
-				iter != mComponents.end(); )
-			{
-				if (iter == comp)
 				{
-					Component* Obj = *iter;
-					delete Obj;
-					Obj = nullptr;
+					delete comp;
+					comp = nullptr;
 					iter = mComponents.erase(iter);
+					return;
 				}
-				else
-				{
-					iter++;
-				}
-			}	
+			}
 		}
 
 		virtual void OnCollisionEnter(class Collider* other);
