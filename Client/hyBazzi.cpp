@@ -45,6 +45,13 @@ namespace hy
 	}
 	void Bazzi::Initialize()
 	{
+		// 배찌 충돌 구현
+		Collider* col = AddComponent<Collider>();
+
+		// 배찌의 충돌 사각형 사이즈 수정
+		col->SetSize(Vector2(30.0f, 25.0f));
+		col->SetOffset(Vector2(0.0f, 10.0f));
+
 		Animator* at = AddComponent<Animator>();
 
 		Texture* Bazzi_ = Resources::Load<Texture>(L"Bazzi"

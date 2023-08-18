@@ -14,6 +14,9 @@ namespace hy
 	Devil::Devil()
 		: mState(eState::Idle)
 	{
+		
+
+
 		Animator* dt = AddComponent<Animator>();
 
 		Texture* Devil_ = Resources::Load<Texture>(L"Devil"
@@ -31,6 +34,13 @@ namespace hy
 	void Devil::Initialize()
 	{
 		Item::Initialize();
+
+		// Devil 아이템 충돌 구현
+		Collider* Devilcol = AddComponent<Collider>();
+
+		// Devil 아이템 충돌 사각형 사이즈 수정
+		Devilcol->SetSize(Vector2(10.0f, 30.0f));
+
 		Resources::Load<Sound>(L"EatItem", L"..\\Resources\\Sound\\Sound\\eat_item.wav");
 
 	}

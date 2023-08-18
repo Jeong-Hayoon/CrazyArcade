@@ -13,6 +13,8 @@ namespace hy
 {
 	Potion::Potion()
 	{
+		
+
 		Animator* pt = AddComponent<Animator>();
 
 		Texture* Potion_ = Resources::Load<Texture>(L"Potion"
@@ -28,6 +30,12 @@ namespace hy
 	void Potion::Initialize()
 	{
 		Item::Initialize();
+
+		// Potion 아이템 충돌 구현
+		Collider* Potioncol = AddComponent<Collider>();
+		// Potion 아이템 충돌 사각형 사이즈 수정
+		Potioncol->SetSize(Vector2(10.0f, 30.0f));
+
 		Resources::Load<Sound>(L"EatItem", L"..\\Resources\\Sound\\Sound\\eat_item.wav");
 
 	}

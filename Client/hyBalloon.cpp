@@ -14,6 +14,8 @@ namespace hy
 	Balloon::Balloon()
 		: mState(eState::Idle)
 	{
+	
+
 		Animator* bt = AddComponent<Animator>();
 
 		Texture* Balloon_ = Resources::Load<Texture>(L"Balloon"
@@ -31,6 +33,11 @@ namespace hy
 	void Balloon::Initialize()
 	{
 		Item::Initialize();
+
+		// Balloon 아이템 충돌 구현
+		Collider* Ballooncol = AddComponent<Collider>();
+		// Balloon 아이템 충돌 사각형 사이즈 수정
+		Ballooncol->SetSize(Vector2(10.0f, 30.0f));
 
 		Resources::Load<Sound>(L"EatItem", L"..\\Resources\\Sound\\Sound\\eat_item.wav");
 

@@ -13,6 +13,9 @@ namespace hy
 {
 	Shield::Shield()
 	{
+
+
+
 		Animator* st = AddComponent<Animator>();
 
 		Texture* Shield_ = Resources::Load<Texture>(L"Shield"
@@ -34,6 +37,12 @@ namespace hy
 	void Shield::Initialize()
 	{
 		Item::Initialize();
+
+		// Shield 아이템 충돌 구현
+		Collider* Shieldcol = AddComponent<Collider>();
+		// Shield 아이템 충돌 사각형 사이즈 수정
+		Shieldcol->SetSize(Vector2(10.0f, 30.0f));
+
 		Resources::Load<Sound>(L"EatItem", L"..\\Resources\\Sound\\Sound\\eat_item.wav");
 
 	}

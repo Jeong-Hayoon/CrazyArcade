@@ -39,6 +39,9 @@ namespace hy
 		mt->CreateAnimationFolder(L"ForestMonnsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die", Vector2::Zero, 0.2f);
 		mt->PlayAnimation(L"ForestMonster_1Right", true);
 
+		Collider* col = AddComponent<Collider>();
+		col->SetSize(Vector2(30.0f, 40.0f));
+
 		GameObject::Initialize();
 	}
 	void ForestMonster_1::Update()
@@ -119,7 +122,7 @@ namespace hy
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		Animator* animator = GetComponent<Animator>();		
-		pos.y -= 100.f * Time::DeltaTime();
+		pos.y -= 50.f * Time::DeltaTime();
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();
 
@@ -136,7 +139,7 @@ namespace hy
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		Animator* animator = GetComponent<Animator>();		//
-		pos.y += 100.f * Time::DeltaTime();
+		pos.y += 50.f * Time::DeltaTime();
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();
 
@@ -153,7 +156,7 @@ namespace hy
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		Animator* animator = GetComponent<Animator>();		//
-		pos.x -= 100.f * Time::DeltaTime();
+		pos.x -= 50.f * Time::DeltaTime();
 
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();
@@ -170,7 +173,7 @@ namespace hy
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		Animator* animator = GetComponent<Animator>();			//
-		pos.x += 100.f * Time::DeltaTime();
+		pos.x += 50.f * Time::DeltaTime();
 		tr->SetPosition(pos);
 		MonsterTime += Time::DeltaTime();
 

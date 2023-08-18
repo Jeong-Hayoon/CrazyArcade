@@ -13,6 +13,9 @@ namespace hy
 {
 	Needle::Needle()
 	{
+	
+
+
 		Animator* nt = AddComponent<Animator>();
 
 		Texture* Needle_ = Resources::Load<Texture>(L"Needle"
@@ -28,6 +31,12 @@ namespace hy
 	void Needle::Initialize()
 	{
 		Item::Initialize();
+
+		// Needle 아이템 충돌 구현
+		Collider* Needlecol = AddComponent<Collider>();
+		// Needle 아이템 충돌 사각형 사이즈 수정
+		Needlecol->SetSize(Vector2(10.0f, 30.0f));
+
 		Resources::Load<Sound>(L"EatItem", L"..\\Resources\\Sound\\Sound\\eat_item.wav");
 
 	}
