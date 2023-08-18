@@ -163,19 +163,7 @@ namespace hy
 		bgsr->SetScale(Vector2(1.f, 1.f));
 		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));
 
-		// 각 맵에 따른 맵 화면
-		/*Texture* ForestMap1 = Resources::Load<Texture>(L"ForestMapImage"
-			, L"..\\Resources\\Image\\Bg\\ForestTile.bmp");
-		BackGround* forestmap1 = object::Instantiate<BackGround>(eLayerType::Background);
-		forestmap1->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 402.0f));
-		SpriteRenderer* forestmapsr= forestmap1->AddComponent<SpriteRenderer>();
-		forestmapsr->SetImage(ForestMap1);
-		forestmapsr->SetScale(Vector2(1.0f, 0.90f));*/
-
-		// 타일 주석
-		/*Texture* Tile_
-			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");*/
-
+	
 		Texture* Tile_
 			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
 
@@ -200,18 +188,6 @@ namespace hy
 		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
 
-		// 배찌 충돌 구현
-		Collider* col = forestbazzi1->AddComponent<Collider>();
-		// 배찌의 충돌 사각형 사이즈 수정
-		col->SetSize(Vector2(30.0f, 25.0f));
-		col->SetOffset(Vector2(0.0f, 10.0f));
-		forestbazzitr->SetPosition(Vector2(100.0f, 100.0f));
-
-
-		// 포레스트 몬스터의 충돌 사각형 사이즈 수정
-		col = ForestMonster1->AddComponent<Collider>();
-		col->SetSize(Vector2(30.0f, 40.0f));
-
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
@@ -224,11 +200,6 @@ namespace hy
 		Balloonpos.x = 150.f;
 
 		Balloon_1->GetComponent<Transform>()->SetPosition(Balloonpos);
-
-		// Balloon 아이템 충돌 구현
-		Collider* Ballooncol = Balloon_1->AddComponent<Collider>();
-		// Balloon 아이템 충돌 사각형 사이즈 수정
-		Ballooncol->SetSize(Vector2(10.0f, 30.0f));
 
 		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
@@ -246,12 +217,6 @@ namespace hy
 
 		Devil_1->GetComponent<Transform>()->SetPosition(Devilpos);
 
-		// Devil 아이템 충돌 구현
-		Collider* Devilcol = Devil_1->AddComponent<Collider>();
-		// Devil 아이템 충돌 사각형 사이즈 수정
-		Devilcol->SetSize(Vector2(10.0f, 30.0f));
-		Devilcol->SetOffset(Vector2(0.0f, 0.0f));
-
 		// Potion 아이템 setting
 		Potion* Potion_1 = object::Instantiate<Potion>(eLayerType::Item);
 		Transform* Potiontr = Potion_1->GetComponent<Transform>();
@@ -261,12 +226,6 @@ namespace hy
 		Potionpos.x = 350.f;
 
 		Potion_1->GetComponent<Transform>()->SetPosition(Potionpos);
-
-		// Potion 아이템 충돌 구현
-		Collider* Potioncol = Potion_1->AddComponent<Collider>();
-		// Potion 아이템 충돌 사각형 사이즈 수정
-		Potioncol->SetSize(Vector2(10.0f, 30.0f));
-		Potioncol->SetOffset(Vector2(0.0f, 0.0f));
 
 		// Shield 아이템 setting
 		Shield* Shield_1 = object::Instantiate<Shield>(eLayerType::UseItem);
@@ -278,13 +237,6 @@ namespace hy
 
 		Shield_1->GetComponent<Transform>()->SetPosition(Shieldnpos);
 
-		// Shield 아이템 충돌 구현
-		Collider* Shieldcol = Shield_1->AddComponent<Collider>();
-		// Shield 아이템 충돌 사각형 사이즈 수정
-		Shieldcol->SetSize(Vector2(10.0f, 30.0f));
-		Shieldcol->SetOffset(Vector2(0.0f, 0.0f));
-
-
 		// Needle 아이템 setting
 		Needle* Needle_1 = object::Instantiate<Needle>(eLayerType::UseItem);
 		Transform* Needletr = Needle_1->GetComponent<Transform>();
@@ -294,17 +246,6 @@ namespace hy
 		Needlepos.x = 550.f;
 
 		Needle_1->GetComponent<Transform>()->SetPosition(Needlepos);
-
-		// Needle 아이템 충돌 구현
-		Collider* Needlecol = Needle_1->AddComponent<Collider>();
-		// Needle 아이템 충돌 사각형 사이즈 수정
-		Needlecol->SetSize(Vector2(10.0f, 30.0f));
-		Needlecol->SetOffset(Vector2(0.0f, 0.0f));
-
-		/*Texture* Tile_
-			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");*/
-			//ForestMap1::Load();
-			//Scene::Initialize();
 	}
 
 	void ForestMap3::Update()
