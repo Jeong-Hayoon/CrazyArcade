@@ -180,15 +180,6 @@ namespace hy
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 
-		// Balloon 아이템 setting
-		Balloon* Balloon_1 = object::Instantiate<Balloon>(eLayerType::Item);
-		Transform* Balloontr = Balloon_1->GetComponent<Transform>();
-		Vector2 Balloonpos = Balloontr->GetPosition();
-
-		Balloonpos.y = 250.f;
-		Balloonpos.x = 150.f;
-
-		Balloon_1->GetComponent<Transform>()->SetPosition(Balloonpos);
 
 		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
@@ -196,45 +187,7 @@ namespace hy
 		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::UseItem, true);
 
-		// Devil 아이템 setting
-		Devil* Devil_1 = object::Instantiate<Devil>(eLayerType::Item);
-		Transform* Deviltr = Devil_1->GetComponent<Transform>();
-		Vector2 Devilpos = Deviltr->GetPosition();
-
-		Devilpos.y = 250.f;
-		Devilpos.x = 250.f;
-
-		Devil_1->GetComponent<Transform>()->SetPosition(Devilpos);
-
-		// Potion 아이템 setting
-		Potion* Potion_1 = object::Instantiate<Potion>(eLayerType::Item);
-		Transform* Potiontr = Potion_1->GetComponent<Transform>();
-		Vector2 Potionpos = Potiontr->GetPosition();
-
-		Potionpos.y = 250.f;
-		Potionpos.x = 350.f;
-
-		Potion_1->GetComponent<Transform>()->SetPosition(Potionpos);
-
-		// Shield 아이템 setting
-		Shield* Shield_1 = object::Instantiate<Shield>(eLayerType::UseItem);
-		Transform* Shieldtr = Shield_1->GetComponent<Transform>();
-		Vector2 Shieldnpos = Shieldtr->GetPosition();
-
-		Shieldnpos.y = 250.f;
-		Shieldnpos.x = 450.f;
-
-		Shield_1->GetComponent<Transform>()->SetPosition(Shieldnpos);
-
-		// Needle 아이템 setting
-		Needle* Needle_1 = object::Instantiate<Needle>(eLayerType::UseItem);
-		Transform* Needletr = Needle_1->GetComponent<Transform>();
-		Vector2 Needlepos = Needletr->GetPosition();
-
-		Needlepos.y = 250.f;
-		Needlepos.x = 550.f;
-
-		Needle_1->GetComponent<Transform>()->SetPosition(Needlepos);
+	
 
 	}
 
