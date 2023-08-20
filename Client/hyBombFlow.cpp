@@ -16,7 +16,7 @@
 #include "hyBazzi.h"
 #include "hyCollider.h"
 #include "hyCollisionManager.h"
-
+#include "hyTile.h"
 
 
 namespace hy
@@ -90,6 +90,24 @@ namespace hy
 
 	void BombFlow::OnCollisionEnter(Collider* other)
 	{
+		//// 충돌체의 owner를 가져와서
+		//GameObject* obj = other->GetOwner();
+		//// Bazzi과 같으면 Bazzi의 주소를 반환하고 안되면 nullptr
+		//Tile* tile = dynamic_cast<Tile*>(obj);
+
+		//if (other->GetOwner()->GetLayerType() == eLayerType::Tile &&
+		//	(tile != nullptr) &&
+		//	(tile->GetType() == Tile::eType::Crack))
+		//{
+		//	Destroy(this);
+		//}
+
+		//else if (other->GetOwner()->GetLayerType() == eLayerType::Tile &&
+		//	(tile != nullptr) &&
+		//	(tile->GetType() == Tile::eType::Uncrushable))
+		//{
+		//	Destroy(this);
+		//}
 	}
 	void BombFlow::OnCollisionStay(Collider* other)
 	{

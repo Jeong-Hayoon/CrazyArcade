@@ -48,6 +48,10 @@ namespace hy
 		static float MonsterTime;
 		eDirection mDirection;
 
+		bool North;								// 이동에 곱해줄 동서남북 방향 변수
+		bool South;
+		bool East;
+		bool West;
 
 	};
 }

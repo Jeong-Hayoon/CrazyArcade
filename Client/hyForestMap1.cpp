@@ -183,7 +183,7 @@ namespace hy
 
 			if (Win_Lose::GetWin_Lose_flag() == true)
 			{
-				SceneManager::LoadScene(L"ForestMap2");
+				SceneManager::LoadScene(L"LobbyScene");
 				Win_Lose::SetWin_Lose_flag(false);
 			}
 			FunCheck = 0;

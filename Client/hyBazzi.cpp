@@ -43,7 +43,6 @@ namespace hy
 	}
 	Bazzi::~Bazzi()
 	{
-		int a = 0;
 	}
 	void Bazzi::Initialize()
 	{

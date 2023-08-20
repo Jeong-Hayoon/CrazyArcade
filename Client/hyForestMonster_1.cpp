@@ -25,6 +25,10 @@ namespace hy
 	ForestMonster_1::ForestMonster_1()
 		: mDeathTime(1.0f)
 		, mState(eState::Right)
+		, North(1)
+		, South(1)
+		, East(1)
+		, West(1)
 	{
 	}
 	ForestMonster_1::~ForestMonster_1()
@@ -48,6 +52,28 @@ namespace hy
 	void ForestMonster_1::Update()
 	{
 		GameObject::Update();
+
+		Transform* tr = GetComponent<Transform>();
+		Vector2 pos = tr->GetPosition();
+		if (pos.x >= 590)
+		{
+			pos.x = 590;
+		}
+		else if (pos.x <= 40)
+		{
+			pos.x = 40;
+		}
+		else if (pos.y <= 50)
+		{
+			pos.y = 50;
+		}
+		else if (pos.y >= 530)
+		{
+			pos.y = 530;
+		}
+
+		tr->SetPosition(pos);
+
 
 		switch (mState)
 		{
@@ -88,6 +114,8 @@ namespace hy
 	// 물풍선과 충돌했을 때 Dead
 	void ForestMonster_1::OnCollisionEnter(Collider* other)
 	{
+		Animator* animator = GetComponent<Animator>();
+
 		// 충돌체의 owner를 가져와서
 		GameObject* obj = other->GetOwner();
 		// Tile과 같으면 Tile의 주소를 반환하고 안되면 nullptr
@@ -102,52 +130,173 @@ namespace hy
 		}
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Crack)
 		{
-			// 몬스터 이동 방향 반대로
+			if (mDirection == eDirection::Right)
+			{
+				East = 0;
+				animator->PlayAnimation(L"ForestMonster_1Left", true);
+				mState = eState::Left;
+				mDirection = eDirection::Left;
+			}
+			else if (mDirection == eDirection::Left)
+			{
+				West = 0;
+				animator->PlayAnimation(L"ForestMonster_1Right", true);
+				mState = eState::Right;
+				mDirection = eDirection::Right;
+			}
+			else if (mDirection == eDirection::Down)
+			{
+				South = 0;
+				animator->PlayAnimation(L"ForestMonster_1Up", true);
+				mState = eState::Up;
+				mDirection = eDirection::Up;
+			}
+			else if (mDirection == eDirection::Up)
+			{
+				North = 0;
+				animator->PlayAnimation(L"ForestMonster_1Down", true);
+				mState = eState::Down;
+				mDirection = eDirection::Down;
+			}
+
 		}
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Uncrushable)
 		{
 			// 몬스터 이동 방향 반대로
+			if (mDirection == eDirection::Right)
+			{
+				East = 0;
+				animator->PlayAnimation(L"ForestMonster_1Left", true);
+				mState = eState::Left;
+				mDirection = eDirection::Left;
+			}
+			else if (mDirection == eDirection::Left)
+			{
+				West = 0;
+				animator->PlayAnimation(L"ForestMonster_1Right", true);
+				mState = eState::Right;
+				mDirection = eDirection::Right;
+			}
+			else if (mDirection == eDirection::Down)
+			{
+				South = 0;
+				animator->PlayAnimation(L"ForestMonster_1Up", true);
+				mState = eState::Up;
+				mDirection = eDirection::Up;
+			}
+			else if (mDirection == eDirection::Up)
+			{
+				North = 0;
+				animator->PlayAnimation(L"ForestMonster_1Down", true);
+				mState = eState::Down;
+				mDirection = eDirection::Down;
+			}
 		}
 	}
 
 	void ForestMonster_1::OnCollisionStay(Collider* other)
 	{
+
 	}
 
 	void ForestMonster_1::OnCollisionExit(Collider* other)
 	{
+		North = 1;
+		South = 1;
+		East = 1;
+		West = 1;
 	}
 
 	void ForestMonster_1::Up()
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();		
-		pos.y -= 50.f * Time::DeltaTime();
+		Animator* animator = GetComponent<Animator>();
+		pos.y -= North * 50.f * Time::DeltaTime();
 		tr->SetPosition(pos);
+
 		MonsterTime += Time::DeltaTime();
 
-		if (MonsterTime > 2.5f)
+		if (MonsterTime > 2.f)
 		{
-			animator->PlayAnimation(L"ForestMonster_1Right", true);
-			mState = eState::Right;
+			srand(time(NULL));
+
+			int StateSelect = rand() % 4;;
+
+			if (StateSelect == 0)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Right", true);
+				mState = eState::Right;
+				mDirection = eDirection::Right;
+
+			}
+			else if (StateSelect == 1)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Left", true);
+				mState = eState::Left;
+				mDirection = eDirection::Left;
+
+			}
+			else if (StateSelect == 2)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Up", true);
+				mState = eState::Up;
+				mDirection = eDirection::Up;
+
+			}
+			else if (StateSelect == 3)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Down", true);
+				mState = eState::Down;
+				mDirection = eDirection::Down;
+
+			}
+
 			MonsterTime = 0.f;
 		}
+
 	}
 
 	void ForestMonster_1::Down()
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();		//
-		pos.y += 50.f * Time::DeltaTime();
+		Animator* animator = GetComponent<Animator>();
+		pos.y += South * 50.f * Time::DeltaTime();
 		tr->SetPosition(pos);
+
 		MonsterTime += Time::DeltaTime();
 
-		if (MonsterTime > 2.5f)
+		if (MonsterTime > 2.f)
 		{
-			animator->PlayAnimation(L"ForestMonster_1Left", true);
-			mState = eState::Left;
+			srand(time(NULL));
+
+			int StateSelect = rand() % 4;;
+
+			if (StateSelect == 0)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Right", true);
+				mState = eState::Right;
+
+			}
+			else if (StateSelect == 1)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Left", true);
+				mState = eState::Left;
+
+			}
+			else if (StateSelect == 2)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Up", true);
+				mState = eState::Up;
+
+			}
+			else if (StateSelect == 3)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Down", true);
+				mState = eState::Down;
+			}
+
 			MonsterTime = 0.f;
 		}
 	}
@@ -156,15 +305,42 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();		//
-		pos.x -= 50.f * Time::DeltaTime();
-
+		Animator* animator = GetComponent<Animator>();
+		pos.x -= West * 50.f * Time::DeltaTime();
 		tr->SetPosition(pos);
+
 		MonsterTime += Time::DeltaTime();
-		if (MonsterTime > 2.5f)
+
+		if (MonsterTime > 2.f)
 		{
-			animator->PlayAnimation(L"ForestMonster_1Up", true);
-			mState = eState::Up;
+			srand(time(NULL));
+
+			int StateSelect = rand() % 4;;
+
+			if (StateSelect == 0)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Right", true);
+				mState = eState::Right;
+
+			}
+			else if (StateSelect == 1)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Left", true);
+				mState = eState::Left;
+
+			}
+			else if (StateSelect == 2)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Up", true);
+				mState = eState::Up;
+
+			}
+			else if (StateSelect == 3)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Down", true);
+				mState = eState::Down;
+			}
+
 			MonsterTime = 0.f;
 		}
 	}
@@ -173,18 +349,44 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();			//
-		pos.x += 50.f * Time::DeltaTime();
+		Animator* animator = GetComponent<Animator>();
+		pos.x += East * 50.f * Time::DeltaTime();
 		tr->SetPosition(pos);
+
 		MonsterTime += Time::DeltaTime();
 
-		if (MonsterTime > 2.5f)
+		if (MonsterTime > 2.f)
 		{
-			animator->PlayAnimation(L"ForestMonster_1Down", true);
-			mState = eState::Down;
+			srand(time(NULL));
+
+			int StateSelect = rand() % 4;;
+
+			if (StateSelect == 0)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Right", true);
+				mState = eState::Right;
+
+			}
+			else if (StateSelect == 1)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Left", true);
+				mState = eState::Left;
+
+			}
+			else if (StateSelect == 2)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Up", true);
+				mState = eState::Up;
+
+			}
+			else if (StateSelect == 3)
+			{
+				animator->PlayAnimation(L"ForestMonster_1Down", true);
+				mState = eState::Down;
+			}
+
 			MonsterTime = 0.f;
 		}
-
 	}
 
 	void ForestMonster_1::Dead()

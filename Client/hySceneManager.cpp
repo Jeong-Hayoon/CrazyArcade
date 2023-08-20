@@ -50,7 +50,7 @@ namespace hy
 		CreateScene<ToolScene>(L"ToolScene");
 
 
-		LoadScene(L"IceMap1");
+		LoadScene(L"LobbyScene");
 	}
 
 	void SceneManager::Update()
