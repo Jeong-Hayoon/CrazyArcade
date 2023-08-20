@@ -18,6 +18,7 @@
 #include "hyShield.h"
 #include "hyShieldEffect.h"
 #include "hySound.h"
+#include "hyCollisionManager.h"
 
 
 
@@ -55,6 +56,11 @@ namespace hy
 		// 배찌의 충돌 사각형 사이즈 수정
 		col->SetSize(Vector2(30.0f, 25.0f));
 		col->SetOffset(Vector2(0.0f, 10.0f));
+
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::UseItem, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Boss, true);
+
 
 		Animator* at = AddComponent<Animator>();
 
@@ -257,23 +263,12 @@ namespace hy
 			mState = eState::Dead;
 		}
 
-		else if (other->GetOwner()->GetLayerType() == eLayerType::Item)
-		{
-			/*Animator* at = GetComponent<Animator>();
-			at->SetScale(Vector2(1.0f, 1.0f));
-			at->PlayAnimation(L"BazziDead", false);
-			mState = eState::Dead;*/
-		}
-
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
 			Animator* at = GetComponent<Animator>();
 			at->SetScale(Vector2(0.8f, 0.8f));
 			at->PlayAnimation(L"BazziTrap", false);
 			mState = eState::Trap;
-
-			/*at->PlayAnimation(L"BazziBalloonDead", false);
-			mState = eState::BalloonDead;*/
 		}
 
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Crack)
@@ -326,6 +321,14 @@ namespace hy
 				mState = eState::Move;
 			}
 		}
+		/////// 충돌을 안했는데 if문에 들어옴
+		/*else if (other->GetOwner()->GetLayerType() == eLayerType::Boss)
+		{
+			Animator* at = GetComponent<Animator>();
+			at->SetScale(Vector2(0.9f, 0.9f));
+			at->PlayAnimation(L"BazziDead", false);
+			mState = eState::Dead;
+		}*/
 
 		
 	}

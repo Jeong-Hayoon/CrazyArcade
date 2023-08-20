@@ -3,7 +3,8 @@
 #include "hyTexture.h"
 #include "hyResources.h"
 #include "hySound.h"
-
+#include "hyCollider.h"
+#include "hyBazzi.h"
 
 namespace hy
 {
@@ -37,8 +38,21 @@ namespace hy
 	}
 	void PotionMax::OnCollisionEnter(Collider* other)
 	{
+		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
+		{
+			Bazzi* bz = (Bazzi*)(other->GetOwner());
+			if (bz != nullptr)
+			{
+				bz->BombLimitUp();
+				Resources::Find<Sound>(L"EatItem")->Play(false);
 
-		Resources::Find<Sound>(L"EatItem")->Play(false);
+				Destroy(this);
+			}
+		}
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
+		{
+			Destroy(this);
+		}
 
 	}
 	void PotionMax::OnCollisionStay(Collider* other)

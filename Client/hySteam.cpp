@@ -80,7 +80,7 @@ namespace hy
 
 		Transform* tr = GetComponent<Transform>();
 
-		int ItemSelect = rand() % 5;
+		int ItemSelect = rand() % 6;
 
 		if (ItemSelect == 0)
 		{
@@ -130,11 +130,26 @@ namespace hy
 		}
 		else if (ItemSelect == 4)
 		{
+			// PotionMax 아이템 setting
+			PotionMax* PotionMax_1 = object::Instantiate<PotionMax>(eLayerType::Item, tr->GetPosition() + Vector2(0.0f, -2.0f));
+
+			// PotionMax 아이템 충돌 구현
+			Collider* PotionMaxcol = PotionMax_1->AddComponent<Collider>();
+			// PotionMax 아이템 충돌 사각형 사이즈 수정
+			PotionMaxcol->SetSize(Vector2(10.0f, 30.0f));
+			PotionMaxcol->SetOffset(Vector2(0.0f, 0.0f));
 
 		}
 		else if (ItemSelect == 5)
 		{
+			// VelocitySkate 아이템 setting
+			VelocitySkate* VelocitySkate_1 = object::Instantiate<VelocitySkate>(eLayerType::Item, tr->GetPosition() + Vector2(0.0f, -2.0f));
 
+			// VelocitySkate 아이템 충돌 구현
+			Collider* VelocitySkatecol = VelocitySkate_1->AddComponent<Collider>();
+			// VelocitySkate 아이템 충돌 사각형 사이즈 수정
+			VelocitySkatecol->SetSize(Vector2(10.0f, 30.0f));
+			VelocitySkatecol->SetOffset(Vector2(0.0f, 0.0f));
 		}
 
 		Destroy(this);

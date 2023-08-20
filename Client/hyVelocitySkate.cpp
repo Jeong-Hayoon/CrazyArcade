@@ -3,7 +3,8 @@
 #include "hyTexture.h"
 #include "hyResources.h"
 #include "hySound.h"
-
+#include "hyCollider.h"
+#include "hyBazzi.h"
 
 
 namespace hy
@@ -38,7 +39,22 @@ namespace hy
 	}
 	void VelocitySkate::OnCollisionEnter(Collider* other)
 	{
-		Resources::Find<Sound>(L"EatItem")->Play(false);
+		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
+		{
+			Bazzi* bz = (Bazzi*)(other->GetOwner());
+			if (bz != nullptr)
+			{
+				bz->SetBombFlowCount();
+
+				Resources::Find<Sound>(L"EatItem")->Play(false);
+
+				Destroy(this);
+			}
+		}
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
+		{
+			Destroy(this);
+		}
 
 	}
 	void VelocitySkate::OnCollisionStay(Collider* other)

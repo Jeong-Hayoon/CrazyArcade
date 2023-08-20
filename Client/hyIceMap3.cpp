@@ -96,6 +96,19 @@ namespace hy
 			{
 				tile->SetType(Tile::eType::None);
 			}
+
+			if (tile->GetType() == Tile::eType::Crack || tile->GetType() == Tile::eType::Uncrushable)
+			{
+				Collider* Col = tile->AddComponent<Collider>();;
+				Col->SetSize(Vector2(40.0f, 40.0f));
+
+				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Bomb, true);
+				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Player, true);
+				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Monster, true);
+				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Bombflow, true);
+
+			}
+
 			tile->SetSourceTileIdx(sourceX, sourceY);
 			tile->SetTileIdx(myX, myY);
 

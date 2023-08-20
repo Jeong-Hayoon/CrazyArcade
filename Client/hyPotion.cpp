@@ -49,11 +49,22 @@ namespace hy
 	}
 	void Potion::OnCollisionEnter(Collider* other)
 	{
-		Bazzi* bz = (Bazzi*)(other->GetOwner());
-		bz->SetBombFlowCount();
-		Resources::Find<Sound>(L"EatItem")->Play(false);
+		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
+		{
+			Bazzi* bz = (Bazzi*)(other->GetOwner());
+			if (bz != nullptr)
+			{
+				bz->SetBombFlowCount();
 
-		Destroy(this);
+				Resources::Find<Sound>(L"EatItem")->Play(false);
+
+				Destroy(this);
+			}
+		}
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
+		{
+			Destroy(this);
+		}
 	}
 	void Potion::OnCollisionStay(Collider* other)
 	{

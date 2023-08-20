@@ -65,8 +65,6 @@ namespace hy
 		{
 			if (this->GetType() == eType::Crack)
 			{
-
-				// 랜덤 아이템 생성 코드 추가(스팀 생성 -> 스팀 소멸 -> 아이템 객체 랜덤 생성)
 				Steam* steam_ = object::Instantiate<Steam>(eLayerType::Effect);
 				Transform* tiletr = this->GetComponent<Transform>();
 				Vector2  Steampos = tiletr->GetPosition();
@@ -83,6 +81,7 @@ namespace hy
 					this->GetSourceTileIdx() == Vector2(4, 2))
 				{
 					this->SetSourceTileIdx(1, 1);
+					this->DeleteComponent<Collider>();
 					mSpriteRenderer->SetTile(1, 1);
 				}
 
@@ -90,6 +89,7 @@ namespace hy
 					this->GetSourceTileIdx() == Vector2(4, 0))
 				{
 					this->SetSourceTileIdx(3, 4);
+					this->DeleteComponent<Collider>();
 					mSpriteRenderer->SetTile(3, 4);
 				}
 

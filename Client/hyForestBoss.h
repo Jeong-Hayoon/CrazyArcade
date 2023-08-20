@@ -13,6 +13,7 @@ namespace hy
 			Down,
 			Left,
 			Right,
+			Hit,
 			Dead,
 			End,
 		};
@@ -42,6 +43,8 @@ namespace hy
 		void Down();
 		void Left();
 		void Right();
+
+		void Hit();
 
 		void Dead();
 

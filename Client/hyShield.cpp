@@ -56,18 +56,23 @@ namespace hy
 	}
 	void Shield::OnCollisionEnter(Collider* other)
 	{
-		// 충돌체의 owner를 가져와서
-		GameObject* obj = other->GetOwner();
-		// Bazzi과 같으면 Bazzi의 주소를 반환하고 안되면 nullptr
-		Bazzi* player = dynamic_cast<Bazzi*>(obj);	
-		if (player != nullptr)
+		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
 		{
-			player->SetActiveItem(Bazzi::eItem::Shield);
-			Bazzi::SetUseItemNum(1);
-			Resources::Find<Sound>(L"EatItem")->Play(false);
+			Bazzi* bz = (Bazzi*)(other->GetOwner());
+			if (bz != nullptr)
+			{
+				bz->SetActiveItem(Bazzi::eItem::Shield);
+				Bazzi::SetUseItemNum(1);
+				Resources::Find<Sound>(L"EatItem")->Play(false);
 
+				Destroy(this);
+			}
+		}
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
+		{
 			Destroy(this);
 		}
+
 	}
 	void Shield::OnCollisionStay(Collider* other)
 	{

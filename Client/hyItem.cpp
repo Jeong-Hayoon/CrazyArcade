@@ -40,6 +40,7 @@ namespace hy
 
 	void Item::OnCollisionEnter(Collider* other)
 	{
+
 	}
 
 	void Item::OnCollisionStay(Collider* other)

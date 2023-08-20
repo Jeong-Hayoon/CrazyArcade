@@ -104,7 +104,7 @@ namespace hy
 			if (tile->GetType() == Tile::eType::Crack || tile->GetType() == Tile::eType::Uncrushable)
 			{
 				Collider* Col = tile->AddComponent<Collider>();;
-				Col->SetSize(Vector2(30.0f, 30.0f));
+				Col->SetSize(Vector2(40.0f, 40.0f));
 
 				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Bomb, true);
 				CollisionManager::CollisionLayerCheck(eLayerType::Tile, eLayerType::Player, true);
@@ -189,15 +189,9 @@ namespace hy
 		ForestBoss* ForestBoss_ = object::Instantiate<ForestBoss>(eLayerType::Boss);
 		ForestBoss_->GetComponent<Transform>()->SetPosition(Vector2(250.0f, 300.0f));
 
-		// ============== 충돌 ==============
-		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Boss, true);
+	
 
-		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
 
-		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::UseItem, true);
 
 	}
 

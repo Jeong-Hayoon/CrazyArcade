@@ -14,6 +14,8 @@
 #include "hyCollider.h"
 #include "hyForestMap3.h"
 #include "hySound.h"
+#include "hyCollisionManager.h"
+
 
 
 
@@ -51,8 +53,10 @@ namespace hy
 		mt->PlayAnimation(L"ForestBoss_Right", true);
 
 		Collider* col = AddComponent<Collider>();
-		col->SetSize(Vector2(65.0f, 80.0f));
+		col->SetSize(Vector2(65.0f, 60.0f));
+		CollisionManager::CollisionLayerCheck(eLayerType::Boss, eLayerType::Bombflow, true);
 
+		
 		GameObject::Initialize();
 	}
 	void ForestBoss::Update()
@@ -126,12 +130,14 @@ namespace hy
 	// 물풍선과 충돌했을 때 Dead
 	void ForestBoss::OnCollisionEnter(Collider* other)
 	{
+		Animator* at = GetComponent<Animator>();
+
 		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
 			if(ForestBossHP == 0)
 			{
 				BubbleTime += Time::DeltaTime();
-				Animator* at = GetComponent<Animator>();
+
 				if (BubbleTime < 3.f)
 				{
 					at->PlayAnimation(L"ForestBoss_Bubble", false);
@@ -147,7 +153,8 @@ namespace hy
 
 			else if(ForestBossHP != 0)
 			{
-				ForestBossHP -= 10;
+				at->PlayAnimation(L"ForestBoss_Hit", false);
+				mState = eState::Hit;
 			}
 		}
 		
@@ -340,6 +347,44 @@ namespace hy
 
 			BossTime = 0.f;
 		}
+	}
+
+	void ForestBoss::Hit()
+	{
+		ForestBossHP -= 10;
+		Animator* animator = GetComponent<Animator>();
+
+		if (animator->IsActiveAnimationComplete())
+		{
+			srand(time(NULL));
+
+			int StateSelect = rand() % 4;;
+
+			if (StateSelect == 0)
+			{
+				animator->PlayAnimation(L"ForestBoss_Right", true);
+				mState = eState::Right;
+
+			}
+			else if (StateSelect == 1)
+			{
+				animator->PlayAnimation(L"ForestBoss_Left", true);
+				mState = eState::Left;
+
+			}
+			else if (StateSelect == 2)
+			{
+				animator->PlayAnimation(L"ForestBoss_Up", true);
+				mState = eState::Up;
+
+			}
+			else if (StateSelect == 3)
+			{
+				animator->PlayAnimation(L"ForestBoss_Down", true);
+				mState = eState::Down;
+			}
+		}
+		
 	}
 
 	void ForestBoss::Dead()
