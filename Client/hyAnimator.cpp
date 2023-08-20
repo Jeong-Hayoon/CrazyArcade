@@ -70,6 +70,8 @@ namespace hy
 	void Animator::CreateAnimationFolder(const std::wstring& name
 		, const std::wstring& path, Vector2 offset, float duration)
 	{
+		SetName(name);
+
 		UINT width = 0;
 		UINT height = 0;
 		UINT fileCount = 0;
@@ -125,6 +127,8 @@ namespace hy
 
 	Animation* Animator::FindAnimation(const std::wstring& name)
 	{
+		SetName(name);
+
 		auto iter = mAnimations.find(name);
 		if (iter == mAnimations.end())
 			return nullptr;
@@ -137,6 +141,8 @@ namespace hy
 	// 만들어진 애니메이션이 없다면 return
 	void Animator::PlayAnimation(const std::wstring& name, bool loop)
 	{
+		SetName(name);
+
 		Animation* animation = FindAnimation(name);
 		if (animation == nullptr)
 			return;

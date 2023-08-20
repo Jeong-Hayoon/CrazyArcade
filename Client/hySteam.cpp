@@ -9,11 +9,7 @@
 #include "hyTexture.h"
 #include "hyResources.h"
 #include "hyBazzi.h"
-#include <iostream>
-#include <stdlib.h>
-#include <time.h>
 #include "hyCollider.h"
-
 #include "hyBalloon.h"
 #include "hyDevil.h"
 #include "hyNeedle.h"
@@ -83,7 +79,6 @@ namespace hy
 		srand(time(NULL));
 
 		Transform* tr = GetComponent<Transform>();
-
 
 		int ItemSelect = rand() % 5;
 
