@@ -12,7 +12,6 @@
 #include "hyTransform.h"
 #include "hyAnimator.h"
 #include "hyBazzi.h"
-#include "hyForestMonster_1.h"
 #include "hyCollisionManager.h"
 #include "hyToolScene.h"
 #include "hyBalloon.h"
@@ -24,6 +23,8 @@
 #include "hyTen_Second.h"
 #include "hyMinutes.h"
 #include "hyDot.h"
+#include "hyForestBoss.h"
+
 
 
 
@@ -33,7 +34,7 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT ForestMap3::MonsterQuantity = 1;
+	UINT ForestMap3::BossLife = 1;
 
 	ForestMap3::ForestMap3()
 	{
@@ -184,12 +185,13 @@ namespace hy
 		Transform* forestbazzitr = forestbazzi1->GetComponent<Transform>();
 		forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
 
-		// 포레스트 몬스터
-		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
+		// 포레스트 보스
+		ForestBoss* ForestBoss_ = object::Instantiate<ForestBoss>(eLayerType::Boss);
+		ForestBoss_->GetComponent<Transform>()->SetPosition(Vector2(250.0f, 70.0f));
 
+		// ============== 충돌 ==============
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Boss, true);
 
 		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);

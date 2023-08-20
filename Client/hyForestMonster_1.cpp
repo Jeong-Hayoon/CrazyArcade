@@ -90,7 +90,7 @@ namespace hy
 	{
 		// 충돌체의 owner를 가져와서
 		GameObject* obj = other->GetOwner();
-		// Bazzi과 같으면 Bazzi의 주소를 반환하고 안되면 nullptr
+		// Tile과 같으면 Tile의 주소를 반환하고 안되면 nullptr
 		Tile* tile = dynamic_cast<Tile*>(obj);
 
 		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)

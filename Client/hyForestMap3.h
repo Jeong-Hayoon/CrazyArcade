@@ -21,15 +21,15 @@ namespace hy
 		virtual void Render(HDC hdc) override;
 		void Load();
 
-		static UINT GetMonsterQuantity() { return MonsterQuantity; }
-		static void SetMonsterQuantity() { MonsterQuantity--; }
+		static UINT GetBossLife() { return BossLife; }
+		static void SetBossLife() { BossLife--; }
 
 		virtual void Enter();
 		virtual void Exit();
 
 	private:
 		std::vector<Tile*> mTiles;;
-		static UINT MonsterQuantity;
+		static UINT BossLife;
 
 	};
 }

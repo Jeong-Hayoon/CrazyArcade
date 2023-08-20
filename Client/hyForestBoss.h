@@ -6,6 +6,25 @@ namespace hy
 	class ForestBoss : public GameObject
 	{
 	public:
+		enum class eState
+		{
+			Idle,
+			Up,
+			Down,
+			Left,
+			Right,
+			Dead,
+			End,
+		};
+
+		enum class eDirection
+		{
+			Up,
+			Down,
+			Left,
+			Right
+		};
+
 		ForestBoss();
 		virtual ~ForestBoss();
 
@@ -13,8 +32,32 @@ namespace hy
 		virtual void Update() override;
 		virtual void Render(HDC hdc)override;
 
+		virtual void OnCollisionEnter(class Collider* other);
+		virtual void OnCollisionStay(class Collider* other);
+		virtual void OnCollisionExit(class Collider* other);
+
+		void Idle();
+
+		void Up();
+		void Down();
+		void Left();
+		void Right();
+
+		void Dead();
+
 	private:
-		UINT MonsterQuantity;
+		eState mState;
+		float mDeathTime;
+		static float BossTime;			// 몇초마다 이동할건지
+		static float BubbleTime;		// 물풍선에 갇혀있는 시간
+		static UINT ForestBossHP;
+
+		eDirection mDirection;
+
+
 	};
 }
+
+
+
 

@@ -40,6 +40,7 @@ namespace hy::enums
 		UseItem,
 		Item,
 		Monster,
+		Boss,
 		Effect,
 		Bombflow,
 		UI,
