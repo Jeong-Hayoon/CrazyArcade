@@ -187,7 +187,7 @@ namespace hy
 
 		// 포레스트 보스
 		ForestBoss* ForestBoss_ = object::Instantiate<ForestBoss>(eLayerType::Boss);
-		ForestBoss_->GetComponent<Transform>()->SetPosition(Vector2(250.0f, 70.0f));
+		ForestBoss_->GetComponent<Transform>()->SetPosition(Vector2(250.0f, 300.0f));
 
 		// ============== 충돌 ==============
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)

@@ -48,7 +48,7 @@ namespace hy
 		mt->CreateAnimationFolder(L"ForestBoss_Idle", L"..\\Resources\\Image\\Monster\\ForestBoss\\Idle", Vector2::Zero, 0.2f);
 
 
-		mt->PlayAnimation(L"ForestBoss_Idle", true);
+		mt->PlayAnimation(L"ForestBoss_Right", true);
 
 		Collider* col = AddComponent<Collider>();
 		col->SetSize(Vector2(65.0f, 80.0f));
@@ -61,22 +61,25 @@ namespace hy
 
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		if (pos.x >= 610)
+		if (pos.x >= 590)
 		{
-			pos.x = 610;
+			pos.x = 590;
 		}
-		else if (pos.x <= 30)
+		else if (pos.x <= 40)
 		{
-			pos.x = 30;
+			pos.x = 40;
 		}
-		else if (pos.y <= 40)
+		else if (pos.y <= 50)
 		{
-			pos.y = 30;
+			pos.y = 50;
 		}
 		else if (pos.y >= 530)
 		{
-			pos.y = 30;
+			pos.y = 530;
 		}
+
+		tr->SetPosition(pos);
+
 
 		switch (mState)
 		{
@@ -111,7 +114,6 @@ namespace hy
 			break;
 		}
 
-		tr->SetPosition(pos);
 
 	}
 	void ForestBoss::Render(HDC hdc)
@@ -169,22 +171,42 @@ namespace hy
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		Animator* animator = GetComponent<Animator>();
+		pos.y -= 50.f * Time::DeltaTime();
+		tr->SetPosition(pos);
 
 		BossTime += Time::DeltaTime();
 
-		animator->PlayAnimation(L"ForestBoss_Down", true);
-
-		if (BossTime > 7.f)
+		if (BossTime > 3.f)
 		{
-			pos.y -= 50.f * Time::DeltaTime();
-			tr->SetPosition(pos);
+			srand(time(NULL));
 
-			if (BossTime > 10.f)
+			int StateSelect = rand() % 4;;
+
+			if (StateSelect == 0)
 			{
 				animator->PlayAnimation(L"ForestBoss_Right", true);
 				mState = eState::Right;
-				BossTime = 0.f;
+
 			}
+			else if (StateSelect == 1)
+			{
+				animator->PlayAnimation(L"ForestBoss_Left", true);
+				mState = eState::Left;
+
+			}
+			else if (StateSelect == 2)
+			{
+				animator->PlayAnimation(L"ForestBoss_Up", true);
+				mState = eState::Up;
+
+			}
+			else if (StateSelect == 3)
+			{
+				animator->PlayAnimation(L"ForestBoss_Down", true);
+				mState = eState::Down;
+			}
+
+			BossTime = 0.f;
 		}
 	}
 
@@ -192,20 +214,43 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();		
-		
+		Animator* animator = GetComponent<Animator>();
+		pos.y += 50.f * Time::DeltaTime();
+		tr->SetPosition(pos);
+
 		BossTime += Time::DeltaTime();
 
-		if(BossTime > 7.f)
+		if (BossTime > 3.f)
 		{
-			pos.y += 50.f * Time::DeltaTime();
-			tr->SetPosition(pos);
-			if(BossTime > 10.f)
+			srand(time(NULL));
+
+			int StateSelect = rand() % 4;;
+
+			if (StateSelect == 0)
+			{
+				animator->PlayAnimation(L"ForestBoss_Right", true);
+				mState = eState::Right;
+
+			}
+			else if (StateSelect == 1)
+			{
+				animator->PlayAnimation(L"ForestBoss_Left", true);
+				mState = eState::Left;
+
+			}
+			else if (StateSelect == 2)
+			{
+				animator->PlayAnimation(L"ForestBoss_Up", true);
+				mState = eState::Up;
+
+			}
+			else if (StateSelect == 3)
 			{
 				animator->PlayAnimation(L"ForestBoss_Down", true);
-				mState = eState::Left;
-				BossTime = 0.f;
+				mState = eState::Down;
 			}
+
+			BossTime = 0.f;
 		}
 	}
 
@@ -213,23 +258,43 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();		//
+		Animator* animator = GetComponent<Animator>();
+		pos.x -= 50.f * Time::DeltaTime();
+		tr->SetPosition(pos);
+
 		BossTime += Time::DeltaTime();
 
-		if (BossTime > 7.f)
+		if (BossTime > 3.f)
 		{
-			pos.x -= 50.f * Time::DeltaTime();
-			tr->SetPosition(pos);
+			srand(time(NULL));
 
-			animator->PlayAnimation(L"ForestBoss_Left", true);
+			int StateSelect = rand() % 4;;
 
+			if (StateSelect == 0)
+			{
+				animator->PlayAnimation(L"ForestBoss_Right", true);
+				mState = eState::Right;
 
-			if (BossTime > 10.f)
+			}
+			else if (StateSelect == 1)
+			{
+				animator->PlayAnimation(L"ForestBoss_Left", true);
+				mState = eState::Left;
+
+			}
+			else if (StateSelect == 2)
 			{
 				animator->PlayAnimation(L"ForestBoss_Up", true);
 				mState = eState::Up;
-				BossTime = 0.f;
+
 			}
+			else if (StateSelect == 3)
+			{
+				animator->PlayAnimation(L"ForestBoss_Down", true);
+				mState = eState::Down;
+			}
+
+			BossTime = 0.f;
 		}
 	}
 
@@ -237,25 +302,44 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();			//
-		
+		Animator* animator = GetComponent<Animator>();			
+		pos.x += 50.f * Time::DeltaTime();
+		tr->SetPosition(pos);
+
 		BossTime += Time::DeltaTime();
 
-		if (BossTime > 7.f)
+		if (BossTime > 3.f)
 		{
-			animator->PlayAnimation(L"ForestBoss_Right", true);
+			srand(time(NULL));
 
-			pos.x += 50.f * Time::DeltaTime();
-			tr->SetPosition(pos);
+			int StateSelect = rand() % 4;;
 
-			if(BossTime > 10.f)
+			if (StateSelect == 0)
+			{
+				animator->PlayAnimation(L"ForestBoss_Right", true);
+				mState = eState::Right;
+
+			}
+			else if(StateSelect == 1)
+			{
+				animator->PlayAnimation(L"ForestBoss_Left", true);
+				mState = eState::Left;
+
+			}
+			else if (StateSelect == 2)
+			{
+				animator->PlayAnimation(L"ForestBoss_Up", true);
+				mState = eState::Up;
+
+			}
+			else if (StateSelect == 3)
 			{
 				animator->PlayAnimation(L"ForestBoss_Down", true);
 				mState = eState::Down;
-				BossTime = 0.f;
 			}
-		}
 
+			BossTime = 0.f;
+		}
 	}
 
 	void ForestBoss::Dead()
