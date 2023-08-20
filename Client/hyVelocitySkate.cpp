@@ -44,7 +44,7 @@ namespace hy
 			Bazzi* bz = (Bazzi*)(other->GetOwner());
 			if (bz != nullptr)
 			{
-				bz->SetBombFlowCount();
+				bz->MoveSpeedUp();
 
 				Resources::Find<Sound>(L"EatItem")->Play(false);
 

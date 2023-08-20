@@ -212,7 +212,7 @@ namespace hy
 	{
 		Destroy(this);
 
-		Tile::SetHaveBomb(0);
+		// Tile::SetHaveBomb(0);
 
 	}
 }

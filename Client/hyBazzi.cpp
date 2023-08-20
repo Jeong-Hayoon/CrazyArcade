@@ -184,7 +184,7 @@ namespace hy
 		// 물풍선 객체 생성 및 위치 조정
 		if (Input::GetKeyDown(eKeyCode::Space))	
 		{
-			if(BombLimit != 0 && Tile::GetHaveBomb() == 0)
+			if(BombLimit != 0 /*&& Tile::GetHaveBomb() == 0*/)
 			{
 				Resources::Find<Sound>(L"BombSet")->Play(false);
 
@@ -204,7 +204,7 @@ namespace hy
 				Bombpos.x = (X_ *  TILE_WIDTH) + (TILE_WIDTH / 2) + 20.f;
 				Bombpos.y = (Y_ * TILE_HEIGHT) + (TILE_HEIGHT / 2) + 40.f; 
 
-				Tile::SetHaveBomb(1);
+				/*Tile::SetHaveBomb(1);*/
 
  				Bomb_->GetComponent<Transform>()->SetPosition(Bombpos);
 				BombLimit--;

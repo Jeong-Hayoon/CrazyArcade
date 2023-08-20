@@ -87,7 +87,8 @@ namespace hy
 		//std::vector<Vector2*>& GetBombPutPositions() { return mBombPutPositions; }
 
 		static UINT GetBombFlowCount() { return BombFlowCount; }
-		void SetBombFlowCount() { BombFlowCount++; }
+		static void SetBombFlowCount() { BombFlowCount++; }
+		static void MaxBombFlowCount() { BombFlowCount = 9; }
 
 		static bool GetUseItemNum() { return UseItemNum; }
 		static void SetUseItemNum(bool n) { UseItemNum = n; }
