@@ -184,7 +184,7 @@ namespace hy
 		// 물풍선 객체 생성 및 위치 조정
 		if (Input::GetKeyDown(eKeyCode::Space))	
 		{
-			if(BombLimit != 0)
+			if(BombLimit != 0 && Tile::GetHaveBomb() == 0)
 			{
 				Resources::Find<Sound>(L"BombSet")->Play(false);
 
@@ -203,6 +203,8 @@ namespace hy
 				// 해당 타일 인덱스에 타일 사이즈를 곱하여 해당 타일의 LeftTop으로 이동
 				Bombpos.x = (X_ *  TILE_WIDTH) + (TILE_WIDTH / 2) + 20.f;
 				Bombpos.y = (Y_ * TILE_HEIGHT) + (TILE_HEIGHT / 2) + 40.f; 
+
+				Tile::SetHaveBomb(1);
 
  				Bomb_->GetComponent<Transform>()->SetPosition(Bombpos);
 				BombLimit--;
@@ -320,14 +322,13 @@ namespace hy
 				mState = eState::Move;
 			}
 		}
-		/////// 충돌을 안했는데 if문에 들어옴
-		/*else if (other->GetOwner()->GetLayerType() == eLayerType::Boss)
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Boss)
 		{
 			Animator* at = GetComponent<Animator>();
 			at->SetScale(Vector2(0.9f, 0.9f));
 			at->PlayAnimation(L"BazziDead", false);
 			mState = eState::Dead;
-		}*/
+		}
 
 		
 	}
@@ -385,12 +386,6 @@ namespace hy
 			mDirection = eDirection::Down;
 		}
 
-		//if (Input::GetKeyDown(eKeyCode::T) )	// Trap
-		//{
-		//	animator->SetScale(Vector2(1.0f, 1.0f));
-		//	animator->PlayAnimation(L"BazziTrap", false);
-		//	mState = eState::Trap;
-		//}
 		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle && UseItemNum == 1)	// Live
 		{
 			animator->SetScale(Vector2(0.8f, 0.8f));

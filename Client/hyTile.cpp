@@ -15,6 +15,8 @@ namespace hy
 	UINT Tile::mSelectedX = 0;
 	UINT Tile::mSelectedY = 0;
 
+	bool Tile::HaveBomb = 0;
+
 	Tile::Tile()
 		: mSpriteRenderer(nullptr)
 		, mSourceIndexX(0)

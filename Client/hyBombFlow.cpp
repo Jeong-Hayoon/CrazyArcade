@@ -211,6 +211,9 @@ namespace hy
 	void BombFlow::Extinct()
 	{
 		Destroy(this);
+
+		Tile::SetHaveBomb(0);
+
 	}
 }
 

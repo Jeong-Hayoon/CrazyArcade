@@ -113,8 +113,8 @@ namespace hy
 		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 50.0f));
 		/*ForestMonster_1* ForestMonster2 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(400.0f, 50.0f));*/
-		/*ForestMonster_1* ForestMonster3 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(400.0f, 50.0f));
+		ForestMonster_1* ForestMonster3 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		ForestMonster3->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 450.0f));
 		ForestMonster_1* ForestMonster4 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		ForestMonster4->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 60.0f));*/

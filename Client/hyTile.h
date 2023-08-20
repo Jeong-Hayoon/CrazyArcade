@@ -47,6 +47,9 @@ namespace hy
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
 
+		static bool GetHaveBomb() { return HaveBomb; }
+		static void SetHaveBomb(bool putbomb) { HaveBomb = putbomb; }
+
 	private:
 		class SpriteRenderer* mSpriteRenderer;
 		UINT mSourceIndexX;
@@ -55,6 +58,9 @@ namespace hy
 		UINT mIndexX;
 		UINT mIndexY;
 		eType mType;
+
+		// 타일에 이미 물풍선이 놓여져 있는지 check
+		static bool HaveBomb;		
 
 	};
 }

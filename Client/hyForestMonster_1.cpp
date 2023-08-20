@@ -45,7 +45,7 @@ namespace hy
 		mt->PlayAnimation(L"ForestMonster_1Right", true);
 
 		Collider* col = AddComponent<Collider>();
-		col->SetSize(Vector2(30.0f, 40.0f));
+		col->SetSize(Vector2(30.0f, 30.0f));
 
 		GameObject::Initialize();
 	}
@@ -191,6 +191,38 @@ namespace hy
 				mState = eState::Down;
 				mDirection = eDirection::Down;
 			}
+		}
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Bomb)
+		{
+			if (mDirection == eDirection::Right)
+			{
+				East = 0;
+				animator->PlayAnimation(L"ForestMonster_1Left", true);
+				mState = eState::Left;
+				mDirection = eDirection::Left;
+			}
+			else if (mDirection == eDirection::Left)
+			{
+				West = 0;
+				animator->PlayAnimation(L"ForestMonster_1Right", true);
+				mState = eState::Right;
+				mDirection = eDirection::Right;
+			}
+			else if (mDirection == eDirection::Down)
+			{
+				South = 0;
+				animator->PlayAnimation(L"ForestMonster_1Up", true);
+				mState = eState::Up;
+				mDirection = eDirection::Up;
+			}
+			else if (mDirection == eDirection::Up)
+			{
+				North = 0;
+				animator->PlayAnimation(L"ForestMonster_1Down", true);
+				mState = eState::Down;
+				mDirection = eDirection::Down;
+			}
+
 		}
 	}
 
