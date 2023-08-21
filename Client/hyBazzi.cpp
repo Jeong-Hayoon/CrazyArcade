@@ -35,10 +35,10 @@ namespace hy
 		, mDirection(eDirection::Down)
 		, MoveSpeed(150.f)
 		, Life(1)
-		, North(1)
-		, South(1)
-		, East(1)
-		, West(1)
+		, North(0)		// 충돌 안한 상태
+		, South(0)
+		, East(0)
+		, West(0)
 	{
 	}
 	Bazzi::~Bazzi()
@@ -289,22 +289,22 @@ namespace hy
 			// 이동을 할때 방향이 곱해져서 이동을 함
 			if (mDirection == eDirection::Right)
 			{
-				East = 0;
+				East++;
 				mState = eState::Move;
 			}
 			else if (mDirection == eDirection::Left)
 			{
-				West = 0;
+				West++;
 				mState = eState::Move;
 			}
 			else if (mDirection == eDirection::Down)
 			{
-				South = 0;
+				South++;
 				mState = eState::Move;
 			}
 			else if (mDirection == eDirection::Up)
 			{
-				North = 0;
+				North++;
 				mState = eState::Move;
 			}
 		}
@@ -312,22 +312,22 @@ namespace hy
 		{
 			if (mDirection == eDirection::Right)
 			{
-				East = 0;
+				East++;
 				mState = eState::Move;
 			}
 			else if (mDirection == eDirection::Left)
 			{
-				West = 0;
+				West++;
 				mState = eState::Move;
 			}
 			else if (mDirection == eDirection::Down)
 			{
-				South = 0;
+				South++;
 				mState = eState::Move;
 			}
 			else if (mDirection == eDirection::Up)
 			{
-				North = 0;
+				North++;
 				mState = eState::Move;
 			}
 		}
@@ -343,14 +343,27 @@ namespace hy
 	}
 	void Bazzi::OnCollisionStay(Collider* other)
 	{
-
+		
 	}
 	void Bazzi::OnCollisionExit(Collider* other)
 	{
-		North = 1;
-		South = 1;
-		East = 1;
-		West = 1;
+		if (North != 0 && (Input::GetKey(eKeyCode::Up) || Input::GetKeyDown(eKeyCode::Up)))
+		{
+			North--;
+		}
+		if (South != 0 && (Input::GetKey(eKeyCode::Down) || Input::GetKeyDown(eKeyCode::Down)))
+		{
+			South--;
+		}
+		if (East != 0 && (Input::GetKey(eKeyCode::Right) || Input::GetKeyDown(eKeyCode::Right)))
+		{
+			East--;
+		}
+		if (West != 0 && (Input::GetKey(eKeyCode::Left) || Input::GetKeyDown(eKeyCode::Left)))
+		{
+			West--;
+		}
+
 	}
  
 	void Bazzi::Make()
@@ -497,8 +510,10 @@ namespace hy
 			}
 			else
 			{
-				pos.y -=  North * MoveSpeed * Time::DeltaTime();
-
+				if (North == 0)
+				{
+					pos.y -= MoveSpeed * Time::DeltaTime();
+				}
 			}
 		}
 		else if (mDirection == eDirection::Left)	// 방향이 왼쪽이면 왼쪽으로 이동
@@ -509,7 +524,10 @@ namespace hy
 			}
 			else
 			{
-				pos.x -= West * MoveSpeed * Time::DeltaTime();
+				if (West == 0)
+				{
+					pos.x -= MoveSpeed * Time::DeltaTime();
+				}
 
 			}
 		}
@@ -521,7 +539,10 @@ namespace hy
 			}
 			else
 			{
-				pos.x += East * MoveSpeed * Time::DeltaTime();
+				if (East == 0)
+				{
+					pos.x += MoveSpeed * Time::DeltaTime();
+				}
 			}
 		}
 		else if (mDirection == eDirection::Down)	// 방향이 아래쪽이면 아래쪽으로 이동
@@ -532,7 +553,10 @@ namespace hy
 			}
 			else
 			{
-				pos.y += South* MoveSpeed * Time::DeltaTime();
+				if (South == 0)
+				{
+					pos.y += MoveSpeed * Time::DeltaTime();
+				}
 			}
 		}
 
