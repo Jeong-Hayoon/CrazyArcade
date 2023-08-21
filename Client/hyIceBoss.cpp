@@ -38,20 +38,17 @@ namespace hy
 	void IceBoss::Initialize()
 	{
 		Animator* mt = AddComponent<Animator>();
-		mt->CreateAnimationFolder(L"ForestBoss_Up", L"..\\Resources\\Image\\Monster\\ForestBoss\\Up", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestBoss_Down", L"..\\Resources\\Image\\Monster\\ForestBoss\\Down", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestBoss_Right", L"..\\Resources\\Image\\Monster\\ForestBoss\\Right", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestBoss_Left", L"..\\Resources\\Image\\Monster\\ForestBoss\\Left", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestBoss_Die", L"..\\Resources\\Image\\Monster\\ForestBoss\\Die", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_Attack", L"..\\Resources\\Image\\Monster\\ForestBoss\\Attack", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_Hit", L"..\\Resources\\Image\\Monster\\ForestBoss\\Hit", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_Bubble", L"..\\Resources\\Image\\Monster\\ForestBoss\\Bubble", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_LeftRoll", L"..\\Resources\\Image\\Monster\\ForestBoss\\LeftRoll", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_RightRoll", L"..\\Resources\\Image\\Monster\\ForestBoss\\RightRoll", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_Idle", L"..\\Resources\\Image\\Monster\\ForestBoss\\Idle", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"IceBoss_Up", L"..\\Resources\\Image\\Monster\\IceBoss\\Up", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"IceBoss_Down", L"..\\Resources\\Image\\Monster\\IceBoss\\Down", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"IceBoss_Right", L"..\\Resources\\Image\\Monster\\IceBoss\\Right", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"IceBoss_Left", L"..\\Resources\\Image\\Monster\\IceBoss\\Left", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"IceBoss_Die", L"..\\Resources\\Image\\Monster\\IceBoss\\Die", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"IceBoss_Attack", L"..\\Resources\\Image\\Monster\\IceBoss\\Attack", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"IceBoss_Hit", L"..\\Resources\\Image\\Monster\\IceBoss\\Hit", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"IceBoss_Bubble", L"..\\Resources\\Image\\Monster\\IceBoss\\Bubble", Vector2::Zero, 0.2f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
-		mt->PlayAnimation(L"ForestBoss_Right", true);
+		mt->PlayAnimation(L"IceBoss_Right", true);
 
 		Collider* col = AddComponent<Collider>();
 		col->SetSize(Vector2(100.0f, 100.0f));

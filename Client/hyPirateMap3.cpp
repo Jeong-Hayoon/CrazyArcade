@@ -24,6 +24,7 @@
 #include "hyTen_Second.h"
 #include "hyMinutes.h"
 #include "hyDot.h"
+#include "hyPirateBoss.h"
 
 
 
@@ -183,9 +184,9 @@ namespace hy
 		Transform* forestbazzitr = forestbazzi1->GetComponent<Transform>();
 		forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
 
-		// 포레스트 몬스터
-		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
+		// 포레스트 보스
+		PirateBoss* PirateBoss_ = object::Instantiate<PirateBoss>(eLayerType::Boss);
+		PirateBoss_->GetComponent<Transform>()->SetPosition(Vector2(250.0f, 300.0f));
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);

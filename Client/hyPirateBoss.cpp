@@ -38,17 +38,14 @@ namespace hy
 	void PirateBoss::Initialize()
 	{
 		Animator* mt = AddComponent<Animator>();
-		mt->CreateAnimationFolder(L"ForestBoss_Up", L"..\\Resources\\Image\\Monster\\ForestBoss\\Up", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestBoss_Down", L"..\\Resources\\Image\\Monster\\ForestBoss\\Down", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestBoss_Right", L"..\\Resources\\Image\\Monster\\ForestBoss\\Right", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestBoss_Left", L"..\\Resources\\Image\\Monster\\ForestBoss\\Left", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestBoss_Die", L"..\\Resources\\Image\\Monster\\ForestBoss\\Die", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_Attack", L"..\\Resources\\Image\\Monster\\ForestBoss\\Attack", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_Hit", L"..\\Resources\\Image\\Monster\\ForestBoss\\Hit", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_Bubble", L"..\\Resources\\Image\\Monster\\ForestBoss\\Bubble", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_LeftRoll", L"..\\Resources\\Image\\Monster\\ForestBoss\\LeftRoll", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_RightRoll", L"..\\Resources\\Image\\Monster\\ForestBoss\\RightRoll", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_Idle", L"..\\Resources\\Image\\Monster\\ForestBoss\\Idle", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"PirateBoss_Up", L"..\\Resources\\Image\\Monster\\PirateBoss\\Up", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"PirateBoss_Down", L"..\\Resources\\Image\\Monster\\PirateBoss\\Down", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"PirateBoss_Right", L"..\\Resources\\Image\\Monster\\PirateBoss\\Right", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"PirateBoss_Left", L"..\\Resources\\Image\\Monster\\PirateBoss\\Left", Vector2::Zero, 0.15f);
+		mt->CreateAnimationFolder(L"PirateBoss_Die", L"..\\Resources\\Image\\Monster\\PirateBoss\\Die", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"PirateBoss_Hit", L"..\\Resources\\Image\\Monster\\PirateBoss\\Hit", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"PirateBoss_Bubble", L"..\\Resources\\Image\\Monster\\PirateBoss\\Bubble", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"PirateBoss_Idle", L"..\\Resources\\Image\\Monster\\PirateBoss\\Idle", Vector2::Zero, 0.2f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"ForestBoss_Right", true);
@@ -424,18 +421,6 @@ namespace hy
 				{
 					continue;
 				}
-
-				//// rnd = 6 기준
-				//// newY가 1 ~ 10 이고
-				//if (newY > 7 - MultipleNum && newY < 5 + MultipleNum)
-				//{
-				//	// newX가 1 ~ 10인경우
-				//	if(newX > 7 - MultipleNum && newX < 5 + MultipleNum)
-				//	{
-				//		continue;
-				//	}
-				//}
-
 
 				Vector2 Bossbombpos;
 				Bossbombpos.x = newX;
