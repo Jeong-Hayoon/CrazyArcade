@@ -14,16 +14,13 @@ namespace hy
 	Devil::Devil()
 		: mState(eState::Idle)
 	{
-		
-
-
 		Animator* dt = AddComponent<Animator>();
 
 		Texture* Devil_ = Resources::Load<Texture>(L"Devil"
 			, L"..\\Resources\\Image\\Items\\Devil.bmp");
 
-		dt->CreateAnimation(L"Devil", Devil_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
-		dt->SetScale(Vector2(0.9f, 0.9f));
+		dt->CreateAnimation(L"Devil", Devil_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, -5.f), 0.3f);
+		dt->SetScale(Vector2(0.8f, 0.8f));
 		dt->PlayAnimation(L"Devil", true);
 	}
 

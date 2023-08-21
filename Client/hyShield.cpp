@@ -25,10 +25,10 @@ namespace hy
 			, L"..\\Resources\\Image\\Items\\shieldeffect.bmp");
 
 
-		st->CreateAnimation(L"Shield", Shield_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
+		st->CreateAnimation(L"Shield", Shield_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, -5.f), 0.3f);
 		st->CreateAnimation(L"BazziShield", ShieldEffect_, Vector2(0.0f, 0.0f), Vector2(88.0f, 101.0f), 4, Vector2(0.0f, 0.0f), 0.05f);
 
-		st->SetScale(Vector2(0.9f, 0.9f));
+		st->SetScale(Vector2(0.8f, 0.8f));
 		st->PlayAnimation(L"Shield", true);
 	}
 	Shield::~Shield()

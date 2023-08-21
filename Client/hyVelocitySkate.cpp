@@ -16,8 +16,8 @@ namespace hy
 		Texture* VelocitySkate_ = Resources::Load<Texture>(L"VelocitySkate"
 			, L"..\\Resources\\Image\\Items\\skate.bmp");
 
-		vst->CreateAnimation(L"VelocitySkate", VelocitySkate_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, 0.0f), 0.3f);
-		vst->SetScale(Vector2(0.9f, 0.9f));
+		vst->CreateAnimation(L"VelocitySkate", VelocitySkate_, Vector2(0.0f, 0.0f), Vector2(56.0f, 70.0f), 2, Vector2(0.0f, -5.f), 0.3f);
+		vst->SetScale(Vector2(0.8f, 0.8f));
 		vst->PlayAnimation(L"VelocitySkate", true);
 	}
 	VelocitySkate::~VelocitySkate()
