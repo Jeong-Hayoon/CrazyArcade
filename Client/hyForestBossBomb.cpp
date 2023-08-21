@@ -26,8 +26,7 @@ namespace hy
 		Collider* Col = AddComponent<Collider>();
 		Col->SetSize(Vector2(40.0f, 40.0f));
 
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Bomb, true);
-		CollisionManager::CollisionLayerCheck(eLayerType::Bomb, eLayerType::Tile, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::BossBombflow, eLayerType::Tile, true);
 
 
 		Animator* bbt = AddComponent<Animator>();

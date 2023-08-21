@@ -76,8 +76,6 @@ namespace hy
 
 	void Steam::Extinct()
 	{
-		srand(time(NULL));
-
 		Transform* tr = GetComponent<Transform>();
 
 		int ItemSelect = rand() % 6;
