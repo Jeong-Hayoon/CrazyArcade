@@ -195,6 +195,9 @@
     <Filter Include="GameObject">
       <UniqueIdentifier>{87ea9720-f4e1-4c88-890f-756fa88d94ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\Effect\Bomb\BossBomb">
+      <UniqueIdentifier>{99447d71-8517-4db4-9a90-b90e737711ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -422,6 +425,9 @@
     <ClInclude Include="hyLogo.h">
       <Filter>Contents\GameObject\BackGround</Filter>
     </ClInclude>
+    <ClInclude Include="hyForestBossBomb.h">
+      <Filter>Contents\GameObject\Effect\Bomb\BossBomb</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -647,6 +653,9 @@
     </ClCompile>
     <ClCompile Include="hyLogo.cpp">
       <Filter>Contents\GameObject\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="hyForestBossBomb.cpp">
+      <Filter>Contents\GameObject\Effect\Bomb\BossBomb</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

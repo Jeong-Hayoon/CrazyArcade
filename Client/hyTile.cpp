@@ -63,7 +63,7 @@ namespace hy
 
 	void Tile::OnCollisionEnter(Collider* other)
 	{
-		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
+		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow || other->GetOwner()->GetLayerType() == eLayerType::BossBombflow)
 		{
 			if (this->GetType() == eType::Crack)
 			{

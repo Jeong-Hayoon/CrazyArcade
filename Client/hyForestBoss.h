@@ -14,6 +14,7 @@ namespace hy
 			Left,
 			Right,
 			Hit,
+			Attack,
 			Dead,
 			End,
 		};
@@ -46,6 +47,8 @@ namespace hy
 
 		void Hit();
 
+		void Attack();
+
 		void Dead();
 
 	private:
@@ -54,6 +57,9 @@ namespace hy
 		static float BossTime;			// 몇초마다 이동할건지
 		static float BubbleTime;		// 물풍선에 갇혀있는 시간
 		static UINT ForestBossHP;
+
+		static float Attacktime;
+
 
 		eDirection mDirection;
 

@@ -42,6 +42,7 @@ namespace hy::enums
 		Monster,
 		Boss,
 		Effect,
+		BossBombflow,
 		Bombflow,
 		UI,
 		End,

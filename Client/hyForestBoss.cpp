@@ -15,7 +15,7 @@
 #include "hyForestMap3.h"
 #include "hySound.h"
 #include "hyCollisionManager.h"
-
+#include "hyForestBossBomb.h"
 
 
 
@@ -25,6 +25,7 @@ namespace hy
 	float ForestBoss::BossTime = 0.f;
 	float ForestBoss::BubbleTime = 0.f;	
 	UINT ForestBoss::ForestBossHP = 100;
+	float ForestBoss::Attacktime = 0.f;
 
 	ForestBoss::ForestBoss()
 		: mDeathTime(1.0f)
@@ -49,12 +50,14 @@ namespace hy
 		mt->CreateAnimationFolder(L"ForestBoss_RightRoll", L"..\\Resources\\Image\\Monster\\ForestBoss\\RightRoll", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"ForestBoss_Idle", L"..\\Resources\\Image\\Monster\\ForestBoss\\Idle", Vector2::Zero, 0.2f);
 
-
+		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"ForestBoss_Right", true);
 
 		Collider* col = AddComponent<Collider>();
-		col->SetSize(Vector2(65.0f, 60.0f));
+		col->SetSize(Vector2(100.0f, 100.0f));
 		CollisionManager::CollisionLayerCheck(eLayerType::Boss, eLayerType::Bombflow, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::BossBombflow, true);
+
 
 		
 		GameObject::Initialize();
@@ -65,6 +68,8 @@ namespace hy
 
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
+		Animator* at = GetComponent<Animator>();
+
 		if (pos.x >= 590)
 		{
 			pos.x = 590;
@@ -111,11 +116,22 @@ namespace hy
 			Dead();
 			break;
 
+		case hy::ForestBoss::eState::Attack:
+			Attack();
+			break;
+
 		case hy::ForestBoss::eState::End:
 			break;
 
 		default:
 			break;
+		}
+
+		Attacktime += Time::DeltaTime();
+		if (Attacktime > 5.f)
+		{
+			at->PlayAnimation(L"ForestBoss_Attack", false);
+			mState = eState::Attack;
 		}
 
 
@@ -385,6 +401,68 @@ namespace hy
 			}
 		}
 		
+	}
+
+
+	void ForestBoss::Attack()
+	{
+		srand(time(NULL));
+
+		int MultipleNum = (rand() % 6) + 1;
+
+		for (int i = 6 - MultipleNum; i <= 6 + MultipleNum; i++)		// y
+		{
+			for (int j = 7 - MultipleNum; j <= 7+ MultipleNum; j++)		// x
+			{
+				float newX = j;
+				float newY = i;
+
+				if ((newY != 6 - MultipleNum)
+					&& (newY != 6 + MultipleNum)
+					&& (newX != 7 - MultipleNum)
+					&& (newX != 7 + MultipleNum))
+				{
+					continue;
+				}
+				
+				//// rnd = 6 기준
+				//// newY가 1 ~ 10 이고
+				//if (newY > 7 - MultipleNum && newY < 5 + MultipleNum)
+				//{
+				//	// newX가 1 ~ 10인경우
+				//	if(newX > 7 - MultipleNum && newX < 5 + MultipleNum)
+				//	{
+				//		continue;
+				//	}
+				//}
+				
+
+				Vector2 Bossbombpos;
+				Bossbombpos.x = newX;
+				Bossbombpos.y = newY;
+
+				Bossbombpos.x = ((Bossbombpos.x) * (TILE_WIDTH)) + (TILE_WIDTH / 2) + 20.f;
+				Bossbombpos.y = ((Bossbombpos.y) * (TILE_HEIGHT)) + (TILE_HEIGHT / 2) + 40.f;
+
+				ForestBossBomb* bomb_ = object::Instantiate<ForestBossBomb>(eLayerType::BossBombflow);
+				bomb_->GetComponent<Transform>()->SetPosition(Bossbombpos);
+			}
+
+		}
+
+		//// 해당 타일 인덱스를 구함
+		//X_ = (BazziLocationtr.x - 20.f) / (TILE_WIDTH);
+		//Y_ = (BazziLocationtr.y - 40.f) / (TILE_HEIGHT);
+
+		//// 해당 타일 인덱스에 타일 사이즈를 곱하여 해당 타일의 LeftTop으로 이동
+		//Bombpos.x = (X_ * TILE_WIDTH) + (TILE_WIDTH / 2) + 20.f;
+		//Bombpos.y = (Y_ * TILE_HEIGHT) + (TILE_HEIGHT / 2) + 40.f;
+
+
+		Attacktime = 0.f;
+
+		mState = eState::Right;
+
 	}
 
 	void ForestBoss::Dead()

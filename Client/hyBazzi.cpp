@@ -120,7 +120,7 @@ namespace hy
 
 	// 상태 변화만 업데이트에서 
 	void Bazzi::Update()	
-	{
+	{   
 		GameObject::Update();
 
 		//pixel 충돌(게임 완성을 하고 나면 레이어를 배경 뒤로 배치해서 게임 실행 시 안 보이게 배치)
@@ -244,6 +244,7 @@ namespace hy
 		}
 
 	}
+
 	void Bazzi::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
@@ -265,6 +266,14 @@ namespace hy
 		}
 
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
+		{
+			Animator* at = GetComponent<Animator>();
+			at->SetScale(Vector2(0.8f, 0.8f));
+			at->PlayAnimation(L"BazziTrap", false);
+			mState = eState::Trap;
+		}
+
+		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow)
 		{
 			Animator* at = GetComponent<Animator>();
 			at->SetScale(Vector2(0.8f, 0.8f));

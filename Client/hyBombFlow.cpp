@@ -28,13 +28,11 @@ namespace hy
 		Collider* Col = AddComponent<Collider>();
 		Col->SetSize(Vector2(40.0f, 40.0f));
 		CollisionManager::CollisionLayerCheck(eLayerType::Bombflow, eLayerType::Item, true);
-
-		Animator* bft = AddComponent<Animator>();
-
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Bombflow, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Monster, eLayerType::Bombflow, true);
 
-		 
+		Animator* bft = AddComponent<Animator>();
+
 		// 상하좌우 물줄기
 		bft->CreateAnimationFolder(L"BombUpIdle", L"..\\Resources\\Image\\Bomb\\UpIdleflow", Vector2(0.f, 0.f), 0.3f);
 		bft->CreateAnimationFolder(L"BombUp", L"..\\Resources\\Image\\Bomb\\Upflow", Vector2(0.f, 0.f), 0.15f);
