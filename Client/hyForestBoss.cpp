@@ -15,7 +15,7 @@
 #include "hyForestMap3.h"
 #include "hySound.h"
 #include "hyCollisionManager.h"
-#include "hyForestBossBomb.h"
+#include "hyBossBomb.h"
 
 
 
@@ -444,7 +444,7 @@ namespace hy
 				Bossbombpos.x = ((Bossbombpos.x) * (TILE_WIDTH)) + (TILE_WIDTH / 2) + 20.f;
 				Bossbombpos.y = ((Bossbombpos.y) * (TILE_HEIGHT)) + (TILE_HEIGHT / 2) + 40.f;
 
-				ForestBossBomb* bomb_ = object::Instantiate<ForestBossBomb>(eLayerType::BossBombflow);
+				BossBomb* bomb_ = object::Instantiate<BossBomb>(eLayerType::BossBombflow);
 				bomb_->GetComponent<Transform>()->SetPosition(Bossbombpos);
 			}
 

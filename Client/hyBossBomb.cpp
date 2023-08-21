@@ -1,4 +1,4 @@
-#include "hyForestBossBomb.h"
+#include "hyBossBomb.h"
 #include "hyTransform.h"
 #include "hyInput.h"
 #include "hyTime.h"
@@ -20,7 +20,7 @@
 
 namespace hy
 {
-	ForestBossBomb::ForestBossBomb()
+	BossBomb::BossBomb()
 		: mState(eState::Flow)
 	{
 		Collider* Col = AddComponent<Collider>();
@@ -30,70 +30,70 @@ namespace hy
 
 
 		Animator* bbt = AddComponent<Animator>();
-		bbt->CreateAnimationFolder(L"ForestBossBomb", L"..\\Resources\\Image\\Bomb\\Centerflow", Vector2(0.f, 0.f), 0.25f); // 0.25
+		bbt->CreateAnimationFolder(L"BossBomb", L"..\\Resources\\Image\\Bomb\\Centerflow", Vector2(0.f, 0.f), 0.25f); // 0.25
 		bbt->SetScale(Vector2(1.f, 1.f));
-		bbt->PlayAnimation(L"ForestBossBomb", false);
+		bbt->PlayAnimation(L"BossBomb", false);
 
 	}
-	ForestBossBomb::~ForestBossBomb()
+	BossBomb::~BossBomb()
 	{
 	}
-	void ForestBossBomb::Initialize()
+	void BossBomb::Initialize()
 	{
 
 
 		GameObject::Initialize();
 	}
-	void ForestBossBomb::Update()
+	void BossBomb::Update()
 	{
 		GameObject::Update();
 
 		// tab + enter 하면 스위치 생성
 		switch (mState)
 		{
-		case hy::ForestBossBomb::eState::Flow:
+		case hy::BossBomb::eState::Flow:
 			Flow();
 			break;
-		case hy::ForestBossBomb::eState::Pop:
+		case hy::BossBomb::eState::Pop:
 			Pop();
 			break;
-		case hy::ForestBossBomb::eState::End:
+		case hy::BossBomb::eState::End:
 			break;
 		default:
 			break;
 		}
 
 	}
-	void ForestBossBomb::Render(HDC hdc)
+	void BossBomb::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
 	}
 
-	void ForestBossBomb::OnCollisionEnter(Collider* other)
+	void BossBomb::OnCollisionEnter(Collider* other)
 	{
 	}
-	void ForestBossBomb::OnCollisionStay(Collider* other)
+	void BossBomb::OnCollisionStay(Collider* other)
 	{
 	}
-	void ForestBossBomb::OnCollisionExit(Collider* other)
+	void BossBomb::OnCollisionExit(Collider* other)
 	{
 	}
 
 
-	void ForestBossBomb::Flow()
+	void BossBomb::Flow()
 	{
-		static float ForestBossBombtime = 0.f;
-		ForestBossBombtime += Time::DeltaTime();
+		static float BossBombtime = 0.f;
+		BossBombtime += Time::DeltaTime();
 
 		Animator* animator = GetComponent<Animator>();
 		if (animator->IsActiveAnimationComplete())
 		{
 			mState = eState::Pop;
-			ForestBossBombtime = 0.f;
+			BossBombtime = 0.f;
 		}
 
 	}
-	void ForestBossBomb::Pop()
+	void BossBomb::Pop()
 	{
 		Destroy(this);
 	}

@@ -425,7 +425,7 @@
     <ClInclude Include="hyLogo.h">
       <Filter>Contents\GameObject\BackGround</Filter>
     </ClInclude>
-    <ClInclude Include="hyForestBossBomb.h">
+    <ClInclude Include="hyBossBomb.h">
       <Filter>Contents\GameObject\Effect\Bomb\BossBomb</Filter>
     </ClInclude>
   </ItemGroup>
@@ -654,7 +654,7 @@
     <ClCompile Include="hyLogo.cpp">
       <Filter>Contents\GameObject\BackGround</Filter>
     </ClCompile>
-    <ClCompile Include="hyForestBossBomb.cpp">
+    <ClCompile Include="hyBossBomb.cpp">
       <Filter>Contents\GameObject\Effect\Bomb\BossBomb</Filter>
     </ClCompile>
   </ItemGroup>

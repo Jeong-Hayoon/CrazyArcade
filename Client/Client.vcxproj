@@ -139,7 +139,7 @@
     <ClInclude Include="hyBazzi.h" />
     <ClInclude Include="hyBomb.h" />
     <ClInclude Include="hyBombFlow.h" />
-    <ClInclude Include="hyForestBossBomb.h" />
+    <ClInclude Include="hyBossBomb.h" />
     <ClInclude Include="hyCamera.h" />
     <ClInclude Include="hyCollider.h" />
     <ClInclude Include="hyCollisionManager.h" />
@@ -215,7 +215,7 @@
     <ClCompile Include="hyBazzi.cpp" />
     <ClCompile Include="hyBomb.cpp" />
     <ClCompile Include="hyBombFlow.cpp" />
-    <ClCompile Include="hyForestBossBomb.cpp" />
+    <ClCompile Include="hyBossBomb.cpp" />
     <ClCompile Include="hyCamera.cpp" />
     <ClCompile Include="hyCollider.cpp" />
     <ClCompile Include="hyCollisionManager.cpp" />

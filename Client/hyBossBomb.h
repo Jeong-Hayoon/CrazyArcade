@@ -5,7 +5,7 @@
 
 namespace hy
 {
-	class ForestBossBomb : public GameObject
+	class BossBomb : public GameObject
 	{
 	public:
 		enum class eState
@@ -14,8 +14,8 @@ namespace hy
 			Pop,
 			End,
 		};
-		ForestBossBomb();
-		virtual ~ForestBossBomb();
+		BossBomb();
+		virtual ~BossBomb();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
