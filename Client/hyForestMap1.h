@@ -36,7 +36,7 @@ namespace hy
 		static UINT MonsterQuantity;
 		// static bool FunCheck;
 		static bool LoseLife;							// 플레이어가 죽었을 때를 알려주는 Flag
-		static float Resulttime;						// 게임 결과 나오기 전 카운트하는 변수
+		float Resulttime;						// 게임 결과 나오기 전 카운트하는 변수
 
 	};
 }

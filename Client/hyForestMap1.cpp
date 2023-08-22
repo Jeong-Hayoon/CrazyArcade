@@ -38,10 +38,10 @@ namespace hy
 	UINT ForestMap1::MonsterQuantity = 1;
 	//bool ForestMap1::FunCheck = 0;
 	bool ForestMap1::LoseLife = 0;
-	float ForestMap1 :: Resulttime = 0.f;
 
 
 	ForestMap1::ForestMap1()
+		: Resulttime(0.f)
 	{
 	}
 	ForestMap1::~ForestMap1()

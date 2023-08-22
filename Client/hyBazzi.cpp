@@ -285,11 +285,54 @@ namespace hy
 		// East / West / South0 / North 가 0이면 이동
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Crack)
 		{
+			Vector2 bzpos = this->GetComponent<Collider>()->GetPosition();
+			Vector2 bzsize = this->GetComponent<Collider>()->GetSize();
+
+			Vector2 tilepos = other->GetPosition();
+			Vector2 tilesize = other->GetSize();
+
+			float ColSum_X = (bzsize.x + tilesize.x / 2.f) - fabs(bzpos.x - tilepos.x);
+			float ColSum_Y = (bzsize.y + tilesize.y / 2.f) - fabs(bzpos.y - tilepos.y);
+
+			// 좌우
+			if (ColSum_X > ColSum_Y)
+			{
+				// 왼쪽 충돌
+				if ((bzpos.x < tilepos.x))
+				{
+					East++;
+					mState = eState::Move;
+				}
+				// 오른쪽 충돌
+				else
+				{
+					West++;
+					mState = eState::Move;
+				}
+			}
+			// 상하
+			else
+			{
+				// 위쪽 충돌
+				if ((bzpos.y < tilepos.y))
+				{
+					South++;
+					mState = eState::Move;
+				}
+				// 아래쪽 충돌
+				else
+				{
+					North++;
+					mState = eState::Move;
+				}
+
+			}
+
 			//float GetSpeed = GetMoveSpeed();
 			// 이동은 없고, 애니메이션만
 			// 오른쪽으로 이동했을때 
 			// 이동을 할때 방향이 곱해져서 이동을 함
-			if (mDirection == eDirection::Right)
+			/*if (mDirection == eDirection::Right)
 			{
 				East++;
 				mState = eState::Move;
@@ -308,11 +351,54 @@ namespace hy
 			{
 				North++;
 				mState = eState::Move;
-			}
+			}*/
 		}
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Uncrushable)
 		{
-			if (mDirection == eDirection::Right)
+			Vector2 bzpos = this->GetComponent<Collider>()->GetPosition();
+			Vector2 bzsize = this->GetComponent<Collider>()->GetSize();
+
+			Vector2 tilepos = other->GetPosition();
+			Vector2 tilesize = other->GetSize();
+
+			float ColSum_X = (bzsize.x + tilesize.x / 2.f) - fabs(bzpos.x - tilepos.x);
+			float ColSum_Y = (bzsize.y + tilesize.y / 2.f) - fabs(bzpos.y - tilepos.y);
+
+			// 좌우
+			if (ColSum_X > ColSum_Y)
+			{
+				// 왼쪽 충돌
+				if ((bzpos.x < tilepos.x))
+				{
+					East++;
+					mState = eState::Move;
+				}
+				// 오른쪽 충돌
+				else
+				{
+					West++;
+					mState = eState::Move;
+				}
+			}
+			// 상하
+			else
+			{
+				// 위쪽 충돌
+				if ((bzpos.y < tilepos.y))
+				{
+					South++;
+					mState = eState::Move;
+				}
+				// 아래쪽 충돌
+				else
+				{
+					North++;
+					mState = eState::Move;
+				}
+
+			}
+
+			/*if (mDirection == eDirection::Right)
 			{
 				East++;
 				mState = eState::Move;
@@ -331,7 +417,7 @@ namespace hy
 			{
 				North++;
 				mState = eState::Move;
-			}
+			}*/
 		}
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Boss)
 		{

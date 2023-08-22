@@ -46,9 +46,6 @@ namespace hy
 		mt->CreateAnimationFolder(L"ForestBoss_Attack", L"..\\Resources\\Image\\Monster\\ForestBoss\\Attack", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"ForestBoss_Hit", L"..\\Resources\\Image\\Monster\\ForestBoss\\Hit", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"ForestBoss_Bubble", L"..\\Resources\\Image\\Monster\\ForestBoss\\Bubble", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_LeftRoll", L"..\\Resources\\Image\\Monster\\ForestBoss\\LeftRoll", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_RightRoll", L"..\\Resources\\Image\\Monster\\ForestBoss\\RightRoll", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_Idle", L"..\\Resources\\Image\\Monster\\ForestBoss\\Idle", Vector2::Zero, 0.2f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"ForestBoss_Right", true);
@@ -57,7 +54,6 @@ namespace hy
 		col->SetSize(Vector2(100.0f, 100.0f));
 		CollisionManager::CollisionLayerCheck(eLayerType::Boss, eLayerType::Bombflow, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::BossBombflow, true);
-
 
 		
 		GameObject::Initialize();
