@@ -20,7 +20,7 @@
 namespace hy
 {
 	// static 변수는 전역에서 초기화해주기
-	float ForestMonster_1:: MonsterTime = 0.f;
+	//float ForestMonster_1:: MonsterTime = 0.f;
 
 	ForestMonster_1::ForestMonster_1()
 		: mDeathTime(1.0f)
@@ -29,6 +29,7 @@ namespace hy
 		, South(1)
 		, East(1)
 		, West(1)
+		, MonsterTime(0.f)
 	{
 	}
 	ForestMonster_1::~ForestMonster_1()
@@ -53,11 +54,13 @@ namespace hy
 	{
 		GameObject::Update();
 
+		MonsterTime += Time::DeltaTime();
+
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		if (pos.x >= 590)
+		if (pos.x >= 580)
 		{
-			pos.x = 590;
+			pos.x = 580;
 		}
 		else if (pos.x <= 40)
 		{
@@ -67,9 +70,9 @@ namespace hy
 		{
 			pos.y = 50;
 		}
-		else if (pos.y >= 530)
+		else if (pos.y >= 520)
 		{
-			pos.y = 530;
+			pos.y = 520;
 		}
 
 		tr->SetPosition(pos);
@@ -247,11 +250,8 @@ namespace hy
 		pos.y -= North * 50.f * Time::DeltaTime();
 		tr->SetPosition(pos);
 
-		MonsterTime += Time::DeltaTime();
-
 		if (MonsterTime > 2.f)
 		{
-			srand(time(NULL));
 
 			int StateSelect = rand() % 4;;
 
@@ -283,8 +283,8 @@ namespace hy
 				mDirection = eDirection::Down;
 
 			}
-
 			MonsterTime = 0.f;
+
 		}
 
 	}
@@ -297,11 +297,8 @@ namespace hy
 		pos.y += South * 50.f * Time::DeltaTime();
 		tr->SetPosition(pos);
 
-		MonsterTime += Time::DeltaTime();
-
 		if (MonsterTime > 2.f)
 		{
-			srand(time(NULL));
 
 			int StateSelect = rand() % 4;;
 
@@ -328,8 +325,9 @@ namespace hy
 				animator->PlayAnimation(L"ForestMonster_1Down", true);
 				mState = eState::Down;
 			}
-
 			MonsterTime = 0.f;
+
+
 		}
 	}
 
@@ -341,11 +339,8 @@ namespace hy
 		pos.x -= West * 50.f * Time::DeltaTime();
 		tr->SetPosition(pos);
 
-		MonsterTime += Time::DeltaTime();
-
 		if (MonsterTime > 2.f)
 		{
-			srand(time(NULL));
 
 			int StateSelect = rand() % 4;;
 
@@ -372,8 +367,9 @@ namespace hy
 				animator->PlayAnimation(L"ForestMonster_1Down", true);
 				mState = eState::Down;
 			}
-
 			MonsterTime = 0.f;
+
+
 		}
 	}
 
@@ -385,11 +381,9 @@ namespace hy
 		pos.x += East * 50.f * Time::DeltaTime();
 		tr->SetPosition(pos);
 
-		MonsterTime += Time::DeltaTime();
 
 		if (MonsterTime > 2.f)
 		{
-			srand(time(NULL));
 
 			int StateSelect = rand() % 4;;
 
@@ -418,6 +412,7 @@ namespace hy
 			}
 
 			MonsterTime = 0.f;
+
 		}
 	}
 

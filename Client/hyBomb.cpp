@@ -23,7 +23,8 @@ namespace hy
 {
 	// 3초 지나면 물줄기 팡
 	Bomb::Bomb()
-		: mState(eState::Flow)
+		: mState(eState::Flow), 
+		Bombtime(0.f)
 	{
 		Collider* Col = AddComponent<Collider>();
 		Col->SetSize(Vector2(40.0f, 40.0f));
@@ -64,6 +65,9 @@ namespace hy
 	void Bomb::Update()
 	{
 		GameObject::Update();
+
+		Bombtime += Time::DeltaTime();
+
 
 		// tab + enter 하면 스위치 생성
 		switch (mState)
@@ -250,8 +254,6 @@ namespace hy
 	{
 		// 2초 지나면 Pop 애니메이션을 호출하고, 상태 전환
 
-		static float Bombtime = 0.f;
-		Bombtime += Time::DeltaTime();
 		Animator* animator = GetComponent<Animator>();
 		if (Bombtime > 3.f)
 		{

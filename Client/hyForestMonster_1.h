@@ -45,8 +45,10 @@ namespace hy
 	private:
 		eState mState;
 		float mDeathTime;
-		static float MonsterTime;
+		//static float MonsterTime;
 		eDirection mDirection;
+		float MonsterTime;
+
 
 		bool North;								// 이동에 곱해줄 동서남북 방향 변수
 		bool South;
