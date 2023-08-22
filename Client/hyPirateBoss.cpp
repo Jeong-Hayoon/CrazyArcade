@@ -45,7 +45,6 @@ namespace hy
 		mt->CreateAnimationFolder(L"PirateBoss_Die", L"..\\Resources\\Image\\Monster\\PirateBoss\\Die", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"PirateBoss_Hit", L"..\\Resources\\Image\\Monster\\PirateBoss\\Hit", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"PirateBoss_Bubble", L"..\\Resources\\Image\\Monster\\PirateBoss\\Bubble", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"PirateBoss_Idle", L"..\\Resources\\Image\\Monster\\PirateBoss\\Idle", Vector2::Zero, 0.2f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"ForestBoss_Right", true);

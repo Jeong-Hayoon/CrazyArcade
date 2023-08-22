@@ -36,8 +36,10 @@ extern hy::Application application;
 namespace hy
 {
 	UINT ForestMap1::MonsterQuantity = 1;
-	bool ForestMap1::FunCheck = 0;
+	//bool ForestMap1::FunCheck = 0;
 	bool ForestMap1::LoseLife = 0;
+	float ForestMap1 :: Resulttime = 0.f;
+
 
 	ForestMap1::ForestMap1()
 	{
@@ -112,12 +114,12 @@ namespace hy
 		// 포레스트 몬스터
 		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 50.0f));
-		ForestMonster_1* ForestMonster2 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(400.0f, 50.0f));
-		ForestMonster_1* ForestMonster3 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		/*ForestMonster_1* ForestMonster2 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(350.0f, 50.0f));*/
+	/*	ForestMonster_1* ForestMonster3 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		ForestMonster3->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 450.0f));
 		ForestMonster_1* ForestMonster4 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		ForestMonster4->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 60.0f));
+		ForestMonster4->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 60.0f));*/
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
@@ -150,43 +152,54 @@ namespace hy
 
 		//}
 
-		if (MonsterQuantity == 0)
+		Resulttime += Time::DeltaTime();
+
+		/*if (MonsterQuantity == 0)
 		{
 			FunCheck = 1;
-		}
+		}*/
 
-		if (MonsterQuantity == 0 && FunCheck == 1)
+		if (MonsterQuantity == 0 /*&& FunCheck == 1*/)
 		{
 			Resources::Find<Sound>(L"Play")->Stop(1);
-
-			Win_Lose* win = object::Instantiate< Win_Lose>(eLayerType::UI);
-			win->Win();
-			Transform* wintr = win->GetComponent<Transform>();
-			wintr->SetPosition(Vector2(350.0f, 254.0f));
-
-			if (Win_Lose::GetWin_Lose_flag() == true)
+	
+			if (Resulttime > 3.f)
 			{
-				SceneManager::LoadScene(L"ForestMap2");
-				Win_Lose::SetWin_Lose_flag(false);
+				Win_Lose* win = object::Instantiate< Win_Lose>(eLayerType::UI);
+				win->Win();
+				Transform* wintr = win->GetComponent<Transform>();
+				wintr->SetPosition(Vector2(350.0f, 254.0f));
+
+				if (Win_Lose::GetWin_Lose_flag() == true)
+				{
+					SceneManager::LoadScene(L"ForestMap2");
+					Win_Lose::SetWin_Lose_flag(false);
+				}
 			}
-			FunCheck = 0;
+			//FunCheck = 0;
+			Resulttime = 0.f;
 		}
 
 		if (MonsterQuantity != 0 && LoseLife == 1)
 		{
-			Resources::Find<Sound>(L"Play")->Stop(1);
-
-			Win_Lose* lose = object::Instantiate< Win_Lose>(eLayerType::UI);
-			lose->Lose();
-			Transform* losetr = lose->GetComponent<Transform>();
-			losetr->SetPosition(Vector2(350.0f, 254.0f));
-
-			if (Win_Lose::GetWin_Lose_flag() == true)
+			if (Resulttime > 3.f)
 			{
-				SceneManager::LoadScene(L"LobbyScene");
-				Win_Lose::SetWin_Lose_flag(false);
+				Resources::Find<Sound>(L"Play")->Stop(1);
+
+				Win_Lose* lose = object::Instantiate< Win_Lose>(eLayerType::UI);
+				lose->Lose();
+				Transform* losetr = lose->GetComponent<Transform>();
+				losetr->SetPosition(Vector2(350.0f, 254.0f));
+
+				if (Win_Lose::GetWin_Lose_flag() == true)
+				{
+					SceneManager::LoadScene(L"LobbyScene");
+					Win_Lose::SetWin_Lose_flag(false);
+				}
 			}
-			FunCheck = 0;
+			//FunCheck = 0;
+			Resulttime = 0.f;
+
 		}
 
 

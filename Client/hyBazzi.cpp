@@ -19,6 +19,7 @@
 #include "hyShieldEffect.h"
 #include "hySound.h"
 #include "hyCollisionManager.h"
+#include "hyWin_Lose.h"
 
 
 
@@ -281,6 +282,7 @@ namespace hy
 			mState = eState::Trap;
 		}
 
+		// East / West / South0 / North 가 0이면 이동
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Crack)
 		{
 			//float GetSpeed = GetMoveSpeed();
@@ -347,19 +349,19 @@ namespace hy
 	}
 	void Bazzi::OnCollisionExit(Collider* other)
 	{
-		if (North != 0 && (Input::GetKey(eKeyCode::Up) || Input::GetKeyDown(eKeyCode::Up)))
+		if (North != 0 && (Input::GetKey(eKeyCode::Down) || Input::GetKeyDown(eKeyCode::Down)))
 		{
 			North--;
 		}
-		if (South != 0 && (Input::GetKey(eKeyCode::Down) || Input::GetKeyDown(eKeyCode::Down)))
+		if (South != 0 && (Input::GetKey(eKeyCode::Up) || Input::GetKeyDown(eKeyCode::Up)))
 		{
 			South--;
 		}
-		if (East != 0 && (Input::GetKey(eKeyCode::Right) || Input::GetKeyDown(eKeyCode::Right)))
+		if (East != 0 && (Input::GetKey(eKeyCode::Left) || Input::GetKeyDown(eKeyCode::Left)))
 		{
 			East--;
 		}
-		if (West != 0 && (Input::GetKey(eKeyCode::Left) || Input::GetKeyDown(eKeyCode::Left)))
+		if (West != 0 && (Input::GetKey(eKeyCode::Right) || Input::GetKeyDown(eKeyCode::Right)))
 		{
 			West--;
 		}
@@ -698,6 +700,7 @@ namespace hy
 	{
 		Animator* animator = GetComponent<Animator>();
 		ForestMap1::SetLoseLife(true);
+		Win_Lose::SetWin_Lose_flag(true);
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
@@ -708,6 +711,7 @@ namespace hy
 	{
 		Animator* animator = GetComponent<Animator>();
 		ForestMap1::SetLoseLife(true);
+		Win_Lose::SetWin_Lose_flag(true);
 
 		if (animator->IsActiveAnimationComplete())
 		{
@@ -718,7 +722,6 @@ namespace hy
 	 
 	void Bazzi::Victory()
 	{
-
 		Animator* animator = GetComponent<Animator>();
 		if (animator->IsActiveAnimationComplete())
 		{
