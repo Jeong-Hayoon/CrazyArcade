@@ -47,7 +47,7 @@ namespace hy
 		mt->CreateAnimationFolder(L"PirateBoss_Bubble", L"..\\Resources\\Image\\Monster\\PirateBoss\\Bubble", Vector2::Zero, 0.2f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
-		mt->PlayAnimation(L"ForestBoss_Right", true);
+		mt->PlayAnimation(L"PirateBoss_Right", true);
 
 		Collider* col = AddComponent<Collider>();
 		col->SetSize(Vector2(100.0f, 100.0f));
@@ -74,13 +74,13 @@ namespace hy
 		{
 			pos.x = 40;
 		}
-		else if (pos.y <= 50)
+		else if (pos.y <= 60)
 		{
-			pos.y = 50;
+			pos.y = 60;
 		}
-		else if (pos.y >= 530)
+		else if (pos.y >= 520)
 		{
-			pos.y = 530;
+			pos.y = 520;
 		}
 
 		tr->SetPosition(pos);
@@ -126,7 +126,6 @@ namespace hy
 		Attacktime += Time::DeltaTime();
 		if (Attacktime > 5.f)
 		{
-			at->PlayAnimation(L"ForestBoss_Attack", false);
 			mState = eState::Attack;
 		}
 
@@ -152,11 +151,11 @@ namespace hy
 
 				if (BubbleTime < 3.f)
 				{
-					at->PlayAnimation(L"ForestBoss_Bubble", false);
+					at->PlayAnimation(L"PirateBoss_Bubble", false);
 				}
 				else if (BubbleTime > 3.f)
 				{
-					at->PlayAnimation(L"ForestBoss_Die", false);
+					at->PlayAnimation(L"PirateBoss_Die", false);
 
 					mState = eState::Dead;
 					BubbleTime = 0.f;
@@ -165,7 +164,7 @@ namespace hy
 
 			else if (ForestBossHP != 0)
 			{
-				at->PlayAnimation(L"ForestBoss_Hit", false);
+				at->PlayAnimation(L"PirateBoss_Hit", false);
 				mState = eState::Hit;
 			}
 		}
@@ -203,25 +202,25 @@ namespace hy
 
 			if (StateSelect == 0)
 			{
-				animator->PlayAnimation(L"ForestBoss_Right", true);
+				animator->PlayAnimation(L"PirateBoss_Right", true);
 				mState = eState::Right;
 
 			}
 			else if (StateSelect == 1)
 			{
-				animator->PlayAnimation(L"ForestBoss_Left", true);
+				animator->PlayAnimation(L"PirateBoss_Left", true);
 				mState = eState::Left;
 
 			}
 			else if (StateSelect == 2)
 			{
-				animator->PlayAnimation(L"ForestBoss_Up", true);
+				animator->PlayAnimation(L"PirateBoss_Up", true);
 				mState = eState::Up;
 
 			}
 			else if (StateSelect == 3)
 			{
-				animator->PlayAnimation(L"ForestBoss_Down", true);
+				animator->PlayAnimation(L"PirateBoss_Down", true);
 				mState = eState::Down;
 			}
 
@@ -247,25 +246,25 @@ namespace hy
 
 			if (StateSelect == 0)
 			{
-				animator->PlayAnimation(L"ForestBoss_Right", true);
+				animator->PlayAnimation(L"PirateBoss_Right", true);
 				mState = eState::Right;
 
 			}
 			else if (StateSelect == 1)
 			{
-				animator->PlayAnimation(L"ForestBoss_Left", true);
+				animator->PlayAnimation(L"PirateBoss_Left", true);
 				mState = eState::Left;
 
 			}
 			else if (StateSelect == 2)
 			{
-				animator->PlayAnimation(L"ForestBoss_Up", true);
+				animator->PlayAnimation(L"PirateBoss_Up", true);
 				mState = eState::Up;
 
 			}
 			else if (StateSelect == 3)
 			{
-				animator->PlayAnimation(L"ForestBoss_Down", true);
+				animator->PlayAnimation(L"PirateBoss_Down", true);
 				mState = eState::Down;
 			}
 
@@ -291,25 +290,25 @@ namespace hy
 
 			if (StateSelect == 0)
 			{
-				animator->PlayAnimation(L"ForestBoss_Right", true);
+				animator->PlayAnimation(L"PirateBoss_Right", true);
 				mState = eState::Right;
 
 			}
 			else if (StateSelect == 1)
 			{
-				animator->PlayAnimation(L"ForestBoss_Left", true);
+				animator->PlayAnimation(L"PirateBoss_Left", true);
 				mState = eState::Left;
 
 			}
 			else if (StateSelect == 2)
 			{
-				animator->PlayAnimation(L"ForestBoss_Up", true);
+				animator->PlayAnimation(L"PirateBoss_Up", true);
 				mState = eState::Up;
 
 			}
 			else if (StateSelect == 3)
 			{
-				animator->PlayAnimation(L"ForestBoss_Down", true);
+				animator->PlayAnimation(L"PirateBoss_Down", true);
 				mState = eState::Down;
 			}
 
@@ -335,25 +334,25 @@ namespace hy
 
 			if (StateSelect == 0)
 			{
-				animator->PlayAnimation(L"ForestBoss_Right", true);
+				animator->PlayAnimation(L"PirateBoss_Right", true);
 				mState = eState::Right;
 
 			}
 			else if (StateSelect == 1)
 			{
-				animator->PlayAnimation(L"ForestBoss_Left", true);
+				animator->PlayAnimation(L"PirateBoss_Left", true);
 				mState = eState::Left;
 
 			}
 			else if (StateSelect == 2)
 			{
-				animator->PlayAnimation(L"ForestBoss_Up", true);
+				animator->PlayAnimation(L"PirateBoss_Up", true);
 				mState = eState::Up;
 
 			}
 			else if (StateSelect == 3)
 			{
-				animator->PlayAnimation(L"ForestBoss_Down", true);
+				animator->PlayAnimation(L"PirateBoss_Down", true);
 				mState = eState::Down;
 			}
 
@@ -374,25 +373,25 @@ namespace hy
 
 			if (StateSelect == 0)
 			{
-				animator->PlayAnimation(L"ForestBoss_Right", true);
+				animator->PlayAnimation(L"PirateBoss_Right", true);
 				mState = eState::Right;
 
 			}
 			else if (StateSelect == 1)
 			{
-				animator->PlayAnimation(L"ForestBoss_Left", true);
+				animator->PlayAnimation(L"PirateBoss_Left", true);
 				mState = eState::Left;
 
 			}
 			else if (StateSelect == 2)
 			{
-				animator->PlayAnimation(L"ForestBoss_Up", true);
+				animator->PlayAnimation(L"PirateBoss_Up", true);
 				mState = eState::Up;
 
 			}
 			else if (StateSelect == 3)
 			{
-				animator->PlayAnimation(L"ForestBoss_Down", true);
+				animator->PlayAnimation(L"PirateBoss_Down", true);
 				mState = eState::Down;
 			}
 		}
@@ -402,28 +401,28 @@ namespace hy
 
 	void PirateBoss::Attack()
 	{
-		srand(time(NULL));
+		int Target_X = rand() % 15;		// 0~14
+		int Target_Y = rand() % 13;		// 0~12
+		int Select_XY = rand() % 2;		// 세로 공격할건지 가로 공격할건지 랜덤
 
-		int MultipleNum = (rand() % 6) + 1;
+		int a = 0;
 
-		for (int i = 6 - MultipleNum; i <= 6 + MultipleNum; i++)		// y
+		// Y 고정(X값 증가) - 가로 공격
+		if(Select_XY == 0)
 		{
-			for (int j = 7 - MultipleNum; j <= 7 + MultipleNum; j++)		// x
+			for (int j = 0; j < 15; j++)	// x
 			{
-				float newX = j;
-				float newY = i;
-
-				if ((newY != 6 - MultipleNum)
-					&& (newY != 6 + MultipleNum)
-					&& (newX != 7 - MultipleNum)
-					&& (newX != 7 + MultipleNum))
-				{
-					continue;
-				}
-
 				Vector2 Bossbombpos;
-				Bossbombpos.x = newX;
-				Bossbombpos.y = newY;
+				Bossbombpos.x = j;
+				if (Target_Y == 0)
+				{
+					Target_Y = 1;
+				}
+				if (Target_Y == 12)
+				{
+					Target_Y = 11;
+				}
+				Bossbombpos.y = Target_Y;
 
 				Bossbombpos.x = ((Bossbombpos.x) * (TILE_WIDTH)) + (TILE_WIDTH / 2) + 20.f;
 				Bossbombpos.y = ((Bossbombpos.y) * (TILE_HEIGHT)) + (TILE_HEIGHT / 2) + 40.f;
@@ -431,22 +430,31 @@ namespace hy
 				BossBomb* bomb_ = object::Instantiate<BossBomb>(eLayerType::BossBombflow);
 				bomb_->GetComponent<Transform>()->SetPosition(Bossbombpos);
 			}
-
 		}
 
-		//// 해당 타일 인덱스를 구함
-		//X_ = (BazziLocationtr.x - 20.f) / (TILE_WIDTH);
-		//Y_ = (BazziLocationtr.y - 40.f) / (TILE_HEIGHT);
+		// X 고정(Y값 증가) - 세로 공격
+		if (Select_XY == 1)
+		{
+			for (int i = 0; i < 13; i++)	// x
+			{
+				if (i == 0 || i == 12)
+				{
+					continue;
+				}
 
-		//// 해당 타일 인덱스에 타일 사이즈를 곱하여 해당 타일의 LeftTop으로 이동
-		//Bombpos.x = (X_ * TILE_WIDTH) + (TILE_WIDTH / 2) + 20.f;
-		//Bombpos.y = (Y_ * TILE_HEIGHT) + (TILE_HEIGHT / 2) + 40.f;
+				Vector2 Bossbombpos;
+				Bossbombpos.x = Target_X;
+				Bossbombpos.y = i;
 
+				Bossbombpos.x = ((Bossbombpos.x) * (TILE_WIDTH)) + (TILE_WIDTH / 2) + 20.f;
+				Bossbombpos.y = ((Bossbombpos.y) * (TILE_HEIGHT)) + (TILE_HEIGHT / 2) + 40.f;
 
+				BossBomb* bomb_ = object::Instantiate<BossBomb>(eLayerType::BossBombflow);
+				bomb_->GetComponent<Transform>()->SetPosition(Bossbombpos);
+			}
+		}
 		Attacktime = 0.f;
-
 		mState = eState::Right;
-
 	}
 
 	void PirateBoss::Dead()
