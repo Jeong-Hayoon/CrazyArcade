@@ -31,8 +31,8 @@ namespace hy
 
 		Animator* at = AddComponent<Animator>();
 
-		at->CreateAnimation(L"WinAnimation", Win_, Vector2(0.0f, 0.0f), Vector2(300.0f, 54.0f), 1, Vector2(0.0f, 0.0f), 0.3f);
-		at->CreateAnimation(L"LoseAnimation", Lose_, Vector2(0.0f, 0.0f), Vector2(300.0f, 54.0f), 1, Vector2(0.0f, 0.0f), 0.3f);
+		at->CreateAnimation(L"WinAnimation", Win_, Vector2(0.0f, 0.0f), Vector2(300.0f, 54.0f), 1, Vector2(0.0f, 0.0f), 3.f);
+		at->CreateAnimation(L"LoseAnimation", Lose_, Vector2(0.0f, 0.0f), Vector2(300.0f, 54.0f), 1, Vector2(0.0f, 0.0f), 3.f);
 
 		Resources::Load<Sound>(L"Win", L"..\\Resources\\Sound\\Sound\\win.wav");
 		Resources::Load<Sound>(L"Lose", L"..\\Resources\\Sound\\Sound\\lose.wav");

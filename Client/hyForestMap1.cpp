@@ -35,7 +35,7 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT ForestMap1::MonsterQuantity = 1;
+	UINT ForestMap1::MonsterQuantity = 4;
 	//bool ForestMap1::FunCheck = 0;
 	bool ForestMap1::LoseLife = 0;
 
@@ -113,9 +113,9 @@ namespace hy
 
 		// 포레스트 몬스터
 		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 50.0f));
+		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 60.0f));
 		ForestMonster_1* ForestMonster2 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(350.0f, 50.0f));
+		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 450.0f));
 		ForestMonster_1* ForestMonster3 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		ForestMonster3->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 450.0f));
 		ForestMonster_1* ForestMonster4 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
@@ -146,6 +146,18 @@ namespace hy
 	{
 		Scene::Update();
 
+		Vector2 temp = Input::GetMousePosition();
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 560 && temp.y <= 590 && temp.x >= 645 && temp.x <= 785)
+		{
+			Resources::Find<Sound>(L"Play")->Stop(true);
+			SceneManager::LoadScene(L"LobbyScene");
+		}
+
+		if (Input::GetKeyDown(eKeyCode::N))
+		{
+			SceneManager::LoadScene(L"ForestMap2");
+
+		}
 
 		// 승리
 		if (MonsterQuantity == 0)
@@ -196,6 +208,10 @@ namespace hy
 		lose->Lose();
 		Transform* losetr = lose->GetComponent<Transform>();
 		losetr->SetPosition(Vector2(350.0f, 254.0f));
+	}
+
+	void ForestMap1::Reset()
+	{
 	}
 
 

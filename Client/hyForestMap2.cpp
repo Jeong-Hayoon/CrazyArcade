@@ -24,6 +24,8 @@
 #include "hyTen_Second.h"
 #include "hyMinutes.h"
 #include "hyDot.h"
+#include "hyWin_Lose.h"
+
 
 
 
@@ -33,7 +35,7 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT ForestMap2::MonsterQuantity = 1;
+	UINT ForestMap2::MonsterQuantity = 5;
 
 	ForestMap2::ForestMap2()
 	{
@@ -187,6 +189,14 @@ namespace hy
 		// 포레스트 몬스터
 		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
+		ForestMonster_1* ForestMonster2 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(325.0f, 310.0f));
+		ForestMonster_1* ForestMonster3 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster3->GetComponent<Transform>()->SetPosition(Vector2(425.0f, 530.0f));
+		ForestMonster_1* ForestMonster4 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster4->GetComponent<Transform>()->SetPosition(Vector2(470.0f, 280.0f));
+		ForestMonster_1* ForestMonster5 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster5->GetComponent<Transform>()->SetPosition(Vector2(590.0f, 240.0f));
 
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
@@ -204,9 +214,18 @@ namespace hy
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
+		Vector2 temp = Input::GetMousePosition();
+
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 560 && temp.y <= 590 && temp.x >= 645 && temp.x <= 785)
 		{
-			Resources::Find<Sound>(L"LoginSound")->Stop(1);
+			Resources::Find<Sound>(L"Play")->Stop(true);
+
+			SceneManager::LoadScene(L"LobbyScene");
+		}
+
+		if (Input::GetKeyDown(eKeyCode::N))
+		{
+			Resources::Find<Sound>(L"Play")->Stop(true);
 
 			SceneManager::LoadScene(L"ForestMap3");
 		}

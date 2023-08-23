@@ -30,6 +30,8 @@ namespace hy
 		void Win();
 		void Lose();
 
+		void Reset();									// 게임이 끝나고 경기를 리셋하는 함수
+
 		//static void SetFunCheck(bool check) { FunCheck = check; }
 
 		static void SetLoseLife(bool flag){ LoseLife = flag;}

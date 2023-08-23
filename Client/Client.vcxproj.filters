@@ -198,6 +198,15 @@
     <Filter Include="Contents\GameObject\Effect\Bomb\BossBomb">
       <UniqueIdentifier>{99447d71-8517-4db4-9a90-b90e737711ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\UI\StagePick">
+      <UniqueIdentifier>{8b9c001e-330b-45f8-924d-c3bbc8685702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\UI\Timer">
+      <UniqueIdentifier>{d9ea2808-1806-4c2f-a506-46a1cf399a8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\UI\WinLose">
+      <UniqueIdentifier>{0dace57c-4998-48b9-bad9-0867f39e6920}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -395,9 +404,6 @@
     <ClInclude Include="hyObjectCollider.h">
       <Filter>Contents\GameObject\ObjectCollider</Filter>
     </ClInclude>
-    <ClInclude Include="hySecond.h">
-      <Filter>Contents\GameObject\UI</Filter>
-    </ClInclude>
     <ClInclude Include="hyUI.h">
       <Filter>Contents\GameObject\UI</Filter>
     </ClInclude>
@@ -407,26 +413,32 @@
     <ClInclude Include="hySteam.h">
       <Filter>Contents\GameObject\Effect\Steam</Filter>
     </ClInclude>
-    <ClInclude Include="hyTen_Second.h">
-      <Filter>Contents\GameObject\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="hyMinutes.h">
-      <Filter>Contents\GameObject\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="hyDot.h">
-      <Filter>Contents\GameObject\UI</Filter>
-    </ClInclude>
     <ClInclude Include="hyBazzi.h">
       <Filter>Contents\GameObject\Player\Bazzi</Filter>
-    </ClInclude>
-    <ClInclude Include="hyWin_Lose.h">
-      <Filter>Contents\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="hyLogo.h">
       <Filter>Contents\GameObject\BackGround</Filter>
     </ClInclude>
     <ClInclude Include="hyBossBomb.h">
       <Filter>Contents\GameObject\Effect\Bomb\BossBomb</Filter>
+    </ClInclude>
+    <ClInclude Include="hyStagePick.h">
+      <Filter>Contents\GameObject\UI\StagePick</Filter>
+    </ClInclude>
+    <ClInclude Include="hyTen_Second.h">
+      <Filter>Contents\GameObject\UI\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="hySecond.h">
+      <Filter>Contents\GameObject\UI\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="hyMinutes.h">
+      <Filter>Contents\GameObject\UI\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="hyDot.h">
+      <Filter>Contents\GameObject\UI\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="hyWin_Lose.h">
+      <Filter>Contents\GameObject\UI\WinLose</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -627,9 +639,6 @@
     <ClCompile Include="hyObjectCollider.cpp">
       <Filter>Contents\GameObject\ObjectCollider</Filter>
     </ClCompile>
-    <ClCompile Include="hySecond.cpp">
-      <Filter>Contents\GameObject\UI</Filter>
-    </ClCompile>
     <ClCompile Include="hyUI.cpp">
       <Filter>Contents\GameObject\UI</Filter>
     </ClCompile>
@@ -639,23 +648,29 @@
     <ClCompile Include="hySteam.cpp">
       <Filter>Contents\GameObject\Effect\Steam</Filter>
     </ClCompile>
-    <ClCompile Include="hyTen_Second.cpp">
-      <Filter>Contents\GameObject\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="hyMinutes.cpp">
-      <Filter>Contents\GameObject\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="hyDot.cpp">
-      <Filter>Contents\GameObject\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="hyWin_Lose.cpp">
-      <Filter>Contents\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="hyLogo.cpp">
       <Filter>Contents\GameObject\BackGround</Filter>
     </ClCompile>
     <ClCompile Include="hyBossBomb.cpp">
       <Filter>Contents\GameObject\Effect\Bomb\BossBomb</Filter>
+    </ClCompile>
+    <ClCompile Include="hyStagePick.cpp">
+      <Filter>Contents\GameObject\UI\StagePick</Filter>
+    </ClCompile>
+    <ClCompile Include="hyTen_Second.cpp">
+      <Filter>Contents\GameObject\UI\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="hySecond.cpp">
+      <Filter>Contents\GameObject\UI\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="hyMinutes.cpp">
+      <Filter>Contents\GameObject\UI\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="hyDot.cpp">
+      <Filter>Contents\GameObject\UI\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="hyWin_Lose.cpp">
+      <Filter>Contents\GameObject\UI\WinLose</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -24,6 +24,7 @@
 #include "hyMinutes.h"
 #include "hyDot.h"
 #include "hyForestBoss.h"
+#include "hyWin_Lose.h"
 
 
 
@@ -189,21 +190,19 @@ namespace hy
 		ForestBoss* ForestBoss_ = object::Instantiate<ForestBoss>(eLayerType::Boss);
 		ForestBoss_->GetComponent<Transform>()->SetPosition(Vector2(250.0f, 300.0f));
 
-	
-
-
-
 	}
 
 	void ForestMap3::Update()
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
-		{
-			Resources::Find<Sound>(L"LoginSound")->Stop(1);
+		Vector2 temp = Input::GetMousePosition();
 
-			SceneManager::LoadScene(L"IceMap1");
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 560 && temp.y <= 590 && temp.x >= 645 && temp.x <= 785)
+		{
+			Resources::Find<Sound>(L"Play")->Stop(true);
+
+			SceneManager::LoadScene(L"LobbyScene");
 		}
 
 

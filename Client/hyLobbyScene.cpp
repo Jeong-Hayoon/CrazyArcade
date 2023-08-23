@@ -90,11 +90,17 @@ namespace hy
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
+		Vector2 temp = Input::GetMousePosition();
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 530 && temp.y <= 575 && temp.x >= 515 && temp.x <= 695)
 		{
-			Resources::Find<Sound>(L"LobbySound")->Stop(1);
 			SceneManager::LoadScene(L"ForestMap1");
 		}
+
+		//if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
+		//{
+		//	Resources::Find<Sound>(L"LobbySound")->Stop(1);
+		//	SceneManager::LoadScene(L"ForestMap1");
+		//}
 
 	}
 	void LobbyScene::Render(HDC hdc)

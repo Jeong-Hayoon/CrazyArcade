@@ -11,6 +11,7 @@ namespace hy
 	class Win_Lose : public GameObject
 	{
 	public:
+
 		Win_Lose();
 		virtual ~Win_Lose();
 

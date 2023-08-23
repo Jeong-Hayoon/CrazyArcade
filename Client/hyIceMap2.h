@@ -27,6 +27,11 @@ namespace hy
 		virtual void Enter();
 		virtual void Exit();
 
+		void Win();
+		void Lose();
+
+		void Reset();
+
 	private:
 		std::vector<Tile*> mTiles;;
 		static UINT MonsterQuantity;

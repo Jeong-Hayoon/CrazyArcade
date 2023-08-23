@@ -24,6 +24,7 @@
 #include "hyTen_Second.h"
 #include "hyMinutes.h"
 #include "hyDot.h"
+#include "hyWin_Lose.h"
 
 
 
@@ -208,10 +209,17 @@ namespace hy
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
-		{
-			Resources::Find<Sound>(L"LoginSound")->Stop(1);
+		Vector2 temp = Input::GetMousePosition();
 
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 560 && temp.y <= 590 && temp.x >= 645 && temp.x <= 785)
+		{
+			Resources::Find<Sound>(L"Play")->Stop(true);
+
+			SceneManager::LoadScene(L"LobbyScene");
+		}
+
+		if (Input::GetKeyDown(eKeyCode::N))
+		{
 			SceneManager::LoadScene(L"PirateMap2");
 		}
 

@@ -182,31 +182,6 @@ namespace hy
 			monsterpos -= GetComponent<Collider>()->GetOffset();
 			this->GetComponent<Transform>()->SetPosition(monsterpos);
 
-			/*if (mDirection == eDirection::Right)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Left", true);
-				mState = eState::Left;
-				mDirection = eDirection::Left;
-			}
-			else if (mDirection == eDirection::Left)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Right", true);
-				mState = eState::Right;
-				mDirection = eDirection::Right;
-			}
-			else if (mDirection == eDirection::Down)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Up", true);
-				mState = eState::Up;
-				mDirection = eDirection::Up;
-			}
-			else if (mDirection == eDirection::Up)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Down", true);
-				mState = eState::Down;
-				mDirection = eDirection::Down;
-			}*/
-
 		}
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Uncrushable)
 		{
@@ -256,32 +231,6 @@ namespace hy
 			this->GetComponent<Transform>()->SetPosition(monsterpos);
 		}
 
-		//	// 몬스터 이동 방향 반대로
-		//	if (mDirection == eDirection::Right)
-		//	{
-		//		animator->PlayAnimation(L"ForestMonster_1Left", true);
-		//		mState = eState::Left;
-		//		mDirection = eDirection::Left;
-		//	}
-		//	else if (mDirection == eDirection::Left)
-		//	{
-		//		animator->PlayAnimation(L"ForestMonster_1Right", true);
-		//		mState = eState::Right;
-		//		mDirection = eDirection::Right;
-		//	}
-		//	else if (mDirection == eDirection::Down)
-		//	{
-		//		animator->PlayAnimation(L"ForestMonster_1Up", true);
-		//		mState = eState::Up;
-		//		mDirection = eDirection::Up;
-		//	}
-		//	else if (mDirection == eDirection::Up)
-		//	{
-		//		animator->PlayAnimation(L"ForestMonster_1Down", true);
-		//		mState = eState::Down;
-		//		mDirection = eDirection::Down;
-		//	}
-		//}
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Bomb)
 		{
 			if (mDirection == eDirection::Right)
