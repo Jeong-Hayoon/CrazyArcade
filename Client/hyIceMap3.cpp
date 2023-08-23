@@ -210,6 +210,11 @@ namespace hy
 			SceneManager::LoadScene(L"LobbyScene");
 		}
 
+		if (Input::GetKeyDown(eKeyCode::N))
+		{
+			SceneManager::LoadScene(L"PirateMap1");
+		}
+
 	}
 	void IceMap3::Render(HDC hdc)
 	{

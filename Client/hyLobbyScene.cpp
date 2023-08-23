@@ -10,6 +10,8 @@
 #include "hyBackGround.h"
 #include "hyTransform.h"
 #include "hyBazzi.h"
+#include "hyStagePick.h"
+
 
 
 extern hy::Application application;
@@ -63,14 +65,14 @@ namespace hy
 		cssr->SetScale(Vector2(1.f, 1.f));
 
 		// 맵 선택(포레스트 맵)
-		Texture* ForestMapSelect = Resources::Load<Texture>(L"ForestMapSelectImage"
+		/*Texture* ForestMapSelect = Resources::Load<Texture>(L"ForestMapSelectImage"
 			, L"..\\Resources\\Image\\UI\\ForestRandom.bmp");
 
 		BackGround* fms = object::Instantiate<BackGround>(eLayerType::Background);
 		fms->GetComponent<Transform>()->SetPosition(Vector2(560.0f, 415.0f));
 		SpriteRenderer* fmssr = fms->AddComponent<SpriteRenderer>();
 		fmssr->SetImage(ForestMapSelect);
-		fmssr->SetScale(Vector2(0.7f, 0.7f));
+		fmssr->SetScale(Vector2(0.7f, 0.7f));*/
 
 		//Sound* sound = Resources::Load<Sound>(L"bgSound", L"..\\Resources\\Sounds\\smw_bonus_game_end.wav");
 
@@ -96,11 +98,20 @@ namespace hy
 			SceneManager::LoadScene(L"ForestMap1");
 		}
 
-		//if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
-		//{
-		//	Resources::Find<Sound>(L"LobbySound")->Stop(1);
-		//	SceneManager::LoadScene(L"ForestMap1");
-		//}
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 430 && temp.y <= 480 && temp.x >= 645 && temp.x <= 770)
+		{
+			StagePick* MapSelect = object::Instantiate<StagePick>(eLayerType::UI);
+			Transform* MapSelecttr = MapSelect->GetComponent<Transform>();
+			MapSelecttr->SetPosition(Vector2(360.f, 135.f));
+		}
+		if (Input::GetKeyDown(eKeyCode::N))
+		{
+			Resources::Find<Sound>(L"LobbySound")->Stop(true);
+
+			SceneManager::LoadScene(L"ForestMap1");
+
+		}
+		
 
 	}
 	void LobbyScene::Render(HDC hdc)

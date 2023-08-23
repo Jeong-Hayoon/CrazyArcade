@@ -202,9 +202,13 @@ namespace hy
 		{
 			Resources::Find<Sound>(L"Play")->Stop(true);
 
-			SceneManager::LoadScene(L"LobbyScene");
+		
 		}
 
+		if (Input::GetKeyDown(eKeyCode::N))
+		{
+			SceneManager::LoadScene(L"IceMap1");
+		}
 
 	}
 	void ForestMap3::Render(HDC hdc)
