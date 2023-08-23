@@ -25,11 +25,10 @@ namespace hy
 	ForestMonster_1::ForestMonster_1()
 		: mDeathTime(1.0f)
 		, mState(eState::Right)
-		, North(1)
-		, South(1)
-		, East(1)
-		, West(1)
 		, MonsterTime(0.f)
+		, MoveSpeed(50.f)
+		, mDirection(eDirection::Right)
+		, Statetime(0.f)
 	{
 	}
 	ForestMonster_1::~ForestMonster_1()
@@ -44,6 +43,8 @@ namespace hy
 		mt->CreateAnimationFolder(L"ForestMonster_1Left", L"..\\Resources\\Image\\Monster\\Forest\\Left", Vector2::Zero, 0.15f);
 		mt->CreateAnimationFolder(L"ForestMonnsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die", Vector2::Zero, 0.2f);
 		mt->PlayAnimation(L"ForestMonster_1Right", true);
+
+		
 
 		Collider* col = AddComponent<Collider>();
 		col->SetSize(Vector2(30.0f, 30.0f));
@@ -96,6 +97,9 @@ namespace hy
 			Right();
 			break;
 
+		case hy::ForestMonster_1::eState::Move:
+			Move();
+
 		case hy::ForestMonster_1::eState::Dead:
 			Dead();
 			break;
@@ -133,96 +137,171 @@ namespace hy
 		}
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Crack)
 		{
-			if (mDirection == eDirection::Right)
+			Vector2 monsterpos = this->GetComponent<Collider>()->GetPosition();
+			Vector2 monstersize = this->GetComponent<Collider>()->GetSize();
+
+			Vector2 tilepos = other->GetPosition();
+			Vector2 tilesize = other->GetSize();
+
+			float ColSum_X = ((monstersize.x + tilesize.x) / 2.f) - fabs(monsterpos.x - tilepos.x);
+			float ColSum_Y = ((monstersize.y + tilesize.y) / 2.f) - fabs(monsterpos.y - tilepos.y);
+
+			// 좌우
+			if (ColSum_X < ColSum_Y)
 			{
-				East = 0;
+				// 왼쪽 충돌
+				if ((monsterpos.x < tilepos.x))
+				{
+					monsterpos.x -= ColSum_X;
+					mState = eState::Move;
+				}
+				// 오른쪽 충돌
+				else
+				{
+					monsterpos.x += ColSum_X;
+					mState = eState::Move;
+				}
+			}
+			// 상하
+			else
+			{
+				// 위쪽 충돌
+				if ((monsterpos.y < tilepos.y))
+				{
+					monsterpos.y -= ColSum_Y;
+					mState = eState::Move;
+				}
+				// 아래쪽 충돌
+				else
+				{
+					monsterpos.y += ColSum_Y;
+					mState = eState::Move;
+				}
+			}
+
+			monsterpos -= GetComponent<Collider>()->GetOffset();
+			this->GetComponent<Transform>()->SetPosition(monsterpos);
+
+			/*if (mDirection == eDirection::Right)
+			{
 				animator->PlayAnimation(L"ForestMonster_1Left", true);
 				mState = eState::Left;
 				mDirection = eDirection::Left;
 			}
 			else if (mDirection == eDirection::Left)
 			{
-				West = 0;
 				animator->PlayAnimation(L"ForestMonster_1Right", true);
 				mState = eState::Right;
 				mDirection = eDirection::Right;
 			}
 			else if (mDirection == eDirection::Down)
 			{
-				South = 0;
 				animator->PlayAnimation(L"ForestMonster_1Up", true);
 				mState = eState::Up;
 				mDirection = eDirection::Up;
 			}
 			else if (mDirection == eDirection::Up)
 			{
-				North = 0;
 				animator->PlayAnimation(L"ForestMonster_1Down", true);
 				mState = eState::Down;
 				mDirection = eDirection::Down;
-			}
+			}*/
 
 		}
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Uncrushable)
 		{
-			// 몬스터 이동 방향 반대로
-			if (mDirection == eDirection::Right)
+			Vector2 monsterpos = this->GetComponent<Collider>()->GetPosition();
+			Vector2 monstersize = this->GetComponent<Collider>()->GetSize();
+
+			Vector2 tilepos = other->GetPosition();
+			Vector2 tilesize = other->GetSize();
+
+			float ColSum_X = ((monstersize.x + tilesize.x) / 2.f) - fabs(monsterpos.x - tilepos.x);
+			float ColSum_Y = ((monstersize.y + tilesize.y) / 2.f) - fabs(monsterpos.y - tilepos.y);
+
+			// 좌우
+			if (ColSum_X < ColSum_Y)
 			{
-				East = 0;
-				animator->PlayAnimation(L"ForestMonster_1Left", true);
-				mState = eState::Left;
-				mDirection = eDirection::Left;
+				// 왼쪽 충돌
+				if ((monsterpos.x < tilepos.x))
+				{
+					monsterpos.x -= ColSum_X;
+					mState = eState::Move;
+				}
+				// 오른쪽 충돌
+				else
+				{
+					monsterpos.x += ColSum_X;
+					mState = eState::Move;
+				}
 			}
-			else if (mDirection == eDirection::Left)
+			// 상하
+			else
 			{
-				West = 0;
-				animator->PlayAnimation(L"ForestMonster_1Right", true);
-				mState = eState::Right;
-				mDirection = eDirection::Right;
+				// 위쪽 충돌
+				if ((monsterpos.y < tilepos.y))
+				{
+					monsterpos.y -= ColSum_Y;
+					mState = eState::Move;
+				}
+				// 아래쪽 충돌
+				else
+				{
+					monsterpos.y += ColSum_Y;
+					mState = eState::Move;
+				}
 			}
-			else if (mDirection == eDirection::Down)
-			{
-				South = 0;
-				animator->PlayAnimation(L"ForestMonster_1Up", true);
-				mState = eState::Up;
-				mDirection = eDirection::Up;
-			}
-			else if (mDirection == eDirection::Up)
-			{
-				North = 0;
-				animator->PlayAnimation(L"ForestMonster_1Down", true);
-				mState = eState::Down;
-				mDirection = eDirection::Down;
-			}
+
+			monsterpos -= GetComponent<Collider>()->GetOffset();
+			this->GetComponent<Transform>()->SetPosition(monsterpos);
 		}
+
+		//	// 몬스터 이동 방향 반대로
+		//	if (mDirection == eDirection::Right)
+		//	{
+		//		animator->PlayAnimation(L"ForestMonster_1Left", true);
+		//		mState = eState::Left;
+		//		mDirection = eDirection::Left;
+		//	}
+		//	else if (mDirection == eDirection::Left)
+		//	{
+		//		animator->PlayAnimation(L"ForestMonster_1Right", true);
+		//		mState = eState::Right;
+		//		mDirection = eDirection::Right;
+		//	}
+		//	else if (mDirection == eDirection::Down)
+		//	{
+		//		animator->PlayAnimation(L"ForestMonster_1Up", true);
+		//		mState = eState::Up;
+		//		mDirection = eDirection::Up;
+		//	}
+		//	else if (mDirection == eDirection::Up)
+		//	{
+		//		animator->PlayAnimation(L"ForestMonster_1Down", true);
+		//		mState = eState::Down;
+		//		mDirection = eDirection::Down;
+		//	}
+		//}
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Bomb)
 		{
 			if (mDirection == eDirection::Right)
 			{
-				East = 0;
 				animator->PlayAnimation(L"ForestMonster_1Left", true);
-				mState = eState::Left;
 				mDirection = eDirection::Left;
 			}
 			else if (mDirection == eDirection::Left)
 			{
-				West = 0;
 				animator->PlayAnimation(L"ForestMonster_1Right", true);
-				mState = eState::Right;
 				mDirection = eDirection::Right;
 			}
 			else if (mDirection == eDirection::Down)
 			{
-				South = 0;
 				animator->PlayAnimation(L"ForestMonster_1Up", true);
-				mState = eState::Up;
 				mDirection = eDirection::Up;
 			}
 			else if (mDirection == eDirection::Up)
 			{
-				North = 0;
 				animator->PlayAnimation(L"ForestMonster_1Down", true);
-				mState = eState::Down;
 				mDirection = eDirection::Down;
 			}
 
@@ -236,54 +315,69 @@ namespace hy
 
 	void ForestMonster_1::OnCollisionExit(Collider* other)
 	{
-		North = 1;
-		South = 1;
-		East = 1;
-		West = 1;
+	}
+
+	void ForestMonster_1 ::Move()
+	{
+		Transform* tr = GetComponent<Transform>();
+		Vector2 pos = tr->GetPosition();
+		Animator* animator = GetComponent<Animator>();
+
+		if (MonsterTime > 1.f)
+		{
+			int StateSelect = rand() % 4;;
+
+			mDirection = (eDirection)StateSelect;
+
+			if (mDirection == eDirection::Up)			// 방향이 위쪽이면 위쪽으로 이동
+			{
+				animator->PlayAnimation(L"ForestMonster_1Up", true);
+				mState = eState::Up;
+
+			}
+			else if (mDirection == eDirection::Down)	// 방향이 아래쪽이면 아래쪽으로 이동
+			{
+				animator->PlayAnimation(L"ForestMonster_1Down", true);
+				mState = eState::Down;
+
+			}
+			else if (mDirection == eDirection::Left)	// 방향이 왼쪽이면 왼쪽으로 이동
+			{
+				animator->PlayAnimation(L"ForestMonster_1Left", true);
+				mState = eState::Left;
+
+			}
+			else if (mDirection == eDirection::Right)	// 방향이 오른쪽이면 오른쪽으로 이동
+			{
+				animator->PlayAnimation(L"ForestMonster_1Right", true);
+				mState = eState::Right;
+			}
+			
+			MonsterTime = 0.f;
+			tr->SetPosition(pos);
+		}
+		
 	}
 
 	void ForestMonster_1::Up()
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();
-		pos.y -= North * 50.f * Time::DeltaTime();
+		pos.y -= 50.f * Time::DeltaTime();
+
+		if (pos.y <= 40)
+		{
+			pos.y = 40;
+		}
+
 		tr->SetPosition(pos);
 
-		if (MonsterTime > 2.f)
+		Statetime += Time::DeltaTime();
+
+		if (Statetime > 2.f)
 		{
-
-			int StateSelect = rand() % 4;;
-
-			if (StateSelect == 0)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Right", true);
-				mState = eState::Right;
-				mDirection = eDirection::Right;
-
-			}
-			else if (StateSelect == 1)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Left", true);
-				mState = eState::Left;
-				mDirection = eDirection::Left;
-
-			}
-			else if (StateSelect == 2)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Up", true);
-				mState = eState::Up;
-				mDirection = eDirection::Up;
-
-			}
-			else if (StateSelect == 3)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Down", true);
-				mState = eState::Down;
-				mDirection = eDirection::Down;
-
-			}
-			MonsterTime = 0.f;
+			Statetime = 0.f;
+			mState = eState::Move;
 
 		}
 
@@ -293,41 +387,22 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();
-		pos.y += South * 50.f * Time::DeltaTime();
+		pos.y += 50.f * Time::DeltaTime();
+
+		if (pos.y >= 530)
+		{
+			pos.y = 530;
+		}
+
 		tr->SetPosition(pos);
 
-		if (MonsterTime > 2.f)
+		Statetime += Time::DeltaTime();
+
+		if (Statetime > 2.f)
 		{
+			Statetime = 0.f;
 
-			int StateSelect = rand() % 4;;
-
-			if (StateSelect == 0)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Right", true);
-				mState = eState::Right;
-
-			}
-			else if (StateSelect == 1)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Left", true);
-				mState = eState::Left;
-
-			}
-			else if (StateSelect == 2)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Up", true);
-				mState = eState::Up;
-
-			}
-			else if (StateSelect == 3)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Down", true);
-				mState = eState::Down;
-			}
-			MonsterTime = 0.f;
-
-
+			mState = eState::Move;
 		}
 	}
 
@@ -335,41 +410,23 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();
-		pos.x -= West * 50.f * Time::DeltaTime();
+		pos.x -= 50.f * Time::DeltaTime();
+
+		if (pos.x <= 30)
+		{
+			pos.x = 30;
+		}
+
 		tr->SetPosition(pos);
 
-		if (MonsterTime > 2.f)
+		Statetime += Time::DeltaTime();
+
+
+		if (Statetime > 2.f)
 		{
+			Statetime = 0.f;
 
-			int StateSelect = rand() % 4;;
-
-			if (StateSelect == 0)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Right", true);
-				mState = eState::Right;
-
-			}
-			else if (StateSelect == 1)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Left", true);
-				mState = eState::Left;
-
-			}
-			else if (StateSelect == 2)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Up", true);
-				mState = eState::Up;
-
-			}
-			else if (StateSelect == 3)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Down", true);
-				mState = eState::Down;
-			}
-			MonsterTime = 0.f;
-
-
+			mState = eState::Move;
 		}
 	}
 
@@ -377,42 +434,22 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		Animator* animator = GetComponent<Animator>();
-		pos.x += East * 50.f * Time::DeltaTime();
+		pos.x += 50.f * Time::DeltaTime();
+
+		if (pos.x >= 610)
+		{
+			pos.x = 610;
+		}
+
 		tr->SetPosition(pos);
 
+		Statetime += Time::DeltaTime();
 
-		if (MonsterTime > 2.f)
+		if (Statetime > 2.f)
 		{
+			Statetime = 0.f;
 
-			int StateSelect = rand() % 4;;
-
-			if (StateSelect == 0)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Right", true);
-				mState = eState::Right;
-
-			}
-			else if (StateSelect == 1)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Left", true);
-				mState = eState::Left;
-
-			}
-			else if (StateSelect == 2)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Up", true);
-				mState = eState::Up;
-
-			}
-			else if (StateSelect == 3)
-			{
-				animator->PlayAnimation(L"ForestMonster_1Down", true);
-				mState = eState::Down;
-			}
-
-			MonsterTime = 0.f;
-
+			mState = eState::Move;
 		}
 	}
 

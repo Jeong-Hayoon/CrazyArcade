@@ -12,6 +12,7 @@ namespace hy
 			Down,
 			Left,
 			Right,
+			Move,
 			Dead,
 			End,
 		};
@@ -35,6 +36,8 @@ namespace hy
 		virtual void OnCollisionStay(class Collider* other);
 		virtual void OnCollisionExit(class Collider* other);
 
+		void Move();
+
 		void Up();
 		void Down();
 		void Left();
@@ -48,12 +51,9 @@ namespace hy
 		//static float MonsterTime;
 		eDirection mDirection;
 		float MonsterTime;
+		float MoveSpeed;						// 기본 속도
+		float Statetime;
 
-
-		bool North;								// 이동에 곱해줄 동서남북 방향 변수
-		bool South;
-		bool East;
-		bool West;
 
 	};
 }

@@ -36,10 +36,6 @@ namespace hy
 		, mDirection(eDirection::Down)
 		, MoveSpeed(150.f)
 		, Life(1)
-		, North(0)		// 충돌 안한 상태
-		, South(0)
-		, East(0)
-		, West(0)
 	{
 	}
 	Bazzi::~Bazzi()

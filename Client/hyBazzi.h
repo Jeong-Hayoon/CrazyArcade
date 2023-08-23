@@ -107,11 +107,6 @@ namespace hy
 		static bool UseItemNum;
 		static bool Trigger;
 		static float SpeedTemp;
-		UINT North;								// 이동에 곱해줄 동서남북 방향 변수
-		UINT South;
-		UINT East;
-		UINT West;
-
 
 	};
 }
