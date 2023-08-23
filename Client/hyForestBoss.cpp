@@ -405,9 +405,9 @@ namespace hy
 		int Target_X = rand() % 13;		// 0~12
 		int Target_Y = rand() % 11;		// 0~ 10
 
-		for (int i = Target_Y; i < i+3; i++)		// y
+		for (int i = Target_Y; i < Target_Y + 3; i++)		// y
 		{
-			for (int j = Target_X; j < j+3 ; j++)	// x
+			for (int j = Target_X; j < Target_X + 3; j++)	// x
 			{
 
 				Vector2 Bossbombpos;
