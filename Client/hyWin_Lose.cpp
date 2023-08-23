@@ -12,6 +12,8 @@
 namespace hy
 {
 	bool Win_Lose::Win_Lose_flag = false;
+	float Win_Lose::Resulttime = 0.f;
+
 
 	Win_Lose::Win_Lose()
 	{
@@ -29,8 +31,8 @@ namespace hy
 
 		Animator* at = AddComponent<Animator>();
 
-		at->CreateAnimation(L"WinAnimation", Win_, Vector2(0.0f, 0.0f), Vector2(300.0f, 54.0f), 1, Vector2(0.0f, 0.0f), 3.f);
-		at->CreateAnimation(L"LoseAnimation", Lose_, Vector2(0.0f, 0.0f), Vector2(300.0f, 54.0f), 1, Vector2(0.0f, 0.0f), 3.f);
+		at->CreateAnimation(L"WinAnimation", Win_, Vector2(0.0f, 0.0f), Vector2(300.0f, 54.0f), 1, Vector2(0.0f, 0.0f), 0.3f);
+		at->CreateAnimation(L"LoseAnimation", Lose_, Vector2(0.0f, 0.0f), Vector2(300.0f, 54.0f), 1, Vector2(0.0f, 0.0f), 0.3f);
 
 		Resources::Load<Sound>(L"Win", L"..\\Resources\\Sound\\Sound\\win.wav");
 		Resources::Load<Sound>(L"Lose", L"..\\Resources\\Sound\\Sound\\lose.wav");
@@ -40,14 +42,7 @@ namespace hy
 	{
 		GameObject::Update();
 
-		static float mTime = 0.0f;
-		mTime += Time::DeltaTime();
-
-		if (mTime >= 3.0f)
-		{
-			Win_Lose_flag = true;
-			mTime = 0.f;
-		}
+		Resulttime += Time::DeltaTime();
 
 		// ¾À ÀüÈ¯
 
@@ -70,6 +65,7 @@ namespace hy
 		{
 			Win_Lose_flag = true;
 		}
+
 		// ¹èÂî Victory »óÅÂ È£Ãâ
 	}
 
@@ -86,5 +82,11 @@ namespace hy
 			Win_Lose_flag = true;
 		}
 
+		if (Win_Lose::GetWin_Lose_flag() == true && Win_Lose ::Resulttime > 3.f)
+		{
+			SceneManager::LoadScene(L"LobbyScene");
+			Win_Lose_flag = false;
+		}
+		
 	}
 }

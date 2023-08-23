@@ -27,6 +27,9 @@ namespace hy
 		virtual void Enter();
 		virtual void Exit();
 
+		void Win();
+		void Lose();
+
 		//static void SetFunCheck(bool check) { FunCheck = check; }
 
 		static void SetLoseLife(bool flag){ LoseLife = flag;}
@@ -36,7 +39,6 @@ namespace hy
 		static UINT MonsterQuantity;
 		// static bool FunCheck;
 		static bool LoseLife;							// 플레이어가 죽었을 때를 알려주는 Flag
-		float Resulttime;						// 게임 결과 나오기 전 카운트하는 변수
 
 	};
 }

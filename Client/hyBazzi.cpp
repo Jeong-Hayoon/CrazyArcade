@@ -793,24 +793,22 @@ namespace hy
 	void Bazzi::Dead()
 	{
 		Animator* animator = GetComponent<Animator>();
-		ForestMap1::SetLoseLife(true);
-		Win_Lose::SetWin_Lose_flag(true);
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
+			ForestMap1::SetLoseLife(true);
 		}
 	}
 
 	void Bazzi::BalloonDead()
 	{
 		Animator* animator = GetComponent<Animator>();
-		ForestMap1::SetLoseLife(true);
-		Win_Lose::SetWin_Lose_flag(true);
 
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
-			// Lose 
+			ForestMap1::SetLoseLife(true);
+
 		}
 	}
 	 

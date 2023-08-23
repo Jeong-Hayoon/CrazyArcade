@@ -27,5 +27,6 @@ namespace hy
 
 	private:
 		static bool Win_Lose_flag;
+		static float Resulttime;
 	};
 }

@@ -41,7 +41,6 @@ namespace hy
 
 
 	ForestMap1::ForestMap1()
-		: Resulttime(0.f)
 	{
 	}
 	ForestMap1::~ForestMap1()
@@ -57,6 +56,7 @@ namespace hy
 	void ForestMap1::Exit()
 	{
 	}
+
 
 	void ForestMap1::Initialize()
 	{
@@ -146,60 +146,22 @@ namespace hy
 	{
 		Scene::Update();
 
-		//if (Input::GetKeyDown(eKeyCode::N)) // N을 누르면 다음 씬으로 넘어가기
-		//{
-		//	Resources::Find<Sound>(L"Play")->Stop(1);
 
-		//}
-
-		Resulttime += Time::DeltaTime();
-
-		/*if (MonsterQuantity == 0)
+		// 승리
+		if (MonsterQuantity == 0)
 		{
-			FunCheck = 1;
-		}*/
+			Win();
 
-		if (MonsterQuantity == 0 /*&& FunCheck == 1*/)
-		{
-			Resources::Find<Sound>(L"Play")->Stop(1);
-	
-			if (Resulttime > 3.f)
-			{
-				Win_Lose* win = object::Instantiate< Win_Lose>(eLayerType::UI);
-				win->Win();
-				Transform* wintr = win->GetComponent<Transform>();
-				wintr->SetPosition(Vector2(350.0f, 254.0f));
-
-				if (Win_Lose::GetWin_Lose_flag() == true)
-				{
-					SceneManager::LoadScene(L"ForestMap2");
-					Win_Lose::SetWin_Lose_flag(false);
-				}
-			}
-			//FunCheck = 0;
-			Resulttime = 0.f;
+			MonsterQuantity = 4;
 		}
 
+	
+		// 패배
 		if (MonsterQuantity != 0 && LoseLife == 1)
 		{
-			if (Resulttime > 3.f)
-			{
-				Resources::Find<Sound>(L"Play")->Stop(1);
-
-				Win_Lose* lose = object::Instantiate< Win_Lose>(eLayerType::UI);
-				lose->Lose();
-				Transform* losetr = lose->GetComponent<Transform>();
-				losetr->SetPosition(Vector2(350.0f, 254.0f));
-
-				if (Win_Lose::GetWin_Lose_flag() == true)
-				{
-					SceneManager::LoadScene(L"LobbyScene");
-					Win_Lose::SetWin_Lose_flag(false);
-				}
-			}
-			//FunCheck = 0;
-			Resulttime = 0.f;
-
+			Lose();
+			MonsterQuantity = 4;
+			LoseLife = 0;
 		}
 
 
@@ -209,6 +171,33 @@ namespace hy
 		Scene::Render(hdc);
 
 	}
+
+	void ForestMap1::Win()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Win_Lose* win = object::Instantiate< Win_Lose>(eLayerType::UI);
+		win->Win();
+		Transform* wintr = win->GetComponent<Transform>();
+		wintr->SetPosition(Vector2(350.0f, 254.0f));
+
+		if (Win_Lose::GetWin_Lose_flag() == true)
+		{
+			SceneManager::LoadScene(L"ForestMap2");
+			Win_Lose::SetWin_Lose_flag(false);
+		}
+	}
+
+	void ForestMap1::Lose()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Win_Lose* lose = object::Instantiate< Win_Lose>(eLayerType::UI);
+		lose->Lose();
+		Transform* losetr = lose->GetComponent<Transform>();
+		losetr->SetPosition(Vector2(350.0f, 254.0f));
+	}
+
 
 	void ForestMap1::Load()
 	{
