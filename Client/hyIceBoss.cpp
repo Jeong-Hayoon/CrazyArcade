@@ -127,7 +127,7 @@ namespace hy
 		Attacktime += Time::DeltaTime();
 		if (Attacktime > 5.f)
 		{
-			at->PlayAnimation(L"ForestBoss_Attack", false);
+			at->PlayAnimation(L"IceBoss_Attack", false);
 			mState = eState::Attack;
 		}
 
@@ -153,11 +153,11 @@ namespace hy
 
 				if (BubbleTime < 3.f)
 				{
-					at->PlayAnimation(L"ForestBoss_Bubble", false);
+					at->PlayAnimation(L"IceBoss_Bubble", false);
 				}
 				else if (BubbleTime > 3.f)
 				{
-					at->PlayAnimation(L"ForestBoss_Die", false);
+					at->PlayAnimation(L"IceBoss_Die", false);
 
 					mState = eState::Dead;
 					BubbleTime = 0.f;
@@ -204,25 +204,25 @@ namespace hy
 
 			if (StateSelect == 0)
 			{
-				animator->PlayAnimation(L"ForestBoss_Right", true);
+				animator->PlayAnimation(L"IceBoss_Right", true);
 				mState = eState::Right;
 
 			}
 			else if (StateSelect == 1)
 			{
-				animator->PlayAnimation(L"ForestBoss_Left", true);
+				animator->PlayAnimation(L"IceBoss_Left", true);
 				mState = eState::Left;
 
 			}
 			else if (StateSelect == 2)
 			{
-				animator->PlayAnimation(L"ForestBoss_Up", true);
+				animator->PlayAnimation(L"IceBoss_Up", true);
 				mState = eState::Up;
 
 			}
 			else if (StateSelect == 3)
 			{
-				animator->PlayAnimation(L"ForestBoss_Down", true);
+				animator->PlayAnimation(L"IceBoss_Down", true);
 				mState = eState::Down;
 			}
 
@@ -248,25 +248,25 @@ namespace hy
 
 			if (StateSelect == 0)
 			{
-				animator->PlayAnimation(L"ForestBoss_Right", true);
+				animator->PlayAnimation(L"IceBoss_Right", true);
 				mState = eState::Right;
 
 			}
 			else if (StateSelect == 1)
 			{
-				animator->PlayAnimation(L"ForestBoss_Left", true);
+				animator->PlayAnimation(L"IceBoss_Left", true);
 				mState = eState::Left;
 
 			}
 			else if (StateSelect == 2)
 			{
-				animator->PlayAnimation(L"ForestBoss_Up", true);
+				animator->PlayAnimation(L"IceBoss_Up", true);
 				mState = eState::Up;
 
 			}
 			else if (StateSelect == 3)
 			{
-				animator->PlayAnimation(L"ForestBoss_Down", true);
+				animator->PlayAnimation(L"IceBoss_Down", true);
 				mState = eState::Down;
 			}
 
@@ -292,25 +292,25 @@ namespace hy
 
 			if (StateSelect == 0)
 			{
-				animator->PlayAnimation(L"ForestBoss_Right", true);
+				animator->PlayAnimation(L"IceBoss_Right", true);
 				mState = eState::Right;
 
 			}
 			else if (StateSelect == 1)
 			{
-				animator->PlayAnimation(L"ForestBoss_Left", true);
+				animator->PlayAnimation(L"IceBoss_Left", true);
 				mState = eState::Left;
 
 			}
 			else if (StateSelect == 2)
 			{
-				animator->PlayAnimation(L"ForestBoss_Up", true);
+				animator->PlayAnimation(L"IceBoss_Up", true);
 				mState = eState::Up;
 
 			}
 			else if (StateSelect == 3)
 			{
-				animator->PlayAnimation(L"ForestBoss_Down", true);
+				animator->PlayAnimation(L"IceBoss_Down", true);
 				mState = eState::Down;
 			}
 
@@ -336,25 +336,25 @@ namespace hy
 
 			if (StateSelect == 0)
 			{
-				animator->PlayAnimation(L"ForestBoss_Right", true);
+				animator->PlayAnimation(L"IceBoss_Right", true);
 				mState = eState::Right;
 
 			}
 			else if (StateSelect == 1)
 			{
-				animator->PlayAnimation(L"ForestBoss_Left", true);
+				animator->PlayAnimation(L"IceBoss_Left", true);
 				mState = eState::Left;
 
 			}
 			else if (StateSelect == 2)
 			{
-				animator->PlayAnimation(L"ForestBoss_Up", true);
+				animator->PlayAnimation(L"IceBoss_Up", true);
 				mState = eState::Up;
 
 			}
 			else if (StateSelect == 3)
 			{
-				animator->PlayAnimation(L"ForestBoss_Down", true);
+				animator->PlayAnimation(L"IceBoss_Down", true);
 				mState = eState::Down;
 			}
 
@@ -375,25 +375,25 @@ namespace hy
 
 			if (StateSelect == 0)
 			{
-				animator->PlayAnimation(L"ForestBoss_Right", true);
+				animator->PlayAnimation(L"IceBoss_Right", true);
 				mState = eState::Right;
 
 			}
 			else if (StateSelect == 1)
 			{
-				animator->PlayAnimation(L"ForestBoss_Left", true);
+				animator->PlayAnimation(L"IceBoss_Left", true);
 				mState = eState::Left;
 
 			}
 			else if (StateSelect == 2)
 			{
-				animator->PlayAnimation(L"ForestBoss_Up", true);
+				animator->PlayAnimation(L"IceBoss_Up", true);
 				mState = eState::Up;
 
 			}
 			else if (StateSelect == 3)
 			{
-				animator->PlayAnimation(L"ForestBoss_Down", true);
+				animator->PlayAnimation(L"IceBoss_Down", true);
 				mState = eState::Down;
 			}
 		}

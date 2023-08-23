@@ -184,7 +184,7 @@ namespace hy
 		Transform* forestbazzitr = forestbazzi1->GetComponent<Transform>();
 		forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
 
-		// 포레스트 보스
+		// 아이스 보스
 		IceBoss* IceBoss_ = object::Instantiate<IceBoss>(eLayerType::Boss);
 		IceBoss_->GetComponent<Transform>()->SetPosition(Vector2(250.0f, 300.0f));
 
