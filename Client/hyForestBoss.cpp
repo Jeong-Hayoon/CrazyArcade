@@ -402,22 +402,14 @@ namespace hy
 
 	void ForestBoss::Attack()
 	{
-		int Target_X = rand() % 13;
-		int Target_Y = rand() % 11;
+		int Target_X = rand() % 13;		// 0~12
+		int Target_Y = rand() % 11;		// 0~ 10
 
 		for (int i = Target_Y; i < i+3; i++)		// y
 		{
-			for (int j = Target_X; j < j+3 ; j++)		// x
+			for (int j = Target_X; j < j+3 ; j++)	// x
 			{
 
-				/*if ((newY != 6 - MultipleNum)
-					&& (newY != 6 + MultipleNum)
-					&& (newX != 7 - MultipleNum)
-					&& (newX != 7 + MultipleNum))
-				{
-					continue;
-				}*/
-				
 				Vector2 Bossbombpos;
 				Bossbombpos.x = j;
 				Bossbombpos.y = i;

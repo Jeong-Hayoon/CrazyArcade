@@ -300,13 +300,15 @@ namespace hy
 				// 왼쪽 충돌
 				if ((bzpos.x < tilepos.x))
 				{
-					East++;
+					bzpos.x -= ColSum_X;
+
 					mState = eState::Move;
 				}
 				// 오른쪽 충돌
 				else
 				{
-					West++;
+					bzpos.x += ColSum_X;
+
 					mState = eState::Move;
 				}
 			}
@@ -316,17 +318,20 @@ namespace hy
 				// 위쪽 충돌
 				if ((bzpos.y < tilepos.y))
 				{
-					South++;
+					bzpos.y -= ColSum_Y;
 					mState = eState::Move;
 				}
 				// 아래쪽 충돌
 				else
 				{
-					North++;
+					bzpos.y += ColSum_Y;
 					mState = eState::Move;
 				}
 
 			}
+
+			bzpos -= GetComponent<Collider>()->GetOffset();
+			this->GetComponent<Transform>()->SetPosition(bzpos);
 
 			//float GetSpeed = GetMoveSpeed();
 			// 이동은 없고, 애니메이션만
@@ -370,13 +375,15 @@ namespace hy
 				// 왼쪽 충돌
 				if ((bzpos.x < tilepos.x))
 				{
-					East++;
+					bzpos.x -= ColSum_X;
+
 					mState = eState::Move;
 				}
 				// 오른쪽 충돌
 				else
 				{
-					West++;
+					bzpos.x += ColSum_X;
+
 					mState = eState::Move;
 				}
 			}
@@ -386,17 +393,22 @@ namespace hy
 				// 위쪽 충돌
 				if ((bzpos.y < tilepos.y))
 				{
-					South++;
+					bzpos.y -= ColSum_Y;
+
 					mState = eState::Move;
 				}
 				// 아래쪽 충돌
 				else
 				{
-					North++;
+					bzpos.y += ColSum_Y;
+
 					mState = eState::Move;
 				}
 
 			}
+
+			bzpos -= GetComponent<Collider>()->GetOffset();
+			this->GetComponent<Transform>()->SetPosition(bzpos);
 
 			/*if (mDirection == eDirection::Right)
 			{
@@ -431,35 +443,140 @@ namespace hy
 	}
 	void Bazzi::OnCollisionStay(Collider* other)
 	{
+		// 충돌체의 owner를 가져와서
+		GameObject* obj = other->GetOwner();
+		// Bazzi과 같으면 Bazzi의 주소를 반환하고 안되면 nullptr
+		Tile* tile = dynamic_cast<Tile*>(obj);
+
+		if (other->GetOwner()->GetLayerType() == eLayerType::Monster)
+		{
+			Animator* at = GetComponent<Animator>();
+			at->SetScale(Vector2(0.9f, 0.9f));
+			at->PlayAnimation(L"BazziDead", false);
+			mState = eState::Dead;
+		}
+
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
+		{
+			Animator* at = GetComponent<Animator>();
+			at->SetScale(Vector2(0.8f, 0.8f));
+			at->PlayAnimation(L"BazziTrap", false);
+			mState = eState::Trap;
+		}
+
+		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow)
+		{
+			Animator* at = GetComponent<Animator>();
+			at->SetScale(Vector2(0.8f, 0.8f));
+			at->PlayAnimation(L"BazziTrap", false);
+			mState = eState::Trap;
+		}
+		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Crack)
+		{
+			Vector2 bzpos = this->GetComponent<Collider>()->GetPosition();
+			Vector2 bzsize = this->GetComponent<Collider>()->GetSize();
+
+			Vector2 tilepos = other->GetPosition();
+			Vector2 tilesize = other->GetSize();
+
+			float ColSum_X = ((bzsize.x + tilesize.x) / 2.f) - fabs(bzpos.x - tilepos.x);
+			float ColSum_Y = ((bzsize.y + tilesize.y) / 2.f) - fabs(bzpos.y - tilepos.y);
+
+			// 좌우
+			if (ColSum_X < ColSum_Y)
+			{
+				// 왼쪽 충돌
+				if ((bzpos.x < tilepos.x))
+				{
+					bzpos.x -= ColSum_X;
+					mState = eState::Move;
+				}
+				// 오른쪽 충돌
+				else
+				{
+					bzpos.x += ColSum_X;
+					mState = eState::Move;
+				}
+			}
+			// 상하
+			else
+			{
+				// 위쪽 충돌
+				if ((bzpos.y < tilepos.y))
+				{
+					bzpos.y -= ColSum_Y;
+					mState = eState::Move;
+				}
+				// 아래쪽 충돌
+				else
+				{
+					bzpos.y += ColSum_Y;
+					mState = eState::Move;
+				}
+			}
+
+			bzpos -= GetComponent<Collider>()->GetOffset();
+			this->GetComponent<Transform>()->SetPosition(bzpos);
+		}
+		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Uncrushable)
+		{
+			Vector2 bzpos = this->GetComponent<Collider>()->GetPosition();
+			Vector2 bzsize = this->GetComponent<Collider>()->GetSize();
+
+			Vector2 tilepos = other->GetPosition();
+			Vector2 tilesize = other->GetSize();
+
+			float ColSum_X = ((bzsize.x + tilesize.x) / 2.f) - fabs(bzpos.x - tilepos.x);
+			float ColSum_Y = ((bzsize.y + tilesize.y) / 2.f) - fabs(bzpos.y - tilepos.y);
+
+			// 좌우
+			if (ColSum_X < ColSum_Y)
+			{
+				// 왼쪽 충돌
+				if ((bzpos.x < tilepos.x))
+				{
+					bzpos.x -= ColSum_X;
+					mState = eState::Move;
+				}
+				// 오른쪽 충돌
+				else
+				{
+					bzpos.x += ColSum_X;
+					mState = eState::Move;
+				}
+			}
+			// 상하
+			else
+			{
+				// 위쪽 충돌
+				if ((bzpos.y < tilepos.y))
+				{
+					bzpos.y -= ColSum_Y;
+					mState = eState::Move;
+				}
+				// 아래쪽 충돌
+				else
+				{
+					bzpos.y += ColSum_Y;
+					mState = eState::Move;
+				}
+			}
+
+			bzpos -= GetComponent<Collider>()->GetOffset();
+			this->GetComponent<Transform>()->SetPosition(bzpos);
+		}
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Boss)
+		{
+			Animator* at = GetComponent<Animator>();
+			at->SetScale(Vector2(0.9f, 0.9f));
+			at->PlayAnimation(L"BazziDead", false);
+			mState = eState::Dead;
+		}
 		
 	}
 	void Bazzi::OnCollisionExit(Collider* other)
 	{
-		if (North != 0 && (Input::GetKey(eKeyCode::Down) || Input::GetKeyDown(eKeyCode::Down))/* ||
-			(Input::GetKey(eKeyCode::Right) || Input::GetKeyDown(eKeyCode::Right)) ||
-			(Input::GetKey(eKeyCode::Left) || Input::GetKeyDown(eKeyCode::Down))*/)
-		{
-			North--;
-		}
-		if (South != 0 && (Input::GetKey(eKeyCode::Up) || Input::GetKeyDown(eKeyCode::Up))/*||
-			(Input::GetKey(eKeyCode::Right) || Input::GetKeyDown(eKeyCode::Right)) ||
-			(Input::GetKey(eKeyCode::Left) || Input::GetKeyDown(eKeyCode::Down))*/)
-		{
-			South--;
-		}
-		if (East != 0 && (Input::GetKey(eKeyCode::Left) || Input::GetKeyDown(eKeyCode::Left)) /*||
-			(Input::GetKey(eKeyCode::Up) || Input::GetKeyDown(eKeyCode::Up)) ||
-			(Input::GetKey(eKeyCode::Down) || Input::GetKeyDown(eKeyCode::Down))*/)
-		{
-			East--;
-		}
-		if (West != 0 && (Input::GetKey(eKeyCode::Right) || Input::GetKeyDown(eKeyCode::Right)) /*||
-			(Input::GetKey(eKeyCode::Up) || Input::GetKeyDown(eKeyCode::Up)) ||
-			(Input::GetKey(eKeyCode::Down) || Input::GetKeyDown(eKeyCode::Down))*/)
-		{
-			West--;
-		}
-
+	
 	}
  
 	void Bazzi::Make()
@@ -606,10 +723,7 @@ namespace hy
 			}
 			else
 			{
-				if (North == 0)
-				{
-					pos.y -= MoveSpeed * Time::DeltaTime();
-				}
+				pos.y -= MoveSpeed * Time::DeltaTime();
 			}
 		}
 		else if (mDirection == eDirection::Left)	// 방향이 왼쪽이면 왼쪽으로 이동
@@ -620,11 +734,7 @@ namespace hy
 			}
 			else
 			{
-				if (West == 0)
-				{
-					pos.x -= MoveSpeed * Time::DeltaTime();
-				}
-
+				pos.x -= MoveSpeed * Time::DeltaTime();
 			}
 		}
 		else if (mDirection == eDirection::Right)	// 방향이 오른쪽이면 오른쪽으로 이동
@@ -635,10 +745,7 @@ namespace hy
 			}
 			else
 			{
-				if (East == 0)
-				{
-					pos.x += MoveSpeed * Time::DeltaTime();
-				}
+				pos.x += MoveSpeed * Time::DeltaTime();
 			}
 		}
 		else if (mDirection == eDirection::Down)	// 방향이 아래쪽이면 아래쪽으로 이동
@@ -649,10 +756,7 @@ namespace hy
 			}
 			else
 			{
-				if (South == 0)
-				{
-					pos.y += MoveSpeed * Time::DeltaTime();
-				}
+				pos.y += MoveSpeed * Time::DeltaTime();
 			}
 		}
 
