@@ -402,40 +402,25 @@ namespace hy
 
 	void ForestBoss::Attack()
 	{
-		srand(time(NULL));
+		int Target_X = rand() % 13;
+		int Target_Y = rand() % 11;
 
-		int MultipleNum = (rand() % 6) + 1;
-
-		for (int i = 6 - MultipleNum; i <= 6 + MultipleNum; i++)		// y
+		for (int i = Target_Y; i < i+3; i++)		// y
 		{
-			for (int j = 7 - MultipleNum; j <= 7+ MultipleNum; j++)		// x
+			for (int j = Target_X; j < j+3 ; j++)		// x
 			{
-				float newX = j;
-				float newY = i;
 
-				if ((newY != 6 - MultipleNum)
+				/*if ((newY != 6 - MultipleNum)
 					&& (newY != 6 + MultipleNum)
 					&& (newX != 7 - MultipleNum)
 					&& (newX != 7 + MultipleNum))
 				{
 					continue;
-				}
+				}*/
 				
-				//// rnd = 6 기준
-				//// newY가 1 ~ 10 이고
-				//if (newY > 7 - MultipleNum && newY < 5 + MultipleNum)
-				//{
-				//	// newX가 1 ~ 10인경우
-				//	if(newX > 7 - MultipleNum && newX < 5 + MultipleNum)
-				//	{
-				//		continue;
-				//	}
-				//}
-				
-
 				Vector2 Bossbombpos;
-				Bossbombpos.x = newX;
-				Bossbombpos.y = newY;
+				Bossbombpos.x = j;
+				Bossbombpos.y = i;
 
 				Bossbombpos.x = ((Bossbombpos.x) * (TILE_WIDTH)) + (TILE_WIDTH / 2) + 20.f;
 				Bossbombpos.y = ((Bossbombpos.y) * (TILE_HEIGHT)) + (TILE_HEIGHT / 2) + 40.f;
@@ -443,17 +428,7 @@ namespace hy
 				BossBomb* bomb_ = object::Instantiate<BossBomb>(eLayerType::BossBombflow);
 				bomb_->GetComponent<Transform>()->SetPosition(Bossbombpos);
 			}
-
 		}
-
-		//// 해당 타일 인덱스를 구함
-		//X_ = (BazziLocationtr.x - 20.f) / (TILE_WIDTH);
-		//Y_ = (BazziLocationtr.y - 40.f) / (TILE_HEIGHT);
-
-		//// 해당 타일 인덱스에 타일 사이즈를 곱하여 해당 타일의 LeftTop으로 이동
-		//Bombpos.x = (X_ * TILE_WIDTH) + (TILE_WIDTH / 2) + 20.f;
-		//Bombpos.y = (Y_ * TILE_HEIGHT) + (TILE_HEIGHT / 2) + 40.f;
-
 
 		Attacktime = 0.f;
 

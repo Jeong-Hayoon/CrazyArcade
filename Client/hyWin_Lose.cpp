@@ -49,6 +49,8 @@ namespace hy
 			mTime = 0.f;
 		}
 
+		// ¾À ÀüÈ¯
+
 	}
 
 	void Win_Lose::Render(HDC hdc)

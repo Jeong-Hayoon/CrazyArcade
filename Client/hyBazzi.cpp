@@ -291,11 +291,11 @@ namespace hy
 			Vector2 tilepos = other->GetPosition();
 			Vector2 tilesize = other->GetSize();
 
-			float ColSum_X = (bzsize.x + tilesize.x / 2.f) - fabs(bzpos.x - tilepos.x);
-			float ColSum_Y = (bzsize.y + tilesize.y / 2.f) - fabs(bzpos.y - tilepos.y);
+			float ColSum_X = ((bzsize.x + tilesize.x) / 2.f) - fabs(bzpos.x - tilepos.x);
+			float ColSum_Y = ((bzsize.y + tilesize.y) / 2.f) - fabs(bzpos.y - tilepos.y);
 
 			// 谅快
-			if (ColSum_X > ColSum_Y)
+			if (ColSum_X < ColSum_Y)
 			{
 				// 哭率 面倒
 				if ((bzpos.x < tilepos.x))
@@ -361,11 +361,11 @@ namespace hy
 			Vector2 tilepos = other->GetPosition();
 			Vector2 tilesize = other->GetSize();
 
-			float ColSum_X = (bzsize.x + tilesize.x / 2.f) - fabs(bzpos.x - tilepos.x);
-			float ColSum_Y = (bzsize.y + tilesize.y / 2.f) - fabs(bzpos.y - tilepos.y);
+			float ColSum_X = ((bzsize.x + tilesize.x) / 2.f) - fabs(bzpos.x - tilepos.x);
+			float ColSum_Y = ((bzsize.y + tilesize.y) / 2.f) - fabs(bzpos.y - tilepos.y);
 
 			// 谅快
-			if (ColSum_X > ColSum_Y)
+			if (ColSum_X < ColSum_Y)
 			{
 				// 哭率 面倒
 				if ((bzpos.x < tilepos.x))
@@ -435,19 +435,27 @@ namespace hy
 	}
 	void Bazzi::OnCollisionExit(Collider* other)
 	{
-		if (North != 0 && (Input::GetKey(eKeyCode::Down) || Input::GetKeyDown(eKeyCode::Down)))
+		if (North != 0 && (Input::GetKey(eKeyCode::Down) || Input::GetKeyDown(eKeyCode::Down))/* ||
+			(Input::GetKey(eKeyCode::Right) || Input::GetKeyDown(eKeyCode::Right)) ||
+			(Input::GetKey(eKeyCode::Left) || Input::GetKeyDown(eKeyCode::Down))*/)
 		{
 			North--;
 		}
-		if (South != 0 && (Input::GetKey(eKeyCode::Up) || Input::GetKeyDown(eKeyCode::Up)))
+		if (South != 0 && (Input::GetKey(eKeyCode::Up) || Input::GetKeyDown(eKeyCode::Up))/*||
+			(Input::GetKey(eKeyCode::Right) || Input::GetKeyDown(eKeyCode::Right)) ||
+			(Input::GetKey(eKeyCode::Left) || Input::GetKeyDown(eKeyCode::Down))*/)
 		{
 			South--;
 		}
-		if (East != 0 && (Input::GetKey(eKeyCode::Left) || Input::GetKeyDown(eKeyCode::Left)))
+		if (East != 0 && (Input::GetKey(eKeyCode::Left) || Input::GetKeyDown(eKeyCode::Left)) /*||
+			(Input::GetKey(eKeyCode::Up) || Input::GetKeyDown(eKeyCode::Up)) ||
+			(Input::GetKey(eKeyCode::Down) || Input::GetKeyDown(eKeyCode::Down))*/)
 		{
 			East--;
 		}
-		if (West != 0 && (Input::GetKey(eKeyCode::Right) || Input::GetKeyDown(eKeyCode::Right)))
+		if (West != 0 && (Input::GetKey(eKeyCode::Right) || Input::GetKeyDown(eKeyCode::Right)) /*||
+			(Input::GetKey(eKeyCode::Up) || Input::GetKeyDown(eKeyCode::Up)) ||
+			(Input::GetKey(eKeyCode::Down) || Input::GetKeyDown(eKeyCode::Down))*/)
 		{
 			West--;
 		}
