@@ -47,10 +47,10 @@ namespace hy
 		CreateScene<PirateMap2>(L"PirateMap2");
 		CreateScene<PirateMap3>(L"PirateMap3");
 
-		CreateScene<ToolScene>(L"LogoScene");
+		CreateScene<ToolScene>(L"ToolScene");
 
 
-		LoadScene(L"LobbyScene");
+		LoadScene(L"LogoScene");
 	}
 
 	void SceneManager::Update()
