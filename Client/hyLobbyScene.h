@@ -1,5 +1,6 @@
 #pragma once
 #include "hyScene.h"
+#include "hyStagePick.h"
 
 namespace hy
 {
@@ -17,7 +18,8 @@ namespace hy
 		virtual void Exit();
 
 	private:
-	// bool mbStart;
+		// 멤버 변수로 포인터를 가지고 있기 때문에 MapSelect는 객체 생성 전까지는 nullptr
+		StagePick* MapSelect;
 	};
 }
 

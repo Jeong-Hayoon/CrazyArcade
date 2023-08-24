@@ -18,6 +18,7 @@ extern hy::Application application;
 namespace hy
 {
 	LobbyScene::LobbyScene()
+		: MapSelect(nullptr)
 	{
 	}
 	LobbyScene::~LobbyScene()
@@ -50,10 +51,6 @@ namespace hy
 		Charactorsr->SetScale(Vector2(0.7f, 0.7f));
 		Charactorsr->SetImage(Bazzi);
 
-		//Bazzi* Lobbytbazzi = object::Instantiate<Bazzi>(eLayerType::Player);
-		//Transform* forestbazzitr = Lobbytbazzi->GetComponent<Transform>();
-		//forestbazzitr->SetPosition(Vector2(115.0f, 160.0f));
-
 		// 캐릭터 선택 창
 		Texture* CharSelect = Resources::Load<Texture>(L"CharSelectImage"
 			, L"..\\Resources\\Image\\UI\\bazzi_image.bmp");
@@ -66,7 +63,7 @@ namespace hy
 
 		// 맵 선택(포레스트 맵)
 		/*Texture* ForestMapSelect = Resources::Load<Texture>(L"ForestMapSelectImage"
-			, L"..\\Resources\\Image\\UI\\ForestRandom.bmp");
+			//, L"..\\Resources\\Image\\UI\\ForestRandom.bmp");
 
 		BackGround* fms = object::Instantiate<BackGround>(eLayerType::Background);
 		fms->GetComponent<Transform>()->SetPosition(Vector2(560.0f, 415.0f));
@@ -93,17 +90,33 @@ namespace hy
 		Scene::Update();
 
 		Vector2 temp = Input::GetMousePosition();
+	
+
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 530 && temp.y <= 575 && temp.x >= 515 && temp.x <= 695)
 		{
 			SceneManager::LoadScene(L"ForestMap1");
 		}
 
-		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 430 && temp.y <= 480 && temp.x >= 645 && temp.x <= 770)
+		// Map 창 키기
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 440 && temp.y <= 480 && temp.x >= 650 && temp.x <= 770)
 		{
-			StagePick* MapSelect = object::Instantiate<StagePick>(eLayerType::UI);
+			MapSelect = object::Instantiate<StagePick>(eLayerType::UI);
 			Transform* MapSelecttr = MapSelect->GetComponent<Transform>();
-			MapSelecttr->SetPosition(Vector2(360.f, 135.f));
+			MapSelecttr->SetPosition(Vector2(400.f, 290.f));
 		}
+
+		// 확인
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 480 && temp.y <= 500 && temp.x >= 295 && temp.x <= 385)
+		{
+			Destroy(MapSelect);
+		}
+
+		// 취소
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 480 && temp.y <= 500 && temp.x >= 400 && temp.x <= 500)
+		{
+			Destroy(MapSelect);
+		}
+
 		if (Input::GetKeyDown(eKeyCode::N))
 		{
 			Resources::Find<Sound>(L"LobbySound")->Stop(true);

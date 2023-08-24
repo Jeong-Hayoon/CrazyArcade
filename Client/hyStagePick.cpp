@@ -29,10 +29,10 @@ namespace hy
 
 		Animator* spt = AddComponent<Animator>();
 
-		spt->CreateAnimation(L"MapWindow", SelectWindow_, Vector2(0.0f, 0.0f), Vector2(700.0f, 637.0f), 1, Vector2(0.0f, 0.0f), 3.f);
-		spt->CreateAnimation(L"ForestPick", SelectForest_, Vector2(0.0f, 0.0f), Vector2(700.0f, 637.0f), 1, Vector2(0.0f, 0.0f), 3.f);
-		spt->CreateAnimation(L"IcePick", SelectIce_, Vector2(0.0f, 0.0f), Vector2(700.0f, 637.0f), 1, Vector2(0.0f, 0.0f), 3.f);
-		spt->CreateAnimation(L"PiratePick", SelectPirate_, Vector2(0.0f, 0.0f), Vector2(700.0f, 637.0f), 1, Vector2(0.0f, 0.0f), 3.f);
+		spt->CreateAnimation(L"MapWindow", SelectWindow_, Vector2(0.0f, 0.0f), Vector2(500.0f, 455.0f), 1, Vector2(0.0f, 0.0f), 3.f);
+		spt->CreateAnimation(L"ForestPick", SelectForest_, Vector2(0.0f, 0.0f), Vector2(500.0f, 455.0f), 1, Vector2(0.0f, 0.0f), 3.f);
+		spt->CreateAnimation(L"IcePick", SelectIce_, Vector2(0.0f, 0.0f), Vector2(500.0f, 455.0f), 1, Vector2(0.0f, 0.0f), 3.f);
+		spt->CreateAnimation(L"PiratePick", SelectPirate_, Vector2(0.0f, 0.0f), Vector2(500.0f, 455.0f), 1, Vector2(0.0f, 0.0f), 3.f);
 
 		spt->PlayAnimation(L"MapWindow", true);
 
@@ -42,29 +42,35 @@ namespace hy
 	{
 		GameObject::Update();
 
-		Animator* spt = AddComponent<Animator>();
+		Animator* spt = GetComponent<Animator>();
 
 		Vector2 temp = Input::GetMousePosition();
 
-		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 250 && temp.y <= 265 && temp.x >= 300 && temp.x <= 470)
+		// Forest 선택
+		if (Input::GetKeyDown(eKeyCode::MouseLeft))
+		{
+			int a = 0;
+		}
+
+		// Forest 선택
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 250 && temp.y <= 260 && temp.x >= 360 && temp.x <= 520)
 		{
 			spt->PlayAnimation(L"ForestPick", true);
 			// LoadScene -> ForestMap할 flag 변수 생성
-
 		}
-		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 270 && temp.y <= 285 && temp.x >= 300 && temp.x <= 470)
+
+		// Ice 선택
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 260 && temp.y <= 270 && temp.x >= 360 && temp.x <= 520)
 		{
 			spt->PlayAnimation(L"IcePick", true);
 			// LoadScene -> IceMap할 flag 변수 생성
 		}
-		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 340 && temp.y <= 355 && temp.x >= 300 && temp.x <= 470)
+
+		// Pirate 선텍
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 310 && temp.y <= 320 && temp.x >= 360 && temp.x <= 520)
 		{
 			spt->PlayAnimation(L"PiratePick", true);
 			// LoadScene -> PirateMap할 flag 변수 생성
-		}
-		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 580 && temp.y <= 615 && temp.x >= 205 && temp.x <= 340)
-		{
-			Destroy(this);
 		}
 
 	}
