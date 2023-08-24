@@ -8,9 +8,21 @@ namespace hy
 	public:
 		enum class eState
 		{
+			Up,
+			Down,
+			Left,
+			Right,
 			Move,
 			Dead,
 			End,
+		};
+
+		enum class eDirection
+		{
+			Up,
+			Down,
+			Left,
+			Right
 		};
 
 		PirateMonster();
@@ -25,11 +37,26 @@ namespace hy
 		virtual void OnCollisionExit(class Collider* other);
 
 		void Move();
+
+		void Up();
+		void Down();
+		void Left();
+		void Right();
+
 		void Dead();
 
 	private:
 		eState mState;
+		float mDeathTime;
+		//static float MonsterTime;
+		eDirection mDirection;
+		float MonsterTime;
+		float MoveSpeed;						// 기본 속도
+		float Statetime;
+
 
 	};
 }
+
+
 

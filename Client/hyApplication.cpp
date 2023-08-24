@@ -118,12 +118,17 @@ namespace hy
 		CollisionManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 
-		//Rectangle(mHdc, 100, 100, 200, 200);
+		// 마우스 위치를 따라가게
+		Vector2 temp = Input::GetMousePosition();
+		Rectangle(mHdc, temp.x , temp.y, temp.x + 10, temp.y + 10);
+
 		/*	Ellipse(mBackHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y
 			, 200 + mPlayerPos.x, 200 + mPlayerPos.y);*/
 
+
 		BitBlt(mHdc, 0, 0, mWidth, mHeight				// DC간 그림을 복사해주는 함수
 			, mBackHdc, 0, 0, SRCCOPY);					// mHdc에 mBackHdc를 복사
+
 	}
 
 	void Application::Release()

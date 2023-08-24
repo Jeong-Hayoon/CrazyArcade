@@ -97,17 +97,14 @@ namespace hy
 			if (SceneManager::GetActiveMap() == 1)
 			{
 				SceneManager::LoadScene(L"ForestMap1");
-
 			}
 			else if(SceneManager::GetActiveMap() == 2)
 			{
 				SceneManager::LoadScene(L"IceMap1");
-
 			}
 			else if (SceneManager::GetActiveMap() == 3)
 			{
 				SceneManager::LoadScene(L"PirateMap1");
-
 			}
 		}
 

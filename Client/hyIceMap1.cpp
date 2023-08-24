@@ -12,7 +12,7 @@
 #include "hyTransform.h"
 #include "hyAnimator.h"
 #include "hyBazzi.h"
-#include "hyForestMonster_1.h"
+#include "hyIceMonster.h"
 #include "hyCollisionManager.h"
 #include "hyToolScene.h"
 #include "hyBalloon.h"
@@ -184,23 +184,23 @@ namespace hy
 		forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
 
 		// 포레스트 몬스터
-		ForestMonster_1* IceMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		IceMonster* IceMonster1 = object::Instantiate<IceMonster>(eLayerType::Monster);
 		IceMonster1->GetComponent<Transform>()->SetPosition(Vector2(135.0f, 185.0f));
-		ForestMonster_1* IceMonster2 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		IceMonster* IceMonster2 = object::Instantiate<IceMonster>(eLayerType::Monster);
 		IceMonster2->GetComponent<Transform>()->SetPosition(Vector2(495.0f, 185.0f));
-		ForestMonster_1* IceMonster3 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		IceMonster* IceMonster3 = object::Instantiate<IceMonster>(eLayerType::Monster);
 		IceMonster3->GetComponent<Transform>()->SetPosition(Vector2(135.0f, 470.0f));
-		ForestMonster_1* IceMonster4 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		IceMonster* IceMonster4 = object::Instantiate<IceMonster>(eLayerType::Monster);
 		IceMonster4->GetComponent<Transform>()->SetPosition(Vector2(495.0f, 470.0f));
-		ForestMonster_1* IceMonster5 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		IceMonster* IceMonster5 = object::Instantiate<IceMonster>(eLayerType::Monster);
 		IceMonster5->GetComponent<Transform>()->SetPosition(Vector2(135.0f, 330.0f));
-		ForestMonster_1* IceMonster6 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		IceMonster* IceMonster6 = object::Instantiate<IceMonster>(eLayerType::Monster);
 		IceMonster6->GetComponent<Transform>()->SetPosition(Vector2(320.0f, 330.0f));
-		ForestMonster_1* IceMonster7 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		IceMonster* IceMonster7 = object::Instantiate<IceMonster>(eLayerType::Monster);
 		IceMonster7->GetComponent<Transform>()->SetPosition(Vector2(485.0f, 330.0f));
-		ForestMonster_1* IceMonster8 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		IceMonster* IceMonster8 = object::Instantiate<IceMonster>(eLayerType::Monster);
 		IceMonster8->GetComponent<Transform>()->SetPosition(Vector2(320.0f, 125.0f));
-		ForestMonster_1* IceMonster9 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		IceMonster* IceMonster9 = object::Instantiate<IceMonster>(eLayerType::Monster);
 		IceMonster9->GetComponent<Transform>()->SetPosition(Vector2(320.0f, 520.0f));
 
 

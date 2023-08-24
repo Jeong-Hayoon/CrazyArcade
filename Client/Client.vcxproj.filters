@@ -296,7 +296,7 @@
     <ClInclude Include="hyDao.h">
       <Filter>Contents\GameObject\Player\Dao</Filter>
     </ClInclude>
-    <ClInclude Include="hyForestMonster_1.h">
+    <ClInclude Include="hyForestMonster.h">
       <Filter>Contents\GameObject\Monster\ForestMap</Filter>
     </ClInclude>
     <ClInclude Include="hyPirateMonster.h">
@@ -531,7 +531,7 @@
     <ClCompile Include="hyBazzi.cpp">
       <Filter>Contents\GameObject\Player\Bazzi</Filter>
     </ClCompile>
-    <ClCompile Include="hyForestMonster_1.cpp">
+    <ClCompile Include="hyForestMonster.cpp">
       <Filter>Contents\GameObject\Monster\ForestMap</Filter>
     </ClCompile>
     <ClCompile Include="hyPirateMonster.cpp">

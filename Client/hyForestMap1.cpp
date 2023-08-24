@@ -12,7 +12,7 @@
 #include "hyTransform.h"
 #include "hyAnimator.h"
 #include "hyBazzi.h"
-#include "hyForestMonster_1.h"
+#include "hyForestMonster.h"
 #include "hyCollisionManager.h"
 #include "hyToolScene.h"
 #include "hyBalloon.h"
@@ -112,13 +112,13 @@ namespace hy
 		forestbazzitr->SetPosition(Vector2(380.0f, 250.0f));
 
 		// 포레스트 몬스터
-		ForestMonster_1* ForestMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster* ForestMonster1 = object::Instantiate<ForestMonster>(eLayerType::Monster);
 		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 60.0f));
-		ForestMonster_1* ForestMonster2 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster* ForestMonster2 = object::Instantiate<ForestMonster>(eLayerType::Monster);
 		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 450.0f));
-		ForestMonster_1* ForestMonster3 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster* ForestMonster3 = object::Instantiate<ForestMonster>(eLayerType::Monster);
 		ForestMonster3->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 450.0f));
-		ForestMonster_1* ForestMonster4 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		ForestMonster* ForestMonster4 = object::Instantiate<ForestMonster>(eLayerType::Monster);
 		ForestMonster4->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 60.0f));
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)

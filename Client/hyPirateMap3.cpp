@@ -12,7 +12,7 @@
 #include "hyTransform.h"
 #include "hyAnimator.h"
 #include "hyBazzi.h"
-#include "hyForestMonster_1.h"
+#include "hyPirateMonster.h"
 #include "hyCollisionManager.h"
 #include "hyToolScene.h"
 #include "hyBalloon.h"

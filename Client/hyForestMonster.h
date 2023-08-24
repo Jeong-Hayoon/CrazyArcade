@@ -3,7 +3,7 @@
 
 namespace hy
 {
-	class ForestMonster_1 : public GameObject
+	class ForestMonster : public GameObject
 	{
 	public:
 		enum class eState
@@ -25,8 +25,8 @@ namespace hy
 			Right
 		};
 
-		ForestMonster_1();
-		virtual ~ForestMonster_1();
+		ForestMonster();
+		virtual ~ForestMonster();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

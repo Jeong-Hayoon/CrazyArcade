@@ -153,7 +153,7 @@
     <ClInclude Include="hyForestMap3.h" />
     <ClInclude Include="hyIceBoss.h" />
     <ClInclude Include="hyIceMap1.h" />
-    <ClInclude Include="hyForestMonster_1.h" />
+    <ClInclude Include="hyForestMonster.h" />
     <ClInclude Include="hyIceMap2.h" />
     <ClInclude Include="hyIceMap3.h" />
     <ClInclude Include="hyIceMonster.h" />
@@ -237,7 +237,7 @@
     <ClCompile Include="hyLogo.cpp" />
     <ClCompile Include="hyLogoScene.cpp" />
     <ClCompile Include="hyMath.cpp" />
-    <ClCompile Include="hyForestMonster_1.cpp" />
+    <ClCompile Include="hyForestMonster.cpp" />
     <ClCompile Include="hyMinutes.cpp" />
     <ClCompile Include="hyNeedle.cpp" />
     <ClCompile Include="hyObjectCollider.cpp" />

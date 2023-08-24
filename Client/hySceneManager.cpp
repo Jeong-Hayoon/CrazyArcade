@@ -50,7 +50,7 @@ namespace hy
 		CreateScene<ToolScene>(L"ToolScene");
 
 
-		LoadScene(L"LobbyScene");
+		LoadScene(L"LogoScene");
 	}
 
 	void SceneManager::Update()
