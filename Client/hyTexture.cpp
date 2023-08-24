@@ -90,13 +90,45 @@ namespace hy
 
 		else if (ext == L"png")			// 맨뒤에서 세글자가 png이면(png의 경우 gdiplus 헤더 추가 해야함)
 		{
+			//mType = eTextureType::Png;
+
+			//// image.png 파일을 이용하여 Texture 객체를 생성
+			//mImage = Gdiplus::Image::FromFile(path.c_str());		// 이미지 로드
+
+			//mWidth = mImage->GetWidth();							// 이미지 로드할 때 크기와 길이
+			//mHeight = mImage->GetHeight();
+
+			//////////////////////////////////////////////////
+
 			mType = eTextureType::Png;
 
-			// image.png 파일을 이용하여 Texture 객체를 생성
-			mImage = Gdiplus::Image::FromFile(path.c_str());		// 이미지 로드
+			ULONG_PTR ptrGdi;                        //Gdi+사용을 위한 포인터객체
+			Gdiplus::GdiplusStartupInput inputGdi;         //gdi+입력값객체
+			Gdiplus::GdiplusStartup(&ptrGdi, &inputGdi, 0);   //시작
 
-			mWidth = mImage->GetWidth();							// 이미지 로드할 때 크기와 길이
+
+			// image.png 파일을 이용하여 Texture 객체를 생성합니다.
+			mImage = Gdiplus::Image::FromFile(path.c_str());
+
+			//파일로부터 비트맵받기
+			mGdiBitMap = Gdiplus::Bitmap::FromFile(path.c_str());
+
+			//비트맵정보를 HBITMAP m_hBit에 복사
+			mGdiBitMap->GetHBITMAP(Gdiplus::Color(0, 0, 0, 0), &mBitmap);
+
+			HDC mainDC = application.GetHdc();
+
+			mHdc = ::CreateCompatibleDC(mainDC);
+
+			// 비트맵과 DC 연결
+			HBITMAP hPrevBit = (HBITMAP)SelectObject(mHdc, mBitmap);
+			DeleteObject(hPrevBit);
+
+			assert(mImage);
+
+			mWidth = mImage->GetWidth();
 			mHeight = mImage->GetHeight();
+
 		}
 
 		return S_OK;
@@ -154,30 +186,51 @@ namespace hy
 		}
 		else if (mType == eTextureType::Png)
 		{
-			// 내가 원하는 픽셀을 투명화 시킬떄
-			Gdiplus::ImageAttributes imageAtt = {};
-			// 투명화 시킬 픽셀 색 범위
-			imageAtt.SetColorKey(Gdiplus::Color(100, 100, 100)
-				, Gdiplus::Color(255, 255, 255));
+			//// 내가 원하는 픽셀을 투명화 시킬떄
+			//Gdiplus::ImageAttributes imageAtt = {};
+			//// 투명화 시킬 픽셀 색 범위
+			//imageAtt.SetColorKey(Gdiplus::Color(100, 100, 100)
+			//	, Gdiplus::Color(255, 255, 255));
 
-			Gdiplus::Graphics graphics(hdc);
-			// 회전시키는 코드
-			graphics.TranslateTransform((float)pos.x, (float)pos.y);
-			graphics.RotateTransform(rotate);
-			graphics.TranslateTransform(-(float)pos.x, -(float)pos.y);
+			//Gdiplus::Graphics graphics(hdc);
+			//// 회전시키는 코드
+			//graphics.TranslateTransform((float)pos.x, (float)pos.y);
+			//graphics.RotateTransform(rotate);
+			//graphics.TranslateTransform(-(float)pos.x, -(float)pos.y);
 
-			graphics.DrawImage(mImage
-				, Gdiplus::Rect
-				(
-					(int)(pos.x - (size.x * scale.x / 2.0f) + offset.x)
-					, (int)(pos.y - (size.y * scale.y / 2.0f) + offset.y)
-					, (int)(size.x * scale.x)
-					, (int)(size.y * scale.y)
-				)
+			//graphics.DrawImage(mImage
+			//	, Gdiplus::Rect
+			//	(
+			//		(int)(pos.x - (size.x * scale.x / 2.0f) + offset.x)
+			//		, (int)(pos.y - (size.y * scale.y / 2.0f) + offset.y)
+			//		, (int)(size.x * scale.x)
+			//		, (int)(size.y * scale.y)
+			//	)
+			//	, leftTop.x, leftTop.y
+			//	, rightBottom.x, rightBottom.y
+			//	, Gdiplus::UnitPixel
+			//	, nullptr);
+			/////////////////////////////////////////////////////
+			BLENDFUNCTION func = {};
+			func.BlendOp = AC_SRC_OVER;
+			func.BlendFlags = 0;
+			func.AlphaFormat = AC_SRC_ALPHA;
+			// 0.0f ~ 1.0f -> 0 ~ 255
+			// int alpha = 1.0f;
+			alpha = (int)(alpha * 255.0f);
+
+			if (alpha <= 0)
+				alpha = 0;
+			func.SourceConstantAlpha = alpha; // 0 ~ 255
+
+			GdiAlphaBlend(hdc, (int)pos.x - (size.x * scale.x / 2.0f) + offset.x
+				, (int)pos.y - (size.y * scale.y / 2.0f) + offset.y
+				, size.x * scale.x
+				, size.y * scale.y
+				, mHdc
 				, leftTop.x, leftTop.y
 				, rightBottom.x, rightBottom.y
-				, Gdiplus::UnitPixel
-				, nullptr);
+				, func);
 		}
 
 		/*Rectangle(hdc

@@ -58,7 +58,7 @@ namespace hy
 		UINT mHeight;					// 이미지 높이
 		//bool mbAffectCamera;
 		//float mRotate;
-
+		Gdiplus::Bitmap* mGdiBitMap = nullptr;   // png용
 
 	};
 }

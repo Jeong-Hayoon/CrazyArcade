@@ -19,10 +19,6 @@
 
 #include "hyBazzi.h"
 
-
-
-
-
 namespace hy
 {
 	std::map<std::wstring, Scene*> SceneManager::mScenes = {};
