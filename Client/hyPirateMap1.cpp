@@ -34,7 +34,6 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT PirateMap1::MonsterQuantity = 4;
 
 	PirateMap1::PirateMap1()
 	{
@@ -126,7 +125,7 @@ namespace hy
 	void PirateMap1::Enter()
 	{
 		Resources::Find<Sound>(L"Play")->Play(true);
-
+		SceneManager::SetBossQuantity(8);
 
 	}
 

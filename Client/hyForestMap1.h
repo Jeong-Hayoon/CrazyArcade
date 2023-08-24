@@ -21,8 +21,7 @@ namespace hy
 		virtual void Render(HDC hdc) override;
 		void Load();
 
-		static UINT GetMonsterQuantity() { return MonsterQuantity; }
-		static void SetMonsterQuantity() { MonsterQuantity--; }
+
 
 		virtual void Enter();
 		virtual void Exit();
@@ -38,7 +37,6 @@ namespace hy
 
 	private:
 		std::vector<Tile*> mTiles;
-		static UINT MonsterQuantity;
 		// static bool FunCheck;
 		static bool LoseLife;							// 플레이어가 죽었을 때를 알려주는 Flag
 

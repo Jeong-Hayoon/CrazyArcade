@@ -35,7 +35,6 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT ForestMap3::BossLife = 1;
 
 	ForestMap3::ForestMap3()
 	{
@@ -124,6 +123,7 @@ namespace hy
 	void ForestMap3::Enter()
 	{
 		Resources::Find<Sound>(L"Play")->Play(true);
+		SceneManager::SetBossQuantity(1);
 
 
 	}

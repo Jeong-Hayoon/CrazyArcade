@@ -28,6 +28,8 @@ namespace hy
 	std::map<std::wstring, Scene*> SceneManager::mScenes = {};
 	Scene* SceneManager::mActiveScene = nullptr;
 	Bazzi* SceneManager::mBazzi;
+	UINT SceneManager::MonsterQuantity = 0;
+	UINT SceneManager::BossQuantity = 0;
 
 	void SceneManager::Initialize()
 	{
@@ -50,7 +52,7 @@ namespace hy
 		CreateScene<ToolScene>(L"ToolScene");
 
 
-		LoadScene(L"LogoScene");
+		LoadScene(L"LobbyScene");
 	}
 
 	void SceneManager::Update()

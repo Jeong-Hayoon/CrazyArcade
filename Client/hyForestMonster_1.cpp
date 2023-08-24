@@ -132,7 +132,7 @@ namespace hy
 		{
 			Animator* at = GetComponent<Animator>();
 			at->PlayAnimation(L"ForestMonnsterDie", false);
-			ForestMap1::SetMonsterQuantity;
+			// 몬스터 개수 줄이는 코드
 			mState = eState::Dead;
 		}
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Crack)
@@ -409,7 +409,7 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
-			ForestMap1::SetMonsterQuantity();
+			// 몬스터 개수 줄이는 코드
 			//ForestMap1::SetFunCheck(1);
 
 		}

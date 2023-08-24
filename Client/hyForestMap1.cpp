@@ -35,7 +35,6 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT ForestMap1::MonsterQuantity = 4;
 	//bool ForestMap1::FunCheck = 0;
 	bool ForestMap1::LoseLife = 0;
 
@@ -50,6 +49,7 @@ namespace hy
 	void ForestMap1::Enter()
 	{
 		Resources::Find<Sound>(L"Play")->Play(true);
+		SceneManager::SetMonsterQuantity(4);
 
 	}
 
@@ -160,19 +160,17 @@ namespace hy
 		}
 
 		// ½Â¸®
-		if (MonsterQuantity == 0)
+		if (SceneManager::GetMonsterQuantity() == 0)
 		{
 			Win();
 
-			MonsterQuantity = 4;
 		}
 
 	
 		// ÆÐ¹è
-		if (MonsterQuantity != 0 && LoseLife == 1)
+		if (SceneManager::GetMonsterQuantity() != 0 && LoseLife == 1)
 		{
 			Lose();
-			MonsterQuantity = 4;
 			LoseLife = 0;
 		}
 

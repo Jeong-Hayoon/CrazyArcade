@@ -35,7 +35,6 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT ForestMap2::MonsterQuantity = 5;
 
 	ForestMap2::ForestMap2()
 	{
@@ -125,6 +124,7 @@ namespace hy
 	{
 		Resources::Find<Sound>(L"Play")->Play(true);
 
+		SceneManager::SetMonsterQuantity(5);
 
 	}
 

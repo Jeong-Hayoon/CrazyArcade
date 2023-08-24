@@ -35,7 +35,6 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT IceMap1::MonsterQuantity = 9;
 
 	IceMap1::IceMap1()
 	{
@@ -49,7 +48,6 @@ namespace hy
 		OPENFILENAME ofn = {};
 
 		wchar_t szFilePath[256] = L"..\\Resources\\Tile\\IceMap_1.tm";
-
 
 		// rb : 이진수로 파일을 읽음
 		FILE* pFile = nullptr;
@@ -124,6 +122,7 @@ namespace hy
 	{
 		Resources::Find<Sound>(L"Play")->Play(true);
 
+		SceneManager::SetBossQuantity(9);
 
 	}
 

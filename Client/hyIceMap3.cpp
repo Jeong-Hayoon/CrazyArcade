@@ -36,7 +36,6 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT IceMap3::MonsterQuantity = 1;
 
 	IceMap3::IceMap3()
 	{
@@ -124,6 +123,7 @@ namespace hy
 	{
 		Resources::Find<Sound>(L"Play")->Play(true);
 
+		SceneManager::SetBossQuantity(8);
 
 	}
 

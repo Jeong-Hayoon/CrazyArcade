@@ -864,7 +864,7 @@ namespace hy
 		}
 		else if(Traptime > 4.f)
 		{
-			if(ForestMap1::GetMonsterQuantity != 0)
+			if(SceneManager::GetMonsterQuantity != 0)
 			{
 				animator->SetScale(Vector2(0.8f, 0.8f));
 				animator->PlayAnimation(L"BazziBalloonDead", false);

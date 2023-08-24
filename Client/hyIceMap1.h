@@ -21,9 +21,6 @@ namespace hy
 		virtual void Render(HDC hdc) override;
 		void Load();
 
-		static UINT GetMonsterQuantity() { return MonsterQuantity; }
-		static void SetMonsterQuantity() { MonsterQuantity--; }
-
 		virtual void Enter();
 		virtual void Exit();
 
@@ -34,7 +31,6 @@ namespace hy
 
 	private:
 		std::vector<Tile*> mTiles;;
-		static UINT MonsterQuantity;
 
 	};
 }

@@ -27,15 +27,12 @@
 #include "hyWin_Lose.h"
 
 
-
-
 // 타일 위치 30,55에 넣기
 
 extern hy::Application application;
 
 namespace hy
 {
-	UINT IceMap2::MonsterQuantity = 8;
 
 	IceMap2::IceMap2()
 	{
@@ -124,6 +121,7 @@ namespace hy
 	{
 		Resources::Find<Sound>(L"Play")->Play(true);
 
+		SceneManager::SetBossQuantity(8);
 
 	}
 

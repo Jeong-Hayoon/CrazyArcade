@@ -32,6 +32,14 @@ namespace hy
 
 		static Bazzi* GetBazzi() { return mBazzi; }
 
+		// 몬스터 개수 관리
+		static void SetMonsterQuantity(int Quantity) { MonsterQuantity = Quantity; }
+		static int GetMonsterQuantity() { return MonsterQuantity; }
+
+		// 보스 개수 관리
+		static void SetBossQuantity(int Quantity) { BossQuantity = Quantity; }
+		static int GetBossQuantity() { return BossQuantity; }
+
 
 	private:
 		static std::map <std::wstring, Scene*> mScenes;
@@ -42,6 +50,9 @@ namespace hy
 		// value 실제 우리가 써야할 데이터	
 
 		static Bazzi* mBazzi;
+
+		static UINT MonsterQuantity;
+		static UINT BossQuantity;
 
 	};
 }
