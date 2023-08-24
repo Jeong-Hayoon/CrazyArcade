@@ -26,6 +26,8 @@ namespace hy
 	Bazzi* SceneManager::mBazzi;
 	UINT SceneManager::MonsterQuantity = 0;
 	UINT SceneManager::BossQuantity = 0;
+	UINT SceneManager :: ActiveMap = 0;
+
 
 	void SceneManager::Initialize()
 	{

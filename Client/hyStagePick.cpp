@@ -6,6 +6,7 @@
 #include "hyResources.h"
 #include "hyAnimation.h"
 #include "hyAnimator.h"
+#include "hySceneManager.h"
 
 namespace hy
 {
@@ -47,30 +48,25 @@ namespace hy
 		Vector2 temp = Input::GetMousePosition();
 
 		// Forest 선택
-		if (Input::GetKeyDown(eKeyCode::MouseLeft))
-		{
-			int a = 0;
-		}
-
-		// Forest 선택
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 250 && temp.y <= 260 && temp.x >= 360 && temp.x <= 520)
 		{
 			spt->PlayAnimation(L"ForestPick", true);
-			// LoadScene -> ForestMap할 flag 변수 생성
+			SceneManager::SetActiveMap(1);
 		}
 
 		// Ice 선택
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 260 && temp.y <= 270 && temp.x >= 360 && temp.x <= 520)
 		{
 			spt->PlayAnimation(L"IcePick", true);
-			// LoadScene -> IceMap할 flag 변수 생성
+			SceneManager::SetActiveMap(2);
+
 		}
 
 		// Pirate 선텍
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 310 && temp.y <= 320 && temp.x >= 360 && temp.x <= 520)
 		{
 			spt->PlayAnimation(L"PiratePick", true);
-			// LoadScene -> PirateMap할 flag 변수 생성
+			SceneManager::SetActiveMap(3);
 		}
 
 	}

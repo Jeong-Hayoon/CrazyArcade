@@ -91,10 +91,24 @@ namespace hy
 
 		Vector2 temp = Input::GetMousePosition();
 	
-
+		// 시작 버튼
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 530 && temp.y <= 575 && temp.x >= 515 && temp.x <= 695)
 		{
-			SceneManager::LoadScene(L"ForestMap1");
+			if (SceneManager::GetActiveMap() == 1)
+			{
+				SceneManager::LoadScene(L"ForestMap1");
+
+			}
+			else if(SceneManager::GetActiveMap() == 2)
+			{
+				SceneManager::LoadScene(L"IceMap1");
+
+			}
+			else if (SceneManager::GetActiveMap() == 3)
+			{
+				SceneManager::LoadScene(L"PirateMap1");
+
+			}
 		}
 
 		// Map 창 키기

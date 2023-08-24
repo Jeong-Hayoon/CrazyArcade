@@ -33,13 +33,19 @@ namespace hy
 		static Bazzi* GetBazzi() { return mBazzi; }
 
 		// 몬스터 개수 관리
-		static void SetMonsterQuantity(int Quantity) { MonsterQuantity = Quantity; }
-		static int GetMonsterQuantity() { return MonsterQuantity; }
+		static void SetMonsterQuantity(UINT Quantity) { MonsterQuantity = Quantity; }
+		static UINT GetMonsterQuantity() { return MonsterQuantity; }
 
 		// 보스 개수 관리
-		static void SetBossQuantity(int Quantity) { BossQuantity = Quantity; }
-		static int GetBossQuantity() { return BossQuantity; }
+		static void SetBossQuantity(UINT Quantity) { BossQuantity = Quantity; }
+		static UINT GetBossQuantity() { return BossQuantity; }
 
+		// 맵 선택
+		// 1 == ForestMap
+		// 2 == IceMap
+		// 3 == PirateMap
+		static void SetActiveMap(UINT map) { ActiveMap = map; }
+		static UINT GetActiveMap() { return ActiveMap; }
 
 	private:
 		static std::map <std::wstring, Scene*> mScenes;
@@ -53,6 +59,8 @@ namespace hy
 
 		static UINT MonsterQuantity;
 		static UINT BossQuantity;
+		static UINT ActiveMap;
+		
 
 	};
 }
