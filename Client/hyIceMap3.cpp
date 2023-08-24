@@ -182,7 +182,7 @@ namespace hy
 		// 배찌 상하좌우 애니메이션
 		Bazzi* forestbazzi1 = object::Instantiate<Bazzi>(eLayerType::Player);
 		Transform* forestbazzitr = forestbazzi1->GetComponent<Transform>();
-		forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
+		forestbazzitr->SetPosition(Vector2(350.0f, 70.0f));
 
 		// 아이스 보스
 		IceBoss* IceBoss_ = object::Instantiate<IceBoss>(eLayerType::Boss);

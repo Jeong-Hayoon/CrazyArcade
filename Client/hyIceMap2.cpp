@@ -35,7 +35,7 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT IceMap2::MonsterQuantity = 1;
+	UINT IceMap2::MonsterQuantity = 8;
 
 	IceMap2::IceMap2()
 	{
@@ -182,7 +182,7 @@ namespace hy
 		// 배찌 상하좌우 애니메이션
 		Bazzi* forestbazzi1 = object::Instantiate<Bazzi>(eLayerType::Player);
 		Transform* forestbazzitr = forestbazzi1->GetComponent<Transform>();
-		forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
+		forestbazzitr->SetPosition(Vector2(350.0f, 200.0f));
 
 		// 포레스트 몬스터
 		ForestMonster_1* IceMonster1 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
@@ -193,10 +193,13 @@ namespace hy
 		IceMonster3->GetComponent<Transform>()->SetPosition(Vector2(560.0f, 70.0f));
 		ForestMonster_1* IceMonster4 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		IceMonster4->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 555.0f));
-		ForestMonster_1* IceMonster5 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		IceMonster5->GetComponent<Transform>()->SetPosition(Vector2(310.0f, 555.0f));
-		ForestMonster_1* IceMonster6 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		IceMonster6->GetComponent<Transform>()->SetPosition(Vector2(560.0f, 595.0f));
+
+		/*ForestMonster_1* IceMonster5 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		IceMonster5->GetComponent<Transform>()->SetPosition(Vector2(350.0f, 565.0f));*/
+
+		/*ForestMonster_1* IceMonster6 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		IceMonster6->GetComponent<Transform>()->SetPosition(Vector2(560.0f, 595.0f));*/
+
 		ForestMonster_1* IceMonster7 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		IceMonster7->GetComponent<Transform>()->SetPosition(Vector2(125.0f, 175.0f));
 		ForestMonster_1* IceMonster8 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
@@ -205,14 +208,14 @@ namespace hy
 		IceMonster9->GetComponent<Transform>()->SetPosition(Vector2(125.0f, 495.0f));
 		ForestMonster_1* IceMonster10 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		IceMonster10->GetComponent<Transform>()->SetPosition(Vector2(525.0f, 495.0f));
-		ForestMonster_1* IceMonster11 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
+		/*ForestMonster_1* IceMonster11 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		IceMonster11->GetComponent<Transform>()->SetPosition(Vector2(200.0f, 255.0f));
 		ForestMonster_1* IceMonster12 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		IceMonster12->GetComponent<Transform>()->SetPosition(Vector2(445.0f, 255.0f));
 		ForestMonster_1* IceMonster13 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
 		IceMonster13->GetComponent<Transform>()->SetPosition(Vector2(200.0f, 420.0f));
 		ForestMonster_1* IceMonster14 = object::Instantiate<ForestMonster_1>(eLayerType::Monster);
-		IceMonster14->GetComponent<Transform>()->SetPosition(Vector2(445.0f, 420.0f));
+		IceMonster14->GetComponent<Transform>()->SetPosition(Vector2(445.0f, 420.0f));*/
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);

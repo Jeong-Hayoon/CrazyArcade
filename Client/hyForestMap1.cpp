@@ -212,6 +212,7 @@ namespace hy
 
 	void ForestMap1::Reset()
 	{
+
 	}
 
 

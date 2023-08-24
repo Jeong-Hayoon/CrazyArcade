@@ -35,7 +35,7 @@ extern hy::Application application;
 
 namespace hy
 {
-	UINT IceMap1::MonsterQuantity = 1;
+	UINT IceMap1::MonsterQuantity = 9;
 
 	IceMap1::IceMap1()
 	{

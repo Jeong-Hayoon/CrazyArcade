@@ -30,12 +30,12 @@ namespace hy
 	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::None;
 	bool Bazzi::UseItemNum = 0;
 	UINT Bazzi::BombLimit = 1;
-	
+	bool Bazzi::Life = 1;
+
 	Bazzi::Bazzi()
 		: mState(eState::Make)
 		, mDirection(eDirection::Down)
 		, MoveSpeed(150.f)
-		, Life(1)
 	{
 	}
 	Bazzi::~Bazzi()
@@ -871,10 +871,7 @@ namespace hy
 				mState = eState::BalloonDead;
 				Traptime = 0.f;
 			}
-			else
-			{
-				// Win
-			}
+			
 		}
 	}
 
@@ -920,6 +917,16 @@ namespace hy
 			animator->PlayAnimation(L"BazziIdle", true);
 			mState = eState::Idle;
 		}
+	}
+	void Bazzi::ResetBazzi()
+	{
+		BombFlowCount = 0;
+		Trigger = false;
+		ActiveItem = eItem::None;
+		UseItemNum = 0;
+		BombLimit = 1;
+		// SetMoveSpeed(150.f);
+		Life = 1;
 	}
 }
 
