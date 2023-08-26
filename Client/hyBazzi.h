@@ -66,11 +66,10 @@ namespace hy
 		void MoveSpeedUp() { MoveSpeed += 50; }
 		// 이동 속도 최대로 증가(Devil)
 		void MoveSpeedMax() { MoveSpeed = 300; }
-		// 물풍선에 갇혀있을 때 소생(Needle)
-		void Revive() { Life = 1; }
 
-		float GetMoveSpeed() { return MoveSpeed; }
-		void SetMoveSpeed(float speed) { MoveSpeed = speed; }
+
+		static float GetMoveSpeed() { return MoveSpeed; }
+		static void SetMoveSpeed(float speed) { MoveSpeed = speed; }
 
 		eItem GetActiveItem() { return ActiveItem; }
 		void SetActiveItem(eItem eatitem) { ActiveItem = eatitem; }
@@ -101,8 +100,7 @@ namespace hy
 		eState mState;
 		eDirection mDirection;
 		static UINT BombLimit;					// 물풍선 최대 사용 개수
-		float MoveSpeed;						// 기본 속도
-		static bool Life;						// 0이면 물풍선에 갇혀있는 상태, 1이면 물풍선에 갇혀있지 않은 상태
+		static float MoveSpeed;						// 기본 속도
 		static eItem ActiveItem;				// 장착되어 있는 아이템(0이면 실드, 1이면 바늘로 지정)
 		static UINT BombFlowCount;				// 물줄기, 물풍선 생성 시 증가
 

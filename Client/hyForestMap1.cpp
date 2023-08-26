@@ -36,8 +36,6 @@ extern hy::Application application;
 namespace hy
 {
 	//bool ForestMap1::FunCheck = 0;
-	bool ForestMap1::LoseLife = 0;
-
 
 	ForestMap1::ForestMap1()
 	{
@@ -112,6 +110,7 @@ namespace hy
 		Transform* forestbazzitr = ForestBazzi->GetComponent<Transform>();
 		forestbazzitr->SetPosition(Vector2(380.0f, 250.0f));
 
+		// 몬스터 수 세팅
 		SceneManager::SetMonsterQuantity(4);
 
 		// 포레스트 몬스터
@@ -132,7 +131,6 @@ namespace hy
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::UseItem, true);
 
 		
-
 	}
 
 	//void ForestMap1::Win()
@@ -166,15 +164,17 @@ namespace hy
 		if (SceneManager::GetMonsterQuantity() == 0)
 		{
 			Win();
-
+			// 이부분 체크(중단점애는 들어오는데 애니메이션 실행이 안됨)
+			ForestBazzi->Victory();
+			SceneManager::SetMonsterQuantity(1);
 		}
 
 	
 		// 패배
-		if (SceneManager::GetMonsterQuantity() != 0 && LoseLife == 1)
+		if (SceneManager::GetMonsterQuantity() != 0 && SceneManager::GetPlayerDead() == true)
 		{
 			Lose();
-			LoseLife = 0;
+			SceneManager::SetPlayerDead(false);
 		}
 
 

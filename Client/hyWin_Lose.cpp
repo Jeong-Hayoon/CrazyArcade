@@ -66,7 +66,6 @@ namespace hy
 			Win_Lose_flag = true;
 		}
 
-		// 배찌 Victory 상태 호출
 	}
 
 	void Win_Lose::Lose()

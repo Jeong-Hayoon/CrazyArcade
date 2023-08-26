@@ -457,8 +457,7 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
-			// 보스 개수 줄이는 코드
-			//ForestMap1::SetFunCheck(1);
+			SceneManager::KillBossQuantity();
 
 		}
 	}

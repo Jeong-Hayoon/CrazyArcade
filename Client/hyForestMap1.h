@@ -22,8 +22,6 @@ namespace hy
 		virtual void Render(HDC hdc) override;
 		void Load();
 
-
-
 		virtual void Enter();
 		virtual void Exit();
 
@@ -34,12 +32,10 @@ namespace hy
 
 		//static void SetFunCheck(bool check) { FunCheck = check; }
 
-		static void SetLoseLife(bool flag){ LoseLife = flag;}
 
 	private:
 		std::vector<Tile*> mTiles;
 		// static bool FunCheck;
-		static bool LoseLife;							// 플레이어가 죽었을 때를 알려주는 Flag
 		Bazzi* ForestBazzi;
 	};
 }

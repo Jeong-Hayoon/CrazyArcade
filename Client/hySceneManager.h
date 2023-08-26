@@ -34,10 +34,12 @@ namespace hy
 
 		// 몬스터 개수 관리
 		static void SetMonsterQuantity(UINT Quantity) { MonsterQuantity = Quantity; }
+		static void KillMonsterQuantity() { MonsterQuantity--; }
 		static UINT GetMonsterQuantity() { return MonsterQuantity; }
 
 		// 보스 개수 관리
 		static void SetBossQuantity(UINT Quantity) { BossQuantity = Quantity; }
+		static void KillBossQuantity() { BossQuantity--; }
 		static UINT GetBossQuantity() { return BossQuantity; }
 
 		// 맵 선택
@@ -46,6 +48,10 @@ namespace hy
 		// 3 == PirateMap
 		static void SetActiveMap(UINT map) { ActiveMap = map; }
 		static UINT GetActiveMap() { return ActiveMap; }
+
+		// 플레이어 사망 시 true
+		static void SetPlayerDead(bool dead) { PlayerDead = dead; }
+		static bool GetPlayerDead() { return PlayerDead; }
 
 	private:
 		static std::map <std::wstring, Scene*> mScenes;
@@ -60,6 +66,7 @@ namespace hy
 		static UINT MonsterQuantity;
 		static UINT BossQuantity;
 		static UINT ActiveMap;
+		static bool PlayerDead;
 		
 
 	};

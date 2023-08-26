@@ -15,8 +15,6 @@
 #include "hyForestMap1.h"
 #include "hySound.h"
 
-
-
 namespace hy
 {
 	// static 변수는 전역에서 초기화해주기
@@ -409,8 +407,7 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
-			// 몬스터 개수 줄이는 코드
-			//ForestMap1::SetFunCheck(1);
+			SceneManager::KillMonsterQuantity();
 
 		}
 	}

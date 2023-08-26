@@ -30,12 +30,12 @@ namespace hy
 	Bazzi :: eItem Bazzi:: ActiveItem = Bazzi::eItem ::None;
 	bool Bazzi::UseItemNum = 0;
 	UINT Bazzi::BombLimit = 1;
-	bool Bazzi::Life = 1;
+	float Bazzi :: MoveSpeed = 150.f;
+
 
 	Bazzi::Bazzi()
 		: mState(eState::Make)
 		, mDirection(eDirection::Down)
-		, MoveSpeed(150.f)
 	{
 	}
 	Bazzi::~Bazzi()
@@ -893,7 +893,7 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
-			ForestMap1::SetLoseLife(true);
+			SceneManager::SetPlayerDead(true);
 		}
 	}
 
@@ -904,7 +904,7 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
-			ForestMap1::SetLoseLife(true);
+			SceneManager::SetPlayerDead(true);
 
 		}
 	}
@@ -912,11 +912,14 @@ namespace hy
 	void Bazzi::Victory()
 	{
 		Animator* animator = GetComponent<Animator>();
-		if (animator->IsActiveAnimationComplete())
+		animator->SetScale(Vector2(0.8f, 0.8f));
+		animator->PlayAnimation(L"BazziVictory", true);
+
+		/*if (animator->IsActiveAnimationComplete())
 		{
 			animator->PlayAnimation(L"BazziIdle", true);
 			mState = eState::Idle;
-		}
+		}*/
 	}
 	void Bazzi::ResetBazzi()
 	{
@@ -925,8 +928,7 @@ namespace hy
 		ActiveItem = eItem::None;
 		UseItemNum = 0;
 		BombLimit = 1;
-		// SetMoveSpeed(150.f);
-		Life = 1;
+		SetMoveSpeed(150.f);
 	}
 }
 

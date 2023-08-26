@@ -409,8 +409,7 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
-			// 몬스터 개수 줄이는 코드
-			//ForestMap1::SetFunCheck(1);
+			SceneManager::KillMonsterQuantity();
 
 		}
 	}
