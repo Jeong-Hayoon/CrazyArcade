@@ -127,6 +127,7 @@ namespace hy
 
 	void IceMap2::Exit()
 	{
+		IceBazzi->ResetBazzi();
 	}
 
 	void IceMap2::Initialize()
@@ -178,8 +179,8 @@ namespace hy
 		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
 
 		// 배찌 상하좌우 애니메이션
-		Bazzi* forestbazzi1 = object::Instantiate<Bazzi>(eLayerType::Player);
-		Transform* forestbazzitr = forestbazzi1->GetComponent<Transform>();
+		IceBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
+		Transform* forestbazzitr = IceBazzi->GetComponent<Transform>();
 		forestbazzitr->SetPosition(Vector2(350.0f, 200.0f));
 
 		// 포레스트 몬스터

@@ -1,6 +1,7 @@
 #pragma once
 #include "hyScene.h"
 #include "hyTile.h"
+#include "hyBazzi.h"
 
 namespace hy
 {
@@ -31,7 +32,8 @@ namespace hy
 		void Reset();
 
 	private:
-		std::vector<Tile*> mTiles;;
+		std::vector<Tile*> mTiles;
+		Bazzi* IceBazzi;
 
 	};
 }

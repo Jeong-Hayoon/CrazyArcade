@@ -96,14 +96,20 @@ namespace hy
 		{
 			if (SceneManager::GetActiveMap() == 1)
 			{
+				Resources::Find<Sound>(L"LobbySound")->Stop(true);
+
 				SceneManager::LoadScene(L"ForestMap1");
 			}
 			else if(SceneManager::GetActiveMap() == 2)
 			{
+				Resources::Find<Sound>(L"LobbySound")->Stop(true);
+
 				SceneManager::LoadScene(L"IceMap1");
 			}
 			else if (SceneManager::GetActiveMap() == 3)
 			{
+				Resources::Find<Sound>(L"LobbySound")->Stop(true);
+
 				SceneManager::LoadScene(L"PirateMap1");
 			}
 		}

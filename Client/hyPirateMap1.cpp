@@ -131,6 +131,8 @@ namespace hy
 
 	void PirateMap1::Exit()
 	{
+		PirateBazzi->ResetBazzi();
+
 	}
 
 	void PirateMap1::Initialize()
@@ -182,8 +184,8 @@ namespace hy
 		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
 
 		// 배찌 상하좌우 애니메이션
-		Bazzi* forestbazzi1 = object::Instantiate<Bazzi>(eLayerType::Player);
-		Transform* forestbazzitr = forestbazzi1->GetComponent<Transform>();
+		PirateBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
+		Transform* forestbazzitr = PirateBazzi->GetComponent<Transform>();
 		forestbazzitr->SetPosition(Vector2(350.0f, 320.0f));
 
 		// 포레스트 몬스터

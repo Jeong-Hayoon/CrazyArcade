@@ -1,6 +1,7 @@
 #pragma once
 #include "hyScene.h"
 #include "hyTile.h"
+#include "hyBazzi.h"
 
 namespace hy
 {
@@ -39,7 +40,7 @@ namespace hy
 		std::vector<Tile*> mTiles;
 		// static bool FunCheck;
 		static bool LoseLife;							// 플레이어가 죽었을 때를 알려주는 Flag
-
+		Bazzi* ForestBazzi;
 	};
 }
 

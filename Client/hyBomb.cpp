@@ -165,6 +165,10 @@ namespace hy
 			|| x < 0 || x >= 15)
 			return;
 
+		// 만약 타일이 있다면 return
+		/*if ()
+			return;*/
+
 		//if (mapData[y][x] == 충돌가능)		// 타일맵으로 배열 만들기
 		//	return;
 	
@@ -247,7 +251,6 @@ namespace hy
 
 			BombRec(level + 1, dir, int(x + dir.x), int(y + dir.y));
 		}
-
 	}
 
 	void Bomb::Flow()

@@ -55,6 +55,7 @@ namespace hy
 
 	void ForestMap1::Exit()
 	{
+		ForestBazzi->ResetBazzi();
 	}
 
 
@@ -107,9 +108,11 @@ namespace hy
 		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
 
 		// 배찌 상하좌우 애니메이션
-		Bazzi* forestbazzi1 = object::Instantiate<Bazzi>(eLayerType::Player);
-		Transform* forestbazzitr = forestbazzi1->GetComponent<Transform>();
+		ForestBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
+		Transform* forestbazzitr = ForestBazzi->GetComponent<Transform>();
 		forestbazzitr->SetPosition(Vector2(380.0f, 250.0f));
+
+		SceneManager::SetMonsterQuantity(4);
 
 		// 포레스트 몬스터
 		ForestMonster* ForestMonster1 = object::Instantiate<ForestMonster>(eLayerType::Monster);
