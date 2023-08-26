@@ -151,6 +151,7 @@
     <ClInclude Include="hyForestMap1.h" />
     <ClInclude Include="hyForestMap2.h" />
     <ClInclude Include="hyForestMap3.h" />
+    <ClInclude Include="hyGameStart.h" />
     <ClInclude Include="hyIceBoss.h" />
     <ClInclude Include="hyIceMap1.h" />
     <ClInclude Include="hyForestMonster.h" />
@@ -228,6 +229,7 @@
     <ClCompile Include="hyForestMap1.cpp" />
     <ClCompile Include="hyForestMap2.cpp" />
     <ClCompile Include="hyForestMap3.cpp" />
+    <ClCompile Include="hyGameStart.cpp" />
     <ClCompile Include="hyIceBoss.cpp" />
     <ClCompile Include="hyIceMap1.cpp" />
     <ClCompile Include="hyIceMap2.cpp" />

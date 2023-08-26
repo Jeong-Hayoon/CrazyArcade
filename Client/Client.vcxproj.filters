@@ -207,6 +207,9 @@
     <Filter Include="Contents\GameObject\UI\WinLose">
       <UniqueIdentifier>{0dace57c-4998-48b9-bad9-0867f39e6920}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\UI\GameStart">
+      <UniqueIdentifier>{7fba7388-f376-4405-ae6d-bad14fe079c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -440,6 +443,9 @@
     <ClInclude Include="hyWin_Lose.h">
       <Filter>Contents\GameObject\UI\WinLose</Filter>
     </ClInclude>
+    <ClInclude Include="hyGameStart.h">
+      <Filter>Contents\GameObject\UI\GameStart</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -671,6 +677,9 @@
     </ClCompile>
     <ClCompile Include="hyWin_Lose.cpp">
       <Filter>Contents\GameObject\UI\WinLose</Filter>
+    </ClCompile>
+    <ClCompile Include="hyGameStart.cpp">
+      <Filter>Contents\GameObject\UI\GameStart</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

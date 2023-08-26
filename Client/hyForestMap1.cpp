@@ -27,6 +27,8 @@
 #include "hyUI.h"
 #include "hyTime.h"
 #include "hyWin_Lose.h"
+#include "hyGameStart.h"
+
 
 
 // 타일 위치 30,55에 넣기
@@ -48,6 +50,8 @@ namespace hy
 	{
 		Resources::Find<Sound>(L"Play")->Play(true);
 		SceneManager::SetMonsterQuantity(4);
+		GameStart* gs1 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(200.0f, 60.0f));
+		GameStart* gs2= object::Instantiate<GameStart>(eLayerType::UI, Vector2(450.0f, 640.0f));
 
 	}
 
