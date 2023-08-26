@@ -28,10 +28,13 @@ namespace hy
 
 		CollisionManager::CollisionLayerCheck(eLayerType::BossBombflow, eLayerType::Tile, true);
 
+		Texture* Bossbomb_ = Resources::Load<Texture>(L"bossbomb"
+			, L"..\\Resources\\Image\\Bomb\\unit_rectbomb.png");
 
 		Animator* bbt = AddComponent<Animator>();
-		bbt->CreateAnimationFolder(L"BossBomb", L"..\\Resources\\Image\\Bomb\\Centerflow", Vector2(0.f, 0.f), 0.25f); // 0.25
-		bbt->SetScale(Vector2(1.f, 1.f));
+		//bbt->CreateAnimationFolder(L"BossBomb", L"..\\Resources\\Image\\Bomb\\Centerflow", Vector2(0.f, 0.f), 0.25f); // 0.25
+		bbt->CreateAnimation(L"BossBomb", Bossbomb_, Vector2(0.0f, 0.0f), Vector2(57.25f, 87.0f), 4, Vector2(0.0f, 0.0f), 0.18f);
+
 		bbt->PlayAnimation(L"BossBomb", false);
 
 	}
