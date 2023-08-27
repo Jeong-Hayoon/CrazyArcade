@@ -135,6 +135,8 @@ namespace hy
 
 	void PirateMap1::Exit()
 	{
+		Resources::Find<Sound>(L"Play")->Stop(true);
+
 		PirateBazzi->ResetBazzi();
 
 	}

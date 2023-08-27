@@ -44,6 +44,7 @@ namespace hy
 	void Bazzi::Initialize()
 	{
 		Resources::Load<Sound>(L"BombSet", L"..\\Resources\\Sound\\Sound\\bomb_set.wav");
+		Resources::Load<Sound>(L"PlayerDie", L"..\\Resources\\Sound\\Sound\\player_die.wav");
 
 
 		// 배찌 충돌 구현
@@ -256,6 +257,8 @@ namespace hy
 
 		if (other->GetOwner()->GetLayerType() == eLayerType::Monster)
 		{
+			Resources::Find<Sound>(L"PlayerDie")->Play(false);
+
 			Animator* at = GetComponent<Animator>();
 			at->SetScale(Vector2(0.9f, 0.9f));
 			at->PlayAnimation(L"BazziDead", false);
@@ -867,6 +870,8 @@ namespace hy
 			if(SceneManager::GetMonsterQuantity != 0)
 			{
 				animator->SetScale(Vector2(0.8f, 0.8f));
+				Resources::Find<Sound>(L"PlayerDie")->Play(false);
+
 				animator->PlayAnimation(L"BazziBalloonDead", false);
 				mState = eState::BalloonDead;
 				Traptime = 0.f;
@@ -903,6 +908,7 @@ namespace hy
 
 		if (animator->IsActiveAnimationComplete())
 		{
+
 			Destroy(this);
 			SceneManager::SetPlayerDead(true);
 

@@ -17,7 +17,7 @@
 #include "hyBombFlow.h"
 #include "hyCollider.h"
 #include "hyCollisionManager.h"
-
+#include "hySound.h"
 
 namespace hy
 {
@@ -58,9 +58,10 @@ namespace hy
 	}
 	void Bomb::Initialize()
 	{
-
-
 		GameObject::Initialize();
+
+		Resources::Load<Sound>(L"Wave", L"..\\Resources\\Sound\\Sound\\wave.wav");
+
 	}
 	void Bomb::Update()
 	{
@@ -282,6 +283,8 @@ namespace hy
 			BombRec(level, Vector2::Up, X_, Y_ - 1);
 			BombRec(level, Vector2::Left, X_ - 1, Y_);
 			BombRec(level, Vector2::Down, X_, Y_ + 1);
+
+			Resources::Find<Sound>(L"Wave")->Play(false);
 
 			mState = eState::Pop;
 			Bombtime = 0.f;

@@ -132,6 +132,8 @@ namespace hy
 
 	void IceMap1::Exit()
 	{
+		Resources::Find<Sound>(L"Play")->Stop(true);
+
 		IceBazzi->ResetBazzi();
 
 	}

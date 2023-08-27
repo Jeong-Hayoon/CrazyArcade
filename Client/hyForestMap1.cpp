@@ -58,6 +58,8 @@ namespace hy
 	void ForestMap1::Exit()
 	{
 		ForestBazzi->ResetBazzi();
+		Resources::Find<Sound>(L"Play")->Stop(true);
+
 	}
 
 

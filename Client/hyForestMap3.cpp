@@ -124,7 +124,7 @@ namespace hy
 
 	void ForestMap3::Enter()
 	{
-		Resources::Find<Sound>(L"Play")->Play(true);
+		Resources::Find<Sound>(L"BossStage")->Play(true);
 		SceneManager::SetBossQuantity(1);
 		GameStart* gs1 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(185.0f, 60.0f));
 		GameStart* gs2 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(450.0f, 640.0f));
@@ -134,6 +134,8 @@ namespace hy
 
 	void ForestMap3::Exit()
 	{
+		Resources::Find<Sound>(L"BossStage")->Stop(true);
+
 		ForestBazzi->ResetBazzi();
 
 	}
@@ -142,7 +144,7 @@ namespace hy
 	{
 		Scene::Initialize();
 		// 사운드 적용
-		Resources::Load<Sound>(L"Play", L"..\\Resources\\Sound\\Sound\\Map\\bg_0.wav");
+		Resources::Load<Sound>(L"BossStage", L"..\\Resources\\Sound\\Sound\\Map\\Boss.wav");
 		Resources::Load<Sound>(L"Click", L"..\\Resources\\Sound\\Sound\\click.wav");
 
 
