@@ -53,6 +53,14 @@ namespace hy
 		static void SetPlayerDead(bool dead) { PlayerDead = dead; }
 		static bool GetPlayerDead() { return PlayerDead; }
 
+		// 1P, 2P º±≈√
+		static void SetSelectSoloPlayer(bool solo) { SelectSoloPlayer = solo; }
+		static bool GetSelectSoloPlayer() { return SelectSoloPlayer; }
+
+		static void SetSelectMultiPlayer(bool multi) { SelectMultiPlayer = multi; }
+		static bool GetSelectMultiPlayer() { return SelectMultiPlayer; }
+
+
 	private:
 		static std::map <std::wstring, Scene*> mScenes;
 		static Scene* mActiveScene;
@@ -67,6 +75,9 @@ namespace hy
 		static UINT BossQuantity;
 		static UINT ActiveMap;
 		static bool PlayerDead;
+		static bool SelectSoloPlayer;
+		static bool SelectMultiPlayer;
+
 		
 
 	};

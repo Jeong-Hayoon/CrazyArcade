@@ -19,6 +19,7 @@ namespace hy
 
 	private:
 		static Sound* sound;
+		bool Choicefinish;
 
 	};
 }

@@ -17,6 +17,7 @@ namespace hy
 	Sound* TitleScene::sound = nullptr;
 
 	TitleScene::TitleScene()
+		: Choicefinish(false)
 	{
 	}
 	TitleScene::~TitleScene()
@@ -30,6 +31,8 @@ namespace hy
 
 		// 사운드 적용
 		Resources::Load<Sound>(L"LoginSound", L"..\\Resources\\Sound\\Sound\\login_scene.wav");
+		Resources::Load<Sound>(L"Click", L"..\\Resources\\Sound\\Sound\\click.wav");
+
 
 		// 게임시작 화면
 		Texture* image = Resources::Load<Texture>(L"TitleBackGroundImgae"	// 이미지 포인터형으로 리소스를 반환해줌, 이미지 로드
@@ -93,12 +96,38 @@ namespace hy
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::MouseLeft)) // N을 누르면 다음 씬으로 넘어가기
+		if (Input::GetKeyDown(eKeyCode::MouseLeft))
 		{
-			Resources::Find<Sound>(L"LoginSound")->Stop(1);
-			SceneManager::LoadScene(L"LobbyScene");
+			Resources::Find<Sound>(L"Click")->Play(false);
 		}
 
+		//if (Input::GetKeyDown(eKeyCode::MouseLeft)) // N을 누르면 다음 씬으로 넘어가기
+		//{
+		//	SceneManager::LoadScene(L"LobbyScene");
+		//}
+
+		Vector2 temp = Input::GetMousePosition();
+
+		// 1p
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 115 && temp.y <= 185 && temp.x >= 275 && temp.x <= 325)
+		{
+			SceneManager::SetSelectSoloPlayer(true);
+			Choicefinish = true;
+		}
+
+		// 2p 
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 110 && temp.y <= 185 && temp.x >= 475 && temp.x <= 530)
+		{
+			SceneManager::SetSelectMultiPlayer(true);
+			Choicefinish = true;
+		}
+
+		// Game Start
+		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 90 && temp.y <= 185 && temp.x >= 350 && temp.x <= 455 && Choicefinish == true)
+		{
+			Resources::Find<Sound>(L"LoginSound")->Stop(true);
+			SceneManager::LoadScene(L"LobbyScene");
+		}
 
 	}
 	void TitleScene::Render(HDC hdc)

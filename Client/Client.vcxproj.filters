@@ -210,6 +210,9 @@
     <Filter Include="Contents\GameObject\UI\GameStart">
       <UniqueIdentifier>{7fba7388-f376-4405-ae6d-bad14fe079c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\UI\CharactorSelect">
+      <UniqueIdentifier>{9f3af0a7-ff4b-4a92-a6cf-f3fba80a1a6d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -446,6 +449,9 @@
     <ClInclude Include="hyGameStart.h">
       <Filter>Contents\GameObject\UI\GameStart</Filter>
     </ClInclude>
+    <ClInclude Include="hyCharactorSelect.h">
+      <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -680,6 +686,9 @@
     </ClCompile>
     <ClCompile Include="hyGameStart.cpp">
       <Filter>Contents\GameObject\UI\GameStart</Filter>
+    </ClCompile>
+    <ClCompile Include="hyCharactorSelect.cpp">
+      <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

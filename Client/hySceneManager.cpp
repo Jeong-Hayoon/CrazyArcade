@@ -28,6 +28,8 @@ namespace hy
 	UINT SceneManager::BossQuantity = 0;
 	UINT SceneManager :: ActiveMap = 0;
 	bool SceneManager :: PlayerDead = false;
+	bool SceneManager :: SelectSoloPlayer = false;
+	bool SceneManager :: SelectMultiPlayer = false;
 
 
 	void SceneManager::Initialize()
@@ -51,7 +53,7 @@ namespace hy
 		CreateScene<ToolScene>(L"ToolScene");
 
 
-		LoadScene(L"ForestMap2");
+		LoadScene(L"LogoScene");
 	}
 
 	void SceneManager::Update()

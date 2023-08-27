@@ -28,6 +28,7 @@ namespace hy
 	{
 		Scene::Initialize();
 		// 사운드 적용
+		Resources::Load<Sound>(L"Click", L"..\\Resources\\Sound\\Sound\\click.wav");
 		Resources::Load<Sound>(L"LobbySound", L"..\\Resources\\Sound\\Sound\\lobby_scene.wav");
 
 		// 로비
@@ -90,6 +91,11 @@ namespace hy
 		Scene::Update();
 
 		Vector2 temp = Input::GetMousePosition();
+
+		if (Input::GetKeyDown(eKeyCode::MouseLeft))
+		{
+			Resources::Find<Sound>(L"Click")->Play(false);
+		}
 	
 		// 시작 버튼
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 530 && temp.y <= 575 && temp.x >= 515 && temp.x <= 695)

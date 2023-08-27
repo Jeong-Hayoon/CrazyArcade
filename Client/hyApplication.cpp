@@ -118,9 +118,9 @@ namespace hy
 		CollisionManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 
-		// 마우스 위치를 따라가게
-		Vector2 temp = Input::GetMousePosition();
-		Rectangle(mHdc, temp.x , temp.y, temp.x + 10, temp.y + 10);
+		//// 마우스 위치를 따라가게
+		//Vector2 temp = Input::GetMousePosition();
+		//Rectangle(mHdc, temp.x , temp.y, temp.x + 10, temp.y + 10);
 
 		/*	Ellipse(mBackHdc, 100 + mPlayerPos.x, 100 + mPlayerPos.y
 			, 200 + mPlayerPos.x, 200 + mPlayerPos.y);*/

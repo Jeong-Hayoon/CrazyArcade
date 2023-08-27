@@ -144,6 +144,7 @@ namespace hy
 		Scene::Initialize();
 		// 사운드 적용
 		Resources::Load<Sound>(L"Play", L"..\\Resources\\Sound\\Sound\\Map\\bg_0.wav");
+		Resources::Load<Sound>(L"Click", L"..\\Resources\\Sound\\Sound\\click.wav");
 
 		// 타이머
 		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
@@ -219,6 +220,11 @@ namespace hy
 	void PirateMap1::Update()
 	{
 		Scene::Update();
+
+		if (Input::GetKeyDown(eKeyCode::MouseLeft))
+		{
+			Resources::Find<Sound>(L"Click")->Play(false);
+		}
 
 		Vector2 temp = Input::GetMousePosition();
 
