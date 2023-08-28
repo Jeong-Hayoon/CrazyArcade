@@ -124,7 +124,7 @@ namespace hy
 	{
 		Resources::Find<Sound>(L"Play")->Play(true);
 
-		SceneManager::SetBossQuantity(9);
+		SceneManager::SetMonsterQuantity(9);
 		SceneManager::SetActiveStage(3);
 
 		GameStart* gs1 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(185.0f, 60.0f));
@@ -195,7 +195,7 @@ namespace hy
 		Transform* forestbazzitr = IceBazzi->GetComponent<Transform>();
 		forestbazzitr->SetPosition(Vector2(350.0f, 260.0f));
 
-		// 포레스트 몬스터
+		// 아이스 몬스터
 		IceMonster* IceMonster1 = object::Instantiate<IceMonster>(eLayerType::Monster);
 		IceMonster1->GetComponent<Transform>()->SetPosition(Vector2(135.0f, 185.0f));
 		IceMonster* IceMonster2 = object::Instantiate<IceMonster>(eLayerType::Monster);
@@ -251,6 +251,22 @@ namespace hy
 			SceneManager::LoadScene(L"IceMap2");
 		}
 
+		// 승리
+		if (SceneManager::GetMonsterQuantity() == 0)
+		{
+			Win();
+			IceBazzi->Victory();
+			SceneManager::SetMonsterQuantity(1);
+		}
+
+
+		// 패배
+		if (SceneManager::GetMonsterQuantity() != 0 && SceneManager::GetPlayerDead() == true)
+		{
+			Lose();
+			SceneManager::SetPlayerDead(false);
+		}
+
 
 	}
 	void IceMap1::Render(HDC hdc)
@@ -275,5 +291,31 @@ namespace hy
 		}
 
 		return nullptr;
+	}
+
+	void IceMap1::Win()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Win_Lose* win = object::Instantiate< Win_Lose>(eLayerType::UI);
+		win->Win();
+		Transform* wintr = win->GetComponent<Transform>();
+		wintr->SetPosition(Vector2(350.0f, 254.0f));
+
+		if (Win_Lose::GetWin_Lose_flag() == true)
+		{
+			SceneManager::LoadScene(L"IceMap2");
+			Win_Lose::SetWin_Lose_flag(false);
+		}
+	}
+
+	void IceMap1::Lose()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Win_Lose* lose = object::Instantiate< Win_Lose>(eLayerType::UI);
+		lose->Lose();
+		Transform* losetr = lose->GetComponent<Transform>();
+		losetr->SetPosition(Vector2(350.0f, 254.0f));
 	}
 }

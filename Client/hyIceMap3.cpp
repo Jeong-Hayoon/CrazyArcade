@@ -125,7 +125,7 @@ namespace hy
 	{
 		Resources::Find<Sound>(L"BossStage")->Play(true);
 
-		SceneManager::SetBossQuantity(8);
+		SceneManager::SetBossQuantity(1);
 		SceneManager::SetActiveStage(5);
 
 		GameStart* gs1 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(185.0f, 60.0f));
@@ -232,6 +232,22 @@ namespace hy
 			SceneManager::LoadScene(L"PirateMap1");
 		}
 
+		// ½Â¸®
+		if (SceneManager::GetBossQuantity() == 0)
+		{
+			Win();
+			IceBazzi->Victory();
+			SceneManager::SetBossQuantity(1);
+		}
+
+
+		// ÆÐ¹è
+		if (SceneManager::GetBossQuantity() != 0 && SceneManager::GetPlayerDead() == true)
+		{
+			Lose();
+			SceneManager::SetPlayerDead(false);
+		}
+
 	}
 	void IceMap3::Render(HDC hdc)
 	{
@@ -255,5 +271,31 @@ namespace hy
 		}
 
 		return nullptr;
+	}
+
+	void IceMap3::Win()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Win_Lose* win = object::Instantiate< Win_Lose>(eLayerType::UI);
+		win->Win();
+		Transform* wintr = win->GetComponent<Transform>();
+		wintr->SetPosition(Vector2(350.0f, 254.0f));
+
+		if (Win_Lose::GetWin_Lose_flag() == true)
+		{
+			SceneManager::LoadScene(L"LobbyScene");
+			Win_Lose::SetWin_Lose_flag(false);
+		}
+	}
+
+	void IceMap3::Lose()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Win_Lose* lose = object::Instantiate< Win_Lose>(eLayerType::UI);
+		lose->Lose();
+		Transform* losetr = lose->GetComponent<Transform>();
+		losetr->SetPosition(Vector2(350.0f, 254.0f));
 	}
 }

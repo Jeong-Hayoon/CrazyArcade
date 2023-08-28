@@ -247,6 +247,22 @@ namespace hy
 			SceneManager::LoadScene(L"ForestMap3");
 		}
 
+		// ½Â¸®
+		if (SceneManager::GetMonsterQuantity() == 0)
+		{
+			Win();
+			ForestBazzi->Victory();
+			SceneManager::SetMonsterQuantity(1);
+		}
+
+
+		// ÆÐ¹è
+		if (SceneManager::GetMonsterQuantity() != 0 && SceneManager::GetPlayerDead() == true)
+		{
+			Lose();
+			SceneManager::SetPlayerDead(false);
+		}
+
 
 	}
 	void ForestMap2::Render(HDC hdc)
@@ -271,5 +287,31 @@ namespace hy
 		}
 
 		return nullptr;
+	}
+
+	void ForestMap2::Win()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Win_Lose* win = object::Instantiate< Win_Lose>(eLayerType::UI);
+		win->Win();
+		Transform* wintr = win->GetComponent<Transform>();
+		wintr->SetPosition(Vector2(350.0f, 254.0f));
+
+		if (Win_Lose::GetWin_Lose_flag() == true)
+		{
+			SceneManager::LoadScene(L"ForestMap3");
+			Win_Lose::SetWin_Lose_flag(false);
+		}
+	}
+
+	void ForestMap2::Lose()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Win_Lose* lose = object::Instantiate< Win_Lose>(eLayerType::UI);
+		lose->Lose();
+		Transform* losetr = lose->GetComponent<Transform>();
+		losetr->SetPosition(Vector2(350.0f, 254.0f));
 	}
 }

@@ -143,16 +143,6 @@ namespace hy
 		
 	}
 
-	//void ForestMap1::Win()
-	//{
-	//	Resources::Find<Sound>(L"Win")->Play(false);
-
-	//	Resources::Find<Sound>(L"Play")->Stop(1);
-
-
-	//	// 배찌 Victory 상태 호출
-	//}
-
 	void ForestMap1::Update()
 	{
 		Scene::Update();

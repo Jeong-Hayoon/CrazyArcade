@@ -218,13 +218,27 @@ namespace hy
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 560 && temp.y <= 590 && temp.x >= 645 && temp.x <= 785)
 		{
 			Resources::Find<Sound>(L"Play")->Stop(true);
-
-		
 		}
 
 		if (Input::GetKeyDown(eKeyCode::N))
 		{
 			SceneManager::LoadScene(L"IceMap1");
+		}
+
+		// ½Â¸®
+		if (SceneManager::GetBossQuantity() == 0)
+		{
+			Win();
+			ForestBazzi->Victory();
+			SceneManager::SetBossQuantity(1);
+		}
+
+
+		// ÆÐ¹è
+		if (SceneManager::GetBossQuantity() != 0 && SceneManager::GetPlayerDead() == true)
+		{
+			Lose();
+			SceneManager::SetPlayerDead(false);
 		}
 
 	}
@@ -250,5 +264,31 @@ namespace hy
 		}
 
 		return nullptr;
+	}
+
+	void ForestMap3::Win()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Win_Lose* win = object::Instantiate< Win_Lose>(eLayerType::UI);
+		win->Win();
+		Transform* wintr = win->GetComponent<Transform>();
+		wintr->SetPosition(Vector2(350.0f, 254.0f));
+
+		if (Win_Lose::GetWin_Lose_flag() == true)
+		{
+			SceneManager::LoadScene(L"LobbyScene");
+			Win_Lose::SetWin_Lose_flag(false);
+		}
+	}
+
+	void ForestMap3::Lose()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Win_Lose* lose = object::Instantiate< Win_Lose>(eLayerType::UI);
+		lose->Lose();
+		Transform* losetr = lose->GetComponent<Transform>();
+		losetr->SetPosition(Vector2(350.0f, 254.0f));
 	}
 }

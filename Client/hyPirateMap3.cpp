@@ -126,7 +126,7 @@ namespace hy
 	void PirateMap3::Enter()
 	{
 		Resources::Find<Sound>(L"BossStage")->Play(true);
-		SceneManager::SetBossQuantity(8);
+		SceneManager::SetBossQuantity(1);
 		SceneManager::SetActiveStage(8);
 
 		GameStart* gs1 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(185.0f, 60.0f));
@@ -198,7 +198,7 @@ namespace hy
 		Transform* forestbazzitr = PirateBazzi->GetComponent<Transform>();
 		forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
 
-		// 포레스트 보스
+		// 피라테 보스
 		PirateBoss* PirateBoss_ = object::Instantiate<PirateBoss>(eLayerType::Boss);
 		PirateBoss_->GetComponent<Transform>()->SetPosition(Vector2(250.0f, 300.0f));
 
@@ -229,6 +229,23 @@ namespace hy
 			SceneManager::LoadScene(L"LobbyScene");
 		}
 
+		// 승리
+		if (SceneManager::GetBossQuantity() == 0)
+		{
+			Win();
+			PirateBazzi->Victory();
+			SceneManager::SetBossQuantity(1);
+		}
+
+
+		// 패배
+		if (SceneManager::GetBossQuantity() != 0 && SceneManager::GetPlayerDead() == true)
+		{
+			Lose();
+			SceneManager::SetPlayerDead(false);
+		}
+
+
 
 	}
 	void PirateMap3::Render(HDC hdc)
@@ -253,5 +270,31 @@ namespace hy
 		}
 
 		return nullptr;
+	}
+
+	void PirateMap3::Win()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Win_Lose* win = object::Instantiate< Win_Lose>(eLayerType::UI);
+		win->Win();
+		Transform* wintr = win->GetComponent<Transform>();
+		wintr->SetPosition(Vector2(350.0f, 254.0f));
+
+		if (Win_Lose::GetWin_Lose_flag() == true)
+		{
+			SceneManager::LoadScene(L"LobbyScene");
+			Win_Lose::SetWin_Lose_flag(false);
+		}
+	}
+
+	void PirateMap3::Lose()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(1);
+
+		Win_Lose* lose = object::Instantiate< Win_Lose>(eLayerType::UI);
+		lose->Lose();
+		Transform* losetr = lose->GetComponent<Transform>();
+		losetr->SetPosition(Vector2(350.0f, 254.0f));
 	}
 }
