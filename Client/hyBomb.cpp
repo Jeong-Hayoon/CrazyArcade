@@ -18,6 +18,15 @@
 #include "hyCollider.h"
 #include "hyCollisionManager.h"
 #include "hySound.h"
+#include "hyForestMap1.h"
+#include "hyForestMap2.h"
+#include "hyForestMap3.h"
+#include "hyIceMap1.h"
+#include "hyIceMap2.h"
+#include "hyIceMap3.h"
+#include "hyPirateMap1.h"
+#include "hyPirateMap2.h"
+#include "hyPirateMap3.h"
 
 namespace hy
 {
@@ -69,7 +78,6 @@ namespace hy
 
 		Bombtime += Time::DeltaTime();
 
-
 		// tab + enter 하면 스위치 생성
 		switch (mState)
 		{
@@ -109,60 +117,267 @@ namespace hy
 	{
 		// 예외처리에서 배찌의 BombFlow 변수만큼 가져오기
 		// BombFlow-1일때는 FlowIdle말고 Flow 애니메이션 재생되도록
-		
+
 		if (Bazzi::GetBombFlowCount() <= level)
 		{
 			if (dir == Vector2::Right)
 			{
-				Vector2 bombflowpos;
-				BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
-				bombflowpos.y = y * TILE_HEIGHT + 60.0f;
-				bombflowpos.x = x * TILE_WIDTH + 40.0f;
+				Scene* scene = SceneManager::GetActiveScene();
 
-				bombFlow->Right();
-				bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+				ForestMap1* forestScene1 = dynamic_cast<ForestMap1*>(scene);
+				ForestMap2* forestScene2 = dynamic_cast<ForestMap2*>(scene);
+				ForestMap3* forestScene3 = dynamic_cast<ForestMap3*>(scene);
+				IceMap1* iceScene1 = dynamic_cast<IceMap1*>(scene);
+				IceMap2* iceScene2 = dynamic_cast<IceMap2*>(scene);
+				IceMap3* iceScene3 = dynamic_cast<IceMap3*>(scene);
+				PirateMap1* pirateScene1 = dynamic_cast<PirateMap1*>(scene);
+				PirateMap2* pirateScene2 = dynamic_cast<PirateMap2*>(scene);
+				PirateMap3* pirateScene3 = dynamic_cast<PirateMap3*>(scene);
+
+
+
+				Tile* tile = nullptr;
+
+				if (forestScene1 != nullptr)
+					tile = forestScene1->GetTile(x, y);
+
+				if (forestScene2 != nullptr)
+					tile = forestScene2->GetTile(x, y);
+
+				if (forestScene3 != nullptr)
+					tile = forestScene3->GetTile(x, y);
+
+				if (iceScene1 != nullptr)
+					tile = iceScene1->GetTile(x, y);
+
+				if (iceScene2 != nullptr)
+					tile = iceScene2->GetTile(x, y);
+
+				if (iceScene3 != nullptr)
+					tile = iceScene3->GetTile(x, y);
+
+				if (pirateScene1 != nullptr)
+					tile = pirateScene1->GetTile(x, y);
+
+				if (pirateScene2 != nullptr)
+					tile = pirateScene2->GetTile(x, y);
+
+				if (pirateScene3 != nullptr)
+					tile = pirateScene3->GetTile(x, y);
+
+				if (tile != nullptr)
+				{
+					if (tile->GetType() == Tile::eType::Uncrushable)
+					{
+						return;
+					}
+					else
+					{
+						Vector2 bombflowpos;
+						BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
+						bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+						bombflowpos.x = x * TILE_WIDTH + 40.0f;
+
+						bombFlow->Right();
+						bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+						return;
+					}
+				}
 			}
+
 			if (dir == Vector2::Up)
 			{
-				Vector2 bombflowpos;
-				BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
-				bombflowpos.y = y * TILE_HEIGHT + 60.0f;
-				bombflowpos.x = x * TILE_WIDTH + 40.0f;
+				Scene* scene = SceneManager::GetActiveScene();
 
-				bombFlow->Up();
+				ForestMap1* forestScene1 = dynamic_cast<ForestMap1*>(scene);
+				ForestMap2* forestScene2 = dynamic_cast<ForestMap2*>(scene);
+				ForestMap3* forestScene3 = dynamic_cast<ForestMap3*>(scene);
+				IceMap1* iceScene1 = dynamic_cast<IceMap1*>(scene);
+				IceMap2* iceScene2 = dynamic_cast<IceMap2*>(scene);
+				IceMap3* iceScene3 = dynamic_cast<IceMap3*>(scene);
+				PirateMap1* pirateScene1 = dynamic_cast<PirateMap1*>(scene);
+				PirateMap2* pirateScene2 = dynamic_cast<PirateMap2*>(scene);
+				PirateMap3* pirateScene3 = dynamic_cast<PirateMap3*>(scene);
 
-				bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+				Tile* tile = nullptr;
 
+				if (forestScene1 != nullptr)
+					tile = forestScene1->GetTile(x, y);
+
+				if (forestScene2 != nullptr)
+					tile = forestScene2->GetTile(x, y);
+
+				if (forestScene3 != nullptr)
+					tile = forestScene3->GetTile(x, y);
+
+				if (iceScene1 != nullptr)
+					tile = iceScene1->GetTile(x, y);
+
+				if (iceScene2 != nullptr)
+					tile = iceScene2->GetTile(x, y);
+
+				if (iceScene3 != nullptr)
+					tile = iceScene3->GetTile(x, y);
+
+				if (pirateScene1 != nullptr)
+					tile = pirateScene1->GetTile(x, y);
+
+				if (pirateScene2 != nullptr)
+					tile = pirateScene2->GetTile(x, y);
+
+				if (pirateScene3 != nullptr)
+					tile = pirateScene3->GetTile(x, y);
+
+				if (tile != nullptr)
+				{
+					if (tile->GetType() == Tile::eType::Uncrushable)
+					{
+						return;
+					}
+					else
+					{
+						Vector2 bombflowpos;
+						BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
+						bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+						bombflowpos.x = x * TILE_WIDTH + 40.0f;
+
+						bombFlow->Up();
+						bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+						return;
+					}
+				}
 			}
+
 			if (dir == Vector2::Left)
 			{
-				Vector2 bombflowpos;
-				BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
-				bombflowpos.y = y * TILE_HEIGHT + 60.0f;
-				bombflowpos.x = x * TILE_WIDTH + 40.0f;
+				Scene* scene = SceneManager::GetActiveScene();
 
-				bombFlow->Left();
+				ForestMap1* forestScene1 = dynamic_cast<ForestMap1*>(scene);
+				ForestMap2* forestScene2 = dynamic_cast<ForestMap2*>(scene);
+				ForestMap3* forestScene3 = dynamic_cast<ForestMap3*>(scene);
+				IceMap1* iceScene1 = dynamic_cast<IceMap1*>(scene);
+				IceMap2* iceScene2 = dynamic_cast<IceMap2*>(scene);
+				IceMap3* iceScene3 = dynamic_cast<IceMap3*>(scene);
+				PirateMap1* pirateScene1 = dynamic_cast<PirateMap1*>(scene);
+				PirateMap2* pirateScene2 = dynamic_cast<PirateMap2*>(scene);
+				PirateMap3* pirateScene3 = dynamic_cast<PirateMap3*>(scene);
 
-				bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+				Tile* tile = nullptr;
 
+				if (forestScene1 != nullptr)
+					tile = forestScene1->GetTile(x, y);
+
+				if (forestScene2 != nullptr)
+					tile = forestScene2->GetTile(x, y);
+
+				if (forestScene3 != nullptr)
+					tile = forestScene3->GetTile(x, y);
+
+				if (iceScene1 != nullptr)
+					tile = iceScene1->GetTile(x, y);
+
+				if (iceScene2 != nullptr)
+					tile = iceScene2->GetTile(x, y);
+
+				if (iceScene3 != nullptr)
+					tile = iceScene3->GetTile(x, y);
+
+				if (pirateScene1 != nullptr)
+					tile = pirateScene1->GetTile(x, y);
+
+				if (pirateScene2 != nullptr)
+					tile = pirateScene2->GetTile(x, y);
+
+				if (pirateScene3 != nullptr)
+					tile = pirateScene3->GetTile(x, y);
+
+				if (tile != nullptr)
+				{
+					if (tile->GetType() == Tile::eType::Uncrushable)
+					{
+						return;
+					}
+					else
+					{
+						Vector2 bombflowpos;
+						BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
+						bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+						bombflowpos.x = x * TILE_WIDTH + 40.0f;
+
+						bombFlow->Left();
+						bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+						return;
+					}
+				}
 			}
 
 			if (dir == Vector2::Down)
 			{
-				Vector2 bombflowpos;
-				BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
-				bombflowpos.y = y * TILE_HEIGHT + 60.0f;
-				bombflowpos.x = x * TILE_WIDTH + 40.0f;
+				Scene* scene = SceneManager::GetActiveScene();
 
-				bombFlow->Down();
+				ForestMap1* forestScene1 = dynamic_cast<ForestMap1*>(scene);
+				ForestMap2* forestScene2 = dynamic_cast<ForestMap2*>(scene);
+				ForestMap3* forestScene3 = dynamic_cast<ForestMap3*>(scene);
+				IceMap1* iceScene1 = dynamic_cast<IceMap1*>(scene);
+				IceMap2* iceScene2 = dynamic_cast<IceMap2*>(scene);
+				IceMap3* iceScene3 = dynamic_cast<IceMap3*>(scene);
+				PirateMap1* pirateScene1 = dynamic_cast<PirateMap1*>(scene);
+				PirateMap2* pirateScene2 = dynamic_cast<PirateMap2*>(scene);
+				PirateMap3* pirateScene3 = dynamic_cast<PirateMap3*>(scene);
 
-				bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+				Tile* tile = nullptr;
+
+				if (forestScene1 != nullptr)
+					tile = forestScene1->GetTile(x, y);
+
+				if (forestScene2 != nullptr)
+					tile = forestScene2->GetTile(x, y);
+
+				if (forestScene3 != nullptr)
+					tile = forestScene3->GetTile(x, y);
+
+				if (iceScene1 != nullptr)
+					tile = iceScene1->GetTile(x, y);
+
+				if (iceScene2 != nullptr)
+					tile = iceScene2->GetTile(x, y);
+
+				if (iceScene3 != nullptr)
+					tile = iceScene3->GetTile(x, y);
+
+				if (pirateScene1 != nullptr)
+					tile = pirateScene1->GetTile(x, y);
+
+				if (pirateScene2 != nullptr)
+					tile = pirateScene2->GetTile(x, y);
+
+				if (pirateScene3 != nullptr)
+					tile = pirateScene3->GetTile(x, y);
+
+				if (tile != nullptr)
+				{
+					if (tile->GetType() == Tile::eType::Uncrushable)
+					{
+						return;
+					}
+					else
+					{
+						Vector2 bombflowpos;
+						BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
+						bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+						bombflowpos.x = x * TILE_WIDTH + 40.0f;
+
+						bombFlow->Down();
+						bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+						return;
+					}
+				}
 			}
 
 			return;
 		}
-		
-		if (y < 0 || y >= 13 
+
+		if (y < 0 || y >= 13
 			|| x < 0 || x >= 15)
 			return;
 
@@ -170,21 +385,82 @@ namespace hy
 		/*if ()
 			return;*/
 
-		//if (mapData[y][x] == 충돌가능)		// 타일맵으로 배열 만들기
-		//	return;
-	
+			//if (mapData[y][x] == 충돌가능)		// 타일맵으로 배열 만들기
+			//	return;
+
 		if (dir == Vector2::Right)
 		{
+			Scene* scene = SceneManager::GetActiveScene();
+
+			ForestMap1* forestScene1 = dynamic_cast<ForestMap1*>(scene);
+			ForestMap2* forestScene2 = dynamic_cast<ForestMap2*>(scene);
+			ForestMap3* forestScene3 = dynamic_cast<ForestMap3*>(scene);
+			IceMap1* iceScene1 = dynamic_cast<IceMap1*>(scene);
+			IceMap2* iceScene2 = dynamic_cast<IceMap2*>(scene);
+			IceMap3* iceScene3 = dynamic_cast<IceMap3*>(scene);
+			PirateMap1* pirateScene1 = dynamic_cast<PirateMap1*>(scene);
+			PirateMap2* pirateScene2 = dynamic_cast<PirateMap2*>(scene);
+			PirateMap3* pirateScene3 = dynamic_cast<PirateMap3*>(scene);
+
+			Tile* tile = nullptr;
+
+			if (forestScene1 != nullptr)
+				tile = forestScene1->GetTile(x, y);
+
+			if (forestScene2 != nullptr)
+				tile = forestScene2->GetTile(x, y);
+
+			if (forestScene3 != nullptr)
+				tile = forestScene3->GetTile(x, y);
+
+			if (iceScene1 != nullptr)
+				tile = iceScene1->GetTile(x, y);
+
+			if (iceScene2 != nullptr)
+				tile = iceScene2->GetTile(x, y);
+
+			if (iceScene3 != nullptr)
+				tile = iceScene3->GetTile(x, y);
+
+			if (pirateScene1 != nullptr)
+				tile = pirateScene1->GetTile(x, y);
+
+			if (pirateScene2 != nullptr)
+				tile = pirateScene2->GetTile(x, y);
+
+			if (pirateScene3 != nullptr)
+				tile = pirateScene3->GetTile(x, y);
+
+			if (tile != nullptr)
+			{
+				if (tile->GetType() == Tile::eType::Crack)
+				{
+					Vector2 bombflowpos;
+					BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
+					bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+					bombflowpos.x = x * TILE_WIDTH + 40.0f;
+
+					bombFlow->Right();
+					bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+					return;
+				}
+				else if (tile != nullptr && tile->GetType() == Tile::eType::Uncrushable)
+				{
+					return;
+				}
+			}
+
+
 			Vector2 bombflowpos;
 			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 			bombflowpos.y = y * TILE_HEIGHT + 60.0f;
 			bombflowpos.x = x * TILE_WIDTH + 40.0f;
 
-			if (Bazzi::GetBombFlowCount() < (level-2))
+			if (Bazzi::GetBombFlowCount() < (level - 2))
 			{
 				bombFlow->RightIdle();
 			}
-			else if (Bazzi::GetBombFlowCount() == (level-2))
+			else if (Bazzi::GetBombFlowCount() == (level - 2))
 			{
 				bombFlow->Right();
 			}
@@ -192,9 +468,69 @@ namespace hy
 
 			BombRec(level + 1, dir, int(x + dir.x), int(y + dir.y));
 		}
-	
+
 		if (dir == Vector2::Up)
 		{
+			Scene* scene = SceneManager::GetActiveScene();
+
+			ForestMap1* forestScene1 = dynamic_cast<ForestMap1*>(scene);
+			ForestMap2* forestScene2 = dynamic_cast<ForestMap2*>(scene);
+			ForestMap3* forestScene3 = dynamic_cast<ForestMap3*>(scene);
+			IceMap1* iceScene1 = dynamic_cast<IceMap1*>(scene);
+			IceMap2* iceScene2 = dynamic_cast<IceMap2*>(scene);
+			IceMap3* iceScene3 = dynamic_cast<IceMap3*>(scene);
+			PirateMap1* pirateScene1 = dynamic_cast<PirateMap1*>(scene);
+			PirateMap2* pirateScene2 = dynamic_cast<PirateMap2*>(scene);
+			PirateMap3* pirateScene3 = dynamic_cast<PirateMap3*>(scene);
+
+			Tile* tile = nullptr;
+
+			if (forestScene1 != nullptr)
+				tile = forestScene1->GetTile(x, y);
+
+			if (forestScene2 != nullptr)
+				tile = forestScene2->GetTile(x, y);
+
+			if (forestScene3 != nullptr)
+				tile = forestScene3->GetTile(x, y);
+
+			if (iceScene1 != nullptr)
+				tile = iceScene1->GetTile(x, y);
+
+			if (iceScene2 != nullptr)
+				tile = iceScene2->GetTile(x, y);
+
+			if (iceScene3 != nullptr)
+				tile = iceScene3->GetTile(x, y);
+
+			if (pirateScene1 != nullptr)
+				tile = pirateScene1->GetTile(x, y);
+
+			if (pirateScene2 != nullptr)
+				tile = pirateScene2->GetTile(x, y);
+
+			if (pirateScene3 != nullptr)
+				tile = pirateScene3->GetTile(x, y);
+
+			if (tile != nullptr)
+			{
+				if (tile->GetType() == Tile::eType::Crack)
+				{
+					Vector2 bombflowpos;
+					BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
+					bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+					bombflowpos.x = x * TILE_WIDTH + 40.0f;
+
+					bombFlow->Up();
+					bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+					return;
+				}
+				else if (tile != nullptr && tile->GetType() == Tile::eType::Uncrushable)
+				{
+					return;
+				}
+			}
+
 			Vector2 bombflowpos;
 			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 			bombflowpos.y = y * TILE_HEIGHT + 60.0f;
@@ -215,6 +551,66 @@ namespace hy
 
 		if (dir == Vector2::Left)
 		{
+			Scene* scene = SceneManager::GetActiveScene();
+
+			ForestMap1* forestScene1 = dynamic_cast<ForestMap1*>(scene);
+			ForestMap2* forestScene2 = dynamic_cast<ForestMap2*>(scene);
+			ForestMap3* forestScene3 = dynamic_cast<ForestMap3*>(scene);
+			IceMap1* iceScene1 = dynamic_cast<IceMap1*>(scene);
+			IceMap2* iceScene2 = dynamic_cast<IceMap2*>(scene);
+			IceMap3* iceScene3 = dynamic_cast<IceMap3*>(scene);
+			PirateMap1* pirateScene1 = dynamic_cast<PirateMap1*>(scene);
+			PirateMap2* pirateScene2 = dynamic_cast<PirateMap2*>(scene);
+			PirateMap3* pirateScene3 = dynamic_cast<PirateMap3*>(scene);
+
+			Tile* tile = nullptr;
+
+			if (forestScene1 != nullptr)
+				tile = forestScene1->GetTile(x, y);
+
+			if (forestScene2 != nullptr)
+				tile = forestScene2->GetTile(x, y);
+
+			if (forestScene3 != nullptr)
+				tile = forestScene3->GetTile(x, y);
+
+			if (iceScene1 != nullptr)
+				tile = iceScene1->GetTile(x, y);
+
+			if (iceScene2 != nullptr)
+				tile = iceScene2->GetTile(x, y);
+
+			if (iceScene3 != nullptr)
+				tile = iceScene3->GetTile(x, y);
+
+			if (pirateScene1 != nullptr)
+				tile = pirateScene1->GetTile(x, y);
+
+			if (pirateScene2 != nullptr)
+				tile = pirateScene2->GetTile(x, y);
+
+			if (pirateScene3 != nullptr)
+				tile = pirateScene3->GetTile(x, y);
+
+			if (tile != nullptr)
+			{
+				if (tile->GetType() == Tile::eType::Crack)
+				{
+					Vector2 bombflowpos;
+					BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
+					bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+					bombflowpos.x = x * TILE_WIDTH + 40.0f;
+
+					bombFlow->Left();
+					bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+					return;
+				}
+				else if (tile != nullptr && tile->GetType() == Tile::eType::Uncrushable)
+				{
+					return;
+				}
+			}
+
 			Vector2 bombflowpos;
 			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 			bombflowpos.y = y * TILE_HEIGHT + 60.0f;
@@ -235,6 +631,66 @@ namespace hy
 
 		if (dir == Vector2::Down)
 		{
+			Scene* scene = SceneManager::GetActiveScene();
+
+			ForestMap1* forestScene1 = dynamic_cast<ForestMap1*>(scene);
+			ForestMap2* forestScene2 = dynamic_cast<ForestMap2*>(scene);
+			ForestMap3* forestScene3 = dynamic_cast<ForestMap3*>(scene);
+			IceMap1* iceScene1 = dynamic_cast<IceMap1*>(scene);
+			IceMap2* iceScene2 = dynamic_cast<IceMap2*>(scene);
+			IceMap3* iceScene3 = dynamic_cast<IceMap3*>(scene);
+			PirateMap1* pirateScene1 = dynamic_cast<PirateMap1*>(scene);
+			PirateMap2* pirateScene2 = dynamic_cast<PirateMap2*>(scene);
+			PirateMap3* pirateScene3 = dynamic_cast<PirateMap3*>(scene);
+
+			Tile* tile = nullptr;
+
+			if (forestScene1 != nullptr)
+				tile = forestScene1->GetTile(x, y);
+
+			if (forestScene2 != nullptr)
+				tile = forestScene2->GetTile(x, y);
+
+			if (forestScene3 != nullptr)
+				tile = forestScene3->GetTile(x, y);
+
+			if (iceScene1 != nullptr)
+				tile = iceScene1->GetTile(x, y);
+
+			if (iceScene2 != nullptr)
+				tile = iceScene2->GetTile(x, y);
+
+			if (iceScene3 != nullptr)
+				tile = iceScene3->GetTile(x, y);
+
+			if (pirateScene1 != nullptr)
+				tile = pirateScene1->GetTile(x, y);
+
+			if (pirateScene2 != nullptr)
+				tile = pirateScene2->GetTile(x, y);
+
+			if (pirateScene3 != nullptr)
+				tile = pirateScene3->GetTile(x, y);
+
+			if (tile != nullptr)
+			{
+				if (tile->GetType() == Tile::eType::Crack)
+				{
+					Vector2 bombflowpos;
+					BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
+					bombflowpos.y = y * TILE_HEIGHT + 60.0f;
+					bombflowpos.x = x * TILE_WIDTH + 40.0f;
+
+					bombFlow->Down();
+					bombFlow->GetComponent<Transform>()->SetPosition(bombflowpos);
+					return;
+				}
+				else if (tile != nullptr && tile->GetType() == Tile::eType::Uncrushable)
+				{
+					return;
+				}
+			}
+
 			Vector2 bombflowpos;
 			BombFlow* bombFlow = object::Instantiate<BombFlow>(eLayerType::Bombflow);
 			bombflowpos.y = y * TILE_HEIGHT + 60.0f;

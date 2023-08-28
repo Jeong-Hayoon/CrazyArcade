@@ -50,6 +50,9 @@ namespace hy
 		static bool GetHaveBomb() { return HaveBomb; }
 		static void SetHaveBomb(bool putbomb) { HaveBomb = putbomb; }
 
+		UINT GetTileIndexX() const { return mIndexX; }
+		UINT GetTileIndexY() const { return mIndexY; }
+
 	private:
 		class SpriteRenderer* mSpriteRenderer;
 		UINT mSourceIndexX;

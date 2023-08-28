@@ -30,6 +30,8 @@ namespace hy
 
 		void Reset();
 
+		Tile* GetTile(UINT x, UINT y);
+
 	private:
 		std::vector<Tile*> mTiles;
 		Bazzi* IceBazzi;

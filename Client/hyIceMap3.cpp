@@ -238,4 +238,22 @@ namespace hy
 		Scene::Render(hdc);
 
 	}
+
+	Tile* IceMap3::GetTile(UINT x, UINT y)
+	{
+		Tile* temp = nullptr;
+
+		for (Tile* iter : mTiles)
+		{
+			UINT iter_x = iter->GetTileIndexX();
+			UINT iter_y = iter->GetTileIndexY();
+
+			if (x == iter_x && y == iter_y)
+			{
+				return iter;
+			}
+		}
+
+		return nullptr;
+	}
 }

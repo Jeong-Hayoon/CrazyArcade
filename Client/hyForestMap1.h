@@ -32,6 +32,8 @@ namespace hy
 
 		//static void SetFunCheck(bool check) { FunCheck = check; }
 
+		Tile* GetTile(UINT x, UINT y);
+
 
 	private:
 		std::vector<Tile*> mTiles;
