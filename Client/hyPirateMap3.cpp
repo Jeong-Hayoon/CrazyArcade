@@ -127,6 +127,8 @@ namespace hy
 	{
 		Resources::Find<Sound>(L"BossStage")->Play(true);
 		SceneManager::SetBossQuantity(8);
+		SceneManager::SetActiveStage(8);
+
 		GameStart* gs1 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(185.0f, 60.0f));
 		GameStart* gs2 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(450.0f, 640.0f));
 

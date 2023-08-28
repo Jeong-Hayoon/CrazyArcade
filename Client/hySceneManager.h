@@ -60,6 +60,16 @@ namespace hy
 		static void SetSelectMultiPlayer(bool multi) { SelectMultiPlayer = multi; }
 		static bool GetSelectMultiPlayer() { return SelectMultiPlayer; }
 
+		// Stage Ç¥½Ã
+		// 0 = Forestmap1	/ 1 = Forestmap2	/ 2 = Forestmap3
+		// 3 = Icemap1		/ 4 = Icemap2		/ 5 = Icemap3
+		// 6 = Piratemap1	 / 7 = Piratemap2	/ 8 = Piratemap3
+		static void SetActiveStage(int stage) { ActiveStage = stage; }
+		static int GetActiveStage() { return ActiveStage; }
+
+		int GetStageData(int stage, int row, int col) { return StageData[stage][row][col; }
+		void SetStageData(int stage, int row, int col, int value) { StageData[stage][row][col] = value; }
+
 
 	private:
 		static std::map <std::wstring, Scene*> mScenes;
@@ -77,8 +87,22 @@ namespace hy
 		static bool PlayerDead;
 		static bool SelectSoloPlayer;
 		static bool SelectMultiPlayer;
+		static int ActiveStage;
 
-		
+		// 0 - ¹Ù´Ú / 1 - Crack / 2 - Uncrushable
+		/*static int Forest_1_Data[13][15];
+		static int Forest_2_Data[13][15];
+		static int Forest_3_Data[13][15];
+
+		static int Ice_1_Data[13][15];
+		static int Ice_2_Data[13][15];
+		static int Ice_3_Data[13][15];
+
+		static int Pirate_1_Data[13][15];
+		static int Pirate_2_Data[13][15];
+		static int Pirate_3_Data[13][15];*/
+
+		static int StageData[9][13][15];
 
 	};
 }
