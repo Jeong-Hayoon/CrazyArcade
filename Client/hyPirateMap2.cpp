@@ -204,9 +204,14 @@ namespace hy
 		PirateMonster* PirateMonster2 = object::Instantiate<PirateMonster>(eLayerType::Monster);
 		PirateMonster2->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 300.0f));
 		PirateMonster* PirateMonster3 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster3->GetComponent<Transform>()->SetPosition(Vector2(830.0f, 540.0f));
+		PirateMonster3->GetComponent<Transform>()->SetPosition(Vector2(280.0f, 300.0f));
 		PirateMonster* PirateMonster4 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster4->GetComponent<Transform>()->SetPosition(Vector2(650.0f, 780.0f));
+		PirateMonster4->GetComponent<Transform>()->SetPosition(Vector2(180.0f, 300.0f));
+
+		// 위치 변경 필요
+		PirateMonster* PirateMonster5 = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		PirateMonster5->GetComponent<Transform>()->SetPosition(Vector2(255.f, 570.0f));
+
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);

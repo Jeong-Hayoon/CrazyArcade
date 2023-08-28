@@ -74,9 +74,9 @@ namespace hy
 		{
 			pos.x = 40;
 		}
-		else if (pos.y <= 60)
+		else if (pos.y <= 80)
 		{
-			pos.y = 60;
+			pos.y = 80;
 		}
 		else if (pos.y >= 520)
 		{

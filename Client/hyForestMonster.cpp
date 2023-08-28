@@ -15,6 +15,7 @@
 #include "hyForestMap1.h"
 #include "hySound.h"
 
+
 namespace hy
 {
 	// static 변수는 전역에서 초기화해주기
@@ -42,10 +43,9 @@ namespace hy
 		mt->CreateAnimationFolder(L"ForestMonsterDie", L"..\\Resources\\Image\\Monster\\Forest\\Die", Vector2::Zero, 0.2f);
 		mt->PlayAnimation(L"ForestMonsterRight", true);
 
-		
-
 		Collider* col = AddComponent<Collider>();
 		col->SetSize(Vector2(30.0f, 30.0f));
+
 
 		GameObject::Initialize();
 	}
@@ -130,7 +130,6 @@ namespace hy
 		{
 			Animator* at = GetComponent<Animator>();
 			at->PlayAnimation(L"ForestMonsterDie", false);
-			// 몬스터 개수 줄이는 코드
 			mState = eState::Dead;
 		}
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Crack)
@@ -235,21 +234,29 @@ namespace hy
 			{
 				animator->PlayAnimation(L"ForestMonsterLeft", true);
 				mDirection = eDirection::Left;
+				mState = eState::Left;
+
 			}
 			else if (mDirection == eDirection::Left)
 			{
 				animator->PlayAnimation(L"ForestMonsterRight", true);
 				mDirection = eDirection::Right;
+				mState = eState::Right;
+
 			}
 			else if (mDirection == eDirection::Down)
 			{
 				animator->PlayAnimation(L"ForestMonsterUp", true);
 				mDirection = eDirection::Up;
+				mState = eState::Up;
+
 			}
 			else if (mDirection == eDirection::Up)
 			{
 				animator->PlayAnimation(L"ForestMonsterDown", true);
 				mDirection = eDirection::Down;
+				mState = eState::Down;
+
 			}
 
 		}

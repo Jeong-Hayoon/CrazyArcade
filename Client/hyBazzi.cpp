@@ -886,7 +886,7 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			animator->PlayAnimation(L"BazziIdle", true);
-			eItem::None;
+			ActiveItem = eItem::None;
 			UseItemNum = 0;
 			mState = eState::Idle;
 		}

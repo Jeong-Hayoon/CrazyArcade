@@ -131,7 +131,7 @@ namespace hy
 		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
 			Animator* at = GetComponent<Animator>();
-			at->PlayAnimation(L"ForestMonnsterDie", false);
+			at->PlayAnimation(L"PirateMonsterDie", false);
 			// 몬스터 개수 줄이는 코드
 			mState = eState::Dead;
 		}
@@ -237,21 +237,29 @@ namespace hy
 			{
 				animator->PlayAnimation(L"PirateMonsterLeft", true);
 				mDirection = eDirection::Left;
+				mState = eState::Left;
+
 			}
 			else if (mDirection == eDirection::Left)
 			{
 				animator->PlayAnimation(L"PirateMonsterRight", true);
 				mDirection = eDirection::Right;
+				mState = eState::Right;
+
 			}
 			else if (mDirection == eDirection::Down)
 			{
 				animator->PlayAnimation(L"PirateMonsterUp", true);
 				mDirection = eDirection::Up;
+				mState = eState::Up;
+
 			}
 			else if (mDirection == eDirection::Up)
 			{
 				animator->PlayAnimation(L"PirateMonsterDown", true);
 				mDirection = eDirection::Down;
+				mState = eState::Down;
+
 			}
 
 		}

@@ -77,6 +77,7 @@ namespace hy
 					this->SetSourceTileIdx(0, 1);
 					this->DeleteComponent<Collider>();
 					mSpriteRenderer->SetTile(0, 1);
+					this->SetType(eType::None);
 				}
 
 				else if (this->GetSourceTileIdx() == Vector2(3, 2)||
@@ -85,6 +86,7 @@ namespace hy
 					this->SetSourceTileIdx(1, 1);
 					this->DeleteComponent<Collider>();
 					mSpriteRenderer->SetTile(1, 1);
+					this->SetType(eType::None);
 				}
 
 				else if (this->GetSourceTileIdx() == Vector2(3, 0)||
@@ -93,13 +95,14 @@ namespace hy
 					this->SetSourceTileIdx(3, 4);
 					this->DeleteComponent<Collider>();
 					mSpriteRenderer->SetTile(3, 4);
+					this->SetType(eType::None);
 				}
 
 				steam_->GetComponent<Transform>()->SetPosition(Steampos);
 			}
 			else if (this->GetType() == eType::Uncrushable)
 			{
-				// Bomb Destroy..?
+				
 			}
 		}
 	}

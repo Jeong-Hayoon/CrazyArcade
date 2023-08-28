@@ -129,8 +129,7 @@ namespace hy
 		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
 			Animator* at = GetComponent<Animator>();
-			at->PlayAnimation(L"ForestMonnsterDie", false);
-			// 몬스터 개수 줄이는 코드
+			at->PlayAnimation(L"IceMonsterDie", false);
 			mState = eState::Dead;
 		}
 		else if ((other->GetOwner()->GetLayerType() == eLayerType::Tile) && (tile != nullptr) && tile->GetType() == Tile::eType::Crack)
@@ -235,21 +234,29 @@ namespace hy
 			{
 				animator->PlayAnimation(L"IceMonsterLeft", true);
 				mDirection = eDirection::Left;
+				mState = eState::Left;
+
 			}
 			else if (mDirection == eDirection::Left)
 			{
 				animator->PlayAnimation(L"IceMonsterRight", true);
 				mDirection = eDirection::Right;
+				mState = eState::Right;
+
 			}
 			else if (mDirection == eDirection::Down)
 			{
 				animator->PlayAnimation(L"IceMonsterUp", true);
 				mDirection = eDirection::Up;
+				mState = eState::Up;
+
 			}
 			else if (mDirection == eDirection::Up)
 			{
 				animator->PlayAnimation(L"IceMonsterDown", true);
 				mDirection = eDirection::Down;
+				mState = eState::Down;
+
 			}
 
 		}

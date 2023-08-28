@@ -137,6 +137,8 @@ namespace hy
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Item, true);
 		// 플레이어와 물풍선 아이템 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::UseItem, true);
+		// 몬스터 물풍선 충돌(충돌 관계)
+		CollisionManager::CollisionLayerCheck(eLayerType::Monster, eLayerType::Bomb, true);
 
 		
 	}
