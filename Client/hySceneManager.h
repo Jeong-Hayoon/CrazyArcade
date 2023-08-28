@@ -67,7 +67,7 @@ namespace hy
 		static void SetActiveStage(int stage) { ActiveStage = stage; }
 		static int GetActiveStage() { return ActiveStage; }
 
-		int GetStageData(int stage, int row, int col) { return StageData[stage][row][col; }
+		int GetStageData(int stage, int row, int col) { return StageData[stage][row][col]; }
 		void SetStageData(int stage, int row, int col, int value) { StageData[stage][row][col] = value; }
 
 
