@@ -32,7 +32,7 @@ namespace hy
 
 
 	Dao::Dao()
-		: mState(eState::Make)
+		: mState(eState::Idle)
 		, mDirection(eDirection::Down)
 	{
 	}
@@ -97,9 +97,6 @@ namespace hy
 		// tab + enter 하면 스위치 생성
 		switch (mState)
 		{
-		case hy::Dao::eState::Make:
-			Make();
-			break;
 		case hy::Dao::eState::Idle:
 			Idle();
 			break;
@@ -134,7 +131,7 @@ namespace hy
 		// 물풍선 객체 생성 및 위치 조정
 		if (Input::GetKeyDown(eKeyCode::Shift))
 		{
-			if (BombLimit != 0 /*&& Tile::GetHaveBomb() == 0*/)
+			if (BombLimit != 0)
 			{
 				Resources::Find<Sound>(L"BombSet")->Play(false);
 
@@ -484,42 +481,30 @@ namespace hy
 
 	}
 
-	void Dao::Make()
-	{
-		Animator* animator = GetComponent<Animator>();
-		animator->SetScale(Vector2(0.8f, 0.8f));
-
-		if (animator->IsActiveAnimationComplete())
-		{
-			animator->PlayAnimation(L"DaoIdle", true);
-			mState = eState::Idle;
-		}
-	}
-
 	void Dao::Idle()
 	{
 		Animator* animator = GetComponent<Animator>();
 		animator->SetScale(Vector2(1.f, 1.f));
 
-		if (Input::GetKeyDown(eKeyCode::Left) || Input::GetKey(eKeyCode::Left))		// 왼쪽 키를 누르면 왼쪽 애니메이션 실행
+		if (Input::GetKeyDown(eKeyCode::A) || Input::GetKey(eKeyCode::A))		// 왼쪽 키를 누르면 왼쪽 애니메이션 실행
 		{
 			animator->PlayAnimation(L"DaoLeft", true);
 			mState = eState::Move;
 			mDirection = eDirection::Left;
 		}
-		if (Input::GetKeyDown(eKeyCode::Right) || Input::GetKey(eKeyCode::Right))		// 오른쪽 키를 누르면 오른쪽 애니메이션 실행
+		if (Input::GetKeyDown(eKeyCode::D) || Input::GetKey(eKeyCode::D))		// 오른쪽 키를 누르면 오른쪽 애니메이션 실행
 		{
 			animator->PlayAnimation(L"DaoRight", true);
 			mState = eState::Move;
 			mDirection = eDirection::Right;
 		}
-		if (Input::GetKeyDown(eKeyCode::Up) || Input::GetKey(eKeyCode::Up))		// 위쪽 키를 누르면 위쪽 애니메이션 실행
+		if (Input::GetKeyDown(eKeyCode::W) || Input::GetKey(eKeyCode::W))		// 위쪽 키를 누르면 위쪽 애니메이션 실행
 		{
 			animator->PlayAnimation(L"DaoUp", true);
 			mState = eState::Move;
 			mDirection = eDirection::Up;
 		}
-		if (Input::GetKeyDown(eKeyCode::Down) || Input::GetKey(eKeyCode::Down))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행
+		if (Input::GetKeyDown(eKeyCode::S) || Input::GetKey(eKeyCode::S))		// 아레쪽 키를 누르면 아레쪽 애니메이션 실행
 		{
 			animator->PlayAnimation(L"DaoDown", true);
 			mState = eState::Move;

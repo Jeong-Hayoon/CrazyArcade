@@ -87,7 +87,7 @@ namespace hy
 
 		static UINT GetBombFlowCount() { return BombFlowCount; }
 		static void SetBombFlowCount() { BombFlowCount++; }
-		static void MaxBombFlowCount() { BombFlowCount = 9; }
+		static void MaxBombFlowCount() { BombFlowCount = 7; }
 
 		static bool GetUseItemNum() { return UseItemNum; }
 		static void SetUseItemNum(bool n) { UseItemNum = n; }

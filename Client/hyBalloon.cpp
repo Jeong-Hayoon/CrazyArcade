@@ -6,6 +6,7 @@
 #include "hyBazzi.h"
 #include "hyGameObject.h"
 #include "hySound.h"
+#include "hyCollisionManager.h"
 
 
 // 물풍선
@@ -36,6 +37,9 @@ namespace hy
 		Collider* Ballooncol = AddComponent<Collider>();
 		// Balloon 아이템 충돌 사각형 사이즈 수정
 		Ballooncol->SetSize(Vector2(10.0f, 30.0f));
+
+		CollisionManager::CollisionLayerCheck(eLayerType::Item, eLayerType::Bombflow, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::UseItem, eLayerType::Bombflow, true);
 
 		Resources::Load<Sound>(L"EatItem", L"..\\Resources\\Sound\\Sound\\eat_item.wav");
 

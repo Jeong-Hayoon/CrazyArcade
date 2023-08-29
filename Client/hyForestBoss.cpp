@@ -24,7 +24,7 @@ namespace hy
 	// static 변수는 전역에서 초기화해주기
 	float ForestBoss::BossTime = 0.f;
 	float ForestBoss::BubbleTime = 0.f;	
-	UINT ForestBoss::ForestBossHP = 100;
+	int ForestBoss::ForestBossHP = 10;
 	float ForestBoss::Attacktime = 0.f;
 
 	ForestBoss::ForestBoss()
@@ -45,13 +45,13 @@ namespace hy
 		mt->CreateAnimationFolder(L"ForestBoss_Die", L"..\\Resources\\Image\\Monster\\ForestBoss\\Die", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"ForestBoss_Attack", L"..\\Resources\\Image\\Monster\\ForestBoss\\Attack", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"ForestBoss_Hit", L"..\\Resources\\Image\\Monster\\ForestBoss\\Hit", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_Bubble", L"..\\Resources\\Image\\Monster\\ForestBoss\\Bubble", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"ForestBoss_Bubble", L"..\\Resources\\Image\\Monster\\ForestBoss\\Bubble", Vector2::Zero, 3.f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"ForestBoss_Right", true);
 
 		Collider* col = AddComponent<Collider>();
-		col->SetSize(Vector2(100.0f, 100.0f));
+		col->SetSize(Vector2(100.0f, 70.0f));
 		CollisionManager::CollisionLayerCheck(eLayerType::Boss, eLayerType::Bombflow, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::BossBombflow, true);
 
@@ -112,6 +112,10 @@ namespace hy
 			Dead();
 			break;
 
+		case hy::ForestBoss::eState::Hit:
+			Hit();
+			break;
+
 		case hy::ForestBoss::eState::Attack:
 			Attack();
 			break;
@@ -146,24 +150,22 @@ namespace hy
 
 		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
-			if(ForestBossHP == 0)
-			{
-				BubbleTime += Time::DeltaTime();
+			ForestBoss::ForestBossHP -= 10;
 
-				if (BubbleTime < 3.f)
-				{
-					at->PlayAnimation(L"ForestBoss_Bubble", false);
-				}
-				else if (BubbleTime > 3.f)
+			if(ForestBoss::ForestBossHP == 0)
+			{
+				// 애니메이션 재생이 안됨
+				at->PlayAnimation(L"ForestBoss_Bubble", false);
+				
+				if(at->IsActiveAnimationComplete())
 				{
 					at->PlayAnimation(L"ForestBoss_Die", false);
 
 					mState = eState::Dead;
-					BubbleTime = 0.f;
 				}
 			}
 
-			else if(ForestBossHP != 0)
+			else if(ForestBoss::ForestBossHP != 0)
 			{
 				at->PlayAnimation(L"ForestBoss_Hit", false);
 				mState = eState::Hit;
@@ -363,7 +365,6 @@ namespace hy
 
 	void ForestBoss::Hit()
 	{
-		ForestBossHP -= 10;
 		Animator* animator = GetComponent<Animator>();
 
 		if (animator->IsActiveAnimationComplete())
@@ -396,7 +397,7 @@ namespace hy
 				mState = eState::Down;
 			}
 		}
-		
+	
 	}
 
 

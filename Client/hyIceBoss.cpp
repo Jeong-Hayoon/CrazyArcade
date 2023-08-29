@@ -24,7 +24,7 @@ namespace hy
 	// static 변수는 전역에서 초기화해주기
 	float IceBoss::BossTime = 0.f;
 	float IceBoss::BubbleTime = 0.f;
-	UINT IceBoss::ForestBossHP = 100;
+	UINT IceBoss::IceBossHP = 10;
 	float IceBoss::Attacktime = 0.f;
 
 	IceBoss::IceBoss()
@@ -45,7 +45,7 @@ namespace hy
 		mt->CreateAnimationFolder(L"IceBoss_Die", L"..\\Resources\\Image\\Monster\\IceBoss\\Die", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"IceBoss_Attack", L"..\\Resources\\Image\\Monster\\IceBoss\\Attack", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"IceBoss_Hit", L"..\\Resources\\Image\\Monster\\IceBoss\\Hit", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"IceBoss_Bubble", L"..\\Resources\\Image\\Monster\\IceBoss\\Bubble", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"IceBoss_Bubble", L"..\\Resources\\Image\\Monster\\IceBoss\\Bubble", Vector2::Zero, 3.f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"IceBoss_Right", true);
@@ -54,8 +54,6 @@ namespace hy
 		col->SetSize(Vector2(100.0f, 100.0f));
 		CollisionManager::CollisionLayerCheck(eLayerType::Boss, eLayerType::Bombflow, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::BossBombflow, true);
-
-
 
 		GameObject::Initialize();
 	}
@@ -117,6 +115,10 @@ namespace hy
 			Attack();
 			break;
 
+		case hy::IceBoss::eState::Hit:
+			Hit();
+			break;
+
 		case hy::IceBoss::eState::End:
 			break;
 
@@ -147,26 +149,22 @@ namespace hy
 
 		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
-			if (ForestBossHP == 0)
-			{
-				BubbleTime += Time::DeltaTime();
+			IceBoss :: IceBossHP -= 10;
 
-				if (BubbleTime < 3.f)
-				{
-					at->PlayAnimation(L"IceBoss_Bubble", false);
-				}
-				else if (BubbleTime > 3.f)
+			if (IceBoss::IceBossHP == 0)
+			{
+				at->PlayAnimation(L"IceBoss_Bubble", false);
+
+				if(at->IsActiveAnimationComplete())
 				{
 					at->PlayAnimation(L"IceBoss_Die", false);
-
 					mState = eState::Dead;
-					BubbleTime = 0.f;
 				}
 			}
 
-			else if (ForestBossHP != 0)
+			else if (IceBoss::IceBossHP != 0)
 			{
-				at->PlayAnimation(L"ForestBoss_Hit", false);
+				at->PlayAnimation(L"IceBoss_Hit", false);
 				mState = eState::Hit;
 			}
 		}
@@ -364,7 +362,6 @@ namespace hy
 
 	void IceBoss::Hit()
 	{
-		ForestBossHP -= 10;
 		Animator* animator = GetComponent<Animator>();
 
 		if (animator->IsActiveAnimationComplete())
@@ -434,15 +431,6 @@ namespace hy
 			}
 
 		}
-
-		//// 해당 타일 인덱스를 구함
-		//X_ = (BazziLocationtr.x - 20.f) / (TILE_WIDTH);
-		//Y_ = (BazziLocationtr.y - 40.f) / (TILE_HEIGHT);
-
-		//// 해당 타일 인덱스에 타일 사이즈를 곱하여 해당 타일의 LeftTop으로 이동
-		//Bombpos.x = (X_ * TILE_WIDTH) + (TILE_WIDTH / 2) + 20.f;
-		//Bombpos.y = (Y_ * TILE_HEIGHT) + (TILE_HEIGHT / 2) + 40.f;
-
 
 		Attacktime = 0.f;
 

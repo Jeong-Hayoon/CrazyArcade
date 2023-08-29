@@ -56,11 +56,8 @@ namespace hy
 		float mDeathTime;
 		static float BossTime;			// 몇초마다 이동할건지
 		static float BubbleTime;		// 물풍선에 갇혀있는 시간
-		static UINT ForestBossHP;
-
+		static UINT IceBossHP;
 		static float Attacktime;
-
-
 		eDirection mDirection;
 
 

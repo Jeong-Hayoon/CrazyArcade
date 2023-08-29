@@ -24,7 +24,7 @@ namespace hy
 	// static 변수는 전역에서 초기화해주기
 	float PirateBoss::BossTime = 0.f;
 	float PirateBoss::BubbleTime = 0.f;
-	UINT PirateBoss::ForestBossHP = 100;
+	UINT PirateBoss::PirateBossHP = 30;
 	float PirateBoss::Attacktime = 0.f;
 
 	PirateBoss::PirateBoss()
@@ -44,7 +44,7 @@ namespace hy
 		mt->CreateAnimationFolder(L"PirateBoss_Left", L"..\\Resources\\Image\\Monster\\PirateBoss\\Left", Vector2::Zero, 0.15f);
 		mt->CreateAnimationFolder(L"PirateBoss_Die", L"..\\Resources\\Image\\Monster\\PirateBoss\\Die", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"PirateBoss_Hit", L"..\\Resources\\Image\\Monster\\PirateBoss\\Hit", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"PirateBoss_Bubble", L"..\\Resources\\Image\\Monster\\PirateBoss\\Bubble", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"PirateBoss_Bubble", L"..\\Resources\\Image\\Monster\\PirateBoss\\Bubble", Vector2::Zero, 3.f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"PirateBoss_Right", true);
@@ -112,6 +112,10 @@ namespace hy
 			Dead();
 			break;
 
+		case hy::PirateBoss::eState::Hit:
+			Hit();
+			break;
+
 		case hy::PirateBoss::eState::Attack:
 			Attack();
 			break;
@@ -145,7 +149,9 @@ namespace hy
 
 		if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
-			if (ForestBossHP == 0)
+			PirateBoss :: PirateBossHP -= 10;
+
+			if (PirateBoss::PirateBossHP == 0)
 			{
 				BubbleTime += Time::DeltaTime();
 
@@ -162,7 +168,7 @@ namespace hy
 				}
 			}
 
-			else if (ForestBossHP != 0)
+			else if (PirateBoss::PirateBossHP != 0)
 			{
 				at->PlayAnimation(L"PirateBoss_Hit", false);
 				mState = eState::Hit;
@@ -362,7 +368,6 @@ namespace hy
 
 	void PirateBoss::Hit()
 	{
-		ForestBossHP -= 10;
 		Animator* animator = GetComponent<Animator>();
 
 		if (animator->IsActiveAnimationComplete())

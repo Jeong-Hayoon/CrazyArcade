@@ -78,7 +78,7 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 
-		int ItemSelect = rand() % 6;
+		int ItemSelect = rand() % 8;
 
 		if (ItemSelect == 0)
 		{
@@ -149,15 +149,20 @@ namespace hy
 			VelocitySkatecol->SetSize(Vector2(10.0f, 30.0f));
 			VelocitySkatecol->SetOffset(Vector2(0.0f, 0.0f));
 		}
+		
+		else if(ItemSelect == 6)
+		{
+			// Balloon 아이템 setting
+			Balloon* Balloon_1 = object::Instantiate<Balloon>(eLayerType::Item, tr->GetPosition() + Vector2(0.0f, -2.0f));
+
+			// Balloon 아이템 충돌 구현
+			Collider* Ballooncol = Balloon_1->AddComponent<Collider>();
+			// Balloon 아이템 충돌 사각형 사이즈 수정
+			Ballooncol->SetSize(Vector2(10.0f, 30.0f));
+
+		}
 
 		Destroy(this);
 	}
 
 }
-
-//Balloon,
-//Devil,
-//Needle,
-//Potion,
-//PotionMax,
-//VelocitySkate,

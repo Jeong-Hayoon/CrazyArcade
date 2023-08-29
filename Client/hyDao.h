@@ -16,7 +16,6 @@ namespace hy
 
 		enum class eState
 		{
-			Make,
 			Idle,
 			Move,
 			MoveStop,
@@ -48,7 +47,6 @@ namespace hy
 
 		eDirection GetDirection() { return mDirection; }
 
-		void Make();
 		void Idle();
 		void Move();
 		void MoveStop();
