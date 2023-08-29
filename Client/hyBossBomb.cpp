@@ -27,6 +27,8 @@ namespace hy
 		Col->SetSize(Vector2(40.0f, 40.0f));
 
 		CollisionManager::CollisionLayerCheck(eLayerType::BossBombflow, eLayerType::Tile, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::BossBombflow, eLayerType::Item, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::BossBombflow, eLayerType::UseItem, true);
 
 		Texture* Bossbomb_ = Resources::Load<Texture>(L"bossbomb"
 			, L"..\\Resources\\Image\\Bomb\\unit_rectbomb.png");

@@ -80,6 +80,10 @@ namespace hy
 		{
 			Destroy(this);
 		}
+		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow)
+		{
+			Destroy(this);
+		}
 	}
 
 	void Devil::OnCollisionStay(Collider* other)

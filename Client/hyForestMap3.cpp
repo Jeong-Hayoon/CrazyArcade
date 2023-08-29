@@ -217,7 +217,8 @@ namespace hy
 
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 560 && temp.y <= 590 && temp.x >= 645 && temp.x <= 785)
 		{
-			Resources::Find<Sound>(L"Play")->Stop(true);
+			Resources::Find<Sound>(L"BossStage")->Stop(true);
+			SceneManager::LoadScene(L"LobbyScene");
 		}
 
 		if (Input::GetKeyDown(eKeyCode::N))
