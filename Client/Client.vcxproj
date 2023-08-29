@@ -145,6 +145,7 @@
     <ClInclude Include="hyCollider.h" />
     <ClInclude Include="hyCollisionManager.h" />
     <ClInclude Include="hyDao.h" />
+    <ClInclude Include="hyDaoBomb.h" />
     <ClInclude Include="hyDevil.h" />
     <ClInclude Include="hyDot.h" />
     <ClInclude Include="hyFloor.h" />
@@ -224,6 +225,7 @@
     <ClCompile Include="hyCollider.cpp" />
     <ClCompile Include="hyCollisionManager.cpp" />
     <ClCompile Include="hyDao.cpp" />
+    <ClCompile Include="hyDaoBomb.cpp" />
     <ClCompile Include="hyDevil.cpp" />
     <ClCompile Include="hyDot.cpp" />
     <ClCompile Include="hyFloor.cpp" />

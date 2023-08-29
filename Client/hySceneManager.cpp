@@ -53,7 +53,7 @@ namespace hy
 		CreateScene<ToolScene>(L"ToolScene");
 
 
-		LoadScene(L"PirateMap1");
+		LoadScene(L"LobbyScene");
 	}
 
 	void SceneManager::Update()

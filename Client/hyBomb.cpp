@@ -134,8 +134,6 @@ namespace hy
 				PirateMap2* pirateScene2 = dynamic_cast<PirateMap2*>(scene);
 				PirateMap3* pirateScene3 = dynamic_cast<PirateMap3*>(scene);
 
-
-
 				Tile* tile = nullptr;
 
 				if (forestScene1 != nullptr)
@@ -751,6 +749,7 @@ namespace hy
 	{
 		Destroy(this);
 		Bazzi::BombLimitUp();
+
 	}
 
 

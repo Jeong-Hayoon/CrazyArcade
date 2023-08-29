@@ -2,6 +2,7 @@
 #include "hyScene.h"
 #include "hyTile.h"
 #include "hyBazzi.h"
+#include "hyDao.h"
 
 namespace hy
 {
@@ -39,6 +40,7 @@ namespace hy
 		std::vector<Tile*> mTiles;
 		// static bool FunCheck;
 		Bazzi* ForestBazzi;
+		Dao* ForestDao;
 	};
 }
 

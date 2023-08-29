@@ -15,7 +15,7 @@ namespace hy
 		Z, X, C, V, B, N, M,
 		Up, Down, Left, Right,
 		MouseLeft, MouseRight, MouseWheel,
-		Space,Ctrl,
+		Space,Ctrl, Shift,
 		End,					// End는 배열의 크기를 다룰때 26을 편하게 사용할 수 있도록
 	};
 	enum class eKeyState		// 키의 상태

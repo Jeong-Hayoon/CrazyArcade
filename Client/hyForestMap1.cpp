@@ -28,6 +28,7 @@
 #include "hyTime.h"
 #include "hyWin_Lose.h"
 #include "hyGameStart.h"
+#include "hyDao.h"
 
 
 
@@ -117,6 +118,12 @@ namespace hy
 		ForestBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
 		Transform* forestbazzitr = ForestBazzi->GetComponent<Transform>();
 		forestbazzitr->SetPosition(Vector2(380.0f, 250.0f));
+
+		// 다오 상하좌우 애니메이션
+		ForestDao = object::Instantiate<Dao>(eLayerType::Player);
+		Transform* forestdaotr = ForestDao->GetComponent<Transform>();
+		forestdaotr->SetPosition(Vector2(480.0f, 250.0f));
+
 
 		// 몬스터 수 세팅
 		SceneManager::SetMonsterQuantity(4);

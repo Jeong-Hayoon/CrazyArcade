@@ -452,6 +452,9 @@
     <ClInclude Include="hyCharactorSelect.h">
       <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
     </ClInclude>
+    <ClInclude Include="hyDaoBomb.h">
+      <Filter>Contents\GameObject\Effect\Bomb</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -689,6 +692,9 @@
     </ClCompile>
     <ClCompile Include="hyCharactorSelect.cpp">
       <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="hyDaoBomb.cpp">
+      <Filter>Contents\GameObject\Effect\Bomb</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
