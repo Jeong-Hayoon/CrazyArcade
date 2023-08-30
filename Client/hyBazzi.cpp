@@ -20,6 +20,10 @@
 #include "hySound.h"
 #include "hyCollisionManager.h"
 #include "hyWin_Lose.h"
+#include "hyBalloon.h"
+#include "hyPotion.h"
+#include "hyVelocitySkate.h"
+#include "hyNeedle.h"
 
 
 
@@ -177,6 +181,44 @@ namespace hy
 			break;
 		default:
 			break;
+		}
+
+		if (Input::GetKeyDown(eKeyCode::C))
+		{
+			// Balloon 아이템 setting
+			Balloon* Balloon_ = object::Instantiate<Balloon>(eLayerType::Item, this->GetComponent<Transform>()->GetPosition() + Vector2(-45.0f, 0.0f));
+			// Balloon 아이템 충돌 구현
+			Collider* Ballooncol = Balloon_->AddComponent<Collider>();
+			// Balloon 아이템 충돌 사각형 사이즈 수정
+			Ballooncol->SetSize(Vector2(10.0f, 30.0f));
+
+			// Potion 아이템 setting
+			Potion* Potion_ = object::Instantiate<Potion>(eLayerType::Item, this->GetComponent<Transform>()->GetPosition() + Vector2(45.0f, 0.0f));
+
+			// Potion 아이템 충돌 구현
+			Collider* Potioncol = Potion_->AddComponent<Collider>();
+			// Potion 아이템 충돌 사각형 사이즈 수정
+			Potioncol->SetSize(Vector2(10.0f, 30.0f));
+			Potioncol->SetOffset(Vector2(0.0f, 0.0f));
+
+			// VelocitySkate 아이템 setting
+			VelocitySkate* VelocitySkate_ = object::Instantiate<VelocitySkate>(eLayerType::Item, this->GetComponent<Transform>()->GetPosition() + Vector2(0.0f, 50.0f));
+
+			// VelocitySkate 아이템 충돌 구현
+			Collider* VelocitySkatecol = VelocitySkate_->AddComponent<Collider>();
+			// VelocitySkate 아이템 충돌 사각형 사이즈 수정
+			VelocitySkatecol->SetSize(Vector2(10.0f, 30.0f));
+			VelocitySkatecol->SetOffset(Vector2(0.0f, 0.0f));
+
+			// Needle 아이템 setting
+			Needle* Needle_ = object::Instantiate<Needle>(eLayerType::UseItem, this->GetComponent<Transform>()->GetPosition() + Vector2(0.0f, -50.0f));
+
+			// Needle 아이템 충돌 구현
+			Collider* Needlecol = Needle_->AddComponent<Collider>();
+			// Needle 아이템 충돌 사각형 사이즈 수정
+			Needlecol->SetSize(Vector2(10.0f, 30.0f));
+			Needlecol->SetOffset(Vector2(0.0f, 0.0f));
+
 		}
 
 		// 물풍선 객체 생성 및 위치 조정

@@ -53,7 +53,7 @@ namespace hy
 		CreateScene<ToolScene>(L"ToolScene");
 
 
-		LoadScene(L"ForestMap2");
+		LoadScene(L"TitleScene");
 	}
 
 	void SceneManager::Update()
