@@ -112,6 +112,9 @@ namespace hy
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 115 && temp.y <= 185 && temp.x >= 275 && temp.x <= 325)
 		{
 			SceneManager::SetSelectSoloPlayer(true);
+			SceneManager::SetSelectMultiPlayer(false);
+
+
 			Choicefinish = true;
 		}
 
@@ -119,6 +122,9 @@ namespace hy
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 110 && temp.y <= 185 && temp.x >= 475 && temp.x <= 530)
 		{
 			SceneManager::SetSelectMultiPlayer(true);
+			SceneManager::SetSelectSoloPlayer(false);
+
+
 			Choicefinish = true;
 		}
 

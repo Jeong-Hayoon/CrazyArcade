@@ -26,6 +26,7 @@
 #include "hyDot.h"
 #include "hyWin_Lose.h"
 #include "hyGameStart.h"
+#include "hyLobbyScene.h"
 
 
 
@@ -131,6 +132,40 @@ namespace hy
 
 		GameStart* gs1 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(185.0f, 60.0f));
 		GameStart* gs2 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(450.0f, 640.0f));
+
+		// 배찌 상하좌우 애니메이션
+		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true && Initflag == false)
+		{
+			PirateBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
+			Transform* forestbazzitr = PirateBazzi->GetComponent<Transform>();
+			forestbazzitr->SetPosition(Vector2(380.0f, 250.0f));
+			Initflag = true;
+
+		}
+
+		// 다오 상하좌우 애니메이션
+		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetDaoClick() == true && Initflag == false)
+		{
+			PirateDao = object::Instantiate<Dao>(eLayerType::Player);
+			Transform* forestdaotr = PirateDao->GetComponent<Transform>();
+			forestdaotr->SetPosition(Vector2(380.0f, 250.0f));
+			Initflag = true;
+
+		}
+
+		// 멀티 플레이어 세팅
+		if (SceneManager::GetSelectMultiPlayer() == 1 && Initflag == false)
+		{
+			PirateBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
+			Transform* forestbazzitr = PirateBazzi->GetComponent<Transform>();
+			forestbazzitr->SetPosition(Vector2(380.0f, 250.0f));
+
+			PirateDao = object::Instantiate<Dao>(eLayerType::Player);
+			Transform* forestdaotr = PirateDao->GetComponent<Transform>();
+			forestdaotr->SetPosition(Vector2(480.0f, 250.0f));
+
+			Initflag = true;
+		}
 
 
 	}
@@ -240,12 +275,15 @@ namespace hy
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && temp.y >= 560 && temp.y <= 590 && temp.x >= 645 && temp.x <= 785)
 		{
 			Resources::Find<Sound>(L"Play")->Stop(true);
+			Initflag = false;
 
 			SceneManager::LoadScene(L"LobbyScene");
 		}
 
 		if (Input::GetKeyDown(eKeyCode::N))
 		{
+			Initflag = false;
+
 			SceneManager::LoadScene(L"PirateMap3");
 		}
 

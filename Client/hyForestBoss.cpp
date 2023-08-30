@@ -78,9 +78,9 @@ namespace hy
 		{
 			pos.y = 50;
 		}
-		else if (pos.y >= 530)
+		else if (pos.y >= 500)
 		{
-			pos.y = 530;
+			pos.y = 500;
 		}
 
 		tr->SetPosition(pos);
@@ -152,9 +152,8 @@ namespace hy
 		{
 			ForestBoss::ForestBossHP -= 10;
 
-			if(ForestBoss::ForestBossHP == 0)
+			if(ForestBoss::ForestBossHP <= 0)
 			{
-				// 애니메이션 재생이 안됨
 				at->PlayAnimation(L"ForestBoss_Bubble", false);
 				
 				if(at->IsActiveAnimationComplete())

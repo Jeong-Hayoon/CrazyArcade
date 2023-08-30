@@ -41,6 +41,7 @@ namespace hy
 		// static bool FunCheck;
 		Bazzi* ForestBazzi;
 		Dao* ForestDao;
+		bool Initflag;
 	};
 }
 

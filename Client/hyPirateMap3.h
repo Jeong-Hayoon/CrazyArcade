@@ -2,6 +2,8 @@
 #include "hyScene.h"
 #include "hyTile.h"
 #include "hyBazzi.h"
+#include "hyDao.h"
+
 
 
 namespace hy
@@ -37,6 +39,8 @@ namespace hy
 	private:
 		std::vector<Tile*> mTiles;
 		Bazzi* PirateBazzi;
+		Dao* PirateDao;
+		bool Initflag;
 
 
 	};
