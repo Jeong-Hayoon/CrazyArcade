@@ -6,6 +6,7 @@
 #include "hyBazzi.h"
 #include "hyObject.h"
 #include "hySound.h"
+#include "hyTime.h"
 
 
 // ¹Ù´Ã
@@ -40,6 +41,9 @@ namespace hy
 	void Needle::Update()
 	{
 		Item::Update();
+
+		Bombtime += Time::DeltaTime();
+
 	}
 	void Needle::Render(HDC hdc)
 	{
@@ -63,7 +67,7 @@ namespace hy
 		{
 			Destroy(this);
 		}
-		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow)
+		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow && Bombtime > 2.f)
 		{
 			Destroy(this);
 		}

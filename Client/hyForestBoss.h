@@ -14,6 +14,7 @@ namespace hy
 			Left,
 			Right,
 			Hit,
+			Trap,
 			Attack,
 			Dead,
 			End,
@@ -44,6 +45,7 @@ namespace hy
 		void Down();
 		void Left();
 		void Right();
+		void Trap();
 
 		void Hit();
 
@@ -59,6 +61,8 @@ namespace hy
 		static int ForestBossHP;
 		static float Attacktime;
 		eDirection mDirection;
+		bool IsTrapped;
+		bool live;
 
 
 	};

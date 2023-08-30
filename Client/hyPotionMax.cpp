@@ -5,6 +5,7 @@
 #include "hySound.h"
 #include "hyCollider.h"
 #include "hyBazzi.h"
+#include "hyTime.h"
 
 namespace hy
 {
@@ -31,6 +32,9 @@ namespace hy
 	void PotionMax::Update()
 	{
 		Item::Update();
+
+		Bombtime += Time::DeltaTime();
+
 	}
 	void PotionMax::Render(HDC hdc)
 	{
@@ -53,7 +57,7 @@ namespace hy
 		{
 			Destroy(this);
 		}
-		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow)
+		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow && Bombtime > 2.f)
 		{
 			Destroy(this);
 		}

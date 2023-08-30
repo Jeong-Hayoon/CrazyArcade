@@ -5,6 +5,7 @@
 #include "hySound.h"
 #include "hyCollider.h"
 #include "hyBazzi.h"
+#include "hyTime.h"
 
 
 namespace hy
@@ -32,6 +33,9 @@ namespace hy
 	void VelocitySkate::Update()
 	{
 		Item::Update();
+
+		Bombtime += Time::DeltaTime();
+
 	}
 	void VelocitySkate::Render(HDC hdc)
 	{
@@ -55,7 +59,7 @@ namespace hy
 		{
 			Destroy(this);
 		}
-		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow)
+		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow && Bombtime > 2.f)
 		{
 			Destroy(this);
 		}

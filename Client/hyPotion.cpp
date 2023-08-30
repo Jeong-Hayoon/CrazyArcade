@@ -5,6 +5,7 @@
 #include "hyBazzi.h"
 #include "hyCollider.h"
 #include "hySound.h"
+#include "hyTime.h"
 
 
 
@@ -40,6 +41,9 @@ namespace hy
 	void Potion::Update()
 	{
 		Item::Update();
+
+		Bombtime += Time::DeltaTime();
+
 	}
 	void Potion::Render(HDC hdc)
 	{
@@ -63,7 +67,7 @@ namespace hy
 		{
 			Destroy(this);
 		}
-		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow)
+		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow && Bombtime > 2.f)
 		{
 			Destroy(this);
 		}

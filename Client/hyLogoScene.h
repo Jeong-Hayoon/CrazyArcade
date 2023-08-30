@@ -22,11 +22,6 @@ namespace hy
 		static Sound* sound;
 		float mSceneTime;
 		Logo* mLogo;
-
-
-
-
-
 	};
 }
 

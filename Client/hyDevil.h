@@ -33,6 +33,8 @@ namespace hy
 
 	private:
 		eState mState;
+		float Bombtime;
+
 	};
 }
 

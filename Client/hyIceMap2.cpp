@@ -135,7 +135,7 @@ namespace hy
 		{
 			IceBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
 			Transform* forestbazzitr = IceBazzi->GetComponent<Transform>();
-			forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
+			forestbazzitr->SetPosition(Vector2(350.0f, 200.0f));
 
 			Initflag = true;
 
@@ -146,7 +146,7 @@ namespace hy
 		{
 			IceDao = object::Instantiate<Dao>(eLayerType::Player);
 			Transform* forestdaotr = IceDao->GetComponent<Transform>();
-			forestdaotr->SetPosition(Vector2(60.0f, 70.0f));
+			forestdaotr->SetPosition(Vector2(350.0f, 200.0f));
 			Initflag = true;
 
 		}
@@ -224,10 +224,6 @@ namespace hy
 		bzprofilesr->SetImage(BZProfile);
 		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
 
-		// 배찌 상하좌우 애니메이션
-		IceBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
-		Transform* forestbazzitr = IceBazzi->GetComponent<Transform>();
-		forestbazzitr->SetPosition(Vector2(350.0f, 200.0f));
 
 		// 아이스 몬스터
 		IceMonster* IceMonster1 = object::Instantiate<IceMonster>(eLayerType::Monster);

@@ -14,6 +14,7 @@ namespace hy
 			Left,
 			Right,
 			Hit,
+			Trap,
 			Attack,
 			Dead,
 			End,
@@ -45,6 +46,8 @@ namespace hy
 		void Left();
 		void Right();
 
+		void Trap();
+
 		void Hit();
 
 		void Attack();
@@ -59,7 +62,8 @@ namespace hy
 		static UINT IceBossHP;
 		static float Attacktime;
 		eDirection mDirection;
-
+		bool IsTrapped;
+		bool live;
 
 	};
 }

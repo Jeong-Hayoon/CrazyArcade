@@ -127,7 +127,7 @@ namespace hy
 		}
 
 		Attacktime += Time::DeltaTime();
-		if (Attacktime > 5.f)
+		if (Attacktime > 5.f && live == true)
 		{
 			at->PlayAnimation(L"IceBoss_Attack", false);
 			mState = eState::Attack;
@@ -140,6 +140,21 @@ namespace hy
 		GameObject::Render(hdc);
 	}
 
+	void IceBoss::Trap()
+	{
+		Animator* at = GetComponent<Animator>();
+
+		static float Traptime = 0.f;
+		Traptime += Time::DeltaTime();
+
+		if (Traptime > 3.f)
+		{
+			at->PlayAnimation(L"IceBoss_Die", false);
+			mState = eState::Dead;
+
+			Traptime = 0.f;
+		}
+	}
 
 	// 충돌했을 때 처리 코드 여기에 작성
 	// 물풍선과 충돌했을 때 Dead
@@ -151,18 +166,16 @@ namespace hy
 		{
 			IceBoss :: IceBossHP -= 10;
 
-			if (IceBoss::IceBossHP == 0)
+			if (IceBoss::IceBossHP <= 0 && IsTrapped == false)
 			{
-				at->PlayAnimation(L"IceBoss_Bubble", false);
+				live = false;
 
-				if(at->IsActiveAnimationComplete())
-				{
-					at->PlayAnimation(L"IceBoss_Die", false);
-					mState = eState::Dead;
-				}
+				at->PlayAnimation(L"IceBoss_Bubble", false);
+				mState = eState::Trap;
+
 			}
 
-			else if (IceBoss::IceBossHP != 0)
+			else if (IceBoss::IceBossHP > 0)
 			{
 				at->PlayAnimation(L"IceBoss_Hit", false);
 				mState = eState::Hit;

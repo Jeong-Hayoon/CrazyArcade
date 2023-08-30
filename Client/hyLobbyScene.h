@@ -29,6 +29,7 @@ namespace hy
 		StagePick* MapSelect;
 		static bool BazziClick;
 		static bool DaoClick;
+		bool AlreadySeat;			// 이미 좌측에 클릭이 되어 있는지
 
 	};
 }

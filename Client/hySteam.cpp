@@ -78,7 +78,7 @@ namespace hy
 	{
 		Transform* tr = GetComponent<Transform>();
 
-		int ItemSelect = rand() % 8;
+		int ItemSelect = rand() % 13;
 
 		if (ItemSelect == 0)
 		{

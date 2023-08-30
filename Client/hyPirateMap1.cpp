@@ -139,7 +139,8 @@ namespace hy
 		{
 			PirateBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
 			Transform* forestbazzitr = PirateBazzi->GetComponent<Transform>();
-			forestbazzitr->SetPosition(Vector2(380.0f, 250.0f));
+			forestbazzitr->SetPosition(Vector2(350.0f, 320.0f));
+
 			Initflag = true;
 
 		}
@@ -149,7 +150,7 @@ namespace hy
 		{
 			PirateDao = object::Instantiate<Dao>(eLayerType::Player);
 			Transform* forestdaotr = PirateDao->GetComponent<Transform>();
-			forestdaotr->SetPosition(Vector2(380.0f, 250.0f));
+			forestdaotr->SetPosition(Vector2(350.0f, 320.0f));
 			Initflag = true;
 
 		}
@@ -226,11 +227,6 @@ namespace hy
 		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
 		bzprofilesr->SetImage(BZProfile);
 		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
-
-		// 배찌 상하좌우 애니메이션
-		PirateBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
-		Transform* forestbazzitr = PirateBazzi->GetComponent<Transform>();
-		forestbazzitr->SetPosition(Vector2(350.0f, 320.0f));
 
 		// 피라테 몬스터
 		PirateMonster* PirateMonster1 = object::Instantiate<PirateMonster>(eLayerType::Monster);

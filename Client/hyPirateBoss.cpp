@@ -128,7 +128,7 @@ namespace hy
 		}
 
 		Attacktime += Time::DeltaTime();
-		if (Attacktime > 5.f)
+		if (Attacktime > 5.f && live == true)
 		{
 			mState = eState::Attack;
 		}
@@ -140,6 +140,21 @@ namespace hy
 		GameObject::Render(hdc);
 	}
 
+	void PirateBoss::Trap()
+	{
+		Animator* at = GetComponent<Animator>();
+
+		static float Traptime = 0.f;
+		Traptime += Time::DeltaTime();
+
+		if (Traptime > 3.f)
+		{
+			at->PlayAnimation(L"PirateBoss_Die", false);
+			mState = eState::Dead;
+
+			Traptime = 0.f;
+		}
+	}
 
 	// 충돌했을 때 처리 코드 여기에 작성
 	// 물풍선과 충돌했을 때 Dead
@@ -151,24 +166,15 @@ namespace hy
 		{
 			PirateBoss :: PirateBossHP -= 10;
 
-			if (PirateBoss::PirateBossHP == 0)
+			if (PirateBoss::PirateBossHP <= 0 && IsTrapped == false)
 			{
-				BubbleTime += Time::DeltaTime();
+				live = false;
 
-				if (BubbleTime < 3.f)
-				{
-					at->PlayAnimation(L"PirateBoss_Bubble", false);
-				}
-				else if (BubbleTime > 3.f)
-				{
-					at->PlayAnimation(L"PirateBoss_Die", false);
-
-					mState = eState::Dead;
-					BubbleTime = 0.f;
-				}
+				at->PlayAnimation(L"PirateBoss_Bubble", false);
+				mState = eState::Trap;
 			}
 
-			else if (PirateBoss::PirateBossHP != 0)
+			else if (PirateBoss::PirateBossHP > 0)
 			{
 				at->PlayAnimation(L"PirateBoss_Hit", false);
 				mState = eState::Hit;

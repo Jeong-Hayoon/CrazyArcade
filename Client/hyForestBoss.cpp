@@ -30,6 +30,8 @@ namespace hy
 	ForestBoss::ForestBoss()
 		: mDeathTime(1.0f)
 		, mState(eState::Right)
+		, IsTrapped(false)
+		, live(true)
 	{
 	}
 	ForestBoss::~ForestBoss()
@@ -45,13 +47,13 @@ namespace hy
 		mt->CreateAnimationFolder(L"ForestBoss_Die", L"..\\Resources\\Image\\Monster\\ForestBoss\\Die", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"ForestBoss_Attack", L"..\\Resources\\Image\\Monster\\ForestBoss\\Attack", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"ForestBoss_Hit", L"..\\Resources\\Image\\Monster\\ForestBoss\\Hit", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_Bubble", L"..\\Resources\\Image\\Monster\\ForestBoss\\Bubble", Vector2::Zero, 3.f);
+		mt->CreateAnimationFolder(L"ForestBoss_Bubble", L"..\\Resources\\Image\\Monster\\ForestBoss\\Bubble", Vector2::Zero, 0.1f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"ForestBoss_Right", true);
 
 		Collider* col = AddComponent<Collider>();
-		col->SetSize(Vector2(100.0f, 70.0f));
+		col->SetSize(Vector2(100.0f, 75.0f));
 		CollisionManager::CollisionLayerCheck(eLayerType::Boss, eLayerType::Bombflow, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::BossBombflow, true);
 
@@ -74,9 +76,9 @@ namespace hy
 		{
 			pos.x = 40;
 		}
-		else if (pos.y <= 50)
+		else if (pos.y <= 60)
 		{
-			pos.y = 50;
+			pos.y = 60;
 		}
 		else if (pos.y >= 500)
 		{
@@ -112,6 +114,10 @@ namespace hy
 			Dead();
 			break;
 
+		case hy::ForestBoss::eState::Trap:
+			Trap();
+			break;
+
 		case hy::ForestBoss::eState::Hit:
 			Hit();
 			break;
@@ -128,7 +134,8 @@ namespace hy
 		}
 
 		Attacktime += Time::DeltaTime();
-		if (Attacktime > 5.f)
+
+		if (Attacktime > 5.f && live == true)
 		{
 			at->PlayAnimation(L"ForestBoss_Attack", false);
 			mState = eState::Attack;
@@ -142,6 +149,18 @@ namespace hy
 	}
 
 
+	void ForestBoss::Trap()
+	{
+		Animator* at = GetComponent<Animator>();
+
+		if(at->IsActiveAnimationComplete())
+		{
+			at->PlayAnimation(L"ForestBoss_Die", false);
+			mState = eState::Dead;
+		}
+
+	}
+
 	// 충돌했을 때 처리 코드 여기에 작성
 	// 물풍선과 충돌했을 때 Dead
 	void ForestBoss::OnCollisionEnter(Collider* other)
@@ -152,19 +171,25 @@ namespace hy
 		{
 			ForestBoss::ForestBossHP -= 10;
 
-			if(ForestBoss::ForestBossHP <= 0)
+			if(ForestBoss::ForestBossHP <= 0 /*&& IsTrapped == false*/)
 			{
+				live = false;
+
 				at->PlayAnimation(L"ForestBoss_Bubble", false);
-				
-				if(at->IsActiveAnimationComplete())
+				mState = eState::Trap;
+
+				/*if(at->IsActiveAnimationComplete())
 				{
+					IsTrapped = true;
 					at->PlayAnimation(L"ForestBoss_Die", false);
 
 					mState = eState::Dead;
-				}
+				}*/
+
+
 			}
 
-			else if(ForestBoss::ForestBossHP != 0)
+			else if(ForestBoss::ForestBossHP > 0)
 			{
 				at->PlayAnimation(L"ForestBoss_Hit", false);
 				mState = eState::Hit;

@@ -7,6 +7,7 @@
 #include "hyGameObject.h"
 #include "hySound.h"
 #include "hyCollisionManager.h"
+#include "hyTime.h"
 
 
 // ¹°Ç³¼±
@@ -14,6 +15,7 @@ namespace hy
 {
 	Balloon::Balloon()
 		: mState(eState::Idle)
+		, Bombtime(0.f)
 	{
 		Animator* bt = AddComponent<Animator>();
 
@@ -49,6 +51,8 @@ namespace hy
 	void Balloon::Update()
 	{
 		Item::Update();
+
+		Bombtime += Time::DeltaTime();
 	}
 
 	void Balloon::Render(HDC hdc)
@@ -84,7 +88,7 @@ namespace hy
 		{
 			Destroy(this);
 		}
-		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow)
+		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow && Bombtime > 2.f)
 		{
 			Destroy(this);
 		}

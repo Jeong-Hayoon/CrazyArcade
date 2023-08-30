@@ -7,6 +7,7 @@
 #include "hyObject.h"
 #include "hyTime.h"
 #include "hySound.h"
+#include "hyTime.h"
 
 
 namespace hy
@@ -49,6 +50,9 @@ namespace hy
 	void Shield::Update()
 	{
 		Item::Update();
+
+		Bombtime += Time::DeltaTime();
+
 	} 
 	void Shield::Render(HDC hdc)
 	{
@@ -72,7 +76,7 @@ namespace hy
 		{
 			Destroy(this);
 		}
-		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow)
+		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow && Bombtime > 2.f)
 		{
 			Destroy(this);
 		}
