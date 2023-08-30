@@ -45,13 +45,13 @@ namespace hy
 		mt->CreateAnimationFolder(L"IceBoss_Die", L"..\\Resources\\Image\\Monster\\IceBoss\\Die", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"IceBoss_Attack", L"..\\Resources\\Image\\Monster\\IceBoss\\Attack", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"IceBoss_Hit", L"..\\Resources\\Image\\Monster\\IceBoss\\Hit", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"IceBoss_Bubble", L"..\\Resources\\Image\\Monster\\IceBoss\\Bubble", Vector2::Zero, 3.f);
+		mt->CreateAnimationFolder(L"IceBoss_Bubble", L"..\\Resources\\Image\\Monster\\IceBoss\\Bubble", Vector2::Zero, 0.2f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"IceBoss_Right", true);
 
 		Collider* col = AddComponent<Collider>();
-		col->SetSize(Vector2(100.0f, 100.0f));
+		col->SetSize(Vector2(100.0f, 75.0f));
 		CollisionManager::CollisionLayerCheck(eLayerType::Boss, eLayerType::Bombflow, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::BossBombflow, true);
 
@@ -73,13 +73,13 @@ namespace hy
 		{
 			pos.x = 40;
 		}
-		else if (pos.y <= 50)
+		else if (pos.y <= 60)
 		{
-			pos.y = 50;
+			pos.y = 60;
 		}
-		else if (pos.y >= 530)
+		else if (pos.y >= 500)
 		{
-			pos.y = 530;
+			pos.y = 500;
 		}
 
 		tr->SetPosition(pos);
@@ -109,6 +109,10 @@ namespace hy
 
 		case hy::IceBoss::eState::Dead:
 			Dead();
+			break;
+
+		case hy::IceBoss::eState::Trap:
+			Trap();
 			break;
 
 		case hy::IceBoss::eState::Attack:
@@ -144,16 +148,12 @@ namespace hy
 	{
 		Animator* at = GetComponent<Animator>();
 
-		static float Traptime = 0.f;
-		Traptime += Time::DeltaTime();
-
-		if (Traptime > 3.f)
+		if (at->IsActiveAnimationComplete())
 		{
 			at->PlayAnimation(L"IceBoss_Die", false);
 			mState = eState::Dead;
-
-			Traptime = 0.f;
 		}
+
 	}
 
 	// 충돌했을 때 처리 코드 여기에 작성
@@ -166,7 +166,7 @@ namespace hy
 		{
 			IceBoss :: IceBossHP -= 10;
 
-			if (IceBoss::IceBossHP <= 0 && IsTrapped == false)
+			if (IceBoss::IceBossHP <= 0 /*&& IsTrapped == false*/)
 			{
 				live = false;
 

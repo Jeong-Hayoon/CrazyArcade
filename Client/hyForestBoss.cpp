@@ -178,15 +178,6 @@ namespace hy
 				at->PlayAnimation(L"ForestBoss_Bubble", false);
 				mState = eState::Trap;
 
-				/*if(at->IsActiveAnimationComplete())
-				{
-					IsTrapped = true;
-					at->PlayAnimation(L"ForestBoss_Die", false);
-
-					mState = eState::Dead;
-				}*/
-
-
 			}
 
 			else if(ForestBoss::ForestBossHP > 0)

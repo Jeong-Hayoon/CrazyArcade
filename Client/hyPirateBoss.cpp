@@ -44,13 +44,13 @@ namespace hy
 		mt->CreateAnimationFolder(L"PirateBoss_Left", L"..\\Resources\\Image\\Monster\\PirateBoss\\Left", Vector2::Zero, 0.15f);
 		mt->CreateAnimationFolder(L"PirateBoss_Die", L"..\\Resources\\Image\\Monster\\PirateBoss\\Die", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"PirateBoss_Hit", L"..\\Resources\\Image\\Monster\\PirateBoss\\Hit", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"PirateBoss_Bubble", L"..\\Resources\\Image\\Monster\\PirateBoss\\Bubble", Vector2::Zero, 3.f);
+		mt->CreateAnimationFolder(L"PirateBoss_Bubble", L"..\\Resources\\Image\\Monster\\PirateBoss\\Bubble", Vector2::Zero, 0.2f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"PirateBoss_Right", true);
 
 		Collider* col = AddComponent<Collider>();
-		col->SetSize(Vector2(100.0f, 100.0f));
+		col->SetSize(Vector2(100.0f, 75.0f));
 		CollisionManager::CollisionLayerCheck(eLayerType::Boss, eLayerType::Bombflow, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::BossBombflow, true);
 
@@ -78,9 +78,9 @@ namespace hy
 		{
 			pos.y = 80;
 		}
-		else if (pos.y >= 520)
+		else if (pos.y >= 500)
 		{
-			pos.y = 520;
+			pos.y = 500;
 		}
 
 		tr->SetPosition(pos);
@@ -106,6 +106,10 @@ namespace hy
 
 		case hy::PirateBoss::eState::Right:
 			Right();
+			break;
+
+		case hy::PirateBoss::eState::Trap:
+			Trap();
 			break;
 
 		case hy::PirateBoss::eState::Dead:
@@ -144,15 +148,10 @@ namespace hy
 	{
 		Animator* at = GetComponent<Animator>();
 
-		static float Traptime = 0.f;
-		Traptime += Time::DeltaTime();
-
-		if (Traptime > 3.f)
+		if (at->IsActiveAnimationComplete())
 		{
 			at->PlayAnimation(L"PirateBoss_Die", false);
 			mState = eState::Dead;
-
-			Traptime = 0.f;
 		}
 	}
 
@@ -166,7 +165,7 @@ namespace hy
 		{
 			PirateBoss :: PirateBossHP -= 10;
 
-			if (PirateBoss::PirateBossHP <= 0 && IsTrapped == false)
+			if (PirateBoss::PirateBossHP <= 0 /*&& IsTrapped == false*/)
 			{
 				live = false;
 
