@@ -21,9 +21,12 @@ namespace hy
 		Texture* ShieldEffect_ = Resources::Load<Texture>(L"ShieldEffect"
 			, L"..\\Resources\\Image\\Items\\shieldeffect.bmp");
 
-		st->CreateAnimation(L"UseShieldEffect", ShieldEffect_, Vector2(0.0f, 0.0f), Vector2(88.0f, 101.0f), 4, Vector2(0.0f, 0.0f), 0.05f);
+		st->CreateAnimation(L"UseShieldEffect", ShieldEffect_, Vector2(0.0f, 0.0f), Vector2(88.0f, 101.0f), 4, Vector2(8.0f, 0.0f), 0.05f);
 		st->SetScale(Vector2(0.9f, 0.9f));
-		st->PlayAnimation(L"mShiledEffect", true);
+		st->PlayAnimation(L"UseShieldEffect", true);
+
+		tr = GetComponent<Transform>();
+
 
 	}
 	ShieldEffect::~ShieldEffect()
@@ -78,6 +81,30 @@ namespace hy
 		//{
 		//	Destroy(this);
 		//}
+
+		if (SceneManager::GetBazzi() != NULL)
+		{
+			Vector2 mPlayerPos = SceneManager::GetBazzi()->GetComponent<Transform>()->GetPosition();
+			mPlayerPos -= Vector2(5.0f, 0.0f);
+			tr->SetPosition(mPlayerPos);
+
+			if (SceneManager::GetBazzi()->GetShieldUse() == false)
+			{
+				Destroy(this);
+			}
+		}
+		/*else if (SceneManager::GetDao() != NULL)
+		{
+			Vector2 mPlayerPos = SceneManager::GetDao()->GetComponent<Transform>()->GetPosition();
+			mPlayerPos -= Vector2(5.0f, 0.0f);
+			tr->SetPosition(mPlayerPos);
+
+			if (SceneManager::GetDao()->GetShieldUse() == false)
+			{
+				Destroy(this);
+			}
+
+		}*/
 
 	}
 	void ShieldEffect::Render(HDC hdc)

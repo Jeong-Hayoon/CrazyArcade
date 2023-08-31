@@ -16,6 +16,7 @@
 #include "hyPotionMax.h"
 #include "hyPotion.h"
 #include "hyVelocitySkate.h"
+#include "hyShield.h"
 
 
 // 박스가 소멸될때 효과
@@ -159,6 +160,12 @@ namespace hy
 			Collider* Ballooncol = Balloon_1->AddComponent<Collider>();
 			// Balloon 아이템 충돌 사각형 사이즈 수정
 			Ballooncol->SetSize(Vector2(10.0f, 30.0f));
+
+		}
+
+		else if (ItemSelect == 6)
+		{
+			
 
 		}
 

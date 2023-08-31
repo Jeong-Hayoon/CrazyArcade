@@ -40,6 +40,7 @@ namespace hy
 	Bazzi::Bazzi()
 		: mState(eState::Make)
 		, mDirection(eDirection::Down)
+		, ShieldUse(false)
 	{
 	}
 	Bazzi::~Bazzi()
@@ -254,15 +255,9 @@ namespace hy
 		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Shield && UseItemNum == 1)
 		{
 			Trigger = true;
+			ShieldUse = true;
 
 			ShieldEffect* ShieldEffect_ = object::Instantiate<ShieldEffect>(eLayerType::Effect);
-			Transform* Bazzitr = this->GetComponent<Transform>();
-			Vector2 BazziLocation = Bazzitr->GetPosition();
-			Vector2 Shieldpos = BazziLocation;
-			//ShieldEffect_->Use();
-			//ShieldEffect_->SetPlayer(this);
-			ShieldEffect_->GetComponent<Transform>()->SetPosition(Shieldpos);
-
 		}
 
 		if (Trigger == true)
@@ -270,17 +265,15 @@ namespace hy
 			static float Shieldtime = 0.f;
 			Shieldtime += Time::DeltaTime();
 
-			if (Shieldtime < 3.0f)
+			if (Shieldtime >= 3.0f)
 			{
-
-			}
-			else
-			{
+				ShieldUse = false;
 				eItem::None;
 				UseItemNum = 0;
 				Shieldtime = 0.f;
 				Trigger = false;
 			}
+			
 		}
 
 	}

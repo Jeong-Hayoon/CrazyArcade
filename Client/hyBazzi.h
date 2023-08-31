@@ -71,6 +71,9 @@ namespace hy
 		static float GetMoveSpeed() { return MoveSpeed; }
 		static void SetMoveSpeed(float speed) { MoveSpeed = speed; }
 
+		bool GetShieldUse() { return ShieldUse; }
+
+
 		eItem GetActiveItem() { return ActiveItem; }
 		void SetActiveItem(eItem eatitem) { ActiveItem = eatitem; }
 
@@ -100,7 +103,8 @@ namespace hy
 		eState mState;
 		eDirection mDirection;
 		static UINT BombLimit;					// 물풍선 최대 사용 개수
-		static float MoveSpeed;						// 기본 속도
+		static float MoveSpeed;					// 기본 속도
+		bool ShieldUse;
 		static eItem ActiveItem;				// 장착되어 있는 아이템(0이면 실드, 1이면 바늘로 지정)
 		static UINT BombFlowCount;				// 물줄기, 물풍선 생성 시 증가
 

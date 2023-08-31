@@ -2,7 +2,7 @@
 #include "hyItem.h"
 #include "hyBazzi.h"
 #include "hyDao.h"
-
+#include "hyTransform.h"
 
 //실드 사용
 
@@ -39,6 +39,8 @@ namespace hy
 		eState mState;
 		Bazzi* mBazziOwner;
 		Dao* mDaoOwner;
+		Transform* tr;
+
 
 	};
 }

@@ -24,7 +24,7 @@ namespace hy
 	// static 변수는 전역에서 초기화해주기
 	float IceBoss::BossTime = 0.f;
 	float IceBoss::BubbleTime = 0.f;
-	UINT IceBoss::IceBossHP = 10;
+	int IceBoss::IceBossHP = 10;
 	float IceBoss::Attacktime = 0.f;
 
 	IceBoss::IceBoss()

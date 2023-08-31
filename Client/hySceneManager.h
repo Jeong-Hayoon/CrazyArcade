@@ -4,6 +4,7 @@
 namespace hy
 {
 	class Bazzi;
+	class Dao;
 
 	class SceneManager
 	{
@@ -31,6 +32,11 @@ namespace hy
 		static Scene* GetActiveScene() { return mActiveScene; }
 
 		static Bazzi* GetBazzi() { return mBazzi; }
+		static void SetBazzi(Bazzi* bazzi) { mBazzi = bazzi; }
+
+		static Dao* GetDao() { return mDao; }
+		static void SetDao(Dao* dao) { mDao = dao; }
+
 
 		// 몬스터 개수 관리
 		static void SetMonsterQuantity(UINT Quantity) { MonsterQuantity = Quantity; }
@@ -77,6 +83,7 @@ namespace hy
 		// value 실제 우리가 써야할 데이터	
 
 		static Bazzi* mBazzi;
+		static Dao* mDao;
 
 		static UINT MonsterQuantity;
 		static UINT BossQuantity;

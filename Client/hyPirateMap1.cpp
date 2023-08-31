@@ -140,6 +140,7 @@ namespace hy
 			PirateBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
 			Transform* forestbazzitr = PirateBazzi->GetComponent<Transform>();
 			forestbazzitr->SetPosition(Vector2(350.0f, 320.0f));
+			SceneManager::SetBazzi(PirateBazzi);
 
 			Initflag = true;
 
@@ -151,7 +152,10 @@ namespace hy
 			PirateDao = object::Instantiate<Dao>(eLayerType::Player);
 			Transform* forestdaotr = PirateDao->GetComponent<Transform>();
 			forestdaotr->SetPosition(Vector2(350.0f, 320.0f));
+
 			Initflag = true;
+			SceneManager::SetDao(PirateDao);
+
 
 		}
 

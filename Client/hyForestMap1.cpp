@@ -65,6 +65,8 @@ namespace hy
 			Transform* forestbazzitr = ForestBazzi->GetComponent<Transform>();
 			forestbazzitr->SetPosition(Vector2(380.0f, 250.0f));
 			Initflag = true;
+			SceneManager::SetBazzi(ForestBazzi);
+
 
 		}
 
@@ -75,6 +77,8 @@ namespace hy
 			Transform* forestdaotr = ForestDao->GetComponent<Transform>();
 			forestdaotr->SetPosition(Vector2(380.0f, 250.0f));
 			Initflag = true;
+			SceneManager::SetDao(ForestDao);
+
 
 		}
 
@@ -173,6 +177,14 @@ namespace hy
 		// 몬스터 물풍선 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Monster, eLayerType::Bomb, true);
 
+
+		// Shield 아이템 setting
+		Shield* Shield_1 = object::Instantiate<Shield>(eLayerType::UseItem, Vector2(410.0f, 250.0f));
+
+		// Shield 아이템 충돌 구현
+		Collider* Shiledcol = Shield_1->AddComponent<Collider>();
+		// Shield 아이템 충돌 사각형 사이즈 수정
+		Shiledcol->SetSize(Vector2(10.0f, 30.0f));
 		
 	}
 

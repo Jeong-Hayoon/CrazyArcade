@@ -18,12 +18,16 @@
 #include "hyPirateMap3.h"
 
 #include "hyBazzi.h"
+#include "hyDao.h"
+
 
 namespace hy
 {
 	std::map<std::wstring, Scene*> SceneManager::mScenes = {};
 	Scene* SceneManager::mActiveScene = nullptr;
 	Bazzi* SceneManager::mBazzi;
+	Dao* SceneManager::mDao;
+
 	UINT SceneManager::MonsterQuantity = 0;
 	UINT SceneManager::BossQuantity = 0;
 	UINT SceneManager :: ActiveMap = 0;

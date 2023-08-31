@@ -136,6 +136,7 @@ namespace hy
 			ForestBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
 			Transform* forestbazzitr = ForestBazzi->GetComponent<Transform>();
 			forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
+			SceneManager::SetBazzi(ForestBazzi);
 
 			Initflag = true;
 
@@ -148,6 +149,8 @@ namespace hy
 			Transform* forestdaotr = ForestDao->GetComponent<Transform>();
 			forestdaotr->SetPosition(Vector2(60.0f, 70.0f));
 			Initflag = true;
+			SceneManager::SetDao(ForestDao);
+
 
 		}
 
