@@ -28,6 +28,7 @@ namespace hy
 	Bazzi* SceneManager::mBazzi;
 	Dao* SceneManager::mDao;
 	int SceneManager:: PlayerNum = 0;
+	bool SceneManager::ColliderControl = false;
 
 	UINT SceneManager::MonsterQuantity = 0;
 	UINT SceneManager::BossQuantity = 0;

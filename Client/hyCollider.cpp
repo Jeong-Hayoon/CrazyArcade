@@ -2,6 +2,7 @@
 #include "hyTransform.h"
 #include "hyGameObject.h"
 #include "hyScene.h"
+#include "hySceneManager.h"
 
 //충돌을 하기 위한 하나의 도형
 namespace hy
@@ -44,7 +45,7 @@ namespace hy
 
 		// 카메라
 		//pos = Camera::CalculatePosition(pos);
-		
+
 		// 디폴트 브러쉬 - 스톡 오브젝트
 		HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, transparentBrush);
@@ -74,6 +75,7 @@ namespace hy
 
 		SelectObject(hdc, oldPen);
 		DeleteObject(pen);
+		
 	}
 
 	void Collider::OnCollisionEnter(Collider* other)

@@ -127,7 +127,7 @@ namespace hy
 	void PirateMap2::Enter()
 	{
 		Resources::Find<Sound>(L"Play")->Play(true);
-		SceneManager::SetMonsterQuantity(5);
+		SceneManager::SetMonsterQuantity(4);
 		SceneManager::SetActiveStage(7);
 
 		GameStart* gs1 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(185.0f, 60.0f));

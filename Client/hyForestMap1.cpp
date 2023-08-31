@@ -97,6 +97,19 @@ namespace hy
 			SceneManager::SetDao(ForestDao);
 			Initflag = true;
 		}
+
+		// 몬스터 수 세팅
+		SceneManager::SetMonsterQuantity(4);
+
+		// 포레스트 몬스터
+		ForestMonster* ForestMonster1 = object::Instantiate<ForestMonster>(eLayerType::Monster);
+		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 60.0f));
+		ForestMonster* ForestMonster2 = object::Instantiate<ForestMonster>(eLayerType::Monster);
+		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 450.0f));
+		ForestMonster* ForestMonster3 = object::Instantiate<ForestMonster>(eLayerType::Monster);
+		ForestMonster3->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 450.0f));
+		ForestMonster* ForestMonster4 = object::Instantiate<ForestMonster>(eLayerType::Monster);
+		ForestMonster4->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 60.0f));
 	}
 
 	void ForestMap1::Exit()
@@ -157,18 +170,7 @@ namespace hy
 		bzprofilesr->SetImage(BZProfile);
 		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
 
-		// 몬스터 수 세팅
-		SceneManager::SetMonsterQuantity(4);
-
-		// 포레스트 몬스터
-		ForestMonster* ForestMonster1 = object::Instantiate<ForestMonster>(eLayerType::Monster);
-		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 60.0f));
-		ForestMonster* ForestMonster2 = object::Instantiate<ForestMonster>(eLayerType::Monster);
-		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 450.0f));
-		ForestMonster* ForestMonster3 = object::Instantiate<ForestMonster>(eLayerType::Monster);
-		ForestMonster3->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 450.0f));
-		ForestMonster* ForestMonster4 = object::Instantiate<ForestMonster>(eLayerType::Monster);
-		ForestMonster4->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 60.0f));
+		
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
@@ -180,13 +182,13 @@ namespace hy
 		CollisionManager::CollisionLayerCheck(eLayerType::Monster, eLayerType::Bomb, true);
 
 
-		// Shield 아이템 setting
-		Shield* Shield_1 = object::Instantiate<Shield>(eLayerType::UseItem, Vector2(410.0f, 250.0f));
+		//// Shield 아이템 setting
+		//Shield* Shield_1 = object::Instantiate<Shield>(eLayerType::UseItem, Vector2(410.0f, 250.0f));
 
-		// Shield 아이템 충돌 구현
-		Collider* Shiledcol = Shield_1->AddComponent<Collider>();
-		// Shield 아이템 충돌 사각형 사이즈 수정
-		Shiledcol->SetSize(Vector2(10.0f, 30.0f));
+		//// Shield 아이템 충돌 구현
+		//Collider* Shiledcol = Shield_1->AddComponent<Collider>();
+		//// Shield 아이템 충돌 사각형 사이즈 수정
+		//Shiledcol->SetSize(Vector2(10.0f, 30.0f));
 		
 	}
 
@@ -231,6 +233,7 @@ namespace hy
 			Lose();
 			//SceneManager::SetPlayerDead(false);
 		}
+
 
 	}
 	void ForestMap1::Render(HDC hdc)

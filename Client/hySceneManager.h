@@ -77,6 +77,10 @@ namespace hy
 		static void SubPlayerNum() { PlayerNum--; }
 		static int GetPlayerNum() { return PlayerNum; }
 
+		static bool GetColliderControl() { return ColliderControl; }
+		static void SetColliderControl(bool on) { ColliderControl = on; }
+
+
 	private:
 		static std::map <std::wstring, Scene*> mScenes;
 		static Scene* mActiveScene;
@@ -96,6 +100,7 @@ namespace hy
 		static bool SelectMultiPlayer;
 		static int ActiveStage;
 		static int PlayerNum;			// 플레이어 인원 수 
+		static bool ColliderControl;
 	};
 }
 

@@ -184,7 +184,19 @@ namespace hy
 			break;
 		}
 
+
 		if (Input::GetKeyDown(eKeyCode::C))
+		{
+			SceneManager::SetColliderControl(true);
+		}
+		else if (Input::GetKeyDown(eKeyCode::V))
+		{
+			SceneManager::SetColliderControl(false);
+		}
+
+
+		// 치트키
+		if (Input::GetKeyDown(eKeyCode::Q))
 		{
 			// Balloon 아이템 setting
 			Balloon* Balloon_ = object::Instantiate<Balloon>(eLayerType::Item, this->GetComponent<Transform>()->GetPosition() + Vector2(-45.0f, 0.0f));

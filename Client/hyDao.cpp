@@ -132,7 +132,8 @@ namespace hy
 			break;
 		}
 
-		if (Input::GetKeyDown(eKeyCode::Q))
+		// 치트키
+		if (Input::GetKeyDown(eKeyCode::R))
 		{
 			// Balloon 아이템 setting
 			Balloon* Balloon_ = object::Instantiate<Balloon>(eLayerType::Item, this->GetComponent<Transform>()->GetPosition() + Vector2(-45.0f, 0.0f));
