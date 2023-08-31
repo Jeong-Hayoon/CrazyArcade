@@ -112,6 +112,8 @@ namespace hy
 		static bool Trigger;
 		static float SpeedTemp;
 
+		
+
 	};
 }
 

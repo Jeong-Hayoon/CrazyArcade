@@ -905,6 +905,14 @@ namespace hy
 
 		Animator* animator = GetComponent<Animator>();
 
+
+		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle)	// Live
+		{
+			animator->SetScale(Vector2(0.8f, 0.8f));
+			animator->PlayAnimation(L"BazziLive", false);
+			mState = eState::Live;
+		}
+
 		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle)	// Live
 		{
 			animator->SetScale(Vector2(0.8f, 0.8f));
