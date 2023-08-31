@@ -27,6 +27,7 @@ namespace hy
 	Scene* SceneManager::mActiveScene = nullptr;
 	Bazzi* SceneManager::mBazzi;
 	Dao* SceneManager::mDao;
+	int SceneManager:: PlayerNum = 0;
 
 	UINT SceneManager::MonsterQuantity = 0;
 	UINT SceneManager::BossQuantity = 0;

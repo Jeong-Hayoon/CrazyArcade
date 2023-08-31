@@ -164,7 +164,10 @@ namespace hy
 
 			IceDao = object::Instantiate<Dao>(eLayerType::Player);
 			Transform* forestdaotr = IceDao->GetComponent<Transform>();
-			forestdaotr->SetPosition(Vector2(480.0f, 250.0f));
+			forestdaotr->SetPosition(Vector2(280.0f, 250.0f));
+
+			SceneManager::SetBazzi(IceBazzi);
+			SceneManager::SetDao(IceDao);
 
 			Initflag = true;
 		}

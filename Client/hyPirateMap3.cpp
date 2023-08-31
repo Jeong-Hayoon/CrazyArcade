@@ -168,6 +168,9 @@ namespace hy
 			Transform* forestdaotr = PirateDao->GetComponent<Transform>();
 			forestdaotr->SetPosition(Vector2(480.0f, 250.0f));
 
+			SceneManager::SetBazzi(PirateBazzi);
+			SceneManager::SetDao(PirateDao);
+
 			Initflag = true;
 		}
 

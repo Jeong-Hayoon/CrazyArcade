@@ -73,6 +73,9 @@ namespace hy
 		static void SetActiveStage(int stage) { ActiveStage = stage; }
 		static int GetActiveStage() { return ActiveStage; }
 
+		static void SetPlayerNum(int num) { PlayerNum = num; }
+		static void SubPlayerNum() { PlayerNum--; }
+		static int GetPlayerNum() { return PlayerNum; }
 
 	private:
 		static std::map <std::wstring, Scene*> mScenes;
@@ -92,6 +95,7 @@ namespace hy
 		static bool SelectSoloPlayer;
 		static bool SelectMultiPlayer;
 		static int ActiveStage;
+		static int PlayerNum;			// 플레이어 인원 수 
 	};
 }
 

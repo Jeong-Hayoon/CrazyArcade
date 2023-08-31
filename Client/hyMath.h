@@ -108,7 +108,7 @@ namespace hy::math // 위치를 표시할 구조체
 			return *this;
 		}	
 
-		bool operator ==(const Vector2& other)
+		bool operator ==(const Vector2 other)
 		{
 			return (x == other.x && y == other.y);
 		}

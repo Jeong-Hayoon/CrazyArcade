@@ -166,7 +166,10 @@ namespace hy
 
 			PirateDao = object::Instantiate<Dao>(eLayerType::Player);
 			Transform* forestdaotr = PirateDao->GetComponent<Transform>();
-			forestdaotr->SetPosition(Vector2(480.0f, 250.0f));
+			forestdaotr->SetPosition(Vector2(280.0f, 250.0f));
+
+			SceneManager::SetBazzi(PirateBazzi);
+			SceneManager::SetDao(PirateDao);
 
 			Initflag = true;
 		}
@@ -237,14 +240,14 @@ namespace hy
 		PirateMonster1->GetComponent<Transform>()->SetPosition(Vector2(255.0f, 15.0f));
 		PirateMonster* PirateMonster2 = object::Instantiate<PirateMonster>(eLayerType::Monster);
 		PirateMonster2->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 300.0f));
-		PirateMonster* PirateMonster3 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster3->GetComponent<Transform>()->SetPosition(Vector2(280.0f, 300.0f));
+		/*PirateMonster* PirateMonster3 = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		PirateMonster3->GetComponent<Transform>()->SetPosition(Vector2(280.0f, 300.0f));*/
 		PirateMonster* PirateMonster4 = object::Instantiate<PirateMonster>(eLayerType::Monster);
 		PirateMonster4->GetComponent<Transform>()->SetPosition(Vector2(180.0f, 300.0f));
 
 		// 위치 변경 필요
 		PirateMonster* PirateMonster5 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster5->GetComponent<Transform>()->SetPosition(Vector2(255.f, 570.0f));
+		PirateMonster5->GetComponent<Transform>()->SetPosition(Vector2(600.f, 550.0f));
 
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)

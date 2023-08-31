@@ -20,6 +20,10 @@
 #include "hySound.h"
 #include "hyCollisionManager.h"
 #include "hyWin_Lose.h"
+#include "hyBalloon.h"
+#include "hyPotion.h"
+#include "hyVelocitySkate.h"
+#include "hyNeedle.h"
 
 namespace hy
 {
@@ -78,11 +82,11 @@ namespace hy
 		// Dead 상태가 두가지
 		// 물풍선에 일정 시간 갇히는 경우
 		// 몬스터와 충돌하는 경우
-		at->CreateAnimationFolder(L"DaoDead", L"..\\Resources\\Image\\Dao\\Dead", Vector2(0.f, 0.f), 0.4f);
+		at->CreateAnimationFolder(L"DaoDead", L"..\\Resources\\Image\\Dao\\Dead", Vector2(0.f, 0.f), 0.15f);
 		at->CreateAnimationFolder(L"DaoTrap", L"..\\Resources\\Image\\Dao\\Bubble", Vector2(0.f, 0.f), 0.4f);
 		at->CreateAnimationFolder(L"DaoLive", L"..\\Resources\\Image\\Dao\\Live", Vector2(0.f, 0.f), 0.4f);
 		at->CreateAnimationFolder(L"DaoVictory", L"..\\Resources\\Image\\Dao\\Victory", Vector2(0.f, 0.f), 0.4f);
-		at->CreateAnimationFolder(L"DaoBalloonDead", L"..\\Resources\\Image\\Dao\\Die", Vector2(0.f, 0.f), 0.4f);
+		at->CreateAnimationFolder(L"DaoBalloonDead", L"..\\Resources\\Image\\Dao\\Die", Vector2(0.f, 0.f), 0.15f);
 
 		at->PlayAnimation(L"DaoIdle", false);
 
@@ -126,6 +130,44 @@ namespace hy
 			break;
 		default:
 			break;
+		}
+
+		if (Input::GetKeyDown(eKeyCode::Q))
+		{
+			// Balloon 아이템 setting
+			Balloon* Balloon_ = object::Instantiate<Balloon>(eLayerType::Item, this->GetComponent<Transform>()->GetPosition() + Vector2(-45.0f, 0.0f));
+			// Balloon 아이템 충돌 구현
+			Collider* Ballooncol = Balloon_->AddComponent<Collider>();
+			// Balloon 아이템 충돌 사각형 사이즈 수정
+			Ballooncol->SetSize(Vector2(10.0f, 30.0f));
+
+			// Potion 아이템 setting
+			Potion* Potion_ = object::Instantiate<Potion>(eLayerType::Item, this->GetComponent<Transform>()->GetPosition() + Vector2(45.0f, 0.0f));
+
+			// Potion 아이템 충돌 구현
+			Collider* Potioncol = Potion_->AddComponent<Collider>();
+			// Potion 아이템 충돌 사각형 사이즈 수정
+			Potioncol->SetSize(Vector2(10.0f, 30.0f));
+			Potioncol->SetOffset(Vector2(0.0f, 0.0f));
+
+			// VelocitySkate 아이템 setting
+			VelocitySkate* VelocitySkate_ = object::Instantiate<VelocitySkate>(eLayerType::Item, this->GetComponent<Transform>()->GetPosition() + Vector2(0.0f, 50.0f));
+
+			// VelocitySkate 아이템 충돌 구현
+			Collider* VelocitySkatecol = VelocitySkate_->AddComponent<Collider>();
+			// VelocitySkate 아이템 충돌 사각형 사이즈 수정
+			VelocitySkatecol->SetSize(Vector2(10.0f, 30.0f));
+			VelocitySkatecol->SetOffset(Vector2(0.0f, 0.0f));
+
+			// Needle 아이템 setting
+			Needle* Needle_ = object::Instantiate<Needle>(eLayerType::UseItem, this->GetComponent<Transform>()->GetPosition() + Vector2(0.0f, -50.0f));
+
+			// Needle 아이템 충돌 구현
+			Collider* Needlecol = Needle_->AddComponent<Collider>();
+			// Needle 아이템 충돌 사각형 사이즈 수정
+			Needlecol->SetSize(Vector2(10.0f, 30.0f));
+			Needlecol->SetOffset(Vector2(0.0f, 0.0f));
+
 		}
 
 		// 물풍선 객체 생성 및 위치 조정
@@ -207,7 +249,7 @@ namespace hy
 			Resources::Find<Sound>(L"PlayerDie")->Play(false);
 
 			Animator* at = GetComponent<Animator>();
-			at->SetScale(Vector2(0.9f, 0.9f));
+			at->SetScale(Vector2(1.f, 1.f));
 			at->PlayAnimation(L"DaoDead", false);
 			mState = eState::Dead;
 		}
@@ -215,7 +257,7 @@ namespace hy
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
 			Animator* at = GetComponent<Animator>();
-			at->SetScale(Vector2(0.8f, 0.8f));
+			at->SetScale(Vector2(1.f, 1.f));
 			at->PlayAnimation(L"DaoTrap", false);
 			mState = eState::Trap;
 		}
@@ -223,7 +265,7 @@ namespace hy
 		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow)
 		{
 			Animator* at = GetComponent<Animator>();
-			at->SetScale(Vector2(0.8f, 0.8f));
+			at->SetScale(Vector2(1.f, 1.f));
 			at->PlayAnimation(L"DaoTrap", false);
 			mState = eState::Trap;
 		}
@@ -361,7 +403,7 @@ namespace hy
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
 			Animator* at = GetComponent<Animator>();
-			at->SetScale(Vector2(0.8f, 0.8f));
+			at->SetScale(Vector2(1.f, 1.f));
 			at->PlayAnimation(L"DaoTrap", false);
 			mState = eState::Trap;
 		}
@@ -369,7 +411,7 @@ namespace hy
 		else if (other->GetOwner()->GetLayerType() == eLayerType::BossBombflow)
 		{
 			Animator* at = GetComponent<Animator>();
-			at->SetScale(Vector2(0.8f, 0.8f));
+			at->SetScale(Vector2(1.f, 1.f));
 			at->PlayAnimation(L"DaoTrap", false);
 			mState = eState::Trap;
 		}
@@ -674,9 +716,9 @@ namespace hy
 		{
 			if (SceneManager::GetMonsterQuantity != 0)
 			{
-				animator->SetScale(Vector2(0.8f, 0.8f));
 				Resources::Find<Sound>(L"PlayerDie")->Play(false);
 
+				animator->SetScale(Vector2(1.2f, 1.2f));
 				animator->PlayAnimation(L"DaoBalloonDead", false);
 				mState = eState::BalloonDead;
 				Traptime = 0.f;
@@ -700,23 +742,27 @@ namespace hy
 	void Dao::Dead()
 	{
 		Animator* animator = GetComponent<Animator>();
+		animator->SetScale(Vector2(1.f, 1.f));
+
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
-			SceneManager::SetPlayerDead(true);
+			//SceneManager::SetPlayerDead(true);
+			SceneManager::SubPlayerNum();
+
 		}
 	}
 
 	void Dao::BalloonDead()
 	{
 		Animator* animator = GetComponent<Animator>();
+		animator->SetScale(Vector2(1.f, 1.f));
 
 		if (animator->IsActiveAnimationComplete())
 		{
-
 			Destroy(this);
-			SceneManager::SetPlayerDead(true);
-
+			//SceneManager::SetPlayerDead(true);
+			SceneManager::SubPlayerNum();
 		}
 	}
 

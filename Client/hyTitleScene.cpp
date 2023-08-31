@@ -114,7 +114,7 @@ namespace hy
 			SceneManager::SetSelectSoloPlayer(true);
 			SceneManager::SetSelectMultiPlayer(false);
 
-
+			SceneManager::SetPlayerNum(1);
 			Choicefinish = true;
 		}
 
@@ -124,6 +124,7 @@ namespace hy
 			SceneManager::SetSelectMultiPlayer(true);
 			SceneManager::SetSelectSoloPlayer(false);
 
+			SceneManager::SetPlayerNum(2);
 
 			Choicefinish = true;
 		}
