@@ -110,10 +110,10 @@ namespace hy
 		// Dead 상태가 두가지
 		// 물풍선에 일정 시간 갇히는 경우
 		// 몬스터와 충돌하는 경우
-		at->CreateAnimation(L"BazziDead", BazziDead_, Vector2(0.0f, 0.0f), Vector2(81.0f, 144.0f), 6, Vector2(0.0f, -15.0f), 0.1f);
+		at->CreateAnimation(L"BazziDead", BazziDead_, Vector2(0.0f, 0.0f), Vector2(81.0f, 144.0f), 6, Vector2(0.0f, -15.0f), 0.2f);
 		at->CreateAnimation(L"BazziTrap", BazziTrap_, Vector2(0.0f, 0.0f), Vector2(88.0f, 144.0f), 13, Vector2(0.0f, 0.0f), 0.18f);
 		at->CreateAnimation(L"BazziLive", BazziLive_, Vector2(0.0f, 0.0f), Vector2(88.0f, 144.0f), 5, Vector2(0.0f, 0.0f), 0.15f);
-		at->CreateAnimation(L"BazziVictory", BazziVictory_, Vector2(0.0f, 0.0f), Vector2(64.0f, 80.0f), 8, Vector2(0.0f, 0.0f), 0.2f);
+		at->CreateAnimation(L"BazziVictory", BazziVictory_, Vector2(0.0f, 0.0f), Vector2(64.0f, 80.0f), 8, Vector2(0.0f, 0.0f), 0.25f);
 		at->CreateAnimation(L"BazziBalloonDead", BazziBalloonDead_, Vector2(0.0f, 0.0f), Vector2(91.0f, 144.0f), 10, Vector2(0.0f, 0.0f), 0.15f);
 
 		at->PlayAnimation(L"StartBazzi", false);
@@ -962,7 +962,7 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
-			//SceneManager::SetPlayerDead(true);
+			SceneManager::SetPlayerDead(true);
 			SceneManager::SubPlayerNum();
 		}
 	}
@@ -973,12 +973,9 @@ namespace hy
 
 		if (animator->IsActiveAnimationComplete())
 		{
-
 			Destroy(this);
-			//SceneManager::SetPlayerDead(true);
+			SceneManager::SetPlayerDead(true);
 			SceneManager::SubPlayerNum();
-
-
 		}
 	}
 	 

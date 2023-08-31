@@ -136,6 +136,8 @@ namespace hy
 		// 배찌 상하좌우 애니메이션
 		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true && Initflag == false)
 		{
+			SceneManager::SetPlayerNum(1);
+
 			PirateBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
 			Transform* forestbazzitr = PirateBazzi->GetComponent<Transform>();
 			forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
@@ -158,6 +160,8 @@ namespace hy
 		// 다오 상하좌우 애니메이션
 		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetDaoClick() == true && Initflag == false)
 		{
+			SceneManager::SetPlayerNum(1);
+
 			PirateDao = object::Instantiate<Dao>(eLayerType::Player);
 			Transform* forestdaotr = PirateDao->GetComponent<Transform>();
 			forestdaotr->SetPosition(Vector2(60.0f, 70.0f));
@@ -178,6 +182,8 @@ namespace hy
 		// 멀티 플레이어 세팅
 		if (SceneManager::GetSelectMultiPlayer() == 1 && Initflag == false)
 		{
+			SceneManager::SetPlayerNum(2);
+
 			PirateBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
 			Transform* forestbazzitr = PirateBazzi->GetComponent<Transform>();
 			forestbazzitr->SetPosition(Vector2(380.0f, 250.0f));
@@ -298,7 +304,7 @@ namespace hy
 
 
 		// 패배
-		if (SceneManager::GetBossQuantity() != 0 && SceneManager::GetPlayerDead() == true)
+		if (SceneManager::GetBossQuantity() != 0 && SceneManager::GetPlayerDead() == true && SceneManager::GetPlayerNum() == 0)
 		{
 			Lose();
 			SceneManager::SetPlayerDead(false);

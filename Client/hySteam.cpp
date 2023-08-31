@@ -165,7 +165,13 @@ namespace hy
 
 		else if (ItemSelect == 6)
 		{
-			
+			// Shield 아이템 setting
+			Shield* Shield_1 = object::Instantiate<Shield>(eLayerType::Item, tr->GetPosition() + Vector2(0.0f, -2.0f));
+
+			// Shield 아이템 충돌 구현
+			Collider* Shieldcol = Shield_1->AddComponent<Collider>();
+			// Shield 아이템 충돌 사각형 사이즈 수정
+			Shieldcol->SetSize(Vector2(10.0f, 30.0f));
 
 		}
 
