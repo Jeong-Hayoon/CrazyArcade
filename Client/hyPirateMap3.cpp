@@ -174,25 +174,6 @@ namespace hy
 			Initflag = true;
 		}
 
-	}
-
-	void PirateMap3::Exit()
-	{
-		Resources::Find<Sound>(L"BossStage")->Stop(true);
-
-		PirateBazzi->ResetBazzi();
-
-	}
-
-	void PirateMap3::Initialize()
-	{
-		Scene::Initialize();
-		// 사운드 적용
-		Resources::Load<Sound>(L"BossStage", L"..\\Resources\\Sound\\Sound\\Map\\Boss.wav");
-
-		Resources::Load<Sound>(L"Click", L"..\\Resources\\Sound\\Sound\\click.wav");
-
-
 		// 타이머
 		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
 		Transform* TimerDottr = TimerDot->GetComponent<Transform>();
@@ -209,6 +190,31 @@ namespace hy
 		Minutes* ForestMinutesTimer = object::Instantiate<Minutes>(eLayerType::UI);
 		Transform* ForestMinutesTimertr = ForestMinutesTimer->GetComponent<Transform>();
 		ForestMinutesTimertr->SetPosition(Vector2(720.f, 81.f));
+
+		// 피라테 보스
+		PirateBoss* PirateBoss_ = object::Instantiate<PirateBoss>(eLayerType::Boss);
+		PirateBoss_->GetComponent<Transform>()->SetPosition(Vector2(250.0f, 300.0f));
+
+
+	}
+
+	void PirateMap3::Exit()
+	{
+		Resources::Find<Sound>(L"BossStage")->Stop(true);
+
+		PirateBazzi->ResetBazzi();
+
+		Destroy(PirateBazzi);
+
+	}
+
+	void PirateMap3::Initialize()
+	{
+		Scene::Initialize();
+		// 사운드 적용
+		Resources::Load<Sound>(L"BossStage", L"..\\Resources\\Sound\\Sound\\Map\\Boss.wav");
+
+		Resources::Load<Sound>(L"Click", L"..\\Resources\\Sound\\Sound\\click.wav");
 
 		// 게임 틀
 		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImage"
@@ -234,12 +240,6 @@ namespace hy
 		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
 		bzprofilesr->SetImage(BZProfile);
 		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
-
-
-
-		// 피라테 보스
-		PirateBoss* PirateBoss_ = object::Instantiate<PirateBoss>(eLayerType::Boss);
-		PirateBoss_->GetComponent<Transform>()->SetPosition(Vector2(250.0f, 300.0f));
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);

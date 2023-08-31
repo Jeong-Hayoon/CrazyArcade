@@ -130,6 +130,23 @@ namespace hy
 		GameStart* gs1 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(185.0f, 60.0f));
 		GameStart* gs2 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(450.0f, 640.0f));
 
+		// 타이머
+		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
+		Transform* TimerDottr = TimerDot->GetComponent<Transform>();
+		TimerDottr->SetPosition(Vector2(735.f, 81.f));
+
+		Second* ForestSecondTimer = object::Instantiate<Second>(eLayerType::UI);
+		Transform* ForestSecondTimertr = ForestSecondTimer->GetComponent<Transform>();
+		ForestSecondTimertr->SetPosition(Vector2(765.f, 81.f));
+
+		Ten_Second* ForestTen_SecondTimer = object::Instantiate<Ten_Second>(eLayerType::UI);
+		Transform* ForestTen_SecondTimertr = ForestTen_SecondTimer->GetComponent<Transform>();
+		ForestTen_SecondTimertr->SetPosition(Vector2(750.f, 81.f));
+
+		Minutes* ForestMinutesTimer = object::Instantiate<Minutes>(eLayerType::UI);
+		Transform* ForestMinutesTimertr = ForestMinutesTimer->GetComponent<Transform>();
+		ForestMinutesTimertr->SetPosition(Vector2(720.f, 81.f));
+
 		// 배찌 상하좌우 애니메이션
 		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true && Initflag == false)
 		{
@@ -172,66 +189,6 @@ namespace hy
 			Initflag = true;
 		}
 
-	}
-
-	void IceMap2::Exit()
-	{
-		Resources::Find<Sound>(L"Play")->Stop(true);
-
-		IceBazzi->ResetBazzi();
-	}
-
-	void IceMap2::Initialize()
-	{
-		Scene::Initialize();
-		// 사운드 적용
-		Resources::Load<Sound>(L"Play", L"..\\Resources\\Sound\\Sound\\Map\\bg_0.wav");
-		Resources::Load<Sound>(L"Click", L"..\\Resources\\Sound\\Sound\\click.wav");
-
-
-		// 타이머
-		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
-		Transform* TimerDottr = TimerDot->GetComponent<Transform>();
-		TimerDottr->SetPosition(Vector2(735.f, 81.f));
-
-		Second* ForestSecondTimer = object::Instantiate<Second>(eLayerType::UI);
-		Transform* ForestSecondTimertr = ForestSecondTimer->GetComponent<Transform>();
-		ForestSecondTimertr->SetPosition(Vector2(765.f, 81.f));
-
-		Ten_Second* ForestTen_SecondTimer = object::Instantiate<Ten_Second>(eLayerType::UI);
-		Transform* ForestTen_SecondTimertr = ForestTen_SecondTimer->GetComponent<Transform>();
-		ForestTen_SecondTimertr->SetPosition(Vector2(750.f, 81.f));
-
-		Minutes* ForestMinutesTimer = object::Instantiate<Minutes>(eLayerType::UI);
-		Transform* ForestMinutesTimertr = ForestMinutesTimer->GetComponent<Transform>();
-		ForestMinutesTimertr->SetPosition(Vector2(720.f, 81.f));
-
-		// 게임 틀
-		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImage"
-			, L"..\\Resources\\Image\\Bg\\play.bmp");
-
-		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
-		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
-		bgsr->SetImage(image);
-		bgsr->SetScale(Vector2(1.f, 1.f));
-		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));
-
-		Texture* Tile_
-			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
-
-		IceMap2::Load();
-
-		// 배찌 프로필
-		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
-			, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
-
-		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::UI);
-		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
-		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
-		bzprofilesr->SetImage(BZProfile);
-		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
-
-
 		// 아이스 몬스터
 		IceMonster* IceMonster1 = object::Instantiate<IceMonster>(eLayerType::Monster);
 		IceMonster1->GetComponent<Transform>()->SetPosition(Vector2(40.0f, 70.0f));
@@ -264,6 +221,47 @@ namespace hy
 		IceMonster13->GetComponent<Transform>()->SetPosition(Vector2(200.0f, 420.0f));
 		IceMonster* IceMonster14 = object::Instantiate<IceMonster>(eLayerType::Monster);
 		IceMonster14->GetComponent<Transform>()->SetPosition(Vector2(445.0f, 420.0f));*/
+
+	}
+
+	void IceMap2::Exit()
+	{
+		Resources::Find<Sound>(L"Play")->Stop(true);
+
+		IceBazzi->ResetBazzi();
+	}
+
+	void IceMap2::Initialize()
+	{
+		Scene::Initialize();
+		// 사운드 적용
+		Resources::Load<Sound>(L"Play", L"..\\Resources\\Sound\\Sound\\Map\\bg_0.wav");
+		Resources::Load<Sound>(L"Click", L"..\\Resources\\Sound\\Sound\\click.wav");
+
+		// 게임 틀
+		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImage"
+			, L"..\\Resources\\Image\\Bg\\play.bmp");
+
+		BackGround* bg = object::Instantiate<BackGround>(eLayerType::Background);
+		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
+		bgsr->SetImage(image);
+		bgsr->SetScale(Vector2(1.f, 1.f));
+		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));
+
+		Texture* Tile_
+			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
+
+		IceMap2::Load();
+
+		// 배찌 프로필
+		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
+			, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
+
+		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::UI);
+		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
+		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
+		bzprofilesr->SetImage(BZProfile);
+		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);

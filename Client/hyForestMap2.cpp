@@ -131,7 +131,24 @@ namespace hy
 		GameStart* gs1 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(185.0f, 60.0f));
 		GameStart* gs2 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(450.0f, 640.0f));
 
-	
+		// 타이머
+		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
+		Transform* TimerDottr = TimerDot->GetComponent<Transform>();
+		TimerDottr->SetPosition(Vector2(735.f, 81.f));
+
+		Second* ForestSecondTimer = object::Instantiate<Second>(eLayerType::UI);
+		Transform* ForestSecondTimertr = ForestSecondTimer->GetComponent<Transform>();
+		ForestSecondTimertr->SetPosition(Vector2(765.f, 81.f));
+
+		Ten_Second* ForestTen_SecondTimer = object::Instantiate<Ten_Second>(eLayerType::UI);
+		Transform* ForestTen_SecondTimertr = ForestTen_SecondTimer->GetComponent<Transform>();
+		ForestTen_SecondTimertr->SetPosition(Vector2(750.f, 81.f));
+
+		Minutes* ForestMinutesTimer = object::Instantiate<Minutes>(eLayerType::UI);
+		Transform* ForestMinutesTimertr = ForestMinutesTimer->GetComponent<Transform>();
+		ForestMinutesTimertr->SetPosition(Vector2(720.f, 81.f));
+
+
 		// 배찌 상하좌우 애니메이션
 		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true && Initflag == false)
 		{
@@ -173,6 +190,18 @@ namespace hy
 			Initflag = true;
 		}
 
+		// 포레스트 몬스터
+		ForestMonster* ForestMonster1 = object::Instantiate<ForestMonster>(eLayerType::Monster);
+		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
+		ForestMonster* ForestMonster2 = object::Instantiate<ForestMonster>(eLayerType::Monster);
+		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(325.0f, 310.0f));
+		ForestMonster* ForestMonster3 = object::Instantiate<ForestMonster>(eLayerType::Monster);
+		ForestMonster3->GetComponent<Transform>()->SetPosition(Vector2(425.0f, 530.0f));
+		ForestMonster* ForestMonster4 = object::Instantiate<ForestMonster>(eLayerType::Monster);
+		ForestMonster4->GetComponent<Transform>()->SetPosition(Vector2(470.0f, 280.0f));
+		ForestMonster* ForestMonster5 = object::Instantiate<ForestMonster>(eLayerType::Monster);
+		ForestMonster5->GetComponent<Transform>()->SetPosition(Vector2(590.0f, 240.0f));
+
 	}
 
 	void ForestMap2::Exit()
@@ -190,24 +219,6 @@ namespace hy
 		// 사운드 적용
 		Resources::Load<Sound>(L"Play", L"..\\Resources\\Sound\\Sound\\Map\\bg_0.wav");
 		Resources::Load<Sound>(L"Click", L"..\\Resources\\Sound\\Sound\\click.wav");
-
-
-		// 타이머
-		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
-		Transform* TimerDottr = TimerDot->GetComponent<Transform>();
-		TimerDottr->SetPosition(Vector2(735.f, 81.f));
-
-		Second* ForestSecondTimer = object::Instantiate<Second>(eLayerType::UI);
-		Transform* ForestSecondTimertr = ForestSecondTimer->GetComponent<Transform>();
-		ForestSecondTimertr->SetPosition(Vector2(765.f, 81.f));
-
-		Ten_Second* ForestTen_SecondTimer = object::Instantiate<Ten_Second>(eLayerType::UI);
-		Transform* ForestTen_SecondTimertr = ForestTen_SecondTimer->GetComponent<Transform>();
-		ForestTen_SecondTimertr->SetPosition(Vector2(750.f, 81.f));
-
-		Minutes* ForestMinutesTimer = object::Instantiate<Minutes>(eLayerType::UI);
-		Transform* ForestMinutesTimertr = ForestMinutesTimer->GetComponent<Transform>();
-		ForestMinutesTimertr->SetPosition(Vector2(720.f, 81.f));
 
 		// 게임 틀
 		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImage"
@@ -233,21 +244,6 @@ namespace hy
 		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
 		bzprofilesr->SetImage(BZProfile);
 		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
-
-		
-
-		// 포레스트 몬스터
-		ForestMonster* ForestMonster1 = object::Instantiate<ForestMonster>(eLayerType::Monster);
-		ForestMonster1->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 70.0f));
-		ForestMonster* ForestMonster2 = object::Instantiate<ForestMonster>(eLayerType::Monster);
-		ForestMonster2->GetComponent<Transform>()->SetPosition(Vector2(325.0f, 310.0f));
-		ForestMonster* ForestMonster3 = object::Instantiate<ForestMonster>(eLayerType::Monster);
-		ForestMonster3->GetComponent<Transform>()->SetPosition(Vector2(425.0f, 530.0f));
-		ForestMonster* ForestMonster4 = object::Instantiate<ForestMonster>(eLayerType::Monster);
-		ForestMonster4->GetComponent<Transform>()->SetPosition(Vector2(470.0f, 280.0f));
-		ForestMonster* ForestMonster5 = object::Instantiate<ForestMonster>(eLayerType::Monster);
-		ForestMonster5->GetComponent<Transform>()->SetPosition(Vector2(590.0f, 240.0f));
-
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);

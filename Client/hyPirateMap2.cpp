@@ -133,6 +133,23 @@ namespace hy
 		GameStart* gs1 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(185.0f, 60.0f));
 		GameStart* gs2 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(450.0f, 640.0f));
 
+		// 타이머
+		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
+		Transform* TimerDottr = TimerDot->GetComponent<Transform>();
+		TimerDottr->SetPosition(Vector2(735.f, 81.f));
+
+		Second* ForestSecondTimer = object::Instantiate<Second>(eLayerType::UI);
+		Transform* ForestSecondTimertr = ForestSecondTimer->GetComponent<Transform>();
+		ForestSecondTimertr->SetPosition(Vector2(765.f, 81.f));
+
+		Ten_Second* ForestTen_SecondTimer = object::Instantiate<Ten_Second>(eLayerType::UI);
+		Transform* ForestTen_SecondTimertr = ForestTen_SecondTimer->GetComponent<Transform>();
+		ForestTen_SecondTimertr->SetPosition(Vector2(750.f, 81.f));
+
+		Minutes* ForestMinutesTimer = object::Instantiate<Minutes>(eLayerType::UI);
+		Transform* ForestMinutesTimertr = ForestMinutesTimer->GetComponent<Transform>();
+		ForestMinutesTimertr->SetPosition(Vector2(720.f, 81.f));
+
 		// 배찌 상하좌우 애니메이션
 		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true && Initflag == false)
 		{
@@ -174,6 +191,19 @@ namespace hy
 			Initflag = true;
 		}
 
+		// 피라테 몬스터
+		PirateMonster* PirateMonster1 = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		PirateMonster1->GetComponent<Transform>()->SetPosition(Vector2(255.0f, 15.0f));
+		PirateMonster* PirateMonster2 = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		PirateMonster2->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 300.0f));
+		/*PirateMonster* PirateMonster3 = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		PirateMonster3->GetComponent<Transform>()->SetPosition(Vector2(280.0f, 300.0f));*/
+		PirateMonster* PirateMonster4 = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		PirateMonster4->GetComponent<Transform>()->SetPosition(Vector2(180.0f, 300.0f));
+
+		// 위치 변경 필요
+		PirateMonster* PirateMonster5 = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		PirateMonster5->GetComponent<Transform>()->SetPosition(Vector2(600.f, 550.0f));
 
 	}
 
@@ -182,6 +212,8 @@ namespace hy
 		Resources::Find<Sound>(L"Play")->Stop(true);
 
 		PirateBazzi->ResetBazzi();
+		Destroy(PirateBazzi);
+
 
 	}
 
@@ -191,24 +223,6 @@ namespace hy
 		// 사운드 적용
 		Resources::Load<Sound>(L"Play", L"..\\Resources\\Sound\\Sound\\Map\\bg_0.wav");
 		Resources::Load<Sound>(L"Click", L"..\\Resources\\Sound\\Sound\\click.wav");
-
-
-		// 타이머
-		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
-		Transform* TimerDottr = TimerDot->GetComponent<Transform>();
-		TimerDottr->SetPosition(Vector2(735.f, 81.f));
-
-		Second* ForestSecondTimer = object::Instantiate<Second>(eLayerType::UI);
-		Transform* ForestSecondTimertr = ForestSecondTimer->GetComponent<Transform>();
-		ForestSecondTimertr->SetPosition(Vector2(765.f, 81.f));
-
-		Ten_Second* ForestTen_SecondTimer = object::Instantiate<Ten_Second>(eLayerType::UI);
-		Transform* ForestTen_SecondTimertr = ForestTen_SecondTimer->GetComponent<Transform>();
-		ForestTen_SecondTimertr->SetPosition(Vector2(750.f, 81.f));
-
-		Minutes* ForestMinutesTimer = object::Instantiate<Minutes>(eLayerType::UI);
-		Transform* ForestMinutesTimertr = ForestMinutesTimer->GetComponent<Transform>();
-		ForestMinutesTimertr->SetPosition(Vector2(720.f, 81.f));
 
 		// 게임 틀
 		Texture* image = Resources::Load<Texture>(L"PlayBackGroundImage"
@@ -234,21 +248,6 @@ namespace hy
 		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
 		bzprofilesr->SetImage(BZProfile);
 		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
-
-		// 피라테 몬스터
-		PirateMonster* PirateMonster1 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster1->GetComponent<Transform>()->SetPosition(Vector2(255.0f, 15.0f));
-		PirateMonster* PirateMonster2 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster2->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 300.0f));
-		/*PirateMonster* PirateMonster3 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster3->GetComponent<Transform>()->SetPosition(Vector2(280.0f, 300.0f));*/
-		PirateMonster* PirateMonster4 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster4->GetComponent<Transform>()->SetPosition(Vector2(180.0f, 300.0f));
-
-		// 위치 변경 필요
-		PirateMonster* PirateMonster5 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster5->GetComponent<Transform>()->SetPosition(Vector2(600.f, 550.0f));
-
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
