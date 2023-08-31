@@ -11,6 +11,8 @@
 #include "hyTransform.h"
 #include "hyBazzi.h"
 #include "hyStagePick.h"
+#include "hyAnimation.h"
+#include "hyAnimator.h"
 
 
 
@@ -54,6 +56,10 @@ namespace hy
 		bgsr->SetImage(image);
 		bgsr->SetScale(Vector2(1.f, 1.f));
 		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));	// 배경을 해상도의 절반으로 세팅
+
+		DaoReady = object::Instantiate<LobbyDao>(eLayerType::Background);
+		BazziReady = object::Instantiate<LobbyBazzi>(eLayerType::Background);
+
 
 		// 맵 선택(포레스트 맵)
 		/*Texture* ForestMapSelect = Resources::Load<Texture>(L"ForestMapSelectImage"
@@ -99,15 +105,9 @@ namespace hy
 		// 1P - 캐릭터 선택
 		if (SceneManager :: GetSelectSoloPlayer() == 1 && BazziClick == true)
 		{
-			// 캐릭터 세팅
-			Bazzi = Resources::Load<Texture>(L"BazziImage"
-				, L"..\\Resources\\Image\\Bazzi\\Idle.bmp");
-
-			BackGround* Charactor = object::Instantiate<BackGround>(eLayerType::Background);
-			Charactor->GetComponent<Transform>()->SetPosition(Vector2(75.0f, 140.0f));
-			SpriteRenderer* Charactorsr = Charactor->AddComponent<SpriteRenderer>();
-			Charactorsr->SetScale(Vector2(0.7f, 0.7f));
-			Charactorsr->SetImage(Bazzi);
+			DaoClick = false;
+			BazziReady->GetComponent<Transform>()->SetPosition(Vector2(75.0f, 145.0f));
+			BazziReady->GetComponent<Animator>()->PlayAnimation(L"LobbyBazzi", true);
 
 			// 캐릭터 선택 창
 			Texture* CharSelect = Resources::Load<Texture>(L"CharSelectImage"
@@ -119,17 +119,13 @@ namespace hy
 			cssr->SetImage(CharSelect);
 			cssr->SetScale(Vector2(1.f, 1.f));
 		}
+
 		if (SceneManager::GetSelectSoloPlayer() == 1 && DaoClick == true )
 		{
-			// 캐릭터 세팅
-			Dao = Resources::Load<Texture>(L"DaoImage"
-				, L"..\\Resources\\Image\\Dao\\Idle\\Idle.bmp");
+			DaoReady->GetComponent<Transform>()->SetPosition(Vector2(75.0f, 145.0f));
+			DaoReady->GetComponent<Animator>()->PlayAnimation(L"LobbyDao", true);
 
-			BackGround* Charactor = object::Instantiate<BackGround>(eLayerType::Background);
-			Charactor->GetComponent<Transform>()->SetPosition(Vector2(75.0f, 140.0f));
-			SpriteRenderer* Charactorsr = Charactor->AddComponent<SpriteRenderer>();
-			Charactorsr->SetScale(Vector2(1.3f, 1.3f));
-			Charactorsr->SetImage(Dao);
+			BazziClick = false;
 
 			// 캐릭터 선택 창
 			Texture* DaoSelect = Resources::Load<Texture>(L"DaoSelectImage"

@@ -455,6 +455,12 @@
     <ClInclude Include="hyDaoBomb.h">
       <Filter>Contents\GameObject\Effect\Bomb</Filter>
     </ClInclude>
+    <ClInclude Include="hyLobbyDao.h">
+      <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="hyLobbyBazzi.h">
+      <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -695,6 +701,12 @@
     </ClCompile>
     <ClCompile Include="hyDaoBomb.cpp">
       <Filter>Contents\GameObject\Effect\Bomb</Filter>
+    </ClCompile>
+    <ClCompile Include="hyLobbyDao.cpp">
+      <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="hyLobbyBazzi.cpp">
+      <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

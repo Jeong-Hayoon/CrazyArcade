@@ -1,8 +1,9 @@
 #pragma once
 #include "hyScene.h"
 #include "hyStagePick.h"
-#include "hyBazzi.h"
-#include "hyDao.h"
+#include "hyLobbyDao.h"
+#include "hyLobbyBazzi.h"
+
 
 namespace hy
 {
@@ -32,10 +33,8 @@ namespace hy
 		static bool BazziClick;
 		static bool DaoClick;
 		bool AlreadySeat;			// 이미 좌측에 클릭이 되어 있는지
-
-		Texture* Bazzi;
-		Texture* Dao;
-
+		LobbyDao* DaoReady;
+		LobbyBazzi* BazziReady;
 	};
 }
 
