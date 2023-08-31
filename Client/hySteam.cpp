@@ -163,7 +163,7 @@ namespace hy
 
 		}
 
-		else if (ItemSelect == 6)
+		else if (ItemSelect == 7)
 		{
 			// Shield æ∆¿Ã≈€ setting
 			Shield* Shield_1 = object::Instantiate<Shield>(eLayerType::Item, tr->GetPosition() + Vector2(0.0f, -2.0f));

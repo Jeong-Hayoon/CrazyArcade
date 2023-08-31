@@ -682,19 +682,7 @@ namespace hy
 			animator->PlayAnimation(L"BazziLive", false);
 			mState = eState::Live;
 		}
-		if (Input::GetKeyDown(eKeyCode::B))		// BalloonDead
-		{
-			animator->SetScale(Vector2(1.0f, 1.0f));
-			animator->PlayAnimation(L"BazziBalloonDead", false);
-			mState = eState::BalloonDead;
-		}
-	
-		if (Input::GetKeyDown(eKeyCode::V))		// Victory
-		{
-			animator->SetScale(Vector2(0.8f, 0.8f));
-			animator->PlayAnimation(L"BazziVictory", true);
-			mState = eState::Victory;
-		}
+		
 
 		// 위치 업데이트가 안됨(배찌를 따라서 갈수있도록 수정)
 		//if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem ::Shield)
