@@ -3,11 +3,11 @@
 
 namespace hy
 {
-	class LobbyDao : public GameObject
+	class CharactorProfile : public GameObject
 	{
 	public:
-		LobbyDao();
-		virtual ~LobbyDao();
+		CharactorProfile();
+		virtual ~CharactorProfile();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

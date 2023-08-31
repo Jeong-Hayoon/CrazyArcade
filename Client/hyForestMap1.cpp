@@ -58,6 +58,8 @@ namespace hy
 		GameStart* gs2= object::Instantiate<GameStart>(eLayerType::UI, Vector2(450.0f, 640.0f));
 		SceneManager::SetActiveStage(0);
 
+		Profile = object::Instantiate<CharactorProfile>(eLayerType::UI, Vector2(682.0f, 118.0f));
+
 		// 타이머
 		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
 		Transform* TimerDottr = TimerDot->GetComponent<Transform>();
@@ -75,7 +77,7 @@ namespace hy
 		Transform* ForestMinutesTimertr = ForestMinutesTimer->GetComponent<Transform>();
 		ForestMinutesTimertr->SetPosition(Vector2(720.f, 81.f));
 
-		// 배찌 상하좌우 애니메이션
+		// 1P 배찌 상하좌우 애니메이션
 		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true && Initflag == false)
 		{
 			ForestBazzi = object::Instantiate<Bazzi>(eLayerType::Player);
@@ -85,18 +87,11 @@ namespace hy
 			SceneManager::SetBazzi(ForestBazzi);
 
 			// 배찌 프로필
-			Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
-				, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
-
-			BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::UI);
-			bzprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
-			SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
-			bzprofilesr->SetImage(BZProfile);
-			bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
-
+			Profile->GetComponent<Animator>()->PlayAnimation(L"BazziProfile", true);
+			//Profile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
 		}
 
-		// 다오 상하좌우 애니메이션
+		// 1P 다오 상하좌우 애니메이션
 		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetDaoClick() == true && Initflag == false)
 		{
 			ForestDao = object::Instantiate<Dao>(eLayerType::Player);
@@ -106,14 +101,10 @@ namespace hy
 			SceneManager::SetDao(ForestDao);
 
 			// 다오 프로필
-			Texture* DAProfile = Resources::Load<Texture>(L"DAProfileImage"
-				, L"..\\Resources\\Image\\UI\\IngameDao.bmp");
+			Profile->GetComponent<Animator>()->PlayAnimation(L"DaoProfile", true);
+			//Profile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
 
-			BackGround* daprofile = object::Instantiate<BackGround>(eLayerType::UI);
-			daprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
-			SpriteRenderer* daprofilesr = daprofile->AddComponent<SpriteRenderer>();
-			daprofilesr->SetImage(DAProfile);
-			daprofilesr->SetScale(Vector2(0.6f, 0.6f));
+
 		}
 
 		// 멀티 플레이어 세팅
@@ -156,7 +147,7 @@ namespace hy
 			Destroy(ForestBazzi);
 		}
 
-		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetDaoClick() == true && Initflag == false)
+		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetDaoClick() == true)
 		{
 			Destroy(ForestDao);
 		}

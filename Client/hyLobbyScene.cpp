@@ -58,7 +58,7 @@ namespace hy
 		bg->GetComponent<Transform>()->SetPosition(Vector2((float)(application.GetWidth() / 2), (float)(application.GetHeight() / 2)));	// 배경을 해상도의 절반으로 세팅
 
 		//DaoReady = object::Instantiate<LobbyDao>(eLayerType::Background);
-		//BazziReady = object::Instantiate<LobbyBazzi>(eLayerType::Background);
+		CharactorChoice = object::Instantiate<LobbyCharactor>(eLayerType::Background);
 
 
 		// 맵 선택(포레스트 맵)
@@ -105,16 +105,9 @@ namespace hy
 		// 1P - 캐릭터 선택
 		if (SceneManager :: GetSelectSoloPlayer() == 1 && BazziClick == true)
 		{
-			if(DaoClick == true)
-			{
-				//Destroy(DaoReady);
-				DaoReady->DeleteComponent<Animator>();
-				DaoClick = false;
-			}
-			BazziReady = object::Instantiate<LobbyBazzi>(eLayerType::Background);
-
-			BazziReady->GetComponent<Transform>()->SetPosition(Vector2(75.0f, 145.0f));
-			BazziReady->GetComponent<Animator>()->PlayAnimation(L"LobbyBazzi", true);
+			CharactorChoice->GetComponent<Transform>()->SetPosition(Vector2(75.0f, 145.0f));
+			CharactorChoice->GetComponent<Animator>()->SetScale(Vector2(0.7f, 0.7f));
+			CharactorChoice->GetComponent<Animator>()->PlayAnimation(L"LobbyBazzi", true);
 
 			// 캐릭터 선택 창
 			Texture* CharSelect = Resources::Load<Texture>(L"CharSelectImage"
@@ -129,17 +122,9 @@ namespace hy
 
 		if (SceneManager::GetSelectSoloPlayer() == 1 && DaoClick == true )
 		{
-			if (BazziClick == true)
-			{
-				BazziClick = false;
-				//Destroy(BazziReady);
-				BazziReady->DeleteComponent<Animator>();
-			}
-
-			DaoReady = object::Instantiate<LobbyDao>(eLayerType::Background);
-			DaoReady->GetComponent<Transform>()->SetPosition(Vector2(75.0f, 145.0f));
-			DaoReady->GetComponent<Animator>()->PlayAnimation(L"LobbyDao", true);
-
+			CharactorChoice->GetComponent<Transform>()->SetPosition(Vector2(75.0f, 145.0f));
+			CharactorChoice->GetComponent<Animator>()->SetScale(Vector2(1.3f, 1.3f));
+			CharactorChoice->GetComponent<Animator>()->PlayAnimation(L"LobbyDao", true);
 
 			// 캐릭터 선택 창
 			Texture* DaoSelect = Resources::Load<Texture>(L"DaoSelectImage"

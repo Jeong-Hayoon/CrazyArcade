@@ -3,11 +3,11 @@
 
 namespace hy
 {
-	class LobbyBazzi : public GameObject
+	class LobbyCharactor : public GameObject
 	{
 	public:
-		LobbyBazzi();
-		virtual ~LobbyBazzi();
+		LobbyCharactor();
+		virtual ~LobbyCharactor();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

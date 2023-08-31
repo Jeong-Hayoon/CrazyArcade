@@ -252,7 +252,7 @@ namespace hy
 			Destroy(IceBazzi);
 		}
 
-		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetDaoClick() == true && Initflag == false)
+		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetDaoClick() == true )
 		{
 			Destroy(IceDao);
 		}
