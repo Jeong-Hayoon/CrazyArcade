@@ -24,7 +24,7 @@ namespace hy
 	// static 변수는 전역에서 초기화해주기
 	float PirateBoss::BossTime = 0.f;
 	float PirateBoss::BubbleTime = 0.f;
-	int PirateBoss::PirateBossHP = 30;
+	int PirateBoss::PirateBossHP = 50;
 	float PirateBoss::Attacktime = 0.f;
 
 	PirateBoss::PirateBoss()

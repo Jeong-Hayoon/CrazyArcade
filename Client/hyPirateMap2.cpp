@@ -214,14 +214,14 @@ namespace hy
 		PirateMonster1->GetComponent<Transform>()->SetPosition(Vector2(255.0f, 15.0f));
 		PirateMonster* PirateMonster2 = object::Instantiate<PirateMonster>(eLayerType::Monster);
 		PirateMonster2->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 300.0f));
-		/*PirateMonster* PirateMonster3 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster3->GetComponent<Transform>()->SetPosition(Vector2(280.0f, 300.0f));*/
+		PirateMonster* PirateMonster3 = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		PirateMonster3->GetComponent<Transform>()->SetPosition(Vector2(280.0f, 400.0f));
 		PirateMonster* PirateMonster4 = object::Instantiate<PirateMonster>(eLayerType::Monster);
 		PirateMonster4->GetComponent<Transform>()->SetPosition(Vector2(180.0f, 300.0f));
 
 		// 위치 변경 필요
-		PirateMonster* PirateMonster5 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster5->GetComponent<Transform>()->SetPosition(Vector2(600.f, 550.0f));
+		/*PirateMonster* PirateMonster5 = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		PirateMonster5->GetComponent<Transform>()->SetPosition(Vector2(600.f, 550.0f));*/
 
 	}
 

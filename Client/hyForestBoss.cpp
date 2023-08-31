@@ -24,7 +24,7 @@ namespace hy
 	// static 변수는 전역에서 초기화해주기
 	float ForestBoss::BossTime = 0.f;
 	float ForestBoss::BubbleTime = 0.f;	
-	int ForestBoss::ForestBossHP = 10;
+	int ForestBoss::ForestBossHP = 50;
 	float ForestBoss::Attacktime = 0.f;
 
 	ForestBoss::ForestBoss()
