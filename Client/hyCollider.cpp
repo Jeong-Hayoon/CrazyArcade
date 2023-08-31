@@ -66,9 +66,12 @@ namespace hy
 
 		HPEN oldPen = (HPEN)SelectObject(hdc, pen);
 
-		Rectangle(hdc
-			, pos.x, pos.y
-			, pos.x + mSize.x, pos.y + mSize.y);
+		if(SceneManager::GetColliderControl() == true)
+		{
+			Rectangle(hdc
+				, pos.x, pos.y
+				, pos.x + mSize.x, pos.y + mSize.y);
+		}
 
 		SelectObject(hdc, oldBrush);
 		DeleteObject(transparentBrush);
