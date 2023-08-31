@@ -141,6 +141,16 @@ namespace hy
 			forestbazzitr->SetPosition(Vector2(60.0f, 70.0f));
 			SceneManager::SetBazzi(PirateBazzi);
 
+			// 배찌 프로필
+			Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
+				, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
+
+			BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::UI);
+			bzprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
+			SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
+			bzprofilesr->SetImage(BZProfile);
+			bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
+
 			Initflag = true;
 
 		}
@@ -154,7 +164,15 @@ namespace hy
 			Initflag = true;
 			SceneManager::SetDao(PirateDao);
 
+			// 다오 프로필
+			Texture* DAProfile = Resources::Load<Texture>(L"DAProfileImage"
+				, L"..\\Resources\\Image\\UI\\IngameDao.bmp");
 
+			BackGround* daprofile = object::Instantiate<BackGround>(eLayerType::UI);
+			daprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
+			SpriteRenderer* daprofilesr = daprofile->AddComponent<SpriteRenderer>();
+			daprofilesr->SetImage(DAProfile);
+			daprofilesr->SetScale(Vector2(0.6f, 0.6f));
 		}
 
 		// 멀티 플레이어 세팅
@@ -204,7 +222,15 @@ namespace hy
 
 		PirateBazzi->ResetBazzi();
 
-		Destroy(PirateBazzi);
+		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true)
+		{
+			Destroy(PirateBazzi);
+		}
+
+		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetDaoClick() == true && Initflag == false)
+		{
+			Destroy(PirateDao);
+		}
 
 	}
 
@@ -231,16 +257,7 @@ namespace hy
 
 		PirateMap3::Load();
 
-		// 배찌 프로필
-		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
-			, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
-
-		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::UI);
-		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
-		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
-		bzprofilesr->SetImage(BZProfile);
-		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
-
+		
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
 

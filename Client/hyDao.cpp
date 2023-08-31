@@ -38,6 +38,7 @@ namespace hy
 	Dao::Dao()
 		: mState(eState::Idle)
 		, mDirection(eDirection::Down)
+		, ShieldUse(false)
 	{
 	}
 	Dao::~Dao()
@@ -202,14 +203,9 @@ namespace hy
 		if (Input::GetKeyDown(eKeyCode::Z) && ActiveItem == eItem::Shield && UseItemNum == 1)
 		{
 			Trigger = true;
+			ShieldUse = true;
 
 			ShieldEffect* ShieldEffect_ = object::Instantiate<ShieldEffect>(eLayerType::Effect);
-			Transform* Daotr = this->GetComponent<Transform>();
-			Vector2 DaoLocation = Daotr->GetPosition();
-			Vector2 Shieldpos = DaoLocation;
-			//ShieldEffect_->Use();
-			//ShieldEffect_->SetPlayer(this);
-			ShieldEffect_->GetComponent<Transform>()->SetPosition(Shieldpos);
 
 		}
 
@@ -218,17 +214,25 @@ namespace hy
 			static float Shieldtime = 0.f;
 			Shieldtime += Time::DeltaTime();
 
-			if (Shieldtime < 3.0f)
-			{
+			CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, false);
+			CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Boss, false);
+			CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::BossBombflow, false);
+			CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Bombflow, false);
 
-			}
-			else
+			if (Shieldtime >= 2.0f)
 			{
+				ShieldUse = false;
 				eItem::None;
 				UseItemNum = 0;
 				Shieldtime = 0.f;
 				Trigger = false;
+				CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);
+				CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Boss, true);
+				CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::BossBombflow, true);
+				CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Bombflow, true);
 			}
+
+		}
 		}
 
 	}

@@ -157,6 +157,16 @@ namespace hy
 
 			Initflag = true;
 
+			// 배찌 프로필
+			Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
+				, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
+
+			BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::UI);
+			bzprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
+			SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
+			bzprofilesr->SetImage(BZProfile);
+			bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
+
 		}
 
 		// 다오 상하좌우 애니메이션
@@ -168,7 +178,15 @@ namespace hy
 			Initflag = true;
 			SceneManager::SetDao(IceDao);
 
+			// 다오 프로필
+			Texture* DAProfile = Resources::Load<Texture>(L"DAProfileImage"
+				, L"..\\Resources\\Image\\UI\\IngameDao.bmp");
 
+			BackGround* daprofile = object::Instantiate<BackGround>(eLayerType::UI);
+			daprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
+			SpriteRenderer* daprofilesr = daprofile->AddComponent<SpriteRenderer>();
+			daprofilesr->SetImage(DAProfile);
+			daprofilesr->SetScale(Vector2(0.6f, 0.6f));
 
 		}
 
@@ -229,6 +247,15 @@ namespace hy
 		Resources::Find<Sound>(L"Play")->Stop(true);
 
 		IceBazzi->ResetBazzi();
+		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true)
+		{
+			Destroy(IceBazzi);
+		}
+
+		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetDaoClick() == true && Initflag == false)
+		{
+			Destroy(IceDao);
+		}
 	}
 
 	void IceMap2::Initialize()
@@ -252,16 +279,6 @@ namespace hy
 			= Resources::Load<Texture>(L"Tile", L"..\\Resources\\Image\\Map\\Tile.bmp");
 
 		IceMap2::Load();
-
-		// 배찌 프로필
-		Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
-			, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
-
-		BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::UI);
-		bzprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
-		SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
-		bzprofilesr->SetImage(BZProfile);
-		bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
 
 		// 플레이어와 몬스터가 충돌(충돌 관계 지정)
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Monster, true);

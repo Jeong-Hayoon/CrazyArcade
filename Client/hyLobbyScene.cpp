@@ -28,6 +28,16 @@ namespace hy
 	LobbyScene::~LobbyScene()
 	{
 	}
+
+	void LobbyScene::Enter()
+	{
+		Resources::Find<Sound>(L"LobbySound")->Play(true);
+
+	}
+	void LobbyScene::Exit()
+	{
+	}
+
 	void LobbyScene::Initialize()
 	{
 		Scene::Initialize();
@@ -90,7 +100,7 @@ namespace hy
 		if (SceneManager :: GetSelectSoloPlayer() == 1 && BazziClick == true)
 		{
 			// 캐릭터 세팅
-			Texture* Bazzi = Resources::Load<Texture>(L"BazziImage"
+			Bazzi = Resources::Load<Texture>(L"BazziImage"
 				, L"..\\Resources\\Image\\Bazzi\\Idle.bmp");
 
 			BackGround* Charactor = object::Instantiate<BackGround>(eLayerType::Background);
@@ -112,7 +122,7 @@ namespace hy
 		if (SceneManager::GetSelectSoloPlayer() == 1 && DaoClick == true )
 		{
 			// 캐릭터 세팅
-			Texture* Dao = Resources::Load<Texture>(L"DaoImage"
+			Dao = Resources::Load<Texture>(L"DaoImage"
 				, L"..\\Resources\\Image\\Dao\\Idle\\Idle.bmp");
 
 			BackGround* Charactor = object::Instantiate<BackGround>(eLayerType::Background);
@@ -250,12 +260,5 @@ namespace hy
 
 		Ellipse(hdc, 685, 400, 785, 500);*/
 	}
-	void LobbyScene::Enter()
-	{
-		Resources::Find<Sound>(L"LobbySound")->Play(true);
-
-	}
-	void LobbyScene::Exit()
-	{
-	}
+	
 }

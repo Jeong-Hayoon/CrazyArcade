@@ -85,6 +85,9 @@ namespace hy
 
 		static void ResetDao();
 
+		bool GetShieldUse() { return ShieldUse; }
+
+
 	private:
 		eState mState;
 		eDirection mDirection;
@@ -96,6 +99,8 @@ namespace hy
 		static bool UseItemNum;
 		static bool Trigger;
 		static float SpeedTemp;
+		bool ShieldUse;
+
 
 	};
 }
