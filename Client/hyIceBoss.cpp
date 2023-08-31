@@ -30,6 +30,7 @@ namespace hy
 	IceBoss::IceBoss()
 		: mDeathTime(1.0f)
 		, mState(eState::Right)
+		, live(true)
 	{
 	}
 	IceBoss::~IceBoss()
@@ -42,10 +43,10 @@ namespace hy
 		mt->CreateAnimationFolder(L"IceBoss_Down", L"..\\Resources\\Image\\Monster\\IceBoss\\Down", Vector2::Zero, 0.15f);
 		mt->CreateAnimationFolder(L"IceBoss_Right", L"..\\Resources\\Image\\Monster\\IceBoss\\Right", Vector2::Zero, 0.15f);
 		mt->CreateAnimationFolder(L"IceBoss_Left", L"..\\Resources\\Image\\Monster\\IceBoss\\Left", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"IceBoss_Die", L"..\\Resources\\Image\\Monster\\IceBoss\\Die", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"IceBoss_Die", L"..\\Resources\\Image\\Monster\\IceBoss\\Die", Vector2::Zero, 0.3f);
 		mt->CreateAnimationFolder(L"IceBoss_Attack", L"..\\Resources\\Image\\Monster\\IceBoss\\Attack", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"IceBoss_Hit", L"..\\Resources\\Image\\Monster\\IceBoss\\Hit", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"IceBoss_Bubble", L"..\\Resources\\Image\\Monster\\IceBoss\\Bubble", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"IceBoss_Bubble", L"..\\Resources\\Image\\Monster\\IceBoss\\Bubble", Vector2::Zero, 0.4f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"IceBoss_Right", true);

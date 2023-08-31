@@ -30,6 +30,8 @@ namespace hy
 	PirateBoss::PirateBoss()
 		: mDeathTime(1.0f)
 		, mState(eState::Right)
+		, live(true)
+
 	{
 	}
 	PirateBoss::~PirateBoss()
@@ -42,9 +44,9 @@ namespace hy
 		mt->CreateAnimationFolder(L"PirateBoss_Down", L"..\\Resources\\Image\\Monster\\PirateBoss\\Down", Vector2::Zero, 0.15f);
 		mt->CreateAnimationFolder(L"PirateBoss_Right", L"..\\Resources\\Image\\Monster\\PirateBoss\\Right", Vector2::Zero, 0.15f);
 		mt->CreateAnimationFolder(L"PirateBoss_Left", L"..\\Resources\\Image\\Monster\\PirateBoss\\Left", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"PirateBoss_Die", L"..\\Resources\\Image\\Monster\\PirateBoss\\Die", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"PirateBoss_Die", L"..\\Resources\\Image\\Monster\\PirateBoss\\Die", Vector2::Zero, 0.3f);
 		mt->CreateAnimationFolder(L"PirateBoss_Hit", L"..\\Resources\\Image\\Monster\\PirateBoss\\Hit", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"PirateBoss_Bubble", L"..\\Resources\\Image\\Monster\\PirateBoss\\Bubble", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"PirateBoss_Bubble", L"..\\Resources\\Image\\Monster\\PirateBoss\\Bubble", Vector2::Zero, 0.4f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"PirateBoss_Right", true);

@@ -44,10 +44,10 @@ namespace hy
 		mt->CreateAnimationFolder(L"ForestBoss_Down", L"..\\Resources\\Image\\Monster\\ForestBoss\\Down", Vector2::Zero, 0.15f);
 		mt->CreateAnimationFolder(L"ForestBoss_Right", L"..\\Resources\\Image\\Monster\\ForestBoss\\Right", Vector2::Zero, 0.15f);
 		mt->CreateAnimationFolder(L"ForestBoss_Left", L"..\\Resources\\Image\\Monster\\ForestBoss\\Left", Vector2::Zero, 0.15f);
-		mt->CreateAnimationFolder(L"ForestBoss_Die", L"..\\Resources\\Image\\Monster\\ForestBoss\\Die", Vector2::Zero, 0.2f);
+		mt->CreateAnimationFolder(L"ForestBoss_Die", L"..\\Resources\\Image\\Monster\\ForestBoss\\Die", Vector2::Zero, 0.3f);
 		mt->CreateAnimationFolder(L"ForestBoss_Attack", L"..\\Resources\\Image\\Monster\\ForestBoss\\Attack", Vector2::Zero, 0.2f);
 		mt->CreateAnimationFolder(L"ForestBoss_Hit", L"..\\Resources\\Image\\Monster\\ForestBoss\\Hit", Vector2::Zero, 0.2f);
-		mt->CreateAnimationFolder(L"ForestBoss_Bubble", L"..\\Resources\\Image\\Monster\\ForestBoss\\Bubble", Vector2::Zero, 0.1f);
+		mt->CreateAnimationFolder(L"ForestBoss_Bubble", L"..\\Resources\\Image\\Monster\\ForestBoss\\Bubble", Vector2::Zero, 0.4f);
 
 		mt->SetScale(Vector2(2.f, 2.f));
 		mt->PlayAnimation(L"ForestBoss_Right", true);
