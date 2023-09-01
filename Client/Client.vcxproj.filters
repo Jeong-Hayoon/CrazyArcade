@@ -458,9 +458,6 @@
     <ClInclude Include="hyLobbyCharactor.h">
       <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
     </ClInclude>
-    <ClInclude Include="hyCharactorProfile.h">
-      <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -703,9 +700,6 @@
       <Filter>Contents\GameObject\Effect\Bomb</Filter>
     </ClCompile>
     <ClCompile Include="hyLobbyCharactor.cpp">
-      <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
-    </ClCompile>
-    <ClCompile Include="hyCharactorProfile.cpp">
       <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
     </ClCompile>
   </ItemGroup>

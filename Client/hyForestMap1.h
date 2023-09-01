@@ -3,7 +3,7 @@
 #include "hyTile.h"
 #include "hyBazzi.h"
 #include "hyDao.h"
-#include "hyCharactorProfile.h"
+//#include "hyCharactorProfile.h"
 
 
 namespace hy
@@ -44,7 +44,7 @@ namespace hy
 		Bazzi* ForestBazzi;
 		Dao* ForestDao;
 		bool Initflag;
-		CharactorProfile* Profile;
+		//CharactorProfile* Profile;
 	};
 }
 

@@ -141,7 +141,6 @@
     <ClInclude Include="hyBombFlow.h" />
     <ClInclude Include="hyBossBomb.h" />
     <ClInclude Include="hyCamera.h" />
-    <ClInclude Include="hyCharactorProfile.h" />
     <ClInclude Include="hyCharactorSelect.h" />
     <ClInclude Include="hyCollider.h" />
     <ClInclude Include="hyCollisionManager.h" />
@@ -223,7 +222,6 @@
     <ClCompile Include="hyBombFlow.cpp" />
     <ClCompile Include="hyBossBomb.cpp" />
     <ClCompile Include="hyCamera.cpp" />
-    <ClCompile Include="hyCharactorProfile.cpp" />
     <ClCompile Include="hyCharactorSelect.cpp" />
     <ClCompile Include="hyCollider.cpp" />
     <ClCompile Include="hyCollisionManager.cpp" />

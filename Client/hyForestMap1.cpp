@@ -58,7 +58,7 @@ namespace hy
 		GameStart* gs2= object::Instantiate<GameStart>(eLayerType::UI, Vector2(450.0f, 640.0f));
 		SceneManager::SetActiveStage(0);
 
-		Profile = object::Instantiate<CharactorProfile>(eLayerType::UI, Vector2(682.0f, 118.0f));
+		//Profile = object::Instantiate<CharactorProfile>(eLayerType::UI, Vector2(682.0f, 118.0f));
 
 		// 타이머
 		Timer_Dot* TimerDot = object::Instantiate<Timer_Dot>(eLayerType::UI);
@@ -89,8 +89,14 @@ namespace hy
 			SceneManager::SetBazzi(ForestBazzi);
 
 			// 배찌 프로필
-			Profile->GetComponent<Animator>()->PlayAnimation(L"BazziProfile", true);
-			//Profile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
+			Texture* BZProfile = Resources::Load<Texture>(L"BZProfileImage"
+				, L"..\\Resources\\Image\\UI\\IngameBazzi.bmp");
+
+			BackGround* bzprofile = object::Instantiate<BackGround>(eLayerType::UI);
+			bzprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
+			SpriteRenderer* bzprofilesr = bzprofile->AddComponent<SpriteRenderer>();
+			bzprofilesr->SetImage(BZProfile);
+			bzprofilesr->SetScale(Vector2(0.6f, 0.6f));
 		}
 
 		// 1P 다오 상하좌우 애니메이션
@@ -104,11 +110,19 @@ namespace hy
 			Initflag = true;
 			SceneManager::SetDao(ForestDao);
 
+			//// 다오 프로필
+			//Profile->GetComponent<Animator>()->PlayAnimation(L"DaoProfile", true);
+			////Profile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
+
 			// 다오 프로필
-			Profile->GetComponent<Animator>()->PlayAnimation(L"DaoProfile", true);
-			//Profile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
+			Texture* DAProfile = Resources::Load<Texture>(L"DAProfileImage"
+				, L"..\\Resources\\Image\\UI\\IngameDao.bmp");
 
-
+			BackGround* daprofile = object::Instantiate<BackGround>(eLayerType::UI);
+			daprofile->GetComponent<Transform>()->SetPosition(Vector2(682.0f, 118.0f));
+			SpriteRenderer* daprofilesr = daprofile->AddComponent<SpriteRenderer>();
+			daprofilesr->SetImage(DAProfile);
+			daprofilesr->SetScale(Vector2(0.6f, 0.6f));
 		}
 
 		// 멀티 플레이어 세팅
