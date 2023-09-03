@@ -39,6 +39,8 @@ namespace hy
 {
 
 	PirateMap1::PirateMap1()
+		:Initflag(false)
+
 	{
 	}
 	PirateMap1::~PirateMap1()
@@ -244,6 +246,9 @@ namespace hy
 		{
 			Destroy(PirateDao);
 		}
+
+		Initflag = false;
+
 
 	}
 

@@ -38,6 +38,8 @@ namespace hy
 {
 
 	ForestMap3::ForestMap3()
+		:Initflag(false)
+
 	{
 	}
 	ForestMap3::~ForestMap3()
@@ -235,6 +237,8 @@ namespace hy
 		{
 			Destroy(ForestDao);
 		}
+		Initflag = false;
+
 	}
 
 	void ForestMap3::Initialize()

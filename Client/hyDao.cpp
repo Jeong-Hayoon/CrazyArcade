@@ -752,7 +752,7 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
-			//SceneManager::SetPlayerDead(true);
+			SceneManager::SetPlayerDead(true);
 			SceneManager::SubPlayerNum();
 
 		}
@@ -766,7 +766,7 @@ namespace hy
 		if (animator->IsActiveAnimationComplete())
 		{
 			Destroy(this);
-			//SceneManager::SetPlayerDead(true);
+			SceneManager::SetPlayerDead(true);
 			SceneManager::SubPlayerNum();
 		}
 	}

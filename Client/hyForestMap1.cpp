@@ -172,6 +172,8 @@ namespace hy
 		{
 			Destroy(ForestDao);
 		}
+		Initflag = false;
+
 	}
 
 

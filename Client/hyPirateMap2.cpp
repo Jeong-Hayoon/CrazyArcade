@@ -38,6 +38,8 @@ extern hy::Application application;
 namespace hy
 {
 	PirateMap2::PirateMap2()
+		:Initflag(false)
+
 	{
 	}
 	PirateMap2::~PirateMap2()
@@ -247,6 +249,9 @@ namespace hy
 		{
 			Destroy(PirateDao);
 		}
+
+		Initflag = false;
+
 
 
 	}

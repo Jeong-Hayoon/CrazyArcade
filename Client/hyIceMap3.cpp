@@ -41,6 +41,8 @@ namespace hy
 {
 
 	IceMap3::IceMap3()
+		:Initflag(false)
+
 	{
 	}
 	IceMap3::~IceMap3()
@@ -235,6 +237,9 @@ namespace hy
 		{
 			Destroy(IceDao);
 		}
+
+		Initflag = false;
+
 
 	}
 

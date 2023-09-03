@@ -38,6 +38,8 @@ namespace hy
 {
 
 	ForestMap2::ForestMap2()
+		:Initflag(false)
+
 	{
 	}
 	ForestMap2::~ForestMap2()
@@ -244,6 +246,8 @@ namespace hy
 		{
 			Destroy(ForestDao);
 		}
+		Initflag = false;
+
 	}
 
 	void ForestMap2::Initialize()

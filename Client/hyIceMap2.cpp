@@ -38,6 +38,8 @@ namespace hy
 {
 
 	IceMap2::IceMap2()
+		:Initflag(false)
+
 	{
 	}
 	IceMap2::~IceMap2()
@@ -263,6 +265,8 @@ namespace hy
 		{
 			Destroy(IceDao);
 		}
+		Initflag = false;
+
 	}
 
 	void IceMap2::Initialize()
