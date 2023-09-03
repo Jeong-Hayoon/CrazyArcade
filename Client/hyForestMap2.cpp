@@ -232,6 +232,9 @@ namespace hy
 	{
 		Resources::Find<Sound>(L"Play")->Stop(true);
 
+		ForestBazzi->ResetBazzi();
+		ForestDao->ResetDao();
+
 		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true)
 		{
 			Destroy(ForestBazzi);

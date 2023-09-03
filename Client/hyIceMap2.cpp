@@ -253,6 +253,7 @@ namespace hy
 		Resources::Find<Sound>(L"Play")->Stop(true);
 
 		IceBazzi->ResetBazzi();
+		IceDao->ResetDao();
 		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true)
 		{
 			Destroy(IceBazzi);

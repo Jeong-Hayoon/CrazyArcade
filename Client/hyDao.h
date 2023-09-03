@@ -68,8 +68,8 @@ namespace hy
 		static float GetMoveSpeed() { return MoveSpeed; }
 		static void SetMoveSpeed(float speed) { MoveSpeed = speed; }
 
-		eItem GetActiveItem() { return ActiveItem; }
-		void SetActiveItem(eItem eatitem) { ActiveItem = eatitem; }
+		static eItem GetActiveItem() { return ActiveItem; }
+		static void SetActiveItem(eItem eatitem) { ActiveItem = eatitem; }
 
 		class Texture* mFloorTexture;
 

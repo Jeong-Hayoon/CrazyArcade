@@ -224,6 +224,8 @@ namespace hy
 		Resources::Find<Sound>(L"BossStage")->Stop(true);
 
 		IceBazzi->ResetBazzi();
+		IceDao->ResetDao();
+
 		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true)
 		{
 			Destroy(IceBazzi);

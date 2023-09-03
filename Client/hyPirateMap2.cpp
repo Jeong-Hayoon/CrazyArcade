@@ -236,6 +236,8 @@ namespace hy
 		Resources::Find<Sound>(L"Play")->Stop(true);
 
 		PirateBazzi->ResetBazzi();
+		PirateDao->ResetDao();
+
 		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true)
 		{
 			Destroy(PirateBazzi);

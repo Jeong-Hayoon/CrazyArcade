@@ -93,7 +93,7 @@ namespace hy
 				Destroy(this);
 			}
 		}
-		/*else if (SceneManager::GetDao() != NULL)
+		else if (SceneManager::GetDao() != NULL)
 		{
 			Vector2 mPlayerPos = SceneManager::GetDao()->GetComponent<Transform>()->GetPosition();
 			mPlayerPos -= Vector2(5.0f, 0.0f);
@@ -104,7 +104,7 @@ namespace hy
 				Destroy(this);
 			}
 
-		}*/
+		}
 
 	}
 	void ShieldEffect::Render(HDC hdc)

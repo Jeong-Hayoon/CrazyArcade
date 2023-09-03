@@ -8,6 +8,7 @@
 #include "hySound.h"
 #include "hyCollisionManager.h"
 #include "hyTime.h"
+#include "hyDao.h"
 
 
 // 물풍선
@@ -75,13 +76,32 @@ namespace hy
 	{
 		if(other->GetOwner()->GetLayerType() == eLayerType::Player)
 		{
-			Bazzi* bz = (Bazzi*)(other->GetOwner());
-			if(bz != nullptr)
+			// 충돌체의 owner를 가져와서
+			GameObject* player = other->GetOwner();
+			// Bazzi과 같으면 Bazzi의 주소를 반환하고 안되면 nullptr
+			Bazzi* bazzi = dynamic_cast<Bazzi*>(player);
+
+			//Bazzi* player = (Bazzi*)(other->GetOwner());
+
+			if(bazzi != nullptr)
 			{
-				bz->BombLimitUp();
+				bazzi->BombLimitUp();
 				Resources::Find<Sound>(L"EatItem")->Play(false);
 
 				Destroy(this);
+			}
+
+			else if (bazzi == nullptr)
+			{
+				Dao* dao = dynamic_cast<Dao*>(player);
+
+				if (player != nullptr)
+				{
+					dao->BombLimitUp();
+					Resources::Find<Sound>(L"EatItem")->Play(false);
+
+					Destroy(this);
+				}
 			}
 		}
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)

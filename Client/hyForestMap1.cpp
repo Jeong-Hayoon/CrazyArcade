@@ -160,6 +160,7 @@ namespace hy
 	void ForestMap1::Exit()
 	{
 		ForestBazzi->ResetBazzi();
+		ForestDao->ResetDao();
 		Resources::Find<Sound>(L"Play")->Stop(true);
 
 		if (SceneManager::GetSelectSoloPlayer() == 1 && LobbyScene::GetBazziClick() == true)

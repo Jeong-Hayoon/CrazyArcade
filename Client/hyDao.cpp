@@ -67,26 +67,26 @@ namespace hy
 		//at->CreateAnimationFolder(L"StartDao", L"..\\Resources\\Image\\Dao\\UpIdleflow", Vector2(0.f, 0.f), 0.4f);
 		at->CreateAnimationFolder(L"DaoIdle", L"..\\Resources\\Image\\Dao\\Idle", Vector2(0.f, 0.f), 0.4f);
 
-		at->CreateAnimationFolder(L"DaoUp", L"..\\Resources\\Image\\Dao\\Up", Vector2(0.f, 0.f), 0.4f);
-		at->CreateAnimationFolder(L"DaoUpStop", L"..\\Resources\\Image\\Dao\\UpIdle", Vector2(0.f, 0.f), 0.4f);
+		at->CreateAnimationFolder(L"DaoUp", L"..\\Resources\\Image\\Dao\\Up", Vector2(0.f, 0.f), 0.15f);
+		at->CreateAnimationFolder(L"DaoUpStop", L"..\\Resources\\Image\\Dao\\UpIdle", Vector2(0.f, 0.f), 0.15f);
 
-		at->CreateAnimationFolder(L"DaoDown", L"..\\Resources\\Image\\Dao\\Down", Vector2(0.f, 0.f), 0.4f);
-		at->CreateAnimationFolder(L"DaoDownStop", L"..\\Resources\\Image\\Dao\\DownIdle", Vector2(0.f, 0.f), 0.4f);
+		at->CreateAnimationFolder(L"DaoDown", L"..\\Resources\\Image\\Dao\\Down", Vector2(0.f, 0.f), 0.15f);
+		at->CreateAnimationFolder(L"DaoDownStop", L"..\\Resources\\Image\\Dao\\DownIdle", Vector2(0.f, 0.f), 0.15f);
 
-		at->CreateAnimationFolder(L"DaoRight", L"..\\Resources\\Image\\Dao\\Right", Vector2(0.f, 0.f), 0.4f);
-		at->CreateAnimationFolder(L"DaoRightStop", L"..\\Resources\\Image\\Dao\\RightIdle", Vector2(0.f, 0.f), 0.4f);
+		at->CreateAnimationFolder(L"DaoRight", L"..\\Resources\\Image\\Dao\\Right", Vector2(0.f, 0.f), 0.15f);
+		at->CreateAnimationFolder(L"DaoRightStop", L"..\\Resources\\Image\\Dao\\RightIdle", Vector2(0.f, 0.f), 0.15f);
 
-		at->CreateAnimationFolder(L"DaoLeft", L"..\\Resources\\Image\\Dao\\Left", Vector2(0.f, 0.f), 0.4f);
-		at->CreateAnimationFolder(L"DaoLeftStop", L"..\\Resources\\Image\\Dao\\LeftIdle", Vector2(0.f, 0.f), 0.4f);
+		at->CreateAnimationFolder(L"DaoLeft", L"..\\Resources\\Image\\Dao\\Left", Vector2(0.f, 0.f), 0.15f);
+		at->CreateAnimationFolder(L"DaoLeftStop", L"..\\Resources\\Image\\Dao\\LeftIdle", Vector2(0.f, 0.f), 0.15f);
 
 		// 상태 애니메이션
 		// Dead 상태가 두가지
 		// 물풍선에 일정 시간 갇히는 경우
 		// 몬스터와 충돌하는 경우
 		at->CreateAnimationFolder(L"DaoDead", L"..\\Resources\\Image\\Dao\\Dead", Vector2(0.f, 0.f), 0.15f);
-		at->CreateAnimationFolder(L"DaoTrap", L"..\\Resources\\Image\\Dao\\Bubble", Vector2(0.f, 0.f), 0.4f);
-		at->CreateAnimationFolder(L"DaoLive", L"..\\Resources\\Image\\Dao\\Live", Vector2(0.f, 0.f), 0.4f);
-		at->CreateAnimationFolder(L"DaoVictory", L"..\\Resources\\Image\\Dao\\Victory", Vector2(0.f, 0.f), 0.4f);
+		at->CreateAnimationFolder(L"DaoTrap", L"..\\Resources\\Image\\Dao\\Bubble", Vector2(0.f, 0.f), 0.18f);
+		at->CreateAnimationFolder(L"DaoLive", L"..\\Resources\\Image\\Dao\\Live", Vector2(0.f, 0.f), 0.15f);
+		at->CreateAnimationFolder(L"DaoVictory", L"..\\Resources\\Image\\Dao\\Victory", Vector2(0.f, 0.f), 0.25f);
 		at->CreateAnimationFolder(L"DaoBalloonDead", L"..\\Resources\\Image\\Dao\\Die", Vector2(0.f, 0.f), 0.15f);
 
 		at->PlayAnimation(L"DaoIdle", false);
@@ -246,7 +246,7 @@ namespace hy
 	{
 		// 충돌체의 owner를 가져와서
 		GameObject* obj = other->GetOwner();
-		// Dao과 같으면 Dao의 주소를 반환하고 안되면 nullptr
+		// Tile과 같으면 Tile의 주소를 반환하고 안되면 nullptr
 		Tile* tile = dynamic_cast<Tile*>(obj);
 
 		if (other->GetOwner()->GetLayerType() == eLayerType::Monster)
@@ -712,7 +712,7 @@ namespace hy
 
 		if (Input::GetKeyDown(eKeyCode::Z) && ActiveItem == eItem::Needle)	// Live
 		{
-			animator->SetScale(Vector2(0.8f, 0.8f));
+			animator->SetScale(Vector2(1.f, 1.f));
 			animator->PlayAnimation(L"DaoLive", false);
 			mState = eState::Live;
 			eItem::None;

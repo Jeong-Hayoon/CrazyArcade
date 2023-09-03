@@ -6,7 +6,7 @@
 #include "hyCollider.h"
 #include "hySound.h"
 #include "hyTime.h"
-
+#include "hyDao.h"
 
 
 
@@ -53,15 +53,34 @@ namespace hy
 	{
 		if (other->GetOwner()->GetLayerType() == eLayerType::Player)
 		{
-			Bazzi* bz = (Bazzi*)(other->GetOwner());
-			if (bz != nullptr)
-			{
-				bz->SetBombFlowCount();
+			// 충돌체의 owner를 가져와서
+			GameObject* player = other->GetOwner();
+			// Bazzi과 같으면 Bazzi의 주소를 반환하고 안되면 nullptr
+			Bazzi* bazzi = dynamic_cast<Bazzi*>(player);
 
+			//Bazzi* player = (Bazzi*)(other->GetOwner());
+
+			if (bazzi != nullptr)
+			{
+				bazzi->SetBombFlowCount();
 				Resources::Find<Sound>(L"EatItem")->Play(false);
 
 				Destroy(this);
 			}
+
+			else if (bazzi == nullptr)
+			{
+				Dao* dao = dynamic_cast<Dao*>(player);
+
+				if (player != nullptr)
+				{
+					dao->SetBombFlowCount();
+					Resources::Find<Sound>(L"EatItem")->Play(false);
+
+					Destroy(this);
+				}
+			}
+
 		}
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{

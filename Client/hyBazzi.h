@@ -74,8 +74,8 @@ namespace hy
 		bool GetShieldUse() { return ShieldUse; }
 
 
-		eItem GetActiveItem() { return ActiveItem; }
-		void SetActiveItem(eItem eatitem) { ActiveItem = eatitem; }
+		static eItem GetActiveItem() { return ActiveItem; }
+		static void SetActiveItem(eItem eatitem) { ActiveItem = eatitem; }
 
 		//static UINT GetBombFlow() { return BombFlow; }
 		//void AddBombFlow() { BombFlow++; }
