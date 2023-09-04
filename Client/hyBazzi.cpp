@@ -987,6 +987,8 @@ namespace hy
 		UseItemNum = 0;
 		BombLimit = 1;
 		SetMoveSpeed(150.f);
+		//ShieldUse = false;
+
 	}
 }
 

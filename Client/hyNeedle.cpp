@@ -69,7 +69,6 @@ namespace hy
 				SceneManager::SetNeedleGet(true);
 				SceneManager::SetShieldGet(false);
 
-
 				Destroy(this);
 			}
 

@@ -303,7 +303,7 @@ namespace hy
 		{
 			SceneManager::SetItemOn(true);
 			mItemUI->GetComponent<Transform>()->SetPosition(Vector2(690.0f, 510.0f));
-			mItemUI->GetComponent<Animator>()->PlayAnimation(L"NeedleUI", true);
+			mItemUI->GetComponent<Animator>()->PlayAnimation(L"ShieldUI", true);
 		}
 
 		// 아이템 창고에 아이템이 떠있으면서 아이템을 사용한 경우
