@@ -205,6 +205,8 @@ namespace hy
 			Trigger = true;
 			ShieldUse = true;
 
+			SceneManager::SetShieldGet(false);
+			SceneManager::SetItemUse(true);
 			ShieldEffect* ShieldEffect_ = object::Instantiate<ShieldEffect>(eLayerType::Effect);
 
 		}
@@ -714,6 +716,9 @@ namespace hy
 		{
 			animator->SetScale(Vector2(1.f, 1.f));
 			animator->PlayAnimation(L"DaoLive", false);
+			SceneManager::SetNeedleGet(false);
+			SceneManager::SetItemUse(true);
+
 			mState = eState::Live;
 			eItem::None;
 		}

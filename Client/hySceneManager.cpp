@@ -37,6 +37,11 @@ namespace hy
 	bool SceneManager :: SelectSoloPlayer = false;
 	bool SceneManager :: SelectMultiPlayer = false;
 	int SceneManager::ActiveStage = 0;
+	bool SceneManager :: NeedleGet = false;
+	bool SceneManager :: ShieldGet = false;
+	bool SceneManager :: ItemOn = false;
+	bool SceneManager::ItemUse = false;
+
 
 	void SceneManager::Initialize()
 	{

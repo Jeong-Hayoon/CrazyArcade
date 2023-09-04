@@ -161,6 +161,7 @@
     <ClInclude Include="hyIceMap3.h" />
     <ClInclude Include="hyIceMonster.h" />
     <ClInclude Include="hyItem.h" />
+    <ClInclude Include="hyItemUI.h" />
     <ClInclude Include="hyLobbyCharactor.h" />
     <ClInclude Include="hyLogo.h" />
     <ClInclude Include="hyLogoScene.h" />
@@ -241,6 +242,7 @@
     <ClCompile Include="hyIceMap3.cpp" />
     <ClCompile Include="hyIceMonster.cpp" />
     <ClCompile Include="hyItem.cpp" />
+    <ClCompile Include="hyItemUI.cpp" />
     <ClCompile Include="hyLobbyCharactor.cpp" />
     <ClCompile Include="hyLogo.cpp" />
     <ClCompile Include="hyLogoScene.cpp" />

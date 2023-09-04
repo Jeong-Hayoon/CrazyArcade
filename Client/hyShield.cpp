@@ -72,6 +72,9 @@ namespace hy
 				bazzi->SetActiveItem(Bazzi::eItem::Shield);
 				Bazzi::SetUseItemNum(1);
 				Resources::Find<Sound>(L"EatItem")->Play(false);
+				SceneManager::SetShieldGet(true);
+				SceneManager::SetNeedleGet(false);
+
 
 				Destroy(this);
 			}
@@ -84,6 +87,9 @@ namespace hy
 				{
 					dao->SetActiveItem(Dao::eItem::Shield);
 					Dao::SetUseItemNum(1);
+					SceneManager::SetShieldGet(true);
+					SceneManager::SetNeedleGet(false);
+
 					Resources::Find<Sound>(L"EatItem")->Play(false);
 
 					Destroy(this);

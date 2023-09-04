@@ -3,6 +3,7 @@
 #include "hyTile.h"
 #include "hyBazzi.h"
 #include "hyDao.h"
+#include "hyItemUI.h"
 
 
 
@@ -41,6 +42,7 @@ namespace hy
 		Bazzi* PirateBazzi;
 		Dao* PirateDao;
 		bool Initflag;
+		ItemUI* mItemUI;
 
 
 	};

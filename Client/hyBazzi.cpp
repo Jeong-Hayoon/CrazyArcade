@@ -268,6 +268,8 @@ namespace hy
 		{
 			Trigger = true;
 			ShieldUse = true;
+			SceneManager::SetShieldGet(false);
+			SceneManager::SetItemUse(true);
 
 			ShieldEffect* ShieldEffect_ = object::Instantiate<ShieldEffect>(eLayerType::Effect);
 		}
@@ -679,6 +681,7 @@ namespace hy
 		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle && UseItemNum == 1)	// Live
 		{
 			animator->SetScale(Vector2(0.8f, 0.8f));
+			SceneManager::SetNeedleGet(false);
 			animator->PlayAnimation(L"BazziLive", false);
 			mState = eState::Live;
 		}
@@ -905,17 +908,14 @@ namespace hy
 
 		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle)	// Live
 		{
-			animator->SetScale(Vector2(0.8f, 0.8f));
-			animator->PlayAnimation(L"BazziLive", false);
-			mState = eState::Live;
-		}
+			SceneManager::SetNeedleGet(false);
+			SceneManager::SetItemUse(true);
 
-		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle)	// Live
-		{
 			animator->SetScale(Vector2(0.8f, 0.8f));
 			animator->PlayAnimation(L"BazziLive", false);
 			mState = eState::Live;
 			eItem::None;
+
 		}
 		else if(Traptime > 4.f)
 		{

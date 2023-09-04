@@ -31,9 +31,6 @@
 #include "hyDao.h"
 #include "hyLobbyScene.h"
 
-
-
-
 // 타일 위치 30,55에 넣기
 
 extern hy::Application application;
@@ -173,6 +170,10 @@ namespace hy
 			Destroy(ForestDao);
 		}
 		Initflag = false;
+		SceneManager::SetItemOn(false);
+		SceneManager::SetNeedleGet(false);
+		SceneManager::SetShieldGet(false);
+		SceneManager::SetItemUse(false);
 
 	}
 
@@ -208,6 +209,7 @@ namespace hy
 		// 몬스터 물풍선 충돌(충돌 관계)
 		CollisionManager::CollisionLayerCheck(eLayerType::Monster, eLayerType::Bomb, true);
 
+		mItemUI = object::Instantiate<ItemUI>(eLayerType::UI);
 
 		//// Shield 아이템 setting
 		//Shield* Shield_1 = object::Instantiate<Shield>(eLayerType::UseItem, Vector2(410.0f, 250.0f));
@@ -222,6 +224,33 @@ namespace hy
 	void ForestMap1::Update()
 	{
 		Scene::Update();
+
+		if(SceneManager::GetNeedleGet() == true)
+		{
+			SceneManager::SetItemOn(true);
+			mItemUI->GetComponent<Transform>()->SetPosition(Vector2(690.0f, 510.0f));
+			mItemUI->GetComponent<Animator>()->PlayAnimation(L"NeedleUI", true);
+
+		}
+
+		if (SceneManager::GetShieldGet() == true)
+		{
+			SceneManager::SetItemOn(true);
+			mItemUI->GetComponent<Transform>()->SetPosition(Vector2(690.0f, 510.0f));
+			mItemUI->GetComponent<Animator>()->PlayAnimation(L"NeedleUI", true);
+		}
+
+		// 아이템 창고에 아이템이 떠있으면서 아이템을 사용한 경우
+		if (SceneManager::GetItemOn() == true && SceneManager::GetItemUse() == true)
+		{
+			if (SceneManager::GetNeedleGet() == false || SceneManager::GetShieldGet() == false)
+			{
+				mItemUI->GetComponent<Transform>()->SetPosition(Vector2(690.0f, 510.0f));
+				mItemUI->GetComponent<Animator>()->PlayAnimation(L"NoneUI", true);
+				SceneManager::SetItemOn(false);
+			}
+		}
+
 
 		if (Input::GetKeyDown(eKeyCode::MouseLeft))
 		{

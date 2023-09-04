@@ -80,6 +80,18 @@ namespace hy
 		static bool GetColliderControl() { return ColliderControl; }
 		static void SetColliderControl(bool on) { ColliderControl = on; }
 
+		// 바늘, 실드 아이템 습득 시 flag 변수
+		static bool GetNeedleGet() { return NeedleGet; }
+		static void SetNeedleGet(bool get) { NeedleGet = get; }
+
+		static bool GetShieldGet() { return ShieldGet; }
+		static void SetShieldGet(bool get) { ShieldGet = get; }
+
+		static bool GetItemOn() { return ItemOn; }
+		static void SetItemOn(bool on) { ItemOn = on; }
+
+		static bool GetItemUse() { return ItemUse; }
+		static void SetItemUse(bool use) { ItemUse = use; }
 
 	private:
 		static std::map <std::wstring, Scene*> mScenes;
@@ -101,6 +113,10 @@ namespace hy
 		static int ActiveStage;
 		static int PlayerNum;			// 플레이어 인원 수 
 		static bool ColliderControl;
+		static bool NeedleGet;
+		static bool ShieldGet;
+		static bool ItemOn;				// 아이템 습득하여 아이템 창에 떠있으면 true
+		static bool ItemUse;			// 아이템을 사용했으면 true
 	};
 }
 

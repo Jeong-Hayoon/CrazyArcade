@@ -213,6 +213,9 @@
     <Filter Include="Contents\GameObject\UI\CharactorSelect">
       <UniqueIdentifier>{9f3af0a7-ff4b-4a92-a6cf-f3fba80a1a6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameObject\UI\UseItem">
+      <UniqueIdentifier>{149d259c-cf23-47c0-a1de-e7d148711b02}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -458,6 +461,9 @@
     <ClInclude Include="hyLobbyCharactor.h">
       <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
     </ClInclude>
+    <ClInclude Include="hyItemUI.h">
+      <Filter>Contents\GameObject\UI\UseItem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -701,6 +707,9 @@
     </ClCompile>
     <ClCompile Include="hyLobbyCharactor.cpp">
       <Filter>Contents\GameObject\UI\CharactorSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="hyItemUI.cpp">
+      <Filter>Contents\GameObject\UI\UseItem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

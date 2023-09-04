@@ -4,6 +4,7 @@
 #include "hyBazzi.h"
 #include "hyDao.h"
 //#include "hyCharactorProfile.h"
+#include "hyItemUI.h"
 
 
 namespace hy
@@ -45,6 +46,8 @@ namespace hy
 		Dao* ForestDao;
 		bool Initflag;
 		//CharactorProfile* Profile;
+		ItemUI* mItemUI;
+
 	};
 }
 
