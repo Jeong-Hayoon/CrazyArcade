@@ -287,7 +287,7 @@ namespace hy
 			if (Shieldtime >= 2.0f)
 			{
 				ShieldUse = false;
-				eItem::None;
+				ActiveItem = eItem::None;
 				UseItemNum = 0;
 				Shieldtime = 0.f;
 				Trigger = false;
@@ -321,6 +321,14 @@ namespace hy
 			at->SetScale(Vector2(0.9f, 0.9f));
 			at->PlayAnimation(L"BazziDead", false);
 			mState = eState::Dead;
+		}
+
+		// Trap 상태일 때 다른 플레이어와 부딪히면 살아나게
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Player && this->mState == eState::Trap)
+		{
+			Animator* at = GetComponent<Animator>();
+			at->PlayAnimation(L"BazziLive", false);
+			mState = eState::Live;
 		}
 
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
@@ -905,7 +913,7 @@ namespace hy
 
 		Animator* animator = GetComponent<Animator>();
 
-
+		// 바늘 아이템 사용
 		if (Input::GetKeyDown(eKeyCode::Ctrl) && ActiveItem == eItem::Needle)	// Live
 		{
 			SceneManager::SetNeedleGet(false);
@@ -914,7 +922,7 @@ namespace hy
 			animator->SetScale(Vector2(0.8f, 0.8f));
 			animator->PlayAnimation(L"BazziLive", false);
 			mState = eState::Live;
-			eItem::None;
+			ActiveItem = eItem::None;
 
 		}
 		else if(Traptime > 4.f)

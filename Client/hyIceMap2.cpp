@@ -334,6 +334,8 @@ namespace hy
 				mItemUI->GetComponent<Transform>()->SetPosition(Vector2(690.0f, 510.0f));
 				mItemUI->GetComponent<Animator>()->PlayAnimation(L"NoneUI", true);
 				SceneManager::SetItemOn(false);
+				SceneManager::SetItemUse(false);
+
 			}
 		}
 

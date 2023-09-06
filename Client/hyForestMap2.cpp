@@ -298,7 +298,6 @@ namespace hy
 			SceneManager::SetItemOn(true);
 			mItemUI->GetComponent<Transform>()->SetPosition(Vector2(690.0f, 510.0f));
 			mItemUI->GetComponent<Animator>()->PlayAnimation(L"NeedleUI", true);
-
 		}
 
 		if (SceneManager::GetShieldGet() == true)
@@ -308,7 +307,7 @@ namespace hy
 			mItemUI->GetComponent<Animator>()->PlayAnimation(L"ShieldUI", true);
 		}
 
-		// 아이템 창고에 아이템이 떠있으면서 아이템을 사용한 경우
+		// 아이템 창고에 아이템이 있으면서 아이템을 사용한 경우
 		if (SceneManager::GetItemOn() == true && SceneManager::GetItemUse() == true)
 		{
 			if (SceneManager::GetNeedleGet() == false || SceneManager::GetShieldGet() == false)
@@ -316,9 +315,9 @@ namespace hy
 				mItemUI->GetComponent<Transform>()->SetPosition(Vector2(690.0f, 510.0f));
 				mItemUI->GetComponent<Animator>()->PlayAnimation(L"NoneUI", true);
 				SceneManager::SetItemOn(false);
+				SceneManager::SetItemUse(false);
 			}
 		}
-
 
 		if (Input::GetKeyDown(eKeyCode::MouseLeft))
 		{

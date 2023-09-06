@@ -207,6 +207,7 @@ namespace hy
 
 			SceneManager::SetShieldGet(false);
 			SceneManager::SetItemUse(true);
+
 			ShieldEffect* ShieldEffect_ = object::Instantiate<ShieldEffect>(eLayerType::Effect);
 
 		}
@@ -224,7 +225,7 @@ namespace hy
 			if (Shieldtime >= 2.0f)
 			{
 				ShieldUse = false;
-				eItem::None;
+				ActiveItem = eItem::None;
 				UseItemNum = 0;
 				Shieldtime = 0.f;
 				Trigger = false;
@@ -259,6 +260,13 @@ namespace hy
 			at->SetScale(Vector2(1.f, 1.f));
 			at->PlayAnimation(L"DaoDead", false);
 			mState = eState::Dead;
+		}
+
+		else if (other->GetOwner()->GetLayerType() == eLayerType::Player && this->mState == eState::Trap)
+		{
+			Animator* at = GetComponent<Animator>();
+			at->PlayAnimation(L"DaoLive", false);
+			mState = eState::Live;
 		}
 
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
@@ -406,6 +414,8 @@ namespace hy
 			at->PlayAnimation(L"DaoDead", false);
 			mState = eState::Dead;
 		}
+
+		
 
 		else if (other->GetOwner()->GetLayerType() == eLayerType::Bombflow)
 		{
@@ -720,7 +730,8 @@ namespace hy
 			SceneManager::SetItemUse(true);
 
 			mState = eState::Live;
-			eItem::None;
+			ActiveItem = eItem::None;
+
 		}
 		else if (Traptime > 4.f)
 		{
