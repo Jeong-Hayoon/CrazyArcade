@@ -101,6 +101,13 @@ namespace hy
 			Resources::Find<Sound>(L"Click")->Play(false);
 		}
 
+		if (Input::GetKeyDown(eKeyCode::T))
+		{
+			SceneManager::LoadScene(L"ToolScene");
+		}
+
+		
+
 		//if (Input::GetKeyDown(eKeyCode::MouseLeft)) // N을 누르면 다음 씬으로 넘어가기
 		//{
 		//	SceneManager::LoadScene(L"LobbyScene");

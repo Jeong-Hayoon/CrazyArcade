@@ -130,7 +130,7 @@ namespace hy
 	void PirateMap1::Enter()
 	{
 		Resources::Find<Sound>(L"Play")->Play(true);
-		SceneManager::SetMonsterQuantity(4);
+		SceneManager::SetMonsterQuantity(3);
 		SceneManager::SetActiveStage(0);
 
 		GameStart* gs1 = object::Instantiate<GameStart>(eLayerType::UI, Vector2(185.0f, 60.0f));
@@ -223,10 +223,12 @@ namespace hy
 		PirateMonster1->GetComponent<Transform>()->SetPosition(Vector2(55.0f, 70.0f));
 		PirateMonster* PirateMonster2 = object::Instantiate<PirateMonster>(eLayerType::Monster);
 		PirateMonster2->GetComponent<Transform>()->SetPosition(Vector2(480.0f, 300.0f));
-		PirateMonster* PirateMonster3 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster3->GetComponent<Transform>()->SetPosition(Vector2(830.0f, 540.0f));
-		PirateMonster* PirateMonster4 = object::Instantiate<PirateMonster>(eLayerType::Monster);
-		PirateMonster4->GetComponent<Transform>()->SetPosition(Vector2(650.0f, 780.0f));
+		PirateMonster* PirateMonster5 = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		PirateMonster5->GetComponent<Transform>()->SetPosition(Vector2(650.0f, 470.0f));
+		/*PirateMonster* PirateMonster3 = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		PirateMonster3->GetComponent<Transform>()->SetPosition(Vector2(650.0f, 540.0f));*/
+		/*PirateMonster* PirateMonster4 = object::Instantiate<PirateMonster>(eLayerType::Monster);
+		PirateMonster4->GetComponent<Transform>()->SetPosition(Vector2(650.0f, 780.0f));*/
 
 	}
 

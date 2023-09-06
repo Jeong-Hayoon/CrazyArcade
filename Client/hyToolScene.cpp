@@ -44,6 +44,11 @@ namespace hy
 		Scene::Update();
 
 
+		if (Input::GetKeyDown(eKeyCode::Y))
+		{
+			SceneManager::LoadScene(L"TitleScene");
+		}
+
 		// GetFocus : 윈도우가 활성될 때만 할 수 있게 해주는 함수
 		if (Input::GetKeyDown(eKeyCode::MouseLeft) && GetFocus())
 		{
