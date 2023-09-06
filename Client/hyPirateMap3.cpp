@@ -337,7 +337,15 @@ namespace hy
 		if (SceneManager::GetBossQuantity() == 0)
 		{
 			Win();
-			PirateBazzi->Victory();
+			if (SceneManager::GetDao() != nullptr)
+			{
+				PirateDao->Victory();
+
+			}
+			if (SceneManager::GetBazzi() != nullptr)
+			{
+				PirateBazzi->Victory();
+			}
 			SceneManager::SetBossQuantity(1);
 		}
 

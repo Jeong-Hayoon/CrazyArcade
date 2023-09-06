@@ -113,8 +113,8 @@ namespace hy
 		static int ActiveStage;
 		static int PlayerNum;			// 플레이어 인원 수 
 		static bool ColliderControl;
-		static bool NeedleGet;
-		static bool ShieldGet;
+		static bool NeedleGet;			// 바늘 아이템을 소유하고 있으면 true
+		static bool ShieldGet;			// 실드 아이템을 소유하고 있으면 true
 		static bool ItemOn;				// 아이템 습득하여 아이템 창에 떠있으면 true
 		static bool ItemUse;			// 아이템을 사용했으면 true
 	};

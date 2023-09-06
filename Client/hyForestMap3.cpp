@@ -329,7 +329,15 @@ namespace hy
 		if (SceneManager::GetBossQuantity() == 0)
 		{
 			Win();
-			ForestBazzi->Victory();
+			if (SceneManager::GetDao() != nullptr)
+			{
+				ForestDao->Victory();
+
+			}
+			if (SceneManager::GetBazzi() != nullptr)
+			{
+				ForestBazzi->Victory();
+			}
 			SceneManager::SetBossQuantity(1);
 		}
 

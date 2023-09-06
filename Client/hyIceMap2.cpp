@@ -364,7 +364,15 @@ namespace hy
 		if (SceneManager::GetMonsterQuantity() == 0)
 		{
 			Win();
-			IceBazzi->Victory();
+			if (SceneManager::GetDao() != nullptr)
+			{
+				IceDao->Victory();
+
+			}
+			if (SceneManager::GetBazzi() != nullptr)
+			{
+				IceBazzi->Victory();
+			}
 			SceneManager::SetMonsterQuantity(1);
 		}
 

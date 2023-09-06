@@ -353,7 +353,15 @@ namespace hy
 		if (SceneManager::GetMonsterQuantity() == 0)
 		{
 			Win();
-			PirateBazzi->Victory();
+			if (SceneManager::GetDao() != nullptr)
+			{
+				PirateDao->Victory();
+
+			}
+			if (SceneManager::GetBazzi() != nullptr)
+			{
+				PirateBazzi->Victory();
+			}
 			SceneManager::SetMonsterQuantity(1);
 		}
 

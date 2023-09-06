@@ -338,7 +338,15 @@ namespace hy
 		if (SceneManager::GetBossQuantity() == 0)
 		{
 			Win();
-			IceBazzi->Victory();
+			if (SceneManager::GetDao() != nullptr)
+			{
+				IceDao->Victory();
+
+			}
+			if (SceneManager::GetBazzi() != nullptr)
+			{
+				IceBazzi->Victory();
+			}
 			SceneManager::SetBossQuantity(1);
 		}
 

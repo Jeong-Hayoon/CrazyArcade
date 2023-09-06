@@ -970,7 +970,7 @@ namespace hy
 	void Bazzi::Victory()
 	{
 		Animator* animator = GetComponent<Animator>();
-		animator->SetScale(Vector2(0.8f, 0.8f));
+		animator->SetScale(Vector2(0.9f, 0.9f));
 		animator->PlayAnimation(L"BazziVictory", true);
 
 		/*if (animator->IsActiveAnimationComplete())

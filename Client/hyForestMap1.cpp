@@ -240,7 +240,7 @@ namespace hy
 			mItemUI->GetComponent<Animator>()->PlayAnimation(L"ShieldUI", true);
 		}
 
-		// 아이템 창고에 아이템이 떠있으면서 아이템을 사용한 경우
+		// 아이템 창고에 아이템이 있으면서 아이템을 사용한 경우
 		if (SceneManager::GetItemOn() == true && SceneManager::GetItemUse() == true)
 		{
 			if (SceneManager::GetNeedleGet() == false || SceneManager::GetShieldGet() == false)
@@ -279,7 +279,15 @@ namespace hy
 		{
 			Win();
 			// 이부분 체크(중단점애는 들어오는데 애니메이션 실행이 안됨)
-			ForestBazzi->Victory();
+			if (SceneManager::GetDao() != nullptr)
+			{
+				ForestDao->Victory();
+
+			}
+			if (SceneManager::GetBazzi() != nullptr)
+			{
+				ForestBazzi->Victory();
+			}
 			SceneManager::SetMonsterQuantity(1);
 		}
 
