@@ -790,7 +790,7 @@ namespace hy
 	void Dao::Victory()
 	{
 		Animator* animator = GetComponent<Animator>();
-		animator->SetScale(Vector2(0.8f, 0.8f));
+		animator->SetScale(Vector2(1.f, 1.f));
 		animator->PlayAnimation(L"DaoVictory", true);
 
 		/*if (animator->IsActiveAnimationComplete())
